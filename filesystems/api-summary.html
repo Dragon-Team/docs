@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.17-dragon
+                5.10.18-dragon
               </div>
             
           
@@ -4574,12 +4574,21 @@ void <code class="sig-name descname">generic_set_encrypted_ci_d_ops</code><span 
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>This function sets the dentry ops for the given dentry to handle both
-casefolded and encrypted dentry names.</p>
-<p>Encryption requires d_revalidate to remove nokey names once the key is present.
-Casefolding is toggleable on an empty directory. Since we can’t change the
-operations later on, we just add the casefolding ops if the filesystem defines an
-encoding.</p>
+<p>Casefolded directories need d_hash and d_compare set, so that the dentries
+contained in them are handled case-insensitively.  Note that these operations
+are needed on the parent directory rather than on the dentries in it, and
+while the casefolding flag can be toggled on and off on an empty directory,
+dentry_operations can’t be changed later.  As a result, if the filesystem has
+casefolding support enabled at all, we have to give all dentries the
+casefolding operations even if their inode doesn’t have the casefolding flag
+currently (and thus the casefolding ops would be no-ops for now).</p>
+<p>Encryption works differently in that the only dentry operation it needs is
+d_revalidate, which it only needs on dentries that have the no-key name flag.
+The no-key flag can’t be set “later”, so we don’t have to worry about that.</p>
+<p>Finally, to maximize compatibility with overlayfs (which isn’t compatible
+with certain dentry operations) and to avoid taking an unnecessary
+performance hit, we use custom dentry_operations for each possible
+combination rather than always installing all operations.</p>
 <dl class="c function">
 <dt id="c.posix_acl_update_mode">
 int <code class="sig-name descname">posix_acl_update_mode</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, umode_t *<em>mode_p</em>, <em class="property">struct</em> posix_acl **<em>acl</em><span class="sig-paren">)</span><a class="headerlink" href="#c.posix_acl_update_mode" title="Permalink to this definition">¶</a><br /></dt>

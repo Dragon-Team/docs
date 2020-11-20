@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.17-dragon
+                5.10.18-dragon
               </div>
             
           
@@ -337,14 +337,14 @@ directories. In case gdb reports to refuse loading vmlinux-gdb.py, add:</p>
 <li><p>Load module (and main kernel) symbols:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(gdb) lx-symbols
 loading vmlinux
-scanning for modules in linux/build
-loading @0xffffffffa0020000: linux/build/net/netfilter/xt_tcpudp.ko
-loading @0xffffffffa0016000: linux/build/net/netfilter/xt_pkttype.ko
-loading @0xffffffffa0002000: linux/build/net/netfilter/xt_limit.ko
-loading @0xffffffffa00ca000: linux/build/net/packet/af_packet.ko
-loading @0xffffffffa003c000: linux/build/fs/fuse/fuse.ko
+scanning for modules in /home/user/linux/build
+loading @0xffffffffa0020000: /home/user/linux/build/net/netfilter/xt_tcpudp.ko
+loading @0xffffffffa0016000: /home/user/linux/build/net/netfilter/xt_pkttype.ko
+loading @0xffffffffa0002000: /home/user/linux/build/net/netfilter/xt_limit.ko
+loading @0xffffffffa00ca000: /home/user/linux/build/net/packet/af_packet.ko
+loading @0xffffffffa003c000: /home/user/linux/build/fs/fuse/fuse.ko
 ...
-loading @0xffffffffa0000000: linux/build/drivers/ata/ata_generic.ko
+loading @0xffffffffa0000000: /home/user/linux/build/drivers/ata/ata_generic.ko
 </pre></div>
 </div>
 </li>
@@ -363,12 +363,12 @@ Breakpoint 1 (btrfs_init_sysfs) pending.
 </li>
 <li><p>Load the module on the target and watch the symbols being loaded as well as
 the breakpoint hit:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>loading @0xffffffffa0034000: linux/build/lib/libcrc32c.ko
-loading @0xffffffffa0050000: linux/build/lib/lzo/lzo_compress.ko
-loading @0xffffffffa006e000: linux/build/lib/zlib_deflate/zlib_deflate.ko
-loading @0xffffffffa01b1000: linux/build/fs/btrfs/btrfs.ko
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>loading @0xffffffffa0034000: /home/user/linux/build/lib/libcrc32c.ko
+loading @0xffffffffa0050000: /home/user/linux/build/lib/lzo/lzo_compress.ko
+loading @0xffffffffa006e000: /home/user/linux/build/lib/zlib_deflate/zlib_deflate.ko
+loading @0xffffffffa01b1000: /home/user/linux/build/fs/btrfs/btrfs.ko
 
-Breakpoint 1, btrfs_init_sysfs () at linux/fs/btrfs/sysfs.c:36
+Breakpoint 1, btrfs_init_sysfs () at /home/user/linux/fs/btrfs/sysfs.c:36
 36              btrfs_kset = kset_create_and_add(&quot;btrfs&quot;, NULL, fs_kobj);
 </pre></div>
 </div>
