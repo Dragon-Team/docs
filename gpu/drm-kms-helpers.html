@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.18-dragon
+                5.10.19-dragon
               </div>
             
           
@@ -940,9 +940,9 @@ void <code class="sig-name descname">drm_encoder_helper_add</code><span class="s
   enum drm_mode_status (*mode_valid)(struct drm_connector *connector, struct drm_display_mode *mode);
   int (*mode_valid_ctx)(struct drm_connector *connector,struct drm_display_mode *mode,struct drm_modeset_acquire_ctx *ctx, enum drm_mode_status *status);
   struct drm_encoder *(*best_encoder)(struct drm_connector *connector);
-  struct drm_encoder *(*atomic_best_encoder)(struct drm_connector *connector, struct drm_connector_state *connector_state);
+  struct drm_encoder *(*atomic_best_encoder)(struct drm_connector *connector, struct drm_atomic_state *state);
   int (*atomic_check)(struct drm_connector *connector, struct drm_atomic_state *state);
-  void (*atomic_commit)(struct drm_connector *connector, struct drm_connector_state *state);
+  void (*atomic_commit)(struct drm_connector *connector, struct drm_atomic_state *state);
   int (*prepare_writeback_job)(struct drm_writeback_connector *connector, struct drm_writeback_job *job);
   void (*cleanup_writeback_job)(struct drm_writeback_connector *connector, struct drm_writeback_job *job);
 };
@@ -1070,9 +1070,8 @@ If it is not implemented, the core will fallback to <strong>best_encoder</strong
 (or drm_connector_get_single_encoder() if <strong>best_encoder</strong> is NULL).</p>
 <p>NOTE:</p>
 <p>This function is called in the check phase of an atomic update. The
-driver is not allowed to change anything outside of the free-standing
-state objects passed-in or assembled in the overall <a class="reference internal" href="drm-kms.html#c.drm_atomic_state" title="drm_atomic_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_atomic_state</span></code></a>
-update tracking structure.</p>
+driver is not allowed to change anything outside of the
+<a class="reference internal" href="drm-kms.html#c.drm_atomic_state" title="drm_atomic_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_atomic_state</span></code></a> update tracking structure passed in.</p>
 <p>RETURNS:</p>
 <p>Encoder that should be used for the given connector and connector
 state, or NULL if no suitable encoder exists. Note that the helpers
@@ -1103,8 +1102,8 @@ deadlock.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">atomic_commit</span></code></dt><dd><p>This hook is to be used by drivers implementing writeback connectors
 that need a point when to commit the writeback job to the hardware.
-The writeback_job to commit is available in
-<a class="reference internal" href="drm-kms.html#c.drm_connector_state" title="drm_connector_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_connector_state.writeback_job</span></code></a>.</p>
+The writeback_job to commit is available in the new connector state,
+in <a class="reference internal" href="drm-kms.html#c.drm_connector_state" title="drm_connector_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_connector_state.writeback_job</span></code></a>.</p>
 <p>This hook is optional.</p>
 <p>This callback is used by the atomic modeset helpers.</p>
 </dd>

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.18-dragon
+                5.10.19-dragon
               </div>
             
           
@@ -448,16 +448,108 @@ the library exclusively, or by the in-kernel system exclusively.</p>
 <h2>J1939 concepts<a class="headerlink" href="#j1939-concepts" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="pgn">
 <h3>PGN<a class="headerlink" href="#pgn" title="Permalink to this headline">¶</a></h3>
+<p>The J1939 protocol uses the 29-bit CAN identifier with the following structure:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 30%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>29 bit CAN-ID</p></th>
+</tr>
+<tr class="row-even"><th class="head" colspan="3"><p>Bit positions within the CAN-ID</p></th>
+</tr>
+<tr class="row-odd"><th class="head"><p>28 … 26</p></th>
+<th class="head"><p>25 … 8</p></th>
+<th class="head"><p>7 … 0</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Priority</p></td>
+<td><p>PGN</p></td>
+<td><p>SA (Source Address)</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 <p>The PGN (Parameter Group Number) is a number to identify a packet. The PGN
-is composed as follows:
-1 bit  : Reserved Bit
-1 bit  : Data Page
-8 bits : PF (PDU Format)
-8 bits : PS (PDU Specific)</p>
+is composed as follows:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 23%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="4"><p>PGN</p></th>
+</tr>
+<tr class="row-even"><th class="head" colspan="4"><p>Bit positions within the CAN-ID</p></th>
+</tr>
+<tr class="row-odd"><th class="head"><p>25</p></th>
+<th class="head"><p>24</p></th>
+<th class="head"><p>23 … 16</p></th>
+<th class="head"><p>15 … 8</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>R (Reserved)</p></td>
+<td><p>DP (Data Page)</p></td>
+<td><p>PF (PDU Format)</p></td>
+<td><p>PS (PDU Specific)</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 <p>In J1939-21 distinction is made between PDU1 format (where PF &lt; 240) and PDU2
 format (where PF &gt;= 240). Furthermore, when using the PDU2 format, the PS-field
 contains a so-called Group Extension, which is part of the PGN. When using PDU2
 format, the Group Extension is set in the PS-field.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="2"><p>PDU1 Format (specific) (peer to peer)</p></th>
+</tr>
+<tr class="row-even"><th class="head" colspan="2"><p>Bit positions within the CAN-ID</p></th>
+</tr>
+<tr class="row-odd"><th class="head"><p>23 … 16</p></th>
+<th class="head"><p>15 … 8</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>00h … EFh</p></td>
+<td><p>DA (Destination address)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="2"><p>PDU2 Format (global) (broadcast)</p></th>
+</tr>
+<tr class="row-even"><th class="head" colspan="2"><p>Bit positions within the CAN-ID</p></th>
+</tr>
+<tr class="row-odd"><th class="head"><p>23 … 16</p></th>
+<th class="head"><p>15 … 8</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>F0h … FFh</p></td>
+<td><p>GE (Group Extenstion)</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 <p>On the other hand, when using PDU1 format, the PS-field contains a so-called
 Destination Address, which is _not_ part of the PGN. When communicating a PGN
 from user space to kernel (or vice versa) and PDU2 format is used, the PS-field

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.18-dragon
+                5.10.19-dragon
               </div>
             
           
@@ -2882,23 +2882,6 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         feature (tagged TLBs) on capable Intel chips.
                         Default is 1 (enabled)
 
-        l1d_flush_out=  [X86,INTEL]
-                        Control mitigation for L1D based snooping vulnerability.
-
-                        Certain CPUs are vulnerable to an exploit against CPU
-                        internal buffers which can forward information to a
-                        disclosure gadget under certain conditions.
-
-                        In vulnerable processors, the speculatively
-                        forwarded data can be used in a cache side channel
-                        attack, to access data to which the attacker does
-                        not have direct access.
-
-                        This parameter controls the mitigation. The
-                        options are:
-
-                        off        - Unconditionally disable the mitigation
-
         l1tf=           [X86] Control mitigation of the L1TF vulnerability on
                               affected CPUs
 
@@ -3437,6 +3420,8 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                                                mds=off [X86]
                                                tsx_async_abort=off [X86]
                                                kvm.nx_huge_pages=off [X86]
+                                               no_entry_flush [PPC]
+                                               no_uaccess_flush [PPC]
 
                                 Exceptions:
                                                This does not have any effect on
@@ -3765,6 +3750,8 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
 
         noefi           Disable EFI runtime services support.
 
+        no_entry_flush  [PPC] Don't flush the L1-D cache when entering the kernel.
+
         noexec          [IA-64]
 
         noexec          [X86]
@@ -3819,6 +3806,9 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
 
         nospec_store_bypass_disable
                         [HW] Disable all mitigations for the Speculative Store Bypass vulnerability
+
+        no_uaccess_flush
+                        [PPC] Don't flush the L1-D cache after accessing user data.
 
         noxsave         [BUGS=X86] Disables x86 extended register state save
                         and restore using xsave. The kernel will fallback to
@@ -3952,6 +3942,8 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
         nosbagart       [IA-64]
 
         nosep           [BUGS=X86-32] Disables x86 SYSENTER/SYSEXIT support.
+
+        nosgx           [X86-64,SGX] Disables Intel SGX kernel support.
 
         nosmp           [SMP] Tells an SMP kernel to act as a UP kernel,
                         and disable the IO APIC.  legacy for &quot;maxcpus=0&quot;.
@@ -5691,8 +5683,9 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
 
                         fatal   - the kernel will send SIGBUS to applications
                                   that trigger the #AC exception or the #DB
-                                  exception. Default behavior is by #AC
-                                  if both features are enabled in hardware.
+                                  exception. If both features are enabled in
+                                  hardware, split lock triggers #AC and bus
+                                  lock from non-WB triggers #DB.
 
                         ratelimit:N -
                                   Set rate limit to N bus locks per second

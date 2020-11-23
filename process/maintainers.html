@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.18-dragon
+                5.10.19-dragon
               </div>
             
           
@@ -1171,6 +1171,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#intel-wmi-thunderbolt-force-power-driver">INTEL WMI THUNDERBOLT FORCE POWER DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#intel-r-trace-hub">INTEL(R) TRACE HUB</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#intel-r-trusted-execution-technology-txt">INTEL(R) TRUSTED EXECUTION TECHNOLOGY (TXT)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#intel-sgx">INTEL SGX</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#interconnect-api">INTERCONNECT API</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#invensense-icm-426xx-imu-driver">INVENSENSE ICM-426xx IMU DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#w-https-invensense-tdk-com">W https://invensense.tdk.com/</a></li>
@@ -24075,6 +24076,36 @@ Intel Linux Wireless &lt;<a class="reference external" href="mailto:linuxwifi&#3
 </dd>
 </dl>
 </div>
+<div class="section" id="intel-sgx">
+<h3>INTEL SGX<a class="headerlink" href="#intel-sgx" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Jarkko Sakkinen &lt;<a class="reference external" href="mailto:jarkko&#37;&#52;&#48;kernel&#46;org">jarkko<span>&#64;</span>kernel<span>&#46;</span>org</a>&gt;</p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:linux-sgx&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-sgx<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Supported</p>
+</dd>
+<dt class="field-even">Patchwork</dt>
+<dd class="field-even"><p><a class="reference external" href="https://patchwork.kernel.org/project/intel-sgx/list/">https://patchwork.kernel.org/project/intel-sgx/list/</a></p>
+</dd>
+<dt class="field-odd">SCM</dt>
+<dd class="field-odd"><p>git git://git.kernel.org/pub/scm/linux/kernel/git/jarkko/linux-sgx.git</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><a class="reference internal" href="../x86/sgx.html"><span class="doc">x86/sgx</span></a>
+<code class="docutils literal notranslate"><span class="pre">arch/x86/entry/vdso/vsgx.S</span></code>
+<code class="docutils literal notranslate"><span class="pre">arch/x86/include/uapi/asm/sgx.h</span></code>
+<code class="docutils literal notranslate"><span class="pre">arch/x86/kernel/cpu/sgx/*</span></code>
+<code class="docutils literal notranslate"><span class="pre">tools/testing/selftests/sgx/*</span></code></p>
+</dd>
+<dt class="field-odd">Content regex</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">\bSGX_</span></code></p>
+</dd>
+</dl>
+</div>
 <div class="section" id="interconnect-api">
 <h3>INTERCONNECT API<a class="headerlink" href="#interconnect-api" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
@@ -24184,7 +24215,8 @@ Darrick J. Wong &lt;<a class="reference external" href="mailto:darrick&#46;wong&
 <h3>IOMMU DRIVERS<a class="headerlink" href="#iommu-drivers" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Joerg Roedel &lt;<a class="reference external" href="mailto:joro&#37;&#52;&#48;8bytes&#46;org">joro<span>&#64;</span>8bytes<span>&#46;</span>org</a>&gt;</p>
+<dd class="field-odd"><p>Joerg Roedel &lt;<a class="reference external" href="mailto:joro&#37;&#52;&#48;8bytes&#46;org">joro<span>&#64;</span>8bytes<span>&#46;</span>org</a>&gt;,
+Will Deacon &lt;<a class="reference external" href="mailto:will&#37;&#52;&#48;kernel&#46;org">will<span>&#64;</span>kernel<span>&#46;</span>org</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:iommu&#37;&#52;&#48;lists&#46;linux-foundation&#46;org">iommu<span>&#64;</span>lists<span>&#46;</span>linux-foundation<span>&#46;</span>org</a></p>
@@ -27234,7 +27266,8 @@ Srujana Challa &lt;<a class="reference external" href="mailto:schalla&#37;&#52;&
 <dd class="field-odd"><p>Maintained</p>
 </dd>
 <dt class="field-even">Files</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/crypto/marvell/</span></code></p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/crypto/marvell/</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/linux/soc/marvell/octeontx2/</span></code></p>
 </dd>
 </dl>
 </div>
@@ -27423,7 +27456,8 @@ hariprasad &lt;<a class="reference external" href="mailto:hkelam&#37;&#52;&#48;m
 <dd class="field-odd"><p>Supported</p>
 </dd>
 <dt class="field-even">Files</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/net/ethernet/marvell/octeontx2/nic/</span></code></p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/net/ethernet/marvell/octeontx2/nic/</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/linux/soc/marvell/octeontx2/</span></code></p>
 </dd>
 </dl>
 </div>
@@ -34408,11 +34442,15 @@ Lorenzo Pieralisi &lt;<a class="reference external" href="mailto:lorenzo&#46;pie
 <dt class="field-odd">Status</dt>
 <dd class="field-odd"><p>Supported</p>
 </dd>
-<dt class="field-even">SCM</dt>
-<dd class="field-even"><p>git git://git.kernel.org/pub/scm/linux/kernel/git/kishon/pci-endpoint.git</p>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/PCI/endpoint/*</span></code>
+<a class="reference internal" href="../misc-devices/pci-endpoint-test.html"><span class="doc">misc-devices/pci-endpoint-test</span></a></p>
 </dd>
-<dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/misc/pci_endpoint_test.c</span></code>
+<dt class="field-odd">SCM</dt>
+<dd class="field-odd"><p>git git://git.kernel.org/pub/scm/linux/kernel/git/kishon/pci-endpoint.git</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/misc/pci_endpoint_test.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/pci/endpoint/</span></code>
 <code class="docutils literal notranslate"><span class="pre">tools/pci/</span></code></p>
 </dd>
@@ -39929,9 +39967,8 @@ Eric Paris &lt;<a class="reference external" href="mailto:eparis&#37;&#52;&#48;p
 <h3>SFC NETWORK DRIVER<a class="headerlink" href="#sfc-network-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Solarflare linux maintainers &lt;<a class="reference external" href="mailto:linux-net-drivers&#37;&#52;&#48;solarflare&#46;com">linux-net-drivers<span>&#64;</span>solarflare<span>&#46;</span>com</a>&gt;,
-Edward Cree &lt;<a class="reference external" href="mailto:ecree&#37;&#52;&#48;solarflare&#46;com">ecree<span>&#64;</span>solarflare<span>&#46;</span>com</a>&gt;,
-Martin Habets &lt;<a class="reference external" href="mailto:mhabets&#37;&#52;&#48;solarflare&#46;com">mhabets<span>&#64;</span>solarflare<span>&#46;</span>com</a>&gt;</p>
+<dd class="field-odd"><p>Edward Cree &lt;<a class="reference external" href="mailto:ecree&#46;xilinx&#37;&#52;&#48;gmail&#46;com">ecree<span>&#46;</span>xilinx<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;,
+Martin Habets &lt;<a class="reference external" href="mailto:habetsm&#46;xilinx&#37;&#52;&#48;gmail&#46;com">habetsm<span>&#46;</span>xilinx<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:netdev&#37;&#52;&#48;vger&#46;kernel&#46;org">netdev<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
@@ -48091,16 +48128,19 @@ John Fastabend &lt;<a class="reference external" href="mailto:john&#46;fastabend
 </dd>
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">include/net/xdp.h</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/net/xdp_priv.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/trace/events/xdp.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">kernel/bpf/cpumap.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">kernel/bpf/devmap.c</span></code>
-<code class="docutils literal notranslate"><span class="pre">net/core/xdp.c</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">net/core/xdp.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">samples/bpf/xdp*</span></code>
+<code class="docutils literal notranslate"><span class="pre">tools/testing/selftests/bpf/*xdp*</span></code>
+<code class="docutils literal notranslate"><span class="pre">tools/testing/selftests/bpf/*/*xdp*</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/net/ethernet/*/*/*/*/*xdp*</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/net/ethernet/*/*/*xdp*</span></code></p>
 </dd>
-<dt class="field-odd">Regex</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">xdp</span></code></p>
-</dd>
-<dt class="field-even">Content regex</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">xdp</span></code></p>
+<dt class="field-odd">Content regex</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(?:\b|_)xdp(?:\b|_)</span></code></p>
 </dd>
 </dl>
 </div>
@@ -48122,9 +48162,12 @@ Magnus Karlsson &lt;<a class="reference external" href="mailto:magnus&#46;karlss
 <dd class="field-even"><p>Maintained</p>
 </dd>
 <dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">include/net/xdp_sock*</span></code>
+<dd class="field-odd"><p><a class="reference internal" href="../networking/af_xdp.html"><span class="doc">networking/af_xdp</span></a>
+<code class="docutils literal notranslate"><span class="pre">include/net/xdp_sock*</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/net/xsk_buff_pool.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/uapi/linux/if_xdp.h</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/uapi/linux/xdp_diag.h</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/net/netns/xdp.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">net/xdp/</span></code>
 <code class="docutils literal notranslate"><span class="pre">samples/bpf/xdpsock*</span></code>
 <code class="docutils literal notranslate"><span class="pre">tools/lib/bpf/xsk*</span></code></p>

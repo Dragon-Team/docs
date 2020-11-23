@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.18-dragon
+                5.10.19-dragon
               </div>
             
           
@@ -329,13 +329,13 @@ by <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_read_lo
 <li><p>For any update to the fd table, files-&gt;file_lock must
 be held.</p></li>
 <li><p>To look up the file structure given an fd, a reader
-must use either fcheck() or fcheck_files() APIs. These
+must use either lookup_fd_rcu() or files_lookup_fd_rcu() APIs. These
 take care of barrier requirements due to lock-free lookup.</p>
 <p>An example:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct file *file;
 
 rcu_read_lock();
-file = fcheck(fd);
+file = lookup_fd_rcu(fd);
 if (file) {
         ...
 }
@@ -350,7 +350,7 @@ that look-up may race with the last put() operation on the
 file structure. This is avoided using atomic_long_inc_not_zero()
 on -&gt;f_count:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rcu_read_lock();
-file = fcheck_files(files, fd);
+file = files_lookup_fd_rcu(files, fd);
 if (file) {
         if (atomic_long_inc_not_zero(&amp;file-&gt;f_count))
                 *fput_needed = 1;
@@ -371,7 +371,7 @@ fget()/fget_light().</p>
 lock-free, they must be installed using <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_assign_pointer" title="rcu_assign_pointer"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_assign_pointer()</span></code></a>
 API. If they are looked up lock-free, <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_dereference" title="rcu_dereference"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_dereference()</span></code></a>
 must be used. However it is advisable to use files_fdtable()
-and fcheck()/fcheck_files() which take care of these issues.</p></li>
+and lookup_fd_rcu()/files_lookup_fd_rcu() which take care of these issues.</p></li>
 <li><p>While updating, the fdtable pointer must be looked up while
 holding files-&gt;file_lock. If -&gt;file_lock is dropped, then
 another thread expand the files thereby creating a new

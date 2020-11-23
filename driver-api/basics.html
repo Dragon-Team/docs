@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.18-dragon
+                5.10.19-dragon
               </div>
             
           
@@ -1005,7 +1005,7 @@ void <code class="sig-name descname">yield</code><span class="sig-paren">(</span
 <p>Do not ever use this function, there’s a 99% chance you’re doing it wrong.</p>
 <p>The scheduler is at all times free to pick the calling task as the most
 eligible task to run, if removing the <a class="reference internal" href="#c.yield" title="yield"><code class="xref c c-func docutils literal notranslate"><span class="pre">yield()</span></code></a> call from your code breaks
-it, its already broken.</p>
+it, it’s already broken.</p>
 <p>Typical broken usage is:</p>
 <dl class="simple">
 <dt>while (!event)</dt><dd><p><a class="reference internal" href="#c.yield" title="yield"><code class="xref c c-func docutils literal notranslate"><span class="pre">yield()</span></code></a>;</p>
@@ -2897,9 +2897,21 @@ softirq based mode is considered for debug purpose only!</p>
 </dd>
 </dl>
 <dl class="c function">
+<dt id="c.hrtimer_get_remaining">
+ktime_t <code class="sig-name descname">hrtimer_get_remaining</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.hrtimer" title="hrtimer">hrtimer</a> *<em>timer</em><span class="sig-paren">)</span><a class="headerlink" href="#c.hrtimer_get_remaining" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>get remaining time for the timer</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">hrtimer</span> <span class="pre">*timer</span></code></dt><dd><p>the timer to read</p>
+</dd>
+</dl>
+<dl class="c function">
 <dt id="c.hrtimer_is_queued">
 bool <code class="sig-name descname">hrtimer_is_queued</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.hrtimer" title="hrtimer">hrtimer</a> *<em>timer</em><span class="sig-paren">)</span><a class="headerlink" href="#c.hrtimer_is_queued" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>check, whether the timer is on one of the queues</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">

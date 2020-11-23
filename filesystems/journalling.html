@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.18-dragon
+                5.10.19-dragon
               </div>
             
           
@@ -846,7 +846,8 @@ as a whole, and those which are used to manage transactions</p>
 <dl class="c function">
 <dt id="c.jbd2_journal_force_commit_nested">
 int <code class="sig-name descname">jbd2_journal_force_commit_nested</code><span class="sig-paren">(</span><a class="reference internal" href="#c.journal_t" title="journal_t">journal_t</a> *<em>journal</em><span class="sig-paren">)</span><a class="headerlink" href="#c.jbd2_journal_force_commit_nested" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Force and wait upon a commit if the calling process is not within transaction.</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -855,7 +856,7 @@ Returns true if progress was made.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>transaction.  This is used for forcing out undo-protected data which contains
+<p>This is used for forcing out undo-protected data which contains
 bitmaps, when the fs is running out of space.</p>
 <dl class="c function">
 <dt id="c.jbd2_journal_force_commit">

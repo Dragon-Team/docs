@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.18-dragon
+                5.10.19-dragon
               </div>
             
           
@@ -2879,6 +2879,23 @@ includes <a class="reference internal" href="../../../core-api/kernel-api.html#c
 also includes DEFINE_SRCU(), DEFINE_STATIC_SRCU(), and
 <a class="reference internal" href="../../../core-api/kernel-api.html#c.init_srcu_struct" title="init_srcu_struct"><code class="xref c c-func docutils literal notranslate"><span class="pre">init_srcu_struct()</span></code></a> APIs for defining and initializing
 <code class="docutils literal notranslate"><span class="pre">srcu_struct</span></code> structures.</p>
+<p>More recently, the SRCU API has added polling interfaces:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../../../core-api/kernel-api.html#c.start_poll_synchronize_srcu" title="start_poll_synchronize_srcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">start_poll_synchronize_srcu()</span></code></a> returns a cookie identifying
+the completion of a future SRCU grace period and ensures
+that this grace period will be started.</p></li>
+<li><p><a class="reference internal" href="../../../core-api/kernel-api.html#c.poll_state_synchronize_srcu" title="poll_state_synchronize_srcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">poll_state_synchronize_srcu()</span></code></a> returns <code class="docutils literal notranslate"><span class="pre">true</span></code> iff the
+specified cookie corresponds to an already-completed
+SRCU grace period.</p></li>
+<li><p><a class="reference internal" href="../../../core-api/kernel-api.html#c.get_state_synchronize_srcu" title="get_state_synchronize_srcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">get_state_synchronize_srcu()</span></code></a> returns a cookie just like
+<a class="reference internal" href="../../../core-api/kernel-api.html#c.start_poll_synchronize_srcu" title="start_poll_synchronize_srcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">start_poll_synchronize_srcu()</span></code></a> does, but differs in that
+it does nothing to ensure that any future SRCU grace period
+will be started.</p></li>
+</ol>
+<p>These functions are used to avoid unnecessary SRCU grace periods in
+certain types of buffer-cache algorithms having multi-stage age-out
+mechanisms.  The idea is that by the time the block has aged completely
+from the cache, an SRCU grace period will be very likely to have elapsed.</p>
 </div>
 <div class="section" id="tasks-rcu">
 <h3>Tasks RCU<a class="headerlink" href="#tasks-rcu" title="Permalink to this headline">¶</a></h3>

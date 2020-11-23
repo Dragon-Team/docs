@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.18-dragon
+                5.10.19-dragon
               </div>
             
           
@@ -2442,34 +2442,6 @@ default affinities to use</p>
 </dl>
 <p><strong>Description</strong></p>
 <p>Returns the first irq number or error code</p>
-<dl class="c function">
-<dt id="c.irq_alloc_hwirqs">
-unsigned int <code class="sig-name descname">irq_alloc_hwirqs</code><span class="sig-paren">(</span>int <em>cnt</em>, int <em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#c.irq_alloc_hwirqs" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Allocate an irq descriptor and initialize the hardware</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">cnt</span></code></dt><dd><p>number of interrupts to allocate</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">node</span></code></dt><dd><p>node on which to allocate</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Returns an interrupt number &gt; 0 or 0, if the allocation fails.</p>
-<dl class="c function">
-<dt id="c.irq_free_hwirqs">
-void <code class="sig-name descname">irq_free_hwirqs</code><span class="sig-paren">(</span>unsigned int <em>from</em>, int <em>cnt</em><span class="sig-paren">)</span><a class="headerlink" href="#c.irq_free_hwirqs" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Free irq descriptor and cleanup the hardware</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">from</span></code></dt><dd><p>Free from irq number</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">cnt</span></code></dt><dd><p>number of interrupts to free</p>
-</dd>
-</dl>
 <dl class="c function">
 <dt id="c.irq_get_next_irq">
 unsigned int <code class="sig-name descname">irq_get_next_irq</code><span class="sig-paren">(</span>unsigned int <em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#c.irq_get_next_irq" title="Permalink to this definition">¶</a><br /></dt>

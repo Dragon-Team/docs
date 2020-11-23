@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.18-dragon
+                5.10.19-dragon
               </div>
             
           
@@ -446,7 +446,8 @@
 <h1>Kernel driver amd_energy<a class="headerlink" href="#kernel-driver-amd-energy" title="Permalink to this headline">¶</a></h1>
 <p>Supported chips:</p>
 <ul>
-<li><p>AMD Family 17h Processors</p>
+<li><p>AMD Family 17h Processors: Model 30h</p></li>
+<li><p>AMD Family 19h Processors: Model 01h</p>
 <p>Prefix: ‘amd_energy’</p>
 <p>Addresses used:  RAPL MSRs</p>
 <p>Datasheets:</p>
@@ -573,6 +574,8 @@ Measured input socket energy</p></td>
 </tr>
 </tbody>
 </table>
+<p>Note: To address CVE-2020-12912, the visibility of the energy[N]_input
+attributes is restricted to owner and groups only.</p>
 </div>
 </div>
 
