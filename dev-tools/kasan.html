@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -106,11 +106,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#error-reports">Error reports</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#boot-parameters">Boot parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#for-developers">For developers</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#implementation-details">Implementation details</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#generic-kasan">Generic KASAN</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#software-tag-based-kasan">Software tag-based KASAN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hardware-tag-based-kasan">Hardware tag-based KASAN</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#what-memory-accesses-are-sanitised-by-kasan">What memory accesses are sanitised by KASAN?</a><ul>
@@ -119,9 +122,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#config-kasan-kunit-test-config-test-kasan-module">CONFIG_KASAN_KUNIT_TEST &amp; CONFIG_TEST_KASAN_MODULE</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#loadable-module">(1) Loadable Module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#built-in">(2) Built-In</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#using-kunit-tool">(3) Using kunit_tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loadable-module">1. Loadable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#built-in">2. Built-In</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-kunit-tool">3. Using kunit_tool</a></li>
 </ul>
 </li>
 </ul>
@@ -289,18 +292,22 @@
 <h1>The Kernel Address Sanitizer (KASAN)<a class="headerlink" href="#the-kernel-address-sanitizer-kasan" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>KernelAddressSANitizer (KASAN) is a dynamic memory error detector designed to
-find out-of-bound and use-after-free bugs. KASAN has two modes: generic KASAN
-(similar to userspace ASan) and software tag-based KASAN (similar to userspace
-HWASan).</p>
-<p>KASAN uses compile-time instrumentation to insert validity checks before every
-memory access, and therefore requires a compiler version that supports that.</p>
+<p>KernelAddressSANitizer (KASAN) is a dynamic memory safety error detector
+designed to find out-of-bound and use-after-free bugs. KASAN has three modes:</p>
+<ol class="arabic simple">
+<li><p>generic KASAN (similar to userspace ASan),</p></li>
+<li><p>software tag-based KASAN (similar to userspace HWASan),</p></li>
+<li><p>hardware tag-based KASAN (based on hardware memory tagging).</p></li>
+</ol>
+<p>Software KASAN modes (1 and 2) use compile-time instrumentation to insert
+validity checks before every memory access, and therefore require a compiler
+version that supports that.</p>
 <p>Generic KASAN is supported in both GCC and Clang. With GCC it requires version
 8.3.0 or later. Any supported Clang version is compatible, but detection of
 out-of-bounds accesses for global variables is only supported since Clang 11.</p>
 <p>Tag-based KASAN is only supported in Clang.</p>
 <p>Currently generic KASAN is supported for the x86_64, arm, arm64, xtensa, s390
-and riscv architectures, and tag-based KASAN is supported only for arm64.</p>
+and riscv architectures, and tag-based KASAN modes are supported only for arm64.</p>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
@@ -308,29 +315,17 @@ and riscv architectures, and tag-based KASAN is supported only for arm64.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>CONFIG_KASAN = y
 </pre></div>
 </div>
-<p>and choose between CONFIG_KASAN_GENERIC (to enable generic KASAN) and
-CONFIG_KASAN_SW_TAGS (to enable software tag-based KASAN).</p>
-<p>You also need to choose between CONFIG_KASAN_OUTLINE and CONFIG_KASAN_INLINE.
-Outline and inline are compiler instrumentation types. The former produces
-smaller binary while the latter is 1.1 - 2 times faster.</p>
-<p>Both KASAN modes work with both SLUB and SLAB memory allocators.
-For better bug detection and nicer reporting, enable CONFIG_STACKTRACE.</p>
+<p>and choose between CONFIG_KASAN_GENERIC (to enable generic KASAN),
+CONFIG_KASAN_SW_TAGS (to enable software tag-based KASAN), and
+CONFIG_KASAN_HW_TAGS (to enable hardware tag-based KASAN).</p>
+<p>For software modes, you also need to choose between CONFIG_KASAN_OUTLINE and
+CONFIG_KASAN_INLINE. Outline and inline are compiler instrumentation types.
+The former produces smaller binary while the latter is 1.1 - 2 times faster.</p>
+<p>Both software KASAN modes work with both SLUB and SLAB memory allocators,
+while the hardware tag-based KASAN currently only support SLUB.</p>
+<p>For better error reports that include stack traces, enable CONFIG_STACKTRACE.</p>
 <p>To augment reports with last allocation and freeing stack of the physical page,
 it is recommended to enable also CONFIG_PAGE_OWNER and boot with page_owner=on.</p>
-<p>To disable instrumentation for specific files or directories, add a line
-similar to the following to the respective kernel Makefile:</p>
-<ul>
-<li><p>For a single file (e.g. main.o):</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>KASAN_SANITIZE_main.o := n
-</pre></div>
-</div>
-</li>
-<li><p>For all files in one directory:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>KASAN_SANITIZE := n
-</pre></div>
-</div>
-</li>
-</ul>
 <div class="section" id="error-reports">
 <h3>Error reports<a class="headerlink" href="#error-reports" title="Permalink to this headline">¶</a></h3>
 <p>A typical out-of-bounds access generic KASAN report looks like this:</p>
@@ -413,29 +408,91 @@ access happens on a slab object), and a stack trace of where the object was
 freed (in case of a use-after-free bug report). Next comes a description of
 the accessed slab object and information about the accessed memory page.</p>
 <p>In the last section the report shows memory state around the accessed address.
-Reading this part requires some understanding of how KASAN works.</p>
-<p>The state of each 8 aligned bytes of memory is encoded in one shadow byte.
-Those 8 bytes can be accessible, partially accessible, freed or be a redzone.
-We use the following encoding for each shadow byte: 0 means that all 8 bytes
-of the corresponding memory region are accessible; number N (1 &lt;= N &lt;= 7) means
-that the first N bytes are accessible, and other (8 - N) bytes are not;
-any negative value indicates that the entire 8-byte word is inaccessible.
-We use different negative values to distinguish between different kinds of
-inaccessible memory like redzones or freed memory (see mm/kasan/kasan.h).</p>
+Internally KASAN tracks memory state separately for each memory granule, which
+is either 8 or 16 aligned bytes depending on KASAN mode. Each number in the
+memory state section of the report shows the state of one of the memory
+granules that surround the accessed address.</p>
+<p>For generic KASAN the size of each memory granule is 8. The state of each
+granule is encoded in one shadow byte. Those 8 bytes can be accessible,
+partially accessible, freed or be a part of a redzone. KASAN uses the following
+encoding for each shadow byte: 0 means that all 8 bytes of the corresponding
+memory region are accessible; number N (1 &lt;= N &lt;= 7) means that the first N
+bytes are accessible, and other (8 - N) bytes are not; any negative value
+indicates that the entire 8-byte word is inaccessible. KASAN uses different
+negative values to distinguish between different kinds of inaccessible memory
+like redzones or freed memory (see mm/kasan/kasan.h).</p>
 <p>In the report above the arrows point to the shadow byte 03, which means that
 the accessed address is partially accessible.</p>
 <p>For tag-based KASAN this last report section shows the memory tags around the
-accessed address (see Implementation details section).</p>
+accessed address (see <a class="reference internal" href="#implementation-details">Implementation details</a> section).</p>
+</div>
+<div class="section" id="boot-parameters">
+<h3>Boot parameters<a class="headerlink" href="#boot-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Hardware tag-based KASAN mode (see the section about different mode below) is
+intended for use in production as a security mitigation. Therefore it supports
+boot parameters that allow to disable KASAN competely or otherwise control
+particular KASAN features.</p>
+<p>The things that can be controlled are:</p>
+<ol class="arabic simple">
+<li><p>Whether KASAN is enabled at all.</p></li>
+<li><p>Whether KASAN collects and saves alloc/free stacks.</p></li>
+<li><p>Whether KASAN panics on a detected bug or not.</p></li>
+</ol>
+<p>The <code class="docutils literal notranslate"><span class="pre">kasan.mode</span></code> boot parameter allows to choose one of three main modes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">kasan.mode=off</span></code> - KASAN is disabled, no tag checks are performed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kasan.mode=prod</span></code> - only essential production features are enabled</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kasan.mode=full</span></code> - all KASAN features are enabled</p></li>
+</ul>
+<p>The chosen mode provides default control values for the features mentioned
+above. However it’s also possible to override the default values by providing:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">kasan.stacktrace=off</span></code> or <code class="docutils literal notranslate"><span class="pre">=on</span></code> - enable alloc/free stack collection</dt><dd><dl class="simple">
+<dt>(default: <code class="docutils literal notranslate"><span class="pre">on</span></code> for <code class="docutils literal notranslate"><span class="pre">mode=full</span></code>,</dt><dd><p>otherwise <code class="docutils literal notranslate"><span class="pre">off</span></code>)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">kasan.fault=report</span></code> or <code class="docutils literal notranslate"><span class="pre">=panic</span></code> - only print KASAN report or also panic</dt><dd><p>(default: <code class="docutils literal notranslate"><span class="pre">report</span></code>)</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">kasan.mode</span></code> parameter is not provided, it defaults to <code class="docutils literal notranslate"><span class="pre">full</span></code> when
+<code class="docutils literal notranslate"><span class="pre">CONFIG_DEBUG_KERNEL</span></code> is enabled, and to <code class="docutils literal notranslate"><span class="pre">prod</span></code> otherwise.</p>
+</div>
+<div class="section" id="for-developers">
+<h3>For developers<a class="headerlink" href="#for-developers" title="Permalink to this headline">¶</a></h3>
+<p>Software KASAN modes use compiler instrumentation to insert validity checks.
+Such instrumentation might be incompatible with some part of the kernel, and
+therefore needs to be disabled. To disable instrumentation for specific files
+or directories, add a line similar to the following to the respective kernel
+Makefile:</p>
+<ul>
+<li><p>For a single file (e.g. main.o):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>KASAN_SANITIZE_main.o := n
+</pre></div>
+</div>
+</li>
+<li><p>For all files in one directory:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>KASAN_SANITIZE := n
+</pre></div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="section" id="implementation-details">
 <h2>Implementation details<a class="headerlink" href="#implementation-details" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="generic-kasan">
 <h3>Generic KASAN<a class="headerlink" href="#generic-kasan" title="Permalink to this headline">¶</a></h3>
-<p>From a high level, our approach to memory error detection is similar to that
-of kmemcheck: use shadow memory to record whether each byte of memory is safe
-to access, and use compile-time instrumentation to insert checks of shadow
-memory on each memory access.</p>
+<p>From a high level perspective, KASAN’s approach to memory error detection is
+similar to that of kmemcheck: use shadow memory to record whether each byte of
+memory is safe to access, and use compile-time instrumentation to insert checks
+of shadow memory on each memory access.</p>
 <p>Generic KASAN dedicates 1/8th of kernel memory to its shadow memory (e.g. 16TB
 to cover 128TB on x86_64) and uses direct mapping with a scale and offset to
 translate a memory address to its corresponding shadow address.</p>
@@ -457,30 +514,57 @@ access is valid or not by checking corresponding shadow memory.</p>
 function calls GCC directly inserts the code to check the shadow memory.
 This option significantly enlarges kernel but it gives x1.1-x2 performance
 boost over outline instrumented kernel.</p>
-<p>Generic KASAN prints up to 2 <a class="reference internal" href="../core-api/kernel-api.html#c.call_rcu" title="call_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">call_rcu()</span></code></a> call stacks in reports, the last one
+<p>Generic KASAN is the only mode that delays the reuse of freed object via
+quarantine (see mm/kasan/quarantine.c for implementation).</p>
+<p>Generic KASAN prints up to two <a class="reference internal" href="../core-api/kernel-api.html#c.call_rcu" title="call_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">call_rcu()</span></code></a> call stacks in reports, the last one
 and the second to last.</p>
 </div>
 <div class="section" id="software-tag-based-kasan">
 <h3>Software tag-based KASAN<a class="headerlink" href="#software-tag-based-kasan" title="Permalink to this headline">¶</a></h3>
-<p>Tag-based KASAN uses the Top Byte Ignore (TBI) feature of modern arm64 CPUs to
-store a pointer tag in the top byte of kernel pointers. Like generic KASAN it
-uses shadow memory to store memory tags associated with each 16-byte memory
+<p>Software tag-based KASAN requires software memory tagging support in the form
+of HWASan-like compiler instrumentation (see HWASan documentation for details).</p>
+<p>Software tag-based KASAN is currently only implemented for arm64 architecture.</p>
+<p>Software tag-based KASAN uses the Top Byte Ignore (TBI) feature of arm64 CPUs
+to store a pointer tag in the top byte of kernel pointers. Like generic KASAN
+it uses shadow memory to store memory tags associated with each 16-byte memory
 cell (therefore it dedicates 1/16th of the kernel memory for shadow memory).</p>
-<p>On each memory allocation tag-based KASAN generates a random tag, tags the
-allocated memory with this tag, and embeds this tag into the returned pointer.
-Software tag-based KASAN uses compile-time instrumentation to insert checks
+<p>On each memory allocation software tag-based KASAN generates a random tag, tags
+the allocated memory with this tag, and embeds this tag into the returned
+pointer.</p>
+<p>Software tag-based KASAN uses compile-time instrumentation to insert checks
 before each memory access. These checks make sure that tag of the memory that
 is being accessed is equal to tag of the pointer that is used to access this
-memory. In case of a tag mismatch tag-based KASAN prints a bug report.</p>
+memory. In case of a tag mismatch software tag-based KASAN prints a bug report.</p>
 <p>Software tag-based KASAN also has two instrumentation modes (outline, that
 emits callbacks to check memory accesses; and inline, that performs the shadow
 memory checks inline). With outline instrumentation mode, a bug report is
 simply printed from the function that performs the access check. With inline
 instrumentation a brk instruction is emitted by the compiler, and a dedicated
 brk handler is used to print bug reports.</p>
-<p>A potential expansion of this mode is a hardware tag-based mode, which would
-use hardware memory tagging support instead of compiler instrumentation and
-manual shadow memory manipulation.</p>
+<p>Software tag-based KASAN uses 0xFF as a match-all pointer tag (accesses through
+pointers with 0xFF pointer tag aren’t checked). The value 0xFE is currently
+reserved to tag freed memory regions.</p>
+<p>Software tag-based KASAN currently only supports tagging of
+kmem_cache_alloc/kmalloc and page_alloc memory.</p>
+</div>
+<div class="section" id="hardware-tag-based-kasan">
+<h3>Hardware tag-based KASAN<a class="headerlink" href="#hardware-tag-based-kasan" title="Permalink to this headline">¶</a></h3>
+<p>Hardware tag-based KASAN is similar to the software mode in concept, but uses
+hardware memory tagging support instead of compiler instrumentation and
+shadow memory.</p>
+<p>Hardware tag-based KASAN is currently only implemented for arm64 architecture
+and based on both arm64 Memory Tagging Extension (MTE) introduced in ARMv8.5
+Instruction Set Architecture, and Top Byte Ignore (TBI).</p>
+<p>Special arm64 instructions are used to assign memory tags for each allocation.
+Same tags are assigned to pointers to those allocations. On every memory
+access, hardware makes sure that tag of the memory that is being accessed is
+equal to tag of the pointer that is used to access this memory. In case of a
+tag mismatch a fault is generated and a report is printed.</p>
+<p>Hardware tag-based KASAN uses 0xFF as a match-all pointer tag (accesses through
+pointers with 0xFF pointer tag aren’t checked). The value 0xFE is currently
+reserved to tag freed memory regions.</p>
+<p>Hardware tag-based KASAN currently only supports tagging of
+kmem_cache_alloc/kmalloc and page_alloc memory.</p>
 </div>
 </div>
 <div class="section" id="what-memory-accesses-are-sanitised-by-kasan">
@@ -519,14 +603,14 @@ allocating real shadow memory to back the mappings.</p>
 page of shadow space. Allocating a full shadow page per mapping would
 therefore be wasteful. Furthermore, to ensure that different mappings
 use different shadow pages, mappings would have to be aligned to
-<code class="docutils literal notranslate"><span class="pre">KASAN_SHADOW_SCALE_SIZE</span> <span class="pre">*</span> <span class="pre">PAGE_SIZE</span></code>.</p>
-<p>Instead, we share backing space across multiple mappings. We allocate
+<code class="docutils literal notranslate"><span class="pre">KASAN_GRANULE_SIZE</span> <span class="pre">*</span> <span class="pre">PAGE_SIZE</span></code>.</p>
+<p>Instead, KASAN shares backing space across multiple mappings. It allocates
 a backing page when a mapping in vmalloc space uses a particular page
 of the shadow region. This page can be shared by other vmalloc
 mappings later on.</p>
-<p>We hook in to the vmap infrastructure to lazily clean up unused shadow
+<p>KASAN hooks into the vmap infrastructure to lazily clean up unused shadow
 memory.</p>
-<p>To avoid the difficulties around swapping mappings around, we expect
+<p>To avoid the difficulties around swapping mappings around, KASAN expects
 that the part of the shadow region that covers the vmalloc space will
 not be covered by the early shadow page, but will be left
 unmapped. This will require changes in arch-specific code.</p>
@@ -536,22 +620,27 @@ architectures that do not have a fixed module region.</p>
 </div>
 <div class="section" id="config-kasan-kunit-test-config-test-kasan-module">
 <h2>CONFIG_KASAN_KUNIT_TEST &amp; CONFIG_TEST_KASAN_MODULE<a class="headerlink" href="#config-kasan-kunit-test-config-test-kasan-module" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">CONFIG_KASAN_KUNIT_TEST</span></code> utilizes the KUnit Test Framework for testing.
-This means each test focuses on a small unit of functionality and
-there are a few ways these tests can be run.</p>
-<p>Each test will print the KASAN report if an error is detected and then
-print the number of the test and the status of the test:</p>
-<p>pass:</p>
+<p>KASAN tests consist on two parts:</p>
+<p>1. Tests that are integrated with the KUnit Test Framework. Enabled with
+<code class="docutils literal notranslate"><span class="pre">CONFIG_KASAN_KUNIT_TEST</span></code>. These tests can be run and partially verified
+automatically in a few different ways, see the instructions below.</p>
+<p>2. Tests that are currently incompatible with KUnit. Enabled with
+<code class="docutils literal notranslate"><span class="pre">CONFIG_TEST_KASAN_MODULE</span></code> and can only be run as a module. These tests can
+only be verified manually, by loading the kernel module and inspecting the
+kernel log for KASAN reports.</p>
+<p>Each KUnit-compatible KASAN test prints a KASAN report if an error is detected.
+Then the test prints its number and status.</p>
+<p>When a test passes:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ok 28 - kmalloc_double_kzfree
 </pre></div>
 </div>
-<p>or, if kmalloc failed:</p>
+<p>When a test fails due to a failed <code class="docutils literal notranslate"><span class="pre">kmalloc</span></code>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># kmalloc_large_oob_right: ASSERTION FAILED at lib/test_kasan.c:163
 Expected ptr is not null, but is
 not ok 4 - kmalloc_large_oob_right
 </pre></div>
 </div>
-<p>or, if a KASAN report was expected, but not found:</p>
+<p>When a test fails due to a missing KASAN report:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># kmalloc_double_kzfree: EXPECTATION FAILED at lib/test_kasan.c:629
 Expected kasan_data-&gt;report_expected == kasan_data-&gt;report_found, but
 kasan_data-&gt;report_expected == 1
@@ -559,43 +648,34 @@ kasan_data-&gt;report_found == 0
 not ok 28 - kmalloc_double_kzfree
 </pre></div>
 </div>
-<p>All test statuses are tracked as they run and an overall status will
-be printed at the end:</p>
+<p>At the end the cumulative status of all KASAN tests is printed. On success:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ok 1 - kasan
 </pre></div>
 </div>
-<p>or:</p>
+<p>Or, if one of the tests failed:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>not ok 1 - kasan
 </pre></div>
 </div>
+<p>There are a few ways to run KUnit-compatible KASAN tests.</p>
 <div class="section" id="loadable-module">
-<h3>(1) Loadable Module<a class="headerlink" href="#loadable-module" title="Permalink to this headline">¶</a></h3>
+<h3>1. Loadable module<a class="headerlink" href="#loadable-module" title="Permalink to this headline">¶</a></h3>
 <p>With <code class="docutils literal notranslate"><span class="pre">CONFIG_KUNIT</span></code> enabled, <code class="docutils literal notranslate"><span class="pre">CONFIG_KASAN_KUNIT_TEST</span></code> can be built as
-a loadable module and run on any architecture that supports KASAN
-using something like insmod or modprobe. The module is called <code class="docutils literal notranslate"><span class="pre">test_kasan</span></code>.</p>
+a loadable module and run on any architecture that supports KASAN by loading
+the module with insmod or modprobe. The module is called <code class="docutils literal notranslate"><span class="pre">test_kasan</span></code>.</p>
 </div>
 <div class="section" id="built-in">
-<h3>(2) Built-In<a class="headerlink" href="#built-in" title="Permalink to this headline">¶</a></h3>
+<h3>2. Built-In<a class="headerlink" href="#built-in" title="Permalink to this headline">¶</a></h3>
 <p>With <code class="docutils literal notranslate"><span class="pre">CONFIG_KUNIT</span></code> built-in, <code class="docutils literal notranslate"><span class="pre">CONFIG_KASAN_KUNIT_TEST</span></code> can be built-in
-on any architecure that supports KASAN. These and any other KUnit
-tests enabled will run and print the results at boot as a late-init
-call.</p>
+on any architecure that supports KASAN. These and any other KUnit tests enabled
+will run and print the results at boot as a late-init call.</p>
 </div>
 <div class="section" id="using-kunit-tool">
-<h3>(3) Using kunit_tool<a class="headerlink" href="#using-kunit-tool" title="Permalink to this headline">¶</a></h3>
-<p>With <code class="docutils literal notranslate"><span class="pre">CONFIG_KUNIT</span></code> and <code class="docutils literal notranslate"><span class="pre">CONFIG_KASAN_KUNIT_TEST</span></code> built-in, we can also
-use kunit_tool to see the results of these along with other KUnit
-tests in a more readable way. This will not print the KASAN reports
-of tests that passed. Use <a class="reference external" href="https://www.kernel.org/doc/html/latest/dev-tools/kunit/index.html">KUnit documentation</a> for more up-to-date
-information on kunit_tool.</p>
-<p><code class="docutils literal notranslate"><span class="pre">CONFIG_TEST_KASAN_MODULE</span></code> is a set of KASAN tests that could not be
-converted to KUnit. These tests can be run only as a module with
-<code class="docutils literal notranslate"><span class="pre">CONFIG_TEST_KASAN_MODULE</span></code> built as a loadable module and
-<code class="docutils literal notranslate"><span class="pre">CONFIG_KASAN</span></code> built-in. The type of error expected and the
-function being run is printed before the expression expected to give
-an error. Then the error is printed, if found, and that test
-should be interpretted to pass only if the error was the one expected
-by the test.</p>
+<h3>3. Using kunit_tool<a class="headerlink" href="#using-kunit-tool" title="Permalink to this headline">¶</a></h3>
+<p>With <code class="docutils literal notranslate"><span class="pre">CONFIG_KUNIT</span></code> and <code class="docutils literal notranslate"><span class="pre">CONFIG_KASAN_KUNIT_TEST</span></code> built-in, it’s also
+possible use <code class="docutils literal notranslate"><span class="pre">kunit_tool</span></code> to see the results of these and other KUnit tests
+in a more readable way. This will not print the KASAN reports of the tests that
+passed. Use <a class="reference external" href="https://www.kernel.org/doc/html/latest/dev-tools/kunit/index.html">KUnit documentation</a>
+for more up-to-date information on <code class="docutils literal notranslate"><span class="pre">kunit_tool</span></code>.</p>
 </div>
 </div>
 </div>

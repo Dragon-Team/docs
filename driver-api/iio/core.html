@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -881,6 +881,7 @@ given attribute type, false otherwise.</p>
   int (*read_raw_multi)(struct iio_dev *indio_dev,struct iio_chan_spec const *chan,int max_len,int *vals,int *val_len, long mask);
   int (*read_avail)(struct iio_dev *indio_dev,struct iio_chan_spec const *chan,const int **vals,int *type,int *length, long mask);
   int (*write_raw)(struct iio_dev *indio_dev,struct iio_chan_spec const *chan,int val,int val2, long mask);
+  int (*read_label)(struct iio_dev *indio_dev,struct iio_chan_spec const *chan, char *label);
   int (*write_raw_get_fmt)(struct iio_dev *indio_dev,struct iio_chan_spec const *chan, long mask);
   int (*read_event_config)(struct iio_dev *indio_dev,const struct iio_chan_spec *chan,enum iio_event_type type, enum iio_event_direction dir);
   int (*write_event_config)(struct iio_dev *indio_dev,const struct iio_chan_spec *chan,enum iio_event_type type,enum iio_event_direction dir, int state);
@@ -927,6 +928,9 @@ and max. For lists, all possible values are enumerated.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">write_raw</span></code></dt><dd><p>function to write a value to the device.
 Parameters are the same as for read_raw.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">read_label</span></code></dt><dd><p>function to request label name for a specified label,
+for better channel identification.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">write_raw_get_fmt</span></code></dt><dd><p>callback function to query the expected
 format/precision. If not set by the driver, write_raw

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -660,7 +660,7 @@ current and new values:</p>
 <span class="k">union</span> <span class="n">v4l2_ctrl_ptr</span> <span class="n">p_cur</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>If the control has a simple s32 type type, then:</p>
+<p>If the control has a simple s32 type, then:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">ctrl</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">==</span> <span class="n">ctrl</span><span class="o">-&gt;</span><span class="n">p_new</span><span class="p">.</span><span class="n">p_s32</span>
 <span class="o">&amp;</span><span class="n">ctrl</span><span class="o">-&gt;</span><span class="n">cur</span><span class="p">.</span><span class="n">val</span> <span class="o">==</span> <span class="n">ctrl</span><span class="o">-&gt;</span><span class="n">p_cur</span><span class="p">.</span><span class="n">p_s32</span>
 </pre></div>
@@ -670,7 +670,7 @@ and cur.val fields can be considered an alias since these are used so often.</p>
 <p>Within the control ops you can freely use these. The val and cur.val speak for
 themselves. The p_char pointers point to character buffers of length
 ctrl-&gt;maximum + 1, and are always 0-terminated.</p>
-<p>Unless the control is marked volatile the p_cur field points to the the
+<p>Unless the control is marked volatile the p_cur field points to the
 current cached control value. When you create a new control this value is made
 identical to the default value. After calling <a class="reference internal" href="#c.v4l2_ctrl_handler_setup" title="v4l2_ctrl_handler_setup"><code class="xref c c-func docutils literal notranslate"><span class="pre">v4l2_ctrl_handler_setup()</span></code></a> this
 value is passed to the hardware. It is generally a good idea to call this

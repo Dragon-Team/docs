@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -250,6 +250,7 @@
 <li class="toctree-l2"><a class="reference internal" href="tcp-thin.html">Thin-streams and TCP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="team.html">Team</a></li>
 <li class="toctree-l2"><a class="reference internal" href="timestamping.html">Timestamping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipc.html">Linux Kernel TIPC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tproxy.html">Transparent proxy support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tuntap.html">Universal TUN/TAP device driver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="udplite.html">The UDP-Lite protocol (RFC 3828)</a></li>
@@ -733,6 +734,9 @@ the same device.</p>
   __u16 transport_header;
   __u16 network_header;
   __u16 mac_header;
+#ifdef CONFIG_KCOV;
+  u64 kcov_handle;
+#endif;
   sk_buff_data_t tail;
   sk_buff_data_t end;
   unsigned char           *head, *data;
@@ -937,6 +941,8 @@ skb-&gt;inner_protocol_type == ENCAP_TYPE_IPPROTO;</p>
 <dt><code class="docutils literal notranslate"><span class="pre">network_header</span></code></dt><dd><p>Network layer header</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">mac_header</span></code></dt><dd><p>Link layer header</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">kcov_handle</span></code></dt><dd><p>KCOV remote handle for remote coverage collection</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">tail</span></code></dt><dd><p>Tail pointer</p>
 </dd>
@@ -2664,6 +2670,10 @@ for <a class="reference internal" href="#c.sock" title="sock"><code class="xref 
   u32 sk_ack_backlog;
   u32 sk_max_ack_backlog;
   kuid_t sk_uid;
+#ifdef CONFIG_NET_RX_BUSY_POLL;
+  u8 sk_prefer_busy_poll;
+  u16 sk_busy_poll_budget;
+#endif;
   struct pid              *sk_peer_pid;
   const struct cred       *sk_peer_cred;
   long sk_rcvtimeo;
@@ -2831,6 +2841,10 @@ persistent failure not just ‘timed out’</p>
 <dt><code class="docutils literal notranslate"><span class="pre">sk_max_ack_backlog</span></code></dt><dd><p>listen backlog set in listen()</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">sk_uid</span></code></dt><dd><p>user id of owner</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sk_prefer_busy_poll</span></code></dt><dd><p>prefer busypolling over softirq processing</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sk_busy_poll_budget</span></code></dt><dd><p>napi processing budget when busypolling</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">sk_peer_pid</span></code></dt><dd><p><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">pid</span></code> for this socket’s peer</p>
 </dd>
@@ -5855,26 +5869,6 @@ void <code class="sig-name descname">xdr_init_decode_pages</code><span class="si
 </dd>
 </dl>
 <dl class="c function">
-<dt id="c.xdr_set_scratch_buffer">
-void <code class="sig-name descname">xdr_set_scratch_buffer</code><span class="sig-paren">(</span><em class="property">struct</em> xdr_stream *<em>xdr</em>, void *<em>buf</em>, size_t <em>buflen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xdr_set_scratch_buffer" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Attach a scratch buffer for decoding data.</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">xdr_stream</span> <span class="pre">*xdr</span></code></dt><dd><p>pointer to xdr_stream struct</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*buf</span></code></dt><dd><p>pointer to an empty buffer</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">buflen</span></code></dt><dd><p>size of ‘buf’</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>The scratch buffer is used when decoding from an array of pages.
-If an <a class="reference internal" href="#c.xdr_inline_decode" title="xdr_inline_decode"><code class="xref c c-func docutils literal notranslate"><span class="pre">xdr_inline_decode()</span></code></a> call spans across page boundaries, then
-we copy the data into the scratch buffer in order to allow linear
-access.</p>
-<dl class="c function">
 <dt id="c.xdr_inline_decode">
 __be32 *<code class="sig-name descname">xdr_inline_decode</code><span class="sig-paren">(</span><em class="property">struct</em> xdr_stream *<em>xdr</em>, size_t <em>nbytes</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xdr_inline_decode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Retrieve XDR data to decode</p>
@@ -5895,7 +5889,7 @@ pointer position.</p>
 <dl class="c function">
 <dt id="c.xdr_read_pages">
 unsigned int <code class="sig-name descname">xdr_read_pages</code><span class="sig-paren">(</span><em class="property">struct</em> xdr_stream *<em>xdr</em>, unsigned int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xdr_read_pages" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Ensure page-based XDR data to decode is aligned at current pointer position</p>
+<dd><p>align page-based XDR data to current pointer position</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -5907,8 +5901,9 @@ unsigned int <code class="sig-name descname">xdr_read_pages</code><span class="s
 </dl>
 <p><strong>Description</strong></p>
 <p>Moves data beyond the current pointer position from the XDR head[] buffer
-into the page list. Any data that lies beyond current position + “len”
-bytes is moved into the XDR tail[].</p>
+into the page list. Any data that lies beyond current position + <strong>len</strong>
+bytes is moved into the XDR tail[]. The xdr_stream current position is
+then advanced past that data to align to the next XDR object in the tail.</p>
 <p>Returns the number of XDR encoded bytes now contained in the pages</p>
 <dl class="c function">
 <dt id="c.xdr_enter_page">
@@ -5950,6 +5945,31 @@ int <code class="sig-name descname">xdr_buf_subsegment</code><span class="sig-pa
 length <strong>len</strong> starting at offset <strong>base</strong>.</p>
 <p><strong>buf</strong> and <strong>subbuf</strong> may be pointers to the same struct xdr_buf.</p>
 <p>Returns -1 if base of length are out of bounds.</p>
+<dl class="c function">
+<dt id="c.xdr_stream_subsegment">
+bool <code class="sig-name descname">xdr_stream_subsegment</code><span class="sig-paren">(</span><em class="property">struct</em> xdr_stream *<em>xdr</em>, <em class="property">struct</em> xdr_buf *<em>subbuf</em>, unsigned int <em>nbytes</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xdr_stream_subsegment" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>set <strong>subbuf</strong> to a portion of <strong>xdr</strong></p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">xdr_stream</span> <span class="pre">*xdr</span></code></dt><dd><p>an xdr_stream set up for decoding</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">xdr_buf</span> <span class="pre">*subbuf</span></code></dt><dd><p>the result buffer</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">nbytes</span></code></dt><dd><p>length of <strong>xdr</strong> to extract, in bytes</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Sets up <strong>subbuf</strong> to represent a portion of <strong>xdr</strong>. The portion
+starts at the current offset in <strong>xdr</strong>, and extends for a length
+of <strong>nbytes</strong>. If this is successful, <strong>xdr</strong> is advanced to the next
+position following that portion.</p>
+<dl class="simple">
+<dt>Return values:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code>: <strong>subbuf</strong> has been initialized, and <strong>xdr</strong> has been advanced.
+<code class="docutils literal notranslate"><span class="pre">false</span></code>: a bounds error has occurred</p>
+</dd>
+</dl>
 <dl class="c function">
 <dt id="c.xdr_buf_trim">
 void <code class="sig-name descname">xdr_buf_trim</code><span class="sig-paren">(</span><em class="property">struct</em> xdr_buf *<em>buf</em>, unsigned int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xdr_buf_trim" title="Permalink to this definition">¶</a><br /></dt>
@@ -6173,18 +6193,18 @@ int <code class="sig-name descname">xprt_unregister_transport</code><span class=
 <p>0:           transport successfully unregistered
 -ENOENT:     transport never registered</p>
 <dl class="c function">
-<dt id="c.xprt_load_transport">
-int <code class="sig-name descname">xprt_load_transport</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>transport_name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xprt_load_transport" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>load a transport implementation</p>
+<dt id="c.xprt_find_transport_ident">
+int <code class="sig-name descname">xprt_find_transport_ident</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>netid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xprt_find_transport_ident" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>convert a netid into a transport identifier</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*transport_name</span></code></dt><dd><p>transport to load</p>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*netid</span></code></dt><dd><p>transport to load</p>
 </dd>
 </dl>
 <p><strong>Return</strong></p>
-<p>0:           transport successfully loaded
+<p>&gt; 0:         transport identifier
 -ENOENT:     transport module not available</p>
 <dl class="c function">
 <dt id="c.xprt_reserve_xprt">
@@ -11229,21 +11249,6 @@ int <code class="sig-name descname">phy_ethtool_nway_reset</code><span class="si
 </dd>
 </dl>
 <dl class="c function">
-<dt id="c.phy_clear_interrupt">
-int <code class="sig-name descname">phy_clear_interrupt</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.phy_device" title="phy_device">phy_device</a> *<em>phydev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.phy_clear_interrupt" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Ack the phy device’s interrupt</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">phy_device</span> <span class="pre">*phydev</span></code></dt><dd><p>the phy_device struct</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>If the <strong>phydev</strong> driver has an ack_interrupt function, call it to
-ack and clear the phy device’s interrupt.</p>
-<p>Returns 0 on success or &lt; 0 on error.</p>
-<dl class="c function">
 <dt id="c.phy_config_interrupt">
 int <code class="sig-name descname">phy_config_interrupt</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.phy_device" title="phy_device">phy_device</a> *<em>phydev</em>, bool <em>interrupts</em><span class="sig-paren">)</span><a class="headerlink" href="#c.phy_config_interrupt" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>configure the PHY device for the requested interrupts</p>
@@ -12642,9 +12647,7 @@ All distances are in centimeters.</p>
   int (*config_aneg)(struct phy_device *phydev);
   int (*aneg_done)(struct phy_device *phydev);
   int (*read_status)(struct phy_device *phydev);
-  int (*ack_interrupt)(struct phy_device *phydev);
   int (*config_intr)(struct phy_device *phydev);
-  int (*did_interrupt)(struct phy_device *phydev);
   irqreturn_t (*handle_interrupt)(struct phy_device *phydev);
   void (*remove)(struct phy_device *phydev);
   int (*match_phy_device)(struct phy_device *phydev);
@@ -12714,14 +12717,6 @@ if phydev-&gt;autoneg is off</p>
 <dt><code class="docutils literal notranslate"><span class="pre">aneg_done</span></code></dt><dd><p>Determines the auto negotiation result</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">read_status</span></code></dt><dd><p>Determines the negotiated speed and duplex</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">ack_interrupt</span></code></dt><dd><p>Clears any pending interrupts</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">config_intr</span></code></dt><dd><p>Enables or disables interrupts</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">did_interrupt</span></code></dt><dd><p>Checks if the PHY generated an interrupt.
-For multi-PHY devices with shared PHY interrupt pin
-Set interrupt bits have to be cleared.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">handle_interrupt</span></code></dt><dd><p>Override default interrupt handling</p>
 </dd>

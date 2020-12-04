@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -2312,9 +2312,6 @@ block on page locks and it will not block on writeback.  The second pass
 will wait.  This is to prevent as much IO as possible in the affected region.
 The first pass will remove most pages, so the search cost of the second pass
 is low.</p>
-<p>We pass down the cache-hot hint to the page freeing code.  Even if the
-mapping is large, it is probably the case that the final pages are the most
-recently touched, and freeing happens in ascending file offset order.</p>
 <p>Note that since -&gt;invalidatepage() accepts range to invalidate
 truncate_inode_pages_range is able to handle cases where lend + 1 is not
 page aligned properly.</p>
@@ -3788,8 +3785,7 @@ int <code class="sig-name descname">alloc_contig_range</code><span class="sig-pa
 in range must have the same migratetype and it must
 be either of the two.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">gfp_t</span> <span class="pre">gfp_mask</span></code></dt><dd><p>GFP mask to use during compaction. __GFP_ZERO clears allocated
-pages.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">gfp_t</span> <span class="pre">gfp_mask</span></code></dt><dd><p>GFP mask to use during compaction</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
@@ -3814,8 +3810,7 @@ need to be freed with free_contig_range().</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">nr_pages</span></code></dt><dd><p>Number of contiguous pages to allocate</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">gfp_t</span> <span class="pre">gfp_mask</span></code></dt><dd><p>GFP mask to limit search and used during compaction. __GFP_ZERO
-clears allocated pages.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">gfp_t</span> <span class="pre">gfp_mask</span></code></dt><dd><p>GFP mask to limit search and used during compaction</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">nid</span></code></dt><dd><p>Target node</p>
 </dd>

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -4659,6 +4659,7 @@ the ring buffer</p>
   bool metadata_set;
   bool next_track;
   bool partial_drain;
+  bool pause_in_draining;
   void *private_data;
   struct snd_dma_buffer dma_buffer;
 };
@@ -4683,6 +4684,8 @@ the ring buffer</p>
 <dt><code class="docutils literal notranslate"><span class="pre">next_track</span></code></dt><dd><p>has userspace signal next track transition, true when set</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">partial_drain</span></code></dt><dd><p>undergoing partial_drain for stream, true when set</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pause_in_draining</span></code></dt><dd><p>paused during draining state, true when set</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">private_data</span></code></dt><dd><p>pointer to DSP private data</p>
 </dd>
@@ -4763,6 +4766,7 @@ Not valid if copy is implemented</p>
   unsigned int direction;
   struct mutex lock;
   int device;
+  bool use_pause_in_draining;
 #ifdef CONFIG_SND_VERBOSE_PROCFS;
 };
 </pre></div>
@@ -4785,7 +4789,23 @@ Not valid if copy is implemented</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">device</span></code></dt><dd><p>device id</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">use_pause_in_draining</span></code></dt><dd><p>allow pause in draining, true when set</p>
+</dd>
 </dl>
+<dl class="c function">
+<dt id="c.snd_compr_use_pause_in_draining">
+void <code class="sig-name descname">snd_compr_use_pause_in_draining</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.snd_compr_stream" title="snd_compr_stream">snd_compr_stream</a> *<em>substream</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_compr_use_pause_in_draining" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Allow pause and resume in draining state</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">snd_compr_stream</span> <span class="pre">*substream</span></code></dt><dd><p>compress substream to set</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Allow pause and resume in draining state.
+Only HW driver supports this transition can call this API.</p>
 <dl class="c function">
 <dt id="c.snd_compr_set_runtime_buffer">
 void <code class="sig-name descname">snd_compr_set_runtime_buffer</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.snd_compr_stream" title="snd_compr_stream">snd_compr_stream</a> *<em>stream</em>, <em class="property">struct</em> snd_dma_buffer *<em>bufp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_compr_set_runtime_buffer" title="Permalink to this definition">¶</a><br /></dt>
@@ -4808,107 +4828,6 @@ Otherwise it clears the current buffer information.</p>
 <h2>ASoC<a class="headerlink" href="#asoc" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="asoc-core-api">
 <h3>ASoC Core API<a class="headerlink" href="#asoc-core-api" title="Permalink to this headline">¶</a></h3>
-<dl class="c struct">
-<dt id="c.snd_soc_jack_pin">
-<em class="property">struct </em><code class="sig-name descname">snd_soc_jack_pin</code><a class="headerlink" href="#c.snd_soc_jack_pin" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Describes a pin to update based on jack detection</p>
-</dd></dl>
-
-<p><strong>Definition</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct snd_soc_jack_pin {
-  struct list_head list;
-  const char *pin;
-  int mask;
-  bool invert;
-};
-</pre></div>
-</div>
-<p><strong>Members</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">list</span></code></dt><dd><p>internal list entry</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">pin</span></code></dt><dd><p>name of the pin to update</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">mask</span></code></dt><dd><p>bits to check for in reported jack status</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">invert</span></code></dt><dd><p>if non-zero then pin is enabled when status is not reported</p>
-</dd>
-</dl>
-<dl class="c struct">
-<dt id="c.snd_soc_jack_zone">
-<em class="property">struct </em><code class="sig-name descname">snd_soc_jack_zone</code><a class="headerlink" href="#c.snd_soc_jack_zone" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Describes voltage zones of jack detection</p>
-</dd></dl>
-
-<p><strong>Definition</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct snd_soc_jack_zone {
-  unsigned int min_mv;
-  unsigned int max_mv;
-  unsigned int jack_type;
-  unsigned int debounce_time;
-  struct list_head list;
-};
-</pre></div>
-</div>
-<p><strong>Members</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">min_mv</span></code></dt><dd><p>start voltage in mv</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">max_mv</span></code></dt><dd><p>end voltage in mv</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">jack_type</span></code></dt><dd><p>type of jack that is expected for this voltage</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">debounce_time</span></code></dt><dd><p>debounce_time for jack, codec driver should wait for this
-duration before reading the adc for voltages</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">list</span></code></dt><dd><p>internal list entry</p>
-</dd>
-</dl>
-<dl class="c struct">
-<dt id="c.snd_soc_jack_gpio">
-<em class="property">struct </em><code class="sig-name descname">snd_soc_jack_gpio</code><a class="headerlink" href="#c.snd_soc_jack_gpio" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Describes a gpio pin for jack detection</p>
-</dd></dl>
-
-<p><strong>Definition</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct snd_soc_jack_gpio {
-  unsigned int gpio;
-  unsigned int idx;
-  struct device *gpiod_dev;
-  const char *name;
-  int report;
-  int invert;
-  int debounce_time;
-  bool wake;
-  int (*jack_status_check)(void *data);
-};
-</pre></div>
-</div>
-<p><strong>Members</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">gpio</span></code></dt><dd><p>legacy gpio number</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">idx</span></code></dt><dd><p>gpio descriptor index within the function of the GPIO
-consumer device</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">gpiod_dev</span></code></dt><dd><p>GPIO consumer device</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">name</span></code></dt><dd><p>gpio name. Also as connection ID for the GPIO consumer
-device function name lookup</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">report</span></code></dt><dd><p>value to report when jack detected</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">invert</span></code></dt><dd><p>report presence in low state</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">debounce_time</span></code></dt><dd><p>debounce time in ms</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">wake</span></code></dt><dd><p>enable as wake source</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">jack_status_check</span></code></dt><dd><p>callback function which overrides the detection
-to provide more complex checks (eg, reading an
-ADC).</p>
-</dd>
-</dl>
 <dl class="c function">
 <dt id="c.snd_soc_kcontrol_component">
 <em class="property">struct</em> snd_soc_component *<code class="sig-name descname">snd_soc_kcontrol_component</code><span class="sig-paren">(</span><em class="property">struct</em> snd_kcontrol *<em>kcontrol</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_soc_kcontrol_component" title="Permalink to this definition">¶</a><br /></dt>
@@ -6700,7 +6619,7 @@ synchronised.</p>
 context which can sleep (such as a workqueue).</p>
 <dl class="c function">
 <dt id="c.snd_soc_jack_add_zones">
-int <code class="sig-name descname">snd_soc_jack_add_zones</code><span class="sig-paren">(</span><em class="property">struct</em> snd_soc_jack *<em>jack</em>, int <em>count</em>, <em class="property">struct</em> <a class="reference internal" href="#c.snd_soc_jack_zone" title="snd_soc_jack_zone">snd_soc_jack_zone</a> *<em>zones</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_soc_jack_add_zones" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">snd_soc_jack_add_zones</code><span class="sig-paren">(</span><em class="property">struct</em> snd_soc_jack *<em>jack</em>, int <em>count</em>, <em class="property">struct</em> snd_soc_jack_zone *<em>zones</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_soc_jack_add_zones" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Associate voltage zones with jack</p>
 </dd></dl>
 
@@ -6734,7 +6653,7 @@ int <code class="sig-name descname">snd_soc_jack_get_type</code><span class="sig
 the type of jack from the already declared jack zones</p>
 <dl class="c function">
 <dt id="c.snd_soc_jack_add_pins">
-int <code class="sig-name descname">snd_soc_jack_add_pins</code><span class="sig-paren">(</span><em class="property">struct</em> snd_soc_jack *<em>jack</em>, int <em>count</em>, <em class="property">struct</em> <a class="reference internal" href="#c.snd_soc_jack_pin" title="snd_soc_jack_pin">snd_soc_jack_pin</a> *<em>pins</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_soc_jack_add_pins" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">snd_soc_jack_add_pins</code><span class="sig-paren">(</span><em class="property">struct</em> snd_soc_jack *<em>jack</em>, int <em>count</em>, <em class="property">struct</em> snd_soc_jack_pin *<em>pins</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_soc_jack_add_pins" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Associate DAPM pins with an ASoC jack</p>
 </dd></dl>
 
@@ -6787,7 +6706,7 @@ void <code class="sig-name descname">snd_soc_jack_notifier_unregister</code><spa
 <p>Stop notifying for status changes.</p>
 <dl class="c function">
 <dt id="c.snd_soc_jack_add_gpios">
-int <code class="sig-name descname">snd_soc_jack_add_gpios</code><span class="sig-paren">(</span><em class="property">struct</em> snd_soc_jack *<em>jack</em>, int <em>count</em>, <em class="property">struct</em> <a class="reference internal" href="#c.snd_soc_jack_gpio" title="snd_soc_jack_gpio">snd_soc_jack_gpio</a> *<em>gpios</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_soc_jack_add_gpios" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">snd_soc_jack_add_gpios</code><span class="sig-paren">(</span><em class="property">struct</em> snd_soc_jack *<em>jack</em>, int <em>count</em>, <em class="property">struct</em> snd_soc_jack_gpio *<em>gpios</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_soc_jack_add_gpios" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Associate GPIO pins with an ASoC jack</p>
 </dd></dl>
 
@@ -6805,7 +6724,7 @@ int <code class="sig-name descname">snd_soc_jack_add_gpios</code><span class="si
 for each gpio in the array.</p>
 <dl class="c function">
 <dt id="c.snd_soc_jack_add_gpiods">
-int <code class="sig-name descname">snd_soc_jack_add_gpiods</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../../driver-api/infrastructure.html#c.device" title="device">device</a> *<em>gpiod_dev</em>, <em class="property">struct</em> snd_soc_jack *<em>jack</em>, int <em>count</em>, <em class="property">struct</em> <a class="reference internal" href="#c.snd_soc_jack_gpio" title="snd_soc_jack_gpio">snd_soc_jack_gpio</a> *<em>gpios</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_soc_jack_add_gpiods" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">snd_soc_jack_add_gpiods</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../../driver-api/infrastructure.html#c.device" title="device">device</a> *<em>gpiod_dev</em>, <em class="property">struct</em> snd_soc_jack *<em>jack</em>, int <em>count</em>, <em class="property">struct</em> snd_soc_jack_gpio *<em>gpios</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_soc_jack_add_gpiods" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Associate GPIO descriptor pins with an ASoC jack</p>
 </dd></dl>
 
@@ -6825,7 +6744,7 @@ int <code class="sig-name descname">snd_soc_jack_add_gpiods</code><span class="s
 for each gpio in the array.</p>
 <dl class="c function">
 <dt id="c.snd_soc_jack_free_gpios">
-void <code class="sig-name descname">snd_soc_jack_free_gpios</code><span class="sig-paren">(</span><em class="property">struct</em> snd_soc_jack *<em>jack</em>, int <em>count</em>, <em class="property">struct</em> <a class="reference internal" href="#c.snd_soc_jack_gpio" title="snd_soc_jack_gpio">snd_soc_jack_gpio</a> *<em>gpios</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_soc_jack_free_gpios" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">snd_soc_jack_free_gpios</code><span class="sig-paren">(</span><em class="property">struct</em> snd_soc_jack *<em>jack</em>, int <em>count</em>, <em class="property">struct</em> snd_soc_jack_gpio *<em>gpios</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_soc_jack_free_gpios" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Release GPIO pins’ resources of an ASoC jack</p>
 </dd></dl>
 

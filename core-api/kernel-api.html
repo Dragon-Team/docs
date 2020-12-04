@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -6346,7 +6346,7 @@ being used by anything when this call is made.</p>
 </dl>
 <dl class="c function">
 <dt id="c.relay_open">
-<em class="property">struct</em> rchan *<code class="sig-name descname">relay_open</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>base_filename</em>, <em class="property">struct</em> dentry *<em>parent</em>, size_t <em>subbuf_size</em>, size_t <em>n_subbufs</em>, <em class="property">struct</em> rchan_callbacks *<em>cb</em>, void *<em>private_data</em><span class="sig-paren">)</span><a class="headerlink" href="#c.relay_open" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> rchan *<code class="sig-name descname">relay_open</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>base_filename</em>, <em class="property">struct</em> dentry *<em>parent</em>, size_t <em>subbuf_size</em>, size_t <em>n_subbufs</em>, <em class="property">const</em> <em class="property">struct</em> rchan_callbacks *<em>cb</em>, void *<em>private_data</em><span class="sig-paren">)</span><a class="headerlink" href="#c.relay_open" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create a new relay channel</p>
 </dd></dl>
 
@@ -6360,7 +6360,7 @@ being used by anything when this call is made.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">n_subbufs</span></code></dt><dd><p>number of sub-buffers</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">rchan_callbacks</span> <span class="pre">*cb</span></code></dt><dd><p>client callback functions</p>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">rchan_callbacks</span> <span class="pre">*cb</span></code></dt><dd><p>client callback functions</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*private_data</span></code></dt><dd><p>user-defined data</p>
 <p>Returns channel pointer if successful, <code class="docutils literal notranslate"><span class="pre">NULL</span></code> otherwise.</p>
@@ -9488,28 +9488,8 @@ void <code class="sig-name descname">blk_add_trace_rq_remap</code><span class="s
 Add a trace for that action.</p>
 </div></blockquote>
 <dl class="c function">
-<dt id="c.disk_get_part">
-<em class="property">struct</em> hd_struct *<code class="sig-name descname">disk_get_part</code><span class="sig-paren">(</span><em class="property">struct</em> gendisk *<em>disk</em>, int <em>partno</em><span class="sig-paren">)</span><a class="headerlink" href="#c.disk_get_part" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>get partition</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">gendisk</span> <span class="pre">*disk</span></code></dt><dd><p>disk to look partition from</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">partno</span></code></dt><dd><p>partition number</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Look for partition <strong>partno</strong> from <strong>disk</strong>.  If found, increment
-reference count and return it.</p>
-<p><strong>Context</strong></p>
-<p>Don’t care.</p>
-<p><strong>Return</strong></p>
-<p>Pointer to the found partition on success, NULL if not found.</p>
-<dl class="c function">
 <dt id="c.disk_map_sector_rcu">
-<em class="property">struct</em> hd_struct *<code class="sig-name descname">disk_map_sector_rcu</code><span class="sig-paren">(</span><em class="property">struct</em> gendisk *<em>disk</em>, sector_t <em>sector</em><span class="sig-paren">)</span><a class="headerlink" href="#c.disk_map_sector_rcu" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> block_device *<code class="sig-name descname">disk_map_sector_rcu</code><span class="sig-paren">(</span><em class="property">struct</em> gendisk *<em>disk</em>, sector_t <em>sector</em><span class="sig-paren">)</span><a class="headerlink" href="#c.disk_map_sector_rcu" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>map sector to partition</p>
 </dd></dl>
 
@@ -9524,9 +9504,7 @@ reference count and return it.</p>
 <p>Find out which partition <strong>sector</strong> maps to on <strong>disk</strong>.  This is
 primarily used for stats accounting.</p>
 <p><strong>Context</strong></p>
-<p>RCU read locked.  The returned partition pointer is always valid
-because its refcount is grabbed except for part0, which lifetime
-is same with the disk.</p>
+<p>RCU read locked.</p>
 <p><strong>Return</strong></p>
 <p>Found partition on success, part0 is returned if no partition matches
 or the matched partition is being deleted.</p>
@@ -9550,13 +9528,13 @@ is enabled.  Mangling twice gives the original value.</p>
 <p>Don’t care.</p>
 <dl class="c function">
 <dt id="c.blk_alloc_devt">
-int <code class="sig-name descname">blk_alloc_devt</code><span class="sig-paren">(</span><em class="property">struct</em> hd_struct *<em>part</em>, dev_t *<em>devt</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_alloc_devt" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>allocate a dev_t for a partition</p>
+int <code class="sig-name descname">blk_alloc_devt</code><span class="sig-paren">(</span><em class="property">struct</em> block_device *<em>bdev</em>, dev_t *<em>devt</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_alloc_devt" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>allocate a dev_t for a block device</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">hd_struct</span> <span class="pre">*part</span></code></dt><dd><p>partition to allocate dev_t for</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">block_device</span> <span class="pre">*bdev</span></code></dt><dd><p>block device to allocate dev_t for</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">dev_t</span> <span class="pre">*devt</span></code></dt><dd><p>out parameter for resulting dev_t</p>
 </dd>
@@ -9605,23 +9583,24 @@ void <code class="sig-name descname">__device_add_disk</code><span class="sig-pa
 with the kernel.</p>
 <p>FIXME: error handling</p>
 <dl class="c function">
-<dt id="c.get_gendisk">
-<em class="property">struct</em> gendisk *<code class="sig-name descname">get_gendisk</code><span class="sig-paren">(</span>dev_t <em>devt</em>, int *<em>partno</em><span class="sig-paren">)</span><a class="headerlink" href="#c.get_gendisk" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>get partitioning information for a given device</p>
+<dt id="c.bdget_disk">
+<em class="property">struct</em> block_device *<code class="sig-name descname">bdget_disk</code><span class="sig-paren">(</span><em class="property">struct</em> gendisk *<em>disk</em>, int <em>partno</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bdget_disk" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>do bdget() by gendisk and partition number</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">dev_t</span> <span class="pre">devt</span></code></dt><dd><p>device to get partitioning information for</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">gendisk</span> <span class="pre">*disk</span></code></dt><dd><p>gendisk of interest</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*partno</span></code></dt><dd><p>returned partition index</p>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">partno</span></code></dt><dd><p>partition number</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>This function gets the structure containing partitioning
-information for the given device <strong>devt</strong>.</p>
+<p>Find partition <strong>partno</strong> from <strong>disk</strong>, do bdget() on it.</p>
 <p><strong>Context</strong></p>
-<p>can sleep</p>
+<p>Don’t care.</p>
+<p><strong>Return</strong></p>
+<p>Resulting block_device on success, NULL on failure.</p>
 <dl class="c function">
 <dt id="c.disk_replace_part_tbl">
 void <code class="sig-name descname">disk_replace_part_tbl</code><span class="sig-paren">(</span><em class="property">struct</em> gendisk *<em>disk</em>, <em class="property">struct</em> disk_part_tbl *<em>new_ptbl</em><span class="sig-paren">)</span><a class="headerlink" href="#c.disk_replace_part_tbl" title="Permalink to this definition">¶</a><br /></dt>
@@ -9674,10 +9653,6 @@ void <code class="sig-name descname">disk_release</code><span class="sig-paren">
 </dl>
 <p><strong>Description</strong></p>
 <p>This function releases all allocated resources of the gendisk.</p>
-<p>The struct gendisk refcount is incremented with <a class="reference internal" href="#c.get_gendisk" title="get_gendisk"><code class="xref c c-func docutils literal notranslate"><span class="pre">get_gendisk()</span></code></a> or
-get_disk_and_module(), and its refcount is decremented with
-<a class="reference internal" href="#c.put_disk_and_module" title="put_disk_and_module"><code class="xref c c-func docutils literal notranslate"><span class="pre">put_disk_and_module()</span></code></a> or <a class="reference internal" href="#c.put_disk" title="put_disk"><code class="xref c c-func docutils literal notranslate"><span class="pre">put_disk()</span></code></a>. Once the refcount reaches 0 this
-function is called.</p>
 <p>Drivers which used <a class="reference internal" href="#c.__device_add_disk" title="__device_add_disk"><code class="xref c c-func docutils literal notranslate"><span class="pre">__device_add_disk()</span></code></a> have a gendisk with a request_queue
 assigned. Since the request_queue sits on top of the gendisk for these
 drivers we also call <a class="reference internal" href="#c.blk_put_queue" title="blk_put_queue"><code class="xref c c-func docutils literal notranslate"><span class="pre">blk_put_queue()</span></code></a> for them, and we expect the
@@ -9685,23 +9660,6 @@ request_queue refcount to reach 0 at this point, and so the request_queue
 will also be freed prior to the disk.</p>
 <p><strong>Context</strong></p>
 <p>can sleep</p>
-<dl class="c function">
-<dt id="c.put_disk_and_module">
-void <code class="sig-name descname">put_disk_and_module</code><span class="sig-paren">(</span><em class="property">struct</em> gendisk *<em>disk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.put_disk_and_module" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>decrements the module and gendisk refcount</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">gendisk</span> <span class="pre">*disk</span></code></dt><dd><p>the struct gendisk to decrement the refcount for</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This is a counterpart of get_disk_and_module() and thus also of
-<a class="reference internal" href="#c.get_gendisk" title="get_gendisk"><code class="xref c c-func docutils literal notranslate"><span class="pre">get_gendisk()</span></code></a>.</p>
-<p><strong>Context</strong></p>
-<p>Any context, but the last reference must not be dropped from
-atomic context.</p>
 <dl class="c function">
 <dt id="c.disk_block_events">
 void <code class="sig-name descname">disk_block_events</code><span class="sig-paren">(</span><em class="property">struct</em> gendisk *<em>disk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.disk_block_events" title="Permalink to this definition">¶</a><br /></dt>
@@ -9796,7 +9754,7 @@ void <code class="sig-name descname">disk_part_iter_init</code><span class="sig-
 <p>Don’t care.</p>
 <dl class="c function">
 <dt id="c.disk_part_iter_next">
-<em class="property">struct</em> hd_struct *<code class="sig-name descname">disk_part_iter_next</code><span class="sig-paren">(</span><em class="property">struct</em> disk_part_iter *<em>piter</em><span class="sig-paren">)</span><a class="headerlink" href="#c.disk_part_iter_next" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> block_device *<code class="sig-name descname">disk_part_iter_next</code><span class="sig-paren">(</span><em class="property">struct</em> disk_part_iter *<em>piter</em><span class="sig-paren">)</span><a class="headerlink" href="#c.disk_part_iter_next" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>proceed iterator to the next partition and return it</p>
 </dd></dl>
 
@@ -9895,25 +9853,6 @@ with <a class="reference internal" href="#c.put_disk" title="put_disk"><code cla
 it should not be deferred.</p>
 <p><strong>Context</strong></p>
 <p>can sleep</p>
-<dl class="c function">
-<dt id="c.bdget_disk">
-<em class="property">struct</em> block_device *<code class="sig-name descname">bdget_disk</code><span class="sig-paren">(</span><em class="property">struct</em> gendisk *<em>disk</em>, int <em>partno</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bdget_disk" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>do bdget() by gendisk and partition number</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">gendisk</span> <span class="pre">*disk</span></code></dt><dd><p>gendisk of interest</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">partno</span></code></dt><dd><p>partition number</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Find partition <strong>partno</strong> from <strong>disk</strong>, do bdget() on it.</p>
-<p><strong>Context</strong></p>
-<p>Don’t care.</p>
-<p><strong>Return</strong></p>
-<p>Resulting block_device on success, NULL on failure.</p>
 <dl class="c function">
 <dt id="c.put_disk">
 void <code class="sig-name descname">put_disk</code><span class="sig-paren">(</span><em class="property">struct</em> gendisk *<em>disk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.put_disk" title="Permalink to this definition">¶</a><br /></dt>
@@ -11673,17 +11612,11 @@ ordering guarantees for either the CPU or the compiler.</p>
 <code class="sig-name descname">kfree_rcu</code><a class="headerlink" href="#c.kfree_rcu" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
-<p><code class="docutils literal notranslate"><span class="pre">kfree_rcu</span> <span class="pre">(ptr,</span> <span class="pre">rhf)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">kfree_rcu</span> <span class="pre">()</span></code></p>
 <blockquote>
 <div><p>kfree an object after a grace period.</p>
 </div></blockquote>
 <p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">ptr</span></code></dt><dd><p>pointer to kfree</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">rhf</span></code></dt><dd><p>the name of the struct rcu_head within the type of <strong>ptr</strong>.</p>
-</dd>
-</dl>
 <p><strong>Description</strong></p>
 <p>Many rcu callbacks functions just call <a class="reference internal" href="mm-api.html#c.kfree" title="kfree"><code class="xref c c-func docutils literal notranslate"><span class="pre">kfree()</span></code></a> on the base structure.
 These functions are trivial, but their size adds up, and furthermore
@@ -11695,7 +11628,7 @@ encodes the offset of the rcu_head structure within the base structure.
 Because the functions are not allowed in the low-order 4096 bytes of
 kernel virtual memory, offsets up to 4095 bytes can be accommodated.
 If the offset is larger than 4095 bytes, a compile-time error will
-be generated in __kvfree_rcu(). If this error is triggered, you can
+be generated in kvfree_rcu_arg_2(). If this error is triggered, you can
 either fall back to use of <a class="reference internal" href="#c.call_rcu" title="call_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">call_rcu()</span></code></a> or rearrange the structure to
 position the rcu_head structure into the first 4096 bytes.</p>
 <p>Note that the allowable offset might decrease in the future, for example,
@@ -12126,8 +12059,9 @@ more than one CPU).</p>
   bool monitor_todo;
   bool initialized;
   int count;
-  struct delayed_work page_cache_work;
+  struct work_struct page_cache_work;
   atomic_t work_in_progress;
+  struct hrtimer hrtimer;
   struct llist_head bkvcache;
   int nr_bkv_objs;
 };
@@ -12154,6 +12088,8 @@ more than one CPU).</p>
 <dt><code class="docutils literal notranslate"><span class="pre">page_cache_work</span></code></dt><dd><p>A work to refill the cache when it is empty</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">work_in_progress</span></code></dt><dd><p>Indicates that page_cache_work is running</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">hrtimer</span></code></dt><dd><p>A hrtimer for scheduling a page_cache_work</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">bkvcache</span></code></dt><dd><p>A simple cache list that contains objects for reuse purpose.
 In order to save some per-cpu space the list is singular.

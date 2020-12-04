@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -362,9 +362,9 @@
 <div class="section" id="iio-triggered-buffer-setup">
 <h2>IIO triggered buffer setup<a class="headerlink" href="#iio-triggered-buffer-setup" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="#c.iio_triggered_buffer_setup" title="iio_triggered_buffer_setup"><code class="xref c c-func docutils literal notranslate"><span class="pre">iio_triggered_buffer_setup()</span></code></a> — Setup triggered buffer and pollfunc</p></li>
+<li><p><code class="xref c c-func docutils literal notranslate"><span class="pre">iio_triggered_buffer_setup()</span></code> — Setup triggered buffer and pollfunc</p></li>
 <li><p><a class="reference internal" href="#c.iio_triggered_buffer_cleanup" title="iio_triggered_buffer_cleanup"><code class="xref c c-func docutils literal notranslate"><span class="pre">iio_triggered_buffer_cleanup()</span></code></a> — Free resources allocated by
-<a class="reference internal" href="#c.iio_triggered_buffer_setup" title="iio_triggered_buffer_setup"><code class="xref c c-func docutils literal notranslate"><span class="pre">iio_triggered_buffer_setup()</span></code></a></p></li>
+<code class="xref c c-func docutils literal notranslate"><span class="pre">iio_triggered_buffer_setup()</span></code></p></li>
 <li><p><a class="reference internal" href="core.html#c.iio_buffer_setup_ops" title="iio_buffer_setup_ops"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">iio_buffer_setup_ops</span></code></a> — buffer setup related callbacks</p></li>
 </ul>
 <p>A typical triggered buffer setup looks like this:</p>
@@ -423,8 +423,8 @@ top half.</p></li>
 <div class="section" id="more-details">
 <h2>More details<a class="headerlink" href="#more-details" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
-<dt id="c.iio_triggered_buffer_setup">
-int <code class="sig-name descname">iio_triggered_buffer_setup</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev">iio_dev</a> *<em>indio_dev</em>, irqreturn_t (*<em>h</em>)<span class="sig-paren">(</span>int irq, void *p<span class="sig-paren">)</span>, irqreturn_t (*<em>thread</em>)<span class="sig-paren">(</span>int irq, void *p<span class="sig-paren">)</span>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="core.html#c.iio_buffer_setup_ops" title="iio_buffer_setup_ops">iio_buffer_setup_ops</a> *<em>setup_ops</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.iio_triggered_buffer_setup" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="c.iio_triggered_buffer_setup_ext">
+int <code class="sig-name descname">iio_triggered_buffer_setup_ext</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev">iio_dev</a> *<em>indio_dev</em>, irqreturn_t (*<em>h</em>)<span class="sig-paren">(</span>int irq, void *p<span class="sig-paren">)</span>, irqreturn_t (*<em>thread</em>)<span class="sig-paren">(</span>int irq, void *p<span class="sig-paren">)</span>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="core.html#c.iio_buffer_setup_ops" title="iio_buffer_setup_ops">iio_buffer_setup_ops</a> *<em>setup_ops</em>, <em class="property">const</em> <em class="property">struct</em> attribute **<em>buffer_attrs</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.iio_triggered_buffer_setup_ext" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Setup triggered buffer and pollfunc</p>
 </dd></dl>
 
@@ -440,6 +440,8 @@ int <code class="sig-name descname">iio_triggered_buffer_setup</code><span class
 If NULL the default setup functions for triggered
 buffers will be used.</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">attribute</span> <span class="pre">**buffer_attrs</span></code></dt><dd><p>Extra sysfs buffer attributes for this IIO buffer</p>
+</dd>
 </dl>
 <p><strong>Description</strong></p>
 <p>This function combines some common tasks which will normally be performed
@@ -453,7 +455,7 @@ this function should be called right before <a class="reference internal" href="
 <dl class="c function">
 <dt id="c.iio_triggered_buffer_cleanup">
 void <code class="sig-name descname">iio_triggered_buffer_cleanup</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev">iio_dev</a> *<em>indio_dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_triggered_buffer_cleanup" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Free resources allocated by <a class="reference internal" href="#c.iio_triggered_buffer_setup" title="iio_triggered_buffer_setup"><code class="xref c c-func docutils literal notranslate"><span class="pre">iio_triggered_buffer_setup()</span></code></a></p>
+<dd><p>Free resources allocated by <a class="reference internal" href="#c.iio_triggered_buffer_setup_ext" title="iio_triggered_buffer_setup_ext"><code class="xref c c-func docutils literal notranslate"><span class="pre">iio_triggered_buffer_setup_ext()</span></code></a></p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>

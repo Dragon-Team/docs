@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -295,7 +295,7 @@
 <span id="audio-fopen"></span><h1><span class="section-number">6.3.2.1. </span>Digital TV audio open()<a class="headerlink" href="#digital-tv-audio-open" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <h2><span class="section-number">6.3.2.1.1. </span>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p>Digital TV audio open()</p>
+<p>Digital TV audio <a class="reference internal" href="#c.DTV.audio.open" title="DTV.audio.open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a></p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>This ioctl is deprecated</p>
@@ -341,11 +341,11 @@ int <code class="sig-name descname">open</code><span class="sig-paren">(</span><
 <div class="section" id="description">
 <h2><span class="section-number">6.3.2.1.4. </span>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>This system call opens a named audio device (e.g.
-/dev/dvb/adapter0/audio0) for subsequent use. When an open() call has
+/dev/dvb/adapter0/audio0) for subsequent use. When an <a class="reference internal" href="#c.DTV.audio.open" title="DTV.audio.open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a> call has
 succeeded, the device will be ready for use. The significance of
 blocking or non-blocking mode is described in the documentation for
 functions where there is a difference. It does not affect the semantics
-of the open() call itself. A device opened in blocking mode can later be
+of the <a class="reference internal" href="#c.DTV.audio.open" title="DTV.audio.open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a> call itself. A device opened in blocking mode can later be
 put into non-blocking mode (and vice versa) using the F_SETFL command
 of the fcntl system call. This is a standard system call, documented in
 the Linux manual page for fcntl. Only one user can open the Audio Device

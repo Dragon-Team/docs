@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -159,6 +159,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rtc.html">Real Time Clock (RTC) Drivers for Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="serial-console.html">Linux Serial Console</a></li>
 <li class="toctree-l2"><a class="reference internal" href="svga.html">Video Mode Selection Support 2.13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall-user-dispatch.html">Syscall User Dispatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sysrq.html">Linux Magic System Request Key Hacks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="thunderbolt.html">USB4 and Thunderbolt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ufs.html">Using UFS</a></li>
@@ -509,6 +510,7 @@ X86-64  X86-64 architecture is enabled.
 X86     Either 32-bit or 64-bit x86 (same as X86-32+X86-64)
 X86_UV  SGI UV support is enabled.
 XEN     Xen support is enabled
+XTENSA  xtensa architecture is enabled.
 </pre></div>
 </div>
 <p>In addition, the following text indicates that the option:</p>
@@ -1236,20 +1238,6 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         [KNL] Change the default value for
                         /proc/&lt;pid&gt;/coredump_filter.
                         See also Documentation/filesystems/proc.rst.
-
-        coresched=      [SCHED_CORE] This feature allows the Linux scheduler
-                        to force hyperthread siblings of a CPU to only execute tasks
-                        concurrently on all hyperthreads that are running within the
-                        same core scheduling group.
-                        Possible values are:
-                        'on' - Enable scheduler capability to core schedule.
-                        By default, no tasks will be core scheduled, but the coresched
-                        interface can be used to form groups of tasks that are forced
-                        to share a core.
-                        'off' - Disable scheduler capability to core schedule.
-                        'secure' - Like 'on' but only enable on systems affected by
-                        MDS or L1TF vulnerabilities. 'off' otherwise.
-                        Default: 'secure'.
 
         coresight_cpu_debug.enable
                         [ARM,ARM64]
@@ -2108,7 +2096,7 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         [KNL] When CONFIG_HUGETLB_PAGE_FREE_VMEMMAP is set,
                         this controls freeing unused vmemmap pages associated
                         with each HugeTLB page.
-                        Format: { on (default) | off }
+                        Format: { on | off (default) }
 
                         on:  enable the feature
                         off: disable the feature
@@ -2445,11 +2433,6 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         Note that using this option lowers the security
                         provided by tboot because it makes the system
                         vulnerable to DMA attacks.
-                nobounce [Default off]
-                        Disable bounce buffer for untrusted devices such as
-                        the Thunderbolt devices. This will treat the untrusted
-                        devices as the trusted ones, hence might expose security
-                        risks of DMA attacks.
 
         intel_idle.max_cstate=  [KNL,HW,ACPI,X86]
                         0       disables intel_idle and fall back on acpi_idle.
@@ -2882,6 +2865,23 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         feature (tagged TLBs) on capable Intel chips.
                         Default is 1 (enabled)
 
+        l1d_flush_out=  [X86,INTEL]
+                        Control mitigation for L1D based snooping vulnerability.
+
+                        Certain CPUs are vulnerable to an exploit against CPU
+                        internal buffers which can forward information to a
+                        disclosure gadget under certain conditions.
+
+                        In vulnerable processors, the speculatively
+                        forwarded data can be used in a cache side channel
+                        attack, to access data to which the attacker does
+                        not have direct access.
+
+                        This parameter controls the mitigation. The
+                        options are:
+
+                        off        - Unconditionally disable the mitigation
+
         l1tf=           [X86] Control mitigation of the L1TF vulnerability on
                               affected CPUs
 
@@ -3271,7 +3271,7 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         option description.
 
         memmap=nn[KMG]&#64;ss[KMG]
-                        [KNL] Force usage of a specific region of memory.
+                        [KNL, X86, MIPS, XTENSA] Force usage of a specific region of memory.
                         Region of memory to be used is from ss to ss+nn.
                         If &#64;ss[KMG] is omitted, it is equivalent to mem=nn[KMG],
                         which limits max address to nn[KMG].
@@ -5269,17 +5269,6 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
 
         sbni=           [NET] Granch SBNI12 leased line adapter
 
-        sched_core_protect_kernel=
-                        [SCHED_CORE] Pause SMT siblings of a core running in
-                        user mode, if at least one of the siblings of the core
-                        is running in kernel mode. This is to guarantee that
-                        kernel data is not leaked to tasks which are not trusted
-                        by the kernel. A value of 0 disables protection, 1
-                        enables protection. The default is 1. Note that protection
-                        depends on the arch defining the _TIF_UNSAFE_RET flag.
-                        Further, for protecting VMEXIT, arch needs to call
-                        KVM entry/exit hooks.
-
         sched_debug     [KNL] Enables verbose scheduler debug messages.
 
         schedstats=     [KNL,X86] Enable or disable scheduled statistics.
@@ -5954,6 +5943,14 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         very costly operation when many torture tests
                         are running concurrently, especially on systems
                         with rotating-rust storage.
+
+        torture.verbose_sleep_frequency= [KNL]
+                        Specifies how many verbose printk()s should be
+                        emitted between each sleep.  The default of zero
+                        disables verbose-printk() sleeping.
+
+        torture.verbose_sleep_duration= [KNL]
+                        Duration of each verbose-printk() sleep in jiffies.
 
         tp720=          [HW,PS2]
 

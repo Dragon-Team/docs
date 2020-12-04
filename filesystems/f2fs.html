@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -421,8 +421,8 @@ blocks; this will cut off the update propagation.</p></li>
 <h2>Mount Options<a class="headerlink" href="#mount-options" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 28%" />
-<col style="width: 72%" />
+<col style="width: 27%" />
+<col style="width: 73%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>background_gc=%s</p></td>
@@ -720,6 +720,18 @@ these file by default rather than to enable it via ioctl.
 For other files, we can still enable compression via ioctl.
 Note that, there is one reserved special extension ‘*’, it
 can be set to enable compression for all files.</p></td>
+</tr>
+<tr class="row-even"><td><p>compress_chksum</p></td>
+<td><p>Support verifying chksum of raw data in compressed cluster.</p></td>
+</tr>
+<tr class="row-odd"><td><p>compress_mode=%s</p></td>
+<td><p>Control file compression mode. This supports “fs” and “user”
+modes. In “fs” mode (default), f2fs does automatic compression
+on the compression enabled files. In “user” mode, f2fs disables
+the automaic compression and gives the user discretion of
+choosing the target file and the timing. The user can do manual
+compression/decompression on the compression enabled files using
+ioctls.</p></td>
 </tr>
 <tr class="row-even"><td><p>inlinecrypt</p></td>
 <td><p>When possible, encrypt/decrypt the contents of encrypted
@@ -1393,6 +1405,27 @@ cluster data is lower than specified threshold.</p></li>
     +-------------+-------------+----------+----------------------------+
 </pre></div>
 </div>
+</div>
+<div class="section" id="compression-mode">
+<h3>Compression mode<a class="headerlink" href="#compression-mode" title="Permalink to this headline">¶</a></h3>
+<p>f2fs supports “fs” and “user” compression modes with “compression_mode” mount option.
+With this option, f2fs provides a choice to select the way how to compress the
+compression enabled files (refer to “Compression implementation” section for how to
+enable compression on a regular inode).</p>
+<p>1) compress_mode=fs
+This is the default option. f2fs does automatic compression in the writeback of the
+compression enabled files.</p>
+<p>2) compress_mode=user
+This disables the automaic compression and gives the user discretion of choosing the
+target file and the timing. The user can do manual compression/decompression on the
+compression enabled files using F2FS_IOC_DECOMPRESS_FILE and F2FS_IOC_COMPRESS_FILE
+ioctls like the below.</p>
+<p>To decompress a file,</p>
+<p>fd = open(filename, O_WRONLY, 0);
+ret = ioctl(fd, F2FS_IOC_DECOMPRESS_FILE);</p>
+<p>To compress a file,</p>
+<p>fd = open(filename, O_WRONLY, 0);
+ret = ioctl(fd, F2FS_IOC_COMPRESS_FILE);</p>
 </div>
 <div class="section" id="nvme-zoned-namespace-devices">
 <h3>NVMe Zoned Namespace devices<a class="headerlink" href="#nvme-zoned-namespace-devices" title="Permalink to this headline">¶</a></h3>

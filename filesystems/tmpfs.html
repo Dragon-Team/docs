@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -314,7 +314,7 @@
             
   <div class="section" id="tmpfs">
 <h1>Tmpfs<a class="headerlink" href="#tmpfs" title="Permalink to this headline">¶</a></h1>
-<p>Tmpfs is a file system which keeps all files in virtual memory.</p>
+<p>Tmpfs is a file system which keeps all of its files in virtual memory.</p>
 <p>Everything in tmpfs is temporary in the sense that no files will be
 created on your hard drive. If you unmount a tmpfs instance,
 everything stored therein is lost.</p>
@@ -338,7 +338,7 @@ using df(1) and du(1).</p>
 all. This is used for shared anonymous mappings and SYSV shared
 memory.</p>
 <p>This mount does not depend on CONFIG_TMPFS. If CONFIG_TMPFS is not
-set, the user visible part of tmpfs is not build. But the internal
+set, the user visible part of tmpfs is not built. But the internal
 mechanisms are always present.</p>
 </li>
 <li><p>glibc 2.2 and above expects tmpfs to be mounted at /dev/shm for
@@ -352,7 +352,7 @@ if necessary.</p>
 <p>This mount is _not_ needed for SYSV shared memory. The internal
 mount is used for that. (In the 2.3 kernel versions it was
 necessary to mount the predecessor of tmpfs (shm fs) to use SYSV
-shared memory)</p>
+shared memory.)</p>
 </li>
 <li><p>Some people (including me) find it very convenient to mount it
 e.g. on /tmp and /var/tmp and have a big swap partition. And now
@@ -392,7 +392,7 @@ the default, when neither size nor nr_blocks is specified, is size=50%</p>
 if nr_inodes=0, inodes will not be limited.  It is generally unwise to
 mount with such options, since it allows any user with write access to
 use up all the memory on the machine; but enhances the scalability of
-that instance in a system with many cpus making intensive use of it.</p>
+that instance in a system with many CPUs making intensive use of it.</p>
 <p>tmpfs has a mount option to set the NUMA memory allocation policy for
 all files in that instance (if CONFIG_NUMA is enabled) - which can be
 adjusted on the fly via ‘mount -o remount …’</p>

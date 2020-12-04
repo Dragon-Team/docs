@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -1506,30 +1506,6 @@ set up by userspace and pass the IOCTL data along to the
 <p><strong>Return</strong></p>
 <p>0 on success or a negative error code on failure.</p>
 <dl class="c function">
-<dt id="c.drm_gem_cma_mmap">
-int <code class="sig-name descname">drm_gem_cma_mmap</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>filp</em>, <em class="property">struct</em> vm_area_struct *<em>vma</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_cma_mmap" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>memory-map a CMA GEM object</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">file</span> <span class="pre">*filp</span></code></dt><dd><p>file object</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">vm_area_struct</span> <span class="pre">*vma</span></code></dt><dd><p>VMA for the area to be mapped</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This function implements an augmented version of the GEM DRM file mmap
-operation for CMA objects: In addition to the usual GEM VMA setup it
-immediately faults in the entire object instead of using on-demaind
-faulting. Drivers which employ the CMA helpers should use this function
-as their -&gt;mmap() handler in the DRM device file’s file_operations
-structure.</p>
-<p>Instead of directly referencing this function, drivers should use the
-<a class="reference internal" href="#c.DEFINE_DRM_GEM_CMA_FOPS" title="DEFINE_DRM_GEM_CMA_FOPS"><code class="xref c c-func docutils literal notranslate"><span class="pre">DEFINE_DRM_GEM_CMA_FOPS()</span></code></a>.macro.</p>
-<p><strong>Return</strong></p>
-<p>0 on success or a negative error code on failure.</p>
-<dl class="c function">
 <dt id="c.drm_gem_cma_get_unmapped_area">
 unsigned long <code class="sig-name descname">drm_gem_cma_get_unmapped_area</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>filp</em>, unsigned long <em>addr</em>, unsigned long <em>len</em>, unsigned long <em>pgoff</em>, unsigned long <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_cma_get_unmapped_area" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>propose address for mapping in noMMU cases</p>
@@ -1574,8 +1550,8 @@ void <code class="sig-name descname">drm_gem_cma_print_info</code><span class="s
 <p>This function can be used as the <a class="reference internal" href="drm-internals.html#c.drm_driver" title="drm_driver"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_driver-&gt;gem_print_info</span></code></a> callback.
 It prints paddr and vaddr for use in e.g. debugfs output.</p>
 <dl class="c function">
-<dt id="c.drm_gem_cma_prime_get_sg_table">
-<em class="property">struct</em> sg_table *<code class="sig-name descname">drm_gem_cma_prime_get_sg_table</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_cma_prime_get_sg_table" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="c.drm_gem_cma_get_sg_table">
+<em class="property">struct</em> sg_table *<code class="sig-name descname">drm_gem_cma_get_sg_table</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_cma_get_sg_table" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>provide a scatter/gather table of pinned pages for a CMA GEM object</p>
 </dd></dl>
 
@@ -1585,7 +1561,7 @@ It prints paddr and vaddr for use in e.g. debugfs output.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>This function exports a scatter/gather table suitable for PRIME usage by
+<p>This function exports a scatter/gather table by
 calling the standard DMA mapping API. Drivers using the CMA helpers should
 set this as their <a class="reference internal" href="#c.drm_gem_object_funcs" title="drm_gem_object_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_gem_object_funcs.get_sg_table</span></code></a> callback.</p>
 <p><strong>Return</strong></p>
@@ -1615,27 +1591,8 @@ use the CMA helpers should set this as their
 <p>A pointer to a newly created GEM object or an ERR_PTR-encoded negative
 error code on failure.</p>
 <dl class="c function">
-<dt id="c.drm_gem_cma_prime_mmap">
-int <code class="sig-name descname">drm_gem_cma_prime_mmap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<em>obj</em>, <em class="property">struct</em> vm_area_struct *<em>vma</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_cma_prime_mmap" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>memory-map an exported CMA GEM object</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_gem_object</span> <span class="pre">*obj</span></code></dt><dd><p>GEM object</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">vm_area_struct</span> <span class="pre">*vma</span></code></dt><dd><p>VMA for the area to be mapped</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This function maps a buffer imported via DRM PRIME into a userspace
-process’s address space. Drivers that use the CMA helpers should set this
-as their <a class="reference internal" href="drm-internals.html#c.drm_driver" title="drm_driver"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_driver.gem_prime_mmap</span></code></a> callback.</p>
-<p><strong>Return</strong></p>
-<p>0 on success or a negative error code on failure.</p>
-<dl class="c function">
-<dt id="c.drm_gem_cma_prime_vmap">
-int <code class="sig-name descname">drm_gem_cma_prime_vmap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<em>obj</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_map" title="dma_buf_map">dma_buf_map</a> *<em>map</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_cma_prime_vmap" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="c.drm_gem_cma_vmap">
+int <code class="sig-name descname">drm_gem_cma_vmap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<em>obj</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_map" title="dma_buf_map">dma_buf_map</a> *<em>map</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_cma_vmap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>map a CMA GEM object into the kernel’s virtual address space</p>
 </dd></dl>
 
@@ -1648,13 +1605,33 @@ store.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>This function maps a buffer exported via DRM PRIME into the kernel’s
+<p>This function maps a buffer into the kernel’s
 virtual address space. Since the CMA buffers are already mapped into the
 kernel virtual address space this simply returns the cached virtual
 address. Drivers using the CMA helpers should set this as their DRM
 driver’s <a class="reference internal" href="#c.drm_gem_object_funcs" title="drm_gem_object_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_gem_object_funcs.vmap</span></code></a> callback.</p>
 <p><strong>Return</strong></p>
 <p>0 on success, or a negative error code otherwise.</p>
+<dl class="c function">
+<dt id="c.drm_gem_cma_mmap">
+int <code class="sig-name descname">drm_gem_cma_mmap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<em>obj</em>, <em class="property">struct</em> vm_area_struct *<em>vma</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_cma_mmap" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>memory-map an exported CMA GEM object</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_gem_object</span> <span class="pre">*obj</span></code></dt><dd><p>GEM object</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">vm_area_struct</span> <span class="pre">*vma</span></code></dt><dd><p>VMA for the area to be mapped</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function maps a buffer into a userspace process’s address space.
+In addition to the usual GEM VMA setup it immediately faults in the entire
+object instead of using on-demand faulting. Drivers that use the CMA
+helpers should set this as their <a class="reference internal" href="#c.drm_gem_object_funcs" title="drm_gem_object_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_gem_object_funcs.mmap</span></code></a> callback.</p>
+<p><strong>Return</strong></p>
+<p>0 on success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.drm_gem_cma_prime_import_sg_table_vmap">
 <em class="property">struct</em> <a class="reference internal" href="#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<code class="sig-name descname">drm_gem_cma_prime_import_sg_table_vmap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device">drm_device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_attachment" title="dma_buf_attachment">dma_buf_attachment</a> *<em>attach</em>, <em class="property">struct</em> sg_table *<em>sgt</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_cma_prime_import_sg_table_vmap" title="Permalink to this definition">¶</a><br /></dt>
@@ -1706,7 +1683,7 @@ allocated using anonymous pageable memory.</p>
   struct mutex vmap_lock;
   void *vaddr;
   unsigned int vmap_use_count;
-  bool map_cached;
+  bool map_wc;
 };
 </pre></div>
 </div>
@@ -1742,7 +1719,7 @@ Positive values are driver specific and not used by the helpers.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">vmap_use_count</span></code></dt><dd><p>Reference count on the virtual address.
 The address are un-mapped when the count reaches zero.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">map_cached</span></code></dt><dd><p>map object cached (instead of using writecombine).</p>
+<dt><code class="docutils literal notranslate"><span class="pre">map_wc</span></code></dt><dd><p>map object write-combined (instead of using shmem defaults).</p>
 </dd>
 </dl>
 <dl class="c macro">
@@ -1822,25 +1799,6 @@ void <code class="sig-name descname">drm_gem_shmem_unpin</code><span class="sig-
 <p><strong>Description</strong></p>
 <p>This function removes the requirement that the backing pages are pinned in
 memory. It should only be used to implement <a class="reference internal" href="#c.drm_gem_object_funcs" title="drm_gem_object_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_gem_object_funcs.unpin</span></code></a>.</p>
-<dl class="c function">
-<dt id="c.drm_gem_shmem_create_object_cached">
-<em class="property">struct</em> <a class="reference internal" href="#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<code class="sig-name descname">drm_gem_shmem_create_object_cached</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device">drm_device</a> *<em>dev</em>, size_t <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_shmem_create_object_cached" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a shmem buffer object with cached mappings</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_device</span> <span class="pre">*dev</span></code></dt><dd><p>DRM device</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">size</span></code></dt><dd><p>Size of the object to allocate</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>By default, shmem buffer objects use writecombine mappings. This
-function implements <a class="reference internal" href="drm-internals.html#c.drm_driver" title="drm_driver"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_driver</span></code></a>.gem_create_object for shmem
-buffer objects with cached mappings.</p>
-<p><strong>Return</strong></p>
-<p>A <a class="reference internal" href="#c.drm_gem_shmem_object" title="drm_gem_shmem_object"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_gem_shmem_object</span></code></a> * on success or NULL negative on failure.</p>
 <dl class="c function">
 <dt id="c.drm_gem_shmem_dumb_create">
 int <code class="sig-name descname">drm_gem_shmem_dumb_create</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_file" title="drm_file">drm_file</a> *<em>file</em>, <em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device">drm_device</a> *<em>dev</em>, <em class="property">struct</em> drm_mode_create_dumb *<em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_shmem_dumb_create" title="Permalink to this definition">¶</a><br /></dt>

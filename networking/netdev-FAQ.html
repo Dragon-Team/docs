@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -142,6 +142,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#q-i-am-working-in-existing-code-that-has-the-former-comment-style-and-not-the-latter">Q: I am working in existing code that has the former comment style and not the latter.</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q-i-found-a-bug-that-might-have-possible-security-implications-or-similar">Q: I found a bug that might have possible security implications or similar.</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q-what-level-of-testing-is-expected-before-i-submit-my-change">Q: What level of testing is expected before I submit my change?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q-how-do-i-post-corresponding-changes-to-user-space-components">Q: How do I post corresponding changes to user space components?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q-any-other-tips-to-help-ensure-my-net-net-next-patch-gets-ok-d">Q: Any other tips to help ensure my net/net-next patch gets OK’d?</a></li>
 </ul>
 </li>
@@ -253,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="tcp-thin.html">Thin-streams and TCP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="team.html">Team</a></li>
 <li class="toctree-l2"><a class="reference internal" href="timestamping.html">Timestamping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipc.html">Linux Kernel TIPC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tproxy.html">Transparent proxy support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tuntap.html">Universal TUN/TAP device driver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="udplite.html">The UDP-Lite protocol (RFC 3828)</a></li>
@@ -626,6 +628,30 @@ have tested by layering your changes on top of <code class="docutils literal not
 you will have done run-time testing specific to your change, but at a
 minimum, your changes should survive an <code class="docutils literal notranslate"><span class="pre">allyesconfig</span></code> and an
 <code class="docutils literal notranslate"><span class="pre">allmodconfig</span></code> build without new warnings or failures.</p>
+</div>
+<div class="section" id="q-how-do-i-post-corresponding-changes-to-user-space-components">
+<h2>Q: How do I post corresponding changes to user space components?<a class="headerlink" href="#q-how-do-i-post-corresponding-changes-to-user-space-components" title="Permalink to this headline">¶</a></h2>
+<p>A: User space code exercising kernel features should be posted
+alongside kernel patches. This gives reviewers a chance to see
+how any new interface is used and how well it works.</p>
+<p>When user space tools reside in the kernel repo itself all changes
+should generally come as one series. If series becomes too large
+or the user space project is not reviewed on netdev include a link
+to a public repo where user space patches can be seen.</p>
+<p>In case user space tooling lives in a separate repository but is
+reviewed on netdev  (e.g. patches to <cite>iproute2</cite> tools) kernel and
+user space patches should form separate series (threads) when posted
+to the mailing list, e.g.:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[PATCH net-next 0/3] net: some feature cover letter
+ └─ [PATCH net-next 1/3] net: some feature prep
+ └─ [PATCH net-next 2/3] net: some feature do it
+ └─ [PATCH net-next 3/3] selftest: net: some feature
+
+[PATCH iproute2-next] ip: add support for some feature
+</pre></div>
+</div>
+<p>Posting as one thread is discouraged because it confuses patchwork
+(as of patchwork 2.2.2).</p>
 </div>
 <div class="section" id="q-any-other-tips-to-help-ensure-my-net-net-next-patch-gets-ok-d">
 <h2>Q: Any other tips to help ensure my net/net-next patch gets OK’d?<a class="headerlink" href="#q-any-other-tips-to-help-ensure-my-net-net-next-patch-gets-ok-d" title="Permalink to this headline">¶</a></h2>

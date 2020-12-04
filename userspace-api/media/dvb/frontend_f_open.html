@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -334,13 +334,13 @@ of device status and statistics, or read/write mode, which allows any
 kind of use (e.g. performing tuning operations.)</p>
 <p>In a system with multiple front-ends, it is usually the case that
 multiple devices cannot be open in read/write mode simultaneously. As
-long as a front-end device is opened in read/write mode, other open()
+long as a front-end device is opened in read/write mode, other <a class="reference internal" href="#c.DTV.fe.open" title="DTV.fe.open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a>
 calls in read/write mode will either fail or block, depending on whether
 non-blocking or blocking mode was specified. A front-end device opened
 in blocking mode can later be put into non-blocking mode (and vice
 versa) using the F_SETFL command of the fcntl system call. This is a
 standard system call, documented in the Linux manual page for fcntl.
-When an open() call has succeeded, the device will be ready for use in
+When an <a class="reference internal" href="#c.DTV.fe.open" title="DTV.fe.open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a> call has succeeded, the device will be ready for use in
 the specified mode. This implies that the corresponding hardware is
 powered up, and that other front-ends may have been powered down to make
 that possible.</p>

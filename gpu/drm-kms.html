@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -10501,12 +10501,10 @@ user-space must set this property to 0.</p>
 <p>Setting MODE_ID to 0 will release reserved resources for the CRTC.</p>
 </dd>
 <dt>SCALING_FILTER:</dt><dd><p>Atomic property for setting the scaling filter for CRTC scaler</p>
-<p>The value of this property can be one of the following:
-Default:</p>
-<blockquote>
-<div><p>Driver’s default scaling filter</p>
-</div></blockquote>
+<p>The value of this property can be one of the following:</p>
 <dl class="simple">
+<dt>Default:</dt><dd><p>Driver’s default scaling filter</p>
+</dd>
 <dt>Nearest Neighbor:</dt><dd><p>Nearest Neighbor scaling filter</p>
 </dd>
 </dl>
@@ -10667,19 +10665,17 @@ modifiers. Userspace cannot change this property.</p>
 <p>Note that all the property extensions described here apply either to the
 plane or the CRTC (e.g. for the background color, which currently is not
 exposed and assumed to be black).</p>
-<p>SCALING_FILTER:</p>
-<blockquote>
-<div><p>Indicates scaling filter to be used for plane scaler</p>
-<p>The value of this property can be one of the following:
-Default:</p>
-<blockquote>
-<div><p>Driver’s default scaling filter</p>
-</div></blockquote>
+<dl>
+<dt>SCALING_FILTER:</dt><dd><p>Indicates scaling filter to be used for plane scaler</p>
+<p>The value of this property can be one of the following:</p>
 <dl class="simple">
+<dt>Default:</dt><dd><p>Driver’s default scaling filter</p>
+</dd>
 <dt>Nearest Neighbor:</dt><dd><p>Nearest Neighbor scaling filter</p>
 </dd>
 </dl>
-</div></blockquote>
+</dd>
+</dl>
 <p>Drivers can set up this property for a plane by calling
 drm_plane_create_scaling_filter_property</p>
 <dl class="c function">

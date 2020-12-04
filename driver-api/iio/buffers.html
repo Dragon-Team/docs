@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -496,19 +496,6 @@ the sample data buffer before pushing it to the device buffers. The sample
 data buffer needs to be large enough to hold the additional timestamp
 (usually the buffer should be indio-&gt;scan_bytes bytes large).</p>
 <p>Returns 0 on success, a negative error code otherwise.</p>
-<dl class="c function">
-<dt id="c.iio_buffer_set_attrs">
-void <code class="sig-name descname">iio_buffer_set_attrs</code><span class="sig-paren">(</span><em class="property">struct</em> iio_buffer *<em>buffer</em>, <em class="property">const</em> <em class="property">struct</em> attribute **<em>attrs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_buffer_set_attrs" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Set buffer specific attributes</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">iio_buffer</span> <span class="pre">*buffer</span></code></dt><dd><p>The buffer for which we are setting attributes</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">attribute</span> <span class="pre">**attrs</span></code></dt><dd><p>Pointer to a null terminated list of pointers to attributes</p>
-</dd>
-</dl>
 <dl class="c function">
 <dt id="c.iio_validate_scan_mask_onehot">
 bool <code class="sig-name descname">iio_validate_scan_mask_onehot</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev">iio_dev</a> *<em>indio_dev</em>, <em class="property">const</em> unsigned long *<em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_validate_scan_mask_onehot" title="Permalink to this definition">¶</a><br /></dt>

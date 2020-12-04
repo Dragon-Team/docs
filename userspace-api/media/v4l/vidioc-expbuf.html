@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -335,7 +335,7 @@ the index of the plane to be exported. Valid planes range from zero to
 the maximal number of valid planes for the currently active format. For
 the single-planar API, applications must set <code class="docutils literal notranslate"><span class="pre">plane</span></code> to zero.
 Additional flags may be posted in the <code class="docutils literal notranslate"><span class="pre">flags</span></code> field. Refer to a manual
-for open() for details. Currently only O_CLOEXEC, O_RDONLY, O_WRONLY,
+for <a class="reference internal" href="func-open.html#c.V4L.open" title="V4L.open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a> for details. Currently only O_CLOEXEC, O_RDONLY, O_WRONLY,
 and O_RDWR are supported. All other fields must be set to zero. In the
 case of multi-planar API, every plane is exported separately using
 multiple <a class="reference internal" href="#vidioc-expbuf"><span class="std std-ref">ioctl VIDIOC_EXPBUF</span></a> calls.</p>
@@ -428,7 +428,7 @@ Otherwise this value must be set to zero.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">flags</span></code></p></td>
 <td><p>Flags for the newly created file, currently only <code class="docutils literal notranslate"><span class="pre">O_CLOEXEC</span></code>,
 <code class="docutils literal notranslate"><span class="pre">O_RDONLY</span></code>, <code class="docutils literal notranslate"><span class="pre">O_WRONLY</span></code>, and <code class="docutils literal notranslate"><span class="pre">O_RDWR</span></code> are supported, refer to
-the manual of open() for more details.</p></td>
+the manual of <a class="reference internal" href="func-open.html#c.V4L.open" title="V4L.open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a> for more details.</p></td>
 </tr>
 <tr class="row-odd"><td><p>__s32</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">fd</span></code></p></td>

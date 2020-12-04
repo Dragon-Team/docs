@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -1731,21 +1731,21 @@ registered prior to calling this function.</p>
 <dl class="c function">
 <dt id="c.pci_match_id">
 <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="../../PCI/pci.html#c.pci_device_id" title="pci_device_id">pci_device_id</a> *<code class="sig-name descname">pci_match_id</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="../../PCI/pci.html#c.pci_device_id" title="pci_device_id">pci_device_id</a> *<em>ids</em>, <em class="property">struct</em> pci_dev *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_match_id" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>See if a pci device matches a given pci_id table</p>
+<dd><p>See if a PCI device matches a given pci_id table</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">pci_device_id</span> <span class="pre">*ids</span></code></dt><dd><p>array of PCI device id structures to search in</p>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">pci_device_id</span> <span class="pre">*ids</span></code></dt><dd><p>array of PCI device ID structures to search in</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">pci_dev</span> <span class="pre">*dev</span></code></dt><dd><p>the PCI device structure to match against.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Used by a driver to check whether a PCI device present in the
-system is in its list of supported devices.  Returns the matching
-pci_device_id structure or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> if there is no match.</p>
-<p>Deprecated, don’t use this as it will not catch any dynamic ids
+<p>Used by a driver to check whether a PCI device is in its list of
+supported devices.  Returns the matching pci_device_id structure or
+<code class="docutils literal notranslate"><span class="pre">NULL</span></code> if there is no match.</p>
+<p>Deprecated; don’t use this as it will not catch any dynamic IDs
 that a driver might want to check for.</p>
 <dl class="c function">
 <dt id="c.__pci_register_driver">

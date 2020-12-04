@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -336,7 +336,7 @@ by a <a class="reference internal" href="dmx-querybuf.html#dmx-querybuf"><span c
 <p>When <code class="docutils literal notranslate"><span class="pre">DMX_QBUF</span></code> is called with a pointer to this structure, it locks the
 memory pages of the buffer in physical memory, so they cannot be swapped
 out to disk. Buffers remain locked until dequeued, until the
-the device is closed.</p>
+device is closed.</p>
 <p>Applications call the <code class="docutils literal notranslate"><span class="pre">DMX_DQBUF</span></code> ioctl to dequeue a filled
 (capturing) buffer from the driver’s outgoing queue.
 They just set the <code class="docutils literal notranslate"><span class="pre">index</span></code> field with the buffer ID to be queued.

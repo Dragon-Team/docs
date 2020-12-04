@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.4.8. ioctls LIRC_GET_MIN_TIMEOUT and LIRC_GET_MAX_TIMEOUT &mdash; The Linux-Next Dragon Kernel  documentation</title>
+  <title>6.5.8. ioctls LIRC_GET_MIN_TIMEOUT and LIRC_GET_MAX_TIMEOUT &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
 
   
@@ -34,8 +34,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="6.4.9. ioctl LIRC_GET_REC_TIMEOUT and LIRC_SET_REC_TIMEOUT" href="lirc-set-rec-timeout.html" />
-    <link rel="prev" title="6.4.7. ioctl LIRC_SET_SEND_DUTY_CYCLE" href="lirc-set-send-duty-cycle.html" /> 
+    <link rel="next" title="6.5.9. ioctl LIRC_GET_REC_TIMEOUT and LIRC_SET_REC_TIMEOUT" href="lirc-set-rec-timeout.html" />
+    <link rel="prev" title="6.5.7. ioctl LIRC_SET_SEND_DUTY_CYCLE" href="lirc-set-send-duty-cycle.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -266,9 +266,9 @@
         
           <li><a href="lirc-dev.html"><span class="section-number">6. </span>LIRC Device Interface</a> &raquo;</li>
         
-          <li><a href="lirc-func.html"><span class="section-number">6.4. </span>LIRC Function Reference</a> &raquo;</li>
+          <li><a href="lirc-func.html"><span class="section-number">6.5. </span>LIRC Function Reference</a> &raquo;</li>
         
-      <li><span class="section-number">6.4.8. </span>ioctls LIRC_GET_MIN_TIMEOUT and LIRC_GET_MAX_TIMEOUT</li>
+      <li><span class="section-number">6.5.8. </span>ioctls LIRC_GET_MIN_TIMEOUT and LIRC_GET_MAX_TIMEOUT</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -288,14 +288,14 @@
            <div itemprop="articleBody">
             
   <div class="section" id="ioctls-lirc-get-min-timeout-and-lirc-get-max-timeout">
-<span id="lirc-get-max-timeout"></span><span id="lirc-get-min-timeout"></span><h1><span class="section-number">6.4.8. </span>ioctls LIRC_GET_MIN_TIMEOUT and LIRC_GET_MAX_TIMEOUT<a class="headerlink" href="#ioctls-lirc-get-min-timeout-and-lirc-get-max-timeout" title="Permalink to this headline">¶</a></h1>
+<span id="lirc-get-max-timeout"></span><span id="lirc-get-min-timeout"></span><h1><span class="section-number">6.5.8. </span>ioctls LIRC_GET_MIN_TIMEOUT and LIRC_GET_MAX_TIMEOUT<a class="headerlink" href="#ioctls-lirc-get-min-timeout-and-lirc-get-max-timeout" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
-<h2><span class="section-number">6.4.8.1. </span>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.8.1. </span>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p>LIRC_GET_MIN_TIMEOUT / LIRC_GET_MAX_TIMEOUT - Obtain the possible timeout
 range for IR receive.</p>
 </div>
 <div class="section" id="synopsis">
-<h2><span class="section-number">6.4.8.2. </span>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.8.2. </span>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <dl class="c macro">
 <dt id="c.RC.LIRC_GET_MIN_TIMEOUT">
 <code class="sig-name descname">LIRC_GET_MIN_TIMEOUT</code><a class="headerlink" href="#c.RC.LIRC_GET_MIN_TIMEOUT" title="Permalink to this definition">¶</a><br /></dt>
@@ -310,7 +310,7 @@ range for IR receive.</p>
 <p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">ioctl(int</span> <span class="pre">fd,</span> <span class="pre">LIRC_GET_MAX_TIMEOUT,</span> <span class="pre">__u32</span> <span class="pre">*timeout)</span></code></p>
 </div>
 <div class="section" id="arguments">
-<h2><span class="section-number">6.4.8.3. </span>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.8.3. </span>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">fd</span></code></dt><dd><p>File descriptor returned by open().</p>
 </dd>
@@ -319,7 +319,7 @@ range for IR receive.</p>
 </dl>
 </div>
 <div class="section" id="description">
-<h2><span class="section-number">6.4.8.4. </span>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.8.4. </span>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Some devices have internal timers that can be used to detect when
 there’s no IR activity for a long time. This can help lircd in
 detecting that a IR signal is finished and can speed up the decoding
@@ -333,7 +333,7 @@ cannot be changed via <a class="reference internal" href="lirc-set-rec-timeout.h
 </div>
 </div>
 <div class="section" id="return-value">
-<h2><span class="section-number">6.4.8.5. </span>Return Value<a class="headerlink" href="#return-value" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.8.5. </span>Return Value<a class="headerlink" href="#return-value" title="Permalink to this headline">¶</a></h2>
 <p>On success 0 is returned, on error -1 and the <code class="docutils literal notranslate"><span class="pre">errno</span></code> variable is set
 appropriately. The generic error codes are described at the
 <a class="reference internal" href="../gen-errors.html#id1"><span class="std std-ref">Generic Error Codes</span></a> chapter.</p>
@@ -348,10 +348,10 @@ appropriately. The generic error codes are described at the
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="lirc-set-rec-timeout.html" class="btn btn-neutral float-right" title="6.4.9. ioctl LIRC_GET_REC_TIMEOUT and LIRC_SET_REC_TIMEOUT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="lirc-set-rec-timeout.html" class="btn btn-neutral float-right" title="6.5.9. ioctl LIRC_GET_REC_TIMEOUT and LIRC_SET_REC_TIMEOUT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="lirc-set-send-duty-cycle.html" class="btn btn-neutral float-left" title="6.4.7. ioctl LIRC_SET_SEND_DUTY_CYCLE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="lirc-set-send-duty-cycle.html" class="btn btn-neutral float-left" title="6.5.7. ioctl LIRC_SET_SEND_DUTY_CYCLE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

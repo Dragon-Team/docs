@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -991,58 +991,6 @@ structure.</p>
 notifier.</p>
 <p>This function may not be called on a registered notifier and may be called on
 a notifier only once.</p>
-<p>The <a class="reference internal" href="#c.v4l2_fwnode_endpoint" title="v4l2_fwnode_endpoint"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_fwnode_endpoint</span></code></a> passed to the callback function
-<strong>parse_endpoint</strong> is released once the function is finished. If there is a need
-to retain that configuration, the user needs to allocate memory for it.</p>
-<p>Any notifier populated using this function must be released with a call to
-<a class="reference internal" href="v4l2-async.html#c.v4l2_async_notifier_cleanup" title="v4l2_async_notifier_cleanup"><code class="xref c c-func docutils literal notranslate"><span class="pre">v4l2_async_notifier_cleanup()</span></code></a> after it has been unregistered and the async
-sub-devices are no longer in use, even if the function returned an error.</p>
-<p><strong>Return</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">0</span></code> on success, including when no async sub-devices are found</dt><dd><p><code class="docutils literal notranslate"><span class="pre">-ENOMEM</span></code> if memory allocation failed
-<code class="docutils literal notranslate"><span class="pre">-EINVAL</span></code> if graph or endpoint parsing failed
-Other error codes as returned by <strong>parse_endpoint</strong></p>
-</dd>
-</dl>
-<dl class="c function">
-<dt id="c.v4l2_async_notifier_parse_fwnode_endpoints_by_port">
-int <code class="sig-name descname">v4l2_async_notifier_parse_fwnode_endpoints_by_port</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="v4l2-async.html#c.v4l2_async_notifier" title="v4l2_async_notifier">v4l2_async_notifier</a> *<em>notifier</em>, size_t <em>asd_struct_size</em>, unsigned int <em>port</em>, <a class="reference internal" href="#c.parse_endpoint_func" title="parse_endpoint_func">parse_endpoint_func</a> <em>parse_endpoint</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_async_notifier_parse_fwnode_endpoints_by_port" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Parse V4L2 fwnode endpoints of a port in a device node</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">device</span> <span class="pre">*dev</span></code></dt><dd><p>the device the endpoints of which are to be parsed</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_async_notifier</span> <span class="pre">*notifier</span></code></dt><dd><p>notifier for <strong>dev</strong></p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">asd_struct_size</span></code></dt><dd><p>size of the driver’s async sub-device struct, including
-sizeof(<a class="reference internal" href="v4l2-async.html#c.v4l2_async_subdev" title="v4l2_async_subdev"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_async_subdev</span></code></a>). The <a class="reference internal" href="v4l2-async.html#c.v4l2_async_subdev" title="v4l2_async_subdev"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span>
-<span class="pre">v4l2_async_subdev</span></code></a> shall be the first member of
-the driver’s async sub-device struct, i.e. both
-begin at the same memory address.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">port</span></code></dt><dd><p>port number where endpoints are to be parsed</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">parse_endpoint_func</span> <span class="pre">parse_endpoint</span></code></dt><dd><p>Driver’s callback function called on each V4L2 fwnode
-endpoint. Optional.</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This function is just like <a class="reference internal" href="#c.v4l2_async_notifier_parse_fwnode_endpoints" title="v4l2_async_notifier_parse_fwnode_endpoints"><code class="xref c c-func docutils literal notranslate"><span class="pre">v4l2_async_notifier_parse_fwnode_endpoints()</span></code></a> with
-the exception that it only parses endpoints in a given port. This is useful
-on devices that have both sinks and sources: the async sub-devices connected
-to sources have already been configured by another driver (on capture
-devices). In this case the driver must know which ports to parse.</p>
-<p>Parse the fwnode endpoints of the <strong>dev</strong> device on a given <strong>port</strong> and populate
-the async sub-devices list of the notifier. The <strong>parse_endpoint</strong> callback
-function is called for each endpoint with the corresponding async sub-device
-pointer to let the caller initialize the driver-specific part of the async
-sub-device structure.</p>
-<p>The notifier memory shall be zeroed before this function is called on the
-notifier the first time.</p>
-<p>This function may not be called on a registered notifier and may be called on
-a notifier only once per port.</p>
 <p>The <a class="reference internal" href="#c.v4l2_fwnode_endpoint" title="v4l2_fwnode_endpoint"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_fwnode_endpoint</span></code></a> passed to the callback function
 <strong>parse_endpoint</strong> is released once the function is finished. If there is a need
 to retain that configuration, the user needs to allocate memory for it.</p>

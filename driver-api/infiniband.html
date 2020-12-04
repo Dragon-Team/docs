@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -1607,8 +1607,8 @@ requested size of the SRQ, and set to the actual values allocated
 on return.  If ib_create_srq() succeeds, then max_wr and max_sge
 will always be at least as large as the requested values.</p>
 <dl class="c function">
-<dt id="c.ib_create_qp">
-<em class="property">struct</em> ib_qp *<code class="sig-name descname">ib_create_qp</code><span class="sig-paren">(</span><em class="property">struct</em> ib_pd *<em>pd</em>, <em class="property">struct</em> ib_qp_init_attr *<em>qp_init_attr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ib_create_qp" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="c.ib_create_named_qp">
+<em class="property">struct</em> ib_qp *<code class="sig-name descname">ib_create_named_qp</code><span class="sig-paren">(</span><em class="property">struct</em> ib_pd *<em>pd</em>, <em class="property">struct</em> ib_qp_init_attr *<em>qp_init_attr</em>, <em class="property">const</em> char *<em>caller</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ib_create_named_qp" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Creates a kernel QP associated with the specified protection domain.</p>
 </dd></dl>
 
@@ -1619,6 +1619,8 @@ will always be at least as large as the requested values.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">ib_qp_init_attr</span> <span class="pre">*qp_init_attr</span></code></dt><dd><p>A list of initial attributes required to create the
 QP.  If QP creation succeeds, then the attributes are updated to
 the actual capabilities of the created QP.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*caller</span></code></dt><dd><p><em>undescribed</em></p>
 </dd>
 </dl>
 <p><strong>NOTE</strong></p>

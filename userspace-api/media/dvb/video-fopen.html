@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -295,7 +295,7 @@
 <span id="video-fopen"></span><h1><span class="section-number">6.2.2.1. </span>dvb video open()<a class="headerlink" href="#dvb-video-open" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <h2><span class="section-number">6.2.2.1.1. </span>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p>dvb video open()</p>
+<p>dvb video <a class="reference internal" href="#c.DTV.video.open" title="DTV.video.open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a></p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>This ioctl is deprecated.</p>
@@ -342,10 +342,10 @@ int <code class="sig-name descname">open</code><span class="sig-paren">(</span><
 <h2><span class="section-number">6.2.2.1.4. </span>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>This system call opens a named video device (e.g.
 /dev/dvb/adapter0/video0) for subsequent use.</p>
-<p>When an open() call has succeeded, the device will be ready for use. The
+<p>When an <a class="reference internal" href="#c.DTV.video.open" title="DTV.video.open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a> call has succeeded, the device will be ready for use. The
 significance of blocking or non-blocking mode is described in the
 documentation for functions where there is a difference. It does not
-affect the semantics of the open() call itself. A device opened in
+affect the semantics of the <a class="reference internal" href="#c.DTV.video.open" title="DTV.video.open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a> call itself. A device opened in
 blocking mode can later be put into non-blocking mode (and vice versa)
 using the F_SETFL command of the fcntl system call. This is a standard
 system call, documented in the Linux manual page for fcntl. Only one

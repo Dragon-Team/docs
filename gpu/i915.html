@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -602,7 +602,7 @@ int <code class="sig-name descname">__intel_wait_for_register_fw</code><span cla
 <p><strong>Description</strong></p>
 <p>This routine waits until the target register <strong>reg</strong> contains the expected
 <strong>value</strong> after applying the <strong>mask</strong>, i.e. it waits until</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(I915_READ_FW(reg) &amp; mask) == value
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(intel_uncore_read_fw(uncore, reg) &amp; mask) == value
 </pre></div>
 </div>
 <p>Otherwise, the wait will timeout after <strong>slow_timeout_ms</strong> milliseconds.
@@ -640,7 +640,7 @@ int <code class="sig-name descname">__intel_wait_for_register</code><span class=
 <p><strong>Description</strong></p>
 <p>This routine waits until the target register <strong>reg</strong> contains the expected
 <strong>value</strong> after applying the <strong>mask</strong>, i.e. it waits until</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(I915_READ(reg) &amp; mask) == value
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(intel_uncore_read(uncore, reg) &amp; mask) == value
 </pre></div>
 </div>
 <p>Otherwise, the wait will timeout after <strong>timeout_ms</strong> milliseconds.</p>
@@ -871,6 +871,20 @@ void <code class="sig-name descname">intel_gvt_driver_remove</code><span class="
 <p><strong>Description</strong></p>
 <p>This function is called at the i915 driver unloading stage, to shutdown
 GVT components and release the related resources.</p>
+<dl class="c function">
+<dt id="c.intel_gvt_resume">
+void <code class="sig-name descname">intel_gvt_resume</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_gvt_resume" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GVT resume routine wapper</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_i915_private</span> <span class="pre">*dev_priv</span></code></dt><dd><p>drm i915 private *</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function is called at the i915 driver resume stage to restore required
+HW status for GVT so that vGPU can continue running after resumed.</p>
 </div>
 <div class="section" id="workarounds">
 <h3>Workarounds<a class="headerlink" href="#workarounds" title="Permalink to this headline">¶</a></h3>
@@ -5541,8 +5555,7 @@ read() <strong>buf</strong>.</p>
 <dl class="c function">
 <dt id="c.gen8_append_oa_reports">
 int <code class="sig-name descname">gen8_append_oa_reports</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.i915_perf_stream" title="i915_perf_stream">i915_perf_stream</a> *<em>stream</em>, char __user *<em>buf</em>, size_t <em>count</em>, size_t *<em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen8_append_oa_reports" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Copies all buffered OA reports into userspace read() buffer.</p>
-</dd></dl>
+<dd></dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -5599,8 +5612,7 @@ updated <strong>offset</strong>.</p>
 <dl class="c function">
 <dt id="c.gen7_append_oa_reports">
 int <code class="sig-name descname">gen7_append_oa_reports</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.i915_perf_stream" title="i915_perf_stream">i915_perf_stream</a> *<em>stream</em>, char __user *<em>buf</em>, size_t <em>count</em>, size_t *<em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen7_append_oa_reports" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Copies all buffered OA reports into userspace read() buffer.</p>
-</dd></dl>
+<dd></dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">

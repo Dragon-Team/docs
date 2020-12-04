@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.4. LIRC Function Reference &mdash; The Linux-Next Dragon Kernel  documentation</title>
+  <title>6.5. LIRC Function Reference &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
 
   
@@ -34,7 +34,7 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="6.4.1. LIRC read()" href="lirc-read.html" />
+    <link rel="next" title="6.5.1. LIRC read()" href="lirc-read.html" />
     <link rel="prev" title="6.1. Introduction" href="lirc-dev-intro.html" /> 
 </head>
 
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -266,7 +266,7 @@
         
           <li><a href="lirc-dev.html"><span class="section-number">6. </span>LIRC Device Interface</a> &raquo;</li>
         
-      <li><span class="section-number">6.4. </span>LIRC Function Reference</li>
+      <li><span class="section-number">6.5. </span>LIRC Function Reference</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -286,25 +286,25 @@
            <div itemprop="articleBody">
             
   <div class="section" id="lirc-function-reference">
-<span id="lirc-func"></span><h1><span class="section-number">6.4. </span>LIRC Function Reference<a class="headerlink" href="#lirc-function-reference" title="Permalink to this headline">¶</a></h1>
+<span id="lirc-func"></span><h1><span class="section-number">6.5. </span>LIRC Function Reference<a class="headerlink" href="#lirc-function-reference" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="lirc-read.html">6.4.1. LIRC read()</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lirc-write.html">6.4.2. LIRC write()</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lirc-get-features.html">6.4.3. ioctl LIRC_GET_FEATURES</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lirc-get-send-mode.html">6.4.4. ioctls LIRC_GET_SEND_MODE and LIRC_SET_SEND_MODE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lirc-get-rec-mode.html">6.4.5. ioctls LIRC_GET_REC_MODE and LIRC_SET_REC_MODE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lirc-get-rec-resolution.html">6.4.6. ioctl LIRC_GET_REC_RESOLUTION</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lirc-set-send-duty-cycle.html">6.4.7. ioctl LIRC_SET_SEND_DUTY_CYCLE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lirc-get-timeout.html">6.4.8. ioctls LIRC_GET_MIN_TIMEOUT and LIRC_GET_MAX_TIMEOUT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lirc-set-rec-timeout.html">6.4.9. ioctl LIRC_GET_REC_TIMEOUT and LIRC_SET_REC_TIMEOUT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lirc-set-rec-carrier.html">6.4.10. ioctl LIRC_SET_REC_CARRIER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lirc-set-rec-carrier-range.html">6.4.11. ioctl LIRC_SET_REC_CARRIER_RANGE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lirc-set-send-carrier.html">6.4.12. ioctl LIRC_SET_SEND_CARRIER</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lirc-set-transmitter-mask.html">6.4.13. ioctl LIRC_SET_TRANSMITTER_MASK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lirc-set-rec-timeout-reports.html">6.4.14. ioctl LIRC_SET_REC_TIMEOUT_REPORTS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lirc-set-measure-carrier-mode.html">6.4.15. ioctl LIRC_SET_MEASURE_CARRIER_MODE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lirc-set-wideband-receiver.html">6.4.16. ioctl LIRC_SET_WIDEBAND_RECEIVER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lirc-read.html">6.5.1. LIRC read()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lirc-write.html">6.5.2. LIRC write()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lirc-get-features.html">6.5.3. ioctl LIRC_GET_FEATURES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lirc-get-send-mode.html">6.5.4. ioctls LIRC_GET_SEND_MODE and LIRC_SET_SEND_MODE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lirc-get-rec-mode.html">6.5.5. ioctls LIRC_GET_REC_MODE and LIRC_SET_REC_MODE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lirc-get-rec-resolution.html">6.5.6. ioctl LIRC_GET_REC_RESOLUTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lirc-set-send-duty-cycle.html">6.5.7. ioctl LIRC_SET_SEND_DUTY_CYCLE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lirc-get-timeout.html">6.5.8. ioctls LIRC_GET_MIN_TIMEOUT and LIRC_GET_MAX_TIMEOUT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lirc-set-rec-timeout.html">6.5.9. ioctl LIRC_GET_REC_TIMEOUT and LIRC_SET_REC_TIMEOUT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lirc-set-rec-carrier.html">6.5.10. ioctl LIRC_SET_REC_CARRIER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lirc-set-rec-carrier-range.html">6.5.11. ioctl LIRC_SET_REC_CARRIER_RANGE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lirc-set-send-carrier.html">6.5.12. ioctl LIRC_SET_SEND_CARRIER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lirc-set-transmitter-mask.html">6.5.13. ioctl LIRC_SET_TRANSMITTER_MASK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lirc-set-rec-timeout-reports.html">6.5.14. ioctl LIRC_SET_REC_TIMEOUT_REPORTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lirc-set-measure-carrier-mode.html">6.5.15. ioctl LIRC_SET_MEASURE_CARRIER_MODE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lirc-set-wideband-receiver.html">6.5.16. ioctl LIRC_SET_WIDEBAND_RECEIVER</a></li>
 </ul>
 </div>
 </div>
@@ -317,7 +317,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="lirc-read.html" class="btn btn-neutral float-right" title="6.4.1. LIRC read()" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="lirc-read.html" class="btn btn-neutral float-right" title="6.5.1. LIRC read()" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="lirc-dev-intro.html" class="btn btn-neutral float-left" title="6.1. Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

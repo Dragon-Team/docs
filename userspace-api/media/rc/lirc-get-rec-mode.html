@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.4.5. ioctls LIRC_GET_REC_MODE and LIRC_SET_REC_MODE &mdash; The Linux-Next Dragon Kernel  documentation</title>
+  <title>6.5.5. ioctls LIRC_GET_REC_MODE and LIRC_SET_REC_MODE &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
 
   
@@ -34,8 +34,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="6.4.6. ioctl LIRC_GET_REC_RESOLUTION" href="lirc-get-rec-resolution.html" />
-    <link rel="prev" title="6.4.4. ioctls LIRC_GET_SEND_MODE and LIRC_SET_SEND_MODE" href="lirc-get-send-mode.html" /> 
+    <link rel="next" title="6.5.6. ioctl LIRC_GET_REC_RESOLUTION" href="lirc-get-rec-resolution.html" />
+    <link rel="prev" title="6.5.4. ioctls LIRC_GET_SEND_MODE and LIRC_SET_SEND_MODE" href="lirc-get-send-mode.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -266,9 +266,9 @@
         
           <li><a href="lirc-dev.html"><span class="section-number">6. </span>LIRC Device Interface</a> &raquo;</li>
         
-          <li><a href="lirc-func.html"><span class="section-number">6.4. </span>LIRC Function Reference</a> &raquo;</li>
+          <li><a href="lirc-func.html"><span class="section-number">6.5. </span>LIRC Function Reference</a> &raquo;</li>
         
-      <li><span class="section-number">6.4.5. </span>ioctls LIRC_GET_REC_MODE and LIRC_SET_REC_MODE</li>
+      <li><span class="section-number">6.5.5. </span>ioctls LIRC_GET_REC_MODE and LIRC_SET_REC_MODE</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -288,13 +288,13 @@
            <div itemprop="articleBody">
             
   <div class="section" id="ioctls-lirc-get-rec-mode-and-lirc-set-rec-mode">
-<span id="lirc-set-rec-mode"></span><span id="lirc-get-rec-mode"></span><h1><span class="section-number">6.4.5. </span>ioctls LIRC_GET_REC_MODE and LIRC_SET_REC_MODE<a class="headerlink" href="#ioctls-lirc-get-rec-mode-and-lirc-set-rec-mode" title="Permalink to this headline">¶</a></h1>
+<span id="lirc-set-rec-mode"></span><span id="lirc-get-rec-mode"></span><h1><span class="section-number">6.5.5. </span>ioctls LIRC_GET_REC_MODE and LIRC_SET_REC_MODE<a class="headerlink" href="#ioctls-lirc-get-rec-mode-and-lirc-set-rec-mode" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
-<h2><span class="section-number">6.4.5.1. </span>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.5.1. </span>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p>LIRC_GET_REC_MODE/LIRC_SET_REC_MODE - Get/set current receive mode.</p>
 </div>
 <div class="section" id="synopsis">
-<h2><span class="section-number">6.4.5.2. </span>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.5.2. </span>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <dl class="c macro">
 <dt id="c.RC.LIRC_GET_REC_MODE">
 <code class="sig-name descname">LIRC_GET_REC_MODE</code><a class="headerlink" href="#c.RC.LIRC_GET_REC_MODE" title="Permalink to this definition">¶</a><br /></dt>
@@ -309,7 +309,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">ioctl(int</span> <span class="pre">fd,</span> <span class="pre">LIRC_SET_REC_MODE,</span> <span class="pre">__u32</span> <span class="pre">*mode)</span></code></p>
 </div>
 <div class="section" id="arguments">
-<h2><span class="section-number">6.4.5.3. </span>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.5.3. </span>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">fd</span></code></dt><dd><p>File descriptor returned by open().</p>
 </dd>
@@ -318,14 +318,14 @@
 </dl>
 </div>
 <div class="section" id="description">
-<h2><span class="section-number">6.4.5.4. </span>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.5.4. </span>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Get and set the current receive mode. Only
 <a class="reference internal" href="lirc-dev-intro.html#lirc-mode-mode2"><span class="std std-ref">LIRC_MODE_MODE2</span></a> and
 <a class="reference internal" href="lirc-dev-intro.html#lirc-mode-scancode"><span class="std std-ref">LIRC_MODE_SCANCODE</span></a> are supported.
 Use <a class="reference internal" href="lirc-get-features.html#lirc-get-features"><span class="std std-ref">ioctl LIRC_GET_FEATURES</span></a> to find out which modes the driver supports.</p>
 </div>
 <div class="section" id="return-value">
-<h2><span class="section-number">6.4.5.5. </span>Return Value<a class="headerlink" href="#return-value" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.5.5. </span>Return Value<a class="headerlink" href="#return-value" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
@@ -354,10 +354,10 @@ Use <a class="reference internal" href="lirc-get-features.html#lirc-get-features
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="lirc-get-rec-resolution.html" class="btn btn-neutral float-right" title="6.4.6. ioctl LIRC_GET_REC_RESOLUTION" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="lirc-get-rec-resolution.html" class="btn btn-neutral float-right" title="6.5.6. ioctl LIRC_GET_REC_RESOLUTION" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="lirc-get-send-mode.html" class="btn btn-neutral float-left" title="6.4.4. ioctls LIRC_GET_SEND_MODE and LIRC_SET_SEND_MODE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="lirc-get-send-mode.html" class="btn btn-neutral float-left" title="6.5.4. ioctls LIRC_GET_SEND_MODE and LIRC_SET_SEND_MODE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

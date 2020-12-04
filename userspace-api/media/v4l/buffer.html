@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -422,9 +422,9 @@ buffer size.</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>VIDIOC_S_EXT_CTRLS(x)</p></li>
-<li><p>VIDIOC_TRY_FMT()</p></li>
+<li><p><a class="reference internal" href="vidioc-g-fmt.html#c.V4L.VIDIOC_TRY_FMT" title="V4L.VIDIOC_TRY_FMT"><code class="xref c c-func docutils literal notranslate"><span class="pre">VIDIOC_TRY_FMT()</span></code></a></p></li>
 <li><p>VIDIOC_S_EXT_CTRLS(y)</p></li>
-<li><p>VIDIOC_TRY_FMT()</p></li>
+<li><p><a class="reference internal" href="vidioc-g-fmt.html#c.V4L.VIDIOC_TRY_FMT" title="V4L.VIDIOC_TRY_FMT"><code class="xref c c-func docutils literal notranslate"><span class="pre">VIDIOC_TRY_FMT()</span></code></a></p></li>
 </ol>
 </div></blockquote>
 <p>The <a class="reference internal" href="vidioc-create-bufs.html#c.V4L.VIDIOC_CREATE_BUFS" title="VIDIOC_CREATE_BUFS"><code class="xref c c-func docutils literal notranslate"><span class="pre">VIDIOC_CREATE_BUFS()</span></code></a> ioctl can then be used to allocate buffers
@@ -557,7 +557,7 @@ See <a class="reference internal" href="mmap.html#mmap"><span class="std std-ref
 unsigned long type) in virtual memory, set by the application. See
 <a class="reference internal" href="userp.html#userp"><span class="std std-ref">Streaming I/O (User Pointers)</span></a> for details.</p></td>
 </tr>
-<tr class="row-even"><td><p>struct v4l2_plane</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#c.V4L.v4l2_plane" title="V4L.v4l2_plane"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_plane</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">*planes</span></code></p></td>
 <td><p>When using the multi-planar API, contains a userspace pointer to
 an array of struct <a class="reference internal" href="#c.V4L.v4l2_plane" title="v4l2_plane"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_plane</span></code></a>. The size of
@@ -944,7 +944,7 @@ this flag on the capture queue for the last buffer when the
 <a class="reference internal" href="vidioc-qbuf.html#vidioc-qbuf"><span class="std std-ref">VIDIOC_DQBUF</span></a> ioctl is called. Due to
 hardware limitations, the last buffer may be empty. In this case
 the driver will set the <code class="docutils literal notranslate"><span class="pre">bytesused</span></code> field to 0, regardless of
-the format. Any Any subsequent call to the
+the format. Any subsequent call to the
 <a class="reference internal" href="vidioc-qbuf.html#vidioc-qbuf"><span class="std std-ref">VIDIOC_DQBUF</span></a> ioctl will not block anymore,
 but return an <code class="docutils literal notranslate"><span class="pre">EPIPE</span></code> error code.</p>
 </td>

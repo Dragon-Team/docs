@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -360,7 +360,7 @@ Two methods exist to suspend execution of the application until one or
 more buffers can be dequeued. By default <a class="reference internal" href="vidioc-qbuf.html#vidioc-qbuf"><span class="std std-ref">VIDIOC_DQBUF</span></a> blocks when no buffer is in the outgoing queue. When the
 <code class="docutils literal notranslate"><span class="pre">O_NONBLOCK</span></code> flag was given to the <a class="reference internal" href="func-open.html#c.V4L.open" title="open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a> function,
 <a class="reference internal" href="vidioc-qbuf.html#vidioc-qbuf"><span class="std std-ref">VIDIOC_DQBUF</span></a> returns immediately with an <code class="docutils literal notranslate"><span class="pre">EAGAIN</span></code>
-error code when no buffer is available. The <a class="reference internal" href="func-select.html#func-select"><span class="std std-ref">select()</span></a> or <a class="reference internal" href="func-poll.html#c.V4L.poll" title="poll"><code class="xref c c-func docutils literal notranslate"><span class="pre">poll()</span></code></a> function are always
+error code when no buffer is available. The <a class="reference internal" href="func-select.html#func-select"><span class="std std-ref"><a class="reference internal" href="func-select.html#c.V4L.select" title="V4L.select"><code class="xref c c-func docutils literal notranslate"><span class="pre">select()</span></code></a></span></a> or <a class="reference internal" href="func-poll.html#c.V4L.poll" title="poll"><code class="xref c c-func docutils literal notranslate"><span class="pre">poll()</span></code></a> function are always
 available.</p>
 <p>To start and stop capturing or output applications call the
 <a class="reference internal" href="vidioc-streamon.html#vidioc-streamon"><span class="std std-ref">VIDIOC_STREAMON</span></a> and

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -426,7 +426,7 @@ since there are no per-frame settings to report there.</p>
         <span class="k">return</span> <span class="n">errno</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>User-space can then either wait for the request to complete by calling poll() on
+<p>User-space can then either wait for the request to complete by calling <a class="reference internal" href="request-func-poll.html#c.MC.poll" title="MC.poll"><code class="xref c c-func docutils literal notranslate"><span class="pre">poll()</span></code></a> on
 its file descriptor, or start dequeuing CAPTURE buffers. Most likely, it will
 want to get CAPTURE buffers as soon as possible and this can be done using a
 regular <a class="reference internal" href="../v4l/vidioc-qbuf.html#vidioc-qbuf"><span class="std std-ref">VIDIOC_DQBUF</span></a>:</p>

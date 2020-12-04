@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -443,8 +443,8 @@ per la sincronizzazione fra processi in contesto utente.</p>
 <p>Se avete una struttura dati che verrà utilizzata solo dal contesto utente,
 allora, per proteggerla, potete utilizzare un semplice mutex
 (<code class="docutils literal notranslate"><span class="pre">include/linux/mutex.h</span></code>). Questo è il caso più semplice: inizializzate il
-mutex; invocate <a class="reference internal" href="../../../kernel-hacking/locking.html#c.mutex_lock_interruptible" title="mutex_lock_interruptible"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_lock_interruptible()</span></code></a> per trattenerlo e
-<a class="reference internal" href="../../../kernel-hacking/locking.html#c.mutex_unlock" title="mutex_unlock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_unlock()</span></code></a> per rilasciarlo. C’è anche <a class="reference internal" href="../../../kernel-hacking/locking.html#c.mutex_lock" title="mutex_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_lock()</span></code></a>
+mutex; invocate <a class="reference internal" href="#c.it_IT.mutex_lock_interruptible" title="it_IT.mutex_lock_interruptible"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_lock_interruptible()</span></code></a> per trattenerlo e
+<a class="reference internal" href="#c.it_IT.mutex_unlock" title="it_IT.mutex_unlock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_unlock()</span></code></a> per rilasciarlo. C’è anche <a class="reference internal" href="#c.it_IT.mutex_lock" title="it_IT.mutex_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_lock()</span></code></a>
 ma questa dovrebbe essere evitata perché non ritorna in caso di segnali.</p>
 <p>Per esempio: <code class="docutils literal notranslate"><span class="pre">net/netfilter/nf_sockopt.c</span></code> permette la registrazione
 di nuove chiamate per setsockopt() e getsockopt()
@@ -785,7 +785,7 @@ se ci riesce al primo colpo ritorna un valore diverso da zero, altrimenti
 se fallisce ritorna 0. Questa funzione può essere utilizzata in un qualunque
 contesto, ma come spin_lock(): dovete disabilitare i contesti che
 potrebbero interrompervi e quindi trattenere lo spinlock.</p>
-<p>La funzione <a class="reference internal" href="../../../kernel-hacking/locking.html#c.mutex_trylock" title="mutex_trylock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_trylock()</span></code></a> invece di sospendere il vostro processo
+<p>La funzione <a class="reference internal" href="#c.it_IT.mutex_trylock" title="it_IT.mutex_trylock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_trylock()</span></code></a> invece di sospendere il vostro processo
 ritorna un valore diverso da zero se è possibile trattenere il lock al primo
 colpo, altrimenti se fallisce ritorna 0. Nonostante non dorma, questa funzione
 non può essere usata in modo sicuro in contesti di interruzione hardware o
@@ -1693,12 +1693,12 @@ dormire.</p>
 </ul>
 </li>
 <li><p>kmalloc(GFP_KERNEL) &lt;kmalloc&gt;`</p></li>
-<li><p><a class="reference internal" href="../../../kernel-hacking/locking.html#c.mutex_lock_interruptible" title="mutex_lock_interruptible"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_lock_interruptible()</span></code></a> and
-<a class="reference internal" href="../../../kernel-hacking/locking.html#c.mutex_lock" title="mutex_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_lock()</span></code></a></p>
-<p>C’è anche <a class="reference internal" href="../../../kernel-hacking/locking.html#c.mutex_trylock" title="mutex_trylock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_trylock()</span></code></a> che però non dorme.
+<li><p><a class="reference internal" href="#c.it_IT.mutex_lock_interruptible" title="it_IT.mutex_lock_interruptible"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_lock_interruptible()</span></code></a> and
+<a class="reference internal" href="#c.it_IT.mutex_lock" title="it_IT.mutex_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_lock()</span></code></a></p>
+<p>C’è anche <a class="reference internal" href="#c.it_IT.mutex_trylock" title="it_IT.mutex_trylock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_trylock()</span></code></a> che però non dorme.
 Comunque, non deve essere usata in un contesto d’interruzione dato
 che la sua implementazione non è sicura in quel contesto.
-Anche <a class="reference internal" href="../../../kernel-hacking/locking.html#c.mutex_unlock" title="mutex_unlock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_unlock()</span></code></a> non dorme mai. Non può comunque essere
+Anche <a class="reference internal" href="#c.it_IT.mutex_unlock" title="it_IT.mutex_unlock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_unlock()</span></code></a> non dorme mai. Non può comunque essere
 usata in un contesto d’interruzione perché un mutex deve essere rilasciato
 dallo stesso processo che l’ha acquisito.</p>
 </li>
@@ -1839,7 +1839,7 @@ int <code class="sig-name descname">mutex_lock_interruptible</code><span class="
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Lock the mutex like <a class="reference internal" href="../../../kernel-hacking/locking.html#c.mutex_lock" title="mutex_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_lock()</span></code></a>.  If a signal is delivered while the
+<p>Lock the mutex like <a class="reference internal" href="#c.it_IT.mutex_lock" title="it_IT.mutex_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_lock()</span></code></a>.  If a signal is delivered while the
 process is sleeping, this function will return without acquiring the
 mutex.</p>
 <p><strong>Context</strong></p>
@@ -1859,7 +1859,7 @@ int <code class="sig-name descname">mutex_lock_killable</code><span class="sig-p
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Lock the mutex like <a class="reference internal" href="../../../kernel-hacking/locking.html#c.mutex_lock" title="mutex_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_lock()</span></code></a>.  If a signal which will be fatal to
+<p>Lock the mutex like <a class="reference internal" href="#c.it_IT.mutex_lock" title="it_IT.mutex_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_lock()</span></code></a>.  If a signal which will be fatal to
 the current process is delivered while the process is sleeping, this
 function will return without acquiring the mutex.</p>
 <p><strong>Context</strong></p>
@@ -1879,7 +1879,7 @@ void <code class="sig-name descname">mutex_lock_io</code><span class="sig-paren"
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Lock the mutex like <a class="reference internal" href="../../../kernel-hacking/locking.html#c.mutex_lock" title="mutex_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_lock()</span></code></a>.  While the task is waiting for this
+<p>Lock the mutex like <a class="reference internal" href="#c.it_IT.mutex_lock" title="it_IT.mutex_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_lock()</span></code></a>.  While the task is waiting for this
 mutex, it will be accounted as being in the IO wait state by the
 scheduler.</p>
 <p><strong>Context</strong></p>
@@ -2223,7 +2223,7 @@ which is in the middle of exiting</p>
 <p><strong>Description</strong></p>
 <p>Try and get the lock on behalf of the top waiter if we can do it atomically.
 Wake the top waiter if we succeed.  If the caller specified set_waiters,
-then direct <a class="reference internal" href="../../../kernel-hacking/locking.html#c.futex_lock_pi_atomic" title="futex_lock_pi_atomic"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_lock_pi_atomic()</span></code></a> to force setting the FUTEX_WAITERS bit.
+then direct <a class="reference internal" href="#c.it_IT.futex_lock_pi_atomic" title="it_IT.futex_lock_pi_atomic"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_lock_pi_atomic()</span></code></a> to force setting the FUTEX_WAITERS bit.
 hb1 and hb2 must be held by the caller.</p>
 <p><strong>exiting</strong> is only set when the return value is -EBUSY. If so, this holds
 a refcount on the exiting task on return and the caller needs to drop it
@@ -2285,10 +2285,10 @@ void <code class="sig-name descname">queue_me</code><span class="sig-paren">(</s
 </dl>
 <p><strong>Description</strong></p>
 <p>The hb-&gt;lock must be held by the caller, and is released here. A call to
-<a class="reference internal" href="../../../kernel-hacking/locking.html#c.queue_me" title="queue_me"><code class="xref c c-func docutils literal notranslate"><span class="pre">queue_me()</span></code></a> is typically paired with exactly one call to <a class="reference internal" href="../../../kernel-hacking/locking.html#c.unqueue_me" title="unqueue_me"><code class="xref c c-func docutils literal notranslate"><span class="pre">unqueue_me()</span></code></a>.  The
+<a class="reference internal" href="#c.it_IT.queue_me" title="it_IT.queue_me"><code class="xref c c-func docutils literal notranslate"><span class="pre">queue_me()</span></code></a> is typically paired with exactly one call to <a class="reference internal" href="#c.it_IT.unqueue_me" title="it_IT.unqueue_me"><code class="xref c c-func docutils literal notranslate"><span class="pre">unqueue_me()</span></code></a>.  The
 exceptions involve the PI related operations, which may use unqueue_me_pi()
 or nothing if the unqueue is done as part of the wake process and the unqueue
-state is implicit in the state of woken task (see <a class="reference internal" href="../../../kernel-hacking/locking.html#c.futex_wait_requeue_pi" title="futex_wait_requeue_pi"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_wait_requeue_pi()</span></code></a> for
+state is implicit in the state of woken task (see <a class="reference internal" href="#c.it_IT.futex_wait_requeue_pi" title="it_IT.futex_wait_requeue_pi"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_wait_requeue_pi()</span></code></a> for
 an example).</p>
 <dl class="c function">
 <dt id="c.it_IT.unqueue_me">
@@ -2302,8 +2302,8 @@ int <code class="sig-name descname">unqueue_me</code><span class="sig-paren">(</
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>The q-&gt;lock_ptr must not be held by the caller. A call to <a class="reference internal" href="../../../kernel-hacking/locking.html#c.unqueue_me" title="unqueue_me"><code class="xref c c-func docutils literal notranslate"><span class="pre">unqueue_me()</span></code></a> must
-be paired with exactly one earlier call to <a class="reference internal" href="../../../kernel-hacking/locking.html#c.queue_me" title="queue_me"><code class="xref c c-func docutils literal notranslate"><span class="pre">queue_me()</span></code></a>.</p>
+<p>The q-&gt;lock_ptr must not be held by the caller. A call to <a class="reference internal" href="#c.it_IT.unqueue_me" title="it_IT.unqueue_me"><code class="xref c c-func docutils literal notranslate"><span class="pre">unqueue_me()</span></code></a> must
+be paired with exactly one earlier call to <a class="reference internal" href="#c.it_IT.queue_me" title="it_IT.queue_me"><code class="xref c c-func docutils literal notranslate"><span class="pre">queue_me()</span></code></a>.</p>
 <p><strong>Return</strong></p>
 <blockquote>
 <div><ul class="simple">
@@ -2341,7 +2341,7 @@ acquire the lock. Must be called with the hb lock held.</p>
 <dl class="c function">
 <dt id="c.it_IT.futex_wait_queue_me">
 void <code class="sig-name descname">futex_wait_queue_me</code><span class="sig-paren">(</span><em class="property">struct</em> futex_hash_bucket *<em>hb</em>, <em class="property">struct</em> <a class="reference internal" href="../../../kernel-hacking/locking.html#c.futex_q" title="futex_q">futex_q</a> *<em>q</em>, <em class="property">struct</em> <a class="reference internal" href="../../../driver-api/basics.html#c.hrtimer_sleeper" title="hrtimer_sleeper">hrtimer_sleeper</a> *<em>timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#c.it_IT.futex_wait_queue_me" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><a class="reference internal" href="../../../kernel-hacking/locking.html#c.queue_me" title="queue_me"><code class="xref c c-func docutils literal notranslate"><span class="pre">queue_me()</span></code></a> and wait for wakeup, timeout, or signal</p>
+<dd><p><a class="reference internal" href="#c.it_IT.queue_me" title="it_IT.queue_me"><code class="xref c c-func docutils literal notranslate"><span class="pre">queue_me()</span></code></a> and wait for wakeup, timeout, or signal</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -2436,15 +2436,15 @@ the same type, no requeueing from private to shared, etc.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>The caller will wait on uaddr and will be requeued by <a class="reference internal" href="../../../kernel-hacking/locking.html#c.futex_requeue" title="futex_requeue"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_requeue()</span></code></a> to
+<p>The caller will wait on uaddr and will be requeued by <a class="reference internal" href="#c.it_IT.futex_requeue" title="it_IT.futex_requeue"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_requeue()</span></code></a> to
 uaddr2 which must be PI aware and unique from uaddr.  Normal wakeup will wake
 on uaddr2 and complete the acquisition of the rt_mutex prior to returning to
 userspace.  This ensures the rt_mutex maintains an owner when it has waiters;
 without one, the pi logic would not know which task to boost/deboost, if
 there was a need to.</p>
-<p>We call schedule in <a class="reference internal" href="../../../kernel-hacking/locking.html#c.futex_wait_queue_me" title="futex_wait_queue_me"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_wait_queue_me()</span></code></a> when we enqueue and return there
+<p>We call schedule in <a class="reference internal" href="#c.it_IT.futex_wait_queue_me" title="it_IT.futex_wait_queue_me"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_wait_queue_me()</span></code></a> when we enqueue and return there
 via the following–
-1) wakeup on uaddr2 after an atomic lock acquisition by <a class="reference internal" href="../../../kernel-hacking/locking.html#c.futex_requeue" title="futex_requeue"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_requeue()</span></code></a>
+1) wakeup on uaddr2 after an atomic lock acquisition by <a class="reference internal" href="#c.it_IT.futex_requeue" title="it_IT.futex_requeue"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_requeue()</span></code></a>
 2) wakeup on uaddr2 after a requeue
 3) signal
 4) timeout</p>

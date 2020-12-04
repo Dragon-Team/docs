@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -293,14 +293,14 @@ panels with or without frame buffering and can convert most
 input formats including most variants of RGB and YUV.</p>
 <p>The hardware has four display pipes, and the layout is a little
 bit like this:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Memory     -&gt; Overlay -&gt; Channel -&gt; FIFO -&gt; 5 formatters -&gt; DSI/DPI
-External      0..5       0..3       A,B,    3 x DSI         bridge
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Memory     -&gt; Overlay -&gt; Channel -&gt; FIFO -&gt; 8 formatters -&gt; DSI/DPI
+External      0..5       0..3       A,B,    6 x DSI         bridge
 source 0..9                         C0,C1   2 x DPI
 </pre></div>
 </div>
 <p>FIFOs A and B are for LCD and HDMI while FIFO CO/C1 are for
 panels with embedded buffer.
-3 of the formatters are for DSI.
+6 of the formatters are for DSI, 3 pairs for VID/CMD respectively.
 2 of the formatters are for DPI.</p>
 <p>Behind the formatters are the DSI or DPI ports that route to
 the external pins of the chip. As there are 3 DSI ports and one

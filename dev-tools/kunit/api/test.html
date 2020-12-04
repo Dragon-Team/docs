@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -364,6 +364,7 @@ unique within the test instance.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct kunit_case {
   void (*run_case)(struct kunit *test);
   const char *name;
+  const void* (*generate_params)(const void *prev, char *desc);
 };
 </pre></div>
 </div>
@@ -372,6 +373,8 @@ unique within the test instance.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">run_case</span></code></dt><dd><p>the function representing the actual test case.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">name</span></code></dt><dd><p>the name of the test case.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">generate_params</span></code></dt><dd><p>the generator function for parameterized tests.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
@@ -418,6 +421,33 @@ terminated with an empty test case.</p>
 <p>Takes a symbol for a function representing a test case and creates a
 <a class="reference internal" href="#c.kunit_case" title="kunit_case"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">kunit_case</span></code></a> object from it. See the documentation for
 <a class="reference internal" href="#c.kunit_case" title="kunit_case"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">kunit_case</span></code></a> for an example on how to use it.</p>
+<dl class="c macro">
+<dt id="c.KUNIT_CASE_PARAM">
+<code class="sig-name descname">KUNIT_CASE_PARAM</code><a class="headerlink" href="#c.KUNIT_CASE_PARAM" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<p><code class="docutils literal notranslate"><span class="pre">KUNIT_CASE_PARAM</span> <span class="pre">(test_name,</span> <span class="pre">gen_params)</span></code></p>
+<blockquote>
+<div><p>A helper for creation a parameterized <a class="reference internal" href="#c.kunit_case" title="kunit_case"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">kunit_case</span></code></a></p>
+</div></blockquote>
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">test_name</span></code></dt><dd><p>a reference to a test case function.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">gen_params</span></code></dt><dd><p>a reference to a parameter generator function.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>The generator function:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>const void* gen_params(const void *prev, char *desc)
+</pre></div>
+</div>
+<p>is used to lazily generate a series of arbitrarily typed values that fit into
+a void*. The argument <strong>prev</strong> is the previously returned value, which should be
+used to derive the next value; <strong>prev</strong> is set to NULL on the initial generator
+call. When no more values are available, the generator must return NULL.
+Optionally write a string into <strong>desc</strong> (size of KUNIT_PARAM_DESC_SIZE)
+describing the parameter.</p>
 <dl class="c struct">
 <dt id="c.kunit_suite">
 <em class="property">struct </em><code class="sig-name descname">kunit_suite</code><a class="headerlink" href="#c.kunit_suite" title="Permalink to this definition">¶</a><br /></dt>
@@ -1437,6 +1467,26 @@ for more information.</p>
 an errno stored in a pointer. This is the same as
 <a class="reference internal" href="#c.KUNIT_EXPECT_NOT_ERR_OR_NULL" title="KUNIT_EXPECT_NOT_ERR_OR_NULL"><code class="xref c c-func docutils literal notranslate"><span class="pre">KUNIT_EXPECT_NOT_ERR_OR_NULL()</span></code></a>, except it causes an assertion failure (see
 <a class="reference internal" href="#c.KUNIT_ASSERT_TRUE" title="KUNIT_ASSERT_TRUE"><code class="xref c c-func docutils literal notranslate"><span class="pre">KUNIT_ASSERT_TRUE()</span></code></a>) when the assertion is not met.</p>
+<dl class="c macro">
+<dt id="c.KUNIT_ARRAY_PARAM">
+<code class="sig-name descname">KUNIT_ARRAY_PARAM</code><a class="headerlink" href="#c.KUNIT_ARRAY_PARAM" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<p><code class="docutils literal notranslate"><span class="pre">KUNIT_ARRAY_PARAM</span> <span class="pre">(name,</span> <span class="pre">array,</span> <span class="pre">get_desc)</span></code></p>
+<blockquote>
+<div><p>Define test parameter generator from an array.</p>
+</div></blockquote>
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">name</span></code></dt><dd><p>prefix for the test parameter generator function.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">array</span></code></dt><dd><p>array of test parameters.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">get_desc</span></code></dt><dd><p>function to convert param to description; NULL to use default</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Define function <strong>name_gen_params</strong> which uses <strong>array</strong> to generate parameters.</p>
 </div>
 
 

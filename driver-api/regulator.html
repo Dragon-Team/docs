@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -918,6 +918,7 @@ regulator chip drivers.</p>
   const char *name;
   const char *supply_name;
   const char *of_match;
+  bool of_match_full_name;
   const char *regulators_node;
   int (*of_parse_cb)(struct device_node *,const struct regulator_desc *, struct regulator_config *);
   int id;
@@ -981,6 +982,9 @@ regulator chip drivers.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">supply_name</span></code></dt><dd><p>Identifying the regulator supply</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">of_match</span></code></dt><dd><p>Name used to identify regulator in DT.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">of_match_full_name</span></code></dt><dd><p>A flag to indicate that the of_match string, if
+present, should be matched against the node full_name.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">regulators_node</span></code></dt><dd><p>Name of node containing regulator definitions in DT.</p>
 </dd>

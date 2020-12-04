@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -2386,6 +2386,11 @@ Default: 0x0000</p>
 <dt>quirk_alias</dt><dd><p>Quirk alias list, pass strings like <code class="docutils literal notranslate"><span class="pre">0123abcd:5678beef</span></code>, which
 applies the existing quirk for the device 5678:beef to a new
 device 0123:abcd.</p>
+</dd>
+<dt>implicit_fb</dt><dd><p>Apply the generic implicit feedback sync mode.  When this is set
+and the playback stream sync mode is ASYNC, the driver tries to
+tie an adjacent ASYNC capture stream as the implicit feedback
+source.</p>
 </dd>
 <dt>use_vmalloc</dt><dd><p>Use <a class="reference internal" href="../core-api/mm-api.html#c.vmalloc" title="vmalloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">vmalloc()</span></code></a> for allocations of the PCM buffers (default: yes).
 For architectures with non-coherent memory like ARM or MIPS, the

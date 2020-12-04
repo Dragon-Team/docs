@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -243,6 +243,7 @@
 <li class="toctree-l2"><a class="reference internal" href="tcp-thin.html">Thin-streams and TCP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="team.html">Team</a></li>
 <li class="toctree-l2"><a class="reference internal" href="timestamping.html">Timestamping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipc.html">Linux Kernel TIPC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tproxy.html">Transparent proxy support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tuntap.html">Universal TUN/TAP device driver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="udplite.html">The UDP-Lite protocol (RFC 3828)</a></li>
@@ -467,6 +468,13 @@ inflight counters.</p></li>
 caches.</p></li>
 <li><p>page_pool_get_dma_addr(): Retrieve the stored DMA address.</p></li>
 <li><p>page_pool_get_dma_dir(): Retrieve the stored DMA direction.</p></li>
+<li><p>page_pool_put_page_bulk(): Tries to refill a number of pages into the
+ptr_ring cache holding ptr_ring producer lock. If the ptr_ring is full,
+page_pool_put_page_bulk() will release leftover pages to the page allocator.
+page_pool_put_page_bulk() is suitable to be run inside the driver NAPI tx
+completion loop for the XDP_REDIRECT use case.
+Please note the caller must not use data area after running
+page_pool_put_page_bulk(), as this function overwrites it.</p></li>
 </ul>
 </div>
 <div class="section" id="coding-examples">

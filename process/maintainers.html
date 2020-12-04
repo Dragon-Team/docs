@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -483,6 +483,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#bpf-jit-for-sparc-32-bit-and-64-bit">BPF JIT for SPARC (32-BIT AND 64-BIT)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bpf-jit-for-x86-32-bit">BPF JIT for X86 32-BIT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bpf-jit-for-x86-64-bit">BPF JIT for X86 64-BIT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpf-lsm-security-audit-and-enforcement-using-bpf">BPF LSM (Security Audit and Enforcement using BPF)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-b44-10-100-ethernet-driver">BROADCOM B44 10/100 ETHERNET DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-b53-ethernet-switch-driver">BROADCOM B53 ETHERNET SWITCH DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-bcm2711-bcm2835-arm-architecture">BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE</a></li>
@@ -701,6 +702,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#dma-buffer-sharing-framework">DMA BUFFER SHARING FRAMEWORK</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dma-generic-offload-engine-subsystem">DMA GENERIC OFFLOAD ENGINE SUBSYSTEM</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dma-mapping-helpers">DMA MAPPING HELPERS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dma-mapping-benchmark">DMA MAPPING BENCHMARK</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dma-buf-heaps-framework">DMA-BUF HEAPS FRAMEWORK</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dmc-frequency-driver-for-samsung-exynos5422">DMC FREQUENCY DRIVER FOR SAMSUNG EXYNOS5422</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dme1737-hardware-monitor-driver">DME1737 HARDWARE MONITOR DRIVER</a></li>
@@ -957,6 +959,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#gdt-scsi-disk-array-controller-driver">GDT SCSI DISK ARRAY CONTROLLER DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gemtek-fm-radio-receiver-driver">GEMTEK FM RADIO RECEIVER DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#generic-architecture-topology">GENERIC ARCHITECTURE TOPOLOGY</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generic-entry-code">GENERIC ENTRY CODE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#generic-gpio-i2c-driver">GENERIC GPIO I2C DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#generic-gpio-i2c-multiplexer-driver">GENERIC GPIO I2C MULTIPLEXER DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#generic-hdlc-wan-drivers">GENERIC HDLC (WAN) DRIVERS</a></li>
@@ -1174,7 +1177,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#intel-sgx">INTEL SGX</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#interconnect-api">INTERCONNECT API</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#invensense-icm-426xx-imu-driver">INVENSENSE ICM-426xx IMU DRIVER</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#w-https-invensense-tdk-com">W https://invensense.tdk.com/</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#invensense-mpu-3050-gyroscope-driver">INVENSENSE MPU-3050 GYROSCOPE DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ioc3-ethernet-driver">IOC3 ETHERNET DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#iomap-filesystem-library">IOMAP FILESYSTEM LIBRARY</a></li>
@@ -1390,6 +1392,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#mediatek-mt76-wireless-lan-driver">MEDIATEK MT76 WIRELESS LAN DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mediatek-mt7601u-wireless-lan-driver">MEDIATEK MT7601U WIRELESS LAN DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mediatek-mt7621-28-88-i2c-driver">MEDIATEK MT7621/28/88 I2C DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mediatek-mt7621-phy-pci-driver">MEDIATEK MT7621 PHY PCI DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mediatek-nand-controller-driver">MEDIATEK NAND CONTROLLER DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mediatek-pmic-led-driver">MEDIATEK PMIC LED DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mediatek-random-number-generator-support">MEDIATEK RANDOM NUMBER GENERATOR SUPPORT</a></li>
@@ -1461,6 +1464,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#microsoft-surface-pro-3-button-driver">MICROSOFT SURFACE PRO 3 BUTTON DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#microtek-x6-scanner">MICROTEK X6 SCANNER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mikrotik-crs3xx-98dx3236-board-support">MIKROTIK CRS3XX 98DX3236 BOARD SUPPORT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mipi-ccs-smia-and-smia-image-sensor-driver">MIPI CCS, SMIA AND SMIA++ IMAGE SENSOR DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mips">MIPS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mips-boston-development-board">MIPS BOSTON DEVELOPMENT BOARD</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mips-core-drivers">MIPS CORE DRIVERS</a></li>
@@ -1559,6 +1563,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#nxp-fspi-driver">NXP FSPI DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#nxp-fxas21002c-driver">NXP FXAS21002C DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#nxp-i-mx-8mq-dcss-driver">NXP i.MX 8MQ DCSS DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nxp-pf8100-pf8121a-pf8200-pmic-regulator-device-driver">NXP PF8100/PF8121A/PF8200 PMIC REGULATOR DEVICE DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#nxp-ptn5150a-cc-logic-and-extcon-driver">NXP PTN5150A CC LOGIC AND EXTCON DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#nxp-sgtl5000-driver">NXP SGTL5000 DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#nxp-sja1105-ethernet-switch-driver">NXP SJA1105 ETHERNET SWITCH DRIVER</a></li>
@@ -1594,6 +1599,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#omfs-filesystem">OMFS FILESYSTEM</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#omnikey-cardman-4000-driver">OMNIKEY CARDMAN 4000 DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#omnikey-cardman-4040-driver">OMNIKEY CARDMAN 4040 DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#omnivision-ov02a10-sensor-driver">OMNIVISION OV02A10 SENSOR DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#omnivision-ov13858-sensor-driver">OMNIVISION OV13858 SENSOR DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#omnivision-ov2680-sensor-driver">OMNIVISION OV2680 SENSOR DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#omnivision-ov2685-sensor-driver">OMNIVISION OV2685 SENSOR DRIVER</a></li>
@@ -1609,6 +1615,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#omnivision-ov8856-sensor-driver">OMNIVISION OV8856 SENSOR DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#omnivision-ov9640-sensor-driver">OMNIVISION OV9640 SENSOR DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#omnivision-ov9650-sensor-driver">OMNIVISION OV9650 SENSOR DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#omnivision-ov9734-sensor-driver">OMNIVISION OV9734 SENSOR DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#onenand-flash-driver">ONENAND FLASH DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#onion-omega2-board">ONION OMEGA2+ BOARD</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#op-tee-driver">OP-TEE DRIVER</a></li>
@@ -1893,6 +1900,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#samsung-exynos-pseudo-random-number-generator-rng-driver">SAMSUNG EXYNOS PSEUDO RANDOM NUMBER GENERATOR (RNG) DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#samsung-exynos-true-random-number-generator-trng-driver">SAMSUNG EXYNOS TRUE RANDOM NUMBER GENERATOR (TRNG) DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#samsung-framebuffer-driver">SAMSUNG FRAMEBUFFER DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#samsung-interconnect-drivers">SAMSUNG INTERCONNECT DRIVERS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#samsung-laptop-driver">SAMSUNG LAPTOP DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#samsung-multifunction-pmic-device-drivers">SAMSUNG MULTIFUNCTION PMIC DEVICE DRIVERS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#samsung-s3c24xx-s3c64xx-soc-series-camif-driver">SAMSUNG S3C24XX/S3C64XX SOC SERIES CAMIF DRIVER</a></li>
@@ -1980,7 +1988,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#smack-security-module">SMACK SECURITY MODULE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#smc91x-ethernet-driver">SMC91x ETHERNET DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#secure-monitor-call-smc-calling-convention-smccc">SECURE MONITOR CALL(SMC) CALLING CONVENTION (SMCCC)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#smia-and-smia-image-sensor-driver">SMIA AND SMIA++ IMAGE SENSOR DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#smm665-hardware-monitor-driver">SMM665 HARDWARE MONITOR DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#smsc-emc2103-hardware-monitor-driver">SMSC EMC2103 HARDWARE MONITOR DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#smsc-sch5627-hardware-monitor-driver">SMSC SCH5627 HARDWARE MONITOR DRIVER</a></li>
@@ -2263,6 +2270,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#userspace-i-o-uio">USERSPACE I/O (UIO)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#util-linux-package">UTIL-LINUX PACKAGE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#uuid-helpers">UUID HELPERS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uv-sysfs-driver">UV SYSFS DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#uvesafb-driver">UVESAFB DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ux500-clock-drivers">Ux500 CLOCK DRIVERS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#vf610-nand-driver">VF610 NAND DRIVER</a></li>
@@ -6599,11 +6607,12 @@ Alexander Sverdlin &lt;<a class="reference external" href="mailto:alexander&#46;
 <h3>ARM/CORESIGHT FRAMEWORK AND DRIVERS<a class="headerlink" href="#arm-coresight-framework-and-drivers" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Mathieu Poirier &lt;<a class="reference external" href="mailto:mathieu&#46;poirier&#37;&#52;&#48;linaro&#46;org">mathieu<span>&#46;</span>poirier<span>&#64;</span>linaro<span>&#46;</span>org</a>&gt;</p>
+<dd class="field-odd"><p>Mathieu Poirier &lt;<a class="reference external" href="mailto:mathieu&#46;poirier&#37;&#52;&#48;linaro&#46;org">mathieu<span>&#46;</span>poirier<span>&#64;</span>linaro<span>&#46;</span>org</a>&gt;,
+Suzuki K Poulose &lt;<a class="reference external" href="mailto:suzuki&#46;poulose&#37;&#52;&#48;arm&#46;com">suzuki<span>&#46;</span>poulose<span>&#64;</span>arm<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Reviewer</dt>
-<dd class="field-even"><p>Suzuki K Poulose &lt;<a class="reference external" href="mailto:suzuki&#46;poulose&#37;&#52;&#48;arm&#46;com">suzuki<span>&#46;</span>poulose<span>&#64;</span>arm<span>&#46;</span>com</a>&gt;,
-Mike Leach &lt;<a class="reference external" href="mailto:mike&#46;leach&#37;&#52;&#48;linaro&#46;org">mike<span>&#46;</span>leach<span>&#64;</span>linaro<span>&#46;</span>org</a>&gt;</p>
+<dd class="field-even"><p>Mike Leach &lt;<a class="reference external" href="mailto:mike&#46;leach&#37;&#52;&#48;linaro&#46;org">mike<span>&#46;</span>leach<span>&#64;</span>linaro<span>&#46;</span>org</a>&gt;,
+Leo Yan &lt;<a class="reference external" href="mailto:leo&#46;yan&#37;&#52;&#48;linaro&#46;org">leo<span>&#46;</span>yan<span>&#64;</span>linaro<span>&#46;</span>org</a>&gt;</p>
 </dd>
 <dt class="field-odd">Mailing list</dt>
 <dd class="field-odd"><p><a class="reference external" href="mailto:coresight&#37;&#52;&#48;lists&#46;linaro&#46;org">coresight<span>&#64;</span>lists<span>&#46;</span>linaro<span>&#46;</span>org</a> (moderated for non-subscribers),
@@ -6612,8 +6621,11 @@ Mike Leach &lt;<a class="reference external" href="mailto:mike&#46;leach&#37;&#5
 <dt class="field-even">Status</dt>
 <dd class="field-even"><p>Maintained</p>
 </dd>
-<dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/ABI/testing/sysfs-bus-coresight-devices-*</span></code>
+<dt class="field-odd">SCM</dt>
+<dd class="field-odd"><p>git git://git.kernel.org/pub/scm/linux/kernel/git/coresight/linux.git</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/ABI/testing/sysfs-bus-coresight-devices-*</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/arm/coresight-cpu-debug.txt</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/arm/coresight-cti.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/arm/coresight.txt</span></code>
@@ -7206,8 +7218,7 @@ Daniele Alessandrelli &lt;<a class="reference external" href="mailto:daniele&#46
 <h3>ARM/LPC32XX SOC SUPPORT<a class="headerlink" href="#arm-lpc32xx-soc-support" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Vladimir Zapolskiy &lt;<a class="reference external" href="mailto:vz&#37;&#52;&#48;mleia&#46;com">vz<span>&#64;</span>mleia<span>&#46;</span>com</a>&gt;,
-Sylvain Lemieux &lt;<a class="reference external" href="mailto:slemieux&#46;tyco&#37;&#52;&#48;gmail&#46;com">slemieux<span>&#46;</span>tyco<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
+<dd class="field-odd"><p>Vladimir Zapolskiy &lt;<a class="reference external" href="mailto:vz&#37;&#52;&#48;mleia&#46;com">vz<span>&#64;</span>mleia<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:linux-arm-kernel&#37;&#52;&#48;lists&#46;infradead&#46;org">linux-arm-kernel<span>&#64;</span>lists<span>&#46;</span>infradead<span>&#46;</span>org</a> (moderated for non-subscribers)</p>
@@ -7247,8 +7258,7 @@ Sylvain Lemieux &lt;<a class="reference external" href="mailto:slemieux&#46;tyco
 <h3>ARM/Marvell Dove/MV78xx0/Orion SOC support<a class="headerlink" href="#arm-marvell-dove-mv78xx0-orion-soc-support" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Jason Cooper &lt;<a class="reference external" href="mailto:jason&#37;&#52;&#48;lakedaemon&#46;net">jason<span>&#64;</span>lakedaemon<span>&#46;</span>net</a>&gt;,
-Andrew Lunn &lt;<a class="reference external" href="mailto:andrew&#37;&#52;&#48;lunn&#46;ch">andrew<span>&#64;</span>lunn<span>&#46;</span>ch</a>&gt;,
+<dd class="field-odd"><p>Andrew Lunn &lt;<a class="reference external" href="mailto:andrew&#37;&#52;&#48;lunn&#46;ch">andrew<span>&#64;</span>lunn<span>&#46;</span>ch</a>&gt;,
 Sebastian Hesselbarth &lt;<a class="reference external" href="mailto:sebastian&#46;hesselbarth&#37;&#52;&#48;gmail&#46;com">sebastian<span>&#46;</span>hesselbarth<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;,
 Gregory Clement &lt;<a class="reference external" href="mailto:gregory&#46;clement&#37;&#52;&#48;bootlin&#46;com">gregory<span>&#46;</span>clement<span>&#64;</span>bootlin<span>&#46;</span>com</a>&gt;</p>
 </dd>
@@ -7277,8 +7287,7 @@ Gregory Clement &lt;<a class="reference external" href="mailto:gregory&#46;cleme
 <h3>ARM/Marvell Kirkwood and Armada 370, 375, 38x, 39x, XP, 3700, 7K/8K, CN9130 SOC support<a class="headerlink" href="#arm-marvell-kirkwood-and-armada-370-375-38x-39x-xp-3700-7k-8k-cn9130-soc-support" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Jason Cooper &lt;<a class="reference external" href="mailto:jason&#37;&#52;&#48;lakedaemon&#46;net">jason<span>&#64;</span>lakedaemon<span>&#46;</span>net</a>&gt;,
-Andrew Lunn &lt;<a class="reference external" href="mailto:andrew&#37;&#52;&#48;lunn&#46;ch">andrew<span>&#64;</span>lunn<span>&#46;</span>ch</a>&gt;,
+<dd class="field-odd"><p>Andrew Lunn &lt;<a class="reference external" href="mailto:andrew&#37;&#52;&#48;lunn&#46;ch">andrew<span>&#64;</span>lunn<span>&#46;</span>ch</a>&gt;,
 Gregory Clement &lt;<a class="reference external" href="mailto:gregory&#46;clement&#37;&#52;&#48;bootlin&#46;com">gregory<span>&#46;</span>clement<span>&#64;</span>bootlin<span>&#46;</span>com</a>&gt;,
 Sebastian Hesselbarth &lt;<a class="reference external" href="mailto:sebastian&#46;hesselbarth&#37;&#52;&#48;gmail&#46;com">sebastian<span>&#46;</span>hesselbarth<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
 </dd>
@@ -7445,7 +7454,8 @@ Microchip Linux Driver Support &lt;<a class="reference external" href="mailto:UN
 <dd class="field-even"><p>git git://github.com/microchip-ung/linux-upstream.git</p>
 </dd>
 <dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">arch/arm64/boot/dts/microchip/</span></code></p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">arch/arm64/boot/dts/microchip/</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/pinctrl/pinctrl-microchip-sgpio.c</span></code></p>
 </dd>
 <dt class="field-even">Regex</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">sparx5</span></code></p>
@@ -10170,6 +10180,30 @@ Daniel Borkmann &lt;<a class="reference external" href="mailto:daniel&#37;&#52;&
 </dd>
 <dt class="field-odd">Excluded</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">arch/x86/net/bpf_jit_comp32.c</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="bpf-lsm-security-audit-and-enforcement-using-bpf">
+<h3>BPF LSM (Security Audit and Enforcement using BPF)<a class="headerlink" href="#bpf-lsm-security-audit-and-enforcement-using-bpf" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>KP Singh &lt;<a class="reference external" href="mailto:kpsingh&#37;&#52;&#48;chromium&#46;org">kpsingh<span>&#64;</span>chromium<span>&#46;</span>org</a>&gt;</p>
+</dd>
+<dt class="field-even">Reviewer</dt>
+<dd class="field-even"><p>Florent Revest &lt;<a class="reference external" href="mailto:revest&#37;&#52;&#48;chromium&#46;org">revest<span>&#64;</span>chromium<span>&#46;</span>org</a>&gt;,
+Brendan Jackman &lt;<a class="reference external" href="mailto:jackmanb&#37;&#52;&#48;chromium&#46;org">jackmanb<span>&#64;</span>chromium<span>&#46;</span>org</a>&gt;</p>
+</dd>
+<dt class="field-odd">Mailing list</dt>
+<dd class="field-odd"><p><a class="reference external" href="mailto:bpf&#37;&#52;&#48;vger&#46;kernel&#46;org">bpf<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-even">Status</dt>
+<dd class="field-even"><p>Maintained</p>
+</dd>
+<dt class="field-odd">Files</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../bpf/bpf_lsm.html"><span class="doc">bpf/bpf_lsm</span></a>
+<code class="docutils literal notranslate"><span class="pre">include/linux/bpf_lsm.h</span></code>
+<code class="docutils literal notranslate"><span class="pre">kernel/bpf/bpf_lsm.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">security/bpf/</span></code></p>
 </dd>
 </dl>
 </div>
@@ -14409,6 +14443,7 @@ quilt http://people.redhat.com/agk/patches/linux/editing/</p>
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/input/da90??-onkey.txt</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/mfd/da90*.txt</span></code>
+<code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/regulator/dlg,da9*.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/regulator/da92*.txt</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/regulator/slg51000.txt</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/sound/da[79]*.txt</span></code>
@@ -14433,6 +14468,7 @@ quilt http://people.redhat.com/agk/patches/linux/editing/</p>
 <code class="docutils literal notranslate"><span class="pre">drivers/thermal/da90??-thermal.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/video/backlight/da90??_bl.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/watchdog/da90??_wdt.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/dt-bindings/regulator/dlg,da9*-regulator.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/mfd/da903x.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/mfd/da9052/</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/mfd/da9055/</span></code>
@@ -14665,6 +14701,21 @@ Marek Szyprowski &lt;<a class="reference external" href="mailto:m&#46;szyprowski
 <code class="docutils literal notranslate"><span class="pre">include/linux/dma-mapping.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/dma-map-ops.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">kernel/dma/</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="dma-mapping-benchmark">
+<h3>DMA MAPPING BENCHMARK<a class="headerlink" href="#dma-mapping-benchmark" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Barry Song &lt;<a class="reference external" href="mailto:song&#46;bao&#46;hua&#37;&#52;&#48;hisilicon&#46;com">song<span>&#46;</span>bao<span>&#46;</span>hua<span>&#64;</span>hisilicon<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:iommu&#37;&#52;&#48;lists&#46;linux-foundation&#46;org">iommu<span>&#64;</span>lists<span>&#46;</span>linux-foundation<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Files</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">kernel/dma/map_benchmark.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">tools/testing/selftests/dma/</span></code></p>
 </dd>
 </dl>
 </div>
@@ -19837,6 +19888,30 @@ Kieran Bingham &lt;<a class="reference external" href="mailto:kbingham&#37;&#52;
 </dd>
 </dl>
 </div>
+<div class="section" id="generic-entry-code">
+<h3>GENERIC ENTRY CODE<a class="headerlink" href="#generic-entry-code" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Thomas Gleixner &lt;<a class="reference external" href="mailto:tglx&#37;&#52;&#48;linutronix&#46;de">tglx<span>&#64;</span>linutronix<span>&#46;</span>de</a>&gt;,
+Peter Zijlstra &lt;<a class="reference external" href="mailto:peterz&#37;&#52;&#48;infradead&#46;org">peterz<span>&#64;</span>infradead<span>&#46;</span>org</a>&gt;,
+Andy Lutomirski &lt;<a class="reference external" href="mailto:luto&#37;&#52;&#48;kernel&#46;org">luto<span>&#64;</span>kernel<span>&#46;</span>org</a>&gt;</p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:linux-kernel&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-kernel<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Maintained</p>
+</dd>
+<dt class="field-even">SCM</dt>
+<dd class="field-even"><p>git git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git core/entry</p>
+</dd>
+<dt class="field-odd">Files</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">include/linux/entry-common.h</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/linux/entry-kvm.h</span></code>
+<code class="docutils literal notranslate"><span class="pre">kernel/entry/</span></code></p>
+</dd>
+</dl>
+</div>
 <div class="section" id="generic-gpio-i2c-driver">
 <h3>GENERIC GPIO I2C DRIVER<a class="headerlink" href="#generic-gpio-i2c-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
@@ -20705,13 +20780,13 @@ Harald Welte &lt;<a class="reference external" href="mailto:laforge&#37;&#52;&#4
 <h3>HABANALABS PCI DRIVER<a class="headerlink" href="#habanalabs-pci-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Oded Gabbay &lt;<a class="reference external" href="mailto:oded&#46;gabbay&#37;&#52;&#48;gmail&#46;com">oded<span>&#46;</span>gabbay<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
+<dd class="field-odd"><p>Oded Gabbay &lt;<a class="reference external" href="mailto:ogabbay&#37;&#52;&#48;kernel&#46;org">ogabbay<span>&#64;</span>kernel<span>&#46;</span>org</a>&gt;</p>
 </dd>
 <dt class="field-even">Status</dt>
 <dd class="field-even"><p>Supported</p>
 </dd>
 <dt class="field-odd">SCM</dt>
-<dd class="field-odd"><p>git <a class="reference external" href="https://github.com/HabanaAI/linux.git">https://github.com/HabanaAI/linux.git</a></p>
+<dd class="field-odd"><p>git <a class="reference external" href="https://git.kernel.org/pub/scm/linux/kernel/git/ogabbay/linux.git">https://git.kernel.org/pub/scm/linux/kernel/git/ogabbay/linux.git</a></p>
 </dd>
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/ABI/testing/debugfs-driver-habanalabs</span></code>
@@ -21432,7 +21507,7 @@ Weihang Li &lt;<a class="reference external" href="mailto:liweihang&#37;&#52;&#4
 <dd class="field-even"><p>Maintained</p>
 </dd>
 <dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/char/hw_random/hisi-trng-v2.c</span></code></p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/crypto/hisilicon/trng/trng.c</span></code></p>
 </dd>
 </dl>
 </div>
@@ -22186,7 +22261,7 @@ Neil Horman &lt;<a class="reference external" href="mailto:nhorman&#37;&#52;&#48
 <h3>I3C SUBSYSTEM<a class="headerlink" href="#i3c-subsystem" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Boris Brezillon &lt;<a class="reference external" href="mailto:bbrezillon&#37;&#52;&#48;kernel&#46;org">bbrezillon<span>&#64;</span>kernel<span>&#46;</span>org</a>&gt;</p>
+<dd class="field-odd"><p>Alexandre Belloni &lt;<a class="reference external" href="mailto:alexandre&#46;belloni&#37;&#52;&#48;bootlin&#46;com">alexandre<span>&#46;</span>belloni<span>&#64;</span>bootlin<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:linux-i3c&#37;&#52;&#48;lists&#46;infradead&#46;org">linux-i3c<span>&#64;</span>lists<span>&#46;</span>infradead<span>&#46;</span>org</a> (moderated for non-subscribers)</p>
@@ -23979,10 +24054,7 @@ Shiraz Saleem &lt;<a class="reference external" href="mailto:shiraz&#46;saleem&#
 <h3>INTEL WIRELESS WIFI LINK (iwlwifi)<a class="headerlink" href="#intel-wireless-wifi-link-iwlwifi" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Johannes Berg &lt;<a class="reference external" href="mailto:johannes&#46;berg&#37;&#52;&#48;intel&#46;com">johannes<span>&#46;</span>berg<span>&#64;</span>intel<span>&#46;</span>com</a>&gt;,
-Emmanuel Grumbach &lt;<a class="reference external" href="mailto:emmanuel&#46;grumbach&#37;&#52;&#48;intel&#46;com">emmanuel<span>&#46;</span>grumbach<span>&#64;</span>intel<span>&#46;</span>com</a>&gt;,
-Luca Coelho &lt;<a class="reference external" href="mailto:luciano&#46;coelho&#37;&#52;&#48;intel&#46;com">luciano<span>&#46;</span>coelho<span>&#64;</span>intel<span>&#46;</span>com</a>&gt;,
-Intel Linux Wireless &lt;<a class="reference external" href="mailto:linuxwifi&#37;&#52;&#48;intel&#46;com">linuxwifi<span>&#64;</span>intel<span>&#46;</span>com</a>&gt;</p>
+<dd class="field-odd"><p>Luca Coelho &lt;<a class="reference external" href="mailto:luciano&#46;coelho&#37;&#52;&#48;intel&#46;com">luciano<span>&#46;</span>coelho<span>&#64;</span>intel<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:linux-wireless&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-wireless<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
@@ -24140,11 +24212,9 @@ Intel Linux Wireless &lt;<a class="reference external" href="mailto:linuxwifi&#3
 <dt class="field-odd">Status</dt>
 <dd class="field-odd"><p>Maintained</p>
 </dd>
-</dl>
-</div>
-<div class="section" id="w-https-invensense-tdk-com">
-<h3>W <a class="reference external" href="https://invensense.tdk.com/">https://invensense.tdk.com/</a><a class="headerlink" href="#w-https-invensense-tdk-com" title="Permalink to this headline">¶</a></h3>
-<dl class="field-list simple">
+<dt class="field-even">Web-page</dt>
+<dd class="field-even"><p><a class="reference external" href="https://invensense.tdk.com/">https://invensense.tdk.com/</a></p>
+</dd>
 <dt class="field-odd">Files</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/iio/imu/inv_icm42600/</span></code></p>
@@ -24407,7 +24477,6 @@ David Sterba &lt;<a class="reference external" href="mailto:dsterba&#37;&#52;&#4
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
 <dd class="field-odd"><p>Thomas Gleixner &lt;<a class="reference external" href="mailto:tglx&#37;&#52;&#48;linutronix&#46;de">tglx<span>&#64;</span>linutronix<span>&#46;</span>de</a>&gt;,
-Jason Cooper &lt;<a class="reference external" href="mailto:jason&#37;&#52;&#48;lakedaemon&#46;net">jason<span>&#64;</span>lakedaemon<span>&#46;</span>net</a>&gt;,
 Marc Zyngier &lt;<a class="reference external" href="mailto:maz&#37;&#52;&#48;kernel&#46;org">maz<span>&#64;</span>kernel<span>&#46;</span>org</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
@@ -28122,8 +28191,8 @@ Philipp Zabel &lt;<a class="reference external" href="mailto:p&#46;zabel&#37;&#5
 </dd>
 <dt class="field-odd">Files</dt>
 <dd class="field-odd"><p><a class="reference internal" href="../admin-guide/media/imx7.html"><span class="doc">admin-guide/media/imx7</span></a>
-<code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/media/imx7-csi.txt</span></code>
-<code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/media/imx7-mipi-csi2.txt</span></code>
+<code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/media/nxp,imx7-csi.yaml</span></code>
+<code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/media/nxp,imx7-mipi-csi2.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/staging/media/imx/imx7-media-csi.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/staging/media/imx/imx7-mipi-csis.c</span></code></p>
 </dd>
@@ -28739,6 +28808,21 @@ Lorenzo Bianconi &lt;<a class="reference external" href="mailto:lorenzo&#46;bian
 </dd>
 </dl>
 </div>
+<div class="section" id="mediatek-mt7621-phy-pci-driver">
+<h3>MEDIATEK MT7621 PHY PCI DRIVER<a class="headerlink" href="#mediatek-mt7621-phy-pci-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Sergio Paracuellos &lt;<a class="reference external" href="mailto:sergio&#46;paracuellos&#37;&#52;&#48;gmail&#46;com">sergio<span>&#46;</span>paracuellos<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Status</dt>
+<dd class="field-even"><p>Maintained</p>
+</dd>
+<dt class="field-odd">Files</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/phy/mediatek,mt7621-pci-phy.yaml</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/phy/ralink/phy-mt7621-pci.c</span></code></p>
+</dd>
+</dl>
+</div>
 <div class="section" id="mediatek-nand-controller-driver">
 <h3>MEDIATEK NAND CONTROLLER DRIVER<a class="headerlink" href="#mediatek-nand-controller-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
@@ -28934,7 +29018,8 @@ Shivasharan S &lt;<a class="reference external" href="mailto:shivasharan&#46;sri
 <dd class="field-odd"><p>Supported</p>
 </dd>
 <dt class="field-even">Files</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/i2c/busses/i2c-mlxbf.c</span></code></p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/i2c/mellanox,i2c-mlxbf.yaml</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/i2c/busses/i2c-mlxbf.c</span></code></p>
 </dd>
 </dl>
 </div>
@@ -29315,8 +29400,7 @@ Michael Shych &lt;<a class="reference external" href="mailto:michaelsh&#37;&#52;
 <dd class="field-even"><p>Maintained</p>
 </dd>
 <dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/devfreq/tegra20-devfreq.c</span></code>
-<code class="docutils literal notranslate"><span class="pre">drivers/devfreq/tegra30-devfreq.c</span></code></p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/devfreq/tegra30-devfreq.c</span></code></p>
 </dd>
 </dl>
 </div>
@@ -29760,7 +29844,7 @@ Microchip Linux Driver Support &lt;<a class="reference external" href="mailto:UN
 <dd class="field-odd"><p>Maintained</p>
 </dd>
 <dt class="field-even">Files</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/net/dsa/ksz.txt</span></code>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/net/dsa/microchip,ksz.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/net/dsa/microchip/*</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/platform_data/microchip-ksz.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">net/dsa/tag_ksz.c</span></code></p>
@@ -30141,6 +30225,28 @@ Luka Perkov &lt;<a class="reference external" href="mailto:luka&#46;perkov&#37;&
 <code class="docutils literal notranslate"><span class="pre">arch/arm/boot/dts/armada-xp-crs326-24g-2s.dts</span></code>
 <code class="docutils literal notranslate"><span class="pre">arch/arm/boot/dts/armada-xp-crs328-4c-20s-4s-bit.dts</span></code>
 <code class="docutils literal notranslate"><span class="pre">arch/arm/boot/dts/armada-xp-crs328-4c-20s-4s.dts</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="mipi-ccs-smia-and-smia-image-sensor-driver">
+<h3>MIPI CCS, SMIA AND SMIA++ IMAGE SENSOR DRIVER<a class="headerlink" href="#mipi-ccs-smia-and-smia-image-sensor-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Sakari Ailus &lt;<a class="reference external" href="mailto:sakari&#46;ailus&#37;&#52;&#48;linux&#46;intel&#46;com">sakari<span>&#46;</span>ailus<span>&#64;</span>linux<span>&#46;</span>intel<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:linux-media&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-media<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Maintained</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/media/i2c/mipi-ccs.yaml</span></code>
+<code class="docutils literal notranslate"><span class="pre">Documentation/driver-api/media/drivers/ccs/</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/media/i2c/ccs/</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/media/i2c/smiapp-pll.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/media/i2c/smiapp-pll.h</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/uapi/linux/smiapp.h</span></code></p>
 </dd>
 </dl>
 </div>
@@ -32223,7 +32329,7 @@ Chaitanya Kulkarni &lt;<a class="reference external" href="mailto:chaitanya&#46;
 <dd class="field-odd"><p>Maintained</p>
 </dd>
 <dt class="field-even">Files</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/iio/gyroscope/nxp,fxas21002c.txt</span></code>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/iio/gyroscope/nxp,fxas21002c.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/iio/gyro/fxas21002c.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/iio/gyro/fxas21002c_core.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/iio/gyro/fxas21002c_i2c.c</span></code>
@@ -32249,6 +32355,21 @@ Chaitanya Kulkarni &lt;<a class="reference external" href="mailto:chaitanya&#46;
 <dt class="field-odd">Files</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/display/imx/nxp,imx8mq-dcss.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/gpu/drm/imx/dcss/</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="nxp-pf8100-pf8121a-pf8200-pmic-regulator-device-driver">
+<h3>NXP PF8100/PF8121A/PF8200 PMIC REGULATOR DEVICE DRIVER<a class="headerlink" href="#nxp-pf8100-pf8121a-pf8200-pmic-regulator-device-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Jagan Teki &lt;<a class="reference external" href="mailto:jagan&#37;&#52;&#48;amarulasolutions&#46;com">jagan<span>&#64;</span>amarulasolutions<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Status</dt>
+<dd class="field-even"><p>Maintained</p>
+</dd>
+<dt class="field-odd">Files</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/regulator/nxp,pf8x00-regulator.yaml</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/regulator/pf8x00-regulator.c</span></code></p>
 </dd>
 </dl>
 </div>
@@ -32932,6 +33053,27 @@ Tony Lindgren &lt;<a class="reference external" href="mailto:tony&#37;&#52;&#48;
 </dd>
 </dl>
 </div>
+<div class="section" id="omnivision-ov02a10-sensor-driver">
+<h3>OMNIVISION OV02A10 SENSOR DRIVER<a class="headerlink" href="#omnivision-ov02a10-sensor-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Dongchun Zhu &lt;<a class="reference external" href="mailto:dongchun&#46;zhu&#37;&#52;&#48;mediatek&#46;com">dongchun<span>&#46;</span>zhu<span>&#64;</span>mediatek<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:linux-media&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-media<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Maintained</p>
+</dd>
+<dt class="field-even">SCM</dt>
+<dd class="field-even"><p>git git://linuxtv.org/media_tree.git</p>
+</dd>
+<dt class="field-odd">Files</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/media/i2c/ov02a10.c</span></code></p>
+</dd>
+</dl>
+</div>
 <div class="section" id="omnivision-ov13858-sensor-driver">
 <h3>OMNIVISION OV13858 SENSOR DRIVER<a class="headerlink" href="#omnivision-ov13858-sensor-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
@@ -32968,7 +33110,7 @@ Tony Lindgren &lt;<a class="reference external" href="mailto:tony&#37;&#52;&#48;
 <dd class="field-even"><p>git git://linuxtv.org/media_tree.git</p>
 </dd>
 <dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/media/i2c/ov2680.txt</span></code>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/media/i2c/ov2680.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/media/i2c/ov2680.c</span></code></p>
 </dd>
 </dl>
@@ -33244,6 +33386,29 @@ Sylwester Nawrocki &lt;<a class="reference external" href="mailto:s&#46;nawrocki
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/media/i2c/ov9650.txt</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/media/i2c/ov9650.c</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="omnivision-ov9734-sensor-driver">
+<h3>OMNIVISION OV9734 SENSOR DRIVER<a class="headerlink" href="#omnivision-ov9734-sensor-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Tianshu Qiu &lt;<a class="reference external" href="mailto:tian&#46;shu&#46;qiu&#37;&#52;&#48;intel&#46;com">tian<span>&#46;</span>shu<span>&#46;</span>qiu<span>&#64;</span>intel<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Reviewer</dt>
+<dd class="field-even"><p>Bingbu Cao &lt;<a class="reference external" href="mailto:bingbu&#46;cao&#37;&#52;&#48;intel&#46;com">bingbu<span>&#46;</span>cao<span>&#64;</span>intel<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-odd">Mailing list</dt>
+<dd class="field-odd"><p><a class="reference external" href="mailto:linux-media&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-media<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-even">Status</dt>
+<dd class="field-even"><p>Maintained</p>
+</dd>
+<dt class="field-odd">SCM</dt>
+<dd class="field-odd"><p>git git://linuxtv.org/media_tree.git</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/media/i2c/ov9734.c</span></code></p>
 </dd>
 </dl>
 </div>
@@ -33736,7 +33901,9 @@ Ilias Apalodimas &lt;<a class="reference external" href="mailto:ilias&#46;apalod
 <dd class="field-odd"><p>Supported</p>
 </dd>
 <dt class="field-even">Files</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">include/net/page_pool.h</span></code>
+<dd class="field-even"><p><a class="reference internal" href="../networking/page_pool.html"><span class="doc">networking/page_pool</span></a>
+<code class="docutils literal notranslate"><span class="pre">include/net/page_pool.h</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/trace/events/page_pool.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">net/core/page_pool.c</span></code></p>
 </dd>
 </dl>
@@ -34261,8 +34428,7 @@ Hou Zhiqiang &lt;<a class="reference external" href="mailto:Zhiqiang&#46;Hou&#37
 <h3>PCI DRIVER FOR MVEBU (Marvell Armada 370 and Armada XP SOC support)<a class="headerlink" href="#pci-driver-for-mvebu-marvell-armada-370-and-armada-xp-soc-support" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Thomas Petazzoni &lt;<a class="reference external" href="mailto:thomas&#46;petazzoni&#37;&#52;&#48;bootlin&#46;com">thomas<span>&#46;</span>petazzoni<span>&#64;</span>bootlin<span>&#46;</span>com</a>&gt;,
-Jason Cooper &lt;<a class="reference external" href="mailto:jason&#37;&#52;&#48;lakedaemon&#46;net">jason<span>&#64;</span>lakedaemon<span>&#46;</span>net</a>&gt;</p>
+<dd class="field-odd"><p>Thomas Petazzoni &lt;<a class="reference external" href="mailto:thomas&#46;petazzoni&#37;&#52;&#48;bootlin&#46;com">thomas<span>&#46;</span>petazzoni<span>&#64;</span>bootlin<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:linux-pci&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-pci<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a>,
@@ -38995,6 +39161,25 @@ Sylwester Nawrocki &lt;<a class="reference external" href="mailto:s&#46;nawrocki
 </dd>
 </dl>
 </div>
+<div class="section" id="samsung-interconnect-drivers">
+<h3>SAMSUNG INTERCONNECT DRIVERS<a class="headerlink" href="#samsung-interconnect-drivers" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Sylwester Nawrocki &lt;<a class="reference external" href="mailto:s&#46;nawrocki&#37;&#52;&#48;samsung&#46;com">s<span>&#46;</span>nawrocki<span>&#64;</span>samsung<span>&#46;</span>com</a>&gt;,
+Artur Świgoń &lt;<a class="reference external" href="mailto:a&#46;swigon&#37;&#52;&#48;samsung&#46;com">a<span>&#46;</span>swigon<span>&#64;</span>samsung<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:linux-pm&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-pm<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a>,
+<a class="reference external" href="mailto:linux-samsung-soc&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-samsung-soc<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Supported</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/interconnect/samsung/</span></code></p>
+</dd>
+</dl>
+</div>
 <div class="section" id="samsung-laptop-driver">
 <h3>SAMSUNG LAPTOP DRIVER<a class="headerlink" href="#samsung-laptop-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
@@ -40752,27 +40937,6 @@ Sudeep Holla &lt;<a class="reference external" href="mailto:sudeep&#46;holla&#37
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/firmware/smccc/</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/arm-smccc.h</span></code></p>
-</dd>
-</dl>
-</div>
-<div class="section" id="smia-and-smia-image-sensor-driver">
-<h3>SMIA AND SMIA++ IMAGE SENSOR DRIVER<a class="headerlink" href="#smia-and-smia-image-sensor-driver" title="Permalink to this headline">¶</a></h3>
-<dl class="field-list simple">
-<dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Sakari Ailus &lt;<a class="reference external" href="mailto:sakari&#46;ailus&#37;&#52;&#48;linux&#46;intel&#46;com">sakari<span>&#46;</span>ailus<span>&#64;</span>linux<span>&#46;</span>intel<span>&#46;</span>com</a>&gt;</p>
-</dd>
-<dt class="field-even">Mailing list</dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:linux-media&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-media<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
-</dd>
-<dt class="field-odd">Status</dt>
-<dd class="field-odd"><p>Maintained</p>
-</dd>
-<dt class="field-even">Files</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/media/i2c/nokia,smia.txt</span></code>
-<code class="docutils literal notranslate"><span class="pre">drivers/media/i2c/smiapp-pll.c</span></code>
-<code class="docutils literal notranslate"><span class="pre">drivers/media/i2c/smiapp-pll.h</span></code>
-<code class="docutils literal notranslate"><span class="pre">drivers/media/i2c/smiapp/</span></code>
-<code class="docutils literal notranslate"><span class="pre">include/uapi/linux/smiapp.h</span></code></p>
 </dd>
 </dl>
 </div>
@@ -46370,6 +46534,23 @@ Anton Ivanov &lt;<a class="reference external" href="mailto:anton&#46;ivanov&#37
 <code class="docutils literal notranslate"><span class="pre">include/uapi/linux/uuid.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">lib/test_uuid.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">lib/uuid.c</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="uv-sysfs-driver">
+<h3>UV SYSFS DRIVER<a class="headerlink" href="#uv-sysfs-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Justin Ernst &lt;<a class="reference external" href="mailto:justin&#46;ernst&#37;&#52;&#48;hpe&#46;com">justin<span>&#46;</span>ernst<span>&#64;</span>hpe<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:platform-driver-x86&#37;&#52;&#48;vger&#46;kernel&#46;org">platform-driver-x86<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Maintained</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/uv_sysfs.c</span></code></p>
 </dd>
 </dl>
 </div>

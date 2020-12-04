@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -169,6 +169,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rtc.html">Real Time Clock (RTC) Drivers for Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="serial-console.html">Linux Serial Console</a></li>
 <li class="toctree-l2"><a class="reference internal" href="svga.html">Video Mode Selection Support 2.13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syscall-user-dispatch.html">Syscall User Dispatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sysrq.html">Linux Magic System Request Key Hacks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="thunderbolt.html">USB4 and Thunderbolt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ufs.html">Using UFS</a></li>
@@ -461,13 +462,20 @@ Each key-value pair is shown in each line with following style:</p>
 <div class="section" id="boot-kernel-with-a-boot-config">
 <h2>Boot Kernel With a Boot Config<a class="headerlink" href="#boot-kernel-with-a-boot-config" title="Permalink to this headline">¶</a></h2>
 <p>Since the boot configuration file is loaded with initrd, it will be added
-to the end of the initrd (initramfs) image file with size, checksum and
-12-byte magic word as below.</p>
-<p>[initrd][bootconfig][size(u32)][checksum(u32)][#BOOTCONFIGn]</p>
+to the end of the initrd (initramfs) image file with padding, size,
+checksum and 12-byte magic word as below.</p>
+<p>[initrd][bootconfig][padding][size(le32)][checksum(le32)][#BOOTCONFIGn]</p>
+<p>The size and checksum fields are unsigned 32bit little endian value.</p>
+<p>When the boot configuration is added to the initrd image, the total
+file size is aligned to 4 bytes. To fill the gap, null characters
+(<code class="docutils literal notranslate"><span class="pre">\0</span></code>) will be added. Thus the <code class="docutils literal notranslate"><span class="pre">size</span></code> is the length of the bootconfig
+file + padding bytes.</p>
 <p>The Linux kernel decodes the last part of the initrd image in memory to
 get the boot configuration data.
 Because of this “piggyback” method, there is no need to change or
-update the boot loader and the kernel image itself.</p>
+update the boot loader and the kernel image itself as long as the boot
+loader passes the correct initrd file size. If by any chance, the boot
+loader passes a longer size, the kernel feils to find the bootconfig data.</p>
 <p>To do this operation, Linux kernel provides “bootconfig” command under
 tools/bootconfig, which allows admin to apply or delete the config file
 to/from initrd image. You can build it by the following command:</p>
@@ -496,7 +504,8 @@ up to 512 key-value pairs. If keys contains 3 words in average, it can
 contain 256 key-value pairs. In most cases, the number of config items
 will be under 100 entries and smaller than 8KB, so it would be enough.
 If the node number exceeds 1024, parser returns an error even if the file
-size is smaller than 32KB.
+size is smaller than 32KB. (Note that this maximum size is not including
+the padding null characters.)
 Anyway, since bootconfig command verifies it when appending a boot config
 to initrd image, user can notice it before boot.</p>
 </div>

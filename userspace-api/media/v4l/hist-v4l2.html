@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -323,7 +323,7 @@ renamed to <a class="reference internal" href="vidioc-enumstd.html#vidioc-enumst
 <a class="reference internal" href="vidioc-enuminput.html#vidioc-enuminput"><span class="std std-ref">ioctl VIDIOC_ENUMINPUT</span></a>. A first draft of the
 Codec API was released.</p>
 <p>1998-11-08: Many minor changes. Most symbols have been renamed. Some
-material changes to struct v4l2_capability.</p>
+material changes to <a class="reference internal" href="vidioc-querycap.html#c.V4L.v4l2_capability" title="V4L.v4l2_capability"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_capability</span></code></a>.</p>
 <p>1998-11-12: The read/write directon of some ioctls was misdefined.</p>
 <p>1998-11-14: <code class="docutils literal notranslate"><span class="pre">V4L2_PIX_FMT_RGB24</span></code> changed to <code class="docutils literal notranslate"><span class="pre">V4L2_PIX_FMT_BGR24</span></code>,
 and <code class="docutils literal notranslate"><span class="pre">V4L2_PIX_FMT_RGB32</span></code> changed to <code class="docutils literal notranslate"><span class="pre">V4L2_PIX_FMT_BGR32</span></code>. Audio
@@ -401,13 +401,13 @@ driver private data streams without adding new ioctls.</p>
 <p>This change obsoletes the following ioctls: <code class="docutils literal notranslate"><span class="pre">VIDIOC_S_INFMT</span></code>,
 <code class="docutils literal notranslate"><span class="pre">VIDIOC_G_INFMT</span></code>, <code class="docutils literal notranslate"><span class="pre">VIDIOC_S_OUTFMT</span></code>, <code class="docutils literal notranslate"><span class="pre">VIDIOC_G_OUTFMT</span></code>,
 <code class="docutils literal notranslate"><span class="pre">VIDIOC_S_VBIFMT</span></code> and <code class="docutils literal notranslate"><span class="pre">VIDIOC_G_VBIFMT</span></code>. The image format
-struct v4l2_format was renamed to <a class="reference internal" href="pixfmt-v4l2.html#c.v4l2_pix_format" title="v4l2_pix_format"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_pix_format</span></code></a>, while
-struct v4l2_format is now the envelopping structure
+<a class="reference internal" href="vidioc-g-fmt.html#c.V4L.v4l2_format" title="V4L.v4l2_format"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_format</span></code></a> was renamed to <a class="reference internal" href="pixfmt-v4l2.html#c.v4l2_pix_format" title="v4l2_pix_format"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_pix_format</span></code></a>, while
+<a class="reference internal" href="vidioc-g-fmt.html#c.V4L.v4l2_format" title="V4L.v4l2_format"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_format</span></code></a> is now the envelopping structure
 for all format negotiations.</p>
 </li>
 <li><p>Similar to the changes above, the <code class="docutils literal notranslate"><span class="pre">VIDIOC_G_PARM</span></code> and
 <code class="docutils literal notranslate"><span class="pre">VIDIOC_S_PARM</span></code> ioctls were merged with <code class="docutils literal notranslate"><span class="pre">VIDIOC_G_OUTPARM</span></code> and
-<code class="docutils literal notranslate"><span class="pre">VIDIOC_S_OUTPARM</span></code>. A <code class="docutils literal notranslate"><span class="pre">type</span></code> field in the new struct v4l2_streamparm
+<code class="docutils literal notranslate"><span class="pre">VIDIOC_S_OUTPARM</span></code>. A <code class="docutils literal notranslate"><span class="pre">type</span></code> field in the new <a class="reference internal" href="vidioc-g-parm.html#c.V4L.v4l2_streamparm" title="V4L.v4l2_streamparm"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_streamparm</span></code></a>
 selects the respective union member.</p>
 <p>This change obsoletes the <code class="docutils literal notranslate"><span class="pre">VIDIOC_G_OUTPARM</span></code> and
 <code class="docutils literal notranslate"><span class="pre">VIDIOC_S_OUTPARM</span></code> ioctls.</p>
@@ -424,7 +424,7 @@ typically be drawn within a group box. Controls in different
 categories might have a greater separation, or may even appear in
 separate windows.</p>
 </li>
-<li><p>The struct v4l2_buffer <code class="docutils literal notranslate"><span class="pre">timestamp</span></code> was
+<li><p>The <a class="reference internal" href="buffer.html#c.V4L.v4l2_buffer" title="V4L.v4l2_buffer"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_buffer</span></code></a> <code class="docutils literal notranslate"><span class="pre">timestamp</span></code> was
 changed to a 64 bit integer, containing the sampling or output time
 of the frame in nanoseconds. Additionally timestamps will be in
 absolute system time, not starting from zero at the beginning of a
@@ -446,14 +446,14 @@ kernel that is not there yet. But in anticipation, I will change the
 timestamp field to a 64-bit integer, and I will change the
 v4l2_masterclock_gettime() function (used only by drivers) to
 return a 64-bit integer.</p></li>
-<li><p>A <code class="docutils literal notranslate"><span class="pre">sequence</span></code> field was added to struct v4l2_buffer. The <code class="docutils literal notranslate"><span class="pre">sequence</span></code>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">sequence</span></code> field was added to <a class="reference internal" href="buffer.html#c.V4L.v4l2_buffer" title="V4L.v4l2_buffer"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_buffer</span></code></a>. The <code class="docutils literal notranslate"><span class="pre">sequence</span></code>
 field counts captured frames, it is ignored by output devices. When a
 capture driver drops a frame, the sequence number of that frame is skipped.</p></li>
 </ol>
 </div>
 <div class="section" id="v4l2-version-0-20-incremental-changes">
 <h2><span class="section-number">6.2.6. </span>V4L2 Version 0.20 incremental changes<a class="headerlink" href="#v4l2-version-0-20-incremental-changes" title="Permalink to this headline">¶</a></h2>
-<p>1999-12-23: In struct v4l2_vbi_format the
+<p>1999-12-23: In <a class="reference internal" href="dev-raw-vbi.html#c.V4L.v4l2_vbi_format" title="V4L.v4l2_vbi_format"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_vbi_format</span></code></a> the
 <code class="docutils literal notranslate"><span class="pre">reserved1</span></code> field became <code class="docutils literal notranslate"><span class="pre">offset</span></code>. Previously drivers were required
 to clear the <code class="docutils literal notranslate"><span class="pre">reserved1</span></code> field.</p>
 <p>2000-01-13: The <code class="docutils literal notranslate"><span class="pre">V4L2_FMT_FLAG_NOT_INTERLACED</span></code> flag was added.</p>
@@ -486,7 +486,7 @@ multiple tuners into account.)</p>
 compatibility</em> as the <a class="reference internal" href="vidioc-g-fmt.html#vidioc-g-fmt"><span class="std std-ref">VIDIOC_G_FMT</span></a> and
 <a class="reference internal" href="vidioc-g-fmt.html#vidioc-g-fmt"><span class="std std-ref">VIDIOC_S_FMT</span></a> ioctls may fail now if the
 struct <code class="docutils literal notranslate"><span class="pre">v4l2_fmt</span></code> <code class="docutils literal notranslate"><span class="pre">type</span></code> field does not contain
-<code class="docutils literal notranslate"><span class="pre">V4L2_BUF_TYPE_VBI</span></code>. In the documentation of the struct v4l2_vbi_format`,
+<code class="docutils literal notranslate"><span class="pre">V4L2_BUF_TYPE_VBI</span></code>. In the documentation of the <a class="reference internal" href="dev-raw-vbi.html#c.V4L.v4l2_vbi_format" title="V4L.v4l2_vbi_format"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_vbi_format</span></code></a>`,
 the <code class="docutils literal notranslate"><span class="pre">offset</span></code> field the ambiguous phrase “rising edge” was changed to
 “leading edge”.</p>
 </div>
@@ -542,7 +542,7 @@ meaningless <code class="docutils literal notranslate"><span class="pre">O_TRUNC
 (panel applications) was dropped. Drivers must stay in “panel mode”
 until the application attempts to initiate a data exchange, see
 <a class="reference internal" href="open.html#open"><span class="std std-ref">Opening and Closing Devices</span></a>.</p></li>
-<li><p>The struct v4l2_capability changed
+<li><p>The <a class="reference internal" href="vidioc-querycap.html#c.V4L.v4l2_capability" title="V4L.v4l2_capability"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_capability</span></code></a> changed
 dramatically. Note that also the size of the structure changed,
 which is encoded in the ioctl request code, thus older V4L2 devices
 will respond with an <code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> error code to the new
@@ -565,42 +565,42 @@ removed. These properties can be determined as described in
 <code class="docutils literal notranslate"><span class="pre">maxwidth</span></code>, <code class="docutils literal notranslate"><span class="pre">maxheight</span></code>, <code class="docutils literal notranslate"><span class="pre">minwidth</span></code>, <code class="docutils literal notranslate"><span class="pre">minheight</span></code>,
 <code class="docutils literal notranslate"><span class="pre">maxframerate</span></code> were removed. This information is available as
 described in <a class="reference internal" href="format.html#format"><span class="std std-ref">Data Formats</span></a> and <a class="reference internal" href="standard.html#standard"><span class="std std-ref">Video Standards</span></a>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">V4L2_FLAG_SELECT</span></code> was removed. We believe the select() function
+<p><code class="docutils literal notranslate"><span class="pre">V4L2_FLAG_SELECT</span></code> was removed. We believe the <a class="reference internal" href="func-select.html#c.V4L.select" title="V4L.select"><code class="xref c c-func docutils literal notranslate"><span class="pre">select()</span></code></a> function
 is important enough to require support of it in all V4L2 drivers
 exchanging data with applications. The redundant
 <code class="docutils literal notranslate"><span class="pre">V4L2_FLAG_MONOCHROME</span></code> flag was removed, this information is
 available as described in <a class="reference internal" href="format.html#format"><span class="std std-ref">Data Formats</span></a>.</p>
 </li>
-<li><p>In struct v4l2_input the <code class="docutils literal notranslate"><span class="pre">assoc_audio</span></code>
+<li><p>In <a class="reference internal" href="vidioc-enuminput.html#c.V4L.v4l2_input" title="V4L.v4l2_input"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_input</span></code></a> the <code class="docutils literal notranslate"><span class="pre">assoc_audio</span></code>
 field and the <code class="docutils literal notranslate"><span class="pre">capability</span></code> field and its only flag
 <code class="docutils literal notranslate"><span class="pre">V4L2_INPUT_CAP_AUDIO</span></code> was replaced by the new <code class="docutils literal notranslate"><span class="pre">audioset</span></code> field.
 Instead of linking one video input to one audio input this field
 reports all audio inputs this video input combines with.</p>
 <p>New fields are <code class="docutils literal notranslate"><span class="pre">tuner</span></code> (reversing the former link from tuners to
 video inputs), <code class="docutils literal notranslate"><span class="pre">std</span></code> and <code class="docutils literal notranslate"><span class="pre">status</span></code>.</p>
-<p>Accordingly struct v4l2_output lost its
+<p>Accordingly <a class="reference internal" href="vidioc-enumoutput.html#c.V4L.v4l2_output" title="V4L.v4l2_output"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_output</span></code></a> lost its
 <code class="docutils literal notranslate"><span class="pre">capability</span></code> and <code class="docutils literal notranslate"><span class="pre">assoc_audio</span></code> fields. <code class="docutils literal notranslate"><span class="pre">audioset</span></code>,
 <code class="docutils literal notranslate"><span class="pre">modulator</span></code> and <code class="docutils literal notranslate"><span class="pre">std</span></code> where added instead.</p>
 </li>
-<li><p>The struct v4l2_audio field <code class="docutils literal notranslate"><span class="pre">audio</span></code> was
+<li><p>The <a class="reference internal" href="vidioc-g-audio.html#c.V4L.v4l2_audio" title="V4L.v4l2_audio"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_audio</span></code></a> field <code class="docutils literal notranslate"><span class="pre">audio</span></code> was
 renamed to <code class="docutils literal notranslate"><span class="pre">index</span></code>, for consistency with other structures. A new
 capability flag <code class="docutils literal notranslate"><span class="pre">V4L2_AUDCAP_STEREO</span></code> was added to indicated if the
 audio input in question supports stereo sound.
 <code class="docutils literal notranslate"><span class="pre">V4L2_AUDCAP_EFFECTS</span></code> and the corresponding <code class="docutils literal notranslate"><span class="pre">V4L2_AUDMODE</span></code> flags
 where removed. This can be easily implemented using controls.
 (However the same applies to AVL which is still there.)</p>
-<p>Again for consistency the struct v4l2_audioout field <code class="docutils literal notranslate"><span class="pre">audio</span></code> was renamed
+<p>Again for consistency the <a class="reference internal" href="vidioc-g-audioout.html#c.V4L.v4l2_audioout" title="V4L.v4l2_audioout"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_audioout</span></code></a> field <code class="docutils literal notranslate"><span class="pre">audio</span></code> was renamed
 to <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
 </li>
-<li><p>The struct v4l2_tuner <code class="docutils literal notranslate"><span class="pre">input</span></code> field was
+<li><p>The <a class="reference internal" href="vidioc-g-tuner.html#c.V4L.v4l2_tuner" title="V4L.v4l2_tuner"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_tuner</span></code></a> <code class="docutils literal notranslate"><span class="pre">input</span></code> field was
 replaced by an <code class="docutils literal notranslate"><span class="pre">index</span></code> field, permitting devices with multiple
 tuners. The link between video inputs and tuners is now reversed,
 inputs point to their tuner. The <code class="docutils literal notranslate"><span class="pre">std</span></code> substructure became a
-simple set (more about this below) and moved into struct v4l2_input.
+simple set (more about this below) and moved into <a class="reference internal" href="vidioc-enuminput.html#c.V4L.v4l2_input" title="V4L.v4l2_input"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_input</span></code></a>.
 A <code class="docutils literal notranslate"><span class="pre">type</span></code> field was added.</p>
-<p>Accordingly in struct v4l2_modulator the
+<p>Accordingly in <a class="reference internal" href="vidioc-g-modulator.html#c.V4L.v4l2_modulator" title="V4L.v4l2_modulator"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_modulator</span></code></a> the
 <code class="docutils literal notranslate"><span class="pre">output</span></code> was replaced by an <code class="docutils literal notranslate"><span class="pre">index</span></code> field.</p>
-<p>In struct v4l2_frequency the <code class="docutils literal notranslate"><span class="pre">port</span></code>
+<p>In <a class="reference internal" href="vidioc-g-frequency.html#c.V4L.v4l2_frequency" title="V4L.v4l2_frequency"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_frequency</span></code></a> the <code class="docutils literal notranslate"><span class="pre">port</span></code>
 field was replaced by a <code class="docutils literal notranslate"><span class="pre">tuner</span></code> field containing the respective
 tuner or modulator index number. A tuner <code class="docutils literal notranslate"><span class="pre">type</span></code> field was added
 and the <code class="docutils literal notranslate"><span class="pre">reserved</span></code> field became larger for future extensions
@@ -616,7 +616,7 @@ defined in the <code class="docutils literal notranslate"><span class="pre">vide
 <a class="reference internal" href="vidioc-g-std.html#vidioc-g-std"><span class="std std-ref">VIDIOC_S_STD</span></a> now take a pointer to this
 type as argument. <a class="reference internal" href="vidioc-querystd.html#vidioc-querystd"><span class="std std-ref">ioctl VIDIOC_QUERYSTD, VIDIOC_SUBDEV_QUERYSTD</span></a> was
 added to autodetect the received standard, if the hardware has this
-capability. In struct v4l2_standard an
+capability. In <a class="reference internal" href="vidioc-enumstd.html#c.V4L.v4l2_standard" title="V4L.v4l2_standard"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_standard</span></code></a> an
 <code class="docutils literal notranslate"><span class="pre">index</span></code> field was added for
 <a class="reference internal" href="vidioc-enumstd.html#vidioc-enumstd"><span class="std std-ref">ioctl VIDIOC_ENUMSTD, VIDIOC_SUBDEV_ENUMSTD</span></a>. A
 <a class="reference internal" href="vidioc-enumstd.html#v4l2-std-id"><span class="std std-ref">v4l2_std_id</span></a> field named <code class="docutils literal notranslate"><span class="pre">id</span></code> was added as
@@ -627,10 +627,10 @@ originally needed to distguish between variations of standards, were
 removed.</p>
 <p>Struct <code class="docutils literal notranslate"><span class="pre">v4l2_enumstd</span></code> ceased to be.
 <a class="reference internal" href="vidioc-enumstd.html#vidioc-enumstd"><span class="std std-ref">ioctl VIDIOC_ENUMSTD, VIDIOC_SUBDEV_ENUMSTD</span></a> now takes a pointer to a
-struct v4l2_standard directly. The
+<a class="reference internal" href="vidioc-enumstd.html#c.V4L.v4l2_standard" title="V4L.v4l2_standard"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_standard</span></code></a> directly. The
 information which standards are supported by a particular video
-input or output moved into struct v4l2_input
-and struct v4l2_output fields named <code class="docutils literal notranslate"><span class="pre">std</span></code>,
+input or output moved into <a class="reference internal" href="vidioc-enuminput.html#c.V4L.v4l2_input" title="V4L.v4l2_input"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_input</span></code></a>
+and <a class="reference internal" href="vidioc-enumoutput.html#c.V4L.v4l2_output" title="V4L.v4l2_output"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_output</span></code></a> fields named <code class="docutils literal notranslate"><span class="pre">std</span></code>,
 respectively.</p>
 </li>
 <li><p>The struct <a class="reference internal" href="vidioc-queryctrl.html#v4l2-queryctrl"><span class="std std-ref">v4l2_queryctrl</span></a> fields
@@ -640,12 +640,12 @@ implemented as expected and therefore removed.</p></li>
 negotiate data formats as with
 <a class="reference internal" href="vidioc-g-fmt.html#vidioc-g-fmt"><span class="std std-ref">VIDIOC_S_FMT</span></a>, but without the overhead of
 programming the hardware and regardless of I/O in progress.</p>
-<p>In struct v4l2_format the <code class="docutils literal notranslate"><span class="pre">fmt</span></code> union was
+<p>In <a class="reference internal" href="vidioc-g-fmt.html#c.V4L.v4l2_format" title="V4L.v4l2_format"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_format</span></code></a> the <code class="docutils literal notranslate"><span class="pre">fmt</span></code> union was
 extended to contain <a class="reference internal" href="dev-overlay.html#c.v4l2_window" title="v4l2_window"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_window</span></code></a>. All
 image format negotiations are now possible with <code class="docutils literal notranslate"><span class="pre">VIDIOC_G_FMT</span></code>,
 <code class="docutils literal notranslate"><span class="pre">VIDIOC_S_FMT</span></code> and <code class="docutils literal notranslate"><span class="pre">VIDIOC_TRY_FMT</span></code>; ioctl. The <code class="docutils literal notranslate"><span class="pre">VIDIOC_G_WIN</span></code>
 and <code class="docutils literal notranslate"><span class="pre">VIDIOC_S_WIN</span></code> ioctls to prepare for a video overlay were
-removed. The <code class="docutils literal notranslate"><span class="pre">type</span></code> field changed to type enum v4l2_buf_type and
+removed. The <code class="docutils literal notranslate"><span class="pre">type</span></code> field changed to type <a class="reference internal" href="buffer.html#c.V4L.v4l2_buf_type" title="V4L.v4l2_buf_type"><code class="xref c c-enum docutils literal notranslate"><span class="pre">enum</span> <span class="pre">v4l2_buf_type</span></code></a> and
 the buffer type names changed as follows.</p>
 <table class="docutils align-default">
 <colgroup>
@@ -654,7 +654,7 @@ the buffer type names changed as follows.</p>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Old defines</p></th>
-<th class="head"><p>enum v4l2_buf_type</p></th>
+<th class="head"><p><a class="reference internal" href="buffer.html#c.V4L.v4l2_buf_type" title="V4L.v4l2_buf_type"><code class="xref c c-enum docutils literal notranslate"><span class="pre">enum</span> <span class="pre">v4l2_buf_type</span></code></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -700,8 +700,8 @@ the buffer type names changed as follows.</p>
 </tbody>
 </table>
 </li>
-<li><p>In struct v4l2_fmtdesc a enum v4l2_buf_type field named <code class="docutils literal notranslate"><span class="pre">type</span></code> was
-added as in struct v4l2_format. The <code class="docutils literal notranslate"><span class="pre">VIDIOC_ENUM_FBUFFMT</span></code> ioctl is no
+<li><p>In <a class="reference internal" href="vidioc-enum-fmt.html#c.V4L.v4l2_fmtdesc" title="V4L.v4l2_fmtdesc"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_fmtdesc</span></code></a> a <a class="reference internal" href="buffer.html#c.V4L.v4l2_buf_type" title="V4L.v4l2_buf_type"><code class="xref c c-enum docutils literal notranslate"><span class="pre">enum</span> <span class="pre">v4l2_buf_type</span></code></a> field named <code class="docutils literal notranslate"><span class="pre">type</span></code> was
+added as in <a class="reference internal" href="vidioc-g-fmt.html#c.V4L.v4l2_format" title="V4L.v4l2_format"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_format</span></code></a>. The <code class="docutils literal notranslate"><span class="pre">VIDIOC_ENUM_FBUFFMT</span></code> ioctl is no
 longer needed and was removed. These calls can be replaced by
 <a class="reference internal" href="vidioc-enum-fmt.html#vidioc-enum-fmt"><span class="std std-ref">ioctl VIDIOC_ENUM_FMT</span></a> with type <code class="docutils literal notranslate"><span class="pre">V4L2_BUF_TYPE_VIDEO_OVERLAY</span></code>.</p></li>
 <li><p>In <a class="reference internal" href="pixfmt-v4l2.html#c.v4l2_pix_format" title="v4l2_pix_format"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_pix_format</span></code></a> the <code class="docutils literal notranslate"><span class="pre">depth</span></code>
@@ -758,14 +758,14 @@ a newly added <code class="docutils literal notranslate"><span class="pre">color
 <code class="docutils literal notranslate"><span class="pre">V4L2_COLORSPACE_470_SYSTEM_M</span></code> or
 <code class="docutils literal notranslate"><span class="pre">V4L2_COLORSPACE_470_SYSTEM_BG</span></code> replaces <code class="docutils literal notranslate"><span class="pre">V4L2_FMT_CS_601YUV</span></code>.</p>
 </li>
-<li><p>In struct v4l2_requestbuffers the
-<code class="docutils literal notranslate"><span class="pre">type</span></code> field was properly defined as enum v4l2_buf_type. Buffer types
+<li><p>In <a class="reference internal" href="vidioc-reqbufs.html#c.V4L.v4l2_requestbuffers" title="V4L.v4l2_requestbuffers"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_requestbuffers</span></code></a> the
+<code class="docutils literal notranslate"><span class="pre">type</span></code> field was properly defined as <a class="reference internal" href="buffer.html#c.V4L.v4l2_buf_type" title="V4L.v4l2_buf_type"><code class="xref c c-enum docutils literal notranslate"><span class="pre">enum</span> <span class="pre">v4l2_buf_type</span></code></a>. Buffer types
 changed as mentioned above. A new <code class="docutils literal notranslate"><span class="pre">memory</span></code> field of type
 enum v4l2_memory was added to distinguish between
 I/O methods using buffers allocated by the driver or the
 application. See <a class="reference internal" href="io.html#io"><span class="std std-ref">Input/Output</span></a> for details.</p></li>
-<li><p>In struct v4l2_buffer the <code class="docutils literal notranslate"><span class="pre">type</span></code> field was
-properly defined as enum v4l2_buf_type.
+<li><p>In <a class="reference internal" href="buffer.html#c.V4L.v4l2_buffer" title="V4L.v4l2_buffer"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_buffer</span></code></a> the <code class="docutils literal notranslate"><span class="pre">type</span></code> field was
+properly defined as <a class="reference internal" href="buffer.html#c.V4L.v4l2_buf_type" title="V4L.v4l2_buf_type"><code class="xref c c-enum docutils literal notranslate"><span class="pre">enum</span> <span class="pre">v4l2_buf_type</span></code></a>.
 Buffer types changed as mentioned above. A <code class="docutils literal notranslate"><span class="pre">field</span></code> field of type
 <a class="reference internal" href="field-order.html#c.v4l2_field" title="v4l2_field"><code class="xref c c-enum docutils literal notranslate"><span class="pre">enum</span> <span class="pre">v4l2_field</span></code></a> was added to indicate if a
 buffer contains a top or bottom field. The old field flags were
@@ -783,7 +783,7 @@ layer, after changes to this code it was no longer needed. The
 indeed allocated in device memory rather than DMA-able system
 memory. It was barely useful and so was removed.</p>
 </li>
-<li><p>In struct v4l2_framebuffer the
+<li><p>In <a class="reference internal" href="vidioc-g-fbuf.html#c.V4L.v4l2_framebuffer" title="V4L.v4l2_framebuffer"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_framebuffer</span></code></a> the
 <code class="docutils literal notranslate"><span class="pre">base[3]</span></code> array anticipating double- and triple-buffering in
 off-screen video memory, however without defining a synchronization
 mechanism, was replaced by a single pointer. The
@@ -806,20 +806,20 @@ distinguish between field and frame (interlaced) overlay.</p></li>
 struct <code class="docutils literal notranslate"><span class="pre">v4l2_zoom</span></code>, <code class="docutils literal notranslate"><span class="pre">V4L2_ZOOM_NONCAP</span></code> and
 <code class="docutils literal notranslate"><span class="pre">V4L2_ZOOM_WHILESTREAMING</span></code> was replaced by a new cropping and
 scaling interface. The previously unused
-struct v4l2_cropcap and struct v4l2_crop
+<a class="reference internal" href="vidioc-cropcap.html#c.V4L.v4l2_cropcap" title="V4L.v4l2_cropcap"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_cropcap</span></code></a> and <a class="reference internal" href="vidioc-g-crop.html#c.V4L.v4l2_crop" title="V4L.v4l2_crop"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_crop</span></code></a>
 where redefined for this purpose. See <a class="reference internal" href="crop.html#crop"><span class="std std-ref">Image Cropping, Insertion and Scaling – the CROP API</span></a> for details.</p></li>
-<li><p>In struct v4l2_vbi_format the
+<li><p>In <a class="reference internal" href="dev-raw-vbi.html#c.V4L.v4l2_vbi_format" title="V4L.v4l2_vbi_format"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_vbi_format</span></code></a> the
 <code class="docutils literal notranslate"><span class="pre">SAMPLE_FORMAT</span></code> field now contains a four-character-code as used
 to identify video image formats and <code class="docutils literal notranslate"><span class="pre">V4L2_PIX_FMT_GREY</span></code> replaces
 the <code class="docutils literal notranslate"><span class="pre">V4L2_VBI_SF_UBYTE</span></code> define. The <code class="docutils literal notranslate"><span class="pre">reserved</span></code> field was
 extended.</p></li>
-<li><p>In struct v4l2_captureparm the type of
+<li><p>In <a class="reference internal" href="vidioc-g-parm.html#c.V4L.v4l2_captureparm" title="V4L.v4l2_captureparm"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_captureparm</span></code></a> the type of
 the <code class="docutils literal notranslate"><span class="pre">timeperframe</span></code> field changed from unsigned long to
-struct v4l2_fract. This allows the accurate
+<a class="reference internal" href="vidioc-enumstd.html#c.V4L.v4l2_fract" title="V4L.v4l2_fract"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_fract</span></code></a>. This allows the accurate
 expression of multiples of the NTSC-M frame rate 30000 / 1001. A new
 field <code class="docutils literal notranslate"><span class="pre">readbuffers</span></code> was added to control the driver behaviour in
 read I/O mode.</p>
-<p>Similar changes were made to struct v4l2_outputparm.</p>
+<p>Similar changes were made to <a class="reference internal" href="vidioc-g-parm.html#c.V4L.v4l2_outputparm" title="V4L.v4l2_outputparm"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_outputparm</span></code></a>.</p>
 </li>
 <li><p>The struct <code class="docutils literal notranslate"><span class="pre">v4l2_performance</span></code> and
 <code class="docutils literal notranslate"><span class="pre">VIDIOC_G_PERF</span></code> ioctl were dropped. Except when using the
@@ -934,7 +934,7 @@ ioctl, while the read-only version was renamed to
 <h2><span class="section-number">6.2.13. </span>V4L2 in Linux 2.6.8<a class="headerlink" href="#v4l2-in-linux-2-6-8" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p>A new field <code class="docutils literal notranslate"><span class="pre">input</span></code> (former <code class="docutils literal notranslate"><span class="pre">reserved[0]</span></code>) was added to the
-struct v4l2_buffer. Purpose of this
+<a class="reference internal" href="buffer.html#c.V4L.v4l2_buffer" title="V4L.v4l2_buffer"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_buffer</span></code></a>. Purpose of this
 field is to alternate between video inputs (e. g. cameras) in step
 with the video capturing process. This function must be enabled with
 the new <code class="docutils literal notranslate"><span class="pre">V4L2_BUF_FLAG_INPUT</span></code> flag. The <code class="docutils literal notranslate"><span class="pre">flags</span></code> field is no
@@ -944,14 +944,14 @@ longer read-only.</p></li>
 <div class="section" id="v4l2-spec-erratum-2004-08-01">
 <h2><span class="section-number">6.2.14. </span>V4L2 spec erratum 2004-08-01<a class="headerlink" href="#v4l2-spec-erratum-2004-08-01" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>The return value of the <a class="reference internal" href="func-open.html#func-open"><span class="std std-ref">V4L2 open()</span></a> function was incorrectly
+<li><p>The return value of the <a class="reference internal" href="func-open.html#func-open"><span class="std std-ref">V4L2 <a class="reference internal" href="func-open.html#c.V4L.open" title="V4L.open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a></span></a> function was incorrectly
 documented.</p></li>
 <li><p>Audio output ioctls end in -AUDOUT, not -AUDIOOUT.</p></li>
 <li><p>In the Current Audio Input example the <code class="docutils literal notranslate"><span class="pre">VIDIOC_G_AUDIO</span></code> ioctl took
 the wrong argument.</p></li>
 <li><p>The documentation of the <a class="reference internal" href="vidioc-qbuf.html#vidioc-qbuf"><span class="std std-ref">ioctl VIDIOC_QBUF, VIDIOC_DQBUF</span></a> and
 <a class="reference internal" href="vidioc-qbuf.html#vidioc-qbuf"><span class="std std-ref">VIDIOC_DQBUF</span></a> ioctls did not mention the
-struct v4l2_buffer <code class="docutils literal notranslate"><span class="pre">memory</span></code> field. It was
+<a class="reference internal" href="buffer.html#c.V4L.v4l2_buffer" title="V4L.v4l2_buffer"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_buffer</span></code></a> <code class="docutils literal notranslate"><span class="pre">memory</span></code> field. It was
 also missing from examples. Also on the <code class="docutils literal notranslate"><span class="pre">VIDIOC_DQBUF</span></code> page the <code class="docutils literal notranslate"><span class="pre">EIO</span></code>
 error code was not documented.</p></li>
 </ol>
@@ -993,7 +993,7 @@ the wrong argument type.</p>
 <div class="section" id="v4l2-spec-erratum-2006-01-10">
 <h2><span class="section-number">6.2.18. </span>V4L2 spec erratum 2006-01-10<a class="headerlink" href="#v4l2-spec-erratum-2006-01-10" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">V4L2_IN_ST_COLOR_KILL</span></code> flag in struct v4l2_input not only
+<li><p>The <code class="docutils literal notranslate"><span class="pre">V4L2_IN_ST_COLOR_KILL</span></code> flag in <a class="reference internal" href="vidioc-enuminput.html#c.V4L.v4l2_input" title="V4L.v4l2_input"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_input</span></code></a> not only
 indicates if the color killer is enabled, but also if it is active.
 (The color killer disables color decoding when it detects no color
 in the video signal to improve the image quality.)</p></li>
@@ -1005,7 +1005,7 @@ as noted above.</p></li>
 <div class="section" id="v4l2-spec-erratum-2006-02-03">
 <h2><span class="section-number">6.2.19. </span>V4L2 spec erratum 2006-02-03<a class="headerlink" href="#v4l2-spec-erratum-2006-02-03" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>In struct v4l2_captureparm and struct v4l2_outputparm the <code class="docutils literal notranslate"><span class="pre">timeperframe</span></code>
+<li><p>In <a class="reference internal" href="vidioc-g-parm.html#c.V4L.v4l2_captureparm" title="V4L.v4l2_captureparm"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_captureparm</span></code></a> and <a class="reference internal" href="vidioc-g-parm.html#c.V4L.v4l2_outputparm" title="V4L.v4l2_outputparm"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_outputparm</span></code></a> the <code class="docutils literal notranslate"><span class="pre">timeperframe</span></code>
 field gives the time in seconds, not microseconds.</p></li>
 </ol>
 </div>
@@ -1039,14 +1039,14 @@ the <a class="reference internal" href="vidioc-g-tuner.html#vidioc-g-tuner"><spa
 <code class="docutils literal notranslate"><span class="pre">V4L2_BUF_TYPE_SLICED_VBI_OUTPUT</span></code> of the sliced VBI interface were
 not mentioned along with other buffer types.</p></li>
 <li><p>In <a class="reference internal" href="vidioc-g-audio.html#vidioc-g-audio"><span class="std std-ref">VIDIOC_G_AUDIO</span></a> it was clarified that the
-struct v4l2_audio <code class="docutils literal notranslate"><span class="pre">mode</span></code> field is a flags field.</p></li>
+<a class="reference internal" href="vidioc-g-audio.html#c.V4L.v4l2_audio" title="V4L.v4l2_audio"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_audio</span></code></a> <code class="docutils literal notranslate"><span class="pre">mode</span></code> field is a flags field.</p></li>
 <li><p><a class="reference internal" href="vidioc-querycap.html#vidioc-querycap"><span class="std std-ref">ioctl VIDIOC_QUERYCAP</span></a> did not mention the sliced VBI and radio
 capability flags.</p></li>
 <li><p>In <a class="reference internal" href="vidioc-g-frequency.html#vidioc-g-frequency"><span class="std std-ref">VIDIOC_G_FREQUENCY</span></a> it was clarified that
 applications must initialize the tuner <code class="docutils literal notranslate"><span class="pre">type</span></code> field of
-struct v4l2_frequency before calling
+<a class="reference internal" href="vidioc-g-frequency.html#c.V4L.v4l2_frequency" title="V4L.v4l2_frequency"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_frequency</span></code></a> before calling
 <a class="reference internal" href="vidioc-g-frequency.html#vidioc-g-frequency"><span class="std std-ref">VIDIOC_S_FREQUENCY</span></a>.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">reserved</span></code> array in struct v4l2_requestbuffers has 2 elements,
+<li><p>The <code class="docutils literal notranslate"><span class="pre">reserved</span></code> array in <a class="reference internal" href="vidioc-reqbufs.html#c.V4L.v4l2_requestbuffers" title="V4L.v4l2_requestbuffers"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_requestbuffers</span></code></a> has 2 elements,
 not 32.</p></li>
 <li><p>In <a class="reference internal" href="dev-output.html#output"><span class="std std-ref">Video Output Interface</span></a> and <a class="reference internal" href="dev-raw-vbi.html#raw-vbi"><span class="std std-ref">Raw VBI Data Interface</span></a> the device file names
 <code class="docutils literal notranslate"><span class="pre">/dev/vout</span></code> which never caught on were replaced by <code class="docutils literal notranslate"><span class="pre">/dev/video</span></code>.</p></li>
@@ -1064,7 +1064,7 @@ extended from 224-239 to 224-255. Accordingly device file names
 flag to skip unsupported controls with
 <a class="reference internal" href="vidioc-queryctrl.html#vidioc-queryctrl"><span class="std std-ref">ioctls VIDIOC_QUERYCTRL, VIDIOC_QUERY_EXT_CTRL and VIDIOC_QUERYMENU</span></a>, new control types
 <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_INTEGER64</span></code> and <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_CTRL_CLASS</span></code>
-(enum v4l2_ctrl_type), and new control flags
+(<a class="reference internal" href="vidioc-queryctrl.html#c.V4L.v4l2_ctrl_type" title="V4L.v4l2_ctrl_type"><code class="xref c c-enum docutils literal notranslate"><span class="pre">enum</span> <span class="pre">v4l2_ctrl_type</span></code></a>), and new control flags
 <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_FLAG_READ_ONLY</span></code>, <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_FLAG_UPDATE</span></code>,
 <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_FLAG_INACTIVE</span></code> and <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_FLAG_SLIDER</span></code>
 (<a class="reference internal" href="vidioc-queryctrl.html#control-flags"><span class="std std-ref">Control Flags</span></a>). See <a class="reference internal" href="extended-controls.html#extended-controls"><span class="std std-ref">Extended Controls API</span></a> for details.</p></li>
@@ -1073,7 +1073,7 @@ flag to skip unsupported controls with
 <div class="section" id="v4l2-in-linux-2-6-19">
 <h2><span class="section-number">6.2.24. </span>V4L2 in Linux 2.6.19<a class="headerlink" href="#v4l2-in-linux-2-6-19" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>In struct v4l2_sliced_vbi_cap a
+<li><p>In <a class="reference internal" href="vidioc-g-sliced-vbi-cap.html#c.V4L.v4l2_sliced_vbi_cap" title="V4L.v4l2_sliced_vbi_cap"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_sliced_vbi_cap</span></code></a> a
 buffer type field was added replacing a reserved field. Note on
 architectures where the size of enum types differs from int types the
 size of the structure changed. The
@@ -1119,7 +1119,7 @@ and <a class="reference internal" href="vidioc-g-fbuf.html#vidioc-g-fbuf"><span 
 extending the structure. This may <strong>break compatibility</strong> with
 applications using a <a class="reference internal" href="dev-overlay.html#c.v4l2_window" title="v4l2_window"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_window</span></code></a> directly. However the
 <a class="reference internal" href="vidioc-g-fmt.html#vidioc-g-fmt"><span class="std std-ref">VIDIOC_G/S/TRY_FMT</span></a> ioctls, which take a
-pointer to a struct v4l2_format parent structure
+pointer to a <a class="reference internal" href="vidioc-g-fmt.html#c.V4L.v4l2_format" title="V4L.v4l2_format"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_format</span></code></a> parent structure
 with padding bytes at the end, are not affected.</p>
 </li>
 <li><p>The format of the <code class="docutils literal notranslate"><span class="pre">chromakey</span></code> field in <a class="reference internal" href="dev-overlay.html#c.v4l2_window" title="v4l2_window"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_window</span></code></a> changed from
@@ -1327,7 +1327,7 @@ V4L2_CTRL_TYPE_INTEGER_MENU.</p></li>
 <div class="section" id="v4l2-in-linux-3-6">
 <h2><span class="section-number">6.2.45. </span>V4L2 in Linux 3.6<a class="headerlink" href="#v4l2-in-linux-3-6" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Replaced <code class="docutils literal notranslate"><span class="pre">input</span></code> in struct v4l2_buffer by
+<li><p>Replaced <code class="docutils literal notranslate"><span class="pre">input</span></code> in <a class="reference internal" href="buffer.html#c.V4L.v4l2_buffer" title="V4L.v4l2_buffer"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_buffer</span></code></a> by
 <code class="docutils literal notranslate"><span class="pre">reserved2</span></code> and removed <code class="docutils literal notranslate"><span class="pre">V4L2_BUF_FLAG_INPUT</span></code>.</p></li>
 <li><p>Added V4L2_CAP_VIDEO_M2M and V4L2_CAP_VIDEO_M2M_MPLANE
 capabilities.</p></li>
@@ -1339,7 +1339,7 @@ capabilities.</p></li>
 <h2><span class="section-number">6.2.46. </span>V4L2 in Linux 3.9<a class="headerlink" href="#v4l2-in-linux-3-9" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Added timestamp types to <code class="docutils literal notranslate"><span class="pre">flags</span></code> field in
-struct v4l2_buffer. See <a class="reference internal" href="buffer.html#buffer-flags"><span class="std std-ref">Buffer Flags</span></a>.</p></li>
+<a class="reference internal" href="buffer.html#c.V4L.v4l2_buffer" title="V4L.v4l2_buffer"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_buffer</span></code></a>. See <a class="reference internal" href="buffer.html#buffer-flags"><span class="std std-ref">Buffer Flags</span></a>.</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">V4L2_EVENT_CTRL_CH_RANGE</span></code> control event changes flag. See
 <a class="reference internal" href="vidioc-dqevent.html#ctrl-changes-flags"><span class="std std-ref">Control Changes</span></a>.</p></li>
 </ol>

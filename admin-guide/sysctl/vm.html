@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -167,6 +167,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../rtc.html">Real Time Clock (RTC) Drivers for Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../serial-console.html">Linux Serial Console</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../svga.html">Video Mode Selection Support 2.13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syscall-user-dispatch.html">Syscall User Dispatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sysrq.html">Linux Magic System Request Key Hacks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../thunderbolt.html">USB4 and Thunderbolt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ufs.html">Using UFS</a></li>
@@ -1037,11 +1038,15 @@ file-backed pages is less than the high watermark in a zone.</p>
 </div>
 <div class="section" id="unprivileged-userfaultfd">
 <h2>unprivileged_userfaultfd<a class="headerlink" href="#unprivileged-userfaultfd" title="Permalink to this headline">¶</a></h2>
-<p>This flag controls whether unprivileged users can use the userfaultfd
-system calls.  Set this to 1 to allow unprivileged users to use the
-userfaultfd system calls, or set this to 0 to restrict userfaultfd to only
-privileged users (with SYS_CAP_PTRACE capability).</p>
-<p>The default value is 1.</p>
+<p>This flag controls the mode in which unprivileged users can use the
+userfaultfd system calls. Set this to 0 to restrict unprivileged users
+to handle page faults in user mode only. In this case, users without
+SYS_CAP_PTRACE must pass UFFD_USER_MODE_ONLY in order for userfaultfd to
+succeed. Prohibiting use of userfaultfd for handling faults from kernel
+mode may make certain vulnerabilities more difficult to exploit.</p>
+<p>Set this to 1 to allow unprivileged users to use the userfaultfd system
+calls without any restrictions.</p>
+<p>The default value is 0.</p>
 </div>
 <div class="section" id="user-reserve-kbytes">
 <h2>user_reserve_kbytes<a class="headerlink" href="#user-reserve-kbytes" title="Permalink to this headline">¶</a></h2>

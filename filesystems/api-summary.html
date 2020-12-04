@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -1740,49 +1740,6 @@ void <code class="sig-name descname">iterate_supers_type</code><span class="sig-
 <dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*arg</span></code></dt><dd><p>argument to pass to it</p>
 <p>Scans the superblock list and calls given function, passing it
 locked superblock and given argument.</p>
-</dd>
-</dl>
-<dl class="c function">
-<dt id="c.get_super">
-<em class="property">struct</em> super_block *<code class="sig-name descname">get_super</code><span class="sig-paren">(</span><em class="property">struct</em> block_device *<em>bdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.get_super" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>get the superblock of a device</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">block_device</span> <span class="pre">*bdev</span></code></dt><dd><p>device to get the superblock for</p>
-<p>Scans the superblock list and finds the superblock of the file system
-mounted on the device given. <code class="docutils literal notranslate"><span class="pre">NULL</span></code> is returned if no match is found.</p>
-</dd>
-</dl>
-<dl class="c function">
-<dt id="c.get_super_thawed">
-<em class="property">struct</em> super_block *<code class="sig-name descname">get_super_thawed</code><span class="sig-paren">(</span><em class="property">struct</em> block_device *<em>bdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.get_super_thawed" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>get thawed superblock of a device</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">block_device</span> <span class="pre">*bdev</span></code></dt><dd><p>device to get the superblock for</p>
-<p>Scans the superblock list and finds the superblock of the file system
-mounted on the device. The superblock is returned once it is thawed
-(or immediately if it was not frozen). <code class="docutils literal notranslate"><span class="pre">NULL</span></code> is returned if no match
-is found.</p>
-</dd>
-</dl>
-<dl class="c function">
-<dt id="c.get_super_exclusive_thawed">
-<em class="property">struct</em> super_block *<code class="sig-name descname">get_super_exclusive_thawed</code><span class="sig-paren">(</span><em class="property">struct</em> block_device *<em>bdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.get_super_exclusive_thawed" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>get thawed superblock of a device</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">block_device</span> <span class="pre">*bdev</span></code></dt><dd><p>device to get the superblock for</p>
-<p>Scans the superblock list and finds the superblock of the file system
-mounted on the device. The superblock is returned once it is thawed
-(or immediately if it was not frozen) and s_umount semaphore is held
-in exclusive mode. <code class="docutils literal notranslate"><span class="pre">NULL</span></code> is returned if no match is found.</p>
 </dd>
 </dl>
 <dl class="c function">
@@ -3803,7 +3760,7 @@ int <code class="sig-name descname">sync_inode_metadata</code><span class="sig-p
 <p>only writes the actual inode, no associated data or other metadata.</p>
 <dl class="c function">
 <dt id="c.freeze_bdev">
-<em class="property">struct</em> super_block *<code class="sig-name descname">freeze_bdev</code><span class="sig-paren">(</span><em class="property">struct</em> block_device *<em>bdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.freeze_bdev" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">freeze_bdev</code><span class="sig-paren">(</span><em class="property">struct</em> block_device *<em>bdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.freeze_bdev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><ul class="simple">
 <li><p>lock a filesystem and force it into a consistent state</p></li>
 </ul>
@@ -3824,7 +3781,7 @@ count down in <a class="reference internal" href="#c.thaw_bdev" title="thaw_bdev
 actually.</p>
 <dl class="c function">
 <dt id="c.thaw_bdev">
-int <code class="sig-name descname">thaw_bdev</code><span class="sig-paren">(</span><em class="property">struct</em> block_device *<em>bdev</em>, <em class="property">struct</em> super_block *<em>sb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.thaw_bdev" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">thaw_bdev</code><span class="sig-paren">(</span><em class="property">struct</em> block_device *<em>bdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.thaw_bdev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><ul class="simple">
 <li><p>unlock filesystem</p></li>
 </ul>
@@ -3833,8 +3790,6 @@ int <code class="sig-name descname">thaw_bdev</code><span class="sig-paren">(</s
 <p><strong>Parameters</strong></p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">block_device</span> <span class="pre">*bdev</span></code></dt><dd><p>blockdevice to unlock</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">super_block</span> <span class="pre">*sb</span></code></dt><dd><p>associated superblock</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
@@ -3852,17 +3807,18 @@ int <code class="sig-name descname">thaw_bdev</code><span class="sig-paren">(</s
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">block_device</span> <span class="pre">*bdev</span></code></dt><dd><p>Block device to grab a reference to.</p>
 </dd>
 </dl>
+<p><strong>Description</strong></p>
+<p>Returns the block_device with an additional reference when successful,
+or NULL if the inode is already beeing freed.</p>
 <dl class="c function">
 <dt id="c.bd_prepare_to_claim">
-int <code class="sig-name descname">bd_prepare_to_claim</code><span class="sig-paren">(</span><em class="property">struct</em> block_device *<em>bdev</em>, <em class="property">struct</em> block_device *<em>whole</em>, void *<em>holder</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bd_prepare_to_claim" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">bd_prepare_to_claim</code><span class="sig-paren">(</span><em class="property">struct</em> block_device *<em>bdev</em>, void *<em>holder</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bd_prepare_to_claim" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>claim a block device</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">block_device</span> <span class="pre">*bdev</span></code></dt><dd><p>block device of interest</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">block_device</span> <span class="pre">*whole</span></code></dt><dd><p>the whole device containing <strong>bdev</strong>, may equal <strong>bdev</strong></p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*holder</span></code></dt><dd><p>holder trying to claim <strong>bdev</strong></p>
 </dd>
@@ -3875,15 +3831,13 @@ has ownership of bd_claiming and bd_holder[s].</p>
 <p>0 if <strong>bdev</strong> can be claimed, -EBUSY otherwise.</p>
 <dl class="c function">
 <dt id="c.bd_abort_claiming">
-void <code class="sig-name descname">bd_abort_claiming</code><span class="sig-paren">(</span><em class="property">struct</em> block_device *<em>bdev</em>, <em class="property">struct</em> block_device *<em>whole</em>, void *<em>holder</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bd_abort_claiming" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">bd_abort_claiming</code><span class="sig-paren">(</span><em class="property">struct</em> block_device *<em>bdev</em>, void *<em>holder</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bd_abort_claiming" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>abort claiming of a block device</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">block_device</span> <span class="pre">*bdev</span></code></dt><dd><p>block device of interest</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">block_device</span> <span class="pre">*whole</span></code></dt><dd><p>whole block device</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*holder</span></code></dt><dd><p>holder that has claimed <strong>bdev</strong></p>
 </dd>
@@ -3943,29 +3897,6 @@ void <code class="sig-name descname">bd_unlink_disk_holder</code><span class="si
 <p><strong>Context</strong></p>
 <p>Might sleep.</p>
 <dl class="c function">
-<dt id="c.blkdev_get_by_path">
-<em class="property">struct</em> block_device *<code class="sig-name descname">blkdev_get_by_path</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>path</em>, fmode_t <em>mode</em>, void *<em>holder</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blkdev_get_by_path" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>open a block device by name</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*path</span></code></dt><dd><p>path to the block device to open</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">fmode_t</span> <span class="pre">mode</span></code></dt><dd><p>FMODE_* mask</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*holder</span></code></dt><dd><p>exclusive holder identifier</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Open the blockdevice described by the device file at <strong>path</strong>.  <strong>mode</strong>
-and <strong>holder</strong> are identical to blkdev_get().</p>
-<p>On success, the returned block_device has reference count of one.</p>
-<p><strong>Context</strong></p>
-<p>Might sleep.</p>
-<p><strong>Return</strong></p>
-<p>Pointer to block_device on success, ERR_PTR(-errno) on failure.</p>
-<dl class="c function">
 <dt id="c.blkdev_get_by_dev">
 <em class="property">struct</em> block_device *<code class="sig-name descname">blkdev_get_by_dev</code><span class="sig-paren">(</span>dev_t <em>dev</em>, fmode_t <em>mode</em>, void *<em>holder</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blkdev_get_by_dev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>open a block device by device number</p>
@@ -3981,26 +3912,52 @@ and <strong>holder</strong> are identical to blkdev_get().</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Open the blockdevice described by device number <strong>dev</strong>.  <strong>mode</strong> and
-<strong>holder</strong> are identical to blkdev_get().</p>
-<p>Use it ONLY if you really do not have anything better - i.e. when
-you are behind a truly sucky interface and all you are given is a
-device number.  _Never_ to be used for internal purposes.  If you
-ever need it - reconsider your API.</p>
-<p>On success, the returned block_device has reference count of one.</p>
+<p>Open the block device described by device number <strong>dev</strong>. If <strong>mode</strong> includes
+<code class="docutils literal notranslate"><span class="pre">FMODE_EXCL</span></code>, the block device is opened with exclusive access.  Specifying
+<code class="docutils literal notranslate"><span class="pre">FMODE_EXCL</span></code> with a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> <strong>holder</strong> is invalid.  Exclusive opens may nest for
+the same <strong>holder</strong>.</p>
+<p>Use this interface ONLY if you really do not have anything better - i.e. when
+you are behind a truly sucky interface and all you are given is a device
+number.  Everything else should use <a class="reference internal" href="#c.blkdev_get_by_path" title="blkdev_get_by_path"><code class="xref c c-func docutils literal notranslate"><span class="pre">blkdev_get_by_path()</span></code></a>.</p>
 <p><strong>Context</strong></p>
 <p>Might sleep.</p>
 <p><strong>Return</strong></p>
-<p>Pointer to block_device on success, ERR_PTR(-errno) on failure.</p>
+<p>Reference to the block_device on success, ERR_PTR(-errno) on failure.</p>
+<dl class="c function">
+<dt id="c.blkdev_get_by_path">
+<em class="property">struct</em> block_device *<code class="sig-name descname">blkdev_get_by_path</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>path</em>, fmode_t <em>mode</em>, void *<em>holder</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blkdev_get_by_path" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>open a block device by name</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*path</span></code></dt><dd><p>path to the block device to open</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">fmode_t</span> <span class="pre">mode</span></code></dt><dd><p>FMODE_* mask</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*holder</span></code></dt><dd><p>exclusive holder identifier</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Open the block device described by the device file at <strong>path</strong>.  If <strong>mode</strong>
+includes <code class="docutils literal notranslate"><span class="pre">FMODE_EXCL</span></code>, the block device is opened with exclusive access.
+Specifying <code class="docutils literal notranslate"><span class="pre">FMODE_EXCL</span></code> with a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> <strong>holder</strong> is invalid.  Exclusive opens may
+nest for the same <strong>holder</strong>.</p>
+<p><strong>Context</strong></p>
+<p>Might sleep.</p>
+<p><strong>Return</strong></p>
+<p>Reference to the block_device on success, ERR_PTR(-errno) on failure.</p>
 <dl class="c function">
 <dt id="c.lookup_bdev">
-<em class="property">struct</em> block_device *<code class="sig-name descname">lookup_bdev</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>pathname</em><span class="sig-paren">)</span><a class="headerlink" href="#c.lookup_bdev" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">lookup_bdev</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>pathname</em>, dev_t *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.lookup_bdev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>lookup a struct block_device by name</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*pathname</span></code></dt><dd><p>special file representing the block device</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">dev_t</span> <span class="pre">*dev</span></code></dt><dd><p><em>undescribed</em></p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>

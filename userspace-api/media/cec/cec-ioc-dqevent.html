@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.19-dragon
+                5.10.20-dragon
               </div>
             
           
@@ -414,12 +414,12 @@ this is more than enough.</p></td>
 <tr class="row-even"><td><p>union {</p></td>
 <td colspan="2"><p>(anonymous)</p></td>
 </tr>
-<tr class="row-odd"><td><p>struct cec_event_state_change</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#c.CEC.cec_event_state_change" title="CEC.cec_event_state_change"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">cec_event_state_change</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">state_change</span></code></p></td>
 <td><p>The new adapter state as sent by the <a class="reference internal" href="#cec-event-state-change"><span class="std std-ref">CEC_EVENT_STATE_CHANGE</span></a>
 event.</p></td>
 </tr>
-<tr class="row-even"><td><p>struct cec_event_lost_msgs</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#c.CEC.cec_event_lost_msgs" title="CEC.cec_event_lost_msgs"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">cec_event_lost_msgs</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">lost_msgs</span></code></p></td>
 <td><p>The number of lost messages as sent by the <a class="reference internal" href="#cec-event-lost-msgs"><span class="std std-ref">CEC_EVENT_LOST_MSGS</span></a>
 event.</p></td>
@@ -441,7 +441,7 @@ event.</p></td>
 </td>
 <td><p>1</p>
 </td>
-<td><p id="cec-event-state-change">Generated when the CEC Adapter’s state changes. When open() is
+<td><p id="cec-event-state-change">Generated when the CEC Adapter’s state changes. When <a class="reference internal" href="cec-func-open.html#c.CEC.open" title="CEC.open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a> is
 called an initial event will be generated for that filehandle with
 the CEC Adapter’s state at that time.</p>
 </td>
@@ -478,7 +478,7 @@ capability set.</p>
 </td>
 <td><p id="cec-event-pin-hpd-low">Generated if the HPD pin goes from a high voltage to a low voltage.
 Only applies to adapters that have the <code class="docutils literal notranslate"><span class="pre">CEC_CAP_MONITOR_PIN</span></code>
-capability set. When open() is called, the HPD pin can be read and
+capability set. When <a class="reference internal" href="cec-func-open.html#c.CEC.open" title="CEC.open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a> is called, the HPD pin can be read and
 if the HPD is low, then an initial event will be generated for that
 filehandle.</p>
 </td>
@@ -489,7 +489,7 @@ filehandle.</p>
 </td>
 <td><p id="cec-event-pin-hpd-high">Generated if the HPD pin goes from a low voltage to a high voltage.
 Only applies to adapters that have the <code class="docutils literal notranslate"><span class="pre">CEC_CAP_MONITOR_PIN</span></code>
-capability set. When open() is called, the HPD pin can be read and
+capability set. When <a class="reference internal" href="cec-func-open.html#c.CEC.open" title="CEC.open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a> is called, the HPD pin can be read and
 if the HPD is high, then an initial event will be generated for that
 filehandle.</p>
 </td>
@@ -500,7 +500,7 @@ filehandle.</p>
 </td>
 <td><p id="cec-event-pin-5v-low">Generated if the 5V pin goes from a high voltage to a low voltage.
 Only applies to adapters that have the <code class="docutils literal notranslate"><span class="pre">CEC_CAP_MONITOR_PIN</span></code>
-capability set. When open() is called, the 5V pin can be read and
+capability set. When <a class="reference internal" href="cec-func-open.html#c.CEC.open" title="CEC.open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a> is called, the 5V pin can be read and
 if the 5V is low, then an initial event will be generated for that
 filehandle.</p>
 </td>
@@ -511,7 +511,7 @@ filehandle.</p>
 </td>
 <td><p id="cec-event-pin-5v-high">Generated if the 5V pin goes from a low voltage to a high voltage.
 Only applies to adapters that have the <code class="docutils literal notranslate"><span class="pre">CEC_CAP_MONITOR_PIN</span></code>
-capability set. When open() is called, the 5V pin can be read and
+capability set. When <a class="reference internal" href="cec-func-open.html#c.CEC.open" title="CEC.open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a> is called, the 5V pin can be read and
 if the 5V is high, then an initial event will be generated for that
 filehandle.</p>
 </td>
@@ -533,7 +533,7 @@ filehandle.</p>
 <td><p id="cec-event-fl-initial-state">Set for the initial events that are generated when the device is
 opened. See the table above for which events do this. This allows
 applications to learn the initial state of the CEC adapter at
-open() time.</p>
+<a class="reference internal" href="cec-func-open.html#c.CEC.open" title="CEC.open"><code class="xref c c-func docutils literal notranslate"><span class="pre">open()</span></code></a> time.</p>
 </td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CEC_EVENT_FL_DROPPED_EVENTS</span></code></p>
