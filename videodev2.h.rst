@@ -710,6 +710,7 @@ videodev2.h
     \#define \ :ref:`V4L2_PIX_FMT_HEVC <v4l2-pix-fmt-hevc>`     v4l2\_fourcc('H', 'E', 'V', 'C') \/\* HEVC aka H.265 \*\/
     \#define \ :ref:`V4L2_PIX_FMT_FWHT <v4l2-pix-fmt-fwht>`     v4l2\_fourcc('F', 'W', 'H', 'T') \/\* Fast Walsh Hadamard Transform (vicodec) \*\/
     \#define \ :ref:`V4L2_PIX_FMT_FWHT_STATELESS <v4l2-pix-fmt-fwht-stateless>`     v4l2\_fourcc('S', 'F', 'W', 'H') \/\* Stateless FWHT (vicodec) \*\/
+    \#define \ :ref:`V4L2_PIX_FMT_H264_SLICE <v4l2-pix-fmt-h264-slice>` v4l2\_fourcc('S', '2', '6', '4') \/\* H264 parsed slices \*\/
 
     \/\*  Vendor-specific formats   \*\/
     \#define \ :ref:`V4L2_PIX_FMT_CPIA1 <v4l2-pix-fmt-cpia1>`    v4l2\_fourcc('C', 'P', 'I', 'A') \/\* cpia1 YUV \*\/
@@ -1737,6 +1738,13 @@ videodev2.h
                     \_\_u16 \_\_user \*p\_u16;
                     \_\_u32 \_\_user \*p\_u32;
                     struct v4l2_area \_\_user \*p\_area;
+                    struct v4l2\_ctrl\_h264\_sps \_\_user \*p\_h264\_sps;
+                    struct v4l2\_ctrl\_h264\_pps \*p\_h264\_pps;
+                    struct v4l2\_ctrl\_h264\_scaling\_matrix \_\_user \*p\_h264\_scaling\_matrix;
+                    struct v4l2\_ctrl\_h264\_pred\_weights \_\_user \*p\_h264\_pred\_weights;
+                    struct v4l2\_ctrl\_h264\_slice\_params \_\_user \*p\_h264\_slice\_params;
+                    struct v4l2\_ctrl\_h264\_decode\_params \_\_user \*p\_h264\_decode\_params;
+                    struct v4l2\_ctrl\_fwht\_params \_\_user \*p\_fwht\_params;
                     void \_\_user \*ptr;
             \};
     \} \_\_attribute\_\_ ((packed));
@@ -1783,6 +1791,15 @@ videodev2.h
             :c:type:`V4L2_CTRL_TYPE_U16 <v4l2_ctrl_type>`           = 0x0101,
             :c:type:`V4L2_CTRL_TYPE_U32 <v4l2_ctrl_type>`           = 0x0102,
             :c:type:`V4L2_CTRL_TYPE_AREA <v4l2_ctrl_type>`          = 0x0106,
+
+            :c:type:`V4L2_CTRL_TYPE_H264_SPS <v4l2_ctrl_type>`             = 0x0200,
+            :c:type:`V4L2_CTRL_TYPE_H264_PPS <v4l2_ctrl_type>`             = 0x0201,
+            :c:type:`V4L2_CTRL_TYPE_H264_SCALING_MATRIX <v4l2_ctrl_type>`  = 0x0202,
+            :c:type:`V4L2_CTRL_TYPE_H264_SLICE_PARAMS <v4l2_ctrl_type>`    = 0x0203,
+            :c:type:`V4L2_CTRL_TYPE_H264_DECODE_PARAMS <v4l2_ctrl_type>`   = 0x0204,
+            :c:type:`V4L2_CTRL_TYPE_H264_PRED_WEIGHTS <v4l2_ctrl_type>`    = 0x0205,
+
+            \ :ref:`V4L2_CTRL_TYPE_FWHT_PARAMS <v4l2-ctrl-type-fwht-params>`          = 0x0220,
     \};
 
     \/\*  Used in the \ :ref:`VIDIOC_QUERYCTRL <vidioc_queryctrl>` ioctl for querying controls \*\/

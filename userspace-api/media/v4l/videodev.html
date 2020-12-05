@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.20-dragon
+                5.10.21-dragon
               </div>
             
           
@@ -195,7 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../ia64/index.html">IA-64 Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../m68k/index.html">m68k Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mips/index.html">MIPS-specific Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../nios2/nios2.html">Linux on the Nios II architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nios2/index.html">Nios II Specific Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../openrisc/index.html">OpenRISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../parisc/index.html">PA-RISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../powerpc/index.html">powerpc</a></li>
@@ -998,6 +998,7 @@ struct v4l2_pix_format {
 #define <a class="reference internal" href="pixfmt-compressed.html#v4l2-pix-fmt-hevc"><span class="std std-ref">V4L2_PIX_FMT_HEVC</span></a>     v4l2_fourcc('H', 'E', 'V', 'C') /* HEVC aka H.265 */
 #define <a class="reference internal" href="pixfmt-compressed.html#v4l2-pix-fmt-fwht"><span class="std std-ref">V4L2_PIX_FMT_FWHT</span></a>     v4l2_fourcc('F', 'W', 'H', 'T') /* Fast Walsh Hadamard Transform (vicodec) */
 #define <a class="reference internal" href="pixfmt-compressed.html#v4l2-pix-fmt-fwht-stateless"><span class="std std-ref">V4L2_PIX_FMT_FWHT_STATELESS</span></a>     v4l2_fourcc('S', 'F', 'W', 'H') /* Stateless FWHT (vicodec) */
+#define <a class="reference internal" href="pixfmt-compressed.html#v4l2-pix-fmt-h264-slice"><span class="std std-ref">V4L2_PIX_FMT_H264_SLICE</span></a> v4l2_fourcc('S', '2', '6', '4') /* H264 parsed slices */
 
 /*  Vendor-specific formats   */
 #define <a class="reference internal" href="pixfmt-reserved.html#v4l2-pix-fmt-cpia1"><span class="std std-ref">V4L2_PIX_FMT_CPIA1</span></a>    v4l2_fourcc('C', 'P', 'I', 'A') /* cpia1 YUV */
@@ -1064,8 +1065,8 @@ struct v4l2_pix_format {
 #define <a class="reference internal" href="pixfmt-meta-vivid.html#v4l2-meta-fmt-vivid"><span class="std std-ref">V4L2_META_FMT_VIVID</span></a>       v4l2_fourcc('V', 'I', 'V', 'D') /* Vivid Metadata */
 
 /* Vendor specific - used for RK_ISP1 camera sub-system */
-#define <span class="xref std std-ref">V4L2_META_FMT_RK_ISP1_PARAMS</span>    v4l2_fourcc('R', 'K', '1', 'P') /* Rockchip ISP1 3A Parameters */
-#define <span class="xref std std-ref">V4L2_META_FMT_RK_ISP1_STAT_3A</span>   v4l2_fourcc('R', 'K', '1', 'S') /* Rockchip ISP1 3A Statistics */
+#define <a class="reference internal" href="pixfmt-meta-rkisp1.html#v4l2-meta-fmt-rk-isp1-params"><span class="std std-ref">V4L2_META_FMT_RK_ISP1_PARAMS</span></a>    v4l2_fourcc('R', 'K', '1', 'P') /* Rockchip ISP1 3A Parameters */
+#define <a class="reference internal" href="pixfmt-meta-rkisp1.html#v4l2-meta-fmt-rk-isp1-stat-3a"><span class="std std-ref">V4L2_META_FMT_RK_ISP1_STAT_3A</span></a>   v4l2_fourcc('R', 'K', '1', 'S') /* Rockchip ISP1 3A Statistics */
 
 /* priv field value to indicates that subsequent fields are valid. */
 #define <a class="reference internal" href="pixfmt-v4l2.html#c.v4l2_pix_format" title="v4l2_pix_format"><code class="xref c c-type docutils literal notranslate"><span class="pre">V4L2_PIX_FMT_PRIV_MAGIC</span></code></a>         0xfeedcafe
@@ -2025,6 +2026,13 @@ struct v4l2_ext_control {
                 __u16 __user *p_u16;
                 __u32 __user *p_u32;
                 struct v4l2_area __user *p_area;
+                struct v4l2_ctrl_h264_sps __user *p_h264_sps;
+                struct v4l2_ctrl_h264_pps *p_h264_pps;
+                struct v4l2_ctrl_h264_scaling_matrix __user *p_h264_scaling_matrix;
+                struct v4l2_ctrl_h264_pred_weights __user *p_h264_pred_weights;
+                struct v4l2_ctrl_h264_slice_params __user *p_h264_slice_params;
+                struct v4l2_ctrl_h264_decode_params __user *p_h264_decode_params;
+                struct v4l2_ctrl_fwht_params __user *p_fwht_params;
                 void __user *ptr;
         };
 } __attribute__ ((packed));
@@ -2071,6 +2079,15 @@ enum <code class="xref c c-type docutils literal notranslate"><span class="pre">
         <code class="xref c c-type docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_U16</span></code>           = 0x0101,
         <code class="xref c c-type docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_U32</span></code>           = 0x0102,
         <code class="xref c c-type docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_AREA</span></code>          = 0x0106,
+
+        <code class="xref c c-type docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_H264_SPS</span></code>             = 0x0200,
+        <code class="xref c c-type docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_H264_PPS</span></code>             = 0x0201,
+        <code class="xref c c-type docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_H264_SCALING_MATRIX</span></code>  = 0x0202,
+        <code class="xref c c-type docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_H264_SLICE_PARAMS</span></code>    = 0x0203,
+        <code class="xref c c-type docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_H264_DECODE_PARAMS</span></code>   = 0x0204,
+        <code class="xref c c-type docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_H264_PRED_WEIGHTS</span></code>    = 0x0205,
+
+        <span class="xref std std-ref">V4L2_CTRL_TYPE_FWHT_PARAMS</span>          = 0x0220,
 };
 
 /*  Used in the <a class="reference internal" href="vidioc-queryctrl.html#vidioc-queryctrl"><span class="std std-ref">VIDIOC_QUERYCTRL</span></a> ioctl for querying controls */

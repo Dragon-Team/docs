@@ -57,7 +57,7 @@
             
             
               <div class="version">
-                5.10.20-dragon
+                5.10.21-dragon
               </div>
             
           
@@ -155,7 +155,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ia64/index.html">IA-64 Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="m68k/index.html">m68k Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mips/index.html">MIPS-specific Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nios2/nios2.html">Linux on the Nios II architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nios2/index.html">Nios II Specific Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="openrisc/index.html">OpenRISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parisc/index.html">PA-RISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="powerpc/index.html">powerpc</a></li>
@@ -3497,6 +3497,8 @@
 </li>
       <li><a href="gpu/drm-internals.html#c.devm_drm_dev_alloc">devm_drm_dev_alloc (C macro)</a>
 </li>
+      <li><a href="gpu/drm-internals.html#c.devm_drm_irq_install">devm_drm_irq_install (C function)</a>
+</li>
       <li><a href="gpu/drm-kms-helpers.html#c.devm_drm_panel_bridge_add">devm_drm_panel_bridge_add (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.devm_drm_panel_bridge_add_typed">devm_drm_panel_bridge_add_typed (C function)</a>
@@ -3560,8 +3562,6 @@
       <li><a href="driver-api/iio/triggers.html#c.devm_iio_trigger_alloc">devm_iio_trigger_alloc (C function)</a>
 </li>
       <li><a href="driver-api/input.html#c.devm_input_allocate_device">devm_input_allocate_device (C function)</a>
-</li>
-      <li><a href="driver-api/input.html#c.devm_input_allocate_polled_device">devm_input_allocate_polled_device (C function)</a>
 </li>
       <li><a href="driver-api/basics.html#c.devm_kasprintf">devm_kasprintf (C function)</a>
 </li>
@@ -9081,8 +9081,6 @@
 </li>
       <li><a href="driver-api/input.html#c.input_allocate_device">input_allocate_device (C function)</a>
 </li>
-      <li><a href="driver-api/input.html#c.input_allocate_polled_device">input_allocate_polled_device (C function)</a>
-</li>
       <li><a href="driver-api/input.html#c.input_close_device">input_close_device (C function)</a>
 </li>
       <li><a href="driver-api/input.html#c.input_dev">input_dev (C struct)</a>
@@ -9106,8 +9104,6 @@
       <li><a href="driver-api/input.html#c.input_free_device">input_free_device (C function)</a>
 </li>
       <li><a href="driver-api/input.html#c.input_free_minor">input_free_minor (C function)</a>
-</li>
-      <li><a href="driver-api/input.html#c.input_free_polled_device">input_free_polled_device (C function)</a>
 </li>
       <li><a href="driver-api/input.html#c.input_get_keycode">input_get_keycode (C function)</a>
 </li>
@@ -9151,15 +9147,11 @@
 </li>
       <li><a href="driver-api/input.html#c.input_open_device">input_open_device (C function)</a>
 </li>
-      <li><a href="driver-api/input.html#c.input_polled_dev">input_polled_dev (C struct)</a>
-</li>
       <li><a href="driver-api/input.html#c.input_register_device">input_register_device (C function)</a>
 </li>
       <li><a href="driver-api/input.html#c.input_register_handle">input_register_handle (C function)</a>
 </li>
       <li><a href="driver-api/input.html#c.input_register_handler">input_register_handler (C function)</a>
-</li>
-      <li><a href="driver-api/input.html#c.input_register_polled_device">input_register_polled_device (C function)</a>
 </li>
       <li><a href="driver-api/input.html#c.input_release_device">input_release_device (C function)</a>
 </li>
@@ -9181,8 +9173,6 @@
 </li>
       <li><a href="driver-api/input.html#c.input_unregister_handler">input_unregister_handler (C function)</a>
 </li>
-      <li><a href="driver-api/input.html#c.input_unregister_polled_device">input_unregister_polled_device (C function)</a>
-</li>
       <li><a href="driver-api/input.html#c.input_value">input_value (C struct)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.insert_resource">insert_resource (C function)</a>
@@ -9193,14 +9183,14 @@
 </li>
       <li><a href="core-api/workqueue.html#c.insert_work">insert_work (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core-api/workqueue.html#c.insert_wq_barrier">insert_wq_barrier (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.int_pow">int_pow (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.int_sqrt">int_sqrt (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core-api/kernel-api.html#c.int_sqrt64">int_sqrt64 (C function)</a>
 </li>
       <li><a href="driver-api/scsi.html#c.int_to_scsilun">int_to_scsilun (C function)</a>
@@ -12170,8 +12160,6 @@
       <li><a href="networking/kapi.html#c.napi_schedule_prep">napi_schedule_prep (C function)</a>
 </li>
       <li><a href="networking/kapi.html#c.napi_synchronize">napi_synchronize (C function)</a>
-</li>
-      <li><a href="driver-api/media/v4l2-dv-timings.html#c.nc">nc (C macro)</a>
 </li>
       <li><a href="locking/seqlock.html#c.need_seqretry">need_seqretry (C function)</a>
 </li>
@@ -18337,6 +18325,8 @@
 </li>
       <li><a href="userspace-api/media/glossary.html#term-V4L2-Sub-device-API"><strong>V4L2 Sub-device API</strong></a>
 </li>
+      <li><a href="userspace-api/media/v4l/ext-ctrls-image-source.html#c.v4l2_area">v4l2_area (C type)</a>
+</li>
       <li><a href="driver-api/media/v4l2-async.html#c.v4l2_async_match_type">v4l2_async_match_type (C enum)</a>
 </li>
       <li><a href="driver-api/media/v4l2-async.html#c.v4l2_async_notifier">v4l2_async_notifier (C struct)</a>
@@ -18379,6 +18369,8 @@
 </li>
       <li><a href="driver-api/media/v4l2-dv-timings.html#c.v4l2_calc_timeperframe">v4l2_calc_timeperframe (C function)</a>
 </li>
+      <li><a href="driver-api/media/v4l2-dv-timings.html#c.v4l2_check_dv_timings_fnc">v4l2_check_dv_timings_fnc (C macro)</a>
+</li>
       <li><a href="userspace-api/media/v4l/dev-overlay.html#c.v4l2_clip">v4l2_clip (C type)</a>
 </li>
       <li><a href="userspace-api/media/v4l/colorspaces-defs.html#c.v4l2_colorspace">v4l2_colorspace (C type)</a>
@@ -18411,7 +18403,7 @@
 </li>
       <li><a href="driver-api/media/v4l2-controls.html#c.v4l2_ctrl_find">v4l2_ctrl_find (C function)</a>
 </li>
-      <li><a href="userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_ctrl_fwht_params">v4l2_ctrl_fwht_params (C type)</a>
+      <li><a href="userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_ctrl_fwht_params">v4l2_ctrl_fwht_params (C type)</a>
 </li>
       <li><a href="driver-api/media/v4l2-controls.html#c.v4l2_ctrl_g_ctrl">v4l2_ctrl_g_ctrl (C function)</a>
 </li>
@@ -18425,17 +18417,17 @@
 </li>
       <li><a href="driver-api/media/v4l2-controls.html#c.v4l2_ctrl_grab">v4l2_ctrl_grab (C function)</a>
 </li>
-      <li><a href="userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_ctrl_h264_decode_params">v4l2_ctrl_h264_decode_params (C type)</a>
+      <li><a href="userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_decode_params">v4l2_ctrl_h264_decode_params (C type)</a>
 </li>
-      <li><a href="userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_ctrl_h264_pps">v4l2_ctrl_h264_pps (C type)</a>
+      <li><a href="userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_pps">v4l2_ctrl_h264_pps (C type)</a>
 </li>
-      <li><a href="userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_ctrl_h264_pred_weights">v4l2_ctrl_h264_pred_weights (C type)</a>
+      <li><a href="userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_pred_weights">v4l2_ctrl_h264_pred_weights (C type)</a>
 </li>
-      <li><a href="userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_ctrl_h264_scaling_matrix">v4l2_ctrl_h264_scaling_matrix (C type)</a>
+      <li><a href="userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_scaling_matrix">v4l2_ctrl_h264_scaling_matrix (C type)</a>
 </li>
-      <li><a href="userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_ctrl_h264_slice_params">v4l2_ctrl_h264_slice_params (C type)</a>
+      <li><a href="userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_slice_params">v4l2_ctrl_h264_slice_params (C type)</a>
 </li>
-      <li><a href="userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_ctrl_h264_sps">v4l2_ctrl_h264_sps (C type)</a>
+      <li><a href="userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_sps">v4l2_ctrl_h264_sps (C type)</a>
 </li>
       <li><a href="driver-api/media/v4l2-controls.html#c.v4l2_ctrl_handler">v4l2_ctrl_handler (C struct)</a>
 </li>
@@ -18701,11 +18693,11 @@
 </li>
       <li><a href="driver-api/media/v4l2-subdev.html#c.v4l2_get_subdevdata">v4l2_get_subdevdata (C function)</a>
 </li>
-      <li><a href="userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_h264_dpb_entry">v4l2_h264_dpb_entry (C type)</a>
+      <li><a href="userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_h264_dpb_entry">v4l2_h264_dpb_entry (C type)</a>
 </li>
-      <li><a href="userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_h264_reference">v4l2_h264_reference (C type)</a>
+      <li><a href="userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_h264_reference">v4l2_h264_reference (C type)</a>
 </li>
-      <li><a href="userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_h264_weight_factors">v4l2_h264_weight_factors (C type)</a>
+      <li><a href="userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_h264_weight_factors">v4l2_h264_weight_factors (C type)</a>
 </li>
       <li><a href="driver-api/media/v4l2-dv-timings.html#c.v4l2_hdmi_colorimetry">v4l2_hdmi_colorimetry (C struct)</a>
 </li>
@@ -18783,10 +18775,10 @@
 </li>
       <li><a href="driver-api/media/v4l2-mem2mem.html#c.v4l2_m2m_get_curr_priv">v4l2_m2m_get_curr_priv (C function)</a>
 </li>
-      <li><a href="driver-api/media/v4l2-mem2mem.html#c.v4l2_m2m_get_dst_vq">v4l2_m2m_get_dst_vq (C function)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="driver-api/media/v4l2-mem2mem.html#c.v4l2_m2m_get_dst_vq">v4l2_m2m_get_dst_vq (C function)</a>
+</li>
       <li><a href="driver-api/media/v4l2-mem2mem.html#c.v4l2_m2m_get_src_vq">v4l2_m2m_get_src_vq (C function)</a>
 </li>
       <li><a href="driver-api/media/v4l2-mem2mem.html#c.v4l2_m2m_get_vq">v4l2_m2m_get_vq (C function)</a>
@@ -18877,10 +18869,6 @@
 </li>
       <li><a href="userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_mpeg2_sequence">v4l2_mpeg2_sequence (C type)</a>
 </li>
-      <li><a href="userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_mpeg_video_h264_decode_mode">v4l2_mpeg_video_h264_decode_mode (C type)</a>
-</li>
-      <li><a href="userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_mpeg_video_h264_start_code">v4l2_mpeg_video_h264_start_code (C type)</a>
-</li>
       <li><a href="userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_mpeg_video_hevc_decode_mode">v4l2_mpeg_video_hevc_decode_mode (C type)</a>
 </li>
       <li><a href="userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_mpeg_video_hevc_start_code">v4l2_mpeg_video_hevc_start_code (C type)</a>
@@ -18970,6 +18958,10 @@
       <li><a href="driver-api/media/v4l2-event.html#c.v4l2_src_change_event_subdev_subscribe">v4l2_src_change_event_subdev_subscribe (C function)</a>
 </li>
       <li><a href="driver-api/media/v4l2-event.html#c.v4l2_src_change_event_subscribe">v4l2_src_change_event_subscribe (C function)</a>
+</li>
+      <li><a href="userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_stateless_h264_decode_mode">v4l2_stateless_h264_decode_mode (C type)</a>
+</li>
+      <li><a href="userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_stateless_h264_start_code">v4l2_stateless_h264_start_code (C type)</a>
 </li>
       <li><a href="driver-api/media/v4l2-subdev.html#c.v4l2_subdev">v4l2_subdev (C struct)</a>
 </li>

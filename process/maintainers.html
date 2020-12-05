@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.20-dragon
+                5.10.21-dragon
               </div>
             
           
@@ -1726,6 +1726,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#platform-integrity-data-module">PLATFORM INTEGRITY DATA MODULE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pldmfw-library">PLDMFW LIBRARY</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#plx-dma-driver">PLX DMA DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pm6764tr-driver">PM6764TR DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pm-graph-utility">PM-GRAPH UTILITY</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pmbus-hardware-monitoring-drivers">PMBUS HARDWARE MONITORING DRIVERS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pmc-sierra-maxraid-driver">PMC SIERRA MaxRAID DRIVER</a></li>
@@ -2473,7 +2474,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../ia64/index.html">IA-64 Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../m68k/index.html">m68k Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mips/index.html">MIPS-specific Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nios2/nios2.html">Linux on the Nios II architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nios2/index.html">Nios II Specific Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../openrisc/index.html">OpenRISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parisc/index.html">PA-RISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../powerpc/index.html">powerpc</a></li>
@@ -11385,20 +11386,17 @@ Roger Quadros &lt;<a class="reference external" href="mailto:rogerq&#37;&#52;&#4
 <div class="section" id="cafe-cmos-integrated-camera-controller-driver">
 <h3>CAFE CMOS INTEGRATED CAMERA CONTROLLER DRIVER<a class="headerlink" href="#cafe-cmos-integrated-camera-controller-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
-<dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Jonathan Corbet &lt;<a class="reference external" href="mailto:corbet&#37;&#52;&#48;lwn&#46;net">corbet<span>&#64;</span>lwn<span>&#46;</span>net</a>&gt;</p>
+<dt class="field-odd">Mailing list</dt>
+<dd class="field-odd"><p><a class="reference external" href="mailto:linux-media&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-media<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
 </dd>
-<dt class="field-even">Mailing list</dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:linux-media&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-media<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+<dt class="field-even">Status</dt>
+<dd class="field-even"><p>Orphan</p>
 </dd>
-<dt class="field-odd">Status</dt>
-<dd class="field-odd"><p>Maintained</p>
+<dt class="field-odd">SCM</dt>
+<dd class="field-odd"><p>git git://linuxtv.org/media_tree.git</p>
 </dd>
-<dt class="field-even">SCM</dt>
-<dd class="field-even"><p>git git://linuxtv.org/media_tree.git</p>
-</dd>
-<dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/admin-guide/media/cafe_ccic*</span></code>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/admin-guide/media/cafe_ccic*</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/media/platform/marvell-ccic/</span></code></p>
 </dd>
 </dl>
@@ -16222,7 +16220,8 @@ Philipp Zabel &lt;<a class="reference external" href="mailto:p&#46;zabel&#37;&#5
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/display/mediatek/</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/gpu/drm/mediatek/</span></code>
-<code class="docutils literal notranslate"><span class="pre">drivers/phy/mediatek/phy-mtk-hdmi*</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">drivers/phy/mediatek/phy-mtk-hdmi*</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/phy/mediatek/phy-mtk-mipi*</span></code></p>
 </dd>
 </dl>
 </div>
@@ -30243,9 +30242,9 @@ Luka Perkov &lt;<a class="reference external" href="mailto:luka&#46;perkov&#37;&
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/media/i2c/mipi-ccs.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/driver-api/media/drivers/ccs/</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/media/i2c/ccs-pll.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/media/i2c/ccs-pll.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/media/i2c/ccs/</span></code>
-<code class="docutils literal notranslate"><span class="pre">drivers/media/i2c/smiapp-pll.c</span></code>
-<code class="docutils literal notranslate"><span class="pre">drivers/media/i2c/smiapp-pll.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/uapi/linux/smiapp.h</span></code></p>
 </dd>
 </dl>
@@ -33265,20 +33264,17 @@ Hyungwoo Yang &lt;<a class="reference external" href="mailto:hyungwoo&#46;yang&#
 <div class="section" id="omnivision-ov7670-sensor-driver">
 <h3>OMNIVISION OV7670 SENSOR DRIVER<a class="headerlink" href="#omnivision-ov7670-sensor-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
-<dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Jonathan Corbet &lt;<a class="reference external" href="mailto:corbet&#37;&#52;&#48;lwn&#46;net">corbet<span>&#64;</span>lwn<span>&#46;</span>net</a>&gt;</p>
+<dt class="field-odd">Mailing list</dt>
+<dd class="field-odd"><p><a class="reference external" href="mailto:linux-media&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-media<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
 </dd>
-<dt class="field-even">Mailing list</dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:linux-media&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-media<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+<dt class="field-even">Status</dt>
+<dd class="field-even"><p>Orphan</p>
 </dd>
-<dt class="field-odd">Status</dt>
-<dd class="field-odd"><p>Maintained</p>
+<dt class="field-odd">SCM</dt>
+<dd class="field-odd"><p>git git://linuxtv.org/media_tree.git</p>
 </dd>
-<dt class="field-even">SCM</dt>
-<dd class="field-even"><p>git git://linuxtv.org/media_tree.git</p>
-</dd>
-<dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/media/i2c/ov7670.txt</span></code>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/media/i2c/ov7670.txt</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/media/i2c/ov7670.c</span></code></p>
 </dd>
 </dl>
@@ -35612,6 +35608,24 @@ Haojian Zhuang &lt;<a class="reference external" href="mailto:haojian&#46;zhuang
 </dd>
 <dt class="field-odd">Files</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/dma/plx_dma.c</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="pm6764tr-driver">
+<h3>PM6764TR DRIVER<a class="headerlink" href="#pm6764tr-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Charles Hsu     &lt;<a class="reference external" href="mailto:hsu&#46;yungteng&#37;&#52;&#48;gmail&#46;com">hsu<span>&#46;</span>yungteng<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:linux-hwmon&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-hwmon<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Maintained</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><a class="reference internal" href="../hwmon/pm6764tr.html"><span class="doc">hwmon/pm6764tr</span></a>
+<code class="docutils literal notranslate"><span class="pre">drivers/hwmon/pmbus/pm6764tr.c</span></code></p>
 </dd>
 </dl>
 </div>

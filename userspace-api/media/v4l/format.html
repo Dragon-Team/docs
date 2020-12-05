@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1.23. Data Formats &mdash; The Linux-Next Dragon Kernel  documentation</title>
+  <title>1.24. Data Formats &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
 
   
@@ -34,8 +34,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="1.24. Single- and multi-planar APIs" href="planar-apis.html" />
-    <link rel="prev" title="1.22. Guidelines for Video4Linux pixel format 4CCs" href="fourcc.html" /> 
+    <link rel="next" title="1.25. Single- and multi-planar APIs" href="planar-apis.html" />
+    <link rel="prev" title="1.23. Guidelines for Video4Linux pixel format 4CCs" href="fourcc.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.20-dragon
+                5.10.21-dragon
               </div>
             
           
@@ -195,7 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../ia64/index.html">IA-64 Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../m68k/index.html">m68k Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mips/index.html">MIPS-specific Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../nios2/nios2.html">Linux on the Nios II architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nios2/index.html">Nios II Specific Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../openrisc/index.html">OpenRISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../parisc/index.html">PA-RISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../powerpc/index.html">powerpc</a></li>
@@ -272,7 +272,7 @@
         
           <li><a href="common.html"><span class="section-number">1. </span>Common API Elements</a> &raquo;</li>
         
-      <li><span class="section-number">1.23. </span>Data Formats</li>
+      <li><span class="section-number">1.24. </span>Data Formats</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -292,9 +292,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="data-formats">
-<span id="format"></span><h1><span class="section-number">1.23. </span>Data Formats<a class="headerlink" href="#data-formats" title="Permalink to this headline">¶</a></h1>
+<span id="format"></span><h1><span class="section-number">1.24. </span>Data Formats<a class="headerlink" href="#data-formats" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="data-format-negotiation">
-<h2><span class="section-number">1.23.1. </span>Data Format Negotiation<a class="headerlink" href="#data-format-negotiation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.24.1. </span>Data Format Negotiation<a class="headerlink" href="#data-format-negotiation" title="Permalink to this headline">¶</a></h2>
 <p>Different devices exchange different kinds of data with applications,
 for example video images, raw or sliced VBI data, RDS datagrams. Even
 within one kind many different formats are possible, in particular there is an
@@ -347,7 +347,7 @@ earlier versions of V4L2. Switching the logical stream or returning into
 <a class="reference internal" href="vidioc-g-fmt.html#vidioc-g-fmt"><span class="std std-ref">VIDIOC_TRY_FMT</span></a> is highly recommended but optional.</p>
 </div>
 <div class="section" id="image-format-enumeration">
-<h2><span class="section-number">1.23.2. </span>Image Format Enumeration<a class="headerlink" href="#image-format-enumeration" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.24.2. </span>Image Format Enumeration<a class="headerlink" href="#image-format-enumeration" title="Permalink to this headline">¶</a></h2>
 <p>Apart of the generic format negotiation functions a special ioctl to
 enumerate all image formats supported by video capture, overlay or
 output devices is available. <a class="footnote-reference brackets" href="#f1" id="id1">1</a></p>
@@ -379,10 +379,10 @@ drivers and the actual video applications for which this is useful.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="planar-apis.html" class="btn btn-neutral float-right" title="1.24. Single- and multi-planar APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="planar-apis.html" class="btn btn-neutral float-right" title="1.25. Single- and multi-planar APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="fourcc.html" class="btn btn-neutral float-left" title="1.22. Guidelines for Video4Linux pixel format 4CCs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="fourcc.html" class="btn btn-neutral float-left" title="1.23. Guidelines for Video4Linux pixel format 4CCs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

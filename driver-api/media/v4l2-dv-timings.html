@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.20-dragon
+                5.10.21-dragon
               </div>
             
           
@@ -206,6 +206,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../thermal/index.html">Thermal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fpga/index.html">FPGA Subsystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../acpi/index.html">ACPI Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auxiliary_bus.html">Auxiliary Bus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../backlight/lp855x-driver.html">Kernel driver lp855x</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../connector.html">Kernel Connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../console.html">Console Drivers</a></li>
@@ -291,7 +292,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ia64/index.html">IA-64 Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../m68k/index.html">m68k Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mips/index.html">MIPS-specific Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../nios2/nios2.html">Linux on the Nios II architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nios2/index.html">Nios II Specific Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../openrisc/index.html">OpenRISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../parisc/index.html">PA-RISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../powerpc/index.html">powerpc</a></li>
@@ -403,14 +404,14 @@
 horizontal/vertical measures. This means that v4l2_dv_timings structure
 must be correctly and fully filled.</p>
 <dl class="c macro">
-<dt id="c.nc">
-<code class="sig-name descname">nc</code><a class="headerlink" href="#c.nc" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="c.v4l2_check_dv_timings_fnc">
+<code class="sig-name descname">v4l2_check_dv_timings_fnc</code><a class="headerlink" href="#c.v4l2_check_dv_timings_fnc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><strong>Typedef</strong>: timings check callback</p>
 </dd></dl>
 
 <p><strong>Syntax</strong></p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">v4l2_check_dv_timings_f</span> <span class="pre">nc</span> <span class="pre">(const</span> <span class="pre">struct</span> <span class="pre">v4l2_dv_timings</span> <span class="pre">*t,</span> <span class="pre">void</span> <span class="pre">*handle)</span></code></p>
+<div><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">v4l2_check_dv_timings_fnc</span> <span class="pre">(const</span> <span class="pre">struct</span> <span class="pre">v4l2_dv_timings</span> <span class="pre">*t,</span> <span class="pre">void</span> <span class="pre">*handle)</span></code></p>
 </div></blockquote>
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -423,7 +424,7 @@ must be correctly and fully filled.</p>
 <p>Returns true if the given timings are valid.</p>
 <dl class="c function">
 <dt id="c.v4l2_valid_dv_timings">
-bool <code class="sig-name descname">v4l2_valid_dv_timings</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> v4l2_dv_timings *<em>t</em>, <em class="property">const</em> <em class="property">struct</em> v4l2_dv_timings_cap *<em>cap</em>, v4l2_check_dv_timings_fnc <em>fnc</em>, void *<em>fnc_handle</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_valid_dv_timings" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">v4l2_valid_dv_timings</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> v4l2_dv_timings *<em>t</em>, <em class="property">const</em> <em class="property">struct</em> v4l2_dv_timings_cap *<em>cap</em>, <a class="reference internal" href="#c.v4l2_check_dv_timings_fnc" title="v4l2_check_dv_timings_fnc">v4l2_check_dv_timings_fnc</a> <em>fnc</em>, void *<em>fnc_handle</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_valid_dv_timings" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>are these timings valid?</p>
 </dd></dl>
 
@@ -444,7 +445,7 @@ hardware capabilities and the callback function (if non-NULL), returns
 false otherwise.</p>
 <dl class="c function">
 <dt id="c.v4l2_enum_dv_timings_cap">
-int <code class="sig-name descname">v4l2_enum_dv_timings_cap</code><span class="sig-paren">(</span><em class="property">struct</em> v4l2_enum_dv_timings *<em>t</em>, <em class="property">const</em> <em class="property">struct</em> v4l2_dv_timings_cap *<em>cap</em>, v4l2_check_dv_timings_fnc <em>fnc</em>, void *<em>fnc_handle</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_enum_dv_timings_cap" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">v4l2_enum_dv_timings_cap</code><span class="sig-paren">(</span><em class="property">struct</em> v4l2_enum_dv_timings *<em>t</em>, <em class="property">const</em> <em class="property">struct</em> v4l2_dv_timings_cap *<em>cap</em>, <a class="reference internal" href="#c.v4l2_check_dv_timings_fnc" title="v4l2_check_dv_timings_fnc">v4l2_check_dv_timings_fnc</a> <em>fnc</em>, void *<em>fnc_handle</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_enum_dv_timings_cap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Helper function to enumerate possible DV timings based on capabilities</p>
 </dd></dl>
 
@@ -467,7 +468,7 @@ hardware capabilities and the callback function (if non-NULL).</p>
 return 0, otherwise it returns -EINVAL.</p>
 <dl class="c function">
 <dt id="c.v4l2_find_dv_timings_cap">
-bool <code class="sig-name descname">v4l2_find_dv_timings_cap</code><span class="sig-paren">(</span><em class="property">struct</em> v4l2_dv_timings *<em>t</em>, <em class="property">const</em> <em class="property">struct</em> v4l2_dv_timings_cap *<em>cap</em>, unsigned <em>pclock_delta</em>, v4l2_check_dv_timings_fnc <em>fnc</em>, void *<em>fnc_handle</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_find_dv_timings_cap" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">v4l2_find_dv_timings_cap</code><span class="sig-paren">(</span><em class="property">struct</em> v4l2_dv_timings *<em>t</em>, <em class="property">const</em> <em class="property">struct</em> v4l2_dv_timings_cap *<em>cap</em>, unsigned <em>pclock_delta</em>, <a class="reference internal" href="#c.v4l2_check_dv_timings_fnc" title="v4l2_check_dv_timings_fnc">v4l2_check_dv_timings_fnc</a> <em>fnc</em>, void *<em>fnc_handle</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_find_dv_timings_cap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find the closest timings struct</p>
 </dd></dl>
 

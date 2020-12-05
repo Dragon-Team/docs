@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.20-dragon
+                5.10.21-dragon
               </div>
             
           
@@ -181,6 +181,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../thermal/index.html">Thermal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../fpga/index.html">FPGA Subsystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../acpi/index.html">ACPI Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../auxiliary_bus.html">Auxiliary Bus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../backlight/lp855x-driver.html">Kernel driver lp855x</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../connector.html">Kernel Connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../console.html">Console Drivers</a></li>
@@ -266,7 +267,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../ia64/index.html">IA-64 Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../m68k/index.html">m68k Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../mips/index.html">MIPS-specific Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../nios2/nios2.html">Linux on the Nios II architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../nios2/index.html">Nios II Specific Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../openrisc/index.html">OpenRISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../parisc/index.html">PA-RISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../powerpc/index.html">powerpc</a></li>
@@ -406,7 +407,7 @@ effect in device timing and likely also in power consumption.</p>
 </div>
 <div class="section" id="register-definition-generator">
 <h2><span class="section-number">8.1.15.5. </span>Register definition generator<a class="headerlink" href="#register-definition-generator" title="Permalink to this headline">¶</a></h2>
-<p>The ccs-regs.txt file contains MIPI CCS register definitions that are used
+<p>The ccs-regs.asc file contains MIPI CCS register definitions that are used
 to produce C source code files for definitions that can be better used by
 programs written in C language. As there are many dependencies between the
 produced files, please do not modify them manually as it’s error-prone and
@@ -419,7 +420,7 @@ definitions:</p>
         -e drivers/media/i2c/ccs/ccs-regs.h \
         -L drivers/media/i2c/ccs/ccs-limits.h \
         -l drivers/media/i2c/ccs/ccs-limits.c \
-        -c Documentation/driver-api/media/drivers/ccs/ccs-regs.txt
+        -c Documentation/driver-api/media/drivers/ccs/ccs-regs.asc
 </pre></div>
 </div>
 <p><strong>Copyright</strong> © 2020 Intel Corporation</p>

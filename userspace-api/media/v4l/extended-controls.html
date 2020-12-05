@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.20-dragon
+                5.10.21-dragon
               </div>
             
           
@@ -195,7 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../ia64/index.html">IA-64 Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../m68k/index.html">m68k Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mips/index.html">MIPS-specific Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../nios2/nios2.html">Linux on the Nios II architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nios2/index.html">Nios II Specific Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../openrisc/index.html">OpenRISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../parisc/index.html">PA-RISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../powerpc/index.html">powerpc</a></li>
@@ -334,8 +334,8 @@ controls in that array and a control class. Control classes are used to
 group similar controls into a single class. For example, control class
 <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_CLASS_USER</span></code> contains all user controls (i. e. all controls
 that can also be set using the old <a class="reference internal" href="vidioc-g-ctrl.html#vidioc-g-ctrl"><span class="std std-ref">VIDIOC_S_CTRL</span></a>
-ioctl). Control class <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_CLASS_MPEG</span></code> contains all controls
-relating to MPEG encoding, etc.</p>
+ioctl). Control class <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_CLASS_CODEC</span></code> contains controls
+relating to codecs.</p>
 <p>All controls in the control array must belong to the specified control
 class. An error is returned if this is not the case.</p>
 <p>It is also possible to use an empty control array (<code class="docutils literal notranslate"><span class="pre">count</span></code> == 0) to check
@@ -394,9 +394,9 @@ no such controls are found an error is returned.</p>
 you can set the initial <code class="docutils literal notranslate"><span class="pre">qctrl.id</span></code> value to the control class and add
 an extra check to break out of the loop when a control of another
 control class is found:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">qctrl</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">V4L2_CTRL_CLASS_MPEG</span> <span class="o">|</span> <span class="n">V4L2_CTRL_FLAG_NEXT_CTRL</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">qctrl</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">V4L2_CTRL_CLASS_CODEC</span> <span class="o">|</span> <span class="n">V4L2_CTRL_FLAG_NEXT_CTRL</span><span class="p">;</span>
 <span class="k">while</span> <span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="n">ioctl</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">VIDIOC_QUERYCTRL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">qctrl</span><span class="p">))</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">V4L2_CTRL_ID2CLASS</span><span class="p">(</span><span class="n">qctrl</span><span class="p">.</span><span class="n">id</span><span class="p">)</span> <span class="o">!=</span> <span class="n">V4L2_CTRL_CLASS_MPEG</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">V4L2_CTRL_ID2CLASS</span><span class="p">(</span><span class="n">qctrl</span><span class="p">.</span><span class="n">id</span><span class="p">)</span> <span class="o">!=</span> <span class="n">V4L2_CTRL_CLASS_CODEC</span><span class="p">)</span>
         <span class="k">break</span><span class="p">;</span>
     <span class="cm">/* ... */</span>
     <span class="n">qctrl</span><span class="p">.</span><span class="n">id</span> <span class="o">|=</span> <span class="n">V4L2_CTRL_FLAG_NEXT_CTRL</span><span class="p">;</span>

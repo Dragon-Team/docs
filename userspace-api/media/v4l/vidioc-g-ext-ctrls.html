@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.20-dragon
+                5.10.21-dragon
               </div>
             
           
@@ -195,7 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../ia64/index.html">IA-64 Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../m68k/index.html">m68k Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mips/index.html">MIPS-specific Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../nios2/nios2.html">Linux on the Nios II architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nios2/index.html">Nios II Specific Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../openrisc/index.html">OpenRISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../parisc/index.html">PA-RISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../powerpc/index.html">powerpc</a></li>
@@ -471,10 +471,40 @@ this control is of type <code class="docutils literal notranslate"><span class="
 <td><p>A pointer to a matrix control of unsigned 32-bit values. Valid if
 this control is of type <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_U32</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_area</span></code> *</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="ext-ctrls-image-source.html#c.v4l2_area" title="v4l2_area"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_area</span></code></a> *</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">p_area</span></code></p></td>
-<td><p>A pointer to a struct <code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_area</span></code>. Valid if this control is
+<td><p>A pointer to a struct <a class="reference internal" href="ext-ctrls-image-source.html#c.v4l2_area" title="v4l2_area"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_area</span></code></a>. Valid if this control is
 of type <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_AREA</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_sps" title="v4l2_ctrl_h264_sps"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_ctrl_h264_sps</span></code></a> *</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">p_h264_sps</span></code></p></td>
+<td><p>A pointer to a struct <a class="reference internal" href="ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_sps" title="v4l2_ctrl_h264_sps"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_ctrl_h264_sps</span></code></a>. Valid if this control is
+of type <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_H264_SPS</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_pps" title="v4l2_ctrl_h264_pps"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_ctrl_h264_pps</span></code></a> *</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">p_h264_pps</span></code></p></td>
+<td><p>A pointer to a struct <a class="reference internal" href="ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_pps" title="v4l2_ctrl_h264_pps"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_ctrl_h264_pps</span></code></a>. Valid if this control is
+of type <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_H264_PPS</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_scaling_matrix" title="v4l2_ctrl_h264_scaling_matrix"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_ctrl_h264_scaling_matrix</span></code></a> *</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">p_h264_scaling_matrix</span></code></p></td>
+<td><p>A pointer to a struct <a class="reference internal" href="ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_scaling_matrix" title="v4l2_ctrl_h264_scaling_matrix"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_ctrl_h264_scaling_matrix</span></code></a>. Valid if this control is
+of type <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_H264_SCALING_MATRIX</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_pred_weights" title="v4l2_ctrl_h264_pred_weights"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_ctrl_h264_pred_weights</span></code></a> *</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">p_h264_pred_weights</span></code></p></td>
+<td><p>A pointer to a struct <a class="reference internal" href="ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_pred_weights" title="v4l2_ctrl_h264_pred_weights"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_ctrl_h264_pred_weights</span></code></a>. Valid if this control is
+of type <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_H264_PRED_WEIGHTS</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_slice_params" title="v4l2_ctrl_h264_slice_params"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_ctrl_h264_slice_params</span></code></a> *</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">p_h264_slice_params</span></code></p></td>
+<td><p>A pointer to a struct <a class="reference internal" href="ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_slice_params" title="v4l2_ctrl_h264_slice_params"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_ctrl_h264_slice_params</span></code></a>. Valid if this control is
+of type <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_H264_SLICE_PARAMS</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_decode_params" title="v4l2_ctrl_h264_decode_params"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_ctrl_h264_decode_params</span></code></a> *</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">p_h264_decode_params</span></code></p></td>
+<td><p>A pointer to a struct <a class="reference internal" href="ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_decode_params" title="v4l2_ctrl_h264_decode_params"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_ctrl_h264_decode_params</span></code></a>. Valid if this control is
+of type <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_H264_DECODE_PARAMS</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>void *</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ptr</span></code></p></td>
@@ -626,10 +656,10 @@ in <a class="reference internal" href="control.html#control"><span class="std st
 <a class="reference internal" href="vidioc-g-ctrl.html#vidioc-g-ctrl"><span class="std std-ref">VIDIOC_G_CTRL</span></a> ioctl belong to this
 class.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_CLASS_MPEG</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_CLASS_CODEC</span></code></p></td>
 <td><p>0x990000</p></td>
-<td><p>The class containing MPEG compression controls. These controls are
-described in <a class="reference internal" href="ext-ctrls-codec.html#mpeg-controls"><span class="std std-ref">Codec Control Reference</span></a>.</p></td>
+<td><p>The class containing stateful codec controls. These controls are
+described in <a class="reference internal" href="ext-ctrls-codec.html#codec-controls"><span class="std std-ref">Codec Control Reference</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_CLASS_CAMERA</span></code></p></td>
 <td><p>0x9a0000</p></td>
@@ -670,6 +700,16 @@ are described in <a class="reference internal" href="ext-ctrls-fm-rx.html#fm-rx-
 <td><p>0xa20000</p></td>
 <td><p>The class containing RF tuner controls. These controls are
 described in <a class="reference internal" href="ext-ctrls-rf-tuner.html#rf-tuner-controls"><span class="std std-ref">RF Tuner Control Reference</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_CLASS_DETECT</span></code></p></td>
+<td><p>0xa30000</p></td>
+<td><p>The class containing motion or object detection controls. These controls
+are described in <a class="reference internal" href="ext-ctrls-detect.html#detect-controls"><span class="std std-ref">Detect Control Reference</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_CLASS_CODEC_STATELESS</span></code></p></td>
+<td><p>0xa40000</p></td>
+<td><p>The class containing stateless codec controls. These controls are
+described in <a class="reference internal" href="ext-ctrls-codec-stateless.html#codec-stateless-controls"><span class="std std-ref">Stateless Codec Control Reference</span></a>.</p></td>
 </tr>
 </tbody>
 </table>

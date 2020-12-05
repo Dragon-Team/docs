@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.20-dragon
+                5.10.21-dragon
               </div>
             
           
@@ -206,6 +206,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../thermal/index.html">Thermal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fpga/index.html">FPGA Subsystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../acpi/index.html">ACPI Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auxiliary_bus.html">Auxiliary Bus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../backlight/lp855x-driver.html">Kernel driver lp855x</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../connector.html">Kernel Connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../console.html">Console Drivers</a></li>
@@ -291,7 +292,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ia64/index.html">IA-64 Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../m68k/index.html">m68k Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mips/index.html">MIPS-specific Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../nios2/nios2.html">Linux on the Nios II architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nios2/index.html">Nios II Specific Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../openrisc/index.html">OpenRISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../parisc/index.html">PA-RISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../powerpc/index.html">powerpc</a></li>
@@ -1099,17 +1100,17 @@ to set another notify function will cause a WARN_ON.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">p_fwht_params</span></code></dt><dd><p>Pointer to a FWHT stateless parameters structure.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">p_h264_sps</span></code></dt><dd><p>Pointer to a <a class="reference internal" href="../../userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_ctrl_h264_sps" title="v4l2_ctrl_h264_sps"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_ctrl_h264_sps</span></code></a>.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">p_h264_sps</span></code></dt><dd><p>Pointer to a <a class="reference internal" href="../../userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_sps" title="v4l2_ctrl_h264_sps"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_ctrl_h264_sps</span></code></a>.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">p_h264_pps</span></code></dt><dd><p>Pointer to a <a class="reference internal" href="../../userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_ctrl_h264_pps" title="v4l2_ctrl_h264_pps"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_ctrl_h264_pps</span></code></a>.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">p_h264_pps</span></code></dt><dd><p>Pointer to a <a class="reference internal" href="../../userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_pps" title="v4l2_ctrl_h264_pps"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_ctrl_h264_pps</span></code></a>.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">p_h264_scaling_matrix</span></code></dt><dd><p>Pointer to a <a class="reference internal" href="../../userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_ctrl_h264_scaling_matrix" title="v4l2_ctrl_h264_scaling_matrix"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_ctrl_h264_scaling_matrix</span></code></a>.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">p_h264_scaling_matrix</span></code></dt><dd><p>Pointer to a <a class="reference internal" href="../../userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_scaling_matrix" title="v4l2_ctrl_h264_scaling_matrix"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_ctrl_h264_scaling_matrix</span></code></a>.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">p_h264_slice_params</span></code></dt><dd><p>Pointer to a <a class="reference internal" href="../../userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_ctrl_h264_slice_params" title="v4l2_ctrl_h264_slice_params"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_ctrl_h264_slice_params</span></code></a>.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">p_h264_slice_params</span></code></dt><dd><p>Pointer to a <a class="reference internal" href="../../userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_slice_params" title="v4l2_ctrl_h264_slice_params"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_ctrl_h264_slice_params</span></code></a>.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">p_h264_decode_params</span></code></dt><dd><p>Pointer to a <a class="reference internal" href="../../userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_ctrl_h264_decode_params" title="v4l2_ctrl_h264_decode_params"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_ctrl_h264_decode_params</span></code></a>.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">p_h264_decode_params</span></code></dt><dd><p>Pointer to a <a class="reference internal" href="../../userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_decode_params" title="v4l2_ctrl_h264_decode_params"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_ctrl_h264_decode_params</span></code></a>.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">p_h264_pred_weights</span></code></dt><dd><p>Pointer to a <a class="reference internal" href="../../userspace-api/media/v4l/ext-ctrls-codec.html#c.v4l2_ctrl_h264_pred_weights" title="v4l2_ctrl_h264_pred_weights"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_ctrl_h264_pred_weights</span></code></a>.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">p_h264_pred_weights</span></code></dt><dd><p>Pointer to a <a class="reference internal" href="../../userspace-api/media/v4l/ext-ctrls-codec-stateless.html#c.v4l2_ctrl_h264_pred_weights" title="v4l2_ctrl_h264_pred_weights"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_ctrl_h264_pred_weights</span></code></a>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">p_vp8_frame_header</span></code></dt><dd><p>Pointer to a VP8 frame header structure.</p>
 </dd>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1.26. Image Cropping, Insertion and Scaling – the CROP API &mdash; The Linux-Next Dragon Kernel  documentation</title>
+  <title>1.27. Image Cropping, Insertion and Scaling – the CROP API &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
 
   
@@ -34,8 +34,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="1.27. Streaming Parameters" href="streaming-par.html" />
-    <link rel="prev" title="1.25.5. Examples" href="selection-api-examples.html" /> 
+    <link rel="next" title="1.28. Streaming Parameters" href="streaming-par.html" />
+    <link rel="prev" title="1.26.5. Examples" href="selection-api-examples.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.20-dragon
+                5.10.21-dragon
               </div>
             
           
@@ -195,7 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../ia64/index.html">IA-64 Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../m68k/index.html">m68k Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mips/index.html">MIPS-specific Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../nios2/nios2.html">Linux on the Nios II architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nios2/index.html">Nios II Specific Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../openrisc/index.html">OpenRISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../parisc/index.html">PA-RISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../powerpc/index.html">powerpc</a></li>
@@ -272,7 +272,7 @@
         
           <li><a href="common.html"><span class="section-number">1. </span>Common API Elements</a> &raquo;</li>
         
-      <li><span class="section-number">1.26. </span>Image Cropping, Insertion and Scaling – the CROP API</li>
+      <li><span class="section-number">1.27. </span>Image Cropping, Insertion and Scaling – the CROP API</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -292,7 +292,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="image-cropping-insertion-and-scaling-the-crop-api">
-<span id="crop"></span><h1><span class="section-number">1.26. </span>Image Cropping, Insertion and Scaling – the CROP API<a class="headerlink" href="#image-cropping-insertion-and-scaling-the-crop-api" title="Permalink to this headline">¶</a></h1>
+<span id="crop"></span><h1><span class="section-number">1.27. </span>Image Cropping, Insertion and Scaling – the CROP API<a class="headerlink" href="#image-cropping-insertion-and-scaling-the-crop-api" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The CROP API is mostly superseded by the newer <a class="reference internal" href="selection-api.html#selection-api"><span class="std std-ref">SELECTION API</span></a>. The new API should be preferred in most cases,
@@ -336,7 +336,7 @@ API will also support the <a class="reference internal" href="vidioc-cropcap.htm
 ioctl.</p>
 </div>
 <div class="section" id="cropping-structures">
-<h2><span class="section-number">1.26.1. </span>Cropping Structures<a class="headerlink" href="#cropping-structures" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.27.1. </span>Cropping Structures<a class="headerlink" href="#cropping-structures" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-center" id="id1">
 <img alt="crop.svg" src="../../../_images/crop.svg" /><p class="caption"><span class="caption-text">Image Cropping, Insertion and Scaling</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 <div class="legend">
@@ -374,7 +374,7 @@ defining the <em>target</em> rectangle where the images will be inserted into
 the video signal.</p>
 </div>
 <div class="section" id="scaling-adjustments">
-<h2><span class="section-number">1.26.2. </span>Scaling Adjustments<a class="headerlink" href="#scaling-adjustments" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.27.2. </span>Scaling Adjustments<a class="headerlink" href="#scaling-adjustments" title="Permalink to this headline">¶</a></h2>
 <p>Video hardware can have various cropping, insertion and scaling
 limitations. It may only scale up or down, support only discrete scaling
 factors, or have different scaling abilities in horizontal and vertical
@@ -412,7 +412,7 @@ cropping to 640 × 384, so the driver returns the cropping size 608 × 384
 and adjusts the image size to closest possible 304 × 192.</p>
 </div>
 <div class="section" id="examples">
-<h2><span class="section-number">1.26.3. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.27.3. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <p>Source and target rectangles shall remain unchanged across closing and
 reopening a device, such that piping data into or out of a device will
 work without special preparations. More advanced applications should
@@ -424,7 +424,7 @@ change <code class="docutils literal notranslate"><span class="pre">V4L2_BUF_TYP
 </div>
 </div>
 <div class="section" id="example-resetting-the-cropping-parameters">
-<h2><span class="section-number">1.26.4. </span>Example: Resetting the cropping parameters<a class="headerlink" href="#example-resetting-the-cropping-parameters" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.27.4. </span>Example: Resetting the cropping parameters<a class="headerlink" href="#example-resetting-the-cropping-parameters" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">v4l2_cropcap</span> <span class="n">cropcap</span><span class="p">;</span>
 <span class="k">struct</span> <span class="n">v4l2_crop</span> <span class="n">crop</span><span class="p">;</span>
 
@@ -451,7 +451,7 @@ change <code class="docutils literal notranslate"><span class="pre">V4L2_BUF_TYP
 </div>
 </div>
 <div class="section" id="example-simple-downscaling">
-<h2><span class="section-number">1.26.5. </span>Example: Simple downscaling<a class="headerlink" href="#example-simple-downscaling" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.27.5. </span>Example: Simple downscaling<a class="headerlink" href="#example-simple-downscaling" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">v4l2_cropcap</span> <span class="n">cropcap</span><span class="p">;</span>
 <span class="k">struct</span> <span class="n">v4l2_format</span> <span class="n">format</span><span class="p">;</span>
 
@@ -478,7 +478,7 @@ change <code class="docutils literal notranslate"><span class="pre">V4L2_BUF_TYP
 </div>
 </div>
 <div class="section" id="example-selecting-an-output-area">
-<h2><span class="section-number">1.26.6. </span>Example: Selecting an output area<a class="headerlink" href="#example-selecting-an-output-area" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.27.6. </span>Example: Selecting an output area<a class="headerlink" href="#example-selecting-an-output-area" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This example assumes an output device.</p>
@@ -518,7 +518,7 @@ change <code class="docutils literal notranslate"><span class="pre">V4L2_BUF_TYP
 </div>
 </div>
 <div class="section" id="example-current-scaling-factor-and-pixel-aspect">
-<h2><span class="section-number">1.26.7. </span>Example: Current scaling factor and pixel aspect<a class="headerlink" href="#example-current-scaling-factor-and-pixel-aspect" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.27.7. </span>Example: Current scaling factor and pixel aspect<a class="headerlink" href="#example-current-scaling-factor-and-pixel-aspect" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This example assumes a video capture device.</p>
@@ -587,10 +587,10 @@ change <code class="docutils literal notranslate"><span class="pre">V4L2_BUF_TYP
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="streaming-par.html" class="btn btn-neutral float-right" title="1.27. Streaming Parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="streaming-par.html" class="btn btn-neutral float-right" title="1.28. Streaming Parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="selection-api-examples.html" class="btn btn-neutral float-left" title="1.25.5. Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="selection-api-examples.html" class="btn btn-neutral float-left" title="1.26.5. Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

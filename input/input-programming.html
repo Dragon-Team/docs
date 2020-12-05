@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.20-dragon
+                5.10.21-dragon
               </div>
             
           
@@ -139,13 +139,14 @@
 <li class="toctree-l4"><a class="reference internal" href="#the-simplest-example">1.1. The simplest example</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#what-the-example-does">1.2. What the example does</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dev-open-and-dev-close">1.3. dev-&gt;open() and dev-&gt;close()</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#basic-event-types">1.4. Basic event types</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#bits-to-longs-bit-word-bit-mask">1.5. BITS_TO_LONGS(), BIT_WORD(), BIT_MASK()</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#the-id-and-name-fields">1.6. The id* and name fields</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#the-keycode-keycodemax-keycodesize-fields">1.7. The keycode, keycodemax, keycodesize fields</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dev-getkeycode-and-dev-setkeycode">1.8. dev-&gt;getkeycode() and dev-&gt;setkeycode()</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#key-autorepeat">1.9. Key autorepeat</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#other-event-types-handling-output-events">1.10. Other event types, handling output events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inhibiting-input-devices">1.4. Inhibiting input devices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-event-types">1.5. Basic event types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bits-to-longs-bit-word-bit-mask">1.6. BITS_TO_LONGS(), BIT_WORD(), BIT_MASK()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-id-and-name-fields">1.7. The id* and name fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-keycode-keycodemax-keycodesize-fields">1.8. The keycode, keycodemax, keycodesize fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dev-getkeycode-and-dev-setkeycode">1.9. dev-&gt;getkeycode() and dev-&gt;setkeycode()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#key-autorepeat">1.10. Key autorepeat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-event-types-handling-output-events">1.11. Other event types, handling output events</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gameport-programming.html">2. Programming gameport drivers</a></li>
@@ -179,7 +180,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../ia64/index.html">IA-64 Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../m68k/index.html">m68k Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mips/index.html">MIPS-specific Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nios2/nios2.html">Linux on the Nios II architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nios2/index.html">Nios II Specific Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../openrisc/index.html">OpenRISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parisc/index.html">PA-RISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../powerpc/index.html">powerpc</a></li>
@@ -427,8 +428,46 @@ disconnects. Calls to both callbacks are serialized.</p>
 <p>The open() callback should return a 0 in case of success or any nonzero value
 in case of failure. The close() callback (which is void) must always succeed.</p>
 </div>
+<div class="section" id="inhibiting-input-devices">
+<h2><span class="section-number">1.4. </span>Inhibiting input devices<a class="headerlink" href="#inhibiting-input-devices" title="Permalink to this headline">¶</a></h2>
+<p>Inhibiting a device means ignoring input events from it. As such it is about
+maintaining relationships with input handlers - either already existing
+relationships, or relationships to be established while the device is in
+inhibited state.</p>
+<p>If a device is inhibited, no input handler will receive events from it.</p>
+<p>The fact that nobody wants events from the device is exploited further, by
+calling device’s close() (if there are users) and open() (if there are users) on
+inhibit and uninhibit operations, respectively. Indeed, the meaning of close()
+is to stop providing events to the input core and that of open() is to start
+providing events to the input core.</p>
+<p>Calling the device’s close() method on inhibit (if there are users) allows the
+driver to save power. Either by directly powering down the device or by
+releasing the runtime-pm reference it got in open() when the driver is using
+runtime-pm.</p>
+<p>Inhibiting and uninhibiting are orthogonal to opening and closing the device by
+input handlers. Userspace might want to inhibit a device in anticipation before
+any handler is positively matched against it.</p>
+<p>Inhibiting and uninhibiting are orthogonal to device’s being a wakeup source,
+too. Being a wakeup source plays a role when the system is sleeping, not when
+the system is operating.  How drivers should program their interaction between
+inhibiting, sleeping and being a wakeup source is driver-specific.</p>
+<p>Taking the analogy with the network devices - bringing a network interface down
+doesn’t mean that it should be impossible be wake the system up on LAN through
+this interface. So, there may be input drivers which should be considered wakeup
+sources even when inhibited. Actually, in many I2C input devices their interrupt
+is declared a wakeup interrupt and its handling happens in driver’s core, which
+is not aware of input-specific inhibit (nor should it be).  Composite devices
+containing several interfaces can be inhibited on a per-interface basis and e.g.
+inhibiting one interface shouldn’t affect the device’s capability of being a
+wakeup source.</p>
+<p>If a device is to be considered a wakeup source while inhibited, special care
+must be taken when programming its suspend(), as it might need to call device’s
+open(). Depending on what close() means for the device in question, not
+opening() it before going to sleep might make it impossible to provide any
+wakeup events. The device is going to sleep anyway.</p>
+</div>
 <div class="section" id="basic-event-types">
-<h2><span class="section-number">1.4. </span>Basic event types<a class="headerlink" href="#basic-event-types" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5. </span>Basic event types<a class="headerlink" href="#basic-event-types" title="Permalink to this headline">¶</a></h2>
 <p>The most simple event type is EV_KEY, which is used for keys and buttons.
 It’s reported to the input system via:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>input_report_key(struct input_dev *dev, int code, int value)
@@ -475,7 +514,7 @@ that the thing is precise and always returns to exactly the center position
 (if it has any).</p>
 </div>
 <div class="section" id="bits-to-longs-bit-word-bit-mask">
-<h2><span class="section-number">1.5. </span>BITS_TO_LONGS(), BIT_WORD(), BIT_MASK()<a class="headerlink" href="#bits-to-longs-bit-word-bit-mask" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.6. </span>BITS_TO_LONGS(), BIT_WORD(), BIT_MASK()<a class="headerlink" href="#bits-to-longs-bit-word-bit-mask" title="Permalink to this headline">¶</a></h2>
 <p>These three macros from bitops.h help some bitfield computations:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BITS_TO_LONGS(x) - returns the length of a bitfield array in longs for
                    x bits
@@ -485,7 +524,7 @@ BIT_MASK(x)      - returns the index in a long for bit x
 </div>
 </div>
 <div class="section" id="the-id-and-name-fields">
-<h2><span class="section-number">1.6. </span>The id* and name fields<a class="headerlink" href="#the-id-and-name-fields" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.7. </span>The id* and name fields<a class="headerlink" href="#the-id-and-name-fields" title="Permalink to this headline">¶</a></h2>
 <p>The dev-&gt;name should be set before registering the input device by the input
 device driver. It’s a string like ‘Generic button device’ containing a
 user friendly name of the device.</p>
@@ -498,7 +537,7 @@ driver.</p>
 <p>The id and name fields can be passed to userland via the evdev interface.</p>
 </div>
 <div class="section" id="the-keycode-keycodemax-keycodesize-fields">
-<h2><span class="section-number">1.7. </span>The keycode, keycodemax, keycodesize fields<a class="headerlink" href="#the-keycode-keycodemax-keycodesize-fields" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.8. </span>The keycode, keycodemax, keycodesize fields<a class="headerlink" href="#the-keycode-keycodemax-keycodesize-fields" title="Permalink to this headline">¶</a></h2>
 <p>These three fields should be used by input devices that have dense keymaps.
 The keycode is an array used to map from scancodes to input system keycodes.
 The keycode max should contain the size of the array and keycodesize the
@@ -510,13 +549,13 @@ rely on kernel’s default implementation of setting and querying keycode
 mappings.</p>
 </div>
 <div class="section" id="dev-getkeycode-and-dev-setkeycode">
-<h2><span class="section-number">1.8. </span>dev-&gt;getkeycode() and dev-&gt;setkeycode()<a class="headerlink" href="#dev-getkeycode-and-dev-setkeycode" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.9. </span>dev-&gt;getkeycode() and dev-&gt;setkeycode()<a class="headerlink" href="#dev-getkeycode-and-dev-setkeycode" title="Permalink to this headline">¶</a></h2>
 <p>getkeycode() and setkeycode() callbacks allow drivers to override default
 keycode/keycodesize/keycodemax mapping mechanism provided by input core
 and implement sparse keycode maps.</p>
 </div>
 <div class="section" id="key-autorepeat">
-<h2><span class="section-number">1.9. </span>Key autorepeat<a class="headerlink" href="#key-autorepeat" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.10. </span>Key autorepeat<a class="headerlink" href="#key-autorepeat" title="Permalink to this headline">¶</a></h2>
 <p>… is simple. It is handled by the input.c module. Hardware autorepeat is
 not used, because it’s not present in many devices and even where it is
 present, it is broken sometimes (at keyboards: Toshiba notebooks). To enable
@@ -524,7 +563,7 @@ autorepeat for your device, just set EV_REP in dev-&gt;evbit. All will be
 handled by the input system.</p>
 </div>
 <div class="section" id="other-event-types-handling-output-events">
-<h2><span class="section-number">1.10. </span>Other event types, handling output events<a class="headerlink" href="#other-event-types-handling-output-events" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.11. </span>Other event types, handling output events<a class="headerlink" href="#other-event-types-handling-output-events" title="Permalink to this headline">¶</a></h2>
 <p>The other event types up to now are:</p>
 <ul class="simple">
 <li><p>EV_LED - used for the keyboard LEDs.</p></li>

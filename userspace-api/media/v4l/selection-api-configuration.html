@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1.25.3. Configuration &mdash; The Linux-Next Dragon Kernel  documentation</title>
+  <title>1.26.3. Configuration &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
 
   
@@ -34,8 +34,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="1.25.4. Comparison with old cropping API" href="selection-api-vs-crop-api.html" />
-    <link rel="prev" title="1.25.2. Selection targets" href="selection-api-targets.html" /> 
+    <link rel="next" title="1.26.4. Comparison with old cropping API" href="selection-api-vs-crop-api.html" />
+    <link rel="prev" title="1.26.2. Selection targets" href="selection-api-targets.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.20-dragon
+                5.10.21-dragon
               </div>
             
           
@@ -195,7 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../ia64/index.html">IA-64 Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../m68k/index.html">m68k Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mips/index.html">MIPS-specific Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../nios2/nios2.html">Linux on the Nios II architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nios2/index.html">Nios II Specific Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../openrisc/index.html">OpenRISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../parisc/index.html">PA-RISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../powerpc/index.html">powerpc</a></li>
@@ -272,9 +272,9 @@
         
           <li><a href="common.html"><span class="section-number">1. </span>Common API Elements</a> &raquo;</li>
         
-          <li><a href="selection-api.html"><span class="section-number">1.25. </span>Cropping, composing and scaling – the SELECTION API</a> &raquo;</li>
+          <li><a href="selection-api.html"><span class="section-number">1.26. </span>Cropping, composing and scaling – the SELECTION API</a> &raquo;</li>
         
-      <li><span class="section-number">1.25.3. </span>Configuration</li>
+      <li><span class="section-number">1.26.3. </span>Configuration</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -294,7 +294,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="configuration">
-<h1><span class="section-number">1.25.3. </span>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1.26.3. </span>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
 <p>Applications can use the <a class="reference internal" href="vidioc-g-selection.html#vidioc-g-selection"><span class="std std-ref">selection API</span></a> to
 select an area in a video signal or a buffer, and to query for default
 settings and hardware limits.</p>
@@ -309,7 +309,7 @@ parameters and return the actual values selected. An application can
 control the rounding behaviour using
 <a class="reference internal" href="v4l2-selection-flags.html#v4l2-selection-flags"><span class="std std-ref">constraint flags</span></a>.</p>
 <div class="section" id="configuration-of-video-capture">
-<h2><span class="section-number">1.25.3.1. </span>Configuration of video capture<a class="headerlink" href="#configuration-of-video-capture" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.26.3.1. </span>Configuration of video capture<a class="headerlink" href="#configuration-of-video-capture" title="Permalink to this headline">¶</a></h2>
 <p>See figure <a class="reference internal" href="selection-api-targets.html#sel-targets-capture"><span class="std std-ref">Cropping and composing targets</span></a> for examples of the selection
 targets available for a video capture device. It is recommended to
 configure the cropping targets before to the composing targets.</p>
@@ -356,7 +356,7 @@ use the padded and active rectangles to detect where the rubbish pixels
 are located and remove them if needed.</p>
 </div>
 <div class="section" id="configuration-of-video-output">
-<h2><span class="section-number">1.25.3.2. </span>Configuration of video output<a class="headerlink" href="#configuration-of-video-output" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.26.3.2. </span>Configuration of video output<a class="headerlink" href="#configuration-of-video-output" title="Permalink to this headline">¶</a></h2>
 <p>For output devices targets and ioctls are used similarly to the video
 capture case. The <em>composing</em> rectangle refers to the insertion of an
 image into a video signal. The cropping rectangles refer to a memory
@@ -399,7 +399,7 @@ equal to active one. The padded target is accessed by the
 from the <code class="docutils literal notranslate"><span class="pre">V4L2_SEL_TGT_COMPOSE</span></code> target.</p>
 </div>
 <div class="section" id="scaling-control">
-<h2><span class="section-number">1.25.3.3. </span>Scaling control<a class="headerlink" href="#scaling-control" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.26.3.3. </span>Scaling control<a class="headerlink" href="#scaling-control" title="Permalink to this headline">¶</a></h2>
 <p>An application can detect if scaling is performed by comparing the width
 and the height of rectangles obtained using <code class="docutils literal notranslate"><span class="pre">V4L2_SEL_TGT_CROP</span></code> and
 <code class="docutils literal notranslate"><span class="pre">V4L2_SEL_TGT_COMPOSE</span></code> targets. If these are not equal then the
@@ -416,10 +416,10 @@ these values.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="selection-api-vs-crop-api.html" class="btn btn-neutral float-right" title="1.25.4. Comparison with old cropping API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="selection-api-vs-crop-api.html" class="btn btn-neutral float-right" title="1.26.4. Comparison with old cropping API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="selection-api-targets.html" class="btn btn-neutral float-left" title="1.25.2. Selection targets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="selection-api-targets.html" class="btn btn-neutral float-left" title="1.26.2. Selection targets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

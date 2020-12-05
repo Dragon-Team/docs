@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.20-dragon
+                5.10.21-dragon
               </div>
             
           
@@ -195,7 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../ia64/index.html">IA-64 Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../m68k/index.html">m68k Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mips/index.html">MIPS-specific Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../nios2/nios2.html">Linux on the Nios II architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nios2/index.html">Nios II Specific Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../openrisc/index.html">OpenRISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../parisc/index.html">PA-RISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../powerpc/index.html">powerpc</a></li>
@@ -325,7 +325,7 @@ before A/D conversion.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">V4L2_CID_TEST_PATTERN_GREENB</span> <span class="pre">(integer)</span></code></dt><dd><p>Test pattern green (next to blue) colour component.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">V4L2_CID_UNIT_CELL_SIZE</span> <span class="pre">(struct)</span></code></dt><dd><p>This control returns the unit cell size in nanometers. The struct
-<code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_area</span></code> provides the width and the height in separate
+<a class="reference internal" href="#c.v4l2_area" title="v4l2_area"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_area</span></code></a> provides the width and the height in separate
 fields to take into consideration asymmetric pixels.
 This control does not take into consideration any possible hardware
 binning.
@@ -334,6 +334,29 @@ non-sensitive.
 This control is required for automatic calibration of sensors/cameras.</p>
 </dd>
 </dl>
+<dl class="c type">
+<dt id="c.v4l2_area">
+<em class="property">type </em><code class="sig-name descname">v4l2_area</code><a class="headerlink" href="#c.v4l2_area" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">struct v4l2_area</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>__u32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">width</span></code></p></td>
+<td><p>Width of the area.</p></td>
+</tr>
+<tr class="row-even"><td><p>__u32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">height</span></code></p></td>
+<td><p>Height of the area.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 

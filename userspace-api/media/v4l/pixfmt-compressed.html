@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.20-dragon
+                5.10.21-dragon
               </div>
             
           
@@ -195,7 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../ia64/index.html">IA-64 Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../m68k/index.html">m68k Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mips/index.html">MIPS-specific Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../nios2/nios2.html">Linux on the Nios II architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nios2/index.html">Nios II Specific Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../openrisc/index.html">OpenRISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../parisc/index.html">PA-RISC Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../powerpc/index.html">powerpc</a></li>
@@ -357,29 +357,24 @@ information from the raw bytestream.</p>
 <td><p id="v4l2-pix-fmt-h264-slice">H264 parsed slice data, including slice headers, either with or
 without the start code, as extracted from the H264 bitstream.
 This format is adapted for stateless video decoders that implement an
-H264 pipeline (using the <a class="reference internal" href="dev-mem2mem.html#mem2mem"><span class="std std-ref">Video Memory-To-Memory Interface</span></a> and <a class="reference internal" href="../mediactl/request-api.html#media-request-api"><span class="std std-ref">Request API</span></a>).
+H264 pipeline with the <a class="reference internal" href="dev-stateless-decoder.html#stateless-decoder"><span class="std std-ref">Memory-to-memory Stateless Video Decoder Interface</span></a>.
 This pixelformat has two modifiers that must be set at least once
-through the <code class="docutils literal notranslate"><span class="pre">V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE</span></code>
-and <code class="docutils literal notranslate"><span class="pre">V4L2_CID_MPEG_VIDEO_H264_START_CODE</span></code> controls.
+through the <code class="docutils literal notranslate"><span class="pre">V4L2_CID_STATELESS_H264_DECODE_MODE</span></code>
+and <code class="docutils literal notranslate"><span class="pre">V4L2_CID_STATELESS_H264_START_CODE</span></code> controls.
 In addition, metadata associated with the frame to decode are
-required to be passed through the <code class="docutils literal notranslate"><span class="pre">V4L2_CID_MPEG_VIDEO_H264_SPS</span></code>,
-<code class="docutils literal notranslate"><span class="pre">V4L2_CID_MPEG_VIDEO_H264_PPS</span></code>,
-<code class="docutils literal notranslate"><span class="pre">V4L2_CID_MPEG_VIDEO_H264_SCALING_MATRIX</span></code>,
-<code class="docutils literal notranslate"><span class="pre">V4L2_CID_MPEG_VIDEO_H264_SLICE_PARAMS</span></code> and
-<code class="docutils literal notranslate"><span class="pre">V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS</span></code> controls.  See the
-<a class="reference internal" href="ext-ctrls-codec.html#v4l2-mpeg-h264"><span class="std std-ref">associated Codec Control IDs</span></a>.  Exactly
-one output and one capture buffer must be provided for use
+required to be passed through the <code class="docutils literal notranslate"><span class="pre">V4L2_CID_STATELESS_H264_SPS</span></code>,
+<code class="docutils literal notranslate"><span class="pre">V4L2_CID_STATELESS_H264_PPS</span></code>,
+<code class="docutils literal notranslate"><span class="pre">V4L2_CID_STATELESS_H264_SCALING_MATRIX</span></code>,
+<code class="docutils literal notranslate"><span class="pre">V4L2_CID_STATELESS_H264_SLICE_PARAMS</span></code> and
+<code class="docutils literal notranslate"><span class="pre">V4L2_CID_STATELESS_H264_DECODE_PARAMS</span></code> controls.  See the
+<a class="reference internal" href="ext-ctrls-codec-stateless.html#v4l2-codec-stateless-h264"><span class="std std-ref">associated Codec Control IDs</span></a>.
+Exactly one output and one capture buffer must be provided for use
 with this pixel format. The output buffer must contain the
 appropriate number of macroblocks to decode a full
 corresponding frame to the matching capture buffer.</p>
 <p>The syntax for this format is documented in <a class="reference internal" href="biblio.html#h264"><span class="std std-ref">ITU-T Rec. H.264 Specification (04/2017 Edition)</span></a>, section
 7.3.2.8 “Slice layer without partitioning RBSP syntax” and the following
 sections.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This format is not yet part of the public kernel API and it
-is expected to change.</p>
-</div>
 </td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">V4L2_PIX_FMT_H263</span></code></p>
@@ -519,10 +514,10 @@ This pixelformat has two modifiers that must be set at least once
 through the <code class="docutils literal notranslate"><span class="pre">V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE</span></code>
 and <code class="docutils literal notranslate"><span class="pre">V4L2_CID_MPEG_VIDEO_HEVC_START_CODE</span></code> controls.
 Metadata associated with the frame to decode is required to be passed
-through the following controls :
-* <code class="docutils literal notranslate"><span class="pre">V4L2_CID_MPEG_VIDEO_HEVC_SPS</span></code>
-* <code class="docutils literal notranslate"><span class="pre">V4L2_CID_MPEG_VIDEO_HEVC_PPS</span></code>
-* <code class="docutils literal notranslate"><span class="pre">V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS</span></code>
+through the following controls:
+<code class="docutils literal notranslate"><span class="pre">V4L2_CID_MPEG_VIDEO_HEVC_SPS</span></code>,
+<code class="docutils literal notranslate"><span class="pre">V4L2_CID_MPEG_VIDEO_HEVC_PPS</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS</span></code>.
 See the <a class="reference internal" href="ext-ctrls-codec.html#v4l2-mpeg-hevc"><span class="std std-ref">associated Codec Control IDs</span></a>.
 Buffers associated with this pixel format must contain the appropriate
 number of macroblocks to decode a full corresponding frame.</p>
@@ -549,7 +544,7 @@ since the decoder can parse all the information from the raw bytestream.</p>
 <td><p>‘SFWH’</p>
 </td>
 <td><p id="v4l2-pix-fmt-fwht-stateless">Same format as V4L2_PIX_FMT_FWHT but requires stateless codec implementation.
-See the <a class="reference internal" href="ext-ctrls-codec.html#v4l2-mpeg-fwht"><span class="std std-ref">associated Codec Control IDs</span></a>.</p>
+See the <span class="xref std std-ref">associated Codec Control IDs</span>.</p>
 </td>
 </tr>
 </tbody>
