@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.21-dragon
+                5.10.22-dragon
               </div>
             
           
@@ -93,7 +93,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../abi.html">Linux ABI description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../features.html">Feature status on all architectures</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hw-vuln/index.html">Hardware vulnerabilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reporting-bugs.html">Reporting bugs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting-issues.html">Reporting issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting-bugs.html">Reporting bugs (obsolete)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../security-bugs.html">Security bugs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bug-hunting.html">Bug hunting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bug-bisect.html">Bisecting a bug</a></li>
@@ -464,7 +465,7 @@ exceeds this watermark, the thread that flushes the journal will
 be started.</p>
 </dd>
 <dt>commit_time:number</dt><dd><p>Commit time in milliseconds. When this time passes, the journal is
-written. The journal is also written immediatelly if the FLUSH
+written. The journal is also written immediately if the FLUSH
 request is received.</p>
 </dd>
 <dt>internal_hash:algorithm(:key)   (the key is optional)</dt><dd><p>Use internal hash or crc.
@@ -488,7 +489,7 @@ attacker can’t read the journal. You can use a block cipher here
 (such as “cbc(aes)”) or a stream cipher (for example “chacha20”,
 “salsa20” or “ctr(aes)”).</p>
 <p>The journal contains history of last writes to the block device,
-an attacker reading the journal could see the last sector nubmers
+an attacker reading the journal could see the last sector numbers
 that were written. From the sector numbers, the attacker can infer
 the size of files that were written. To protect against this
 situation, you can encrypt the journal.</p>

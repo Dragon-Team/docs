@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.21-dragon
+                5.10.22-dragon
               </div>
             
           
@@ -93,7 +93,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../abi.html">Linux ABI description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../features.html">Feature status on all architectures</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hw-vuln/index.html">Hardware vulnerabilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reporting-bugs.html">Reporting bugs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting-issues.html">Reporting issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting-bugs.html">Reporting bugs (obsolete)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../security-bugs.html">Security bugs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bug-hunting.html">Bug hunting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bug-bisect.html">Bisecting a bug</a></li>
@@ -450,7 +451,7 @@ keep userfaulting until the copy has finished.</p>
 you must provide some kind of page in your thread after reading from
 the uffd.  You must provide either <code class="docutils literal notranslate"><span class="pre">UFFDIO_COPY</span></code> or <code class="docutils literal notranslate"><span class="pre">UFFDIO_ZEROPAGE</span></code>.
 The normal behavior of the OS automatically providing a zero page on
-an annonymous mmaping is not in place.</p></li>
+an anonymous mmaping is not in place.</p></li>
 <li><p>None of the page-delivering ioctls default to the range that you
 registered with.  You must fill in all fields for the appropriate
 ioctl struct including the range.</p></li>

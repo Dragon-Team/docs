@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.21-dragon
+                5.10.22-dragon
               </div>
             
           
@@ -122,6 +122,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../infiniband.html">InfiniBand and Remote DMA (RDMA) Interfaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../frame-buffer.html">Frame Buffer Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../regulator.html">Voltage and current regulator API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reset.html">Reset controller API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../iio/index.html">Industrial I/O</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../input.html">Input Subsystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../usb/index.html">Linux USB API</a></li>
@@ -775,18 +776,20 @@ connection IDs need to be provided by device drivers.</p>
 </div>
 <div class="section" id="interacting-with-the-legacy-gpio-subsystem">
 <h2>Interacting With the Legacy GPIO Subsystem<a class="headerlink" href="#interacting-with-the-legacy-gpio-subsystem" title="Permalink to this headline">¶</a></h2>
-<p>Many kernel subsystems still handle GPIOs using the legacy integer-based
-interface. Although it is strongly encouraged to upgrade them to the safer
-descriptor-based API, the following two functions allow you to convert a GPIO
-descriptor into the GPIO integer namespace and vice-versa:</p>
+<p>Many kernel subsystems and drivers still handle GPIOs using the legacy
+integer-based interface. It is strongly recommended to update these to the new
+gpiod interface. For cases where both interfaces need to be used, the following
+two functions allow to convert a GPIO descriptor into the GPIO integer namespace
+and vice-versa:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int desc_to_gpio(const struct gpio_desc *desc)
 struct gpio_desc *gpio_to_desc(unsigned gpio)
 </pre></div>
 </div>
-<p>The GPIO number returned by <a class="reference internal" href="index.html#c.desc_to_gpio" title="desc_to_gpio"><code class="xref c c-func docutils literal notranslate"><span class="pre">desc_to_gpio()</span></code></a> can be safely used as long as the
-GPIO descriptor has not been freed. All the same, a GPIO number passed to
-<a class="reference internal" href="index.html#c.gpio_to_desc" title="gpio_to_desc"><code class="xref c c-func docutils literal notranslate"><span class="pre">gpio_to_desc()</span></code></a> must have been properly acquired, and usage of the returned GPIO
-descriptor is only possible after the GPIO number has been released.</p>
+<p>The GPIO number returned by <a class="reference internal" href="index.html#c.desc_to_gpio" title="desc_to_gpio"><code class="xref c c-func docutils literal notranslate"><span class="pre">desc_to_gpio()</span></code></a> can safely be used as a parameter of
+the gpio_*() functions for as long as the GPIO descriptor <cite>desc</cite> is not freed.
+All the same, a GPIO number passed to <a class="reference internal" href="index.html#c.gpio_to_desc" title="gpio_to_desc"><code class="xref c c-func docutils literal notranslate"><span class="pre">gpio_to_desc()</span></code></a> must first be properly
+acquired using e.g. <a class="reference internal" href="legacy.html#c.gpio_request_one" title="gpio_request_one"><code class="xref c c-func docutils literal notranslate"><span class="pre">gpio_request_one()</span></code></a>, and the returned GPIO descriptor is only
+considered valid until that GPIO number is released using gpio_free().</p>
 <p>Freeing a GPIO obtained by one API with the other API is forbidden and an
 unchecked error.</p>
 </div>

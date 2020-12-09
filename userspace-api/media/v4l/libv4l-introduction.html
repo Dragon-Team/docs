@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.21-dragon
+                5.10.22-dragon
               </div>
             
           
@@ -327,11 +327,11 @@ found in V4L2 drivers into a few common RGB and YUY formats.</p>
 <a class="reference internal" href="pixfmt-reserved.html#v4l2-pix-fmt-spca561"><span class="std std-ref">V4L2_PIX_FMT_SPCA561</span></a>,
 <a class="reference internal" href="pixfmt-reserved.html#v4l2-pix-fmt-sq905c"><span class="std std-ref">V4L2_PIX_FMT_SQ905C</span></a>,
 <a class="reference internal" href="pixfmt-srggb8.html#v4l2-pix-fmt-srggb8"><span class="std std-ref">V4L2_PIX_FMT_SRGGB8</span></a>,
-<a class="reference internal" href="pixfmt-uyvy.html#v4l2-pix-fmt-uyvy"><span class="std std-ref">V4L2_PIX_FMT_UYVY</span></a>,
-<a class="reference internal" href="pixfmt-yuv420.html#v4l2-pix-fmt-yuv420"><span class="std std-ref">V4L2_PIX_FMT_YUV420</span></a>,
-<a class="reference internal" href="pixfmt-yuyv.html#v4l2-pix-fmt-yuyv"><span class="std std-ref">V4L2_PIX_FMT_YUYV</span></a>,
-<a class="reference internal" href="pixfmt-yuv420.html#v4l2-pix-fmt-yvu420"><span class="std std-ref">V4L2_PIX_FMT_YVU420</span></a>, and
-<a class="reference internal" href="pixfmt-yvyu.html#v4l2-pix-fmt-yvyu"><span class="std std-ref">V4L2_PIX_FMT_YVYU</span></a>.</p>
+<a class="reference internal" href="pixfmt-packed-yuv.html#v4l2-pix-fmt-uyvy"><span class="std std-ref">V4L2_PIX_FMT_UYVY</span></a>,
+<a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-yuv420"><span class="std std-ref">V4L2_PIX_FMT_YUV420</span></a>,
+<a class="reference internal" href="pixfmt-packed-yuv.html#v4l2-pix-fmt-yuyv"><span class="std std-ref">V4L2_PIX_FMT_YUYV</span></a>,
+<a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-yvu420"><span class="std std-ref">V4L2_PIX_FMT_YVU420</span></a>, and
+<a class="reference internal" href="pixfmt-packed-yuv.html#v4l2-pix-fmt-yvyu"><span class="std std-ref">V4L2_PIX_FMT_YVYU</span></a>.</p>
 <p>Later on libv4lconvert was expanded to also be able to do various video
 processing functions to improve webcam video quality. The video
 processing is split in to 2 parts: libv4lconvert/control and
@@ -370,8 +370,8 @@ v4l2 driver, intercepting the calls to
 order to emulate the formats
 <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-bgr24"><span class="std std-ref">V4L2_PIX_FMT_BGR24</span></a>,
 <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-rgb24"><span class="std std-ref">V4L2_PIX_FMT_RGB24</span></a>,
-<a class="reference internal" href="pixfmt-yuv420.html#v4l2-pix-fmt-yuv420"><span class="std std-ref">V4L2_PIX_FMT_YUV420</span></a>, and
-<a class="reference internal" href="pixfmt-yuv420.html#v4l2-pix-fmt-yvu420"><span class="std std-ref">V4L2_PIX_FMT_YVU420</span></a>, if they aren’t
+<a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-yuv420"><span class="std std-ref">V4L2_PIX_FMT_YUV420</span></a>, and
+<a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-yvu420"><span class="std std-ref">V4L2_PIX_FMT_YVU420</span></a>, if they aren’t
 available in the driver. <a class="reference internal" href="vidioc-enum-fmt.html#vidioc-enum-fmt"><span class="std std-ref">VIDIOC_ENUM_FMT</span></a>
 keeps enumerating the hardware supported formats, plus the emulated
 formats offered by libv4l at the end.</p>

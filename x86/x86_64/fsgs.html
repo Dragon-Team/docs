@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>25.8. Using FS and GS segments in user space applications &mdash; The Linux-Next Dragon Kernel  documentation</title>
+  <title>24.8. Using FS and GS segments in user space applications &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
 
   
@@ -34,8 +34,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="26. Shared Virtual Addressing (SVA) with ENQCMD" href="../sva.html" />
-    <link rel="prev" title="25.7. Configurable sysfs parameters for the x86-64 machine check code" href="machinecheck.html" /> 
+    <link rel="next" title="25. Shared Virtual Addressing (SVA) with ENQCMD" href="../sva.html" />
+    <link rel="prev" title="24.7. Configurable sysfs parameters for the x86-64 machine check code" href="machinecheck.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.21-dragon
+                5.10.22-dragon
               </div>
             
           
@@ -179,39 +179,38 @@
 <li class="toctree-l2"><a class="reference internal" href="../tlb.html">11. The TLB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mtrr.html">12. MTRR (Memory Type Range Register) control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pat.html">13. PAT (Page Attribute Table)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intel_cet.html">14. Control-flow Enforcement Technology (CET)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intel-iommu.html">15. Linux IOMMU Support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intel_txt.html">16. Intel(R) TXT Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../amd-memory-encryption.html">17. AMD Memory Encryption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pti.html">18. Page Table Isolation (PTI)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mds.html">19. Microarchitectural Data Sampling (MDS) mitigation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../microcode.html">20. The Linux Microcode Loader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../resctrl.html">21. User Interface for Resource Control feature</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tsx_async_abort.html">22. TSX Async Abort (TAA) mitigation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../usb-legacy-support.html">23. USB Legacy support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../i386/index.html">24. i386 Support</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">25. x86_64 Support</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="boot-options.html">25.1. AMD64 Specific Boot Options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="uefi.html">25.2. General note on [U]EFI x86_64 support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mm.html">25.3. Memory Management</a></li>
-<li class="toctree-l3"><a class="reference internal" href="5level-paging.html">25.4. 5-level paging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fake-numa-for-cpusets.html">25.5. Fake NUMA For CPUSets</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cpu-hotplug-spec.html">25.6. Firmware support for CPU hotplug under Linux/x86-64</a></li>
-<li class="toctree-l3"><a class="reference internal" href="machinecheck.html">25.7. Configurable sysfs parameters for the x86-64 machine check code</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">25.8. Using FS and GS segments in user space applications</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#common-fs-and-gs-usage">25.8.1. Common FS and GS usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#reading-and-writing-the-fs-gs-base-address">25.8.2. Reading and writing the FS/GS base address</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-fs-gs-base-with-arch-prctl">25.8.3. Accessing FS/GS base with arch_prctl()</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-fs-gs-base-with-the-fsgsbase-instructions">25.8.4. Accessing FS/GS base with the FSGSBASE instructions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#compiler-support-for-fs-gs-based-addressing">25.8.5. Compiler support for FS/GS based addressing</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#fs-gs-based-addressing-with-inline-assembly">25.8.6. FS/GS based addressing with inline assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intel-iommu.html">14. Linux IOMMU Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intel_txt.html">15. Intel(R) TXT Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../amd-memory-encryption.html">16. AMD Memory Encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pti.html">17. Page Table Isolation (PTI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mds.html">18. Microarchitectural Data Sampling (MDS) mitigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../microcode.html">19. The Linux Microcode Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resctrl.html">20. User Interface for Resource Control feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tsx_async_abort.html">21. TSX Async Abort (TAA) mitigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usb-legacy-support.html">22. USB Legacy support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../i386/index.html">23. i386 Support</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">24. x86_64 Support</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="boot-options.html">24.1. AMD64 Specific Boot Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uefi.html">24.2. General note on [U]EFI x86_64 support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mm.html">24.3. Memory Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5level-paging.html">24.4. 5-level paging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fake-numa-for-cpusets.html">24.5. Fake NUMA For CPUSets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpu-hotplug-spec.html">24.6. Firmware support for CPU hotplug under Linux/x86-64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machinecheck.html">24.7. Configurable sysfs parameters for the x86-64 machine check code</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">24.8. Using FS and GS segments in user space applications</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#common-fs-and-gs-usage">24.8.1. Common FS and GS usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reading-and-writing-the-fs-gs-base-address">24.8.2. Reading and writing the FS/GS base address</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-fs-gs-base-with-arch-prctl">24.8.3. Accessing FS/GS base with arch_prctl()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-fs-gs-base-with-the-fsgsbase-instructions">24.8.4. Accessing FS/GS base with the FSGSBASE instructions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compiler-support-for-fs-gs-based-addressing">24.8.5. Compiler support for FS/GS based addressing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fs-gs-based-addressing-with-inline-assembly">24.8.6. FS/GS based addressing with inline assembly</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../sva.html">26. Shared Virtual Addressing (SVA) with ENQCMD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sgx.html">27. Software Guard eXtensions (SGX)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../features.html">28. Feature status on x86 architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sva.html">25. Shared Virtual Addressing (SVA) with ENQCMD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sgx.html">26. Software Guard eXtensions (SGX)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../features.html">27. Feature status on x86 architecture</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../xtensa/index.html">Xtensa Architecture</a></li>
@@ -276,9 +275,9 @@
         
           <li><a href="../index.html">x86-specific Documentation</a> &raquo;</li>
         
-          <li><a href="index.html"><span class="section-number">25. </span>x86_64 Support</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">24. </span>x86_64 Support</a> &raquo;</li>
         
-      <li><span class="section-number">25.8. </span>Using FS and GS segments in user space applications</li>
+      <li><span class="section-number">24.8. </span>Using FS and GS segments in user space applications</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -298,7 +297,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="using-fs-and-gs-segments-in-user-space-applications">
-<h1><span class="section-number">25.8. </span>Using FS and GS segments in user space applications<a class="headerlink" href="#using-fs-and-gs-segments-in-user-space-applications" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">24.8. </span>Using FS and GS segments in user space applications<a class="headerlink" href="#using-fs-and-gs-segments-in-user-space-applications" title="Permalink to this headline">¶</a></h1>
 <p>The x86 architecture supports segmentation. Instructions which access
 memory can use segment register based addressing mode. The following
 notation is used to address a byte within a segment:</p>
@@ -316,7 +315,7 @@ limits. The limits can be used to enforce address space protections.</p>
 always 0 to provide a full 64bit address space. The FS and GS segments are
 still functional in 64-bit mode.</p>
 <div class="section" id="common-fs-and-gs-usage">
-<h2><span class="section-number">25.8.1. </span>Common FS and GS usage<a class="headerlink" href="#common-fs-and-gs-usage" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">24.8.1. </span>Common FS and GS usage<a class="headerlink" href="#common-fs-and-gs-usage" title="Permalink to this headline">¶</a></h2>
 <p>The FS segment is commonly used to address Thread Local Storage (TLS). FS
 is usually managed by runtime code or a threading library. Variables
 declared with the ‘__thread’ storage class specifier are instantiated per
@@ -330,7 +329,7 @@ applications. GCC and Clang support GS based addressing via address space
 identifiers.</p>
 </div>
 <div class="section" id="reading-and-writing-the-fs-gs-base-address">
-<h2><span class="section-number">25.8.2. </span>Reading and writing the FS/GS base address<a class="headerlink" href="#reading-and-writing-the-fs-gs-base-address" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">24.8.2. </span>Reading and writing the FS/GS base address<a class="headerlink" href="#reading-and-writing-the-fs-gs-base-address" title="Permalink to this headline">¶</a></h2>
 <p>There exist two mechanisms to read and write the FS/GS base address:</p>
 <blockquote>
 <div><ul class="simple">
@@ -340,7 +339,7 @@ identifiers.</p>
 </div></blockquote>
 </div>
 <div class="section" id="accessing-fs-gs-base-with-arch-prctl">
-<h2><span class="section-number">25.8.3. </span>Accessing FS/GS base with arch_prctl()<a class="headerlink" href="#accessing-fs-gs-base-with-arch-prctl" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">24.8.3. </span>Accessing FS/GS base with arch_prctl()<a class="headerlink" href="#accessing-fs-gs-base-with-arch-prctl" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>The arch_prctl(2) based mechanism is available on all 64-bit CPUs and all
 kernel versions.</p>
@@ -359,7 +358,7 @@ and security settings.</p>
 </div></blockquote>
 </div>
 <div class="section" id="accessing-fs-gs-base-with-the-fsgsbase-instructions">
-<h2><span class="section-number">25.8.4. </span>Accessing FS/GS base with the FSGSBASE instructions<a class="headerlink" href="#accessing-fs-gs-base-with-the-fsgsbase-instructions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">24.8.4. </span>Accessing FS/GS base with the FSGSBASE instructions<a class="headerlink" href="#accessing-fs-gs-base-with-the-fsgsbase-instructions" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>With the Ivy Bridge CPU generation Intel introduced a new set of
 instructions to access the FS and GS base registers directly from user
@@ -394,7 +393,7 @@ and runtimes which utilize FS and applications which want to use it for
 their own purpose.</p>
 </div></blockquote>
 <div class="section" id="fsgsbase-instructions-enablement">
-<h3><span class="section-number">25.8.4.1. </span>FSGSBASE instructions enablement<a class="headerlink" href="#fsgsbase-instructions-enablement" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">24.8.4.1. </span>FSGSBASE instructions enablement<a class="headerlink" href="#fsgsbase-instructions-enablement" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>The instructions are enumerated in CPUID leaf 7, bit 0 of EBX. If
 available /proc/cpuinfo shows ‘fsgsbase’ in the flag entry of the CPUs.</p>
@@ -429,7 +428,7 @@ if (val &amp; HWCAP2_FSGSBASE)
 </div></blockquote>
 </div>
 <div class="section" id="fsgsbase-instructions-compiler-support">
-<h3><span class="section-number">25.8.4.2. </span>FSGSBASE instructions compiler support<a class="headerlink" href="#fsgsbase-instructions-compiler-support" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">24.8.4.2. </span>FSGSBASE instructions compiler support<a class="headerlink" href="#fsgsbase-instructions-compiler-support" title="Permalink to this headline">¶</a></h3>
 <p>GCC version 4.6.4 and newer provide instrinsics for the FSGSBASE
 instructions. Clang 5 supports them as well.</p>
 <blockquote>
@@ -459,7 +458,7 @@ code and the compiler option -mfsgsbase has to be added.</p>
 </div>
 </div>
 <div class="section" id="compiler-support-for-fs-gs-based-addressing">
-<h2><span class="section-number">25.8.5. </span>Compiler support for FS/GS based addressing<a class="headerlink" href="#compiler-support-for-fs-gs-based-addressing" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">24.8.5. </span>Compiler support for FS/GS based addressing<a class="headerlink" href="#compiler-support-for-fs-gs-based-addressing" title="Permalink to this headline">¶</a></h2>
 <p>GCC version 6 and newer provide support for FS/GS based addressing via
 Named Address Spaces. GCC implements the following address space
 identifiers for x86:</p>
@@ -526,7 +525,7 @@ versions:</p>
 </div></blockquote>
 </div>
 <div class="section" id="fs-gs-based-addressing-with-inline-assembly">
-<h2><span class="section-number">25.8.6. </span>FS/GS based addressing with inline assembly<a class="headerlink" href="#fs-gs-based-addressing-with-inline-assembly" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">24.8.6. </span>FS/GS based addressing with inline assembly<a class="headerlink" href="#fs-gs-based-addressing-with-inline-assembly" title="Permalink to this headline">¶</a></h2>
 <p>In case the compiler does not support address spaces, inline assembly can
 be used for FS/GS based addressing mode:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mov %fs:offset, %reg
@@ -547,10 +546,10 @@ mov %reg, %gs:offset
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../sva.html" class="btn btn-neutral float-right" title="26. Shared Virtual Addressing (SVA) with ENQCMD" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../sva.html" class="btn btn-neutral float-right" title="25. Shared Virtual Addressing (SVA) with ENQCMD" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="machinecheck.html" class="btn btn-neutral float-left" title="25.7. Configurable sysfs parameters for the x86-64 machine check code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="machinecheck.html" class="btn btn-neutral float-left" title="24.7. Configurable sysfs parameters for the x86-64 machine check code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2.7.31. V4L2_PIX_FMT_M420 (‘M420’) &mdash; The Linux-Next Dragon Kernel  documentation</title>
+  <title>2.7.1.7. V4L2_PIX_FMT_M420 (‘M420’) &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
 
   
@@ -35,7 +35,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="2.8. HSV Formats" href="hsv-formats.html" />
-    <link rel="prev" title="2.7.30. V4L2_PIX_FMT_NV24 (‘NV24’), V4L2_PIX_FMT_NV42 (‘NV42’)" href="pixfmt-nv24.html" /> 
+    <link rel="prev" title="2.7.1.6. V4L2_PIX_FMT_UV8 (‘UV8’)" href="pixfmt-uv8.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.21-dragon
+                5.10.22-dragon
               </div>
             
           
@@ -274,7 +274,7 @@
         
           <li><a href="yuv-formats.html"><span class="section-number">2.7. </span>YUV Formats</a> &raquo;</li>
         
-      <li><span class="section-number">2.7.31. </span>V4L2_PIX_FMT_M420 (‘M420’)</li>
+      <li><span class="section-number">2.7.1.7. </span>V4L2_PIX_FMT_M420 (‘M420’)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -294,11 +294,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="v4l2-pix-fmt-m420-m420">
-<span id="v4l2-pix-fmt-m420"></span><h1><span class="section-number">2.7.31. </span>V4L2_PIX_FMT_M420 (‘M420’)<a class="headerlink" href="#v4l2-pix-fmt-m420-m420" title="Permalink to this headline">¶</a></h1>
+<span id="v4l2-pix-fmt-m420"></span><h1><span class="section-number">2.7.1.7. </span>V4L2_PIX_FMT_M420 (‘M420’)<a class="headerlink" href="#v4l2-pix-fmt-m420-m420" title="Permalink to this headline">¶</a></h1>
 <p>Format with ½ horizontal and vertical chroma resolution, also known as
 YUV 4:2:0. Hybrid plane line-interleaved layout.</p>
 <div class="section" id="description">
-<h2><span class="section-number">2.7.31.1. </span>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.7.1.7.1. </span>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>M420 is a YUV format with ½ horizontal and vertical chroma subsampling
 (YUV 4:2:0). Pixels are organized as interleaved luma and chroma planes.
 Two lines of luma data are followed by one line of chroma data.</p>
@@ -358,78 +358,9 @@ Each cell is one byte.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Color Sample Location:</strong></p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td></td>
-<td><p>0</p></td>
-<td></td>
-<td><p>1</p></td>
-<td><p>2</p></td>
-<td></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-even"><td><p>0</p></td>
-<td><p>Y</p></td>
-<td></td>
-<td><p>Y</p></td>
-<td><p>Y</p></td>
-<td></td>
-<td><p>Y</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td></td>
-<td><p>C</p></td>
-<td></td>
-<td></td>
-<td><p>C</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>1</p></td>
-<td><p>Y</p></td>
-<td></td>
-<td><p>Y</p></td>
-<td><p>Y</p></td>
-<td></td>
-<td><p>Y</p></td>
-</tr>
-<tr class="row-odd"><td colspan="7"></td>
-</tr>
-<tr class="row-even"><td><p>2</p></td>
-<td><p>Y</p></td>
-<td></td>
-<td><p>Y</p></td>
-<td><p>Y</p></td>
-<td></td>
-<td><p>Y</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td></td>
-<td><p>C</p></td>
-<td></td>
-<td></td>
-<td><p>C</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>3</p></td>
-<td><p>Y</p></td>
-<td></td>
-<td><p>Y</p></td>
-<td><p>Y</p></td>
-<td></td>
-<td><p>Y</p></td>
-</tr>
-</tbody>
-</table>
+<p><strong>Color Sample Location:</strong>
+Chroma samples are <a class="reference internal" href="yuv-formats.html#yuv-chroma-centered"><span class="std std-ref">interstitially sited</span></a>
+horizontally and vertically.</p>
 </div>
 </div>
 
@@ -444,7 +375,7 @@ Each cell is one byte.</p>
         <a href="hsv-formats.html" class="btn btn-neutral float-right" title="2.8. HSV Formats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pixfmt-nv24.html" class="btn btn-neutral float-left" title="2.7.30. V4L2_PIX_FMT_NV24 (‘NV24’), V4L2_PIX_FMT_NV42 (‘NV42’)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pixfmt-uv8.html" class="btn btn-neutral float-left" title="2.7.1.6. V4L2_PIX_FMT_UV8 (‘UV8’)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

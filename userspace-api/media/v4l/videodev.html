@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.21-dragon
+                5.10.22-dragon
               </div>
             
           
@@ -810,7 +810,7 @@ struct v4l2_pix_format {
 
 /*      Pixel format         FOURCC                          depth  Description  */
 
-/* RGB formats */
+/* RGB formats (1 or 2 bytes per pixel) */
 #define <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-rgb332"><span class="std std-ref">V4L2_PIX_FMT_RGB332</span></a>  v4l2_fourcc('R', 'G', 'B', '1') /*  8  RGB-3-3-2     */
 #define <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-rgb444"><span class="std std-ref">V4L2_PIX_FMT_RGB444</span></a>  v4l2_fourcc('R', '4', '4', '4') /* 16  xxxxrrrr ggggbbbb */
 #define <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-argb444"><span class="std std-ref">V4L2_PIX_FMT_ARGB444</span></a> v4l2_fourcc('A', 'R', '1', '2') /* 16  aaaarrrr ggggbbbb */
@@ -819,12 +819,6 @@ struct v4l2_pix_format {
 #define <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-rgbx444"><span class="std std-ref">V4L2_PIX_FMT_RGBX444</span></a> v4l2_fourcc('R', 'X', '1', '2') /* 16  rrrrgggg bbbbxxxx */
 #define <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-abgr444"><span class="std std-ref">V4L2_PIX_FMT_ABGR444</span></a> v4l2_fourcc('A', 'B', '1', '2') /* 16  aaaabbbb ggggrrrr */
 #define <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-xbgr444"><span class="std std-ref">V4L2_PIX_FMT_XBGR444</span></a> v4l2_fourcc('X', 'B', '1', '2') /* 16  xxxxbbbb ggggrrrr */
-
-/*
- * Originally this had 'BA12' as fourcc, but this clashed with the older
- * <a class="reference internal" href="pixfmt-srggb12.html#v4l2-pix-fmt-sgrbg12"><span class="std std-ref">V4L2_PIX_FMT_SGRBG12</span></a> which inexplicably used that same fourcc.
- * So use 'GA12' instead for V4L2_PIX_FMT_BGRA444.
- */
 #define <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-bgra444"><span class="std std-ref">V4L2_PIX_FMT_BGRA444</span></a> v4l2_fourcc('G', 'A', '1', '2') /* 16  bbbbgggg rrrraaaa */
 #define <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-bgrx444"><span class="std std-ref">V4L2_PIX_FMT_BGRX444</span></a> v4l2_fourcc('B', 'X', '1', '2') /* 16  bbbbgggg rrrrxxxx */
 #define <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-rgb555"><span class="std std-ref">V4L2_PIX_FMT_RGB555</span></a>  v4l2_fourcc('R', 'G', 'B', 'O') /* 16  RGB-5-5-5     */
@@ -841,6 +835,8 @@ struct v4l2_pix_format {
 #define <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-argb555x"><span class="std std-ref">V4L2_PIX_FMT_ARGB555X</span></a> v4l2_fourcc_be('A', 'R', '1', '5') /* 16  ARGB-5-5-5 BE */
 #define <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-xrgb555x"><span class="std std-ref">V4L2_PIX_FMT_XRGB555X</span></a> v4l2_fourcc_be('X', 'R', '1', '5') /* 16  XRGB-5-5-5 BE */
 #define <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-rgb565x"><span class="std std-ref">V4L2_PIX_FMT_RGB565X</span></a> v4l2_fourcc('R', 'G', 'B', 'R') /* 16  RGB-5-6-5 BE  */
+
+/* RGB formats (3 or 4 bytes per pixel) */
 #define <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-bgr666"><span class="std std-ref">V4L2_PIX_FMT_BGR666</span></a>  v4l2_fourcc('B', 'G', 'R', 'H') /* 18  BGR-6-6-6     */
 #define <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-bgr24"><span class="std std-ref">V4L2_PIX_FMT_BGR24</span></a>   v4l2_fourcc('B', 'G', 'R', '3') /* 24  BGR-8-8-8     */
 #define <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-rgb24"><span class="std std-ref">V4L2_PIX_FMT_RGB24</span></a>   v4l2_fourcc('R', 'G', 'B', '3') /* 24  RGB-8-8-8     */
@@ -856,18 +852,18 @@ struct v4l2_pix_format {
 #define <a class="reference internal" href="pixfmt-rgb.html#v4l2-pix-fmt-xrgb32"><span class="std std-ref">V4L2_PIX_FMT_XRGB32</span></a>  v4l2_fourcc('B', 'X', '2', '4') /* 32  XRGB-8-8-8-8  */
 
 /* Grey formats */
-#define <a class="reference internal" href="pixfmt-grey.html#v4l2-pix-fmt-grey"><span class="std std-ref">V4L2_PIX_FMT_GREY</span></a>    v4l2_fourcc('G', 'R', 'E', 'Y') /*  8  Greyscale     */
+#define <a class="reference internal" href="pixfmt-yuv-luma.html#v4l2-pix-fmt-grey"><span class="std std-ref">V4L2_PIX_FMT_GREY</span></a>    v4l2_fourcc('G', 'R', 'E', 'Y') /*  8  Greyscale     */
 #define <a class="reference internal" href="pixfmt-reserved.html#v4l2-pix-fmt-y4"><span class="std std-ref">V4L2_PIX_FMT_Y4</span></a>      v4l2_fourcc('Y', '0', '4', ' ') /*  4  Greyscale     */
 #define <a class="reference internal" href="pixfmt-reserved.html#v4l2-pix-fmt-y6"><span class="std std-ref">V4L2_PIX_FMT_Y6</span></a>      v4l2_fourcc('Y', '0', '6', ' ') /*  6  Greyscale     */
-#define <a class="reference internal" href="pixfmt-y10.html#v4l2-pix-fmt-y10"><span class="std std-ref">V4L2_PIX_FMT_Y10</span></a>     v4l2_fourcc('Y', '1', '0', ' ') /* 10  Greyscale     */
-#define <a class="reference internal" href="pixfmt-y12.html#v4l2-pix-fmt-y12"><span class="std std-ref">V4L2_PIX_FMT_Y12</span></a>     v4l2_fourcc('Y', '1', '2', ' ') /* 12  Greyscale     */
-#define <a class="reference internal" href="pixfmt-y14.html#v4l2-pix-fmt-y14"><span class="std std-ref">V4L2_PIX_FMT_Y14</span></a>     v4l2_fourcc('Y', '1', '4', ' ') /* 14  Greyscale     */
-#define <a class="reference internal" href="pixfmt-y16.html#v4l2-pix-fmt-y16"><span class="std std-ref">V4L2_PIX_FMT_Y16</span></a>     v4l2_fourcc('Y', '1', '6', ' ') /* 16  Greyscale     */
-#define <a class="reference internal" href="pixfmt-y16-be.html#v4l2-pix-fmt-y16-be"><span class="std std-ref">V4L2_PIX_FMT_Y16_BE</span></a>  v4l2_fourcc_be('Y', '1', '6', ' ') /* 16  Greyscale BE  */
+#define <a class="reference internal" href="pixfmt-yuv-luma.html#v4l2-pix-fmt-y10"><span class="std std-ref">V4L2_PIX_FMT_Y10</span></a>     v4l2_fourcc('Y', '1', '0', ' ') /* 10  Greyscale     */
+#define <a class="reference internal" href="pixfmt-yuv-luma.html#v4l2-pix-fmt-y12"><span class="std std-ref">V4L2_PIX_FMT_Y12</span></a>     v4l2_fourcc('Y', '1', '2', ' ') /* 12  Greyscale     */
+#define <a class="reference internal" href="pixfmt-yuv-luma.html#v4l2-pix-fmt-y14"><span class="std std-ref">V4L2_PIX_FMT_Y14</span></a>     v4l2_fourcc('Y', '1', '4', ' ') /* 14  Greyscale     */
+#define <a class="reference internal" href="pixfmt-yuv-luma.html#v4l2-pix-fmt-y16"><span class="std std-ref">V4L2_PIX_FMT_Y16</span></a>     v4l2_fourcc('Y', '1', '6', ' ') /* 16  Greyscale     */
+#define <a class="reference internal" href="pixfmt-yuv-luma.html#v4l2-pix-fmt-y16-be"><span class="std std-ref">V4L2_PIX_FMT_Y16_BE</span></a>  v4l2_fourcc_be('Y', '1', '6', ' ') /* 16  Greyscale BE  */
 
 /* Grey bit-packed formats */
-#define <a class="reference internal" href="pixfmt-y10b.html#v4l2-pix-fmt-y10bpack"><span class="std std-ref">V4L2_PIX_FMT_Y10BPACK</span></a>    v4l2_fourcc('Y', '1', '0', 'B') /* 10  Greyscale bit-packed */
-#define <a class="reference internal" href="pixfmt-y10p.html#v4l2-pix-fmt-y10p"><span class="std std-ref">V4L2_PIX_FMT_Y10P</span></a>    v4l2_fourcc('Y', '1', '0', 'P') /* 10  Greyscale, MIPI RAW10 packed */
+#define <a class="reference internal" href="pixfmt-yuv-luma.html#v4l2-pix-fmt-y10bpack"><span class="std std-ref">V4L2_PIX_FMT_Y10BPACK</span></a>    v4l2_fourcc('Y', '1', '0', 'B') /* 10  Greyscale bit-packed */
+#define <a class="reference internal" href="pixfmt-yuv-luma.html#v4l2-pix-fmt-y10p"><span class="std std-ref">V4L2_PIX_FMT_Y10P</span></a>    v4l2_fourcc('Y', '1', '0', 'P') /* 10  Greyscale, MIPI RAW10 packed */
 
 /* Palette formats */
 #define <a class="reference internal" href="pixfmt-indexed.html#v4l2-pix-fmt-pal8"><span class="std std-ref">V4L2_PIX_FMT_PAL8</span></a>    v4l2_fourcc('P', 'A', 'L', '8') /*  8  8-bit palette */
@@ -876,12 +872,12 @@ struct v4l2_pix_format {
 #define <a class="reference internal" href="pixfmt-uv8.html#v4l2-pix-fmt-uv8"><span class="std std-ref">V4L2_PIX_FMT_UV8</span></a>     v4l2_fourcc('U', 'V', '8', ' ') /*  8  UV 4:4 */
 
 /* Luminance+Chrominance formats */
-#define <a class="reference internal" href="pixfmt-yuyv.html#v4l2-pix-fmt-yuyv"><span class="std std-ref">V4L2_PIX_FMT_YUYV</span></a>    v4l2_fourcc('Y', 'U', 'Y', 'V') /* 16  YUV 4:2:2     */
+#define <a class="reference internal" href="pixfmt-packed-yuv.html#v4l2-pix-fmt-yuyv"><span class="std std-ref">V4L2_PIX_FMT_YUYV</span></a>    v4l2_fourcc('Y', 'U', 'Y', 'V') /* 16  YUV 4:2:2     */
 #define <a class="reference internal" href="pixfmt-reserved.html#v4l2-pix-fmt-yyuv"><span class="std std-ref">V4L2_PIX_FMT_YYUV</span></a>    v4l2_fourcc('Y', 'Y', 'U', 'V') /* 16  YUV 4:2:2     */
-#define <a class="reference internal" href="pixfmt-yvyu.html#v4l2-pix-fmt-yvyu"><span class="std std-ref">V4L2_PIX_FMT_YVYU</span></a>    v4l2_fourcc('Y', 'V', 'Y', 'U') /* 16 YVU 4:2:2 */
-#define <a class="reference internal" href="pixfmt-uyvy.html#v4l2-pix-fmt-uyvy"><span class="std std-ref">V4L2_PIX_FMT_UYVY</span></a>    v4l2_fourcc('U', 'Y', 'V', 'Y') /* 16  YUV 4:2:2     */
-#define <a class="reference internal" href="pixfmt-vyuy.html#v4l2-pix-fmt-vyuy"><span class="std std-ref">V4L2_PIX_FMT_VYUY</span></a>    v4l2_fourcc('V', 'Y', 'U', 'Y') /* 16  YUV 4:2:2     */
-#define <a class="reference internal" href="pixfmt-y41p.html#v4l2-pix-fmt-y41p"><span class="std std-ref">V4L2_PIX_FMT_Y41P</span></a>    v4l2_fourcc('Y', '4', '1', 'P') /* 12  YUV 4:1:1     */
+#define <a class="reference internal" href="pixfmt-packed-yuv.html#v4l2-pix-fmt-yvyu"><span class="std std-ref">V4L2_PIX_FMT_YVYU</span></a>    v4l2_fourcc('Y', 'V', 'Y', 'U') /* 16 YVU 4:2:2 */
+#define <a class="reference internal" href="pixfmt-packed-yuv.html#v4l2-pix-fmt-uyvy"><span class="std std-ref">V4L2_PIX_FMT_UYVY</span></a>    v4l2_fourcc('U', 'Y', 'V', 'Y') /* 16  YUV 4:2:2     */
+#define <a class="reference internal" href="pixfmt-packed-yuv.html#v4l2-pix-fmt-vyuy"><span class="std std-ref">V4L2_PIX_FMT_VYUY</span></a>    v4l2_fourcc('V', 'Y', 'U', 'Y') /* 16  YUV 4:2:2     */
+#define <a class="reference internal" href="pixfmt-packed-yuv.html#v4l2-pix-fmt-y41p"><span class="std std-ref">V4L2_PIX_FMT_Y41P</span></a>    v4l2_fourcc('Y', '4', '1', 'P') /* 12  YUV 4:1:1     */
 #define <a class="reference internal" href="pixfmt-packed-yuv.html#v4l2-pix-fmt-yuv444"><span class="std std-ref">V4L2_PIX_FMT_YUV444</span></a>  v4l2_fourcc('Y', '4', '4', '4') /* 16  xxxxyyyy uuuuvvvv */
 #define <a class="reference internal" href="pixfmt-packed-yuv.html#v4l2-pix-fmt-yuv555"><span class="std std-ref">V4L2_PIX_FMT_YUV555</span></a>  v4l2_fourcc('Y', 'U', 'V', 'O') /* 16  YUV-5-5-5     */
 #define <a class="reference internal" href="pixfmt-packed-yuv.html#v4l2-pix-fmt-yuv565"><span class="std std-ref">V4L2_PIX_FMT_YUV565</span></a>  v4l2_fourcc('Y', 'U', 'V', 'P') /* 16  YUV-5-6-5     */
@@ -890,41 +886,40 @@ struct v4l2_pix_format {
 #define <a class="reference internal" href="pixfmt-packed-yuv.html#v4l2-pix-fmt-xyuv32"><span class="std std-ref">V4L2_PIX_FMT_XYUV32</span></a>  v4l2_fourcc('X', 'Y', 'U', 'V') /* 32  XYUV-8-8-8-8  */
 #define <a class="reference internal" href="pixfmt-packed-yuv.html#v4l2-pix-fmt-vuya32"><span class="std std-ref">V4L2_PIX_FMT_VUYA32</span></a>  v4l2_fourcc('V', 'U', 'Y', 'A') /* 32  VUYA-8-8-8-8  */
 #define <a class="reference internal" href="pixfmt-packed-yuv.html#v4l2-pix-fmt-vuyx32"><span class="std std-ref">V4L2_PIX_FMT_VUYX32</span></a>  v4l2_fourcc('V', 'U', 'Y', 'X') /* 32  VUYX-8-8-8-8  */
-#define <a class="reference internal" href="pixfmt-reserved.html#v4l2-pix-fmt-hi240"><span class="std std-ref">V4L2_PIX_FMT_HI240</span></a>   v4l2_fourcc('H', 'I', '2', '4') /*  8  8-bit color   */
-#define <a class="reference internal" href="pixfmt-reserved.html#v4l2-pix-fmt-hm12"><span class="std std-ref">V4L2_PIX_FMT_HM12</span></a>    v4l2_fourcc('H', 'M', '1', '2') /*  8  YUV 4:2:0 16x16 macroblocks */
 #define <a class="reference internal" href="pixfmt-m420.html#v4l2-pix-fmt-m420"><span class="std std-ref">V4L2_PIX_FMT_M420</span></a>    v4l2_fourcc('M', '4', '2', '0') /* 12  YUV 4:2:0 2 lines y, 1 line uv interleaved */
 
 /* two planes -- one Y, one Cr + Cb interleaved  */
-#define <a class="reference internal" href="pixfmt-nv12.html#v4l2-pix-fmt-nv12"><span class="std std-ref">V4L2_PIX_FMT_NV12</span></a>    v4l2_fourcc('N', 'V', '1', '2') /* 12  Y/CbCr 4:2:0  */
-#define <a class="reference internal" href="pixfmt-nv12.html#v4l2-pix-fmt-nv21"><span class="std std-ref">V4L2_PIX_FMT_NV21</span></a>    v4l2_fourcc('N', 'V', '2', '1') /* 12  Y/CrCb 4:2:0  */
-#define <a class="reference internal" href="pixfmt-nv16.html#v4l2-pix-fmt-nv16"><span class="std std-ref">V4L2_PIX_FMT_NV16</span></a>    v4l2_fourcc('N', 'V', '1', '6') /* 16  Y/CbCr 4:2:2  */
-#define <a class="reference internal" href="pixfmt-nv16.html#v4l2-pix-fmt-nv61"><span class="std std-ref">V4L2_PIX_FMT_NV61</span></a>    v4l2_fourcc('N', 'V', '6', '1') /* 16  Y/CrCb 4:2:2  */
-#define <a class="reference internal" href="pixfmt-nv24.html#v4l2-pix-fmt-nv24"><span class="std std-ref">V4L2_PIX_FMT_NV24</span></a>    v4l2_fourcc('N', 'V', '2', '4') /* 24  Y/CbCr 4:4:4  */
-#define <a class="reference internal" href="pixfmt-nv24.html#v4l2-pix-fmt-nv42"><span class="std std-ref">V4L2_PIX_FMT_NV42</span></a>    v4l2_fourcc('N', 'V', '4', '2') /* 24  Y/CrCb 4:4:4  */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-nv12"><span class="std std-ref">V4L2_PIX_FMT_NV12</span></a>    v4l2_fourcc('N', 'V', '1', '2') /* 12  Y/CbCr 4:2:0  */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-nv21"><span class="std std-ref">V4L2_PIX_FMT_NV21</span></a>    v4l2_fourcc('N', 'V', '2', '1') /* 12  Y/CrCb 4:2:0  */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-nv16"><span class="std std-ref">V4L2_PIX_FMT_NV16</span></a>    v4l2_fourcc('N', 'V', '1', '6') /* 16  Y/CbCr 4:2:2  */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-nv61"><span class="std std-ref">V4L2_PIX_FMT_NV61</span></a>    v4l2_fourcc('N', 'V', '6', '1') /* 16  Y/CrCb 4:2:2  */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-nv24"><span class="std std-ref">V4L2_PIX_FMT_NV24</span></a>    v4l2_fourcc('N', 'V', '2', '4') /* 24  Y/CbCr 4:4:4  */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-nv42"><span class="std std-ref">V4L2_PIX_FMT_NV42</span></a>    v4l2_fourcc('N', 'V', '4', '2') /* 24  Y/CrCb 4:4:4  */
+#define <a class="reference internal" href="pixfmt-reserved.html#v4l2-pix-fmt-hm12"><span class="std std-ref">V4L2_PIX_FMT_HM12</span></a>    v4l2_fourcc('H', 'M', '1', '2') /*  8  YUV 4:2:0 16x16 macroblocks */
 
 /* two non contiguous planes - one Y, one Cr + Cb interleaved  */
-#define <a class="reference internal" href="pixfmt-nv12m.html#v4l2-pix-fmt-nv12m"><span class="std std-ref">V4L2_PIX_FMT_NV12M</span></a>   v4l2_fourcc('N', 'M', '1', '2') /* 12  Y/CbCr 4:2:0  */
-#define <a class="reference internal" href="pixfmt-nv12m.html#v4l2-pix-fmt-nv21m"><span class="std std-ref">V4L2_PIX_FMT_NV21M</span></a>   v4l2_fourcc('N', 'M', '2', '1') /* 21  Y/CrCb 4:2:0  */
-#define <a class="reference internal" href="pixfmt-nv16m.html#v4l2-pix-fmt-nv16m"><span class="std std-ref">V4L2_PIX_FMT_NV16M</span></a>   v4l2_fourcc('N', 'M', '1', '6') /* 16  Y/CbCr 4:2:2  */
-#define <a class="reference internal" href="pixfmt-nv16m.html#v4l2-pix-fmt-nv61m"><span class="std std-ref">V4L2_PIX_FMT_NV61M</span></a>   v4l2_fourcc('N', 'M', '6', '1') /* 16  Y/CrCb 4:2:2  */
-#define <a class="reference internal" href="pixfmt-nv12mt.html#v4l2-pix-fmt-nv12mt"><span class="std std-ref">V4L2_PIX_FMT_NV12MT</span></a>  v4l2_fourcc('T', 'M', '1', '2') /* 12  Y/CbCr 4:2:0 64x32 macroblocks */
-#define <a class="reference internal" href="pixfmt-nv12m.html#v4l2-pix-fmt-nv12mt-16x16"><span class="std std-ref">V4L2_PIX_FMT_NV12MT_16X16</span></a> v4l2_fourcc('V', 'M', '1', '2') /* 12  Y/CbCr 4:2:0 16x16 macroblocks */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-nv12m"><span class="std std-ref">V4L2_PIX_FMT_NV12M</span></a>   v4l2_fourcc('N', 'M', '1', '2') /* 12  Y/CbCr 4:2:0  */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-nv21m"><span class="std std-ref">V4L2_PIX_FMT_NV21M</span></a>   v4l2_fourcc('N', 'M', '2', '1') /* 21  Y/CrCb 4:2:0  */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-nv16m"><span class="std std-ref">V4L2_PIX_FMT_NV16M</span></a>   v4l2_fourcc('N', 'M', '1', '6') /* 16  Y/CbCr 4:2:2  */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-nv61m"><span class="std std-ref">V4L2_PIX_FMT_NV61M</span></a>   v4l2_fourcc('N', 'M', '6', '1') /* 16  Y/CrCb 4:2:2  */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-nv12mt"><span class="std std-ref">V4L2_PIX_FMT_NV12MT</span></a>  v4l2_fourcc('T', 'M', '1', '2') /* 12  Y/CbCr 4:2:0 64x32 macroblocks */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-nv12mt-16x16"><span class="std std-ref">V4L2_PIX_FMT_NV12MT_16X16</span></a> v4l2_fourcc('V', 'M', '1', '2') /* 12  Y/CbCr 4:2:0 16x16 macroblocks */
 
 /* three planes - Y Cb, Cr */
-#define <a class="reference internal" href="pixfmt-yuv410.html#v4l2-pix-fmt-yuv410"><span class="std std-ref">V4L2_PIX_FMT_YUV410</span></a>  v4l2_fourcc('Y', 'U', 'V', '9') /*  9  YUV 4:1:0     */
-#define <a class="reference internal" href="pixfmt-yuv410.html#v4l2-pix-fmt-yvu410"><span class="std std-ref">V4L2_PIX_FMT_YVU410</span></a>  v4l2_fourcc('Y', 'V', 'U', '9') /*  9  YVU 4:1:0     */
-#define <a class="reference internal" href="pixfmt-yuv411p.html#v4l2-pix-fmt-yuv411p"><span class="std std-ref">V4L2_PIX_FMT_YUV411P</span></a> v4l2_fourcc('4', '1', '1', 'P') /* 12  YVU411 planar */
-#define <a class="reference internal" href="pixfmt-yuv420.html#v4l2-pix-fmt-yuv420"><span class="std std-ref">V4L2_PIX_FMT_YUV420</span></a>  v4l2_fourcc('Y', 'U', '1', '2') /* 12  YUV 4:2:0     */
-#define <a class="reference internal" href="pixfmt-yuv420.html#v4l2-pix-fmt-yvu420"><span class="std std-ref">V4L2_PIX_FMT_YVU420</span></a>  v4l2_fourcc('Y', 'V', '1', '2') /* 12  YVU 4:2:0     */
-#define <a class="reference internal" href="pixfmt-yuv422p.html#v4l2-pix-fmt-yuv422p"><span class="std std-ref">V4L2_PIX_FMT_YUV422P</span></a> v4l2_fourcc('4', '2', '2', 'P') /* 16  YVU422 planar */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-yuv410"><span class="std std-ref">V4L2_PIX_FMT_YUV410</span></a>  v4l2_fourcc('Y', 'U', 'V', '9') /*  9  YUV 4:1:0     */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-yvu410"><span class="std std-ref">V4L2_PIX_FMT_YVU410</span></a>  v4l2_fourcc('Y', 'V', 'U', '9') /*  9  YVU 4:1:0     */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-yuv411p"><span class="std std-ref">V4L2_PIX_FMT_YUV411P</span></a> v4l2_fourcc('4', '1', '1', 'P') /* 12  YVU411 planar */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-yuv420"><span class="std std-ref">V4L2_PIX_FMT_YUV420</span></a>  v4l2_fourcc('Y', 'U', '1', '2') /* 12  YUV 4:2:0     */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-yvu420"><span class="std std-ref">V4L2_PIX_FMT_YVU420</span></a>  v4l2_fourcc('Y', 'V', '1', '2') /* 12  YVU 4:2:0     */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-yuv422p"><span class="std std-ref">V4L2_PIX_FMT_YUV422P</span></a> v4l2_fourcc('4', '2', '2', 'P') /* 16  YVU422 planar */
 
 /* three non contiguous planes - Y, Cb, Cr */
-#define <a class="reference internal" href="pixfmt-yuv420m.html#v4l2-pix-fmt-yuv420m"><span class="std std-ref">V4L2_PIX_FMT_YUV420M</span></a> v4l2_fourcc('Y', 'M', '1', '2') /* 12  YUV420 planar */
-#define <a class="reference internal" href="pixfmt-yuv420m.html#v4l2-pix-fmt-yvu420m"><span class="std std-ref">V4L2_PIX_FMT_YVU420M</span></a> v4l2_fourcc('Y', 'M', '2', '1') /* 12  YVU420 planar */
-#define <a class="reference internal" href="pixfmt-yuv422m.html#v4l2-pix-fmt-yuv422m"><span class="std std-ref">V4L2_PIX_FMT_YUV422M</span></a> v4l2_fourcc('Y', 'M', '1', '6') /* 16  YUV422 planar */
-#define <a class="reference internal" href="pixfmt-yuv422m.html#v4l2-pix-fmt-yvu422m"><span class="std std-ref">V4L2_PIX_FMT_YVU422M</span></a> v4l2_fourcc('Y', 'M', '6', '1') /* 16  YVU422 planar */
-#define <a class="reference internal" href="pixfmt-yuv444m.html#v4l2-pix-fmt-yuv444m"><span class="std std-ref">V4L2_PIX_FMT_YUV444M</span></a> v4l2_fourcc('Y', 'M', '2', '4') /* 24  YUV444 planar */
-#define <a class="reference internal" href="pixfmt-yuv444m.html#v4l2-pix-fmt-yvu444m"><span class="std std-ref">V4L2_PIX_FMT_YVU444M</span></a> v4l2_fourcc('Y', 'M', '4', '2') /* 24  YVU444 planar */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-yuv420m"><span class="std std-ref">V4L2_PIX_FMT_YUV420M</span></a> v4l2_fourcc('Y', 'M', '1', '2') /* 12  YUV420 planar */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-yvu420m"><span class="std std-ref">V4L2_PIX_FMT_YVU420M</span></a> v4l2_fourcc('Y', 'M', '2', '1') /* 12  YVU420 planar */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-yuv422m"><span class="std std-ref">V4L2_PIX_FMT_YUV422M</span></a> v4l2_fourcc('Y', 'M', '1', '6') /* 16  YUV422 planar */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-yvu422m"><span class="std std-ref">V4L2_PIX_FMT_YVU422M</span></a> v4l2_fourcc('Y', 'M', '6', '1') /* 16  YVU422 planar */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-yuv444m"><span class="std std-ref">V4L2_PIX_FMT_YUV444M</span></a> v4l2_fourcc('Y', 'M', '2', '4') /* 24  YUV444 planar */
+#define <a class="reference internal" href="pixfmt-yuv-planar.html#v4l2-pix-fmt-yvu444m"><span class="std std-ref">V4L2_PIX_FMT_YVU444M</span></a> v4l2_fourcc('Y', 'M', '4', '2') /* 24  YVU444 planar */
 
 /* Bayer formats - see http://www.siliconimaging.com/RGB%20Bayer.htm */
 #define <a class="reference internal" href="pixfmt-srggb8.html#v4l2-pix-fmt-sbggr8"><span class="std std-ref">V4L2_PIX_FMT_SBGGR8</span></a>  v4l2_fourcc('B', 'A', '8', '1') /*  8  BGBG.. GRGR.. */
@@ -1034,6 +1029,7 @@ struct v4l2_pix_format {
 #define <a class="reference internal" href="pixfmt-inzi.html#v4l2-pix-fmt-inzi"><span class="std std-ref">V4L2_PIX_FMT_INZI</span></a>     v4l2_fourcc('I', 'N', 'Z', 'I') /* Intel Planar Greyscale 10-bit and Depth 16-bit */
 #define <a class="reference internal" href="pixfmt-reserved.html#v4l2-pix-fmt-sunxi-tiled-nv12"><span class="std std-ref">V4L2_PIX_FMT_SUNXI_TILED_NV12</span></a> v4l2_fourcc('S', 'T', '1', '2') /* Sunxi Tiled NV12 Format */
 #define <a class="reference internal" href="pixfmt-cnf4.html#v4l2-pix-fmt-cnf4"><span class="std std-ref">V4L2_PIX_FMT_CNF4</span></a>     v4l2_fourcc('C', 'N', 'F', '4') /* Intel 4-bit packed depth confidence information */
+#define <a class="reference internal" href="pixfmt-reserved.html#v4l2-pix-fmt-hi240"><span class="std std-ref">V4L2_PIX_FMT_HI240</span></a>    v4l2_fourcc('H', 'I', '2', '4') /* BTTV 8-bit dithered RGB */
 
 /* 10bit raw bayer packed, 32 bytes for every 25 pixels, last LSB 6 bits unused */
 #define <a class="reference internal" href="pixfmt-srggb10-ipu3.html#v4l2-pix-fmt-ipu3-sbggr10"><span class="std std-ref">V4L2_PIX_FMT_IPU3_SBGGR10</span></a>       v4l2_fourcc('i', 'p', '3', 'b') /* IPU3 packed 10-bit BGGR bayer */
@@ -2087,7 +2083,7 @@ enum <code class="xref c c-type docutils literal notranslate"><span class="pre">
         <code class="xref c c-type docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_H264_DECODE_PARAMS</span></code>   = 0x0204,
         <code class="xref c c-type docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_H264_PRED_WEIGHTS</span></code>    = 0x0205,
 
-        <span class="xref std std-ref">V4L2_CTRL_TYPE_FWHT_PARAMS</span>          = 0x0220,
+        <code class="xref c c-type docutils literal notranslate"><span class="pre">V4L2_CTRL_TYPE_FWHT_PARAMS</span></code>          = 0x0220,
 };
 
 /*  Used in the <a class="reference internal" href="vidioc-queryctrl.html#vidioc-queryctrl"><span class="std std-ref">VIDIOC_QUERYCTRL</span></a> ioctl for querying controls */

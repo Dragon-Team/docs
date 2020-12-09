@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.21-dragon
+                5.10.22-dragon
               </div>
             
           
@@ -375,18 +375,17 @@ either contains garbage, or NULL.</p>
 called by a callback may also be traced, and call that same callback,
 recursion protection must be used. There are two helper functions that
 can help in this regard. If you start your code with:</p>
-<blockquote>
-<div><p>int bit;</p>
-<p>bit = ftrace_test_recursion_trylock(ip, parent_ip);
-if (bit &lt; 0)</p>
-<blockquote>
-<div><p>return;</p>
-</div></blockquote>
-</div></blockquote>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">bit</span><span class="p">;</span>
+
+<span class="n">bit</span> <span class="o">=</span> <span class="n">ftrace_test_recursion_trylock</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">parent_ip</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">bit</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+</pre></div>
+</div>
 <p>and end it with:</p>
-<blockquote>
-<div><p>ftrace_test_recursion_unlock(bit);</p>
-</div></blockquote>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ftrace_test_recursion_unlock</span><span class="p">(</span><span class="n">bit</span><span class="p">);</span>
+</pre></div>
+</div>
 <p>The code in between will be safe to use, even if it ends up calling a
 function that the callback is tracing. Note, on success,
 ftrace_test_recursion_trylock() will disable preemption, and the
@@ -403,12 +402,10 @@ function call.</p>
 protection, it is best to make sure that RCU is “watching”, otherwise
 that data or critical section will not be protected as expected. In this
 case add:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>if (!rcu_is_watching())</dt><dd><p>return;</p>
-</dd>
-</dl>
-</div></blockquote>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">rcu_is_watching</span><span class="p">())</span>
+        <span class="k">return</span><span class="p">;</span>
+</pre></div>
+</div>
 <p>Alternatively, if the FTRACE_OPS_FL_RCU flag is set on the ftrace_ops
 (as explained below), then a helper trampoline will be used to test
 for rcu_is_watching for the callback and no other test needs to be done.

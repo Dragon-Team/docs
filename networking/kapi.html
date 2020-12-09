@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.21-dragon
+                5.10.22-dragon
               </div>
             
           
@@ -3132,16 +3132,14 @@ This function uses GFP_KERNEL internally.</p>
 </dl>
 <dl class="c function">
 <dt id="c.sock_from_file">
-<em class="property">struct</em> <a class="reference internal" href="#c.socket" title="socket">socket</a> *<code class="sig-name descname">sock_from_file</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, int *<em>err</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sock_from_file" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.socket" title="socket">socket</a> *<code class="sig-name descname">sock_from_file</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sock_from_file" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return the <a class="reference internal" href="#c.socket" title="socket"><code class="xref c c-type docutils literal notranslate"><span class="pre">socket</span></code></a> bounded to <strong>file</strong>.</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">file</span> <span class="pre">*file</span></code></dt><dd><p>file</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*err</span></code></dt><dd><p>pointer to an error code return</p>
-<p>On failure returns <code class="docutils literal notranslate"><span class="pre">NULL</span></code> and assigns -ENOTSOCK to <strong>err</strong>.</p>
+<p>On failure returns <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 </dd>
 </dl>
 <dl class="c function">

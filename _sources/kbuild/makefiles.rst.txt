@@ -16,7 +16,7 @@ This document describes the Linux kernel Makefiles.
 	   --- 3.5 Library file goals - lib-y
 	   --- 3.6 Descending down in directories
 	   --- 3.7 Non-builtin vmlinux targets - extra-y
-	   --- 3.8 Always built goals - always-
+	   --- 3.8 Always built goals - always-y
 	   --- 3.9 Compilation flags
 	   --- 3.10 Dependency tracking
 	   --- 3.11 Custom Rules
@@ -326,6 +326,7 @@ more details, with real examples.
 
 	Examples::
 
+		# scripts/Makefile
 		subdir-$(CONFIG_GCC_PLUGINS) += gcc-plugins
 		subdir-$(CONFIG_MODVERSIONS) += genksyms
 		subdir-$(CONFIG_SECURITY_SELINUX) += selinux
@@ -354,7 +355,7 @@ more details, with real examples.
 	    arch/$(SRCARCH)/Makefile should specify such objects as head-y.
 
 	    Discussion:
-	      Given that we can control the section order in our linker script,
+	      Given that we can control the section order in the linker script,
 	      why do we need head-y?
 
 	2) vmlinux linker script
@@ -383,7 +384,7 @@ more details, with real examples.
 ---------------------------------
 
 	always-y specifies targets which are literally always built when
-	Kbuild visited the Makefile.
+	Kbuild visits the Makefile.
 
 	Example::
 	  # ./Kbuild
@@ -581,7 +582,7 @@ more details, with real examples.
 
 	if_changed is the macro used for this purpose, in the following form::
 
-		quiet_cmt_<command> = ...
+		quiet_cmd_<command> = ...
 		      cmd_<command> = ...
 
 		<target>: <source(s)> FORCE
@@ -592,9 +593,9 @@ more details, with real examples.
 	always be built.
 
 	If the target is already listed in the recognized syntax such as
-	obj-y/m, lib-y/m, extra-y/m, hostprogs, userprogs, Kbuild automatically
-	add it to $(targets). Otherwise, the target must be explicitly added
-	to $(targets).
+	obj-y/m, lib-y/m, extra-y/m, always-y/m, hostprogs, userprogs, Kbuild
+	automatically adds it to $(targets). Otherwise, the target must be
+	explicitly added to $(targets).
 
 	Assignments to $(targets) are without $(obj)/ prefix. if_changed may be
 	used in conjunction with custom rules as defined in "3.9 Custom Rules".
@@ -1611,7 +1612,7 @@ The top Makefile exports the following variables:
 	    make ARCH=m68k ...
 
     SRCARCH
-	This variable speficifies the directory in arch/ to build.
+	This variable specifies the directory in arch/ to build.
 
 	ARCH and SRCARCH may not necessarily match. A couple of arch
 	directories are biarch, that is, a single arch/*/ directory supports

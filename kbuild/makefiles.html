@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.21-dragon
+                5.10.22-dragon
               </div>
             
           
@@ -548,7 +548,8 @@ descending into subdirectories. It is a good fit when you know they
 do not contain kernel-space objects at all. A typical usage is to let
 Kbuild descend into subdirectories to build tools.</p>
 <p>Examples:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>subdir-$(CONFIG_GCC_PLUGINS) += gcc-plugins
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># scripts/Makefile
+subdir-$(CONFIG_GCC_PLUGINS) += gcc-plugins
 subdir-$(CONFIG_MODVERSIONS) += genksyms
 subdir-$(CONFIG_SECURITY_SELINUX) += selinux
 </pre></div>
@@ -574,7 +575,7 @@ directly linked to vmlinux without going through built-in.a
 A typical use-case is an object that contains the entry point.</p>
 <p>arch/$(SRCARCH)/Makefile should specify such objects as head-y.</p>
 <dl class="simple">
-<dt>Discussion:</dt><dd><p>Given that we can control the section order in our linker script,
+<dt>Discussion:</dt><dd><p>Given that we can control the section order in the linker script,
 why do we need head-y?</p>
 </dd>
 </dl>
@@ -607,7 +608,7 @@ in the next section) is the correct syntax to use.</p>
 <h3>3.8 Always built goals - always-y<a class="headerlink" href="#always-built-goals-always-y" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>always-y specifies targets which are literally always built when
-Kbuild visited the Makefile.</p>
+Kbuild visits the Makefile.</p>
 <dl class="simple">
 <dt>Example::</dt><dd><p># ./Kbuild
 offsets-file := include/generated/asm-offsets.h
@@ -790,7 +791,7 @@ prerequisites is newer than that.</p>
 since the last invocation. This is not supported by Make itself, so
 Kbuild achieves this by a kind of meta-programming.</p>
 <p>if_changed is the macro used for this purpose, in the following form:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>quiet_cmt_&lt;command&gt; = ...
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>quiet_cmd_&lt;command&gt; = ...
       cmd_&lt;command&gt; = ...
 
 &lt;target&gt;: &lt;source(s)&gt; FORCE
@@ -801,9 +802,9 @@ Kbuild achieves this by a kind of meta-programming.</p>
 otherwise the command line check will fail, and the target will
 always be built.</p>
 <p>If the target is already listed in the recognized syntax such as
-obj-y/m, lib-y/m, extra-y/m, hostprogs, userprogs, Kbuild automatically
-add it to $(targets). Otherwise, the target must be explicitly added
-to $(targets).</p>
+obj-y/m, lib-y/m, extra-y/m, always-y/m, hostprogs, userprogs, Kbuild
+automatically adds it to $(targets). Otherwise, the target must be
+explicitly added to $(targets).</p>
 <p>Assignments to $(targets) are without $(obj)/ prefix. if_changed may be
 used in conjunction with custom rules as defined in “3.9 Custom Rules”.</p>
 <p>Note: It is a typical mistake to forget the FORCE prerequisite.
@@ -1772,7 +1773,7 @@ override the value of $(ARCH) on the command line:</p>
 </pre></div>
 </div>
 </dd>
-<dt>SRCARCH</dt><dd><p>This variable speficifies the directory in arch/ to build.</p>
+<dt>SRCARCH</dt><dd><p>This variable specifies the directory in arch/ to build.</p>
 <p>ARCH and SRCARCH may not necessarily match. A couple of arch
 directories are biarch, that is, a single arch/<a href="#id1"><span class="problematic" id="id2">*</span></a>/ directory supports
 both 32-bit and 64-bit.</p>

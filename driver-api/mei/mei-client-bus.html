@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.21-dragon
+                5.10.22-dragon
               </div>
             
           
@@ -122,6 +122,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../infiniband.html">InfiniBand and Remote DMA (RDMA) Interfaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../frame-buffer.html">Frame Buffer Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../regulator.html">Voltage and current regulator API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reset.html">Reset controller API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../iio/index.html">Industrial I/O</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../input.html">Input Subsystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../usb/index.html">Linux USB API</a></li>
@@ -410,6 +411,75 @@ should register a callback via <code class="xref c c-func docutils literal notra
 <div class="section" id="api">
 <span id="id1"></span><h3>API:<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h3>
 <dl class="c function">
+<dt id="c.mei_cldev_send_vtag">
+ssize_t <code class="sig-name descname">mei_cldev_send_vtag</code><span class="sig-paren">(</span><em class="property">struct</em> mei_cl_device *<em>cldev</em>, u8 *<em>buf</em>, size_t <em>length</em>, u8 <em>vtag</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mei_cldev_send_vtag" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>me device send with vtag (write)</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">mei_cl_device</span> <span class="pre">*cldev</span></code></dt><dd><p>me client device</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">*buf</span></code></dt><dd><p>buffer to send</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">length</span></code></dt><dd><p>buffer length</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">vtag</span></code></dt><dd><p>virtual tag</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>written size in bytes</p></li>
+<li><p>&lt; 0 on error</p></li>
+</ul>
+</div></blockquote>
+<dl class="c function">
+<dt id="c.mei_cldev_recv_vtag">
+ssize_t <code class="sig-name descname">mei_cldev_recv_vtag</code><span class="sig-paren">(</span><em class="property">struct</em> mei_cl_device *<em>cldev</em>, u8 *<em>buf</em>, size_t <em>length</em>, u8 *<em>vtag</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mei_cldev_recv_vtag" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>client receive with vtag (read)</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">mei_cl_device</span> <span class="pre">*cldev</span></code></dt><dd><p>me client device</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">*buf</span></code></dt><dd><p>buffer to receive</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">length</span></code></dt><dd><p>buffer length</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">*vtag</span></code></dt><dd><p>virtual tag</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<ul class="simple">
+<li><p>read size in bytes</p></li>
+<li><p>&lt; 0 on error</p></li>
+</ul>
+<dl class="c function">
+<dt id="c.mei_cldev_recv_nonblock_vtag">
+ssize_t <code class="sig-name descname">mei_cldev_recv_nonblock_vtag</code><span class="sig-paren">(</span><em class="property">struct</em> mei_cl_device *<em>cldev</em>, u8 *<em>buf</em>, size_t <em>length</em>, u8 *<em>vtag</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mei_cldev_recv_nonblock_vtag" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>non block client receive with vtag (read)</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">mei_cl_device</span> <span class="pre">*cldev</span></code></dt><dd><p>me client device</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">*buf</span></code></dt><dd><p>buffer to receive</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">length</span></code></dt><dd><p>buffer length</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">*vtag</span></code></dt><dd><p>virtual tag</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<ul class="simple">
+<li><p>read size in bytes</p></li>
+<li><p>-EAGAIN if function will block.</p></li>
+<li><p>&lt; 0 on other error</p></li>
+</ul>
+<dl class="c function">
 <dt id="c.mei_cldev_send">
 ssize_t <code class="sig-name descname">mei_cldev_send</code><span class="sig-paren">(</span><em class="property">struct</em> mei_cl_device *<em>cldev</em>, u8 *<em>buf</em>, size_t <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mei_cldev_send" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>me device send (write)</p>
@@ -425,7 +495,29 @@ ssize_t <code class="sig-name descname">mei_cldev_send</code><span class="sig-pa
 </dd>
 </dl>
 <p><strong>Return</strong></p>
-<p>written size in bytes or &lt; 0 on error</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>written size in bytes</p></li>
+<li><p>&lt; 0 on error</p></li>
+</ul>
+</div></blockquote>
+<dl class="c function">
+<dt id="c.mei_cldev_recv">
+ssize_t <code class="sig-name descname">mei_cldev_recv</code><span class="sig-paren">(</span><em class="property">struct</em> mei_cl_device *<em>cldev</em>, u8 *<em>buf</em>, size_t <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mei_cldev_recv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>client receive (read)</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">mei_cl_device</span> <span class="pre">*cldev</span></code></dt><dd><p>me client device</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">*buf</span></code></dt><dd><p>buffer to receive</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">length</span></code></dt><dd><p>buffer length</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p>read size in bytes of &lt; 0 on error</p>
 <dl class="c function">
 <dt id="c.mei_cldev_recv_nonblock">
 ssize_t <code class="sig-name descname">mei_cldev_recv_nonblock</code><span class="sig-paren">(</span><em class="property">struct</em> mei_cl_device *<em>cldev</em>, u8 *<em>buf</em>, size_t <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mei_cldev_recv_nonblock" title="Permalink to this definition">¶</a><br /></dt>
@@ -446,23 +538,6 @@ ssize_t <code class="sig-name descname">mei_cldev_recv_nonblock</code><span clas
 <dt>read size in bytes of &lt; 0 on error</dt><dd><p>-EAGAIN if function will block.</p>
 </dd>
 </dl>
-<dl class="c function">
-<dt id="c.mei_cldev_recv">
-ssize_t <code class="sig-name descname">mei_cldev_recv</code><span class="sig-paren">(</span><em class="property">struct</em> mei_cl_device *<em>cldev</em>, u8 *<em>buf</em>, size_t <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mei_cldev_recv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>client receive (read)</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">mei_cl_device</span> <span class="pre">*cldev</span></code></dt><dd><p>me client device</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">*buf</span></code></dt><dd><p>buffer to receive</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">length</span></code></dt><dd><p>buffer length</p>
-</dd>
-</dl>
-<p><strong>Return</strong></p>
-<p>read size in bytes of &lt; 0 on error</p>
 <dl class="c function">
 <dt id="c.mei_cldev_register_rx_cb">
 int <code class="sig-name descname">mei_cldev_register_rx_cb</code><span class="sig-paren">(</span><em class="property">struct</em> mei_cl_device *<em>cldev</em>, mei_cldev_cb_t <em>rx_cb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mei_cldev_register_rx_cb" title="Permalink to this definition">¶</a><br /></dt>

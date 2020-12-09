@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.21-dragon
+                5.10.22-dragon
               </div>
             
           
@@ -122,6 +122,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../infiniband.html">InfiniBand and Remote DMA (RDMA) Interfaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../frame-buffer.html">Frame Buffer Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../regulator.html">Voltage and current regulator API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reset.html">Reset controller API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../iio/index.html">Industrial I/O</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../input.html">Input Subsystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../usb/index.html">Linux USB API</a></li>
@@ -381,7 +382,7 @@ int <code class="sig-name descname">pci_status_get_and_clear_errors</code><span 
 <p>Returns error bits set in PCI_STATUS and clears them.</p>
 <dl class="c function">
 <dt id="c.pci_find_capability">
-int <code class="sig-name descname">pci_find_capability</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em>, int <em>cap</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_find_capability" title="Permalink to this definition">¶</a><br /></dt>
+u8 <code class="sig-name descname">pci_find_capability</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em>, int <em>cap</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_find_capability" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>query for devices’ capabilities</p>
 </dd></dl>
 
@@ -409,7 +410,7 @@ support it.  Possible values for <strong>cap</strong> include:</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.pci_bus_find_capability">
-int <code class="sig-name descname">pci_bus_find_capability</code><span class="sig-paren">(</span><em class="property">struct</em> pci_bus *<em>bus</em>, unsigned int <em>devfn</em>, int <em>cap</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_bus_find_capability" title="Permalink to this definition">¶</a><br /></dt>
+u8 <code class="sig-name descname">pci_bus_find_capability</code><span class="sig-paren">(</span><em class="property">struct</em> pci_bus *<em>bus</em>, unsigned int <em>devfn</em>, int <em>cap</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_bus_find_capability" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>query for devices’ capabilities</p>
 </dd></dl>
 
@@ -430,7 +431,7 @@ device’s PCI configuration space or 0 in case the device does not
 support it.</p>
 <dl class="c function">
 <dt id="c.pci_find_next_ext_capability">
-int <code class="sig-name descname">pci_find_next_ext_capability</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em>, int <em>start</em>, int <em>cap</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_find_next_ext_capability" title="Permalink to this definition">¶</a><br /></dt>
+u16 <code class="sig-name descname">pci_find_next_ext_capability</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em>, u16 <em>start</em>, int <em>cap</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_find_next_ext_capability" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find an extended capability</p>
 </dd></dl>
 
@@ -438,7 +439,7 @@ int <code class="sig-name descname">pci_find_next_ext_capability</code><span cla
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">pci_dev</span> <span class="pre">*dev</span></code></dt><dd><p>PCI device to query</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">start</span></code></dt><dd><p>address at which to start looking (0 to start at beginning of list)</p>
+<dt><code class="docutils literal notranslate"><span class="pre">u16</span> <span class="pre">start</span></code></dt><dd><p>address at which to start looking (0 to start at beginning of list)</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">cap</span></code></dt><dd><p>capability code</p>
 </dd>
@@ -450,7 +451,7 @@ not support it.  Some capabilities can occur several times, e.g., the
 vendor-specific capability, and this provides a way to find them all.</p>
 <dl class="c function">
 <dt id="c.pci_find_ext_capability">
-int <code class="sig-name descname">pci_find_ext_capability</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em>, int <em>cap</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_find_ext_capability" title="Permalink to this definition">¶</a><br /></dt>
+u16 <code class="sig-name descname">pci_find_ext_capability</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em>, int <em>cap</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_find_ext_capability" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find an extended capability</p>
 </dd></dl>
 
@@ -488,17 +489,17 @@ Number.</p>
 <p>Returns the DSN, or zero if the capability does not exist.</p>
 <dl class="c function">
 <dt id="c.pci_find_next_ht_capability">
-int <code class="sig-name descname">pci_find_next_ht_capability</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em>, int <em>pos</em>, int <em>ht_cap</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_find_next_ht_capability" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>query a device’s Hypertransport capabilities</p>
+u8 <code class="sig-name descname">pci_find_next_ht_capability</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em>, u8 <em>pos</em>, int <em>ht_cap</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_find_next_ht_capability" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>query a device’s HyperTransport capabilities</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">pci_dev</span> <span class="pre">*dev</span></code></dt><dd><p>PCI device to query</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">pos</span></code></dt><dd><p>Position from which to continue searching</p>
+<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">pos</span></code></dt><dd><p>Position from which to continue searching</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">ht_cap</span></code></dt><dd><p>Hypertransport capability code</p>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">ht_cap</span></code></dt><dd><p>HyperTransport capability code</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
@@ -509,23 +510,23 @@ from <a class="reference internal" href="#c.pci_find_ht_capability" title="pci_f
 steps to avoid an infinite loop.</p>
 <dl class="c function">
 <dt id="c.pci_find_ht_capability">
-int <code class="sig-name descname">pci_find_ht_capability</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em>, int <em>ht_cap</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_find_ht_capability" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>query a device’s Hypertransport capabilities</p>
+u8 <code class="sig-name descname">pci_find_ht_capability</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em>, int <em>ht_cap</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_find_ht_capability" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>query a device’s HyperTransport capabilities</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">pci_dev</span> <span class="pre">*dev</span></code></dt><dd><p>PCI device to query</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">ht_cap</span></code></dt><dd><p>Hypertransport capability code</p>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">ht_cap</span></code></dt><dd><p>HyperTransport capability code</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Tell if a device supports a given Hypertransport capability.
+<p>Tell if a device supports a given HyperTransport capability.
 Returns an address within the device’s PCI configuration space
 or 0 in case the device does not support the request capability.
 The address points to the PCI capability, of type PCI_CAP_ID_HT,
-which has a Hypertransport capability matching <strong>ht_cap</strong>.</p>
+which has a HyperTransport capability matching <strong>ht_cap</strong>.</p>
 <dl class="c function">
 <dt id="c.pci_find_parent_resource">
 <em class="property">struct</em> resource *<code class="sig-name descname">pci_find_parent_resource</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> pci_dev *<em>dev</em>, <em class="property">struct</em> resource *<em>res</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_find_parent_resource" title="Permalink to this definition">¶</a><br /></dt>

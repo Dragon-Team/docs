@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.21-dragon
+                5.10.22-dragon
               </div>
             
           
@@ -464,14 +464,12 @@ void <code class="sig-name descname">trace_block_dirty_buffer</code><span class=
 <p>Called from <a class="reference internal" href="../filesystems/api-summary.html#c.mark_buffer_dirty" title="mark_buffer_dirty"><code class="xref c c-func docutils literal notranslate"><span class="pre">mark_buffer_dirty()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.trace_block_rq_requeue">
-void <code class="sig-name descname">trace_block_rq_requeue</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> request *<em>rq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_requeue" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_rq_requeue</code><span class="sig-paren">(</span><em class="property">struct</em> request *<em>rq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_requeue" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>place block IO request back on a queue</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request_queue</span> <span class="pre">*q</span></code></dt><dd><p>queue holding operation</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request</span> <span class="pre">*rq</span></code></dt><dd><p>block IO operation request</p>
 </dd>
 </dl>
@@ -502,14 +500,12 @@ do for the request. If <strong>rq-&gt;bio</strong> is non-NULL then there is
 additional work required to complete the request.</p>
 <dl class="c function">
 <dt id="c.trace_block_rq_insert">
-void <code class="sig-name descname">trace_block_rq_insert</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> request *<em>rq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_insert" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_rq_insert</code><span class="sig-paren">(</span><em class="property">struct</em> request *<em>rq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_insert" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>insert block operation request into queue</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request_queue</span> <span class="pre">*q</span></code></dt><dd><p>target queue</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request</span> <span class="pre">*rq</span></code></dt><dd><p>block IO operation request</p>
 </dd>
 </dl>
@@ -520,14 +516,12 @@ be examined to determine which device and sectors the pending
 operation would access.</p>
 <dl class="c function">
 <dt id="c.trace_block_rq_issue">
-void <code class="sig-name descname">trace_block_rq_issue</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> request *<em>rq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_issue" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_rq_issue</code><span class="sig-paren">(</span><em class="property">struct</em> request *<em>rq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_issue" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>issue pending block IO request operation to device driver</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request_queue</span> <span class="pre">*q</span></code></dt><dd><p>queue holding operation</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request</span> <span class="pre">*rq</span></code></dt><dd><p>block IO operation operation request</p>
 </dd>
 </dl>
@@ -536,39 +530,18 @@ void <code class="sig-name descname">trace_block_rq_issue</code><span class="sig
 device driver for processing.</p>
 <dl class="c function">
 <dt id="c.trace_block_rq_merge">
-void <code class="sig-name descname">trace_block_rq_merge</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> request *<em>rq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_merge" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_rq_merge</code><span class="sig-paren">(</span><em class="property">struct</em> request *<em>rq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_merge" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>merge request with another one in the elevator</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request_queue</span> <span class="pre">*q</span></code></dt><dd><p>queue holding operation</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request</span> <span class="pre">*rq</span></code></dt><dd><p>block IO operation operation request</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
 <p>Called when block operation request <strong>rq</strong> from queue <strong>q</strong> is merged to another
 request queued in the elevator.</p>
-<dl class="c function">
-<dt id="c.trace_block_bio_bounce">
-void <code class="sig-name descname">trace_block_bio_bounce</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_bounce" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>used bounce buffer when processing block operation</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request_queue</span> <span class="pre">*q</span></code></dt><dd><p>queue holding the block operation</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">bio</span> <span class="pre">*bio</span></code></dt><dd><p>block operation</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>A bounce buffer was used to handle the block operation <strong>bio</strong> in <strong>q</strong>.
-This occurs when hardware limitations prevent a direct transfer of
-data between the <strong>bio</strong> data memory area and the IO device.  Use of a
-bounce buffer requires extra copying of data and decreases
-performance.</p>
 <dl class="c function">
 <dt id="c.trace_block_bio_complete">
 void <code class="sig-name descname">trace_block_bio_complete</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_complete" title="Permalink to this definition">¶</a><br /></dt>
@@ -586,51 +559,56 @@ void <code class="sig-name descname">trace_block_bio_complete</code><span class=
 <p>This tracepoint indicates there is no further work to do on this
 block IO operation <strong>bio</strong>.</p>
 <dl class="c function">
+<dt id="c.trace_block_bio_bounce">
+void <code class="sig-name descname">trace_block_bio_bounce</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_bounce" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>used bounce buffer when processing block operation</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">bio</span> <span class="pre">*bio</span></code></dt><dd><p>block operation</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>A bounce buffer was used to handle the block operation <strong>bio</strong> in <strong>q</strong>.
+This occurs when hardware limitations prevent a direct transfer of
+data between the <strong>bio</strong> data memory area and the IO device.  Use of a
+bounce buffer requires extra copying of data and decreases
+performance.</p>
+<dl class="c function">
 <dt id="c.trace_block_bio_backmerge">
-void <code class="sig-name descname">trace_block_bio_backmerge</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> request *<em>rq</em>, <em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_backmerge" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_bio_backmerge</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_backmerge" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>merging block operation to the end of an existing operation</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request_queue</span> <span class="pre">*q</span></code></dt><dd><p>queue holding operation</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request</span> <span class="pre">*rq</span></code></dt><dd><p>request bio is being merged into</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">bio</span> <span class="pre">*bio</span></code></dt><dd><p>new block operation to merge</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Merging block request <strong>bio</strong> to the end of an existing block request
-in queue <strong>q</strong>.</p>
+<p>Merging block request <strong>bio</strong> to the end of an existing block request.</p>
 <dl class="c function">
 <dt id="c.trace_block_bio_frontmerge">
-void <code class="sig-name descname">trace_block_bio_frontmerge</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> request *<em>rq</em>, <em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_frontmerge" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_bio_frontmerge</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_frontmerge" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>merging block operation to the beginning of an existing operation</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request_queue</span> <span class="pre">*q</span></code></dt><dd><p>queue holding operation</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request</span> <span class="pre">*rq</span></code></dt><dd><p>request bio is being merged into</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">bio</span> <span class="pre">*bio</span></code></dt><dd><p>new block operation to merge</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Merging block IO operation <strong>bio</strong> to the beginning of an existing block
-operation in queue <strong>q</strong>.</p>
+<p>Merging block IO operation <strong>bio</strong> to the beginning of an existing block request.</p>
 <dl class="c function">
 <dt id="c.trace_block_bio_queue">
-void <code class="sig-name descname">trace_block_bio_queue</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_queue" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_bio_queue</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_queue" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>putting new block IO operation in queue</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request_queue</span> <span class="pre">*q</span></code></dt><dd><p>queue holding operation</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">bio</span> <span class="pre">*bio</span></code></dt><dd><p>new block operation</p>
 </dd>
 </dl>
@@ -638,42 +616,17 @@ void <code class="sig-name descname">trace_block_bio_queue</code><span class="si
 <p>About to place the block IO operation <strong>bio</strong> into queue <strong>q</strong>.</p>
 <dl class="c function">
 <dt id="c.trace_block_getrq">
-void <code class="sig-name descname">trace_block_getrq</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> bio *<em>bio</em>, int <em>rw</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_getrq" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_getrq</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_getrq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get a free request entry in queue for block IO operations</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request_queue</span> <span class="pre">*q</span></code></dt><dd><p>queue for operations</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">bio</span> <span class="pre">*bio</span></code></dt><dd><p>pending block IO operation (can be <code class="docutils literal notranslate"><span class="pre">NULL</span></code>)</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">rw</span></code></dt><dd><p>low bit indicates a read (<code class="docutils literal notranslate"><span class="pre">0</span></code>) or a write (<code class="docutils literal notranslate"><span class="pre">1</span></code>)</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>A request struct for queue <strong>q</strong> has been allocated to handle the
-block IO operation <strong>bio</strong>.</p>
-<dl class="c function">
-<dt id="c.trace_block_sleeprq">
-void <code class="sig-name descname">trace_block_sleeprq</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> bio *<em>bio</em>, int <em>rw</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_sleeprq" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>waiting to get a free request entry in queue for block IO operation</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request_queue</span> <span class="pre">*q</span></code></dt><dd><p>queue for operation</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">bio</span> <span class="pre">*bio</span></code></dt><dd><p>pending block IO operation (can be <code class="docutils literal notranslate"><span class="pre">NULL</span></code>)</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">rw</span></code></dt><dd><p>low bit indicates a read (<code class="docutils literal notranslate"><span class="pre">0</span></code>) or a write (<code class="docutils literal notranslate"><span class="pre">1</span></code>)</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>In the case where a request struct cannot be provided for queue <strong>q</strong>
-the process needs to wait for an request struct to become
-available.  This tracepoint event is generated each time the
-process goes to sleep waiting for request struct become available.</p>
+<p>A request struct has been allocated to handle the block IO operation <strong>bio</strong>.</p>
 <dl class="c function">
 <dt id="c.trace_block_plug">
 void <code class="sig-name descname">trace_block_plug</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_plug" title="Permalink to this definition">¶</a><br /></dt>
@@ -709,37 +662,33 @@ void <code class="sig-name descname">trace_block_unplug</code><span class="sig-p
 on elements in the request queue.</p>
 <dl class="c function">
 <dt id="c.trace_block_split">
-void <code class="sig-name descname">trace_block_split</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> bio *<em>bio</em>, unsigned int <em>new_sector</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_split" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_split</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em>, unsigned int <em>new_sector</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_split" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>split a single bio struct into two bio structs</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request_queue</span> <span class="pre">*q</span></code></dt><dd><p>queue containing the bio</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">bio</span> <span class="pre">*bio</span></code></dt><dd><p>block operation being split</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">new_sector</span></code></dt><dd><p>The starting sector for the new bio</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>The bio request <strong>bio</strong> in request queue <strong>q</strong> needs to be split into two
-bio requests. The newly created <strong>bio</strong> request starts at
-<strong>new_sector</strong>. This split may be required due to hardware limitation
-such as operation crossing device boundaries in a RAID system.</p>
+<p>The bio request <strong>bio</strong> needs to be split into two bio requests.  The newly
+created <strong>bio</strong> request starts at <strong>new_sector</strong>. This split may be required due to
+hardware limitations such as operation crossing device boundaries in a RAID
+system.</p>
 <dl class="c function">
 <dt id="c.trace_block_bio_remap">
-void <code class="sig-name descname">trace_block_bio_remap</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> bio *<em>bio</em>, dev_t <em>dev</em>, sector_t <em>from</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_remap" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_bio_remap</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em>, dev_t <em>dev</em>, sector_t <em>from</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_remap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>map request for a logical device to the raw device</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request_queue</span> <span class="pre">*q</span></code></dt><dd><p>queue holding the operation</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">bio</span> <span class="pre">*bio</span></code></dt><dd><p>revised operation</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">dev_t</span> <span class="pre">dev</span></code></dt><dd><p>device for the operation</p>
+<dt><code class="docutils literal notranslate"><span class="pre">dev_t</span> <span class="pre">dev</span></code></dt><dd><p>original device for the operation</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">sector_t</span> <span class="pre">from</span></code></dt><dd><p>original sector for the operation</p>
 </dd>
@@ -749,14 +698,12 @@ void <code class="sig-name descname">trace_block_bio_remap</code><span class="si
 raw block device.</p>
 <dl class="c function">
 <dt id="c.trace_block_rq_remap">
-void <code class="sig-name descname">trace_block_rq_remap</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> request *<em>rq</em>, dev_t <em>dev</em>, sector_t <em>from</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_remap" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_rq_remap</code><span class="sig-paren">(</span><em class="property">struct</em> request *<em>rq</em>, dev_t <em>dev</em>, sector_t <em>from</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_remap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>map request for a block operation request</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request_queue</span> <span class="pre">*q</span></code></dt><dd><p>queue holding the operation</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request</span> <span class="pre">*rq</span></code></dt><dd><p>block IO operation request</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">dev_t</span> <span class="pre">dev</span></code></dt><dd><p>device for the operation</p>

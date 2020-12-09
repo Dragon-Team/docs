@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.21-dragon
+                5.10.22-dragon
               </div>
             
           
@@ -4721,14 +4721,14 @@ belongs to.</p>
 <p><strong>Definition</strong></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct drm_sched_job {
   struct spsc_node                queue_node;
+  struct list_head                list;
   struct drm_gpu_scheduler        *sched;
   struct drm_sched_fence          *s_fence;
   struct dma_fence_cb             finish_cb;
-  struct list_head                node;
   uint64_t id;
   atomic_t karma;
   enum drm_sched_priority         s_priority;
-  struct drm_sched_entity  *entity;
+  struct drm_sched_entity         *entity;
   struct dma_fence_cb             cb;
 };
 </pre></div>
@@ -4742,8 +4742,6 @@ belongs to.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">s_fence</span></code></dt><dd><p>contains the fences for the scheduling of job.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">finish_cb</span></code></dt><dd><p>the callback for the finished fence.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">node</span></code></dt><dd><p>used to append this struct to the <strong>drm_gpu_scheduler.ring_mirror_list</strong>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">id</span></code></dt><dd><p>a unique id assigned to each job scheduled on the scheduler.</p>
 </dd>
@@ -4815,7 +4813,7 @@ these functions should be implemented in driver side.</p>
   atomic64_t job_id_count;
   struct delayed_work             work_tdr;
   struct task_struct              *thread;
-  struct list_head                ring_mirror_list;
+  struct list_head                pending_list;
   spinlock_t job_list_lock;
   int hang_limit;
   atomic_t score;
@@ -4852,9 +4850,9 @@ timeout interval is over.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">thread</span></code></dt><dd><p>the kthread on which the scheduler which run.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">ring_mirror_list</span></code></dt><dd><p>the list of jobs which are currently in the job queue.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">pending_list</span></code></dt><dd><p>the list of jobs which are currently in the job queue.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">job_list_lock</span></code></dt><dd><p>lock to protect the ring_mirror_list.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">job_list_lock</span></code></dt><dd><p>lock to protect the pending_list.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">hang_limit</span></code></dt><dd><p>once the hangs by a job crosses this limit then it is marked
 guilty and it will be considered for scheduling further.</p>
@@ -4944,7 +4942,7 @@ void <code class="sig-name descname">drm_sched_stop</code><span class="sig-paren
 <p><strong>Note</strong></p>
 <p>bad job will not be freed as it might be used later and so it’s
 callers responsibility to release it manually if it’s not part of the
-mirror list any more.</p>
+pending list any more.</p>
 <dl class="c function">
 <dt id="c.drm_sched_start">
 void <code class="sig-name descname">drm_sched_start</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gpu_scheduler" title="drm_gpu_scheduler">drm_gpu_scheduler</a> *<em>sched</em>, bool <em>full_recovery</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_sched_start" title="Permalink to this definition">¶</a><br /></dt>
@@ -4961,7 +4959,7 @@ void <code class="sig-name descname">drm_sched_start</code><span class="sig-pare
 <dl class="c function">
 <dt id="c.drm_sched_resubmit_jobs">
 void <code class="sig-name descname">drm_sched_resubmit_jobs</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gpu_scheduler" title="drm_gpu_scheduler">drm_gpu_scheduler</a> *<em>sched</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_sched_resubmit_jobs" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>helper to relunch job from mirror ring list</p>
+<dd><p>helper to relunch job from pending ring list</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>

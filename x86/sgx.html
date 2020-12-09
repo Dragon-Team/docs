@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>27. Software Guard eXtensions (SGX) &mdash; The Linux-Next Dragon Kernel  documentation</title>
+  <title>26. Software Guard eXtensions (SGX) &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
 
   
@@ -34,8 +34,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="28. Feature status on x86 architecture" href="features.html" />
-    <link rel="prev" title="26. Shared Virtual Addressing (SVA) with ENQCMD" href="sva.html" /> 
+    <link rel="next" title="27. Feature status on x86 architecture" href="features.html" />
+    <link rel="prev" title="25. Shared Virtual Addressing (SVA) with ENQCMD" href="sva.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.21-dragon
+                5.10.22-dragon
               </div>
             
           
@@ -179,46 +179,45 @@
 <li class="toctree-l2"><a class="reference internal" href="tlb.html">11. The TLB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mtrr.html">12. MTRR (Memory Type Range Register) control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pat.html">13. PAT (Page Attribute Table)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intel_cet.html">14. Control-flow Enforcement Technology (CET)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intel-iommu.html">15. Linux IOMMU Support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intel_txt.html">16. Intel(R) TXT Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="amd-memory-encryption.html">17. AMD Memory Encryption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pti.html">18. Page Table Isolation (PTI)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mds.html">19. Microarchitectural Data Sampling (MDS) mitigation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="microcode.html">20. The Linux Microcode Loader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resctrl.html">21. User Interface for Resource Control feature</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tsx_async_abort.html">22. TSX Async Abort (TAA) mitigation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb-legacy-support.html">23. USB Legacy support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="i386/index.html">24. i386 Support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="x86_64/index.html">25. x86_64 Support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sva.html">26. Shared Virtual Addressing (SVA) with ENQCMD</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">27. Software Guard eXtensions (SGX)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#overview">27.1. Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#enclave-page-cache">27.2. Enclave Page Cache</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#enclave-page-types">27.2.1. Enclave Page Types</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#enclave-page-cache-map">27.2.2. Enclave Page Cache Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intel-iommu.html">14. Linux IOMMU Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intel_txt.html">15. Intel(R) TXT Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="amd-memory-encryption.html">16. AMD Memory Encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pti.html">17. Page Table Isolation (PTI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mds.html">18. Microarchitectural Data Sampling (MDS) mitigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="microcode.html">19. The Linux Microcode Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resctrl.html">20. User Interface for Resource Control feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tsx_async_abort.html">21. TSX Async Abort (TAA) mitigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb-legacy-support.html">22. USB Legacy support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i386/index.html">23. i386 Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="x86_64/index.html">24. x86_64 Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sva.html">25. Shared Virtual Addressing (SVA) with ENQCMD</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">26. Software Guard eXtensions (SGX)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">26.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enclave-page-cache">26.2. Enclave Page Cache</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enclave-page-types">26.2.1. Enclave Page Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enclave-page-cache-map">26.2.2. Enclave Page Cache Map</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#application-interface">27.3. Application interface</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#enclave-build-functions">27.3.1. Enclave build functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#enclave-vdso">27.3.2. Enclave vDSO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#application-interface">26.3. Application interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enclave-build-functions">26.3.1. Enclave build functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enclave-vdso">26.3.2. Enclave vDSO</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#ksgxd">27.4. ksgxd</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#epc-sanitization">27.4.1. EPC sanitization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#page-reclaimer">27.4.2. Page reclaimer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ksgxd">26.4. ksgxd</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#epc-sanitization">26.4.1. EPC sanitization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#page-reclaimer">26.4.2. Page reclaimer</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#launch-control">27.5. Launch Control</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#encryption-engines">27.6. Encryption engines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#usage-models">27.7. Usage Models</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#shared-library">27.7.1. Shared Library</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#application-container">27.7.2. Application Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launch-control">26.5. Launch Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#encryption-engines">26.6. Encryption engines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage-models">26.7. Usage Models</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#shared-library">26.7.1. Shared Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#application-container">26.7.2. Application Container</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="features.html">28. Feature status on x86 architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.html">27. Feature status on x86 architecture</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../xtensa/index.html">Xtensa Architecture</a></li>
@@ -283,7 +282,7 @@
         
           <li><a href="index.html">x86-specific Documentation</a> &raquo;</li>
         
-      <li><span class="section-number">27. </span>Software Guard eXtensions (SGX)</li>
+      <li><span class="section-number">26. </span>Software Guard eXtensions (SGX)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -303,9 +302,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="software-guard-extensions-sgx">
-<h1><span class="section-number">27. </span>Software Guard eXtensions (SGX)<a class="headerlink" href="#software-guard-extensions-sgx" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">26. </span>Software Guard eXtensions (SGX)<a class="headerlink" href="#software-guard-extensions-sgx" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
-<h2><span class="section-number">27.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">26.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>Software Guard eXtensions (SGX) hardware enables for user space applications
 to set aside private memory regions of code and data:</p>
 <ul class="simple">
@@ -330,7 +329,7 @@ support is enabled in the BIOS.  If a BIOS presents a choice between “Enabled�
 and “Software Enabled” modes for SGX, choose “Enabled”.</p>
 </div>
 <div class="section" id="enclave-page-cache">
-<h2><span class="section-number">27.2. </span>Enclave Page Cache<a class="headerlink" href="#enclave-page-cache" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">26.2. </span>Enclave Page Cache<a class="headerlink" href="#enclave-page-cache" title="Permalink to this headline">¶</a></h2>
 <p>SGX utilizes an <em>Enclave Page Cache (EPC)</em> to store pages that are associated
 with an enclave. It is contained in a BIOS-reserved region of physical memory.
 Unlike pages used for regular memory, pages can only be accessed from outside of
@@ -340,7 +339,7 @@ However, a CPU executing inside an enclave may access normal memory outside the
 enclave.</p>
 <p>The kernel manages enclave memory similar to how it treats device memory.</p>
 <div class="section" id="enclave-page-types">
-<h3><span class="section-number">27.2.1. </span>Enclave Page Types<a class="headerlink" href="#enclave-page-types" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">26.2.1. </span>Enclave Page Types<a class="headerlink" href="#enclave-page-types" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt><strong>SGX Enclave Control Structure (SECS)</strong></dt><dd><p>Enclave’s address range, attributes and other global data are defined
 by this structure.</p>
@@ -356,7 +355,7 @@ number for a page evicted from the EPC.</p>
 </dl>
 </div>
 <div class="section" id="enclave-page-cache-map">
-<h3><span class="section-number">27.2.2. </span>Enclave Page Cache Map<a class="headerlink" href="#enclave-page-cache-map" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">26.2.2. </span>Enclave Page Cache Map<a class="headerlink" href="#enclave-page-cache-map" title="Permalink to this headline">¶</a></h3>
 <p>The processor tracks EPC pages in a hardware metadata structure called the
 <em>Enclave Page Cache Map (EPCM)</em>.  The EPCM contains an entry for each EPC page
 which describes the owning enclave, access rights and page type among the other
@@ -372,9 +371,9 @@ power transitions when the ephemeral key that encrypts enclave memory is lost.</
 </div>
 </div>
 <div class="section" id="application-interface">
-<h2><span class="section-number">27.3. </span>Application interface<a class="headerlink" href="#application-interface" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">26.3. </span>Application interface<a class="headerlink" href="#application-interface" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="enclave-build-functions">
-<h3><span class="section-number">27.3.1. </span>Enclave build functions<a class="headerlink" href="#enclave-build-functions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">26.3.1. </span>Enclave build functions<a class="headerlink" href="#enclave-build-functions" title="Permalink to this headline">¶</a></h3>
 <p>In addition to the traditional compiler and linker build process, SGX has a
 separate enclave “build” process.  Enclaves must be built before they can be
 executed (entered). The first step in building an enclave is opening the
@@ -498,7 +497,7 @@ long <code class="sig-name descname">sgx_ioc_enclave_provision</code><span class
 </ul>
 </div>
 <div class="section" id="enclave-vdso">
-<h3><span class="section-number">27.3.2. </span>Enclave vDSO<a class="headerlink" href="#enclave-vdso" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">26.3.2. </span>Enclave vDSO<a class="headerlink" href="#enclave-vdso" title="Permalink to this headline">¶</a></h3>
 <p>Entering an enclave can only be done through SGX-specific EENTER and ERESUME
 functions, and is a non-trivial process.  Because of the complexity of
 transitioning to and from an enclave, enclaves typically utilize a library to
@@ -571,10 +570,10 @@ recorded in <strong>run.exception</strong>, the optional sgx_enclave_exception s
 </div>
 </div>
 <div class="section" id="ksgxd">
-<h2><span class="section-number">27.4. </span>ksgxd<a class="headerlink" href="#ksgxd" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">26.4. </span>ksgxd<a class="headerlink" href="#ksgxd" title="Permalink to this headline">¶</a></h2>
 <p>SGX support includes a kernel thread called <em>ksgxwapd</em>.</p>
 <div class="section" id="epc-sanitization">
-<h3><span class="section-number">27.4.1. </span>EPC sanitization<a class="headerlink" href="#epc-sanitization" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">26.4.1. </span>EPC sanitization<a class="headerlink" href="#epc-sanitization" title="Permalink to this headline">¶</a></h3>
 <p>ksgxd is started when SGX initializes.  Enclave memory is typically ready
 For use when the processor powers on or resets.  However, if SGX has been in
 use since the reset, enclave pages may be in an inconsistent state.  This might
@@ -586,14 +585,14 @@ hardware dependencies on other pages which prevents EREMOVE from functioning.
 Executing two EREMOVE passes removes the dependencies.</p>
 </div>
 <div class="section" id="page-reclaimer">
-<h3><span class="section-number">27.4.2. </span>Page reclaimer<a class="headerlink" href="#page-reclaimer" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">26.4.2. </span>Page reclaimer<a class="headerlink" href="#page-reclaimer" title="Permalink to this headline">¶</a></h3>
 <p>Similar to the core kswapd, ksgxd, is responsible for managing the
 overcommitment of enclave memory.  If the system runs out of enclave memory,
 <em>ksgxwapd</em> “swaps” enclave memory to normal memory.</p>
 </div>
 </div>
 <div class="section" id="launch-control">
-<h2><span class="section-number">27.5. </span>Launch Control<a class="headerlink" href="#launch-control" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">26.5. </span>Launch Control<a class="headerlink" href="#launch-control" title="Permalink to this headline">¶</a></h2>
 <p>SGX provides a launch control mechanism. After all enclave pages have been
 copied, kernel executes EINIT function, which initializes the enclave. Only after
 this the CPU can execute inside the enclave.</p>
@@ -607,7 +606,7 @@ kernel on launch control policy. Before calling EINIT function, the driver sets
 the MSRs to match the enclave’s signing key.</p>
 </div>
 <div class="section" id="encryption-engines">
-<h2><span class="section-number">27.6. </span>Encryption engines<a class="headerlink" href="#encryption-engines" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">26.6. </span>Encryption engines<a class="headerlink" href="#encryption-engines" title="Permalink to this headline">¶</a></h2>
 <p>In order to conceal the enclave data while it is out of the CPU package, the
 memory controller has an encryption engine to transparently encrypt and decrypt
 enclave memory.</p>
@@ -626,9 +625,9 @@ aliases from being Created.</p>
 (SDM section 41.10).</p>
 </div>
 <div class="section" id="usage-models">
-<h2><span class="section-number">27.7. </span>Usage Models<a class="headerlink" href="#usage-models" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">26.7. </span>Usage Models<a class="headerlink" href="#usage-models" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="shared-library">
-<h3><span class="section-number">27.7.1. </span>Shared Library<a class="headerlink" href="#shared-library" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">26.7.1. </span>Shared Library<a class="headerlink" href="#shared-library" title="Permalink to this headline">¶</a></h3>
 <p>Sensitive data and the code that acts on it is partitioned from the application
 into a separate library. The library is then linked as a DSO which can be loaded
 into an enclave. The application can then make individual function calls into
@@ -637,7 +636,7 @@ configured to marshal function parameters into and out of the enclave and to
 call the correct library function.</p>
 </div>
 <div class="section" id="application-container">
-<h3><span class="section-number">27.7.2. </span>Application Container<a class="headerlink" href="#application-container" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">26.7.2. </span>Application Container<a class="headerlink" href="#application-container" title="Permalink to this headline">¶</a></h3>
 <p>An application may be loaded into a container enclave which is specially
 configured with a library OS and run-time which permits the application to run.
 The enclave run-time and library OS work together to execute the application
@@ -654,10 +653,10 @@ when a thread enters the enclave.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="features.html" class="btn btn-neutral float-right" title="28. Feature status on x86 architecture" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="features.html" class="btn btn-neutral float-right" title="27. Feature status on x86 architecture" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sva.html" class="btn btn-neutral float-left" title="26. Shared Virtual Addressing (SVA) with ENQCMD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sva.html" class="btn btn-neutral float-left" title="25. Shared Virtual Addressing (SVA) with ENQCMD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

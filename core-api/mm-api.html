@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.21-dragon
+                5.10.22-dragon
               </div>
             
           
@@ -944,6 +944,48 @@ int <code class="sig-name descname">kmem_cache_shrink</code><span class="sig-par
 To help debugging, a zero exit status indicates all slabs were released.</p>
 <p><strong>Return</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">0</span></code> if all slabs were released, non-zero otherwise</p>
+<dl class="c function">
+<dt id="c.kmem_last_alloc_stack">
+void *<code class="sig-name descname">kmem_last_alloc_stack</code><span class="sig-paren">(</span>void *<em>object</em>, void **<em>stackp</em>, int <em>nstackp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmem_last_alloc_stack" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get return address and stack for last allocation</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*object</span></code></dt><dd><p>object for which to find last-allocation return address.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">**stackp</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> or pointer to location to place return-address stack.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">nstackp</span></code></dt><dd><p>maximum number of return addresses that may be stored.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>If the pointer references a slab-allocated object and if sufficient
+debugging is enabled, return the return address for the corresponding
+allocation.  If stackp is non-<code class="docutils literal notranslate"><span class="pre">NULL</span></code> in <code class="docutils literal notranslate"><span class="pre">CONFIG_STACKTRACE</span></code> kernels running
+the slub allocator, also copy the return-address stack into <strong>stackp</strong>,
+limited by <strong>nstackp</strong>.  Otherwise, return <code class="docutils literal notranslate"><span class="pre">NULL</span></code> or an appropriate error
+code using <a href="#id1"><span class="problematic" id="id2">``</span></a>ERR_PTR``().</p>
+<p><strong>Return</strong></p>
+<p>return address from last allocation, <code class="docutils literal notranslate"><span class="pre">NULL</span></code> or negative error code.</p>
+<dl class="c function">
+<dt id="c.kmem_last_alloc">
+void *<code class="sig-name descname">kmem_last_alloc</code><span class="sig-paren">(</span>void *<em>object</em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmem_last_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get return address for last allocation</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*object</span></code></dt><dd><p>object for which to find last-allocation return address.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>If the pointer references a slab-allocated object and if sufficient
+debugging is enabled, return the return address for the corresponding
+allocation.  Otherwise, return <code class="docutils literal notranslate"><span class="pre">NULL</span></code> or an appropriate error code using
+<a href="#id3"><span class="problematic" id="id4">``</span></a>ERR_PTR``().</p>
+<p><strong>Return</strong></p>
+<p>return address from last allocation, <code class="docutils literal notranslate"><span class="pre">NULL</span></code> or negative error code.</p>
 <dl class="c function">
 <dt id="c.krealloc">
 void *<code class="sig-name descname">krealloc</code><span class="sig-paren">(</span><em class="property">const</em> void *<em>p</em>, size_t <em>new_size</em>, gfp_t <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.krealloc" title="Permalink to this definition">¶</a><br /></dt>
