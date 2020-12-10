@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.22-dragon
+                5.10.23-dragon
               </div>
             
           
@@ -529,12 +529,7 @@ transmitted.</p></td>
 <p><a class="reference internal" href="biblio.html#en300294"><span class="std std-ref">EN 300 294</span></a></p>
 </td>
 <td><p>PAL/SECAM line 23</p></td>
-<td><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Byte         0                 1
-      msb         lsb  msb           lsb
- Bit  7 6 5 4 3 2 1 0  x x 13 12 11 10 9
-</pre></div>
-</div>
-</td>
+<td><p>See <a class="reference internal" href="#v4l2-sliced-wss-625-payload"><span class="std std-ref">V4L2_SLICED_WSS_625 payload</span></a> below.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">V4L2_SLICED_VBI_525</span></code></p></td>
 <td><p>0x1000</p></td>
@@ -556,6 +551,62 @@ format while i/o is in progress (between a
 <a class="reference internal" href="vidioc-streamon.html#vidioc-streamon"><span class="std std-ref">ioctl VIDIOC_STREAMON, VIDIOC_STREAMOFF</span></a> and
 <a class="reference internal" href="vidioc-streamon.html#vidioc-streamon"><span class="std std-ref">VIDIOC_STREAMOFF</span></a> call, and after the first
 <a class="reference internal" href="func-read.html#c.V4L.read" title="read"><code class="xref c c-func docutils literal notranslate"><span class="pre">read()</span></code></a> or <a class="reference internal" href="func-write.html#c.V4L.write" title="write"><code class="xref c c-func docutils literal notranslate"><span class="pre">write()</span></code></a> call).</p>
+<div class="section" id="v4l2-sliced-wss-625-payload">
+<span id="id3"></span><h4><span class="section-number">4.7.3.2.1. </span>V4L2_SLICED_WSS_625 payload<a class="headerlink" href="#v4l2-sliced-wss-625-payload" title="Permalink to this headline">¶</a></h4>
+<p>The payload for <code class="docutils literal notranslate"><span class="pre">V4L2_SLICED_WSS_625</span></code> is:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 3%" />
+<col style="width: 6%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 6%" />
+<col style="width: 3%" />
+<col style="width: 6%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Byte</p></td>
+<td colspan="8"><p>0</p></td>
+<td colspan="8"><p>1</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>Bit</p></td>
+<td colspan="4"><p>msb</p></td>
+<td colspan="4"><p>lsb</p></td>
+<td colspan="4"><p>msb</p></td>
+<td colspan="4"><p>lsb</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>6</p></td>
+<td><p>5</p></td>
+<td><p>4</p></td>
+<td><p>3</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>13</p></td>
+<td><p>12</p></td>
+<td><p>11</p></td>
+<td><p>10</p></td>
+<td><p>9</p></td>
+<td><p>8</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
 </div>
 </div>
 <div class="section" id="reading-and-writing-sliced-vbi-data">

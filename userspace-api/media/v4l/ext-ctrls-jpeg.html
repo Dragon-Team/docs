@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.22-dragon
+                5.10.23-dragon
               </div>
             
           
@@ -350,13 +350,12 @@ markers will not be inserted.</p>
 </dd>
 </dl>
 <dl id="jpeg-quality-control">
-<dt><code class="docutils literal notranslate"><span class="pre">V4L2_CID_JPEG_COMPRESSION_QUALITY</span> <span class="pre">(integer)</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">V4L2_CID_JPEG_COMPRESSION_QUALITY</span></code> control determines trade-off
-between image quality and size. It provides simpler method for
-applications to control image quality, without a need for direct
-reconfiguration of luminance and chrominance quantization tables. In
-cases where a driver uses quantization tables configured directly by
-an application, using interfaces defined elsewhere,
-<code class="docutils literal notranslate"><span class="pre">V4L2_CID_JPEG_COMPRESSION_QUALITY</span></code> control should be set by
+<dt><code class="docutils literal notranslate"><span class="pre">V4L2_CID_JPEG_COMPRESSION_QUALITY</span> <span class="pre">(integer)</span></code></dt><dd><p>Determines trade-off between image quality and size.
+It provides simpler method for applications to control image quality,
+without a need for direct reconfiguration of luminance and chrominance
+quantization tables. In cases where a driver uses quantization tables
+configured directly by an application, using interfaces defined
+elsewhere, <code class="docutils literal notranslate"><span class="pre">V4L2_CID_JPEG_COMPRESSION_QUALITY</span></code> control should be set by
 driver to 0.</p>
 <p>The value range of this control is driver-specific. Only positive,
 non-zero values are meaningful. The recommended range is 1 - 100,

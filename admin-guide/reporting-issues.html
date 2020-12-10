@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.22-dragon
+                5.10.23-dragon
               </div>
             
           
@@ -1177,17 +1177,6 @@ instead you can join.</p>
 </div>
 <div class="section" id="decode-failure-messages">
 <h3>Decode failure messages<a class="headerlink" href="#decode-failure-messages" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p><em>If the failure includes a stack dump, like an Oops does, consider decoding
-it to find the offending line of code.</em></p>
-</div></blockquote>
-<p>When the kernel detects an error, it will print a stack dump that allows to
-identify the exact line of code where the issue happens. But that information
-sometimes needs to get decoded to be readable, which is explained in
-admin-guide/bug-hunting.rst.</p>
-</div>
-<div class="section" id="special-care-for-regressions">
-<h3>Special care for regressions<a class="headerlink" href="#special-care-for-regressions" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>FIXME: The text in this section is a placeholder for now and quite similar to
@@ -1203,6 +1192,17 @@ needed”, “what .config options to ideally set earlier to make this step easy
 or unnecessary?” (likely CONFIG_UNWINDER_ORC when it’s available, otherwise
 CONFIG_UNWINDER_FRAME_POINTER; but is there anything else needed?).</p>
 </div>
+<blockquote>
+<div><p><em>If the failure includes a stack dump, like an Oops does, consider decoding
+it to find the offending line of code.</em></p>
+</div></blockquote>
+<p>When the kernel detects an error, it will print a stack dump that allows to
+identify the exact line of code where the issue happens. But that information
+sometimes needs to get decoded to be readable, which is explained in
+admin-guide/bug-hunting.rst.</p>
+</div>
+<div class="section" id="special-care-for-regressions">
+<h3>Special care for regressions<a class="headerlink" href="#special-care-for-regressions" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p><em>If your problem is a regression, try to narrow down when the issue was
 introduced as much as possible.</em></p>

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.22-dragon
+                5.10.23-dragon
               </div>
             
           
@@ -410,51 +410,49 @@ application should zero out all members except for the <em>IN</em> fields.</p>
 <table class="docutils align-default" id="id2">
 <caption><span class="caption-text">struct v4l2_frmivalenum</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>__u32</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">index</span></code></p></td>
-<td colspan="2"><p>IN: Index of the given frame interval in the enumeration.</p></td>
+<td><p>IN: Index of the given frame interval in the enumeration.</p></td>
 </tr>
 <tr class="row-even"><td><p>__u32</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">pixel_format</span></code></p></td>
-<td colspan="2"><p>IN: Pixel format for which the frame intervals are enumerated.</p></td>
+<td><p>IN: Pixel format for which the frame intervals are enumerated.</p></td>
 </tr>
 <tr class="row-odd"><td><p>__u32</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">width</span></code></p></td>
-<td colspan="2"><p>IN: Frame width for which the frame intervals are enumerated.</p></td>
+<td><p>IN: Frame width for which the frame intervals are enumerated.</p></td>
 </tr>
 <tr class="row-even"><td><p>__u32</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">height</span></code></p></td>
-<td colspan="2"><p>IN: Frame height for which the frame intervals are enumerated.</p></td>
+<td><p>IN: Frame height for which the frame intervals are enumerated.</p></td>
 </tr>
 <tr class="row-odd"><td><p>__u32</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
-<td colspan="2"><p>OUT: Frame interval type the device supports.</p></td>
+<td><p>OUT: Frame interval type the device supports.</p></td>
 </tr>
 <tr class="row-even"><td><p>union {</p></td>
 <td><p>(anonymous)</p></td>
-<td colspan="2"><p>OUT: Frame interval with the given index.</p></td>
+<td><p>OUT: Frame interval with the given index.</p></td>
 </tr>
 <tr class="row-odd"><td><p>struct <a class="reference internal" href="vidioc-enumstd.html#c.V4L.v4l2_fract" title="v4l2_fract"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_fract</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">discrete</span></code></p></td>
-<td colspan="2"><p>Frame interval [s].</p></td>
+<td><p>Frame interval [s].</p></td>
 </tr>
 <tr class="row-even"><td><p>struct <a class="reference internal" href="#c.V4L.v4l2_frmival_stepwise" title="v4l2_frmival_stepwise"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_frmival_stepwise</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">stepwise</span></code></p></td>
-<td colspan="2"></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p>}</p></td>
 <td></td>
-<td colspan="2"></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>__u32</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">reserved[2]</span></code></p></td>
-<td></td>
 <td><p>Reserved space for future use. Must be zeroed by drivers and
 applications.</p></td>
 </tr>

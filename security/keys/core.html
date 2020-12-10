@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.22-dragon
+                5.10.23-dragon
               </div>
             
           
@@ -1206,8 +1206,8 @@ written into the output buffer.  Verification returns 0 on success.</p>
 <p>This will set or remove a watch for changes on the specified key or
 keyring.</p>
 <p>“key” is the ID of the key to be watched.</p>
-<p>“queue_fd” is a file descriptor referring to an open “/dev/watch_queue”
-which manages the buffer into which notifications will be delivered.</p>
+<p>“queue_fd” is a file descriptor referring to an open pipe which
+manages the buffer into which notifications will be delivered.</p>
 <p>“filter” is either NULL to remove a watch or a filter specification to
 indicate what events are required from the key.</p>
 <p>See <a class="reference internal" href="../../watch_queue.html"><span class="doc">General notification mechanism</span></a> for more information.</p>

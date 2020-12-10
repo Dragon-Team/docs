@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.22-dragon
+                5.10.23-dragon
               </div>
             
           
@@ -477,7 +477,7 @@
 <li class="toctree-l2"><a class="reference internal" href="pixfmt-bayer.html">2.6. Raw Bayer Formats</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pixfmt-bayer.html#description">2.6.1. Description</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pixfmt-srggb8.html">2.6.1.1. V4L2_PIX_FMT_SRGGB8 (‘RGGB’), V4L2_PIX_FMT_SGRBG8 (‘GRBG’), V4L2_PIX_FMT_SGBRG8 (‘GBRG’), V4L2_PIX_FMT_SBGGR8 (‘BA81’),</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="pixfmt-srggb8.html#description">2.6.1.1.1. Description</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pixfmt-srggb8.html#bit-bayer-formats">2.6.1.1.1. 8-bit Bayer formats</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="pixfmt-srggb10.html">2.6.1.2. V4L2_PIX_FMT_SRGGB10 (‘RG10’), V4L2_PIX_FMT_SGRBG10 (‘BA10’), V4L2_PIX_FMT_SGBRG10 (‘GB10’), V4L2_PIX_FMT_SBGGR10 (‘BG10’),</a><ul>
@@ -497,7 +497,7 @@
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="pixfmt-srggb10-ipu3.html">2.6.1.6. V4L2_PIX_FMT_IPU3_SBGGR10 (‘ip3b’), V4L2_PIX_FMT_IPU3_SGBRG10 (‘ip3g’), V4L2_PIX_FMT_IPU3_SGRBG10 (‘ip3G’), V4L2_PIX_FMT_IPU3_SRGGB10 (‘ip3r’)</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="pixfmt-srggb10-ipu3.html#description">2.6.1.6.1. Description</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pixfmt-srggb10-ipu3.html#bit-bayer-formats">2.6.1.6.1. 10-bit Bayer formats</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="pixfmt-srggb12.html">2.6.1.7. V4L2_PIX_FMT_SRGGB12 (‘RG12’), V4L2_PIX_FMT_SGRBG12 (‘BA12’), V4L2_PIX_FMT_SGBRG12 (‘GB12’), V4L2_PIX_FMT_SBGGR12 (‘BG12’),</a><ul>
@@ -509,7 +509,7 @@
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="pixfmt-srggb14.html">2.6.1.9. V4L2_PIX_FMT_SRGGB14 (‘RG14’), V4L2_PIX_FMT_SGRBG14 (‘GR14’), V4L2_PIX_FMT_SGBRG14 (‘GB14’), V4L2_PIX_FMT_SBGGR14 (‘BG14’),</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="pixfmt-srggb14.html#description">2.6.1.9.1. Description</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pixfmt-srggb14.html#bit-bayer-formats-expanded-to-16-bits">2.6.1.9.1. 14-bit Bayer formats expanded to 16 bits</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="pixfmt-srggb14p.html">2.6.1.10. V4L2_PIX_FMT_SRGGB14P (‘pREE’), V4L2_PIX_FMT_SGRBG14P (‘pgEE’), V4L2_PIX_FMT_SGBRG14P (‘pGEE’), V4L2_PIX_FMT_SBGGR14P (‘pBEE’),</a><ul>
@@ -517,7 +517,7 @@
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="pixfmt-srggb16.html">2.6.1.11. V4L2_PIX_FMT_SRGGB16 (‘RG16’), V4L2_PIX_FMT_SGRBG16 (‘GR16’), V4L2_PIX_FMT_SGBRG16 (‘GB16’), V4L2_PIX_FMT_SBGGR16 (‘BYR2’),</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="pixfmt-srggb16.html#description">2.6.1.11.1. Description</a></li>
+<li class="toctree-l5"><a class="reference internal" href="pixfmt-srggb16.html#bit-bayer-formats">2.6.1.11.1. 16-bit Bayer formats</a></li>
 </ul>
 </li>
 </ul>
@@ -825,7 +825,10 @@
 <li class="toctree-l3"><a class="reference internal" href="dev-sliced-vbi.html#supplemental-functions">4.7.2. Supplemental Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dev-sliced-vbi.html#sliced-vbi-format-negotiation">4.7.3. Sliced VBI Format Negotiation</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="dev-sliced-vbi.html#struct-v4l2-sliced-vbi-format">4.7.3.1. struct v4l2_sliced_vbi_format</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dev-sliced-vbi.html#sliced-vbi-services">4.7.3.2. Sliced VBI services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dev-sliced-vbi.html#sliced-vbi-services">4.7.3.2. Sliced VBI services</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="dev-sliced-vbi.html#v4l2-sliced-wss-625-payload">4.7.3.2.1. V4L2_SLICED_WSS_625 payload</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="dev-sliced-vbi.html#reading-and-writing-sliced-vbi-data">4.7.4. Reading and writing sliced VBI data</a><ul>
@@ -1319,7 +1322,10 @@
 <li class="toctree-l3"><a class="reference internal" href="vidioc-g-sliced-vbi-cap.html#name">7.40.1. Name</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vidioc-g-sliced-vbi-cap.html#synopsis">7.40.2. Synopsis</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vidioc-g-sliced-vbi-cap.html#arguments">7.40.3. Arguments</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vidioc-g-sliced-vbi-cap.html#description">7.40.4. Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vidioc-g-sliced-vbi-cap.html#description">7.40.4. Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vidioc-g-sliced-vbi-cap.html#v4l2-sliced-vbi-cap-wss-625-payload">7.40.4.1. V4L2_SLICED_VBI_CAP WSS_625 payload</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="vidioc-g-sliced-vbi-cap.html#return-value">7.40.5. Return Value</a></li>
 </ul>
 </li>

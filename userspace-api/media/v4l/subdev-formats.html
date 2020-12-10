@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.22-dragon
+                5.10.23-dragon
               </div>
             
           
@@ -300,7 +300,7 @@
 <em class="property">type </em><code class="sig-name descname">v4l2_mbus_framefmt</code><a class="headerlink" href="#c.v4l2_mbus_framefmt" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
-<table class="docutils align-default" id="id1">
+<table class="longtable docutils align-default" id="id1">
 <caption><span class="caption-text">struct v4l2_mbus_framefmt</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
@@ -341,7 +341,7 @@ return another supported colorspace. The driver indicates that colorspace
 conversion is supported by setting the flag
 V4L2_SUBDEV_MBUS_CODE_CSC_COLORSPACE in the corresponding struct
 <code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_subdev_mbus_code_enum</span></code> during enumeration.
-See <a class="reference internal" href="vidioc-subdev-enum-mbus-code.html#v4l2-subdev-mbus-code-flags"><span class="std std-ref">Subdev Media Bus Code Enumerate Flags</span></a>.</p></td>
+See <span class="xref std std-ref">v4l2-subdev-mbus-code-flags</span>.</p></td>
 </tr>
 <tr class="row-even"><td><p>union {</p></td>
 <td colspan="2"><p>(anonymous)</p></td>
@@ -359,7 +359,7 @@ This field is ignored for HSV media bus formats. The driver indicates
 that ycbcr_enc conversion is supported by setting the flag
 V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC in the corresponding struct
 <code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_subdev_mbus_code_enum</span></code> during enumeration.
-See <a class="reference internal" href="vidioc-subdev-enum-mbus-code.html#v4l2-subdev-mbus-code-flags"><span class="std std-ref">Subdev Media Bus Code Enumerate Flags</span></a>.</p></td>
+See <span class="xref std std-ref">v4l2-subdev-mbus-code-flags</span>.</p></td>
 </tr>
 <tr class="row-even"><td><p>__u16</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hsv_enc</span></code></p></td>
@@ -374,7 +374,7 @@ This field is ignored for Y’CbCr media bus formats. The driver indicates
 that hsv_enc conversion is supported by setting the flag
 V4L2_SUBDEV_MBUS_CODE_CSC_HSV_ENC in the corresponding struct
 <code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_subdev_mbus_code_enum</span></code> during enumeration.
-See <a class="reference internal" href="vidioc-subdev-enum-mbus-code.html#v4l2-subdev-mbus-code-flags"><span class="std std-ref">Subdev Media Bus Code Enumerate Flags</span></a></p></td>
+See <span class="xref std std-ref">v4l2-subdev-mbus-code-flags</span></p></td>
 </tr>
 <tr class="row-odd"><td><p>}</p></td>
 <td colspan="2"></td>
@@ -391,7 +391,7 @@ conversion, it will return another supported quantization.
 The driver indicates that quantization conversion is supported by
 setting the flag V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION in the
 corresponding struct <code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_subdev_mbus_code_enum</span></code>
-during enumeration. See <a class="reference internal" href="vidioc-subdev-enum-mbus-code.html#v4l2-subdev-mbus-code-flags"><span class="std std-ref">Subdev Media Bus Code Enumerate Flags</span></a>.</p></td>
+during enumeration. See <span class="xref std std-ref">v4l2-subdev-mbus-code-flags</span>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>__u16</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">xfer_func</span></code></p></td>
@@ -405,7 +405,7 @@ conversion, it will return another supported transfer function.
 The driver indicates that the transfer function conversion is supported by
 setting the flag V4L2_SUBDEV_MBUS_CODE_CSC_XFER_FUNC in the
 corresponding struct <code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_subdev_mbus_code_enum</span></code>
-during enumeration. See <a class="reference internal" href="vidioc-subdev-enum-mbus-code.html#v4l2-subdev-mbus-code-flags"><span class="std std-ref">Subdev Media Bus Code Enumerate Flags</span></a>.</p></td>
+during enumeration. See <span class="xref std std-ref">v4l2-subdev-mbus-code-flags</span>.</p></td>
 </tr>
 <tr class="row-even"><td><p>__u16</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">flags</span></code></p></td>
@@ -418,7 +418,7 @@ the array to zero.</p></td>
 </tr>
 </tbody>
 </table>
-<span id="v4l2-mbus-framefmt-flags"></span><table class="docutils align-default" id="id2">
+<table class="docutils align-default" id="id2">
 <caption><span class="caption-text">v4l2_mbus_framefmt Flags</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 38%" />
@@ -441,7 +441,7 @@ be set to non default value (<code class="docutils literal notranslate"><span cl
 <code class="docutils literal notranslate"><span class="pre">V4L2_QUANTIZATION_LIM_RANGE</span></code>) and all other colorimetry fields shall
 be set to <code class="docutils literal notranslate"><span class="pre">*_DEFAULT</span></code>.</p>
 <p>To check which conversions are supported by the hardware for the current
-media bus frame format, see <a class="reference internal" href="vidioc-subdev-enum-mbus-code.html#v4l2-subdev-mbus-code-flags"><span class="std std-ref">Subdev Media Bus Code Enumerate Flags</span></a>.</p>
+media bus frame format, see <span class="xref std std-ref">v4l2-subdev-mbus-code-flags</span>.</p>
 </td>
 </tr>
 </tbody>

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.22-dragon
+                5.10.23-dragon
               </div>
             
           
@@ -774,9 +774,9 @@ applications.</p></td>
 <span id="id1"></span><h2><span class="section-number">3.6.5. </span>Buffer Flags<a class="headerlink" href="#buffer-flags" title="Permalink to this headline">¶</a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
-<col style="width: 38%" />
-<col style="width: 13%" />
-<col style="width: 50%" />
+<col style="width: 42%" />
+<col style="width: 12%" />
+<col style="width: 46%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">V4L2_BUF_FLAG_MAPPED</span></code></p>
@@ -923,7 +923,7 @@ streaming I/O and reports <a class="reference internal" href="vidioc-reqbufs.htm
 </td>
 <td><p>0x00000200</p>
 </td>
-<td><p id="v4l2-buf-flag-m2m-hold-capture-buf">Only valid if <code class="docutils literal notranslate"><span class="pre">V4L2_BUF_CAP_SUPPORTS_M2M_HOLD_CAPTURE_BUF</span></code> is
+<td><p id="v4l2-buf-flag-m2m-hold-capture-buf">Only valid if <code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_requestbuffers</span></code> flag <code class="docutils literal notranslate"><span class="pre">V4L2_BUF_CAP_SUPPORTS_M2M_HOLD_CAPTURE_BUF</span></code> is
 set. It is typically used with stateless decoders where multiple
 output buffers each decode to a slice of the decoded frame.
 Applications can set this flag when queueing the output buffer
