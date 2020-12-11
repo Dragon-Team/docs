@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.23-dragon
+                5.10.24-dragon
               </div>
             
           
@@ -543,7 +543,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#file-home--doc-testing-sysfs-platform-twl4030-usb">File /testing/sysfs-platform-twl4030-usb</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--doc-testing-sysfs-platform-usbip-vudc">File /testing/sysfs-platform-usbip-vudc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--doc-testing-sysfs-platform-wilco-ec">File /testing/sysfs-platform-wilco-ec</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#file-home--doc-testing-sysfs-platform-profile-rst">File /testing/sysfs-platform_profile.rst</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--doc-testing-sysfs-power">File /testing/sysfs-power</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--doc-testing-sysfs-pps">File /testing/sysfs-pps</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--doc-testing-sysfs-profiling">File /testing/sysfs-profiling</a></li>
@@ -11855,7 +11854,7 @@ to the _raw output.</p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio"><span class="std std-ref">sysfs-bus-iio</span></a></p>
 <p>If a discrete set of scale values is available, they
 are listed in this attribute.</p>
-<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias">
+<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasq">
 <colgroup>
 <col style="width: 100%" />
 </colgroup>
@@ -11878,7 +11877,7 @@ are listed in this attribute.</p>
 <p>Hardware applied calibration offset (assumed to fix production
 inaccuracies). Values represent a real physical offset expressed
 in SI units (m/s^2 for accelerometer and rad/s for gyroscope).</p>
-<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiast">
+<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias">
 <colgroup>
 <col style="width: 100%" />
 </colgroup>
@@ -39087,8 +39086,7 @@ That information may be hidden from the cpufreq core and the
 value of related_cpus may be different from freqdomain_cpus. This
 attribute is useful for user space DVFS controllers to get better
 power/performance results for platforms using acpi-cpufreq.</p>
-<p>This file is only present if the acpi-cpufreq or the cppc-cpufreq
-drivers are in use.</p>
+<p>This file is only present if the acpi-cpufreq driver is in use.</p>
 <table class="docutils align-default" id="abi-sys-devices-system-cpu-cpu-crash-notes">
 <colgroup>
 <col style="width: 100%" />
@@ -40601,28 +40599,6 @@ when pressing the power button:</p>
 </pre></div>
 </div>
 </div>
-<table class="docutils align-default" id="abi-sys-firmware-acpi-platform-profile">
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>/sys/firmware/acpi/platform_profile</strong></p></td>
-</tr>
-</tbody>
-</table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-platform-profile-rst"><span class="std std-ref">sysfs-platform_profile.rst</span></a></p>
-<p>DESCRIPTION MISSING for /sys/firmware/acpi/platform_profile</p>
-<table class="docutils align-default" id="abi-sys-firmware-acpi-platform-profile-choices">
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>/sys/firmware/acpi/platform_profile_choices</strong></p></td>
-</tr>
-</tbody>
-</table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-platform-profile-rst"><span class="std std-ref">sysfs-platform_profile.rst</span></a></p>
-<p>DESCRIPTION MISSING for /sys/firmware/acpi/platform_profile_choices</p>
 <table class="docutils align-default" id="abi-sys-firmware-devicetree">
 <colgroup>
 <col style="width: 100%" />
@@ -41747,11 +41723,23 @@ can observe them this way:</p>
 <p>The /sys/firmware/sgi_uv directory contains information
 about the UV platform.</p>
 <p>Under that directory are a number of read-only attributes:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>partition_id
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>archtype
+hub_type
+hubless
+partition_id
 coherence_id
 uv_type
 </pre></div>
 </div>
+<p>The archtype entry contains the UV architecture type that
+is used to select arch-dependent addresses and features.
+It can be set via the OEM_ID in the ACPI MADT table or by
+UVsystab entry both passed from UV BIOS.</p>
+<p>The hub_type entry is used to select the type of hub which is
+similar to uv_type but encoded in a binary format.  Include
+the file uv_hub.h to get the definitions.</p>
+<p>The hubless entry basically is present and set only if there
+is no hub.  In this case the hub_type entry is not present.</p>
 <p>The partition_id entry contains the partition id.
 UV systems can be partitioned into multiple physical
 machines, which each partition running a unique copy
@@ -41763,7 +41751,9 @@ domains. The coherence id indicates which coherence domain
 this partition is in.</p>
 <p>The uv_type entry contains the hub revision number.
 This value can be used to identify the UV system version:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&quot;3.0&quot; = UV2
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&quot;0.*&quot; = Hubless UV (&#39;*&#39; is subtype)
+
+&quot;3.0&quot; = UV2
 &quot;5.0&quot; = UV3
 &quot;7.0&quot; = UV4
 &quot;7.1&quot; = UV4a
@@ -49394,16 +49384,16 @@ modification.</p>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-scale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_x_scale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-scale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_y_scale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-scale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_z_scale</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_x_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_y_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_z_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiast"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_illuminance0_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiast"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_proximity0_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiast"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressureY_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiast"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressure_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasq"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_x_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasq"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_y_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasq"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_z_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasq"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasq"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasq"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_illuminance0_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_proximity0_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressureY_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressure_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-calibscale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_voltageY_calibscale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-calibscale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_voltageY_supply_calibscale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-calibscale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_voltageY_i_calibscale</span></a></p></li>
@@ -50194,12 +50184,12 @@ modification.</p>
 <span id="abi-file-testing-sysfs-bus-iio-icm42600"></span><h2>File /testing/sysfs-bus-iio-icm42600<a class="headerlink" href="#file-home--doc-testing-sysfs-bus-iio-icm42600" title="Permalink to this headline">¶</a></h2>
 <p>Has the following ABI:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_x_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_y_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_z_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasq"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_x_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasq"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_y_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasq"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_z_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasq"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasq"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasq"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-calibbias-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_calibbias_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-calibbias-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_calibbias_available</span></a></p></li>
 </ul>
@@ -53961,49 +53951,6 @@ sysfs: (&lt;devid&gt; is in the format major:minor)</p>
 <li><p><a class="reference internal" href="#abi-sys-bus-platform-devices-goog000c-00-model-number"><span class="std std-ref">/sys/bus/platform/devices/GOOG000C\:00/model_number</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-platform-devices-goog000c-00-usb-charge"><span class="std std-ref">/sys/bus/platform/devices/GOOG000C\:00/usb_charge</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-platform-devices-goog000c-00-version"><span class="std std-ref">/sys/bus/platform/devices/GOOG000C\:00/version</span></a></p></li>
-</ul>
-</div>
-<div class="section" id="file-home--doc-testing-sysfs-platform-profile-rst">
-<span id="abi-file-testing-sysfs-platform-profile-rst"></span><h2>File /testing/sysfs-platform_profile.rst<a class="headerlink" href="#file-home--doc-testing-sysfs-platform-profile-rst" title="Permalink to this headline">¶</a></h2>
-<p>Platform Profile Selection (e.g. <a class="reference internal" href="#abi-sys-firmware-acpi-platform-profile"><span class="std std-ref">/sys/firmware/acpi/platform_profile</span></a>)</p>
-<p>On modern systems the platform performance, temperature, fan and other
-hardware-related characteristics are often dynamically configurable. The
-profile is often automatically adjusted to the load by some
-automatic mechanism (which may very well live outside of the kernel).</p>
-<p>These auto platform adjustment mechanisms can often be configured with
-one of several platform profiles, with a bias either towards low power
-operation or towards performance.</p>
-<p>The purpose of the platform_profile attribute is to offer a generic sysfs
-API for selecting the platform profile of these automatic mechanisms.</p>
-<p>Note that this API is only for selecting the platform profile, it is
-NOT a goal of this API to allow monitoring the resulting performance
-characteristics. Monitoring performance is best done with device/vendor
-specific tools such as e.g. turbostat.</p>
-<p>Specifically, when selecting a high performance profile the actual achieved
-performance may be limited by various factors such as: the heat generated
-by other components, room temperature, free air flow at the bottom of a
-laptop, etc. It is explicitly NOT a goal of this API to let userspace know
-about any sub-optimal conditions which are impeding reaching the requested
-performance level.</p>
-<p>Since numbers on their own cannot represent the multiple variables that a
-profile will adjust (power consumption, heat generation, etc) this API
-uses strings to describe the various profiles. To make sure that user space
-gets a consistent experience, this API document defines a fixed set of
-profile names. Drivers <em>must</em> map their internal profile representation
-onto this fixed set.</p>
-<p>If there is no good match when mapping then, a new profile name may be
-added. Drivers which wish to introduce new profile names must:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p>Explain why the existing profile names canot be used.</p></li>
-<li><p>Add the new profile name, along with a clear description of the
-expected behaviour, to the documentation.</p></li>
-</ol>
-</div></blockquote>
-<p>Has the following ABI:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#abi-sys-firmware-acpi-platform-profile-choices"><span class="std std-ref">/sys/firmware/acpi/platform_profile_choices</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-firmware-acpi-platform-profile"><span class="std std-ref">/sys/firmware/acpi/platform_profile</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="file-home--doc-testing-sysfs-power">

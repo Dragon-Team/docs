@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.23-dragon
+                5.10.24-dragon
               </div>
             
           
@@ -864,6 +864,39 @@ void <code class="sig-name descname">dma_buf_vunmap</code><span class="sig-paren
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf_map</span> <span class="pre">*map</span></code></dt><dd><p>[in]    vmap pointer to vunmap</p>
 </dd>
 </dl>
+<dl class="c function">
+<dt id="c.dma_buf_vmap_local">
+int <code class="sig-name descname">dma_buf_vmap_local</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dma_buf" title="dma_buf">dma_buf</a> *<em>dmabuf</em>, <em class="property">struct</em> <a class="reference internal" href="#c.dma_buf_map" title="dma_buf_map">dma_buf_map</a> *<em>map</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dma_buf_vmap_local" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create virtual mapping for the buffer object into kernel address space.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf</span> <span class="pre">*dmabuf</span></code></dt><dd><p>[in]    buffer to vmap</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf_map</span> <span class="pre">*map</span></code></dt><dd><p>[out]   returns the vmap pointer</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This call may fail due to lack of virtual mapping address space.
+These calls are optional in drivers. The intended use for them
+is for mapping objects linear in kernel space for high use objects.
+Please attempt to use kmap/kunmap before thinking about these interfaces.</p>
+<p><strong>Return</strong></p>
+<p>0 on success, or a negative errno code otherwise.</p>
+<dl class="c function">
+<dt id="c.dma_buf_vunmap_local">
+void <code class="sig-name descname">dma_buf_vunmap_local</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dma_buf" title="dma_buf">dma_buf</a> *<em>dmabuf</em>, <em class="property">struct</em> <a class="reference internal" href="#c.dma_buf_map" title="dma_buf_map">dma_buf_map</a> *<em>map</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dma_buf_vunmap_local" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Unmap a vmap obtained by dma_buf_vmap_local.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf</span> <span class="pre">*dmabuf</span></code></dt><dd><p>[in]    buffer to vunmap</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf_map</span> <span class="pre">*map</span></code></dt><dd><p>[in]    vmap pointer to vunmap</p>
+</dd>
+</dl>
 <dl class="c struct">
 <dt id="c.dma_buf_ops">
 <em class="property">struct </em><code class="sig-name descname">dma_buf_ops</code><a class="headerlink" href="#c.dma_buf_ops" title="Permalink to this definition">¶</a><br /></dt>
@@ -885,6 +918,8 @@ void <code class="sig-name descname">dma_buf_vunmap</code><span class="sig-paren
   int (*mmap)(struct dma_buf *, struct vm_area_struct *vma);
   int (*vmap)(struct dma_buf *dmabuf, struct dma_buf_map *map);
   void (*vunmap)(struct dma_buf *dmabuf, struct dma_buf_map *map);
+  int (*vmap_local)(struct dma_buf *dmabuf, struct dma_buf_map *map);
+  void (*vunmap_local)(struct dma_buf *dmabuf, struct dma_buf_map *map);
 };
 </pre></div>
 </div>
@@ -1032,6 +1067,22 @@ own file.</p>
 address space. Same restrictions as for vmap and friends apply.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">vunmap</span></code></dt><dd><p>[optional] unmaps a vmap from the buffer</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">vmap_local</span></code></dt><dd><p>Creates a virtual mapping for the buffer into kernel address space.</p>
+<p>This callback establishes short-term mappings for situations where
+callers only use the buffer for a bounded amount of time; such as
+updates to the framebuffer or reading back contained information.
+In contrast to the regular <strong>vmap</strong> callback, vmap_local does never pin
+the buffer to a specific domain or acquire the buffer’s reservation
+lock.</p>
+<p>This is called with the dmabuf-&gt;resv object locked. Callers must hold
+the lock until after removing the mapping with <strong>vunmap_local</strong>.</p>
+<p>This callback is optional.</p>
+<p>Returns:</p>
+<p>0 on success or a negative error code on failure.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">vunmap_local</span></code></dt><dd><p>Removes a virtual mapping that wa sestablished by <strong>vmap_local</strong>.</p>
+<p>This callback is optional.</p>
 </dd>
 </dl>
 <dl class="c struct">

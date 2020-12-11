@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.23-dragon
+                5.10.24-dragon
               </div>
             
           
@@ -437,9 +437,7 @@ automatically freed on driver detach.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct dev_links_info {
   struct list_head suppliers;
   struct list_head consumers;
-  struct list_head needs_suppliers;
-  struct list_head defer_hook;
-  bool need_for_probe;
+  struct list_head defer_sync;
   enum dl_dev_state status;
 };
 </pre></div>
@@ -450,13 +448,7 @@ automatically freed on driver detach.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">consumers</span></code></dt><dd><p>List of links to consumer devices.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">needs_suppliers</span></code></dt><dd><p>Hook to global list of devices waiting for suppliers.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">defer_hook</span></code></dt><dd><p>Hook to global list of devices that have deferred sync_state or
-deferred fw_devlink.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">need_for_probe</span></code></dt><dd><p>If needs_suppliers is on a list, this indicates if the
-suppliers are needed for probe or not.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">defer_sync</span></code></dt><dd><p>Hook to global list of devices that have deferred sync_state.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">status</span></code></dt><dd><p>Driver status information.</p>
 </dd>
@@ -891,7 +883,7 @@ The caller is responsible for preventing this.</p>
 with runtime PM.  First, setting the DL_FLAG_PM_RUNTIME flag will cause the
 runtime PM framework to take the link into account.  Second, if the
 DL_FLAG_RPM_ACTIVE flag is set in addition to it, the supplier devices will
-be forced into the active metastate and reference-counted upon the creation
+be forced into the active meta state and reference-counted upon the creation
 of the link.  If DL_FLAG_PM_RUNTIME is not set, DL_FLAG_RPM_ACTIVE will be
 ignored.</p>
 <p>If DL_FLAG_STATELESS is set in <strong>flags</strong>, the caller of this function is
@@ -911,7 +903,7 @@ the consumer or the supplier) is unregistered.</p>
 <p>Also, if DL_FLAG_STATELESS, DL_FLAG_AUTOREMOVE_CONSUMER and
 DL_FLAG_AUTOREMOVE_SUPPLIER are not set in <strong>flags</strong> (that is, a persistent
 managed device link is being added), the DL_FLAG_AUTOPROBE_CONSUMER flag can
-be used to request the driver core to automaticall probe for a consmer
+be used to request the driver core to automatically probe for a consumer
 driver after successfully binding a driver to the supplier device.</p>
 <p>The combination of DL_FLAG_STATELESS and one of DL_FLAG_AUTOREMOVE_CONSUMER,
 DL_FLAG_AUTOREMOVE_SUPPLIER, or DL_FLAG_AUTOPROBE_CONSUMER set in <strong>flags</strong> at

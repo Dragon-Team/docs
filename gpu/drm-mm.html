@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.23-dragon
+                5.10.24-dragon
               </div>
             
           
@@ -623,6 +623,8 @@ from the client in libdrm.</p>
   struct sg_table *(*get_sg_table)(struct drm_gem_object *obj);
   int (*vmap)(struct drm_gem_object *obj, struct dma_buf_map *map);
   void (*vunmap)(struct drm_gem_object *obj, struct dma_buf_map *map);
+  int (*vmap_local)(struct drm_gem_object *obj, struct dma_buf_map *map);
+  void (*vunmap_local)(struct drm_gem_object *obj, struct dma_buf_map *map);
   int (*mmap)(struct drm_gem_object *obj, struct vm_area_struct *vma);
   const struct vm_operations_struct *vm_ops;
 };
@@ -670,6 +672,14 @@ ranges.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">vunmap</span></code></dt><dd><p>Releases the address previously returned by <strong>vmap</strong>. Used by the
 <a class="reference internal" href="#c.drm_gem_dmabuf_vunmap" title="drm_gem_dmabuf_vunmap"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_dmabuf_vunmap()</span></code></a> helper.</p>
+<p>This callback is optional.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">vmap_local</span></code></dt><dd><p>Returns a virtual address for the buffer. Used by the
+<a class="reference internal" href="#c.drm_gem_dmabuf_vmap_local" title="drm_gem_dmabuf_vmap_local"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_dmabuf_vmap_local()</span></code></a> helper.</p>
+<p>This callback is optional.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">vunmap_local</span></code></dt><dd><p>Releases the address previously returned by <strong>vmap</strong>. Used by the
+<a class="reference internal" href="#c.drm_gem_dmabuf_vunmap_local" title="drm_gem_dmabuf_vunmap_local"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_dmabuf_vunmap_local()</span></code></a> helper.</p>
 <p>This callback is optional.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">mmap</span></code></dt><dd><p>Handle mmap() of the gem object, setup vma accordingly.</p>
@@ -1613,6 +1623,28 @@ driver’s <a class="reference internal" href="#c.drm_gem_object_funcs" title="d
 <p><strong>Return</strong></p>
 <p>0 on success, or a negative error code otherwise.</p>
 <dl class="c function">
+<dt id="c.drm_gem_cma_vmap_local">
+int <code class="sig-name descname">drm_gem_cma_vmap_local</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<em>obj</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_map" title="dma_buf_map">dma_buf_map</a> *<em>map</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_cma_vmap_local" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>map a CMA GEM object into the kernel’s virtual address space</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_gem_object</span> <span class="pre">*obj</span></code></dt><dd><p>GEM object</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf_map</span> <span class="pre">*map</span></code></dt><dd><p>Returns the kernel virtual address of the CMA GEM object’s backing
+store.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function maps a buffer into the kernel’s
+virtual address space. Since the CMA buffers are already mapped into the
+kernel virtual address space this simply returns the cached virtual
+address. Drivers using the CMA helpers should set this as their DRM
+driver’s <a class="reference internal" href="#c.drm_gem_object_funcs" title="drm_gem_object_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_gem_object_funcs.vmap_local</span></code></a> callback.</p>
+<p><strong>Return</strong></p>
+<p>0 on success, or a negative error code otherwise.</p>
+<dl class="c function">
 <dt id="c.drm_gem_cma_mmap">
 int <code class="sig-name descname">drm_gem_cma_mmap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<em>obj</em>, <em class="property">struct</em> vm_area_struct *<em>vma</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_cma_mmap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>memory-map an exported CMA GEM object</p>
@@ -1799,6 +1831,95 @@ void <code class="sig-name descname">drm_gem_shmem_unpin</code><span class="sig-
 <p><strong>Description</strong></p>
 <p>This function removes the requirement that the backing pages are pinned in
 memory. It should only be used to implement <a class="reference internal" href="#c.drm_gem_object_funcs" title="drm_gem_object_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_gem_object_funcs.unpin</span></code></a>.</p>
+<dl class="c function">
+<dt id="c.drm_gem_shmem_vmap">
+int <code class="sig-name descname">drm_gem_shmem_vmap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<em>obj</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_map" title="dma_buf_map">dma_buf_map</a> *<em>map</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_shmem_vmap" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create a virtual mapping for a shmem GEM object</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_gem_object</span> <span class="pre">*obj</span></code></dt><dd><p><em>undescribed</em></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf_map</span> <span class="pre">*map</span></code></dt><dd><p>Returns the kernel virtual address of the SHMEM GEM object’s backing
+store.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function makes sure that a contiguous kernel virtual address mapping
+exists for the buffer backing the shmem GEM object.</p>
+<p>This function can be used to implement <a class="reference internal" href="#c.drm_gem_object_funcs" title="drm_gem_object_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_gem_object_funcs.vmap</span></code></a>. But it can
+also be called by drivers directly, in which case it will hide the
+differences between dma-buf imported and natively allocated objects.</p>
+<p>Acquired mappings should be cleaned up by calling <a class="reference internal" href="#c.drm_gem_shmem_vunmap" title="drm_gem_shmem_vunmap"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_shmem_vunmap()</span></code></a>.</p>
+<p><strong>Return</strong></p>
+<p>0 on success or a negative error code on failure.</p>
+<dl class="c function">
+<dt id="c.drm_gem_shmem_vmap_local">
+int <code class="sig-name descname">drm_gem_shmem_vmap_local</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<em>obj</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_map" title="dma_buf_map">dma_buf_map</a> *<em>map</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_shmem_vmap_local" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create a virtual mapping for a shmem GEM object</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_gem_object</span> <span class="pre">*obj</span></code></dt><dd><p><em>undescribed</em></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf_map</span> <span class="pre">*map</span></code></dt><dd><p>Returns the kernel virtual address of the SHMEM GEM object’s backing
+store.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function makes sure that a contiguous kernel virtual address mapping
+exists for the buffer backing the shmem GEM object.</p>
+<p>The function is called with the BO’s reservation object locked. Callers must
+hold the lock until after unmapping the buffer.</p>
+<p>This function can be used to implement <a class="reference internal" href="#c.drm_gem_object_funcs" title="drm_gem_object_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_gem_object_funcs.vmap_local</span></code></a>. But
+it can also be called by drivers directly, in which case it will hide the
+differences between dma-buf imported and natively allocated objects.</p>
+<p>Acquired mappings should be cleaned up by calling <a class="reference internal" href="#c.drm_gem_shmem_vunmap_local" title="drm_gem_shmem_vunmap_local"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_shmem_vunmap_local()</span></code></a>.</p>
+<p><strong>Return</strong></p>
+<p>0 on success or a negative error code on failure.</p>
+<dl class="c function">
+<dt id="c.drm_gem_shmem_vunmap">
+void <code class="sig-name descname">drm_gem_shmem_vunmap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<em>obj</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_map" title="dma_buf_map">dma_buf_map</a> *<em>map</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_shmem_vunmap" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Unmap a virtual mapping fo a shmem GEM object</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_gem_object</span> <span class="pre">*obj</span></code></dt><dd><p><em>undescribed</em></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf_map</span> <span class="pre">*map</span></code></dt><dd><p>Kernel virtual address where the SHMEM GEM object was mapped</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function cleans up a kernel virtual address mapping acquired by
+<a class="reference internal" href="#c.drm_gem_shmem_vmap" title="drm_gem_shmem_vmap"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_shmem_vmap()</span></code></a>. The mapping is only removed when the use count drops to
+zero.</p>
+<p>This function can be used to implement <a class="reference internal" href="#c.drm_gem_object_funcs" title="drm_gem_object_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_gem_object_funcs.vmap</span></code></a>. But it can
+also be called by drivers directly, in which case it will hide the
+differences between dma-buf imported and natively allocated objects.</p>
+<dl class="c function">
+<dt id="c.drm_gem_shmem_vunmap_local">
+void <code class="sig-name descname">drm_gem_shmem_vunmap_local</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<em>obj</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_map" title="dma_buf_map">dma_buf_map</a> *<em>map</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_shmem_vunmap_local" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Unmap a virtual mapping fo a shmem GEM object</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_gem_object</span> <span class="pre">*obj</span></code></dt><dd><p><em>undescribed</em></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf_map</span> <span class="pre">*map</span></code></dt><dd><p>Kernel virtual address where the SHMEM GEM object was mapped</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function cleans up a kernel virtual address mapping acquired by
+<a class="reference internal" href="#c.drm_gem_shmem_vmap_local" title="drm_gem_shmem_vmap_local"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_shmem_vmap_local()</span></code></a>. The mapping is only removed when the use count
+drops to zero.</p>
+<p>The function is called with the BO’s reservation object locked.</p>
+<p>This function can be used to implement <a class="reference internal" href="#c.drm_gem_object_funcs" title="drm_gem_object_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_gem_object_funcs.vmap_local</span></code></a>.
+But it can also be called by drivers directly, in which case it will hide
+the differences between dma-buf imported and natively allocated objects.</p>
 <dl class="c function">
 <dt id="c.drm_gem_shmem_dumb_create">
 int <code class="sig-name descname">drm_gem_shmem_dumb_create</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_file" title="drm_file">drm_file</a> *<em>file</em>, <em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device">drm_device</a> *<em>dev</em>, <em class="property">struct</em> drm_mode_create_dumb *<em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_shmem_dumb_create" title="Permalink to this definition">¶</a><br /></dt>
@@ -2265,6 +2386,46 @@ void <code class="sig-name descname">drm_gem_vram_vunmap</code><span class="sig-
 <p><strong>Description</strong></p>
 <p>A call to <a class="reference internal" href="#c.drm_gem_vram_vunmap" title="drm_gem_vram_vunmap"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_vram_vunmap()</span></code></a> unmaps and unpins a GEM VRAM buffer. See
 the documentation for <a class="reference internal" href="#c.drm_gem_vram_vmap" title="drm_gem_vram_vmap"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_vram_vmap()</span></code></a> for more information.</p>
+<dl class="c function">
+<dt id="c.drm_gem_vram_vmap_local">
+int <code class="sig-name descname">drm_gem_vram_vmap_local</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gem_vram_object" title="drm_gem_vram_object">drm_gem_vram_object</a> *<em>gbo</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_map" title="dma_buf_map">dma_buf_map</a> *<em>map</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_vram_vmap_local" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Maps a GEM VRAM object into kernel address space</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_gem_vram_object</span> <span class="pre">*gbo</span></code></dt><dd><p>The GEM VRAM object to map</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf_map</span> <span class="pre">*map</span></code></dt><dd><p>Returns the kernel virtual address of the VRAM GEM object’s backing
+store.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>The vmap_local function maps the buffer of a GEM VRAM object into kernel address
+space. Call <a class="reference internal" href="#c.drm_gem_vram_vunmap_local" title="drm_gem_vram_vunmap_local"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_vram_vunmap_local()</span></code></a> with the returned address to unmap and
+unpin the GEM VRAM object.</p>
+<p>The function is called with the BO’s reservation object locked. For short-term
+mappings, callers must hold the lock until after unmapping the buffer. For
+long-term mappings, callers are required to pin the BO to it’s current location
+before calling this function.</p>
+<p><strong>Return</strong></p>
+<p>0 on success, or a negative error code otherwise.</p>
+<dl class="c function">
+<dt id="c.drm_gem_vram_vunmap_local">
+void <code class="sig-name descname">drm_gem_vram_vunmap_local</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gem_vram_object" title="drm_gem_vram_object">drm_gem_vram_object</a> *<em>gbo</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_map" title="dma_buf_map">dma_buf_map</a> *<em>map</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_vram_vunmap_local" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Unmaps a GEM VRAM object</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_gem_vram_object</span> <span class="pre">*gbo</span></code></dt><dd><p>The GEM VRAM object to unmap</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf_map</span> <span class="pre">*map</span></code></dt><dd><p>Kernel virtual address where the VRAM GEM object was mapped</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>A call to <a class="reference internal" href="#c.drm_gem_vram_vunmap_local" title="drm_gem_vram_vunmap_local"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_vram_vunmap_local()</span></code></a> unmaps a GEM VRAM object’s buffer. See
+the documentation for <a class="reference internal" href="#c.drm_gem_vram_vmap_local" title="drm_gem_vram_vmap_local"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_vram_vmap_local()</span></code></a> for more information.</p>
 <dl class="c function">
 <dt id="c.drm_gem_vram_fill_create_dumb">
 int <code class="sig-name descname">drm_gem_vram_fill_create_dumb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_file" title="drm_file">drm_file</a> *<em>file</em>, <em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device">drm_device</a> *<em>dev</em>, unsigned long <em>pg_align</em>, unsigned long <em>pitch_align</em>, <em class="property">struct</em> drm_mode_create_dumb *<em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_vram_fill_create_dumb" title="Permalink to this definition">¶</a><br /></dt>
@@ -3215,6 +3376,42 @@ void <code class="sig-name descname">drm_gem_dmabuf_vunmap</code><span class="si
 <p><strong>Description</strong></p>
 <p>Releases a kernel virtual mapping. This can be used as the
 <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_ops" title="dma_buf_ops"><code class="xref c c-type docutils literal notranslate"><span class="pre">dma_buf_ops.vunmap</span></code></a> callback. Calls into <a class="reference internal" href="#c.drm_gem_object_funcs" title="drm_gem_object_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_gem_object_funcs.vunmap</span></code></a> for device specific handling.</p>
+<dl class="c function">
+<dt id="c.drm_gem_dmabuf_vmap_local">
+int <code class="sig-name descname">drm_gem_dmabuf_vmap_local</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf" title="dma_buf">dma_buf</a> *<em>dma_buf</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_map" title="dma_buf_map">dma_buf_map</a> *<em>map</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_dmabuf_vmap_local" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>dma_buf vmap_local implementation for GEM</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf</span> <span class="pre">*dma_buf</span></code></dt><dd><p>buffer to be mapped</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf_map</span> <span class="pre">*map</span></code></dt><dd><p>the virtual address of the buffer</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Sets up a kernel virtual mapping. This can be used as the <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_ops" title="dma_buf_ops"><code class="xref c c-type docutils literal notranslate"><span class="pre">dma_buf_ops.vmap_local</span></code></a>
+callback. Calls into <a class="reference internal" href="#c.drm_gem_object_funcs" title="drm_gem_object_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_gem_object_funcs.vmap_local</span></code></a> for device specific handling.
+The kernel virtual address is returned in map.</p>
+<p><strong>Return</strong></p>
+<p>0 on success or a negative errno code otherwise.</p>
+<dl class="c function">
+<dt id="c.drm_gem_dmabuf_vunmap_local">
+void <code class="sig-name descname">drm_gem_dmabuf_vunmap_local</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf" title="dma_buf">dma_buf</a> *<em>dma_buf</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_map" title="dma_buf_map">dma_buf_map</a> *<em>map</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_dmabuf_vunmap_local" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>dma_buf vunmap_local implementation for GEM</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf</span> <span class="pre">*dma_buf</span></code></dt><dd><p>buffer to be unmapped</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf_map</span> <span class="pre">*map</span></code></dt><dd><p>the virtual address of the buffer</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Releases a kernel virtual mapping. This can be used as the
+<a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_ops" title="dma_buf_ops"><code class="xref c c-type docutils literal notranslate"><span class="pre">dma_buf_ops.vunmap_local</span></code></a> callback. Calls into <a class="reference internal" href="#c.drm_gem_object_funcs" title="drm_gem_object_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_gem_object_funcs.vunmap_local</span></code></a>
+for device specific handling.</p>
 <dl class="c function">
 <dt id="c.drm_gem_prime_mmap">
 int <code class="sig-name descname">drm_gem_prime_mmap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<em>obj</em>, <em class="property">struct</em> vm_area_struct *<em>vma</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_gem_prime_mmap" title="Permalink to this definition">¶</a><br /></dt>
@@ -4736,6 +4933,8 @@ belongs to.</p>
 <p><strong>Members</strong></p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">queue_node</span></code></dt><dd><p>used to append this struct to the queue of jobs in an entity.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">list</span></code></dt><dd><p>a job participates in a “pending” and “done” lists.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">sched</span></code></dt><dd><p>the scheduler instance on which this job is scheduled.</p>
 </dd>

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.23-dragon
+                5.10.24-dragon
               </div>
             
           
@@ -1186,7 +1186,8 @@ cfs_rq-&gt;avg.last_update_time being current.</p>
 <dl class="c function">
 <dt id="c.cpu_util">
 unsigned long <code class="sig-name descname">cpu_util</code><span class="sig-paren">(</span>int <em>cpu</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cpu_util" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Estimates the amount of capacity of a CPU used by CFS tasks.</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -1359,8 +1360,8 @@ variables.</p>
 <p>This macro declares and initializes a completion structure on the kernel
 stack.</p>
 <dl class="c function">
-<dt id="c.__init_completion">
-void <code class="sig-name descname">__init_completion</code><span class="sig-paren">(</span><em class="property">struct</em> completion *<em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__init_completion" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="c.init_completion">
+void <code class="sig-name descname">init_completion</code><span class="sig-paren">(</span><em class="property">struct</em> completion *<em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#c.init_completion" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialize a dynamically allocated completion</p>
 </dd></dl>
 
@@ -4169,30 +4170,19 @@ retrieval.</p>
 </div>
 <div class="section" id="reference-counting">
 <h2>Reference counting<a class="headerlink" href="#reference-counting" title="Permalink to this headline">¶</a></h2>
-<dl class="c struct">
-<dt id="c.refcount_struct">
-<em class="property">struct </em><code class="sig-name descname">refcount_struct</code><a class="headerlink" href="#c.refcount_struct" title="Permalink to this definition">¶</a><br /></dt>
+<dl class="c type">
+<dt id="c.refcount_t">
+<em class="property">type </em><code class="sig-name descname">refcount_t</code><a class="headerlink" href="#c.refcount_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>variant of atomic_t specialized for reference counts</p>
 </dd></dl>
 
-<p><strong>Definition</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct refcount_struct {
-  atomic_t refs;
-};
-</pre></div>
-</div>
-<p><strong>Members</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">refs</span></code></dt><dd><p>atomic_t counter field</p>
-</dd>
-</dl>
 <p><strong>Description</strong></p>
 <p>The counter saturates at REFCOUNT_SATURATED and will not move once
 there. This avoids wrapping the counter and causing ‘spurious’
 use-after-free bugs.</p>
 <dl class="c function">
 <dt id="c.refcount_set">
-void <code class="sig-name descname">refcount_set</code><span class="sig-paren">(</span>refcount_t *<em>r</em>, int <em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_set" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">refcount_set</code><span class="sig-paren">(</span><a class="reference internal" href="#c.refcount_t" title="refcount_t">refcount_t</a> *<em>r</em>, int <em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_set" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set a refcount’s value</p>
 </dd></dl>
 
@@ -4205,7 +4195,7 @@ void <code class="sig-name descname">refcount_set</code><span class="sig-paren">
 </dl>
 <dl class="c function">
 <dt id="c.refcount_read">
-unsigned int <code class="sig-name descname">refcount_read</code><span class="sig-paren">(</span><em class="property">const</em> refcount_t *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_read" title="Permalink to this definition">¶</a><br /></dt>
+unsigned int <code class="sig-name descname">refcount_read</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#c.refcount_t" title="refcount_t">refcount_t</a> *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_read" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get a refcount’s value</p>
 </dd></dl>
 
@@ -4218,7 +4208,7 @@ unsigned int <code class="sig-name descname">refcount_read</code><span class="si
 <p>the refcount’s value</p>
 <dl class="c function">
 <dt id="c.refcount_add_not_zero">
-bool <code class="sig-name descname">refcount_add_not_zero</code><span class="sig-paren">(</span>int <em>i</em>, refcount_t *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_add_not_zero" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">refcount_add_not_zero</code><span class="sig-paren">(</span>int <em>i</em>, <a class="reference internal" href="#c.refcount_t" title="refcount_t">refcount_t</a> *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_add_not_zero" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add a value to a refcount unless it is 0</p>
 </dd></dl>
 
@@ -4242,7 +4232,7 @@ increment a reference count.</p>
 <p>false if the passed refcount is 0, true otherwise</p>
 <dl class="c function">
 <dt id="c.refcount_add">
-void <code class="sig-name descname">refcount_add</code><span class="sig-paren">(</span>int <em>i</em>, refcount_t *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_add" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">refcount_add</code><span class="sig-paren">(</span>int <em>i</em>, <a class="reference internal" href="#c.refcount_t" title="refcount_t">refcount_t</a> *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_add" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add a value to a refcount</p>
 </dd></dl>
 
@@ -4264,7 +4254,7 @@ cases, <a class="reference internal" href="#c.refcount_inc" title="refcount_inc"
 increment a reference count.</p>
 <dl class="c function">
 <dt id="c.refcount_inc_not_zero">
-bool <code class="sig-name descname">refcount_inc_not_zero</code><span class="sig-paren">(</span>refcount_t *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_inc_not_zero" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">refcount_inc_not_zero</code><span class="sig-paren">(</span><a class="reference internal" href="#c.refcount_t" title="refcount_t">refcount_t</a> *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_inc_not_zero" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>increment a refcount unless it is 0</p>
 </dd></dl>
 
@@ -4283,7 +4273,7 @@ and thereby orders future stores. See the comment on top.</p>
 <p>true if the increment was successful, false otherwise</p>
 <dl class="c function">
 <dt id="c.refcount_inc">
-void <code class="sig-name descname">refcount_inc</code><span class="sig-paren">(</span>refcount_t *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_inc" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">refcount_inc</code><span class="sig-paren">(</span><a class="reference internal" href="#c.refcount_t" title="refcount_t">refcount_t</a> *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_inc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>increment a refcount</p>
 </dd></dl>
 
@@ -4300,7 +4290,7 @@ reference on the object.</p>
 condition.</p>
 <dl class="c function">
 <dt id="c.refcount_sub_and_test">
-bool <code class="sig-name descname">refcount_sub_and_test</code><span class="sig-paren">(</span>int <em>i</em>, refcount_t *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_sub_and_test" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">refcount_sub_and_test</code><span class="sig-paren">(</span>int <em>i</em>, <a class="reference internal" href="#c.refcount_t" title="refcount_t">refcount_t</a> *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_sub_and_test" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>subtract from a refcount and test if it is 0</p>
 </dd></dl>
 
@@ -4326,7 +4316,7 @@ decrement a reference count.</p>
 <p>true if the resulting refcount is 0, false otherwise</p>
 <dl class="c function">
 <dt id="c.refcount_dec_and_test">
-bool <code class="sig-name descname">refcount_dec_and_test</code><span class="sig-paren">(</span>refcount_t *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_dec_and_test" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">refcount_dec_and_test</code><span class="sig-paren">(</span><a class="reference internal" href="#c.refcount_t" title="refcount_t">refcount_t</a> *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_dec_and_test" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>decrement a refcount and test if it is 0</p>
 </dd></dl>
 
@@ -4345,7 +4335,7 @@ must come after.</p>
 <p>true if the resulting refcount is 0, false otherwise</p>
 <dl class="c function">
 <dt id="c.refcount_dec">
-void <code class="sig-name descname">refcount_dec</code><span class="sig-paren">(</span>refcount_t *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_dec" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">refcount_dec</code><span class="sig-paren">(</span><a class="reference internal" href="#c.refcount_t" title="refcount_t">refcount_t</a> *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_dec" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>decrement a refcount</p>
 </dd></dl>
 
@@ -4361,7 +4351,7 @@ when saturated at REFCOUNT_SATURATED.</p>
 before.</p>
 <dl class="c function">
 <dt id="c.refcount_dec_if_one">
-bool <code class="sig-name descname">refcount_dec_if_one</code><span class="sig-paren">(</span>refcount_t *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_dec_if_one" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">refcount_dec_if_one</code><span class="sig-paren">(</span><a class="reference internal" href="#c.refcount_t" title="refcount_t">refcount_t</a> *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_dec_if_one" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>decrement a refcount if it is 1</p>
 </dd></dl>
 
@@ -4382,7 +4372,7 @@ operations.</p>
 <p>true if the resulting refcount is 0, false otherwise</p>
 <dl class="c function">
 <dt id="c.refcount_dec_not_one">
-bool <code class="sig-name descname">refcount_dec_not_one</code><span class="sig-paren">(</span>refcount_t *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_dec_not_one" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">refcount_dec_not_one</code><span class="sig-paren">(</span><a class="reference internal" href="#c.refcount_t" title="refcount_t">refcount_t</a> *<em>r</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_dec_not_one" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>decrement a refcount if it is not 1</p>
 </dd></dl>
 
@@ -4399,7 +4389,7 @@ it will return false.</p>
 <p>true if the decrement operation was successful, false otherwise</p>
 <dl class="c function">
 <dt id="c.refcount_dec_and_mutex_lock">
-bool <code class="sig-name descname">refcount_dec_and_mutex_lock</code><span class="sig-paren">(</span>refcount_t *<em>r</em>, <em class="property">struct</em> mutex *<em>lock</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_dec_and_mutex_lock" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">refcount_dec_and_mutex_lock</code><span class="sig-paren">(</span><a class="reference internal" href="#c.refcount_t" title="refcount_t">refcount_t</a> *<em>r</em>, <em class="property">struct</em> mutex *<em>lock</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_dec_and_mutex_lock" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return holding mutex if able to decrement refcount to 0</p>
 </dd></dl>
 
@@ -4423,7 +4413,7 @@ See the comment on top.</p>
 </dl>
 <dl class="c function">
 <dt id="c.refcount_dec_and_lock">
-bool <code class="sig-name descname">refcount_dec_and_lock</code><span class="sig-paren">(</span>refcount_t *<em>r</em>, spinlock_t *<em>lock</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_dec_and_lock" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">refcount_dec_and_lock</code><span class="sig-paren">(</span><a class="reference internal" href="#c.refcount_t" title="refcount_t">refcount_t</a> *<em>r</em>, spinlock_t *<em>lock</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_dec_and_lock" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return holding spinlock if able to decrement refcount to 0</p>
 </dd></dl>
 
@@ -4447,7 +4437,7 @@ See the comment on top.</p>
 </dl>
 <dl class="c function">
 <dt id="c.refcount_dec_and_lock_irqsave">
-bool <code class="sig-name descname">refcount_dec_and_lock_irqsave</code><span class="sig-paren">(</span>refcount_t *<em>r</em>, spinlock_t *<em>lock</em>, unsigned long *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_dec_and_lock_irqsave" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">refcount_dec_and_lock_irqsave</code><span class="sig-paren">(</span><a class="reference internal" href="#c.refcount_t" title="refcount_t">refcount_t</a> *<em>r</em>, spinlock_t *<em>lock</em>, unsigned long *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.refcount_dec_and_lock_irqsave" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return holding spinlock with disabled interrupts if able to decrement refcount to 0</p>
 </dd></dl>
 

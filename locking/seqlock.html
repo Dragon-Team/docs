@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.23-dragon
+                5.10.24-dragon
               </div>
             
           
@@ -119,7 +119,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Sequence counters and sequential locks</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sequence-counters-seqcount-t">Sequence counters (<code class="docutils literal notranslate"><span class="pre">seqcount_t</span></code>)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#sequence-counters-with-associated-locks-seqcount-locktype-t">Sequence counters with associated locks (<code class="docutils literal notranslate"><span class="pre">seqcount_LOCKTYPE_t</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sequence-counters-with-associated-locks-seqcount-lockname-t">Sequence counters with associated locks (<code class="docutils literal notranslate"><span class="pre">seqcount_LOCKNAME_t</span></code>)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#latch-sequence-counters-seqcount-latch-t">Latch sequence counters (<code class="docutils literal notranslate"><span class="pre">seqcount_latch_t</span></code>)</a></li>
 </ul>
 </li>
@@ -350,8 +350,8 @@ write_seqcount_end(&amp;foo_seqcount);
 } while (read_seqcount_retry(&amp;foo_seqcount, seq));
 </pre></div>
 </div>
-<div class="section" id="sequence-counters-with-associated-locks-seqcount-locktype-t">
-<span id="seqcount-locktype-t"></span><h3>Sequence counters with associated locks (<code class="docutils literal notranslate"><span class="pre">seqcount_LOCKTYPE_t</span></code>)<a class="headerlink" href="#sequence-counters-with-associated-locks-seqcount-locktype-t" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="sequence-counters-with-associated-locks-seqcount-lockname-t">
+<span id="seqcount-locktype-t"></span><h3>Sequence counters with associated locks (<code class="docutils literal notranslate"><span class="pre">seqcount_LOCKNAME_t</span></code>)<a class="headerlink" href="#sequence-counters-with-associated-locks-seqcount-lockname-t" title="Permalink to this headline">¶</a></h3>
 <p>As discussed at <a class="reference internal" href="#seqcount-t"><span class="std std-ref">Sequence counters (seqcount_t)</span></a>, sequence count write side critical
 sections must be serialized and non-preemptible. This variant of
 sequence counters associate the lock used for writer serialization at
@@ -374,26 +374,25 @@ protection is enforced in the write side function.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">seqcount_ww_mutex_t</span></code></p></li>
 </ul>
 </div></blockquote>
-<p>The plain seqcount read and write APIs branch out to the specific
-seqcount_LOCKTYPE_t implementation at compile-time. This avoids kernel
-API explosion per each new seqcount LOCKTYPE.</p>
-<p>Initialization (replace “LOCKTYPE” with one of the supported locks):</p>
+<p>The sequence counter read and write APIs can take either a plain
+seqcount_t or any of the seqcount_LOCKNAME_t variants above.</p>
+<p>Initialization (replace “LOCKNAME” with one of the supported locks):</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/* dynamic */
-seqcount_LOCKTYPE_t foo_seqcount;
-seqcount_LOCKTYPE_init(&amp;foo_seqcount, &amp;lock);
+seqcount_LOCKNAME_t foo_seqcount;
+seqcount_LOCKNAME_init(&amp;foo_seqcount, &amp;lock);
 
 /* static */
-static seqcount_LOCKTYPE_t foo_seqcount =
-        SEQCNT_LOCKTYPE_ZERO(foo_seqcount, &amp;lock);
+static seqcount_LOCKNAME_t foo_seqcount =
+        SEQCNT_LOCKNAME_ZERO(foo_seqcount, &amp;lock);
 
 /* C99 struct init */
 struct {
-        .seq   = SEQCNT_LOCKTYPE_ZERO(foo.seq, &amp;lock),
+        .seq   = SEQCNT_LOCKNAME_ZERO(foo.seq, &amp;lock),
 } foo;
 </pre></div>
 </div>
 <p>Write path: same as in <a class="reference internal" href="#seqcount-t"><span class="std std-ref">Sequence counters (seqcount_t)</span></a>, while running from a context
-with the associated LOCKTYPE lock acquired.</p>
+with the associated write serialization lock acquired.</p>
 <p>Read path: same as in <a class="reference internal" href="#seqcount-t"><span class="std std-ref">Sequence counters (seqcount_t)</span></a>.</p>
 </div>
 <div class="section" id="latch-sequence-counters-seqcount-latch-t">
@@ -676,6 +675,8 @@ seqcount_t.  If the critical section was invalid, it must be ignored
 <dt><code class="docutils literal notranslate"><span class="pre">s</span></code></dt><dd><p>Pointer to seqcount_t or any of the seqcount_LOCKNAME_t variants</p>
 </dd>
 </dl>
+<p><strong>Context</strong></p>
+<p>check <a class="reference internal" href="#c.write_seqcount_begin" title="write_seqcount_begin"><code class="xref c c-func docutils literal notranslate"><span class="pre">write_seqcount_begin()</span></code></a></p>
 <dl class="c macro">
 <dt id="c.raw_write_seqcount_end">
 <code class="sig-name descname">raw_write_seqcount_end</code><a class="headerlink" href="#c.raw_write_seqcount_end" title="Permalink to this definition">¶</a><br /></dt>
@@ -690,6 +691,8 @@ seqcount_t.  If the critical section was invalid, it must be ignored
 <dt><code class="docutils literal notranslate"><span class="pre">s</span></code></dt><dd><p>Pointer to seqcount_t or any of the seqcount_LOCKNAME_t variants</p>
 </dd>
 </dl>
+<p><strong>Context</strong></p>
+<p>check <a class="reference internal" href="#c.write_seqcount_end" title="write_seqcount_end"><code class="xref c c-func docutils literal notranslate"><span class="pre">write_seqcount_end()</span></code></a></p>
 <dl class="c macro">
 <dt id="c.write_seqcount_begin_nested">
 <code class="sig-name descname">write_seqcount_begin_nested</code><a class="headerlink" href="#c.write_seqcount_begin_nested" title="Permalink to this definition">¶</a><br /></dt>
@@ -708,6 +711,8 @@ seqcount_t.  If the critical section was invalid, it must be ignored
 </dl>
 <p><strong>Description</strong></p>
 <p>See <a class="reference internal" href="lockdep-design.html"><span class="doc">Runtime locking correctness validator</span></a></p>
+<p><strong>Context</strong></p>
+<p>check <a class="reference internal" href="#c.write_seqcount_begin" title="write_seqcount_begin"><code class="xref c c-func docutils literal notranslate"><span class="pre">write_seqcount_begin()</span></code></a></p>
 <dl class="c macro">
 <dt id="c.write_seqcount_begin">
 <code class="sig-name descname">write_seqcount_begin</code><a class="headerlink" href="#c.write_seqcount_begin" title="Permalink to this definition">¶</a><br /></dt>
@@ -722,12 +727,11 @@ seqcount_t.  If the critical section was invalid, it must be ignored
 <dt><code class="docutils literal notranslate"><span class="pre">s</span></code></dt><dd><p>Pointer to seqcount_t or any of the seqcount_LOCKNAME_t variants</p>
 </dd>
 </dl>
-<p><strong>Description</strong></p>
-<p>write_seqcount_begin opens a write side critical section of the given
-seqcount_t.</p>
 <p><strong>Context</strong></p>
-<p>seqcount_t write side critical sections must be serialized and
-non-preemptible. If readers can be invoked from hardirq or softirq
+<p>sequence counter write side sections must be serialized and
+non-preemptible. Preemption will be automatically disabled if and
+only if the seqcount write serialization lock is associated, and
+preemptible.  If readers can be invoked from hardirq or softirq
 context, interrupts or bottom halves must be respectively disabled.</p>
 <dl class="c macro">
 <dt id="c.write_seqcount_end">
@@ -743,8 +747,9 @@ context, interrupts or bottom halves must be respectively disabled.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">s</span></code></dt><dd><p>Pointer to seqcount_t or any of the seqcount_LOCKNAME_t variants</p>
 </dd>
 </dl>
-<p><strong>Description</strong></p>
-<p>The write section must’ve been opened with <a class="reference internal" href="#c.write_seqcount_begin" title="write_seqcount_begin"><code class="xref c c-func docutils literal notranslate"><span class="pre">write_seqcount_begin()</span></code></a>.</p>
+<p><strong>Context</strong></p>
+<p>Preemption will be automatically re-enabled if and only if
+the seqcount write serialization lock is associated, and preemptible.</p>
 <dl class="c macro">
 <dt id="c.raw_write_seqcount_barrier">
 <code class="sig-name descname">raw_write_seqcount_barrier</code><a class="headerlink" href="#c.raw_write_seqcount_barrier" title="Permalink to this definition">¶</a><br /></dt>

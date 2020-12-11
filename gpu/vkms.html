@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.23-dragon
+                5.10.24-dragon
               </div>
             
           
@@ -154,6 +154,8 @@
 <li class="toctree-l3"><a class="reference internal" href="v3d.html">drm/v3d Broadcom V3D Graphics Driver</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vc4.html">drm/vc4 Broadcom VC4 Graphics Driver</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">drm/vkms Virtual Kernel Modesetting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-with-igt">Testing With IGT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#todo">TODO</a></li>
 </ul>
 </li>
@@ -289,6 +291,73 @@
 and for running X (or similar) on headless machines. VKMS aims to enable
 a virtual display with no need of a hardware display capability, releasing
 the GPU in DRM API tests.</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>The VKMS driver can be setup with the following steps:</p>
+<p>To check if VKMS is loaded, run:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>lsmod | grep vkms
+</pre></div>
+</div>
+<p>This should list the VKMS driver. If no output is obtained, then
+you need to enable and/or load the VKMS driver.
+Ensure that the VKMS driver has been set as a loadable module in your
+kernel config file. Do:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>make nconfig
+
+Go to `Device Drivers&gt; Graphics support`
+
+Enable `Virtual KMS (EXPERIMENTAL)`
+</pre></div>
+</div>
+<p>Compile and build the kernel for the changes to get reflected.
+Now, to load the driver, use:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo modprobe vkms
+</pre></div>
+</div>
+<p>On running the lsmod command now, the VKMS driver will appear listed.
+You can also observe the driver being loaded in the dmesg logs.</p>
+<p>To disable the driver, use</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo modprobe -r vkms
+</pre></div>
+</div>
+</div>
+<div class="section" id="testing-with-igt">
+<h2>Testing With IGT<a class="headerlink" href="#testing-with-igt" title="Permalink to this headline">¶</a></h2>
+<p>The IGT GPU Tools is a test suite used specifically for debugging and
+development of the DRM drivers.
+The IGT Tools can be installed from
+<a class="reference external" href="https://gitlab.freedesktop.org/drm/igt-gpu-tools">here</a> .</p>
+<p>The tests need to be run without a compositor, so you need to switch to text
+only mode. You can do this by:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo systemctl isolate multi-user.target
+</pre></div>
+</div>
+<p>To return to graphical mode, do:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo systemctl isolate graphical.target
+</pre></div>
+</div>
+<p>Once you are in text only mode, you can run tests using the –device switch
+or IGT_DEVICE variable to specify the device filter for the driver we want
+to test. IGT_DEVICE can also be used with the run-test.sh script to run the
+tests for a specific driver:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo ./build/tests/&lt;name of test&gt; --device &quot;sys:/sys/devices/platform/vkms&quot;
+sudo IGT_DEVICE=&quot;sys:/sys/devices/platform/vkms&quot; ./build/tests/&lt;name of test&gt;
+sudo IGT_DEVICE=&quot;sys:/sys/devices/platform/vkms&quot; ./scripts/run-tests.sh -t &lt;name of test&gt;
+</pre></div>
+</div>
+<p>For example, to test the functionality of the writeback library,
+we can run the kms_writeback test:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo ./build/tests/kms_writeback --device &quot;sys:/sys/devices/platform/vkms&quot;
+sudo IGT_DEVICE=&quot;sys:/sys/devices/platform/vkms&quot; ./build/tests/kms_writeback
+sudo IGT_DEVICE=&quot;sys:/sys/devices/platform/vkms&quot; ./scripts/run-tests.sh -t kms_writeback
+</pre></div>
+</div>
+<p>You can also run subtests if you do not want to run the entire test:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo ./build/tests/kms_flip --run-subtest basic-plain-flip --device &quot;sys:/sys/devices/platform/vkms&quot;
+sudo IGT_DEVICE=&quot;sys:/sys/devices/platform/vkms&quot; ./build/tests/kms_flip --run-subtest basic-plain-flip
+</pre></div>
+</div>
+</div>
 <div class="section" id="todo">
 <h2>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>
 <p>If you want to do any of the items listed below, please share your interest

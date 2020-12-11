@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.23-dragon
+                5.10.24-dragon
               </div>
             
           
@@ -2826,7 +2826,7 @@ int <code class="sig-name descname">usb_get_descriptor</code><span class="sig-pa
 <p><strong>Description</strong></p>
 <p>Gets a USB descriptor.  Convenience functions exist to simplify
 getting some types of descriptors.  Use
-usb_get_string() or <a class="reference internal" href="#c.usb_string" title="usb_string"><code class="xref c c-func docutils literal notranslate"><span class="pre">usb_string()</span></code></a> for USB_DT_STRING.
+usb_get_string() or <a class="reference internal" href="gadget.html#c.usb_string" title="usb_string"><code class="xref c c-func docutils literal notranslate"><span class="pre">usb_string()</span></code></a> for USB_DT_STRING.
 Device (USB_DT_DEVICE) and configuration descriptors (USB_DT_CONFIG)
 are part of the device structure.
 In addition to a number of USB-standard descriptors, some
@@ -2837,7 +2837,7 @@ devices also use class-specific or vendor-specific descriptors.</p>
 returned by the underlying <a class="reference internal" href="#c.usb_control_msg" title="usb_control_msg"><code class="xref c c-func docutils literal notranslate"><span class="pre">usb_control_msg()</span></code></a> call.</p>
 <dl class="c function">
 <dt id="c.usb_string">
-int <code class="sig-name descname">usb_string</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, int <em>index</em>, char *<em>buf</em>, size_t <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_string" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">usb_string</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, int <em>index</em>, char *<em>buf</em>, size_t <em>size</em><span class="sig-paren">)</span><br /></dt>
 <dd><p>returns UTF-8 version of a string descriptor</p>
 </dd></dl>
 

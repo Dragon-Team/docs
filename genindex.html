@@ -57,7 +57,7 @@
             
             
               <div class="version">
-                5.10.23-dragon
+                5.10.24-dragon
               </div>
             
           
@@ -444,8 +444,6 @@
       <li><a href="driver-api/infiniband.html#c.__ib_alloc_cq_any">__ib_alloc_cq_any (C function)</a>
 </li>
       <li><a href="driver-api/infiniband.html#c.__ib_alloc_pd">__ib_alloc_pd (C function)</a>
-</li>
-      <li><a href="driver-api/basics.html#c.__init_completion">__init_completion (C function)</a>
 </li>
       <li><a href="filesystems/api-summary.html#c.__insert_inode_hash">__insert_inode_hash (C function)</a>
 </li>
@@ -3843,7 +3841,11 @@
 </li>
       <li><a href="driver-api/dma-buf.html#c.dma_buf_vmap">dma_buf_vmap (C function)</a>
 </li>
+      <li><a href="driver-api/dma-buf.html#c.dma_buf_vmap_local">dma_buf_vmap_local (C function)</a>
+</li>
       <li><a href="driver-api/dma-buf.html#c.dma_buf_vunmap">dma_buf_vunmap (C function)</a>
+</li>
+      <li><a href="driver-api/dma-buf.html#c.dma_buf_vunmap_local">dma_buf_vunmap_local (C function)</a>
 </li>
       <li><a href="driver-api/infrastructure.html#c.dma_can_mmap">dma_can_mmap (C function)</a>
 </li>
@@ -4429,9 +4431,17 @@
 </li>
       <li><a href="gpu/drm-client.html#c.drm_client_buffer">drm_client_buffer (C struct)</a>
 </li>
+      <li><a href="gpu/drm-client.html#c.drm_client_buffer_lock">drm_client_buffer_lock (C function)</a>
+</li>
+      <li><a href="gpu/drm-client.html#c.drm_client_buffer_unlock">drm_client_buffer_unlock (C function)</a>
+</li>
       <li><a href="gpu/drm-client.html#c.drm_client_buffer_vmap">drm_client_buffer_vmap (C function)</a>
 </li>
+      <li><a href="gpu/drm-client.html#c.drm_client_buffer_vmap_local">drm_client_buffer_vmap_local (C function)</a>
+</li>
       <li><a href="gpu/drm-client.html#c.drm_client_buffer_vunmap">drm_client_buffer_vunmap (C function)</a>
+</li>
+      <li><a href="gpu/drm-client.html#c.drm_client_buffer_vunmap_local">drm_client_buffer_vunmap_local (C function)</a>
 </li>
       <li><a href="gpu/drm-client.html#c.drm_client_dev">drm_client_dev (C struct)</a>
 </li>
@@ -4841,12 +4851,12 @@
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_put_mstb_malloc">drm_dp_mst_put_mstb_malloc (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_put_port_malloc">drm_dp_mst_put_port_malloc (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_reset_vcpi_slots">drm_dp_mst_reset_vcpi_slots (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_topology_get_mstb">drm_dp_mst_topology_get_mstb (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_topology_get_port">drm_dp_mst_topology_get_port (C function)</a>
@@ -4928,6 +4938,8 @@
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dsc_config">drm_dsc_config (C struct)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dsc_dp_pps_header_init">drm_dsc_dp_pps_header_init (C function)</a>
+</li>
+      <li><a href="gpu/drm-kms-helpers.html#c.drm_dsc_dp_rc_buffer_size">drm_dsc_dp_rc_buffer_size (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dsc_picture_parameter_set">drm_dsc_picture_parameter_set (C struct)</a>
 </li>
@@ -5217,6 +5229,8 @@
 </li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_cma_vmap">drm_gem_cma_vmap (C function)</a>
 </li>
+      <li><a href="gpu/drm-mm.html#c.drm_gem_cma_vmap_local">drm_gem_cma_vmap_local (C function)</a>
+</li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_create_mmap_offset">drm_gem_create_mmap_offset (C function)</a>
 </li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_create_mmap_offset_size">drm_gem_create_mmap_offset_size (C function)</a>
@@ -5231,7 +5245,11 @@
 </li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_dmabuf_vmap">drm_gem_dmabuf_vmap (C function)</a>
 </li>
+      <li><a href="gpu/drm-mm.html#c.drm_gem_dmabuf_vmap_local">drm_gem_dmabuf_vmap_local (C function)</a>
+</li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_dmabuf_vunmap">drm_gem_dmabuf_vunmap (C function)</a>
+</li>
+      <li><a href="gpu/drm-mm.html#c.drm_gem_dmabuf_vunmap_local">drm_gem_dmabuf_vunmap_local (C function)</a>
 </li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_dumb_destroy">drm_gem_dumb_destroy (C function)</a>
 </li>
@@ -5341,6 +5359,14 @@
 </li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_shmem_unpin">drm_gem_shmem_unpin (C function)</a>
 </li>
+      <li><a href="gpu/drm-mm.html#c.drm_gem_shmem_vmap">drm_gem_shmem_vmap (C function)</a>
+</li>
+      <li><a href="gpu/drm-mm.html#c.drm_gem_shmem_vmap_local">drm_gem_shmem_vmap_local (C function)</a>
+</li>
+      <li><a href="gpu/drm-mm.html#c.drm_gem_shmem_vunmap">drm_gem_shmem_vunmap (C function)</a>
+</li>
+      <li><a href="gpu/drm-mm.html#c.drm_gem_shmem_vunmap_local">drm_gem_shmem_vunmap_local (C function)</a>
+</li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_ttm_mmap">drm_gem_ttm_mmap (C function)</a>
 </li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_ttm_print_info">drm_gem_ttm_print_info (C function)</a>
@@ -5391,7 +5417,11 @@
 </li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_vram_vmap">drm_gem_vram_vmap (C function)</a>
 </li>
+      <li><a href="gpu/drm-mm.html#c.drm_gem_vram_vmap_local">drm_gem_vram_vmap_local (C function)</a>
+</li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_vram_vunmap">drm_gem_vram_vunmap (C function)</a>
+</li>
+      <li><a href="gpu/drm-mm.html#c.drm_gem_vram_vunmap_local">drm_gem_vram_vunmap_local (C function)</a>
 </li>
       <li><a href="gpu/drm-kms.html#c.drm_get_connector_status_name">drm_get_connector_status_name (C function)</a>
 </li>
@@ -9055,6 +9085,8 @@
 </li>
       <li><a href="filesystems/api-summary.html#c.inc_nlink">inc_nlink (C function)</a>
 </li>
+      <li><a href="driver-api/basics.html#c.init_completion">init_completion (C function)</a>
+</li>
       <li><a href="networking/kapi.html#c.init_dummy_netdev">init_dummy_netdev (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.INIT_KFIFO">INIT_KFIFO (C macro)</a>
@@ -9203,10 +9235,10 @@
 </li>
       <li><a href="core-api/kernel-api.html#c.int_pow">int_pow (C function)</a>
 </li>
-      <li><a href="core-api/kernel-api.html#c.int_sqrt">int_sqrt (C function)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="core-api/kernel-api.html#c.int_sqrt">int_sqrt (C function)</a>
+</li>
       <li><a href="core-api/kernel-api.html#c.int_sqrt64">int_sqrt64 (C function)</a>
 </li>
       <li><a href="driver-api/scsi.html#c.int_to_scsilun">int_to_scsilun (C function)</a>
@@ -13963,9 +13995,9 @@
 </li>
       <li><a href="driver-api/basics.html#c.refcount_set">refcount_set (C function)</a>
 </li>
-      <li><a href="driver-api/basics.html#c.refcount_struct">refcount_struct (C struct)</a>
-</li>
       <li><a href="driver-api/basics.html#c.refcount_sub_and_test">refcount_sub_and_test (C function)</a>
+</li>
+      <li><a href="driver-api/basics.html#c.refcount_t">refcount_t (C type)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.region_intersects">region_intersects (C function)</a>
 </li>

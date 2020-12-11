@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.23-dragon
+                5.10.24-dragon
               </div>
             
           
@@ -341,7 +341,7 @@ does not happen until all related activities (complete() or <a class="reference 
 have taken place, even if these wait functions return prematurely due to a timeout
 or a signal triggering.</p>
 <p>Initializing of dynamically allocated completion objects is done via a call to
-init_completion():</p>
+<a class="reference internal" href="../driver-api/basics.html#c.init_completion" title="init_completion"><code class="xref c c-func docutils literal notranslate"><span class="pre">init_completion()</span></code></a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>init_completion(&amp;dynamic_object-&gt;done);
 </pre></div>
 </div>
@@ -351,7 +351,7 @@ or “not done”.</p>
 -&gt;done field to 0 (“not done”), without touching the waitqueue.
 Callers of this function must make sure that there are no racy
 wait_for_completion() calls going on in parallel.</p>
-<p>Calling init_completion() on the same completion object twice is
+<p>Calling <a class="reference internal" href="../driver-api/basics.html#c.init_completion" title="init_completion"><code class="xref c c-func docutils literal notranslate"><span class="pre">init_completion()</span></code></a> on the same completion object twice is
 most likely a bug as it re-initializes the queue to an empty queue and
 enqueued tasks could get “lost” - use <a class="reference internal" href="../driver-api/basics.html#c.reinit_completion" title="reinit_completion"><code class="xref c c-func docutils literal notranslate"><span class="pre">reinit_completion()</span></code></a> in that case,
 but be aware of other races.</p>
@@ -363,7 +363,7 @@ DECLARE_COMPLETION(setup_done);
 </pre></div>
 </div>
 <p>Note that in this case the completion is boot time (or module load time)
-initialized to ‘not done’ and doesn’t require an init_completion() call.</p>
+initialized to ‘not done’ and doesn’t require an <a class="reference internal" href="../driver-api/basics.html#c.init_completion" title="init_completion"><code class="xref c c-func docutils literal notranslate"><span class="pre">init_completion()</span></code></a> call.</p>
 <p>When a completion is declared as a local variable within a function,
 then the initialization should always use <a class="reference internal" href="../driver-api/basics.html#c.DECLARE_COMPLETION_ONSTACK" title="DECLARE_COMPLETION_ONSTACK"><code class="xref c c-func docutils literal notranslate"><span class="pre">DECLARE_COMPLETION_ONSTACK()</span></code></a>
 explicitly, not just to make lockdep happy, but also to make it clear

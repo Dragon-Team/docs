@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.23-dragon
+                5.10.24-dragon
               </div>
             
           
@@ -1336,6 +1336,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#marvell-nand-controller-driver">MARVELL NAND CONTROLLER DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#marvell-octeontx2-physical-function-driver">MARVELL OCTEONTX2 PHYSICAL FUNCTION DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#marvell-octeontx2-rvu-admin-function-driver">MARVELL OCTEONTX2 RVU ADMIN FUNCTION DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#marvell-prestera-ethernet-switch-driver">MARVELL PRESTERA ETHERNET SWITCH DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#marvell-soc-mmc-sd-sdio-controller-driver">MARVELL SOC MMC/SD/SDIO CONTROLLER DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#marvell-usb-mdio-controller-driver">MARVELL USB MDIO CONTROLLER DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#marvell-xenon-mmc-sd-sdio-host-controller-driver">MARVELL XENON MMC/SD/SDIO HOST CONTROLLER DRIVER</a></li>
@@ -9317,6 +9318,8 @@ Peter Zijlstra &lt;<a class="reference external" href="mailto:peterz&#37;&#52;&#
 <dt class="field-odd">Files</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">arch/*/include/asm/atomic*.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/*/atomic*.h</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/linux/refcount.h</span></code>
+<code class="docutils literal notranslate"><span class="pre">Documentation/atomic_*.txt</span></code>
 <code class="docutils literal notranslate"><span class="pre">scripts/atomic/</span></code></p>
 </dd>
 </dl>
@@ -26603,7 +26606,7 @@ Joel Fernandes &lt;<a class="reference external" href="mailto:joel&#37;&#52;&#48
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/atomic_bitops.txt</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/atomic_t.txt</span></code>
-<a class="reference internal" href="../core-api/atomic_ops.html"><span class="doc">core-api/atomic_ops</span></a>
+<span class="xref std std-doc">core-api/atomic_ops</span>
 <a class="reference internal" href="../core-api/refcount-vs-atomic.html"><span class="doc">core-api/refcount-vs-atomic</span></a>
 <code class="docutils literal notranslate"><span class="pre">Documentation/litmus-tests/</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/memory-barriers.txt</span></code>
@@ -27647,6 +27650,24 @@ Jerin Jacob &lt;<a class="reference external" href="mailto:jerinj&#37;&#52;&#48;
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><a class="reference internal" href="../networking/device_drivers/ethernet/marvell/octeontx2.html"><span class="doc">networking/device_drivers/ethernet/marvell/octeontx2</span></a>
 <code class="docutils literal notranslate"><span class="pre">drivers/net/ethernet/marvell/octeontx2/af/</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="marvell-prestera-ethernet-switch-driver">
+<h3>MARVELL PRESTERA ETHERNET SWITCH DRIVER<a class="headerlink" href="#marvell-prestera-ethernet-switch-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Vadym Kochan &lt;<a class="reference external" href="mailto:vkochan&#37;&#52;&#48;marvell&#46;com">vkochan<span>&#64;</span>marvell<span>&#46;</span>com</a>&gt;,
+Taras Chornyi &lt;<a class="reference external" href="mailto:tchornyi&#37;&#52;&#48;marvell&#46;com">tchornyi<span>&#64;</span>marvell<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Status</dt>
+<dd class="field-even"><p>Supported</p>
+</dd>
+<dt class="field-odd">Web-page</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://github.com/Marvell-switching/switchdev-prestera">https://github.com/Marvell-switching/switchdev-prestera</a></p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/net/ethernet/marvell/prestera/</span></code></p>
 </dd>
 </dl>
 </div>
@@ -42056,11 +42077,17 @@ Shiraz Hashim &lt;<a class="reference external" href="mailto:shiraz&#46;linux&#4
 <div class="section" id="spmi-subsystem">
 <h3>SPMI SUBSYSTEM<a class="headerlink" href="#spmi-subsystem" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
-<dt class="field-odd">Reviewer</dt>
+<dt class="field-odd">Mail</dt>
 <dd class="field-odd"><p>Stephen Boyd &lt;<a class="reference external" href="mailto:sboyd&#37;&#52;&#48;kernel&#46;org">sboyd<span>&#64;</span>kernel<span>&#46;</span>org</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:linux-arm-msm&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-arm-msm<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+<dd class="field-even"><p><a class="reference external" href="mailto:linux-kernel&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-kernel<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Maintained</p>
+</dd>
+<dt class="field-even">SCM</dt>
+<dd class="field-even"><p>git git://git.kernel.org/pub/scm/linux/kernel/git/sboyd/spmi.git</p>
 </dd>
 <dt class="field-odd">Files</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/spmi/</span></code>

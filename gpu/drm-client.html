@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.23-dragon
+                5.10.24-dragon
               </div>
             
           
@@ -482,6 +482,38 @@ void <code class="sig-name descname">drm_client_dev_hotplug</code><span class="s
 <p><a class="reference internal" href="drm-kms-helpers.html#c.drm_kms_helper_hotplug_event" title="drm_kms_helper_hotplug_event"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_kms_helper_hotplug_event()</span></code></a> calls this function, so drivers that use it
 don’t need to call this function themselves.</p>
 <dl class="c function">
+<dt id="c.drm_client_buffer_lock">
+int <code class="sig-name descname">drm_client_buffer_lock</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_buffer" title="drm_client_buffer">drm_client_buffer</a> *<em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_buffer_lock" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Locks the DRM client buffer</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_client_buffer</span> <span class="pre">*buffer</span></code></dt><dd><p>DRM client buffer</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function locks the client buffer by acquiring the buffer
+object’s reservation lock.</p>
+<p>Unlock the buffer with <a class="reference internal" href="#c.drm_client_buffer_unlock" title="drm_client_buffer_unlock"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_client_buffer_unlock()</span></code></a>.</p>
+<p><strong>Return</strong></p>
+<blockquote>
+<div><p>0 on success, or a negative errno code otherwise.</p>
+</div></blockquote>
+<dl class="c function">
+<dt id="c.drm_client_buffer_unlock">
+void <code class="sig-name descname">drm_client_buffer_unlock</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_buffer" title="drm_client_buffer">drm_client_buffer</a> *<em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_buffer_unlock" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Unlock DRM client buffer</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_client_buffer</span> <span class="pre">*buffer</span></code></dt><dd><p>DRM client buffer</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Unlocks a client buffer. See <a class="reference internal" href="#c.drm_client_buffer_lock" title="drm_client_buffer_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_client_buffer_lock()</span></code></a>.</p>
+<dl class="c function">
 <dt id="c.drm_client_buffer_vmap">
 int <code class="sig-name descname">drm_client_buffer_vmap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_buffer" title="drm_client_buffer">drm_client_buffer</a> *<em>buffer</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_map" title="dma_buf_map">dma_buf_map</a> *<em>map_copy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_buffer_vmap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Map DRM client buffer into address space</p>
@@ -511,6 +543,48 @@ function. So you can modify it at will during blit and draw operations.</p>
 <dl class="c function">
 <dt id="c.drm_client_buffer_vunmap">
 void <code class="sig-name descname">drm_client_buffer_vunmap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_buffer" title="drm_client_buffer">drm_client_buffer</a> *<em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_buffer_vunmap" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Unmap DRM client buffer</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_client_buffer</span> <span class="pre">*buffer</span></code></dt><dd><p>DRM client buffer</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function removes a client buffer’s memory mapping. Calling this
+function is only required by clients that manage their buffer mappings
+by themselves.</p>
+<dl class="c function">
+<dt id="c.drm_client_buffer_vmap_local">
+int <code class="sig-name descname">drm_client_buffer_vmap_local</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_buffer" title="drm_client_buffer">drm_client_buffer</a> *<em>buffer</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_map" title="dma_buf_map">dma_buf_map</a> *<em>map_copy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_buffer_vmap_local" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Map DRM client buffer into address space</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_client_buffer</span> <span class="pre">*buffer</span></code></dt><dd><p>DRM client buffer</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf_map</span> <span class="pre">*map_copy</span></code></dt><dd><p>Returns the mapped memory’s address</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function maps a client buffer into kernel address space. If the
+buffer is already mapped, it returns the existing mapping’s address.</p>
+<p>Client buffer mappings are not ref’counted. Each call to
+<a class="reference internal" href="#c.drm_client_buffer_vmap_local" title="drm_client_buffer_vmap_local"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_client_buffer_vmap_local()</span></code></a> should be followed by a call to
+<a class="reference internal" href="#c.drm_client_buffer_vunmap_local" title="drm_client_buffer_vunmap_local"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_client_buffer_vunmap_local()</span></code></a>; or the client buffer should be mapped
+throughout its lifetime.</p>
+<p>The returned address is a copy of the internal value. In contrast to
+other vmap interfaces, you don’t need it for the client’s vunmap
+function. So you can modify it at will during blit and draw operations.</p>
+<p><strong>Return</strong></p>
+<blockquote>
+<div><p>0 on success, or a negative errno code otherwise.</p>
+</div></blockquote>
+<dl class="c function">
+<dt id="c.drm_client_buffer_vunmap_local">
+void <code class="sig-name descname">drm_client_buffer_vunmap_local</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_buffer" title="drm_client_buffer">drm_client_buffer</a> *<em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_buffer_vunmap_local" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Unmap DRM client buffer</p>
 </dd></dl>
 
