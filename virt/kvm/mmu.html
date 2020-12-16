@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.25-dragon
+                5.10.26-dragon
               </div>
             
           
@@ -797,7 +797,7 @@ changes.</p>
 If the generation number of the spte does not equal the global generation
 number, it will ignore the cached MMIO information and handle the page
 fault through the slow path.</p>
-<p>Since only 19 bits are used to store generation-number on mmio spte, all
+<p>Since only 18 bits are used to store generation-number on mmio spte, all
 pages are zapped when there is an overflow.</p>
 <p>Unfortunately, a single memory access might access kvm_memslots(kvm) multiple
 times, the last one happening when the generation number is retrieved and

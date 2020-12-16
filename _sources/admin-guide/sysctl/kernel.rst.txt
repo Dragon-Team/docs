@@ -1060,17 +1060,6 @@ that support this feature.
     Systems with ancient and/or broken binaries should be configured
     with ``CONFIG_COMPAT_BRK`` enabled, which excludes the heap from process
     address space randomization.
-
-3   Additionally enable full randomization of memory mappings created
-    with mmap(NULL, ...). With 2, the base of the VMA used for such
-    mappings is random, but the mappings are created in predictable
-    places within the VMA and in sequential order. With 3, new VMAs
-    are created to fully randomize the mappings. Also mremap(...,
-    MREMAP_MAYMOVE) will move the mappings even if not necessary.
-
-    On 32 bit systems this may cause problems due to increased VM
-    fragmentation if the address space gets crowded.
-
 ==  ===========================================================================
 
 

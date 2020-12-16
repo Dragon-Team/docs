@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.25-dragon
+                5.10.26-dragon
               </div>
             
           
@@ -1537,17 +1537,6 @@ systems it is safe to choose full randomization.</p>
 <p>Systems with ancient and/or broken binaries should be configured
 with <code class="docutils literal notranslate"><span class="pre">CONFIG_COMPAT_BRK</span></code> enabled, which excludes the heap from process
 address space randomization.</p>
-</td>
-</tr>
-<tr class="row-even"><td><p>3</p></td>
-<td><p>Additionally enable full randomization of memory mappings created
-with mmap(NULL, …). With 2, the base of the VMA used for such
-mappings is random, but the mappings are created in predictable
-places within the VMA and in sequential order. With 3, new VMAs
-are created to fully randomize the mappings. Also mremap(…,
-MREMAP_MAYMOVE) will move the mappings even if not necessary.</p>
-<p>On 32 bit systems this may cause problems due to increased VM
-fragmentation if the address space gets crowded.</p>
 </td>
 </tr>
 </tbody>

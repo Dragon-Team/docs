@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.25-dragon
+                5.10.26-dragon
               </div>
             
           
@@ -1017,6 +1017,7 @@ combinations it supports concurrently.</p>
     u8 max_retry;
   } tid_config_support;
   u8 max_data_retry_count;
+  const struct cfg80211_sar_capa *sar_capa;
   char priv[] ;
 };
 </pre></div>
@@ -1983,7 +1984,7 @@ Token (measurement type 11)</p>
   const struct ieee80211_vht_cap *vht_cap;
   const struct ieee80211_he_cap_elem *he_cap;
   const struct ieee80211_he_operation *he_oper;
-  bool ht_required, vht_required, he_required;
+  bool ht_required, vht_required, he_required, sae_h2e_required;
   bool twt_responder;
   u32 flags;
   struct ieee80211_he_obss_pd he_obss_pd;
@@ -2045,6 +2046,8 @@ networks.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">vht_required</span></code></dt><dd><p>stations must support VHT</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">he_required</span></code></dt><dd><p>stations must support HE</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sae_h2e_required</span></code></dt><dd><p>stations must support direct H2E technique in SAE</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">twt_responder</span></code></dt><dd><p>Enable Target Wait Time</p>
 </dd>
@@ -3189,6 +3192,7 @@ caching.</p>
   int (*probe_mesh_link)(struct wiphy *wiphy, struct net_device *dev, const u8 *buf, size_t len);
   int (*set_tid_config)(struct wiphy *wiphy, struct net_device *dev, struct cfg80211_tid_config *tid_conf);
   int (*reset_tid_config)(struct wiphy *wiphy, struct net_device *dev, const u8 *peer, u8 tids);
+  int (*set_sar_specs)(struct wiphy *wiphy, struct cfg80211_sar_specs *sar);
 };
 </pre></div>
 </div>
@@ -3684,7 +3688,7 @@ void <code class="sig-name descname">cfg80211_assoc_timeout</code><span class="s
 <p>This function may sleep. The caller must hold the corresponding wdev’s mutex.</p>
 <dl class="c function">
 <dt id="c.cfg80211_tx_mlme_mgmt">
-void <code class="sig-name descname">cfg80211_tx_mlme_mgmt</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../../networking/kapi.html#c.net_device" title="net_device">net_device</a> *<em>dev</em>, <em class="property">const</em> u8 *<em>buf</em>, size_t <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cfg80211_tx_mlme_mgmt" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">cfg80211_tx_mlme_mgmt</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../../networking/kapi.html#c.net_device" title="net_device">net_device</a> *<em>dev</em>, <em class="property">const</em> u8 *<em>buf</em>, size_t <em>len</em>, bool <em>reconnect</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cfg80211_tx_mlme_mgmt" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>notification of transmitted deauth/disassoc frame</p>
 </dd></dl>
 
@@ -3695,6 +3699,8 @@ void <code class="sig-name descname">cfg80211_tx_mlme_mgmt</code><span class="si
 <dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">u8</span> <span class="pre">*buf</span></code></dt><dd><p>802.11 frame (header + body)</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">len</span></code></dt><dd><p>length of the frame data</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">reconnect</span></code></dt><dd><p>immediate reconnect is desired (include the nl80211 attribute)</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>

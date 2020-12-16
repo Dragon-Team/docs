@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.25-dragon
+                5.10.26-dragon
               </div>
             
           
@@ -1352,26 +1352,6 @@ The sanity checks are only to catch buggy user modesetting drivers which call
 the same function through an ioctl.</p>
 <p><strong>Return</strong></p>
 <p>Zero on success or a negative error code on failure.</p>
-<dl class="c function">
-<dt id="c.devm_drm_irq_install">
-int <code class="sig-name descname">devm_drm_irq_install</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_device" title="drm_device">drm_device</a> *<em>dev</em>, int <em>irq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_drm_irq_install" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>install IRQ handler</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_device</span> <span class="pre">*dev</span></code></dt><dd><p>DRM device</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">irq</span></code></dt><dd><p>IRQ number to install the handler for</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>devm_drm_irq_install is a  help function of drm_irq_install.</p>
-<p>if the driver uses devm_drm_irq_install, there is no need
-to call drm_irq_uninstall when the drm module get unloaded,
-as this will done automagically.</p>
-<p><strong>Return</strong></p>
-<p>Zero on success or a negative error code on failure.</p>
 </div>
 <div class="section" id="memory-manager-initialization">
 <h4>Memory Manager Initialization<a class="headerlink" href="#memory-manager-initialization" title="Permalink to this headline">¶</a></h4>
@@ -1673,7 +1653,8 @@ own needs, e.g. to signal completion of rendering.</p>
 <p>The memory mapping implementation will vary depending on how the driver
 manages memory. Legacy drivers will use the deprecated drm_legacy_mmap()
 function, modern drivers should use one of the provided memory-manager
-specific implementations. For GEM-based drivers this is <a class="reference internal" href="drm-mm.html#c.drm_gem_mmap" title="drm_gem_mmap"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_mmap()</span></code></a>.</p>
+specific implementations. For GEM-based drivers this is <a class="reference internal" href="drm-mm.html#c.drm_gem_mmap" title="drm_gem_mmap"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_mmap()</span></code></a>, and
+for drivers which use the CMA GEM helpers it’s <a class="reference internal" href="drm-mm.html#c.drm_gem_cma_mmap" title="drm_gem_cma_mmap"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_cma_mmap()</span></code></a>.</p>
 <p>No other file operations are supported by the DRM userspace API. Overall the
 following is an example <code class="xref c c-type docutils literal notranslate"><span class="pre">file_operations</span></code> structure:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>static const example_drm_fops = {

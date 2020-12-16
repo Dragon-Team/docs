@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.25-dragon
+                5.10.26-dragon
               </div>
             
           
@@ -589,7 +589,7 @@ prediction when the return stack buffer underflows while switching to
 a deeper call stack. Any poisoned entries in the return stack buffer
 left by the previous process will also be cleared.</p>
 <p>User programs should use address space randomization to make attacks
-more difficult (Set /proc/sys/kernel/randomize_va_space = 1, 2 or 3).</p>
+more difficult (Set /proc/sys/kernel/randomize_va_space = 1 or 2).</p>
 </div></blockquote>
 </div>
 <div class="section" id="a-virtualized-guest-attacking-the-host">
@@ -876,8 +876,8 @@ See <a class="reference internal" href="#spectre-mitigation-control-command-line
 <p>Programs that disable their indirect branch speculation will have
 more overhead and run slower.</p>
 <p>User programs should use address space randomization
-(/proc/sys/kernel/randomize_va_space = 1, 2 or 3) to make attacks
-more difficult.</p>
+(/proc/sys/kernel/randomize_va_space = 1 or 2) to make attacks more
+difficult.</p>
 </div></blockquote>
 </div>
 <div class="section" id="vm-mitigation">

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.25-dragon
+                5.10.26-dragon
               </div>
             
           
@@ -1032,6 +1032,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#hippi">HIPPI</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#hirschmann-hellcreek-ethernet-switch-driver">HIRSCHMANN HELLCREEK ETHERNET SWITCH DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#hisilicon-dma-driver">HISILICON DMA DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hisilicon-gpio-driver">HISILICON GPIO DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#hisilicon-high-performance-rsa-engine-driver-hpre">HISILICON HIGH PERFORMANCE RSA ENGINE DRIVER (HPRE)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#hisilicon-lpc-bus-driver">HISILICON LPC BUS DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#hisilicon-network-subsystem-3-driver-hns3">HISILICON NETWORK SUBSYSTEM 3 DRIVER (HNS3)</a></li>
@@ -1123,7 +1124,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#industry-pack-subsystem-ipack">INDUSTRY PACK SUBSYSTEM (IPACK)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#infineon-dps310-driver">INFINEON DPS310 Driver</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#infiniband-subsystem">INFINIBAND SUBSYSTEM</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ingenic-jz4780-dma-driver">INGENIC JZ4780 DMA Driver</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ingenic-jz4780-nand-driver">INGENIC JZ4780 NAND DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ingenic-jz47xx-socs">INGENIC JZ47xx SoCs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#inotify">INOTIFY</a></li>
@@ -1154,7 +1154,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#intel-ipu3-csi-2-imgu-driver">INTEL IPU3 CSI-2 IMGU DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#intel-ixp4xx-qmgr-npe-ethernet-and-hss-support">INTEL IXP4XX QMGR, NPE, ETHERNET and HSS SUPPORT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#intel-ixp4xx-random-number-generator-support">INTEL IXP4XX RANDOM NUMBER GENERATOR SUPPORT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#intel-keembay-drm-driver">INTEL KEEMBAY DRM DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#intel-keem-bay-drm-driver">INTEL KEEM BAY DRM DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#intel-keem-bay-ocs-aes-sm4-crypto-driver">INTEL KEEM BAY OCS AES/SM4 CRYPTO DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#intel-management-engine-mei">INTEL MANAGEMENT ENGINE (mei)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#intel-menlow-thermal-driver">INTEL MENLOW THERMAL DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#intel-p-unit-ipc-driver">INTEL P-Unit IPC DRIVER</a></li>
@@ -14521,6 +14522,7 @@ quilt http://people.redhat.com/agk/patches/linux/editing/</p>
 </dd>
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/input/da90??-onkey.txt</span></code>
+<code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/input/dlg,da72??.txt</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/mfd/da90*.txt</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/regulator/dlg,da9*.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/regulator/da92*.txt</span></code>
@@ -14532,6 +14534,7 @@ quilt http://people.redhat.com/agk/patches/linux/editing/</p>
 <code class="docutils literal notranslate"><span class="pre">drivers/gpio/gpio-da90??.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/hwmon/da90??-hwmon.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/iio/adc/da91??-*.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/input/misc/da72??.[ch]</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/input/misc/da90??_onkey.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/input/touchscreen/da9052_tsi.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/leds/leds-da90??.c</span></code>
@@ -21363,6 +21366,23 @@ Srinivas Pandruvada &lt;<a class="reference external" href="mailto:srinivas&#46;
 </dd>
 </dl>
 </div>
+<div class="section" id="hisilicon-gpio-driver">
+<h3>HISILICON GPIO DRIVER<a class="headerlink" href="#hisilicon-gpio-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Luo Jiaxing &lt;<a class="reference external" href="mailto:luojiaxing&#37;&#52;&#48;huawei&#46;com">luojiaxing<span>&#64;</span>huawei<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:linux-gpio&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-gpio<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Maintained</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/gpio/gpio-hisi.c</span></code></p>
+</dd>
+</dl>
+</div>
 <div class="section" id="hisilicon-high-performance-rsa-engine-driver-hpre">
 <h3>HISILICON HIGH PERFORMANCE RSA ENGINE DRIVER (HPRE)<a class="headerlink" href="#hisilicon-high-performance-rsa-engine-driver-hpre" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
@@ -23142,20 +23162,6 @@ Jason Gunthorpe &lt;<a class="reference external" href="mailto:jgg&#37;&#52;&#48
 </dd>
 </dl>
 </div>
-<div class="section" id="ingenic-jz4780-dma-driver">
-<h3>INGENIC JZ4780 DMA Driver<a class="headerlink" href="#ingenic-jz4780-dma-driver" title="Permalink to this headline">¶</a></h3>
-<dl class="field-list simple">
-<dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Zubair Lutfullah Kakakhel &lt;<a class="reference external" href="mailto:Zubair&#46;Kakakhel&#37;&#52;&#48;imgtec&#46;com">Zubair<span>&#46;</span>Kakakhel<span>&#64;</span>imgtec<span>&#46;</span>com</a>&gt;</p>
-</dd>
-<dt class="field-even">Status</dt>
-<dd class="field-even"><p>Maintained</p>
-</dd>
-<dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/dma/dma-jz4780.c</span></code></p>
-</dd>
-</dl>
-</div>
 <div class="section" id="ingenic-jz4780-nand-driver">
 <h3>INGENIC JZ4780 NAND DRIVER<a class="headerlink" href="#ingenic-jz4780-nand-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
@@ -23163,7 +23169,8 @@ Jason Gunthorpe &lt;<a class="reference external" href="mailto:jgg&#37;&#52;&#48
 <dd class="field-odd"><p>Harvey Hunt &lt;<a class="reference external" href="mailto:harveyhuntnexus&#37;&#52;&#48;gmail&#46;com">harveyhuntnexus<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:linux-mtd&#37;&#52;&#48;lists&#46;infradead&#46;org">linux-mtd<span>&#64;</span>lists<span>&#46;</span>infradead<span>&#46;</span>org</a></p>
+<dd class="field-even"><p><a class="reference external" href="mailto:linux-mtd&#37;&#52;&#48;lists&#46;infradead&#46;org">linux-mtd<span>&#64;</span>lists<span>&#46;</span>infradead<span>&#46;</span>org</a>,
+<a class="reference external" href="mailto:linux-mips&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-mips<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
 </dd>
 <dt class="field-odd">Status</dt>
 <dd class="field-odd"><p>Maintained</p>
@@ -23179,11 +23186,14 @@ Jason Gunthorpe &lt;<a class="reference external" href="mailto:jgg&#37;&#52;&#48
 <dt class="field-odd">Mail</dt>
 <dd class="field-odd"><p>Paul Cercueil &lt;<a class="reference external" href="mailto:paul&#37;&#52;&#48;crapouillou&#46;net">paul<span>&#64;</span>crapouillou<span>&#46;</span>net</a>&gt;</p>
 </dd>
-<dt class="field-even">Status</dt>
-<dd class="field-even"><p>Maintained</p>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:linux-mips&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-mips<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
 </dd>
-<dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">arch/mips/boot/dts/ingenic/</span></code>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Maintained</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">arch/mips/boot/dts/ingenic/</span></code>
 <code class="docutils literal notranslate"><span class="pre">arch/mips/generic/board-ingenic.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">arch/mips/include/asm/mach-ingenic/</span></code>
 <code class="docutils literal notranslate"><span class="pre">arch/mips/ingenic/Kconfig</span></code>
@@ -23804,8 +23814,8 @@ Tianshu Qiu &lt;<a class="reference external" href="mailto:tian&#46;shu&#46;qiu&
 </dd>
 </dl>
 </div>
-<div class="section" id="intel-keembay-drm-driver">
-<h3>INTEL KEEMBAY DRM DRIVER<a class="headerlink" href="#intel-keembay-drm-driver" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="intel-keem-bay-drm-driver">
+<h3>INTEL KEEM BAY DRM DRIVER<a class="headerlink" href="#intel-keem-bay-drm-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
 <dd class="field-odd"><p>Anitha Chrisanthus &lt;<a class="reference external" href="mailto:anitha&#46;chrisanthus&#37;&#52;&#48;intel&#46;com">anitha<span>&#46;</span>chrisanthus<span>&#64;</span>intel<span>&#46;</span>com</a>&gt;,
@@ -23817,6 +23827,25 @@ Edmund Dea &lt;<a class="reference external" href="mailto:edmund&#46;j&#46;dea&#
 <dt class="field-odd">Files</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/display/intel,kmb_display.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/gpu/drm/kmb/</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="intel-keem-bay-ocs-aes-sm4-crypto-driver">
+<h3>INTEL KEEM BAY OCS AES/SM4 CRYPTO DRIVER<a class="headerlink" href="#intel-keem-bay-ocs-aes-sm4-crypto-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Daniele Alessandrelli &lt;<a class="reference external" href="mailto:daniele&#46;alessandrelli&#37;&#52;&#48;intel&#46;com">daniele<span>&#46;</span>alessandrelli<span>&#64;</span>intel<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Status</dt>
+<dd class="field-even"><p>Maintained</p>
+</dd>
+<dt class="field-odd">Files</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/crypto/intel,keembay-ocs-aes.yaml</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/crypto/keembay/Kconfig</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/crypto/keembay/Makefile</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/crypto/keembay/keembay-ocs-aes-core.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/crypto/keembay/ocs-aes.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/crypto/keembay/ocs-aes.h</span></code></p>
 </dd>
 </dl>
 </div>
@@ -25417,7 +25446,7 @@ Suzuki K Poulose &lt;<a class="reference external" href="mailto:suzuki&#46;poulo
 <h3>KERNEL VIRTUAL MACHINE FOR MIPS (KVM/mips)<a class="headerlink" href="#kernel-virtual-machine-for-mips-kvm-mips" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Huacai Chen &lt;<a class="reference external" href="mailto:chenhc&#37;&#52;&#48;lemote&#46;com">chenhc<span>&#64;</span>lemote<span>&#46;</span>com</a>&gt;,
+<dd class="field-odd"><p>Huacai Chen &lt;<a class="reference external" href="mailto:chenhuacai&#37;&#52;&#48;kernel&#46;org">chenhuacai<span>&#64;</span>kernel<span>&#46;</span>org</a>&gt;,
 Aleksandar Markovic &lt;<a class="reference external" href="mailto:aleksandar&#46;qemu&#46;devel&#37;&#52;&#48;gmail&#46;com">aleksandar<span>&#46;</span>qemu<span>&#46;</span>devel<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
@@ -30545,7 +30574,7 @@ Serge Semin &lt;<a class="reference external" href="mailto:fancer&#46;lancer&#37
 <h3>MIPS/LOONGSON64 ARCHITECTURE<a class="headerlink" href="#mips-loongson64-architecture" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Huacai Chen &lt;<a class="reference external" href="mailto:chenhc&#37;&#52;&#48;lemote&#46;com">chenhc<span>&#64;</span>lemote<span>&#46;</span>com</a>&gt;,
+<dd class="field-odd"><p>Huacai Chen &lt;<a class="reference external" href="mailto:chenhuacai&#37;&#52;&#48;kernel&#46;org">chenhuacai<span>&#64;</span>kernel<span>&#46;</span>org</a>&gt;,
 Jiaxun Yang &lt;<a class="reference external" href="mailto:jiaxun&#46;yang&#37;&#52;&#48;flygoat&#46;com">jiaxun<span>&#46;</span>yang<span>&#64;</span>flygoat<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
@@ -41346,7 +41375,7 @@ Jassi Brar &lt;<a class="reference external" href="mailto:jaswinder&#46;singh&#3
 <h3>SOFT-ROCE DRIVER (rxe)<a class="headerlink" href="#soft-roce-driver-rxe" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Zhu Yanjun &lt;<a class="reference external" href="mailto:yanjunz&#37;&#52;&#48;nvidia&#46;com">yanjunz<span>&#64;</span>nvidia<span>&#46;</span>com</a>&gt;</p>
+<dd class="field-odd"><p>Zhu Yanjun &lt;<a class="reference external" href="mailto:zyjzyj2000&#37;&#52;&#48;gmail&#46;com">zyjzyj2000<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:linux-rdma&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-rdma<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>

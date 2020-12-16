@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.25-dragon
+                5.10.26-dragon
               </div>
             
           
@@ -361,9 +361,7 @@ from occurring.  These issues can range from misconfigured or
 buggy timer hardware through bugs in the interrupt or exception
 path (whether hardware, firmware, or software) through bugs
 in Linux’s timer subsystem through bugs in the scheduler, and,
-yes, even including bugs in RCU itself.  It can also result in
-the <code class="docutils literal notranslate"><span class="pre">rcu_.*timer</span> <span class="pre">wakeup</span> <span class="pre">didn't</span> <span class="pre">happen</span> <span class="pre">for</span></code> console-log message,
-which will include additional debugging information.</p></li>
+yes, even including bugs in RCU itself.</p></li>
 <li><p>A bug in the RCU implementation.</p></li>
 <li><p>A hardware failure.  This is quite unlikely, but has occurred
 at least once in real life.  A CPU failed in a running system,
@@ -547,23 +545,6 @@ to the grace-period kthread, the “RCU_GP_WAIT_FQS” indicates that the
 kthread is waiting for a short timeout, the “state” precedes value of the
 task_struct -&gt;state field, and the “cpu” indicates that the grace-period
 kthread last ran on CPU 5.</p>
-<p>If the relevant grace-period kthread does not wake from FQS wait in a
-reasonable time, then the following additional line is printed:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>kthread timer wakeup didn&#39;t happen for 23804 jiffies! g7076 f0x0 RCU_GP_WAIT_FQS(5) -&gt;state=0x402
-</pre></div>
-</div>
-<p>The “23804” indicates that kthread’s timer expired more than 23 thousand
-jiffies ago.  The rest of the line has meaning similar to the kthread
-starvation case.</p>
-<p>Additionally, the following line is printed:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Possible timer handling issue on cpu=4 timer-softirq=11142
-</pre></div>
-</div>
-<p>Here “cpu” indicates that the grace-period kthread last ran on CPU 4,
-where it queued the fqs timer.  The number following the “timer-softirq”
-is the current <code class="docutils literal notranslate"><span class="pre">TIMER_SOFTIRQ</span></code> count on cpu 4.  If this value does not
-change on successive RCU CPU stall warnings, there is further reason to
-suspect a timer problem.</p>
 </div>
 <div class="section" id="multiple-warnings-from-one-stall">
 <h2>Multiple Warnings From One Stall<a class="headerlink" href="#multiple-warnings-from-one-stall" title="Permalink to this headline">¶</a></h2>

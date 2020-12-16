@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.25-dragon
+                5.10.26-dragon
               </div>
             
           
@@ -2455,6 +2455,30 @@ int <code class="sig-name descname">platform_irq_count</code><span class="sig-pa
 </dl>
 <p><strong>Return</strong></p>
 <p>Number of IRQs a platform device uses or EPROBE_DEFER</p>
+<dl class="c function">
+<dt id="c.devm_platform_get_irqs_affinity">
+int <code class="sig-name descname">devm_platform_get_irqs_affinity</code><span class="sig-paren">(</span><em class="property">struct</em> platform_device *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="../core-api/genericirq.html#c.irq_affinity" title="irq_affinity">irq_affinity</a> *<em>affd</em>, unsigned int <em>minvec</em>, unsigned int <em>maxvec</em>, int **<em>irqs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_platform_get_irqs_affinity" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>devm method to get a set of IRQs for a device using an interrupt affinity descriptor</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">platform_device</span> <span class="pre">*dev</span></code></dt><dd><p>platform device pointer</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">irq_affinity</span> <span class="pre">*affd</span></code></dt><dd><p>affinity descriptor</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">minvec</span></code></dt><dd><p>minimum count of interrupt vectors</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">maxvec</span></code></dt><dd><p>maximum count of interrupt vectors</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">**irqs</span></code></dt><dd><p>pointer holder for IRQ numbers</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Gets a set of IRQs for a platform device, and updates IRQ afffinty according
+to the passed affinity descriptor</p>
+<p><strong>Return</strong></p>
+<p>Number of vectors on success, negative error number on failure.</p>
 <dl class="c function">
 <dt id="c.platform_get_resource_byname">
 <em class="property">struct</em> resource *<code class="sig-name descname">platform_get_resource_byname</code><span class="sig-paren">(</span><em class="property">struct</em> platform_device *<em>dev</em>, unsigned int <em>type</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.platform_get_resource_byname" title="Permalink to this definition">¶</a><br /></dt>

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.25-dragon
+                5.10.26-dragon
               </div>
             
           
@@ -452,7 +452,9 @@ The scatterlist must be mapped using the DMA <a class="reference internal" href=
 If a mapping needs to be synchronized later, dma_sync_*_for_*() must be
 called using the DMA <a class="reference internal" href="../infrastructure.html#c.device" title="device"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">device</span></code></a>, too.
 So, normal setup should look like this:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">nr_sg</span> <span class="o">=</span> <span class="n">dma_map_sg</span><span class="p">(</span><span class="n">chan</span><span class="o">-&gt;</span><span class="n">device</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">,</span> <span class="n">sgl</span><span class="p">,</span> <span class="n">sg_len</span><span class="p">);</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">device</span> <span class="o">*</span><span class="n">dma_dev</span> <span class="o">=</span> <span class="n">dmaengine_get_dma_device</span><span class="p">(</span><span class="n">chan</span><span class="p">);</span>
+
+<span class="n">nr_sg</span> <span class="o">=</span> <span class="n">dma_map_sg</span><span class="p">(</span><span class="n">dma_dev</span><span class="p">,</span> <span class="n">sgl</span><span class="p">,</span> <span class="n">sg_len</span><span class="p">);</span>
    <span class="k">if</span> <span class="p">(</span><span class="n">nr_sg</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
            <span class="cm">/* error */</span>
 

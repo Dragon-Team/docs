@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.25-dragon
+                5.10.26-dragon
               </div>
             
           
@@ -1457,6 +1457,28 @@ code can be called from hard interrupt context.</p>
 </dd>
 </dl>
 <dl class="c function">
+<dt id="c.irq_update_affinity_desc">
+int <code class="sig-name descname">irq_update_affinity_desc</code><span class="sig-paren">(</span>unsigned int <em>irq</em>, <em class="property">struct</em> <a class="reference internal" href="#c.irq_affinity_desc" title="irq_affinity_desc">irq_affinity_desc</a> *<em>affinity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.irq_update_affinity_desc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Update affinity management for an interrupt</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">irq</span></code></dt><dd><p>The interrupt number to update</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">irq_affinity_desc</span> <span class="pre">*affinity</span></code></dt><dd><p>Pointer to the affinity descriptor</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This interface can be used to configure the affinity management of
+interrupts which have been allocated already.</p>
+<p>There are certain limitations on when it may be used - attempts to use it
+for when the kernel is configured for generic IRQ reservation mode (in
+config GENERIC_IRQ_RESERVATION_MODE) will fail, as it may conflict with
+managed/non-managed interrupt accounting. In addition, attempts to use it on
+an interrupt which is already started or which has already been configured
+as managed will also fail, as these mean invalid init state or double init.</p>
+<dl class="c function">
 <dt id="c.irq_set_affinity_notifier">
 int <code class="sig-name descname">irq_set_affinity_notifier</code><span class="sig-paren">(</span>unsigned int <em>irq</em>, <em class="property">struct</em> <a class="reference internal" href="#c.irq_affinity_notify" title="irq_affinity_notify">irq_affinity_notify</a> *<em>notify</em><span class="sig-paren">)</span><a class="headerlink" href="#c.irq_set_affinity_notifier" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>control notification of IRQ affinity changes</p>
@@ -2615,22 +2637,6 @@ void <code class="sig-name descname">handle_percpu_devid_irq</code><span class="
 <p>action-&gt;percpu_dev_id is a pointer to percpu variables which
 contain the real device id for the cpu on which this handler is
 called</p>
-<dl class="c function">
-<dt id="c.handle_percpu_devid_fasteoi_ipi">
-void <code class="sig-name descname">handle_percpu_devid_fasteoi_ipi</code><span class="sig-paren">(</span><em class="property">struct</em> irq_desc *<em>desc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.handle_percpu_devid_fasteoi_ipi" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Per CPU local IPI handler with per cpu dev ids</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">irq_desc</span> <span class="pre">*desc</span></code></dt><dd><p>the interrupt description structure for this irq</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>The biggest difference with the IRQ version is that the interrupt is
-EOIed early, as the IPI could result in a context switch, and we need to
-make sure the IPI can fire again. We also assume that the arch code has
-registered an action. If not, we are positively doomed.</p>
 <dl class="c function">
 <dt id="c.handle_percpu_devid_fasteoi_nmi">
 void <code class="sig-name descname">handle_percpu_devid_fasteoi_nmi</code><span class="sig-paren">(</span><em class="property">struct</em> irq_desc *<em>desc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.handle_percpu_devid_fasteoi_nmi" title="Permalink to this definition">¶</a><br /></dt>

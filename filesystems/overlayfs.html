@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.25-dragon
+                5.10.26-dragon
               </div>
             
           
@@ -197,6 +197,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#changes-to-underlying-filesystems">Changes to underlying filesystems</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#nfs-export">NFS export</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#volatile-mount">Volatile mount</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user-xattr">User xattr</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#testsuite">Testsuite</a></li>
 </ul>
 </li>
@@ -478,8 +479,8 @@ but not all filesystems that are mountable by Linux have the features
 needed for OverlayFS to work.  The lower filesystem does not need to be
 writable.  The lower filesystem can even be another overlayfs.  The upper
 filesystem will normally be writable and if it is it must support the
-creation of trusted.* extended attributes, and must provide valid d_type in
-readdir responses, so NFS is not suitable.</p>
+creation of trusted.* and/or user.* extended attributes, and must provide
+valid d_type in readdir responses, so NFS is not suitable.</p>
 <p>A read-only overlay of two read-only filesystems may use any
 filesystem type.</p>
 </div>
@@ -930,6 +931,12 @@ indicator that user should throw away upper and work directories and create
 fresh one. In very limited cases where the user knows that the system has
 not crashed and contents of upperdir are intact, The “volatile” directory
 can be removed.</p>
+</div>
+<div class="section" id="user-xattr">
+<h2>User xattr<a class="headerlink" href="#user-xattr" title="Permalink to this headline">¶</a></h2>
+<p>The the “-o userxattr” mount option forces overlayfs to use the
+“user.overlay.” xattr namespace instead of “trusted.overlay.”.  This is
+useful for unprivileged mounting of overlayfs.</p>
 </div>
 <div class="section" id="testsuite">
 <h2>Testsuite<a class="headerlink" href="#testsuite" title="Permalink to this headline">¶</a></h2>

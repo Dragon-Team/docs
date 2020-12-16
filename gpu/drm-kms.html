@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.25-dragon
+                5.10.26-dragon
               </div>
             
           
@@ -3046,7 +3046,7 @@ with a call to <a class="reference internal" href="#c.drm_crtc_init_with_planes"
 <a class="reference internal" href="#c.drm_crtc_funcs" title="drm_crtc_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc_funcs.page_flip</span></code></a> and <a class="reference internal" href="#c.drm_crtc_funcs" title="drm_crtc_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc_funcs.cursor_set2</span></code></a>, and other legacy
 operations like <a class="reference internal" href="#c.drm_crtc_funcs" title="drm_crtc_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc_funcs.gamma_set</span></code></a>. For atomic drivers all these
 features are controlled through <a class="reference internal" href="#c.drm_property" title="drm_property"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_property</span></code></a> and
-<a class="reference internal" href="#c.drm_mode_config_funcs" title="drm_mode_config_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_mode_config_funcs.atomic_check</span></code></a>.</p>
+<a class="reference internal" href="#c.drm_mode_config_funcs" title="drm_mode_config_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_mode_config_funcs.atomic_check</span></code></a> and <a class="reference internal" href="#c.drm_mode_config_funcs" title="drm_mode_config_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_mode_config_funcs.atomic_check</span></code></a>.</p>
 <div class="section" id="crtc-functions-reference">
 <h3>CRTC Functions Reference<a class="headerlink" href="#crtc-functions-reference" title="Permalink to this headline">¶</a></h3>
 <dl class="c struct">
@@ -4918,7 +4918,7 @@ a hardware-specific ioctl to allocate suitable buffer objects.</p>
 <p>A plane represents an image source that can be blended with or overlayed on
 top of a CRTC during the scanout process. Planes take their input data from a
 <a class="reference internal" href="#c.drm_framebuffer" title="drm_framebuffer"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_framebuffer</span></code></a> object. The plane itself specifies the cropping and scaling
-of that image, and where it is placed on the visible area of a display
+of that image, and where it is placed on the visible are of a display
 pipeline, represented by <a class="reference internal" href="#c.drm_crtc" title="drm_crtc"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc</span></code></a>. A plane can also have additional
 properties that specify how the pixels are positioned and blended, like
 rotation or Z-position. All these properties are stored in <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state</span></code></a>.</p>

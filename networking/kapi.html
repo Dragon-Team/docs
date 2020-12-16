@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.25-dragon
+                5.10.26-dragon
               </div>
             
           
@@ -5618,13 +5618,13 @@ __be32 *<code class="sig-name descname">xdr_encode_opaque</code><span class="sig
 <p>Returns the updated current XDR buffer position</p>
 <dl class="c function">
 <dt id="c.xdr_terminate_string">
-void <code class="sig-name descname">xdr_terminate_string</code><span class="sig-paren">(</span><em class="property">struct</em> xdr_buf *<em>buf</em>, <em class="property">const</em> u32 <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xdr_terminate_string" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">xdr_terminate_string</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> xdr_buf *<em>buf</em>, <em class="property">const</em> u32 <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xdr_terminate_string" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>‘0’-terminate a string residing in an xdr_buf</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">xdr_buf</span> <span class="pre">*buf</span></code></dt><dd><p>XDR buffer where string resides</p>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">xdr_buf</span> <span class="pre">*buf</span></code></dt><dd><p>XDR buffer where string resides</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">u32</span> <span class="pre">len</span></code></dt><dd><p>length of string, in bytes</p>
 </dd>

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.25-dragon
+                5.10.26-dragon
               </div>
             
           
@@ -950,48 +950,6 @@ to be called when the system is still in usermode.</p>
 <p>To prevent this, the preempt_enable_notrace will use this function
 instead of preempt_schedule() to exit user context if needed before
 calling the scheduler.</p>
-<dl class="c function">
-<dt id="c.sched_setscheduler">
-int <code class="sig-name descname">sched_setscheduler</code><span class="sig-paren">(</span><em class="property">struct</em> task_struct *<em>p</em>, int <em>policy</em>, <em class="property">const</em> <em class="property">struct</em> sched_param *<em>param</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sched_setscheduler" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>change the scheduling policy and/or RT priority of a thread.</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">task_struct</span> <span class="pre">*p</span></code></dt><dd><p>the task in question.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">policy</span></code></dt><dd><p>new policy.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">sched_param</span> <span class="pre">*param</span></code></dt><dd><p>structure containing the new RT priority.</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Use sched_set_fifo(), read its comment.</p>
-<p>NOTE that the task may be already dead.</p>
-<p><strong>Return</strong></p>
-<p>0 on success. An error code otherwise.</p>
-<dl class="c function">
-<dt id="c.sched_setscheduler_nocheck">
-int <code class="sig-name descname">sched_setscheduler_nocheck</code><span class="sig-paren">(</span><em class="property">struct</em> task_struct *<em>p</em>, int <em>policy</em>, <em class="property">const</em> <em class="property">struct</em> sched_param *<em>param</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sched_setscheduler_nocheck" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>change the scheduling policy and/or RT priority of a thread from kernelspace.</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">task_struct</span> <span class="pre">*p</span></code></dt><dd><p>the task in question.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">policy</span></code></dt><dd><p>new policy.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">sched_param</span> <span class="pre">*param</span></code></dt><dd><p>structure containing the new RT priority.</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Just like sched_setscheduler, only don’t bother checking if the
-current context has permission.  For example, this is needed in
-stop_machine(): we create temporary high priority worker threads,
-but our caller might not have that capability.</p>
-<p><strong>Return</strong></p>
-<p>0 on success. An error code otherwise.</p>
 <dl class="c function">
 <dt id="c.yield">
 void <code class="sig-name descname">yield</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.yield" title="Permalink to this definition">¶</a><br /></dt>

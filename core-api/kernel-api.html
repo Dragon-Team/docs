@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.25-dragon
+                5.10.26-dragon
               </div>
             
           
@@ -11605,11 +11605,17 @@ ordering guarantees for either the CPU or the compiler.</p>
 <code class="sig-name descname">kfree_rcu</code><a class="headerlink" href="#c.kfree_rcu" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
-<p><code class="docutils literal notranslate"><span class="pre">kfree_rcu</span> <span class="pre">()</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">kfree_rcu</span> <span class="pre">(ptr,</span> <span class="pre">rhf)</span></code></p>
 <blockquote>
 <div><p>kfree an object after a grace period.</p>
 </div></blockquote>
 <p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">ptr</span></code></dt><dd><p>pointer to kfree</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">rhf</span></code></dt><dd><p>the name of the struct rcu_head within the type of <strong>ptr</strong>.</p>
+</dd>
+</dl>
 <p><strong>Description</strong></p>
 <p>Many rcu callbacks functions just call <a class="reference internal" href="mm-api.html#c.kfree" title="kfree"><code class="xref c c-func docutils literal notranslate"><span class="pre">kfree()</span></code></a> on the base structure.
 These functions are trivial, but their size adds up, and furthermore
@@ -11621,7 +11627,7 @@ encodes the offset of the rcu_head structure within the base structure.
 Because the functions are not allowed in the low-order 4096 bytes of
 kernel virtual memory, offsets up to 4095 bytes can be accommodated.
 If the offset is larger than 4095 bytes, a compile-time error will
-be generated in kvfree_rcu_arg_2(). If this error is triggered, you can
+be generated in __kvfree_rcu(). If this error is triggered, you can
 either fall back to use of <a class="reference internal" href="#c.call_rcu" title="call_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">call_rcu()</span></code></a> or rearrange the structure to
 position the rcu_head structure into the first 4096 bytes.</p>
 <p>Note that the allowable offset might decrease in the future, for example,
@@ -12644,71 +12650,6 @@ passed the same srcu_struct structure.</p>
 was provided by Classic SRCU, and is relied upon by its users, so TREE
 SRCU must also provide it.  Note that detecting idleness is heuristic
 and subject to both false positives and negatives.</p>
-<dl class="c function">
-<dt id="c.get_state_synchronize_srcu">
-unsigned long <code class="sig-name descname">get_state_synchronize_srcu</code><span class="sig-paren">(</span><em class="property">struct</em> srcu_struct *<em>ssp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.get_state_synchronize_srcu" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Provide an end-of-grace-period cookie</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">srcu_struct</span> <span class="pre">*ssp</span></code></dt><dd><p>srcu_struct to provide cookie for.</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This function returns a cookie that can be passed to
-<a class="reference internal" href="#c.poll_state_synchronize_srcu" title="poll_state_synchronize_srcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">poll_state_synchronize_srcu()</span></code></a>, which will return true if a full grace
-period has elapsed in the meantime.  It is the caller’s responsibility
-to make sure that grace period happens, for example, by invoking
-<a class="reference internal" href="#c.call_srcu" title="call_srcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">call_srcu()</span></code></a> after return from <a class="reference internal" href="#c.get_state_synchronize_srcu" title="get_state_synchronize_srcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">get_state_synchronize_srcu()</span></code></a>.</p>
-<dl class="c function">
-<dt id="c.start_poll_synchronize_srcu">
-unsigned long <code class="sig-name descname">start_poll_synchronize_srcu</code><span class="sig-paren">(</span><em class="property">struct</em> srcu_struct *<em>ssp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.start_poll_synchronize_srcu" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Provide cookie and start grace period</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">srcu_struct</span> <span class="pre">*ssp</span></code></dt><dd><p>srcu_struct to provide cookie for.</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This function returns a cookie that can be passed to
-<a class="reference internal" href="#c.poll_state_synchronize_srcu" title="poll_state_synchronize_srcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">poll_state_synchronize_srcu()</span></code></a>, which will return true if a full grace
-period has elapsed in the meantime.  Unlike <a class="reference internal" href="#c.get_state_synchronize_srcu" title="get_state_synchronize_srcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">get_state_synchronize_srcu()</span></code></a>,
-this function also ensures that any needed SRCU grace period will be
-started.  This convenience does come at a cost in terms of CPU overhead.</p>
-<dl class="c function">
-<dt id="c.poll_state_synchronize_srcu">
-bool <code class="sig-name descname">poll_state_synchronize_srcu</code><span class="sig-paren">(</span><em class="property">struct</em> srcu_struct *<em>ssp</em>, unsigned long <em>cookie</em><span class="sig-paren">)</span><a class="headerlink" href="#c.poll_state_synchronize_srcu" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Has cookie’s grace period ended?</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">srcu_struct</span> <span class="pre">*ssp</span></code></dt><dd><p>srcu_struct to provide cookie for.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">cookie</span></code></dt><dd><p>Return value from <a class="reference internal" href="#c.get_state_synchronize_srcu" title="get_state_synchronize_srcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">get_state_synchronize_srcu()</span></code></a> or <a class="reference internal" href="#c.start_poll_synchronize_srcu" title="start_poll_synchronize_srcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">start_poll_synchronize_srcu()</span></code></a>.</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This function takes the cookie that was returned from either
-<a class="reference internal" href="#c.get_state_synchronize_srcu" title="get_state_synchronize_srcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">get_state_synchronize_srcu()</span></code></a> or <a class="reference internal" href="#c.start_poll_synchronize_srcu" title="start_poll_synchronize_srcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">start_poll_synchronize_srcu()</span></code></a>, and
-returns <strong>true</strong> if an SRCU grace period elapsed since the time that the
-cookie was created.</p>
-<p>Because cookies are finite in size, wrapping/overflow is possible.
-This is more pronounced on 32-bit systems where cookies are 32 bits,
-where in theory wrapping could happen in about 14 hours assuming
-25-microsecond expedited SRCU grace periods.  However, a more likely
-overflow lower bound is on the order of 24 days in the case of
-one-millisecond SRCU grace periods.  Of course, wrapping in a 64-bit
-system requires geologic timespans, as in more than seven million years
-even for expedited SRCU grace periods.</p>
-<p>Wrapping/overflow is much more of an issue for CONFIG_SMP=n systems
-that also have CONFIG_PREEMPTION=n, which selects Tiny SRCU.  This uses
-a 16-bit cookie, which rcutorture routinely wraps in a matter of a
-few minutes.  If this proves to be a problem, this counter will be
-expanded to the same size as for Tree SRCU.</p>
 <dl class="c function">
 <dt id="c.srcu_barrier">
 void <code class="sig-name descname">srcu_barrier</code><span class="sig-paren">(</span><em class="property">struct</em> srcu_struct *<em>ssp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.srcu_barrier" title="Permalink to this definition">¶</a><br /></dt>
