@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.26-dragon
+                5.11.1-dragon
               </div>
             
           
@@ -188,6 +188,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#revocation-block">3.6.7. Revocation Block</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#commit-block">3.6.8. Commit Block</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#fast-commits">3.6.9. Fast commits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fast-commit-replay-idempotence">3.6.10. Fast Commit Replay Idempotence</a></li>
 </ul>
 </li>
 </ul>
@@ -2470,6 +2471,53 @@ represents the end of</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="fast-commit-replay-idempotence">
+<h3><span class="section-number">3.6.10. </span>Fast Commit Replay Idempotence<a class="headerlink" href="#fast-commit-replay-idempotence" title="Permalink to this headline">¶</a></h3>
+<p>Fast commits tags are idempotent in nature provided the recovery code follows
+certain rules. The guiding principle that the commit path follows while
+committing is that it stores the result of a particular operation instead of
+storing the procedure.</p>
+<p>Let’s consider this rename operation: ‘mv /a /b’. Let’s assume dirent ‘/a’
+was associated with inode 10. During fast commit, instead of storing this
+operation as a procedure “rename a to b”, we store the resulting file system
+state as a “series” of outcomes:</p>
+<ul class="simple">
+<li><p>Link dirent b to inode 10</p></li>
+<li><p>Unlink dirent a</p></li>
+<li><p>Inode 10 with valid refcount</p></li>
+</ul>
+<p>Now when recovery code runs, it needs “enforce” this state on the file
+system. This is what guarantees idempotence of fast commit replay.</p>
+<p>Let’s take an example of a procedure that is not idempotent and see how fast
+commits make it idempotent. Consider following sequence of operations:</p>
+<ol class="arabic simple">
+<li><p>rm A</p></li>
+<li><p>mv B A</p></li>
+<li><p>read A</p></li>
+</ol>
+<p>If we store this sequence of operations as is then the replay is not idempotent.
+Let’s say while in replay, we crash after (2). During the second replay,
+file A (which was actually created as a result of “mv B A” operation) would get
+deleted. Thus, file named A would be absent when we try to read A. So, this
+sequence of operations is not idempotent. However, as mentioned above, instead
+of storing the procedure fast commits store the outcome of each procedure. Thus
+the fast commit log for above procedure would be as follows:</p>
+<p>(Let’s assume dirent A was linked to inode 10 and dirent B was linked to
+inode 11 before the replay)</p>
+<ol class="arabic simple">
+<li><p>Unlink A</p></li>
+<li><p>Link A to inode 11</p></li>
+<li><p>Unlink B</p></li>
+<li><p>Inode 11</p></li>
+</ol>
+<p>If we crash after (3) we will have file A linked to inode 11. During the second
+replay, we will remove file A (inode 11). But we will create it back and make
+it point to inode 11. We won’t find B, so we’ll just skip that step. At this
+point, the refcount for inode 11 is not reliable, but that gets fixed by the
+replay of last inode 11 tag. Thus, by converting a non-idempotent procedure
+into a series of idempotent outcomes, fast commits ensured idempotence during
+the replay.</p>
 </div>
 </div>
 </div>

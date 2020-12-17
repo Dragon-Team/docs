@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.26-dragon
+                5.11.1-dragon
               </div>
             
           
@@ -7505,6 +7505,23 @@ to the routing socket.</p>
 </dd>
 </dl>
 <dl class="c function">
+<dt id="c.__netdev_notify_peers">
+void <code class="sig-name descname">__netdev_notify_peers</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__netdev_notify_peers" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>notify network peers about existence of <strong>dev</strong>, to be called when rtnl lock is already held.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">net_device</span> <span class="pre">*dev</span></code></dt><dd><p>network device</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Generate traffic such that interested network peers are aware of
+<strong>dev</strong>, such as by generating a gratuitous ARP. This may be used when
+a device wants to inform the rest of the network about some sort of
+reconfiguration such as a failover event or virtual machine
+migration.</p>
+<dl class="c function">
 <dt id="c.netdev_notify_peers">
 void <code class="sig-name descname">netdev_notify_peers</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.netdev_notify_peers" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>notify network peers about existence of <strong>dev</strong></p>
@@ -12715,6 +12732,10 @@ if phydev-&gt;autoneg is off</p>
 <dt><code class="docutils literal notranslate"><span class="pre">aneg_done</span></code></dt><dd><p>Determines the auto negotiation result</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">read_status</span></code></dt><dd><p>Determines the negotiated speed and duplex</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">config_intr</span></code></dt><dd><p>Enables or disables interrupts.
+It should also clear any pending interrupts prior to enabling the
+IRQs and after disabling them.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">handle_interrupt</span></code></dt><dd><p>Override default interrupt handling</p>
 </dd>

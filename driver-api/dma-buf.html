@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.26-dragon
+                5.11.1-dragon
               </div>
             
           
@@ -1415,7 +1415,7 @@ memory, or false otherwise.</p>
 </div></blockquote>
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">vaddr_</span></code></dt><dd><p><em>undescribed</em></p>
+<dt><code class="docutils literal notranslate"><span class="pre">vaddr_</span></code></dt><dd><p>A system-memory address</p>
 </dd>
 </dl>
 <dl class="c function">
@@ -3070,7 +3070,7 @@ POLL_ENABLED: whether userspace is currently poll()’ing or not</p>
 </div>
 <div class="section" id="indefinite-dma-fences">
 <h3>Indefinite DMA Fences<a class="headerlink" href="#indefinite-dma-fences" title="Permalink to this headline">¶</a></h3>
-<p>At various times &amp;dma_fence with an indefinite time until <a class="reference internal" href="#c.dma_fence_wait" title="dma_fence_wait"><code class="xref c c-func docutils literal notranslate"><span class="pre">dma_fence_wait()</span></code></a>
+<p>At various times <a class="reference internal" href="#c.dma_fence" title="dma_fence"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_fence</span></code></a> with an indefinite time until <a class="reference internal" href="#c.dma_fence_wait" title="dma_fence_wait"><code class="xref c c-func docutils literal notranslate"><span class="pre">dma_fence_wait()</span></code></a>
 finishes have been proposed. Examples include:</p>
 <ul class="simple">
 <li><p>Future fences, used in HWC1 to signal when a buffer isn’t used by the display

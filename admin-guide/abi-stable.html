@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.26-dragon
+                5.11.1-dragon
               </div>
             
           
@@ -6865,6 +6865,26 @@ CONFIG_MODULE_UNLOAD kernel configuration value is not enabled,
 this file will not be present.</p>
 </dd>
 </dl>
+<table class="docutils align-default" id="abi-sys-module-modulename-scmversion">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/module/MODULENAME/scmversion</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-stable-sysfs-module"><span class="std std-ref">sysfs-module</span></a></p>
+<p>This read-only file will appear if modpost was supplied with an
+SCM version for the module. It can be enabled with the config
+MODULE_SCMVERSION. The SCM version is retrieved by
+scripts/setlocalversion, which means that the presence of this
+file depends on CONFIG_LOCALVERSION_AUTO=y or LOCALVERSION=.
+When read, the SCM version that the module was compiled with is
+returned. The SCM version is returned in the following format:</p>
+<p>Git:            g[a-f0-9]+(-dirty)?
+Mercurial:      hg[a-f0-9]+(-dirty)?
+Subversion:     svn[0-9]+</p>
 </div>
 <div class="section" id="a-notification-mechanism-for-thermal-related-events">
 <h2>A notification mechanism for thermal related events<a class="headerlink" href="#a-notification-mechanism-for-thermal-related-events" title="Permalink to this headline">¶</a></h2>
@@ -7678,6 +7698,7 @@ is documented in <a class="reference internal" href="sysfs-rules.html"><span cla
 <p>Has the following ABI:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#abi-sys-module"><span class="std std-ref">/sys/module</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-module-modulename-scmversion"><span class="std std-ref">/sys/module/MODULENAME/scmversion</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="file-home--doc-stable-sysfs-transport-srp">

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.10.26-dragon
+                5.11.1-dragon
               </div>
             
           
@@ -284,19 +284,25 @@ slices as threads in the cgroup become runnable. Once all quota has been
 assigned any additional requests for quota will result in those threads being
 throttled. Throttled threads will not be able to run again until the next
 period when the quota is replenished.</p>
+<p>With “burst”, unused quota from previous periods might be accumulated and
+assigned when a task group requests more CPU than quota during a specific
+period, thus allowing CPU time requests as long as the average request is below
+quota on the long run. The maximum accumulation is capped by burst.</p>
 <p>A group’s unassigned quota is globally tracked, being refreshed back to
 cfs_quota units at each period boundary. As threads consume this bandwidth it
 is transferred to cpu-local “silos” on a demand basis. The amount transferred
 within each of these updates is tunable and described as the “slice”.</p>
 <div class="section" id="management">
 <h2>Management<a class="headerlink" href="#management" title="Permalink to this headline">¶</a></h2>
-<p>Quota and period are managed within the cpu subsystem via cgroupfs.</p>
-<p>cpu.cfs_quota_us: the total available run-time within a period (in microseconds)
+<p>Quota, period and burst are managed within the cpu subsystem via cgroupfs.</p>
+<p>cpu.cfs_quota_us: run-time replenished within a period (in microseconds)
 cpu.cfs_period_us: the length of a period (in microseconds)
+cpu.cfs_burst_us: the maximum accumulated run-time (in microseconds)
 cpu.stat: exports throttling statistics [explained further below]</p>
 <p>The default values are:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cpu.cfs_period_us=100ms
-cpu.cfs_quota=-1
+cpu.cfs_quota_us=-1
+cpu.cfs_burst_us=0
 </pre></div>
 </div>
 <p>A value of -1 for cpu.cfs_quota_us indicates that the group does not have any
@@ -310,6 +316,10 @@ bandwidth limits are used in a hierarchical fashion, these are explained in
 more detail below.</p>
 <p>Writing any negative value to cpu.cfs_quota_us will remove the bandwidth limit
 and return the group to an unconstrained state once more.</p>
+<p>A value of 0 for cpu.cfs_burst_us indicates that the group can not accumulate
+any unused bandwidth. It makes the traditional bandwidth control behavior for
+CFS unchanged. Writing any (valid) positive value(s) into cpu.cfs_burst_us
+will enact the cap on unused bandwidth accumulation.</p>
 <p>Any updates to a group’s bandwidth specification will result in it becoming
 unthrottled if it is in a constrained state.</p>
 </div>
@@ -325,16 +335,32 @@ is described as the “slice”.</p>
 </div>
 <p>Larger slice values will reduce transfer overheads, while smaller values allow
 for more fine-grained consumption.</p>
+<dl class="simple">
+<dt>There is also a global switch to turn off burst for all groups::</dt><dd><p>/proc/sys/kernel/sched_cfs_bw_burst_enabled (default=1)</p>
+</dd>
+</dl>
+<p>By default it is enabled. Write 0 values means no accumulated CPU time can be
+used for any group, even if cpu.cfs_burst_us is configured.</p>
+<p>Sometimes users might want a group to burst without accumulation. This is
+tunable via:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/proc/sys/kernel/sched_cfs_bw_burst_onset_percent (default=0)
+</pre></div>
+</div>
+<p>Up to 100% runtime of cpu.cfs_burst_us might be given on setting bandwidth.</p>
 </div>
 <div class="section" id="statistics">
 <h2>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">¶</a></h2>
-<p>A group’s bandwidth statistics are exported via 3 fields in cpu.stat.</p>
+<p>A group’s bandwidth statistics are exported via 6 fields in cpu.stat.</p>
 <p>cpu.stat:</p>
 <ul class="simple">
 <li><p>nr_periods: Number of enforcement intervals that have elapsed.</p></li>
 <li><p>nr_throttled: Number of times the group has been throttled/limited.</p></li>
 <li><p>throttled_time: The total time duration (in nanoseconds) for which entities
 of the group have been throttled.</p></li>
+<li><p>current_bw: Current runtime in global pool.</p></li>
+<li><p>nr_burst: Number of periods burst occurs.</p></li>
+<li><p>burst_time: Cumulative wall-time that any cpus has used above quota in
+respective periods</p></li>
 </ul>
 <p>This interface is read-only.</p>
 </div>
@@ -429,6 +455,17 @@ The larger period here allows for increased burst capacity.
 </div>
 <p>By using a small period here we are ensuring a consistent latency
 response at the expense of burst capacity.</p>
+</li>
+<li><p>Limit a group to 20% of 1 CPU, and allow accumulate up to 60% of 1 CPU
+addtionally, in case accumulation has been done.</p>
+<p>With 50ms period, 10ms quota will be equivalent to 20% of 1 CPU.
+And 30ms burst will be equivalent to 60% of 1 CPU.</p>
+<blockquote>
+<div><p># echo 10000 &gt; cpu.cfs_quota_us /* quota = 10ms <em>/
+# echo 50000 &gt; cpu.cfs_period_us /</em> period = 50ms <em>/
+# echo 30000 &gt; cpu.cfs_burst_us /</em> burst = 30ms <a href="#id1"><span class="problematic" id="id2">*</span></a>/</p>
+</div></blockquote>
+<p>Larger buffer setting allows greater burst capacity.</p>
 </li>
 </ol>
 </div>
