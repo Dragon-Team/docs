@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.1-dragon
+                5.11.2-dragon
               </div>
             
           
@@ -2037,7 +2037,7 @@ workqueue’s saved_max_active and activate delayed work items
 accordingly.  If <strong>pwq</strong> is freezing, clear <strong>pwq-&gt;max_active</strong> to zero.</p>
 <dl class="c function">
 <dt id="c.wq_calc_node_cpumask">
-bool <code class="sig-name descname">wq_calc_node_cpumask</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.workqueue_attrs" title="workqueue_attrs">workqueue_attrs</a> *<em>attrs</em>, int <em>node</em>, int <em>cpu_going_down</em>, cpumask_t *<em>cpumask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wq_calc_node_cpumask" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">wq_calc_node_cpumask</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.workqueue_attrs" title="workqueue_attrs">workqueue_attrs</a> *<em>attrs</em>, int <em>node</em>, cpumask_t *<em>cpumask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wq_calc_node_cpumask" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>calculate a wq_attrs’ cpumask for the specified node</p>
 </dd></dl>
 
@@ -2047,15 +2047,12 @@ bool <code class="sig-name descname">wq_calc_node_cpumask</code><span class="sig
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">node</span></code></dt><dd><p>the target NUMA node</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">cpu_going_down</span></code></dt><dd><p>if &gt;= 0, the CPU to consider as offline</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">cpumask_t</span> <span class="pre">*cpumask</span></code></dt><dd><p>outarg, the resulting cpumask</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Calculate the cpumask a workqueue with <strong>attrs</strong> should use on <strong>node</strong>.  If
-<strong>cpu_going_down</strong> is &gt;= 0, that cpu is considered offline during
-calculation.  The result is stored in <strong>cpumask</strong>.</p>
+<p>Calculate the cpumask a workqueue with <strong>attrs</strong> should use on <strong>node</strong>.
+The result is stored in <strong>cpumask</strong>.</p>
 <p>If NUMA affinity is not enabled, <strong>attrs-&gt;cpumask</strong> is always used.  If
 enabled and <strong>node</strong> has online CPUs requested by <strong>attrs</strong>, the returned
 cpumask is the intersection of the possible CPUs of <strong>node</strong> and
@@ -2091,7 +2088,7 @@ back-to-back will stay on its current pwq.</p>
 <p>0 on success and -errno on failure.</p>
 <dl class="c function">
 <dt id="c.wq_update_unbound_numa">
-void <code class="sig-name descname">wq_update_unbound_numa</code><span class="sig-paren">(</span><em class="property">struct</em> workqueue_struct *<em>wq</em>, int <em>cpu</em>, bool <em>online</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wq_update_unbound_numa" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">wq_update_unbound_numa</code><span class="sig-paren">(</span><em class="property">struct</em> workqueue_struct *<em>wq</em>, int <em>cpu</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wq_update_unbound_numa" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update NUMA affinity of a wq for CPU hot[un]plug</p>
 </dd></dl>
 
@@ -2100,8 +2097,6 @@ void <code class="sig-name descname">wq_update_unbound_numa</code><span class="s
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">workqueue_struct</span> <span class="pre">*wq</span></code></dt><dd><p>the target workqueue</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">cpu</span></code></dt><dd><p>the CPU coming up or going down</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">online</span></code></dt><dd><p>whether <strong>cpu</strong> is coming up or going down</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
@@ -2287,23 +2282,23 @@ void <code class="sig-name descname">rebind_workers</code><span class="sig-paren
 <p><strong>Description</strong></p>
 <p><strong>pool-&gt;cpu</strong> is coming online.  Rebind all workers to the CPU.</p>
 <dl class="c function">
-<dt id="c.restore_unbound_workers_cpumask">
-void <code class="sig-name descname">restore_unbound_workers_cpumask</code><span class="sig-paren">(</span><em class="property">struct</em> worker_pool *<em>pool</em>, int <em>cpu</em><span class="sig-paren">)</span><a class="headerlink" href="#c.restore_unbound_workers_cpumask" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>restore cpumask of unbound workers</p>
+<dt id="c.update_unbound_workers_cpumask">
+void <code class="sig-name descname">update_unbound_workers_cpumask</code><span class="sig-paren">(</span><em class="property">struct</em> worker_pool *<em>pool</em>, int <em>cpu</em><span class="sig-paren">)</span><a class="headerlink" href="#c.update_unbound_workers_cpumask" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>update cpumask of unbound workers</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">worker_pool</span> <span class="pre">*pool</span></code></dt><dd><p>unbound pool of interest</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">cpu</span></code></dt><dd><p>the CPU which is coming up</p>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">cpu</span></code></dt><dd><p>the CPU which is coming up or going down</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
 <p>An unbound pool may end up with a cpumask which doesn’t have any online
-CPUs.  When a worker of such pool get scheduled, the scheduler resets
-its cpus_allowed.  If <strong>cpu</strong> is in <strong>pool</strong>’s cpumask which didn’t have any
-online CPU before, cpus_allowed of all its workers should be restored.</p>
+CPUs.  We have to reset workers’ cpus_allowed of such pool.  And we
+restore the workers’ cpus_allowed when the pool’s cpumask has online
+CPU for the first time after reset.</p>
 <dl class="c function">
 <dt id="c.work_on_cpu">
 long <code class="sig-name descname">work_on_cpu</code><span class="sig-paren">(</span>int <em>cpu</em>, long (*<em>fn</em>)<span class="sig-paren">(</span>void*<span class="sig-paren">)</span>, void *<em>arg</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.work_on_cpu" title="Permalink to this definition">¶</a><br /></dt>

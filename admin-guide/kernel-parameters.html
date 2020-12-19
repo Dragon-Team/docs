@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.1-dragon
+                5.11.2-dragon
               </div>
             
           
@@ -2077,7 +2077,12 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
         hugetlb_free_vmemmap=
                         [KNL] When CONFIG_HUGETLB_PAGE_FREE_VMEMMAP is set,
                         this controls freeing unused vmemmap pages associated
-                        with each HugeTLB page.
+                        with each HugeTLB page. When this option is enabled,
+                        we disable PMD/huge page mapping of vmemmap pages which
+                        increase page table pages. So if a user/sysadmin only
+                        uses a small number of HugeTLB pages (as a percentage
+                        of system memory), they could end up using more memory
+                        with hugetlb_free_vmemmap on as opposed to off.
                         Format: { on | off (default) }
 
                         on:  enable the feature
