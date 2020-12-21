@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.2-dragon
+                5.11.3-dragon
               </div>
             
           
@@ -10786,21 +10786,6 @@ Parameter Set as defined in <a class="reference internal" href="#c.dp_sdp_header
 picture parameter infoframes from the source to the sink.
 This function populates the SDP header defined in
 <a class="reference internal" href="#c.dp_sdp_header" title="dp_sdp_header"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dp_sdp_header</span></code></a>.</p>
-<dl class="c function">
-<dt id="c.drm_dsc_dp_rc_buffer_size">
-int <code class="sig-name descname">drm_dsc_dp_rc_buffer_size</code><span class="sig-paren">(</span>u8 <em>rc_buffer_block_size</em>, u8 <em>rc_buffer_size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dsc_dp_rc_buffer_size" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>get rc buffer size in bytes</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">rc_buffer_block_size</span></code></dt><dd><p>block size code, according to DPCD offset 62h</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">rc_buffer_size</span></code></dt><dd><p>number of blocks - 1, according to DPCD offset 63h</p>
-</dd>
-</dl>
-<p><strong>Return</strong></p>
-<p>buffer size in bytes, or 0 on invalid input</p>
 <dl class="c function">
 <dt id="c.drm_dsc_pps_payload_pack">
 void <code class="sig-name descname">drm_dsc_pps_payload_pack</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_dsc_picture_parameter_set" title="drm_dsc_picture_parameter_set">drm_dsc_picture_parameter_set</a> *<em>pps_payload</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_dsc_config" title="drm_dsc_config">drm_dsc_config</a> *<em>dsc_cfg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dsc_pps_payload_pack" title="Permalink to this definition">¶</a><br /></dt>
