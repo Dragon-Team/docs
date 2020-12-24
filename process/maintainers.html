@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.3-dragon
+                5.11.4-dragon
               </div>
             
           
@@ -2147,6 +2147,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#tensilica-xtensa-port-xtensa">TENSILICA XTENSA PORT (xtensa)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#texas-instruments-asoc-drivers">TEXAS INSTRUMENTS ASoC DRIVERS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#texas-instruments-dac7612-dac-driver">TEXAS INSTRUMENTS’ DAC7612 DAC DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#texas-instruments-dma-drivers">TEXAS INSTRUMENTS DMA DRIVERS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#texas-instruments-system-control-interface-tisci-protocol-driver">TEXAS INSTRUMENTS’ SYSTEM CONTROL INTERFACE (TISCI) PROTOCOL DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#thanko-s-raremono-am-fm-sw-radio-receiver-usb-driver">THANKO’S RAREMONO AM/FM/SW RADIO RECEIVER USB DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#thermal">THERMAL</a></li>
@@ -9843,6 +9844,7 @@ Jens Axboe &lt;<a class="reference external" href="mailto:axboe&#37;&#52;&#48;ke
 <dt class="field-odd">Files</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">block/</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/block/</span></code>
+<code class="docutils literal notranslate"><span class="pre">fs/block_dev.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/blk*</span></code>
 <code class="docutils literal notranslate"><span class="pre">kernel/trace/blktrace.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">lib/sbitmap.c</span></code></p>
@@ -10646,7 +10648,7 @@ Sudarsana Kalluru &lt;<a class="reference external" href="mailto:skalluru&#37;&#
 <h3>BROADCOM BRCM80211 IEEE802.11n WIRELESS DRIVER<a class="headerlink" href="#broadcom-brcm80211-ieee802-11n-wireless-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Arend van Spriel &lt;<a class="reference external" href="mailto:arend&#46;vanspriel&#37;&#52;&#48;broadcom&#46;com">arend<span>&#46;</span>vanspriel<span>&#64;</span>broadcom<span>&#46;</span>com</a>&gt;,
+<dd class="field-odd"><p>Arend van Spriel &lt;<a class="reference external" href="mailto:aspriel&#37;&#52;&#48;gmail&#46;com">aspriel<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;,
 Franky Lin &lt;<a class="reference external" href="mailto:franky&#46;lin&#37;&#52;&#48;broadcom&#46;com">franky<span>&#46;</span>lin<span>&#64;</span>broadcom<span>&#46;</span>com</a>&gt;,
 Hante Meuleman &lt;<a class="reference external" href="mailto:hante&#46;meuleman&#37;&#52;&#48;broadcom&#46;com">hante<span>&#46;</span>meuleman<span>&#64;</span>broadcom<span>&#46;</span>com</a>&gt;,
 Chi-hsien Lin &lt;<a class="reference external" href="mailto:chi-hsien&#46;lin&#37;&#52;&#48;infineon&#46;com">chi-hsien<span>&#46;</span>lin<span>&#64;</span>infineon<span>&#46;</span>com</a>&gt;,
@@ -44073,6 +44075,34 @@ Max Filippov &lt;<a class="reference external" href="mailto:jcmvbkbc&#37;&#52;&#
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/iio/dac/ti,dac7612.txt</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/iio/dac/ti-dac7612.c</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="texas-instruments-dma-drivers">
+<h3>TEXAS INSTRUMENTS DMA DRIVERS<a class="headerlink" href="#texas-instruments-dma-drivers" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Peter Ujfalusi &lt;<a class="reference external" href="mailto:peter&#46;ujfalusi&#37;&#52;&#48;gmail&#46;com">peter<span>&#46;</span>ujfalusi<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:dmaengine&#37;&#52;&#48;vger&#46;kernel&#46;org">dmaengine<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Maintained</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/dma/ti-dma-crossbar.txt</span></code>
+<code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/dma/ti-edma.txt</span></code>
+<code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/dma/ti/</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/dma/ti/</span></code></p>
+</dd>
+<dt class="field-odd">Excluded</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/dma/ti/cppi41.c</span></code></p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">include/linux/dma/k3-udma-glue.h</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/linux/dma/ti-cppi5.h</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/linux/dma/k3-psil.h</span></code></p>
 </dd>
 </dl>
 </div>

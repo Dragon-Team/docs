@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.3-dragon
+                5.11.4-dragon
               </div>
             
           
@@ -349,7 +349,7 @@ When we say “variable” in a broad sense, it includes “user-defined functio
 <p>Like Make, Kconfig provides several built-in functions. Every function takes a
 particular number of arguments.</p>
 <p>In Make, every built-in function takes at least one argument. Kconfig allows
-zero argument for built-in functions, such as $(fileno), $(lineno). You could
+zero argument for built-in functions, such as $(filename), $(lineno). You could
 consider those as “built-in variable”, but it is just a matter of how we call
 it after all. Let’s say “built-in function” here to refer to natively supported
 functionality.</p>
@@ -377,8 +377,7 @@ It evaluates to an empty string.</p>
 </ul>
 <blockquote>
 <div><p>The “warning-if” function takes two arguments. If the condition part is “y”,
-the text part is sent to stderr. The text is prefixed with the name of the
-current Kconfig file and the current line number.</p>
+the text part is sent to stderr.</p>
 </div></blockquote>
 <ul class="simple">
 <li><p>$(error-if,condition,text)</p></li>
