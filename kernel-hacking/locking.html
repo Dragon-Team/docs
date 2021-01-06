@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -437,10 +437,10 @@ spinlock, but you may block holding a mutex. If you can’t lock a mutex,
 your task will suspend itself, and be woken up when the mutex is
 released. This means the CPU can do something else while you are
 waiting. There are many cases when you simply can’t sleep (see
-<a class="reference external" href="#sleeping-things">What Functions Are Safe To Call From Interrupts?</a>),
+<a class="reference internal" href="#what-functions-are-safe-to-call-from-interrupts">What Functions Are Safe To Call From Interrupts?</a>),
 and so have to use a spinlock instead.</p>
 <p>Neither type of lock is recursive: see
-<a class="reference external" href="#deadlock">Deadlock: Simple and Advanced</a>.</p>
+<a class="reference internal" href="#deadlock-simple-and-advanced">Deadlock: Simple and Advanced</a>.</p>
 </div>
 <div class="section" id="locks-and-uniprocessor-kernels">
 <h3>Locks and Uniprocessor Kernels<a class="headerlink" href="#locks-and-uniprocessor-kernels" title="Permalink to this headline">¶</a></h3>
@@ -489,7 +489,7 @@ interrupts. It should really be called spin_lock_softirq()’ in a
 perfect world).</p>
 <p>Note that you can also use spin_lock_irq() or
 spin_lock_irqsave() here, which stop hardware interrupts
-as well: see <a class="reference external" href="#hard-irq-context">Hard IRQ Context</a>.</p>
+as well: see <a class="reference internal" href="#hard-irq-context">Hard IRQ Context</a>.</p>
 <p>This works perfectly for UP as well: the spin lock vanishes, and this
 macro simply becomes local_bh_disable()
 (<code class="docutils literal notranslate"><span class="pre">include/linux/interrupt.h</span></code>), which protects you from the softirq
@@ -531,7 +531,7 @@ on the same CPU.</p>
 <div class="section" id="the-same-softirq">
 <h4>The Same Softirq<a class="headerlink" href="#the-same-softirq" title="Permalink to this headline">¶</a></h4>
 <p>The same softirq can run on the other CPUs: you can use a per-CPU array
-(see <a class="reference external" href="#per-cpu-data">Per-CPU Data</a>) for better performance. If you’re
+(see <a class="reference internal" href="#per-cpu-data">Per-CPU Data</a>) for better performance. If you’re
 going so far as to use a softirq, you probably care about scalable
 performance enough to justify the extra complexity.</p>
 <p>You’ll need to use spin_lock() and

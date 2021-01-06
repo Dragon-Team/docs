@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -345,7 +345,7 @@ kernel config.</p>
 <p>The codes for PCM and mixer OSS emulation modules are stored in this
 directory. The rawmidi OSS emulation is included in the ALSA rawmidi
 code since it’s quite small. The sequencer code is stored in
-<code class="docutils literal notranslate"><span class="pre">core/seq/oss</span></code> directory (see <a class="reference external" href="#core-seq-oss">below</a>).</p>
+<code class="docutils literal notranslate"><span class="pre">core/seq/oss</span></code> directory (see <a class="reference internal" href="#core-seq-oss">below</a>).</p>
 </div>
 <div class="section" id="core-seq">
 <h4>core/seq<a class="headerlink" href="#core-seq" title="Permalink to this headline">¶</a></h4>
@@ -621,7 +621,7 @@ if (!enable[dev]) {
 <p>where <code class="docutils literal notranslate"><span class="pre">enable[dev]</span></code> is the module option.</p>
 <p>Each time the <code class="docutils literal notranslate"><span class="pre">probe</span></code> callback is called, check the availability of
 the device. If not available, simply increment the device index and
-returns. dev will be incremented also later (<a class="reference external" href="#set-the-pci-driver-data-and-return-zero">step 7</a>).</p>
+returns. dev will be incremented also later (<a class="reference internal" href="#set-the-pci-driver-data-and-return-zero">step 7</a>).</p>
 </div>
 <div class="section" id="create-a-card-instance">
 <h4>2) Create a card instance<a class="headerlink" href="#create-a-card-instance" title="Permalink to this headline">¶</a></h4>
@@ -675,10 +675,10 @@ field contains the information shown in <code class="docutils literal notranslat
 </div>
 <div class="section" id="create-other-components-such-as-mixer-midi-etc">
 <h4>5) Create other components, such as mixer, MIDI, etc.<a class="headerlink" href="#create-other-components-such-as-mixer-midi-etc" title="Permalink to this headline">¶</a></h4>
-<p>Here you define the basic components such as <a class="reference external" href="#PCM-Interface">PCM</a>,
-mixer (e.g. <a class="reference external" href="#API-for-AC97-Codec">AC97</a>), MIDI (e.g.
-<a class="reference external" href="#MIDI-MPU401-UART-Interface">MPU-401</a>), and other interfaces.
-Also, if you want a <a class="reference external" href="#Proc-Interface">proc file</a>, define it here,
+<p>Here you define the basic components such as <a class="reference internal" href="#pcm-interface">PCM</a>,
+mixer (e.g. <a class="reference internal" href="#api-for-ac97-codec">AC97</a>), MIDI (e.g.
+<a class="reference internal" href="#midi-mpu401-uart-interface">MPU-401</a>), and other interfaces.
+Also, if you want a <a class="reference internal" href="#proc-interface">proc file</a>, define it here,
 too.</p>
 </div>
 <div class="section" id="register-the-card-instance">
@@ -1094,7 +1094,7 @@ chip-&gt;irq = pci-&gt;irq;
 </pre></div>
 </div>
 <p>where <code class="xref c c-func docutils literal notranslate"><span class="pre">snd_mychip_interrupt()</span></code> is the interrupt handler
-defined <a class="reference external" href="#pcm-interface-interrupt-handler">later</a>. Note that
+defined <a class="reference internal" href="#pcm-interrupt-handler">later</a>. Note that
 <code class="docutils literal notranslate"><span class="pre">chip-&gt;irq</span></code> should be defined only when <a class="reference internal" href="../../core-api/genericirq.html#c.request_irq" title="request_irq"><code class="xref c c-func docutils literal notranslate"><span class="pre">request_irq()</span></code></a>
 succeeded.</p>
 <p>On the PCI bus, interrupts can be shared. Thus, <code class="docutils literal notranslate"><span class="pre">IRQF_SHARED</span></code> is used
@@ -2931,7 +2931,7 @@ the default interrupt handler. The driver needs to call
 processing the output stream in the irq handler.</p>
 <p>If the MPU-401 interface shares its interrupt with the other logical
 devices on the card, set <code class="docutils literal notranslate"><span class="pre">MPU401_INFO_IRQ_HOOK</span></code> (see
-<a class="reference external" href="#MIDI-Interrupt-Handler">below</a>).</p>
+<a class="reference internal" href="#midi-interrupt-handler">below</a>).</p>
 <p>Usually, the port address corresponds to the command port and port + 1
 corresponds to the data port. If not, you may change the <code class="docutils literal notranslate"><span class="pre">cport</span></code>
 field of struct snd_mpu401 manually afterward.

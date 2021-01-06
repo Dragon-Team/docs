@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -897,6 +897,10 @@ no matter what.  Everything is handled by the caller.</p>
 <p><strong>mandatory</strong></p>
 <p>clone_private_mount() returns a longterm mount now, so the proper destructor of
 its result is kern_unmount() or kern_unmount_array().</p>
+<p>—</p>
+<p><strong>mandatory</strong></p>
+<p>mnt_want_write_file() can now only be paired with mnt_drop_write_file(),
+whereas previously it could be paired with mnt_drop_write() as well.</p>
 </div>
 
 

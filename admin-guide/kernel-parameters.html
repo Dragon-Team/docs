@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -334,8 +334,8 @@
             
   <div class="section" id="the-kernel-s-command-line-parameters">
 <span id="kernelparameters"></span><h1>The kernel’s command-line parameters<a class="headerlink" href="#the-kernel-s-command-line-parameters" title="Permalink to this headline">¶</a></h1>
-<p>The following is a consolidated list of the kernel parameters as
-implemented by the __setup(), core_param() and module_param() macros
+<p>The following is a consolidated list of the kernel parameters as implemented
+by the __setup(), early_param(), core_param() and module_param() macros
 and sorted into English Dictionary order (defined as ignoring all
 punctuation and sorting digits before letters in a case insensitive
 manner), and with descriptions where known.</p>
@@ -392,6 +392,26 @@ group:</p>
 <div><p>isolcpus=1,2,10-20,100-2000:2/25</p>
 </div></blockquote>
 <p>where the final item represents CPUs 100,101,125,126,150,151,…</p>
+<p>The following convenience aliases are also accepted and used:</p>
+<blockquote>
+<div><p>foo_cpus=all</p>
+</div></blockquote>
+<p>is equivalent to “foo_cpus=0-N” – where “N” is the numerically last CPU on
+the system, thus avoiding looking up the value in “/sys/devices/system/cpu”
+in advance on each deployed system.</p>
+<blockquote>
+<div><p>foo_cpus=none</p>
+</div></blockquote>
+<p>will provide an empty/cleared cpu mask for the associated boot argument.</p>
+<p>Note that “all” and “none” are not necessarily valid/sensible input values
+for each available parameter expecting a CPU list.</p>
+<blockquote>
+<div><p>foo_cpus=1,3,5,16-last</p>
+</div></blockquote>
+<p>will at runtime, replace “last” with the number of the last (highest number)
+present CPU on the system.  Thus a common deployment can be used on multiple
+systems with different total number of cores present, without needing to
+evaluate the total core count in advance on each system.</p>
 <p>This document may not be entirely up to date and comprehensive. The command
 “modinfo -p ${modulename}” shows a current list of all parameters of a loadable
 module. Loadable modules, after being loaded into the running kernel, also
@@ -1099,6 +1119,37 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         architected timer so that code using WFE-based polling
                         loops can be debugged more effectively on production
                         systems.
+
+        clocksource.inject_delay_freq= [KNL]
+                        Number of runs of calls to clocksource_watchdog()
+                        before delays are injected between reads from the
+                        two clocksources.  Values less than or equal to
+                        zero disable this delay injection.  These delays
+                        can cause clocks to be marked unstable, so use
+                        of this parameter should therefore be avoided on
+                        production systems.  Defaults to zero (disabled).
+
+        clocksource.inject_delay_run= [KNL]
+                        Run lengths of clocksource_watchdog() delay
+                        injections.  Specifying the value 8 will result
+                        in eight consecutive delays followed by eight
+                        times the value specified for inject_delay_freq
+                        of consecutive non-delays.
+
+        clocksource.inject_delay_shift_percpu= [KNL]
+                        Shift count to obtain bit from CPU number to
+                        determine whether to shift the time of the per-CPU
+                        clock under test ahead or behind.  For example,
+                        setting this to the value four will result in
+                        alternating groups of 16 CPUs shifting ahead and
+                        the rest of the CPUs shifting behind.  The default
+                        value of -1 disable this type of error injection.
+
+        clocksource.max_read_retries= [KNL]
+                        Number of clocksource_watchdog() retries due to
+                        external delays before the clock will be marked
+                        unstable.  Defaults to three retries, that is,
+                        four attempts to read the clock under test.
 
         clearcpuid=BITNUM[,BITNUM...] [X86]
                         Disable CPUID feature X for the kernel. See
@@ -4371,6 +4422,7 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                 nomio           [S390] Do not use MIO instructions.
                 norid           [S390] ignore the RID field and force use of
                                 one PCI domain per PCI function
+                no_movable_bars Don't allow BARs to be moved during hotplug
 
         pcie_aspm=      [PCIE] Forcibly enable or disable PCIe Active State Power
                         Management.
@@ -4610,9 +4662,7 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                                 see CONFIG_RAS_CEC help text.
 
         rcu_nocbs=      [KNL]
-                        The argument is a cpu list, as described above,
-                        except that the string &quot;all&quot; can be used to
-                        specify every CPU on the system.
+                        The argument is a cpu list, as described above.
 
                         In kernels built with CONFIG_RCU_NOCB_CPU=y, set
                         the specified list of CPUs to be no-callback CPUs.
@@ -4664,6 +4714,10 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         per-CPU rcuc kthreads.  Defaults to a non-zero
                         value, meaning that RCU_SOFTIRQ is used by default.
                         Specify rcutree.use_softirq=0 to use rcuc kthreads.
+
+                        But note that CONFIG_PREEMPT_RT=y kernels disable
+                        this kernel boot parameter, forcibly setting it
+                        to zero.
 
         rcutree.rcu_fanout_exact= [KNL]
                         Disable autobalancing of the rcu_node combining
@@ -4751,12 +4805,6 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
         rcutree.rcu_idle_gp_delay= [KNL]
                         Set wakeup interval for idle CPUs that have
                         RCU callbacks (RCU_FAST_NO_HZ=y).
-
-        rcutree.rcu_idle_lazy_gp_delay= [KNL]
-                        Set wakeup interval for idle CPUs that have
-                        only &quot;lazy&quot; RCU callbacks (RCU_FAST_NO_HZ=y).
-                        Lazy RCU callbacks are those which RCU can
-                        prove do nothing more than free memory.
 
         rcutree.rcu_kick_kthreads= [KNL]
                         Cause the grace-period kthread to get an extra
@@ -4911,6 +4959,14 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         stress RCU, they don't participate in the actual
                         test, hence the &quot;fake&quot;.
 
+        rcutorture.nocbs_nthreads= [KNL]
+                        Set number of RCU callback-offload togglers.
+                        Zero (the default) disables toggling.
+
+        rcutorture.nocbs_toggle= [KNL]
+                        Set the delay in milliseconds between successive
+                        callback-offload toggling attempts.
+
         rcutorture.nreaders= [KNL]
                         Set number of RCU readers.  The value -1 selects
                         N-1, where N is the number of CPUs.  A value
@@ -5043,6 +5099,13 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         only normal grace-period primitives.  No effect
                         on CONFIG_TINY_RCU kernels.
 
+                        But note that CONFIG_PREEMPT_RT=y kernels enables
+                        this kernel boot parameter, forcibly setting
+                        it to the value one, that is, converting any
+                        post-boot attempt at an expedited RCU grace
+                        period to instead use normal non-expedited
+                        grace-period processing.
+
         rcupdate.rcu_task_ipi_delay= [KNL]
                         Set time in jiffies during which RCU tasks will
                         avoid sending IPIs, starting with the beginning
@@ -5129,6 +5192,12 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
 
         refscale.verbose= [KNL]
                         Enable additional printk() statements.
+
+        refscale.verbose_batched= [KNL]
+                        Batch the additional printk() statements.  If zero
+                        (the default) or negative, print everything.  Otherwise, 
+                        print every Nth verbose statement, where N is the value
+                        specified.
 
         relax_domain_level=
                         [KNL, SMP] Set scheduler's default relax_domain_level.
@@ -5923,6 +5992,14 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         are running concurrently, especially on systems
                         with rotating-rust storage.
 
+        torture.verbose_sleep_frequency= [KNL]
+                        Specifies how many verbose printk()s should be
+                        emitted between each sleep.  The default of zero
+                        disables verbose-printk() sleeping.
+
+        torture.verbose_sleep_duration= [KNL]
+                        Duration of each verbose-printk() sleep in jiffies.
+
         tp720=          [HW,PS2]
 
         tpm_suspend_pcr=[HW,TPM]
@@ -6601,6 +6678,21 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         Disables the qspinlock slow path using PV optimizations
                         which allow the hypervisor to 'idle' the guest on lock
                         contention.
+
+        xstate.enable=  [X86-64]
+        xstate.disable= [X86-64]
+                        The kernel is compiled with a default xstate bitmask --
+                        enabling it to use the XSAVE hardware to efficiently
+                        save and restore thread states on context switch.
+                        xstate.enable allows adding to that default mask at
+                        boot-time without recompiling the kernel just to support
+                        the new thread state. (Note that the kernel will ignore
+                        any bits in the mask that do not correspond to features
+                        that are actually available in CPUID)  xstate.disable
+                        allows clearing bits in the default mask, forcing the
+                        kernel to forget that it supports the specified thread
+                        state. When a bit set for both, the kernel takes
+                        xstate.disable in a priority.
 
         xirc2ps_cs=     [NET,PCMCIA]
                         Format:

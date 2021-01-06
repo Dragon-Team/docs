@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -136,7 +136,6 @@
 <li class="toctree-l2"><a class="reference internal" href="hid-alps.html">ALPS HID Touchpad Protocol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intel-ish-hid.html">Intel Integrated Sensor Hub (ISH)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="amd-sfh-hid.html">AMD Sensor Fusion Hub</a></li>
-<li class="toctree-l2"><a class="reference internal" href="amd-sfh-hid.html#block-diagram">1. Block Diagram</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../i2c/index.html">I2C/SMBus Subsystem</a></li>
@@ -313,12 +312,12 @@ for different sensors. For example an accelerometer can send X,Y and Z data, whe
 an ambient light sensor can send illumination data.
 So the implementation has two parts:</p>
 <ul class="simple">
-<li><p>Core hid driver</p></li>
+<li><p>Core HID driver</p></li>
 <li><p>Individual sensor processing part (sensor drivers)</p></li>
 </ul>
 <div class="section" id="core-driver">
 <h3>Core driver<a class="headerlink" href="#core-driver" title="Permalink to this headline">¶</a></h3>
-<p>The core driver registers (hid-sensor-hub) registers as a HID driver. It parses
+<p>The core driver (hid-sensor-hub) registers as a HID driver. It parses
 report descriptors and identifies all the sensors present. It adds an MFD device
 with name HID-SENSOR-xxxx (where xxxx is usage id from the specification).</p>
 <p>For example:</p>
@@ -354,13 +353,13 @@ can use IIO interface to use the standard ABI defined for a type of sensor.</p>
                       struct hid_sensor_hub_callbacks *usage_callback):
 </pre></div>
 </div>
-<p>Registers callbacks for an usage id. The callback functions are not allowed
+<p>Registers callbacks for a usage id. The callback functions are not allowed
 to sleep:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int sensor_hub_remove_callback(struct hid_sensor_hub_device *hsdev,
                       u32 usage_id):
 </pre></div>
 </div>
-<p>Removes callbacks for an usage id.</p>
+<p>Removes callbacks for a usage id.</p>
 <p>Parsing function:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int sensor_hub_input_get_attribute_info(struct hid_sensor_hub_device *hsdev,
                       u8 type,
@@ -412,7 +411,7 @@ an application/driver to determine what data is being communicated by the sensor
 This allows some differentiating use cases, where vendor can provide applications.
 Some common use cases are debug other sensors or to provide some events like
 keyboard attached/detached or lid open/close.</p>
-<p>To allow application to utilize these sensors, here they are exported uses sysfs
+<p>To allow application to utilize these sensors, here they are exported using sysfs
 attribute groups, attributes and misc device interface.</p>
 <p>An example of this representation on sysfs:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/sys/devices/pci0000:00/INT33C2:00/i2c-0/i2c-INT33D1:00/0018:8086:09FA.0001/HID-SENSOR-2000e1.6.auto$ tree -R
@@ -452,9 +451,9 @@ attribute groups, attributes and misc device interface.</p>
 │   │   │   ├── input-1-200202-value
 </pre></div>
 </div>
-<p>Here there is a custom sensors with four fields, two feature and two inputs.
+<p>Here there is a custom sensor with four fields: two feature and two inputs.
 Each field is represented by a set of attributes. All fields except the “value”
-are read only. The value field is a RW field.</p>
+are read only. The value field is a read-write field.</p>
 <p>Example:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/sys/bus/platform/devices/HID-SENSOR-2000e1.6.auto/feature-0-200316$ grep -r . *
 feature-0-200316-maximum:6
@@ -480,8 +479,8 @@ These reports are pushed using misc device interface in a FIFO order:</p>
 │   ├──  HID-SENSOR-2000e1.6.auto
 </pre></div>
 </div>
-<p>Each reports can be of variable length preceded by a header. This header
-consist of a 32 bit usage id, 64 bit time stamp and 32 bit length field of raw
+<p>Each report can be of variable length preceded by a header. This header
+consists of a 32-bit usage id, 64-bit time stamp and 32-bit length field of raw
 data.</p>
 </div>
 </div>

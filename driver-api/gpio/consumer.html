@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -700,19 +700,16 @@ GPIOs belonging to the same bank or chip simultaneously if supported by the
 corresponding chip driver. In that case a significantly improved performance
 can be expected. If simultaneous access is not possible the GPIOs will be
 accessed sequentially.</p>
-<dl class="simple">
-<dt>The functions take three arguments:</dt><dd><ul class="simple">
+<p>The functions take four arguments:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>array_size    - the number of array elements</p></li>
 <li><p>desc_array    - an array of GPIO descriptors</p></li>
 <li><p>array_info    - optional information obtained from <a class="reference internal" href="index.html#c.gpiod_get_array" title="gpiod_get_array"><code class="xref c c-func docutils literal notranslate"><span class="pre">gpiod_get_array()</span></code></a></p></li>
-<li><dl class="simple">
-<dt>value_bitmap  - a bitmap to store the GPIOs’ values (get) or</dt><dd><p>a bitmap of values to assign to the GPIOs (set)</p>
-</dd>
-</dl>
-</li>
+<li><p>value_bitmap  - a bitmap to store the GPIOs’ values (get) or
+a bitmap of values to assign to the GPIOs (set)</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <p>The descriptor array can be obtained using the <a class="reference internal" href="index.html#c.gpiod_get_array" title="gpiod_get_array"><code class="xref c c-func docutils literal notranslate"><span class="pre">gpiod_get_array()</span></code></a> function
 or one of its variants. If the group of descriptors returned by that function
 matches the desired group of GPIOs, those GPIOs can be accessed by simply using

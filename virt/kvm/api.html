@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -758,12 +758,23 @@ see the description of the capability.</p>
 <blockquote>
 <div><table class="docutils align-default">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>EINTR</p></td>
 <td><p>an unmasked signal is pending</p></td>
+</tr>
+<tr class="row-even"><td><p>ENOEXEC</p></td>
+<td><p>the vcpu hasn’t been initialized or the guest tried to execute
+instructions from device memory (arm64)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ENOSYS</p></td>
+<td><p>data abort outside memslots with no syndrome info and
+KVM_CAP_ARM_NISV_TO_USER not enabled (arm64)</p></td>
+</tr>
+<tr class="row-even"><td><p>EPERM</p></td>
+<td><p>SVE feature set but not finalized (arm64)</p></td>
 </tr>
 </tbody>
 </table>

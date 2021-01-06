@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -134,7 +134,6 @@
 <li class="toctree-l2"><a class="reference internal" href="hid-alps.html">ALPS HID Touchpad Protocol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intel-ish-hid.html">Intel Integrated Sensor Hub (ISH)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="amd-sfh-hid.html">AMD Sensor Fusion Hub</a></li>
-<li class="toctree-l2"><a class="reference internal" href="amd-sfh-hid.html#block-diagram">1. Block Diagram</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../i2c/index.html">I2C/SMBus Subsystem</a></li>
@@ -291,7 +290,7 @@ the following:</p>
 </pre></div>
 </div>
 <p>In addition, other subsystems (apart from USB) can potentially feed
-events into the input subsystem, but these have no effect on the hid
+events into the input subsystem, but these have no effect on the HID
 device interface.</p>
 </div>
 <div class="section" id="using-the-hid-device-interface">
@@ -331,7 +330,7 @@ conveniently linked of <a class="reference external" href="http://www.linux-usb.
 <p>HID devices exchange data with the host computer using data
 bundles called “reports”.  Each report is divided into “fields”,
 each of which can have one or more “usages”.  In the hid-core,
-each one of these usages has a single signed 32 bit value.</p>
+each one of these usages has a single signed 32-bit value.</p>
 <div class="section" id="read">
 <h3>read():<a class="headerlink" href="#read" title="Permalink to this headline">¶</a></h3>
 <p>This is the event interface.  When the HID device’s state changes,
@@ -371,7 +370,7 @@ ioctl() described below.</p>
 </dd>
 </dl>
 <p>This ioctl call returns the HID application usage associated with the
-hid device. The third argument to ioctl() specifies which application
+HID device. The third argument to ioctl() specifies which application
 index to get. This is useful when the device has more than one
 application collection. If the index is invalid (greater or equal to
 the number of application collections this device has) the ioctl
@@ -455,7 +454,7 @@ looked up by type (input, output or feature) and id, so these fields
 must be filled in by the user. The ID can be absolute – the actual
 report id as reported by the device – or relative –
 HID_REPORT_ID_FIRST for the first report, and (HID_REPORT_ID_NEXT |
-report_id) for the next report after report_id. Without a-priori
+report_id) for the next report after report_id. Without a priori
 information about report ids, the right way to use this ioctl is to
 use the relative IDs above to enumerate the valid IDs. The ioctl
 returns non-zero when there is no more next ID. The real report ID is
@@ -478,7 +477,7 @@ returned from a previous HIDIOCGREPORTINFO call.</p>
 </dd>
 </dl>
 <p>Returns the usage_code in a hiddev_usage_ref structure, given that
-given its report type, report id, field index, and index within the
+its report type, report id, field index, and index within the
 field have already been filled into the structure.</p>
 <dl class="simple">
 <dt>HIDIOCGUSAGE</dt><dd><ul class="simple">

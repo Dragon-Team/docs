@@ -57,7 +57,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -1857,8 +1857,6 @@
 </li>
       <li><a href="core-api/kernel-api.html#c.BITMAP_FROM_U64">BITMAP_FROM_U64 (C macro)</a>
 </li>
-      <li><a href="core-api/kernel-api.html#c.bitmap_get_value">bitmap_get_value (C function)</a>
-</li>
       <li><a href="core-api/kernel-api.html#c.bitmap_get_value8">bitmap_get_value8 (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.bitmap_onto">bitmap_onto (C function)</a>
@@ -1882,8 +1880,6 @@
       <li><a href="core-api/kernel-api.html#c.bitmap_release_region">bitmap_release_region (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.bitmap_remap">bitmap_remap (C function)</a>
-</li>
-      <li><a href="core-api/kernel-api.html#c.bitmap_set_value">bitmap_set_value (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.bitmap_set_value8">bitmap_set_value8 (C function)</a>
 </li>
@@ -1935,10 +1931,10 @@
 </li>
       <li><a href="core-api/kernel-api.html#c.blk_mangle_minor">blk_mangle_minor (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="block/blk-mq.html#c.blk_mq_complete_request">blk_mq_complete_request (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="block/blk-mq.html#c.blk_mq_delay_run_hw_queue">blk_mq_delay_run_hw_queue (C function)</a>
 </li>
       <li><a href="block/blk-mq.html#c.blk_mq_delay_run_hw_queues">blk_mq_delay_run_hw_queues (C function)</a>
@@ -4841,14 +4837,14 @@
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_put_port_malloc">drm_dp_mst_put_port_malloc (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_reset_vcpi_slots">drm_dp_mst_reset_vcpi_slots (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_topology_get_mstb">drm_dp_mst_topology_get_mstb (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_topology_get_port">drm_dp_mst_topology_get_port (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_topology_mgr">drm_dp_mst_topology_mgr (C struct)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_topology_mgr_destroy">drm_dp_mst_topology_mgr_destroy (C function)</a>
@@ -4926,6 +4922,8 @@
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dsc_config">drm_dsc_config (C struct)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dsc_dp_pps_header_init">drm_dsc_dp_pps_header_init (C function)</a>
+</li>
+      <li><a href="gpu/drm-kms-helpers.html#c.drm_dsc_dp_rc_buffer_size">drm_dsc_dp_rc_buffer_size (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dsc_picture_parameter_set">drm_dsc_picture_parameter_set (C struct)</a>
 </li>
@@ -5977,6 +5975,8 @@
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.DRM_RECT_FP_FMT">DRM_RECT_FP_FMT (C macro)</a>
 </li>
+      <li><a href="gpu/drm-kms-helpers.html#c.drm_rect_fp_to_int">drm_rect_fp_to_int (C function)</a>
+</li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_rect_height">drm_rect_height (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_rect_init">drm_rect_init (C function)</a>
@@ -6195,6 +6195,10 @@
 </li>
       <li><a href="gpu/drm-internals.html#c.drmm_add_action_or_reset">drmm_add_action_or_reset (C macro)</a>
 </li>
+      <li><a href="gpu/drm-kms.html#c.drmm_crtc_alloc_with_planes">drmm_crtc_alloc_with_planes (C macro)</a>
+</li>
+      <li><a href="gpu/drm-kms.html#c.drmm_encoder_alloc">drmm_encoder_alloc (C macro)</a>
+</li>
       <li><a href="gpu/drm-internals.html#c.drmm_kcalloc">drmm_kcalloc (C function)</a>
 </li>
       <li><a href="gpu/drm-internals.html#c.drmm_kfree">drmm_kfree (C function)</a>
@@ -6208,6 +6212,10 @@
       <li><a href="gpu/drm-internals.html#c.drmm_kzalloc">drmm_kzalloc (C function)</a>
 </li>
       <li><a href="gpu/drm-kms.html#c.drmm_mode_config_init">drmm_mode_config_init (C function)</a>
+</li>
+      <li><a href="gpu/drm-kms-helpers.html#c.drmm_simple_encoder_alloc">drmm_simple_encoder_alloc (C macro)</a>
+</li>
+      <li><a href="gpu/drm-kms.html#c.drmm_universal_plane_alloc">drmm_universal_plane_alloc (C macro)</a>
 </li>
       <li><a href="gpu/drm-mm.html#c.drmm_vram_helper_init">drmm_vram_helper_init (C function)</a>
 </li>
@@ -7650,6 +7658,8 @@
       <li><a href="core-api/workqueue.html#c.get_pwq">get_pwq (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.get_state_synchronize_rcu">get_state_synchronize_rcu (C function)</a>
+</li>
+      <li><a href="core-api/kernel-api.html#c.get_state_synchronize_srcu">get_state_synchronize_srcu (C function)</a>
 </li>
       <li><a href="filesystems/api-summary.html#c.get_tree_bdev">get_tree_bdev (C function)</a>
 </li>
@@ -9203,10 +9213,10 @@
 </li>
       <li><a href="core-api/kernel-api.html#c.int_sqrt">int_sqrt (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core-api/kernel-api.html#c.int_sqrt64">int_sqrt64 (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="driver-api/scsi.html#c.int_to_scsilun">int_to_scsilun (C function)</a>
 </li>
       <li><a href="gpu/i915.html#c.intel_audio_codec_disable">intel_audio_codec_disable (C function)</a>
@@ -9759,6 +9769,8 @@
 </li>
       <li><a href="core-api/genericirq.html#c.irq_can_set_affinity_usr">irq_can_set_affinity_usr (C function)</a>
 </li>
+      <li><a href="core-api/genericirq.html#c.irq_check_status_bit">irq_check_status_bit (C function)</a>
+</li>
       <li><a href="core-api/genericirq.html#c.irq_chip">irq_chip (C struct)</a>
 </li>
       <li><a href="core-api/genericirq.html#c.irq_chip_ack_parent">irq_chip_ack_parent (C function)</a>
@@ -9832,6 +9844,8 @@
       <li><a href="core-api/genericirq.html#c.irq_get_irqchip_state">irq_get_irqchip_state (C function)</a>
 </li>
       <li><a href="core-api/genericirq.html#c.irq_get_next_irq">irq_get_next_irq (C function)</a>
+</li>
+      <li><a href="core-api/genericirq.html#c.irq_has_action">irq_has_action (C function)</a>
 </li>
       <li><a href="gpu/amdgpu-dc.html#c.irq_list_head">irq_list_head (C struct)</a>
 </li>
@@ -10461,6 +10475,10 @@
 </li>
       <li><a href="core-api/mm-api.html#c.kmem_cache_shrink">kmem_cache_shrink (C function)</a>
 </li>
+      <li><a href="core-api/mm-api.html#c.kmem_dump_obj">kmem_dump_obj (C function)</a>
+</li>
+      <li><a href="core-api/mm-api.html#c.kmem_valid_obj">kmem_valid_obj (C function)</a>
+</li>
       <li><a href="core-api/kernel-api.html#c.kmemdup">kmemdup (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.kmemdup_nul">kmemdup_nul (C function)</a>
@@ -10563,16 +10581,14 @@
 </li>
       <li><a href="vm/ksm.html#c.ksm_scan">ksm_scan (C struct)</a>
 </li>
-      <li><a href="core-api/genericirq.html#c.kstat_irqs">kstat_irqs (C function)</a>
-</li>
       <li><a href="core-api/genericirq.html#c.kstat_irqs_cpu">kstat_irqs_cpu (C function)</a>
 </li>
       <li><a href="core-api/genericirq.html#c.kstat_irqs_usr">kstat_irqs_usr (C function)</a>
 </li>
-      <li><a href="core-api/kernel-api.html#c.kstrdup">kstrdup (C function)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="core-api/kernel-api.html#c.kstrdup">kstrdup (C function)</a>
+</li>
       <li><a href="core-api/kernel-api.html#c.kstrdup_const">kstrdup_const (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.kstrndup">kstrndup (C function)</a>
@@ -13051,10 +13067,10 @@
 </li>
       <li><a href="networking/kapi.html#c.phy_ethtool_get_strings">phy_ethtool_get_strings (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="networking/kapi.html#c.phy_ethtool_get_wol">phy_ethtool_get_wol (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="networking/kapi.html#c.phy_ethtool_nway_reset">phy_ethtool_nway_reset (C function)</a>
 </li>
       <li><a href="networking/kapi.html#c.phy_ethtool_set_eee">phy_ethtool_set_eee (C function)</a>
@@ -13410,6 +13426,8 @@
       <li><a href="driver-api/infrastructure.html#c.pnp_unregister_card_driver">pnp_unregister_card_driver (C function)</a>
 </li>
       <li><a href="driver-api/infrastructure.html#c.pnp_unregister_protocol">pnp_unregister_protocol (C function)</a>
+</li>
+      <li><a href="core-api/kernel-api.html#c.poll_state_synchronize_srcu">poll_state_synchronize_srcu (C function)</a>
 </li>
       <li><a href="filesystems/api-summary.html#c.positive_aop_returns">positive_aop_returns (C enum)</a>
 </li>
@@ -16673,6 +16691,8 @@
 </li>
       <li><a href="networking/ieee802154.html#c.start">start (C function)</a>
 </li>
+      <li><a href="core-api/kernel-api.html#c.start_poll_synchronize_srcu">start_poll_synchronize_srcu (C function)</a>
+</li>
       <li><a href="driver-api/80211/cfg80211.html#c.station_info">station_info (C struct)</a>
 </li>
       <li><a href="driver-api/80211/cfg80211.html#c.station_parameters">station_parameters (C struct)</a>
@@ -18658,6 +18678,8 @@
       <li><a href="driver-api/media/v4l2-event.html#c.v4l2_event_unsubscribe">v4l2_event_unsubscribe (C function)</a>
 </li>
       <li><a href="driver-api/media/v4l2-event.html#c.v4l2_event_unsubscribe_all">v4l2_event_unsubscribe_all (C function)</a>
+</li>
+      <li><a href="driver-api/media/v4l2-event.html#c.v4l2_event_wake_all">v4l2_event_wake_all (C function)</a>
 </li>
       <li><a href="driver-api/media/v4l2-fh.html#c.v4l2_fh">v4l2_fh (C struct)</a>
 </li>

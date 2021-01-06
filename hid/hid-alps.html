@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -133,7 +133,6 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="intel-ish-hid.html">Intel Integrated Sensor Hub (ISH)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="amd-sfh-hid.html">AMD Sensor Fusion Hub</a></li>
-<li class="toctree-l2"><a class="reference internal" href="amd-sfh-hid.html#block-diagram">1. Block Diagram</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../i2c/index.html">I2C/SMBus Subsystem</a></li>
@@ -448,7 +447,7 @@ Absolute</p></td>
 </div>
 <div class="section" id="command-read-write">
 <h2>Command Read/Write<a class="headerlink" href="#command-read-write" title="Permalink to this headline">¶</a></h2>
-<p>To read/write to RAM, need to send a commands to the device.</p>
+<p>To read/write to RAM, need to send a command to the device.</p>
 <p>The command format is as below.</p>
 <p>DataByte(SET_REPORT)</p>
 <table class="docutils align-default">
@@ -480,7 +479,7 @@ Absolute</p></td>
 </tr>
 </tbody>
 </table>
-<p>Command Byte is read=0xD1/write=0xD2 .</p>
+<p>Command Byte is read=0xD1/write=0xD2.</p>
 <p>Address is read/write RAM address.</p>
 <p>Value Byte is writing data when you send the write commands.</p>
 <p>When you read RAM, there is no meaning.</p>

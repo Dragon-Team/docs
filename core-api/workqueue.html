@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -2283,13 +2283,15 @@ void <code class="sig-name descname">rebind_workers</code><span class="sig-paren
 <p><strong>pool-&gt;cpu</strong> is coming online.  Rebind all workers to the CPU.</p>
 <dl class="c function">
 <dt id="c.update_unbound_workers_cpumask">
-void <code class="sig-name descname">update_unbound_workers_cpumask</code><span class="sig-paren">(</span><em class="property">struct</em> worker_pool *<em>pool</em>, int <em>cpu</em><span class="sig-paren">)</span><a class="headerlink" href="#c.update_unbound_workers_cpumask" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">update_unbound_workers_cpumask</code><span class="sig-paren">(</span><em class="property">struct</em> worker_pool *<em>pool</em>, bool <em>online</em>, int <em>cpu</em><span class="sig-paren">)</span><a class="headerlink" href="#c.update_unbound_workers_cpumask" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update cpumask of unbound workers</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">worker_pool</span> <span class="pre">*pool</span></code></dt><dd><p>unbound pool of interest</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">online</span></code></dt><dd><p>whether <strong>cpu</strong> is coming up or going down</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">cpu</span></code></dt><dd><p>the CPU which is coming up or going down</p>
 </dd>
@@ -2298,7 +2300,7 @@ void <code class="sig-name descname">update_unbound_workers_cpumask</code><span 
 <p>An unbound pool may end up with a cpumask which doesn’t have any online
 CPUs.  We have to reset workers’ cpus_allowed of such pool.  And we
 restore the workers’ cpus_allowed when the pool’s cpumask has online
-CPU for the first time after reset.</p>
+CPU.</p>
 <dl class="c function">
 <dt id="c.work_on_cpu">
 long <code class="sig-name descname">work_on_cpu</code><span class="sig-paren">(</span>int <em>cpu</em>, long (*<em>fn</em>)<span class="sig-paren">(</span>void*<span class="sig-paren">)</span>, void *<em>arg</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.work_on_cpu" title="Permalink to this definition">¶</a><br /></dt>

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -347,7 +347,7 @@ pointer must be covered by <a class="reference internal" href="../core-api/kerne
 Disabling of preemption can serve as <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_read_lock_sched" title="rcu_read_lock_sched"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_read_lock_sched()</span></code></a>, but
 is less readable and prevents lockdep from detecting locking issues.</p>
 <p>Letting RCU-protected pointers “leak” out of an RCU read-side
-critical section is every bid as bad as letting them leak out
+critical section is every bit as bad as letting them leak out
 from under a lock.  Unless, of course, you have arranged some
 other means of protection, such as a lock or a reference count
 -before- letting them out of the RCU read-side critical section.</p>
@@ -403,10 +403,7 @@ the following measures to prevent memory-corruption problems:</p>
 accesses.  The <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_dereference" title="rcu_dereference"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_dereference()</span></code></a> primitive ensures that
 the CPU picks up the pointer before it picks up the data
 that the pointer points to.  This really is necessary
-on Alpha CPUs.  If you don’t believe me, see:</p>
-<blockquote>
-<div><p><a class="reference external" href="http://www.openvms.compaq.com/wizard/wiz_2637.html">http://www.openvms.compaq.com/wizard/wiz_2637.html</a></p>
-</div></blockquote>
+on Alpha CPUs.</p>
 <p>The <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_dereference" title="rcu_dereference"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_dereference()</span></code></a> primitive is also an excellent
 documentation aid, letting the person reading the
 code know exactly which pointers are protected by RCU.
@@ -481,9 +478,9 @@ of the system, especially to real-time workloads running on
 the rest of the system.</p>
 </li>
 <li><p>As of v4.20, a given kernel implements only one RCU flavor,
-which is RCU-sched for PREEMPT=n and RCU-preempt for PREEMPT=y.
+which is RCU-sched for PREEMPTION=n and RCU-preempt for PREEMPTION=y.
 If the updater uses <a class="reference internal" href="../core-api/kernel-api.html#c.call_rcu" title="call_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">call_rcu()</span></code></a> or <a class="reference internal" href="../core-api/kernel-api.html#c.synchronize_rcu" title="synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">synchronize_rcu()</span></code></a>,
-then the corresponding readers my use <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_read_lock" title="rcu_read_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_read_lock()</span></code></a> and
+then the corresponding readers may use <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_read_lock" title="rcu_read_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_read_lock()</span></code></a> and
 <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_read_unlock" title="rcu_read_unlock"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_read_unlock()</span></code></a>, <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_read_lock_bh" title="rcu_read_lock_bh"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_read_lock_bh()</span></code></a> and <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_read_unlock_bh" title="rcu_read_unlock_bh"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_read_unlock_bh()</span></code></a>,
 or any pair of primitives that disables and re-enables preemption,
 for example, <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_read_lock_sched" title="rcu_read_lock_sched"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_read_lock_sched()</span></code></a> and <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_read_unlock_sched" title="rcu_read_unlock_sched"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_read_unlock_sched()</span></code></a>.

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -1977,6 +1977,34 @@ interrupt controller has per-cpu registers.</p>
 </dd>
 </dl>
 <dl class="c function">
+<dt id="c.irq_has_action">
+bool <code class="sig-name descname">irq_has_action</code><span class="sig-paren">(</span>unsigned int <em>irq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.irq_has_action" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Check whether an interrupt is requested</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">irq</span></code></dt><dd><p>The linux irq number</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p>A snapshot of the current state</p>
+<dl class="c function">
+<dt id="c.irq_check_status_bit">
+bool <code class="sig-name descname">irq_check_status_bit</code><span class="sig-paren">(</span>unsigned int <em>irq</em>, unsigned int <em>bitmask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.irq_check_status_bit" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Check whether bits in the irq descriptor status are set</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">irq</span></code></dt><dd><p>The linux irq number</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">bitmask</span></code></dt><dd><p>The bitmask to evaluate</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p>True if one of the bits in <strong>bitmask</strong> is set</p>
+<dl class="c function">
 <dt id="c.irq_set_chip">
 int <code class="sig-name descname">irq_set_chip</code><span class="sig-paren">(</span>unsigned int <em>irq</em>, <em class="property">struct</em> <a class="reference internal" href="#c.irq_chip" title="irq_chip">irq_chip</a> *<em>chip</em><span class="sig-paren">)</span><a class="headerlink" href="#c.irq_set_chip" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set the irq chip for an irq</p>
@@ -2495,24 +2523,9 @@ unsigned int <code class="sig-name descname">kstat_irqs_cpu</code><span class="s
 <strong>irq</strong>. The caller must ensure that the interrupt is not removed
 concurrently.</p>
 <dl class="c function">
-<dt id="c.kstat_irqs">
-unsigned int <code class="sig-name descname">kstat_irqs</code><span class="sig-paren">(</span>unsigned int <em>irq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.kstat_irqs" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get the statistics for an interrupt</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">irq</span></code></dt><dd><p>The interrupt number</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Returns the sum of interrupt counts on all cpus since boot for
-<strong>irq</strong>. The caller must ensure that the interrupt is not removed
-concurrently.</p>
-<dl class="c function">
 <dt id="c.kstat_irqs_usr">
 unsigned int <code class="sig-name descname">kstat_irqs_usr</code><span class="sig-paren">(</span>unsigned int <em>irq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.kstat_irqs_usr" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get the statistics for an interrupt</p>
+<dd><p>Get the statistics for an interrupt from thread context</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -2521,10 +2534,10 @@ unsigned int <code class="sig-name descname">kstat_irqs_usr</code><span class="s
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Returns the sum of interrupt counts on all cpus since boot for <strong>irq</strong>.
-Contrary to <a class="reference internal" href="#c.kstat_irqs" title="kstat_irqs"><code class="xref c c-func docutils literal notranslate"><span class="pre">kstat_irqs()</span></code></a> this can be called from any context.
-It uses rcu since a concurrent removal of an interrupt descriptor is
-observing an rcu grace period before delayed_free_desc()/irq_kobj_release().</p>
+<p>Returns the sum of interrupt counts on all cpus since boot for <strong>irq</strong>.</p>
+<p>It uses rcu to protect the access since a concurrent removal of an
+interrupt descriptor is observing an rcu grace period before
+delayed_free_desc()/irq_kobj_release().</p>
 <dl class="c function">
 <dt id="c.handle_bad_irq">
 void <code class="sig-name descname">handle_bad_irq</code><span class="sig-paren">(</span><em class="property">struct</em> irq_desc *<em>desc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.handle_bad_irq" title="Permalink to this definition">¶</a><br /></dt>

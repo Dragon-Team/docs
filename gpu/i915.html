@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -602,7 +602,7 @@ int <code class="sig-name descname">__intel_wait_for_register_fw</code><span cla
 <p><strong>Description</strong></p>
 <p>This routine waits until the target register <strong>reg</strong> contains the expected
 <strong>value</strong> after applying the <strong>mask</strong>, i.e. it waits until</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(I915_READ_FW(reg) &amp; mask) == value
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(intel_uncore_read_fw(uncore, reg) &amp; mask) == value
 </pre></div>
 </div>
 <p>Otherwise, the wait will timeout after <strong>slow_timeout_ms</strong> milliseconds.
@@ -640,7 +640,7 @@ int <code class="sig-name descname">__intel_wait_for_register</code><span class=
 <p><strong>Description</strong></p>
 <p>This routine waits until the target register <strong>reg</strong> contains the expected
 <strong>value</strong> after applying the <strong>mask</strong>, i.e. it waits until</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(I915_READ(reg) &amp; mask) == value
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(intel_uncore_read(uncore, reg) &amp; mask) == value
 </pre></div>
 </div>
 <p>Otherwise, the wait will timeout after <strong>timeout_ms</strong> milliseconds.</p>

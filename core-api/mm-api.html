@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -944,6 +944,42 @@ int <code class="sig-name descname">kmem_cache_shrink</code><span class="sig-par
 To help debugging, a zero exit status indicates all slabs were released.</p>
 <p><strong>Return</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">0</span></code> if all slabs were released, non-zero otherwise</p>
+<dl class="c function">
+<dt id="c.kmem_valid_obj">
+bool <code class="sig-name descname">kmem_valid_obj</code><span class="sig-paren">(</span>void *<em>object</em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmem_valid_obj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>does the pointer reference a valid slab object?</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*object</span></code></dt><dd><p>pointer to query.</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the pointer is to a not-yet-freed object from
+<a class="reference internal" href="#c.kmalloc" title="kmalloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">kmalloc()</span></code></a> or <a class="reference internal" href="#c.kmem_cache_alloc" title="kmem_cache_alloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">kmem_cache_alloc()</span></code></a>, either <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code> if the pointer
+is to an already-freed object, and <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
+<dl class="c function">
+<dt id="c.kmem_dump_obj">
+void <code class="sig-name descname">kmem_dump_obj</code><span class="sig-paren">(</span>void *<em>object</em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmem_dump_obj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Print available slab provenance information</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*object</span></code></dt><dd><p>slab object for which to find provenance information.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function uses <a class="reference internal" href="printk-basics.html#c.pr_cont" title="pr_cont"><code class="xref c c-func docutils literal notranslate"><span class="pre">pr_cont()</span></code></a>, so that the caller is expected to have
+printed out whatever preamble is appropriate.  The provenance information
+depends on the type of object and on how much debugging is enabled.
+For a slab-cache object, the fact that it is a slab object is printed,
+and, if available, the slab name, return address, and stack trace from
+the allocation of that object.</p>
+<p>This function will splat if passed a pointer to a non-slab object.
+If you are not sure what type of object you have, you should instead
+use mem_dump_obj().</p>
 <dl class="c function">
 <dt id="c.krealloc">
 void *<code class="sig-name descname">krealloc</code><span class="sig-paren">(</span><em class="property">const</em> void *<em>p</em>, size_t <em>new_size</em>, gfp_t <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.krealloc" title="Permalink to this definition">¶</a><br /></dt>

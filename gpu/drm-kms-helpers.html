@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -3110,6 +3110,33 @@ more details.</p>
 <p><strong>Description</strong></p>
 <p>Simple display pipeline with plane, crtc and encoder collapsed into one
 entity. It should be initialized by calling <a class="reference internal" href="#c.drm_simple_display_pipe_init" title="drm_simple_display_pipe_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_simple_display_pipe_init()</span></code></a>.</p>
+<dl class="c macro">
+<dt id="c.drmm_simple_encoder_alloc">
+<code class="sig-name descname">drmm_simple_encoder_alloc</code><a class="headerlink" href="#c.drmm_simple_encoder_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<p><code class="docutils literal notranslate"><span class="pre">drmm_simple_encoder_alloc</span> <span class="pre">(dev,</span> <span class="pre">type,</span> <span class="pre">member,</span> <span class="pre">encoder_type)</span></code></p>
+<blockquote>
+<div><p>Allocate and initialize an encoder with basic functionality.</p>
+</div></blockquote>
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">dev</span></code></dt><dd><p>drm device</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">type</span></code></dt><dd><p>the type of the struct which contains struct <a class="reference internal" href="drm-kms.html#c.drm_encoder" title="drm_encoder"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_encoder</span></code></a></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">member</span></code></dt><dd><p>the name of the <a class="reference internal" href="drm-kms.html#c.drm_encoder" title="drm_encoder"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_encoder</span></code></a> within <strong>type</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">encoder_type</span></code></dt><dd><p>user visible type of the encoder</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Allocates and initializes an encoder that has no further functionality.
+Settings for possible CRTC and clones are left to their initial values.
+Cleanup is automatically handled through registering <a class="reference internal" href="drm-kms.html#c.drm_encoder_cleanup" title="drm_encoder_cleanup"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_encoder_cleanup()</span></code></a>
+with <a class="reference internal" href="drm-internals.html#c.drmm_add_action" title="drmm_add_action"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_add_action()</span></code></a>.</p>
+<p><strong>Return</strong></p>
+<p>Pointer to new encoder, or ERR_PTR on failure.</p>
 <dl class="c function">
 <dt id="c.drm_simple_encoder_init">
 int <code class="sig-name descname">drm_simple_encoder_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device">drm_device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_encoder" title="drm_encoder">drm_encoder</a> *<em>encoder</em>, int <em>encoder_type</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_simple_encoder_init" title="Permalink to this definition">¶</a><br /></dt>
@@ -3135,10 +3162,10 @@ the encoder’s memory after the encoder has been cleaned up. At the
 moment this only works reliably if the encoder data structure is
 stored in the device structure. Free the encoder’s memory as part of
 the device release function.</p>
-<dl class="simple">
-<dt>FIXME: Later improvements to DRM’s resource management may allow for</dt><dd><p>an automated <a class="reference internal" href="../core-api/mm-api.html#c.kfree" title="kfree"><code class="xref c c-func docutils literal notranslate"><span class="pre">kfree()</span></code></a> of the encoder’s memory.</p>
-</dd>
-</dl>
+<p><strong>Note</strong></p>
+<p>consider using <a class="reference internal" href="#c.drmm_simple_encoder_alloc" title="drmm_simple_encoder_alloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_simple_encoder_alloc()</span></code></a> instead of
+<a class="reference internal" href="#c.drm_simple_encoder_init" title="drm_simple_encoder_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_simple_encoder_init()</span></code></a> to let the DRM managed resource infrastructure
+take care of cleanup and deallocation.</p>
 <p><strong>Return</strong></p>
 <p>Zero on success, error code on failure.</p>
 <dl class="c function">
@@ -10787,6 +10814,21 @@ picture parameter infoframes from the source to the sink.
 This function populates the SDP header defined in
 <a class="reference internal" href="#c.dp_sdp_header" title="dp_sdp_header"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dp_sdp_header</span></code></a>.</p>
 <dl class="c function">
+<dt id="c.drm_dsc_dp_rc_buffer_size">
+int <code class="sig-name descname">drm_dsc_dp_rc_buffer_size</code><span class="sig-paren">(</span>u8 <em>rc_buffer_block_size</em>, u8 <em>rc_buffer_size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dsc_dp_rc_buffer_size" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>get rc buffer size in bytes</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">rc_buffer_block_size</span></code></dt><dd><p>block size code, according to DPCD offset 62h</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">rc_buffer_size</span></code></dt><dd><p>number of blocks - 1, according to DPCD offset 63h</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p>buffer size in bytes, or 0 on invalid input</p>
+<dl class="c function">
 <dt id="c.drm_dsc_pps_payload_pack">
 void <code class="sig-name descname">drm_dsc_pps_payload_pack</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_dsc_picture_parameter_set" title="drm_dsc_picture_parameter_set">drm_dsc_picture_parameter_set</a> *<em>pps_payload</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_dsc_config" title="drm_dsc_config">drm_dsc_config</a> *<em>dsc_cfg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dsc_pps_payload_pack" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Populates the DSC PPS</p>
@@ -12568,6 +12610,19 @@ bool <code class="sig-name descname">drm_rect_equals</code><span class="sig-pare
 </dl>
 <p><strong>Return</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the rectangles are equal, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
+<dl class="c function">
+<dt id="c.drm_rect_fp_to_int">
+void <code class="sig-name descname">drm_rect_fp_to_int</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_rect" title="drm_rect">drm_rect</a> *<em>dst</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_rect" title="drm_rect">drm_rect</a> *<em>src</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_rect_fp_to_int" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Convert a rect in 16.16 fixed point form to int form.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_rect</span> <span class="pre">*dst</span></code></dt><dd><p>rect to be stored the converted value</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">drm_rect</span> <span class="pre">*src</span></code></dt><dd><p>rect in 16.16 fixed point form</p>
+</dd>
+</dl>
 <dl class="c function">
 <dt id="c.drm_rect_intersect">
 bool <code class="sig-name descname">drm_rect_intersect</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_rect" title="drm_rect">drm_rect</a> *<em>r1</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_rect" title="drm_rect">drm_rect</a> *<em>r2</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_rect_intersect" title="Permalink to this definition">¶</a><br /></dt>

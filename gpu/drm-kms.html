@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -3856,6 +3856,40 @@ allows the CRTC to be controlled.</p>
 <p><strong>Description</strong></p>
 <p>This represents a modeset configuration for the legacy SETCRTC ioctl and is
 also used internally. Atomic drivers instead use <a class="reference internal" href="#c.drm_atomic_state" title="drm_atomic_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_atomic_state</span></code></a>.</p>
+<dl class="c macro">
+<dt id="c.drmm_crtc_alloc_with_planes">
+<code class="sig-name descname">drmm_crtc_alloc_with_planes</code><a class="headerlink" href="#c.drmm_crtc_alloc_with_planes" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<p><code class="docutils literal notranslate"><span class="pre">drmm_crtc_alloc_with_planes</span> <span class="pre">(dev,</span> <span class="pre">type,</span> <span class="pre">member,</span> <span class="pre">primary,</span> <span class="pre">cursor,</span> <span class="pre">funcs,</span> <span class="pre">name,</span> <span class="pre">...)</span></code></p>
+<blockquote>
+<div><p>Allocate and initialize a new CRTC object with specified primary and cursor planes.</p>
+</div></blockquote>
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">dev</span></code></dt><dd><p>DRM device</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">type</span></code></dt><dd><p>the type of the struct which contains struct <a class="reference internal" href="#c.drm_crtc" title="drm_crtc"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc</span></code></a></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">member</span></code></dt><dd><p>the name of the <a class="reference internal" href="#c.drm_crtc" title="drm_crtc"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc</span></code></a> within <strong>type</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">primary</span></code></dt><dd><p>Primary plane for CRTC</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">cursor</span></code></dt><dd><p>Cursor plane for CRTC</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">funcs</span></code></dt><dd><p>callbacks for the new CRTC</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">name</span></code></dt><dd><p>printf style format string for the CRTC name, or NULL for default name</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">...</span></code></dt><dd><p>variable arguments</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Allocates and initializes a new crtc object. Cleanup is automatically
+handled through registering drmm_crtc_cleanup() with <a class="reference internal" href="drm-internals.html#c.drmm_add_action" title="drmm_add_action"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_add_action()</span></code></a>.</p>
+<p>The <strong>drm_crtc_funcs.destroy</strong> hook must be NULL.</p>
+<p><strong>Return</strong></p>
+<p>Pointer to new crtc, or ERR_PTR on failure.</p>
 <dl class="c function">
 <dt id="c.drm_crtc_index">
 unsigned int <code class="sig-name descname">drm_crtc_index</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_crtc" title="drm_crtc">drm_crtc</a> *<em>crtc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_crtc_index" title="Permalink to this definition">¶</a><br /></dt>
@@ -3986,7 +4020,14 @@ int <code class="sig-name descname">drm_crtc_init_with_planes</code><span class=
 should use this function instead of <a class="reference internal" href="drm-kms-helpers.html#c.drm_crtc_init" title="drm_crtc_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_crtc_init()</span></code></a>, which is only provided
 for backwards compatibility with drivers which do not yet support universal
 planes). For really simple hardware which has only 1 plane look at
-<a class="reference internal" href="drm-kms-helpers.html#c.drm_simple_display_pipe_init" title="drm_simple_display_pipe_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_simple_display_pipe_init()</span></code></a> instead.</p>
+<a class="reference internal" href="drm-kms-helpers.html#c.drm_simple_display_pipe_init" title="drm_simple_display_pipe_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_simple_display_pipe_init()</span></code></a> instead.
+The <a class="reference internal" href="#c.drm_crtc_funcs" title="drm_crtc_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc_funcs.destroy</span></code></a> hook should call <a class="reference internal" href="#c.drm_crtc_cleanup" title="drm_crtc_cleanup"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_crtc_cleanup()</span></code></a> and <a class="reference internal" href="../core-api/mm-api.html#c.kfree" title="kfree"><code class="xref c c-func docutils literal notranslate"><span class="pre">kfree()</span></code></a>
+the crtc structure. The crtc structure should not be allocated with
+devm_kzalloc().</p>
+<p><strong>Note</strong></p>
+<p>consider using <a class="reference internal" href="#c.drmm_crtc_alloc_with_planes" title="drmm_crtc_alloc_with_planes"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_crtc_alloc_with_planes()</span></code></a> instead of
+<a class="reference internal" href="#c.drm_crtc_init_with_planes" title="drm_crtc_init_with_planes"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_crtc_init_with_planes()</span></code></a> to let the DRM managed resource infrastructure
+take care of cleanup and deallocation.</p>
 <p><strong>Return</strong></p>
 <p>Zero on success, error code on failure.</p>
 <dl class="c function">
@@ -5405,6 +5446,48 @@ input data from a <a class="reference internal" href="#c.drm_framebuffer" title=
 the color conversion, see <a class="reference internal" href="#plane-composition-properties">Plane Composition Properties</a> for more details,
 and are also involved in the color conversion of input pixels, see <a class="reference internal" href="#color-management-properties">Color
 Management Properties</a> for details on that.</p>
+<dl class="c macro">
+<dt id="c.drmm_universal_plane_alloc">
+<code class="sig-name descname">drmm_universal_plane_alloc</code><a class="headerlink" href="#c.drmm_universal_plane_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<p><code class="docutils literal notranslate"><span class="pre">drmm_universal_plane_alloc</span> <span class="pre">(dev,</span> <span class="pre">type,</span> <span class="pre">member,</span> <span class="pre">possible_crtcs,</span> <span class="pre">funcs,</span> <span class="pre">formats,</span> <span class="pre">format_count,</span> <span class="pre">format_modifiers,</span> <span class="pre">plane_type,</span> <span class="pre">name,</span> <span class="pre">...)</span></code></p>
+<blockquote>
+<div><p>Allocate and initialize an universal plane object</p>
+</div></blockquote>
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">dev</span></code></dt><dd><p>DRM device</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">type</span></code></dt><dd><p>the type of the struct which contains struct <a class="reference internal" href="#c.drm_plane" title="drm_plane"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane</span></code></a></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">member</span></code></dt><dd><p>the name of the <a class="reference internal" href="#c.drm_plane" title="drm_plane"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane</span></code></a> within <strong>type</strong></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">possible_crtcs</span></code></dt><dd><p>bitmask of possible CRTCs</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">funcs</span></code></dt><dd><p>callbacks for the new plane</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">formats</span></code></dt><dd><p>array of supported formats (DRM_FORMAT_*)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">format_count</span></code></dt><dd><p>number of elements in <strong>formats</strong></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">format_modifiers</span></code></dt><dd><p>array of struct drm_format modifiers terminated by
+DRM_FORMAT_MOD_INVALID</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">plane_type</span></code></dt><dd><p>type of plane (overlay, primary, cursor)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">name</span></code></dt><dd><p>printf style format string for the plane name, or NULL for default name</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">...</span></code></dt><dd><p>variable arguments</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Allocates and initializes a plane object of type <strong>type</strong>. Cleanup is
+automatically handled through registering <a class="reference internal" href="#c.drm_plane_cleanup" title="drm_plane_cleanup"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_plane_cleanup()</span></code></a> with
+<a class="reference internal" href="drm-internals.html#c.drmm_add_action" title="drmm_add_action"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_add_action()</span></code></a>.</p>
+<p>The <strong>drm_plane_funcs.destroy</strong> hook must be NULL.</p>
+<p><strong>Return</strong></p>
+<p>Pointer to new plane, or ERR_PTR on failure.</p>
 <dl class="c function">
 <dt id="c.drm_plane_index">
 unsigned int <code class="sig-name descname">drm_plane_index</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_plane" title="drm_plane">drm_plane</a> *<em>plane</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_plane_index" title="Permalink to this definition">¶</a><br /></dt>
@@ -5570,7 +5653,13 @@ DRM_FORMAT_MOD_INVALID</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Initializes a plane object of type <strong>type</strong>.</p>
+<p>Initializes a plane object of type <strong>type</strong>. The <a class="reference internal" href="#c.drm_plane_funcs" title="drm_plane_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_funcs.destroy</span></code></a> hook
+should call <a class="reference internal" href="#c.drm_plane_cleanup" title="drm_plane_cleanup"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_plane_cleanup()</span></code></a> and <a class="reference internal" href="../core-api/mm-api.html#c.kfree" title="kfree"><code class="xref c c-func docutils literal notranslate"><span class="pre">kfree()</span></code></a> the plane structure. The plane
+structure should not be allocated with devm_kzalloc().</p>
+<p><strong>Note</strong></p>
+<p>consider using <a class="reference internal" href="#c.drmm_universal_plane_alloc" title="drmm_universal_plane_alloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_universal_plane_alloc()</span></code></a> instead of
+<a class="reference internal" href="#c.drm_universal_plane_init" title="drm_universal_plane_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_universal_plane_init()</span></code></a> to let the DRM managed resource infrastructure
+take care of cleanup and deallocation.</p>
 <p><strong>Return</strong></p>
 <p>Zero on success, error code on failure.</p>
 <dl class="c function">
@@ -9026,7 +9115,7 @@ drivers.  Atomic drivers should instead check
 <dt><code class="docutils literal notranslate"><span class="pre">bridge_chain</span></code></dt><dd><p>Bridges attached to this encoder. Drivers shall not
 access this field directly.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">funcs</span></code></dt><dd><p>control functions</p>
+<dt><code class="docutils literal notranslate"><span class="pre">funcs</span></code></dt><dd><p>control functions, can be NULL for simple managed encoders</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">helper_private</span></code></dt><dd><p>mid-layer private data</p>
 </dd>
@@ -9034,6 +9123,39 @@ access this field directly.</p>
 <p><strong>Description</strong></p>
 <p>CRTCs drive pixels to encoders, which convert them into signals
 appropriate for a given connector or set of connectors.</p>
+<dl class="c macro">
+<dt id="c.drmm_encoder_alloc">
+<code class="sig-name descname">drmm_encoder_alloc</code><a class="headerlink" href="#c.drmm_encoder_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<p><code class="docutils literal notranslate"><span class="pre">drmm_encoder_alloc</span> <span class="pre">(dev,</span> <span class="pre">type,</span> <span class="pre">member,</span> <span class="pre">funcs,</span> <span class="pre">encoder_type,</span> <span class="pre">name,</span> <span class="pre">...)</span></code></p>
+<blockquote>
+<div><p>Allocate and initialize an encoder</p>
+</div></blockquote>
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">dev</span></code></dt><dd><p>drm device</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">type</span></code></dt><dd><p>the type of the struct which contains struct <a class="reference internal" href="#c.drm_encoder" title="drm_encoder"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_encoder</span></code></a></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">member</span></code></dt><dd><p>the name of the <a class="reference internal" href="#c.drm_encoder" title="drm_encoder"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_encoder</span></code></a> within <strong>type</strong></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">funcs</span></code></dt><dd><p>callbacks for this encoder (optional)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">encoder_type</span></code></dt><dd><p>user visible type of the encoder</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">name</span></code></dt><dd><p>printf style format string for the encoder name, or NULL for default name</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">...</span></code></dt><dd><p>variable arguments</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Allocates and initializes an encoder. Encoder should be subclassed as part of
+driver encoder objects. Cleanup is automatically handled through registering
+<a class="reference internal" href="#c.drm_encoder_cleanup" title="drm_encoder_cleanup"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_encoder_cleanup()</span></code></a> with <a class="reference internal" href="drm-internals.html#c.drmm_add_action" title="drmm_add_action"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_add_action()</span></code></a>.</p>
+<p>The <strong>drm_encoder_funcs.destroy</strong> hook must be NULL.</p>
+<p><strong>Return</strong></p>
+<p>Pointer to new encoder, or ERR_PTR on failure.</p>
 <dl class="c function">
 <dt id="c.drm_encoder_index">
 unsigned int <code class="sig-name descname">drm_encoder_index</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_encoder" title="drm_encoder">drm_encoder</a> *<em>encoder</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_encoder_index" title="Permalink to this definition">¶</a><br /></dt>
@@ -9155,9 +9277,15 @@ int <code class="sig-name descname">drm_encoder_init</code><span class="sig-pare
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Initialises a preallocated encoder. Encoder should be subclassed as part of
-driver encoder objects. At driver unload time <a class="reference internal" href="#c.drm_encoder_cleanup" title="drm_encoder_cleanup"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_encoder_cleanup()</span></code></a> should be
-called from the driver’s <a class="reference internal" href="#c.drm_encoder_funcs" title="drm_encoder_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_encoder_funcs.destroy</span></code></a> hook.</p>
+<p>Initializes a preallocated encoder. Encoder should be subclassed as part of
+driver encoder objects. At driver unload time the driver’s
+<a class="reference internal" href="#c.drm_encoder_funcs" title="drm_encoder_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_encoder_funcs.destroy</span></code></a> hook should call <a class="reference internal" href="#c.drm_encoder_cleanup" title="drm_encoder_cleanup"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_encoder_cleanup()</span></code></a> and <a class="reference internal" href="../core-api/mm-api.html#c.kfree" title="kfree"><code class="xref c c-func docutils literal notranslate"><span class="pre">kfree()</span></code></a>
+the encoder structure. The encoder structure should not be allocated with
+devm_kzalloc().</p>
+<p><strong>Note</strong></p>
+<p>consider using <a class="reference internal" href="#c.drmm_encoder_alloc" title="drmm_encoder_alloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_encoder_alloc()</span></code></a> instead of <a class="reference internal" href="#c.drm_encoder_init" title="drm_encoder_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_encoder_init()</span></code></a> to
+let the DRM managed resource infrastructure take care of cleanup and
+deallocation.</p>
 <p><strong>Return</strong></p>
 <p>Zero on success, error code on failure.</p>
 <dl class="c function">

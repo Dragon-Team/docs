@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -293,7 +293,7 @@
 of as a replacement for read-writer locking (among other things), but with
 very low-overhead readers that are immune to deadlock, priority inversion,
 and unbounded latency. RCU read-side critical sections are delimited
-by <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_read_lock" title="rcu_read_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_read_lock()</span></code></a> and <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_read_unlock" title="rcu_read_unlock"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_read_unlock()</span></code></a>, which, in non-CONFIG_PREEMPT
+by <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_read_lock" title="rcu_read_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_read_lock()</span></code></a> and <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_read_unlock" title="rcu_read_unlock"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_read_unlock()</span></code></a>, which, in non-CONFIG_PREEMPTION
 kernels, generate no code whatsoever.</p>
 <p>This means that RCU writers are unaware of the presence of concurrent
 readers, so that RCU updates to shared data must be undertaken quite
@@ -580,10 +580,10 @@ are delayed for a full grace period? Couldn’t this result in
 to smp_call_function() and further to smp_call_function_on_cpu(),
 causing this latter to spin until the cross-CPU invocation of
 rcu_barrier_func() has completed. This by itself would prevent
-a grace period from completing on non-CONFIG_PREEMPT kernels,
+a grace period from completing on non-CONFIG_PREEMPTION kernels,
 since each CPU must undergo a context switch (or other quiescent
 state) before the grace period can complete. However, this is
-of no use in CONFIG_PREEMPT kernels.</p>
+of no use in CONFIG_PREEMPTION kernels.</p>
 <p>Therefore, on_each_cpu() disables preemption across its call
 to smp_call_function() and also across the local call to
 rcu_barrier_func(). This prevents the local CPU from context

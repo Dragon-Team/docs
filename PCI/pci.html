@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -175,6 +175,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#vendor-and-device-identifications">1.9. Vendor and device identifications</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#obsolete-functions">1.10. Obsolete functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mmio-space-and-write-posting">1.11. MMIO Space and “Write Posting”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#movable-bars">1.12. Movable BARs</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pciebus-howto.html">2. The PCI Express Port Bus Driver Guide HOWTO</a></li>
@@ -383,6 +384,9 @@ initialization with a pointer to a structure describing the driver
   int (*resume)(struct pci_dev *dev);
   void (*shutdown)(struct pci_dev *dev);
   int (*sriov_configure)(struct pci_dev *dev, int num_vfs);
+  bool (*bar_fixed)(struct pci_dev *dev, int resno);
+  void (*rescan_prepare)(struct pci_dev *dev);
+  void (*rescan_done)(struct pci_dev *dev);
   const struct pci_error_handlers *err_handler;
   const struct attribute_group **groups;
   struct device_driver    driver;
@@ -434,6 +438,12 @@ e.g. drivers/net/e100.c.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">sriov_configure</span></code></dt><dd><p>Optional driver callback to allow configuration of
 number of VFs to enable via sysfs “sriov_numvfs” file.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bar_fixed</span></code></dt><dd><p>Returns true if the driver doesn’t allow to move this BAR.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">rescan_prepare</span></code></dt><dd><p>Prepare to BAR movement - called before PCI rescan.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">rescan_done</span></code></dt><dd><p>Remap BARs and restore after PCI rescan.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">err_handler</span></code></dt><dd><p>See <a class="reference internal" href="pci-error-recovery.html"><span class="doc">PCI Error Recovery</span></a></p>
 </dd>
@@ -967,6 +977,66 @@ handle the PCI master abort on all platforms if the PCI device is
 expected to not respond to a readl().  Most x86 platforms will allow
 MMIO reads to master abort (a.k.a. “Soft Fail”) and return garbage
 (e.g. ~0). But many RISC platforms will crash (a.k.a.”Hard Fail”).</p>
+</div>
+<div class="section" id="movable-bars">
+<h2><span class="section-number">1.12. </span>Movable BARs<a class="headerlink" href="#movable-bars" title="Permalink to this headline">¶</a></h2>
+<p>To increase the probability of finding a space for BARs of hot-added devices,
+the kernel requests the drivers to release used BARs, so they can be moved
+to free a gap for new BARs.</p>
+<p>This ability can be added to a driver by implementing the
+<code class="xref c c-type docutils literal notranslate"><span class="pre">rescan_prepare()</span></code>, <code class="xref c c-type docutils literal notranslate"><span class="pre">bar_fixed()</span></code> and <code class="xref c c-type docutils literal notranslate"><span class="pre">rescan_done()</span></code>
+hooks from the <code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">pci_driver</span></code>.</p>
+<p>Before a PCI bus rescan the driver must pause its activity and unmap its
+BARs, here is an example of how the NVMe driver can perform this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>static struct pci_driver nvme_driver = {
+        ...
+        .bar_fixed      = nvme_bar_fixed,
+        .rescan_prepare = nvme_rescan_prepare,
+        .rescan_done    = nvme_rescan_done,
+};
+
+static bool nvme_bar_fixed(struct pci_dev *pdev, int resno)
+{
+        return false;
+}
+
+static void nvme_rescan_prepare(struct pci_dev *pdev)
+{
+        struct nvme_dev *dev = pci_get_drvdata(pdev);
+
+        nvme_dev_disable(dev, true);
+        nvme_dev_unmap(dev);
+        dev-&gt;bar = NULL;
+}
+</pre></div>
+</div>
+<p>The NVMe driver uses a single BAR, which is movable.  After a PCI rescan,
+the driver must re-read new addresses of BARs, remap them and resume:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>static void nvme_rescan_done(struct pci_dev *pdev)
+{
+        struct nvme_dev *dev = pci_get_drvdata(pdev);
+
+        nvme_dev_map(dev);
+        nvme_reset_ctrl(&amp;dev-&gt;ctrl);
+}
+</pre></div>
+</div>
+<p>Currently there are no reliable way to determine if a driver uses BARs of
+its devices or not (their <code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">resource</span></code> don’t always have a child),
+so if it doesn’t explicitly support movable BARs, they are considered fixed.
+To let the PCI subsystem move unused BARs, a driver have to implement one hook:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>static bool pcie_portdrv_bar_fixed(struct pci_dev *pdev, int resno)
+{
+        return false;
+}
+
+static struct pci_driver pcie_portdriver = {
+{
+        ...
+        .bar_fixed      = pcie_portdrv_bar_fixed,
+}
+</pre></div>
+</div>
 </div>
 </div>
 

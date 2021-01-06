@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -910,7 +910,7 @@ kernel?  How could this deadlock be avoided?</p>
 <h3>5B.  “TOY” EXAMPLE #2: CLASSIC RCU<a class="headerlink" href="#b-toy-example-2-classic-rcu" title="Permalink to this headline">¶</a></h3>
 <p>This section presents a “toy” RCU implementation that is based on
 “classic RCU”.  It is also short on performance (but only for updates) and
-on features such as hotplug CPU and the ability to run in CONFIG_PREEMPT
+on features such as hotplug CPU and the ability to run in CONFIG_PREEMPTION
 kernels.  The definitions of <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_dereference" title="rcu_dereference"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_dereference()</span></code></a> and <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_assign_pointer" title="rcu_assign_pointer"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_assign_pointer()</span></code></a>
 are the same as those shown in the preceding section, so they are omitted.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>void rcu_read_lock(void) { }
@@ -956,7 +956,7 @@ overhead is <strong>negative</strong>.</p>
 <dl class="simple" id="quiz-3">
 <dt>Quick Quiz #3:</dt><dd><p>If it is illegal to block in an RCU read-side
 critical section, what the heck do you do in
-PREEMPT_RT, where normal spinlocks can block???</p>
+CONFIG_PREEMPT_RT, where normal spinlocks can block???</p>
 </dd>
 </dl>
 <p><a class="reference internal" href="#id11"><span class="std std-ref">Answers to Quick Quiz</span></a></p>
@@ -1281,7 +1281,7 @@ cannot be blocked by tasks executing <a class="reference internal" href="../core
 <dt>Quick Quiz #2:</dt><dd><p>Give an example where Classic RCU’s read-side
 overhead is <strong>negative</strong>.</p>
 </dd>
-<dt>Answer:</dt><dd><p>Imagine a single-CPU system with a non-CONFIG_PREEMPT
+<dt>Answer:</dt><dd><p>Imagine a single-CPU system with a non-CONFIG_PREEMPTION
 kernel where a routing table is used by process-context
 code, but can be updated by irq-context code (for example,
 by an “ICMP REDIRECT” packet).  The usual way of handling
@@ -1306,9 +1306,9 @@ a synchronization primitive is a bit unexpected.  ;-)</p>
 <dl>
 <dt>Quick Quiz #3:</dt><dd><p>If it is illegal to block in an RCU read-side
 critical section, what the heck do you do in
-PREEMPT_RT, where normal spinlocks can block???</p>
+CONFIG_PREEMPT_RT, where normal spinlocks can block???</p>
 </dd>
-<dt>Answer:</dt><dd><p>Just as PREEMPT_RT permits preemption of spinlock
+<dt>Answer:</dt><dd><p>Just as CONFIG_PREEMPT_RT permits preemption of spinlock
 critical sections, it permits preemption of RCU
 read-side critical sections.  It also permits
 spinlocks blocking while in RCU read-side critical

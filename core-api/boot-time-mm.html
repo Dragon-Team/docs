@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.6-dragon
+                5.11.7-dragon
               </div>
             
           
@@ -880,12 +880,6 @@ phys_addr_t __init_memblock <code class="sig-name descname">memblock_find_in_ran
 </dl>
 <p><strong>Description</strong></p>
 <p>Find <strong>size</strong> free area aligned to <strong>align</strong> in the specified range and node.</p>
-<p>When allocation direction is bottom-up, the <strong>start</strong> should be greater
-than the end of the kernel image. Otherwise, it will be trimmed. The
-reason is that we want the bottom-up allocation just near the kernel
-image so it is highly likely that the allocated memory and the kernel
-will reside in the same node.</p>
-<p>If bottom-up allocation failed, will try to allocate memory top-down.</p>
 <p><strong>Return</strong></p>
 <p>Found address on success, 0 on failure.</p>
 <dl class="c function">
