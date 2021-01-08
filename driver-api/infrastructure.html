@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.7-dragon
+                5.11.8-dragon
               </div>
             
           
@@ -1608,6 +1608,15 @@ void <code class="sig-name descname">set_primary_fwnode</code><span class="sig-p
 <p><strong>Description</strong></p>
 <p>Set the device’s firmware node pointer to <strong>fwnode</strong>, but if a secondary
 firmware node of the device is present, preserve it.</p>
+<dl class="simple">
+<dt>Valid fwnode cases are:</dt><dd><ul class="simple">
+<li><p>primary –&gt; secondary –&gt; -ENODEV</p></li>
+<li><p>primary –&gt; NULL</p></li>
+<li><p>secondary –&gt; -ENODEV</p></li>
+<li><p>NULL</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="c function">
 <dt id="c.set_secondary_fwnode">
 void <code class="sig-name descname">set_secondary_fwnode</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.device" title="device">device</a> *<em>dev</em>, <em class="property">struct</em> fwnode_handle *<em>fwnode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.set_secondary_fwnode" title="Permalink to this definition">¶</a><br /></dt>

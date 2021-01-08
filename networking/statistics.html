@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.7-dragon
+                5.11.8-dragon
               </div>
             
           
@@ -586,8 +586,9 @@ This counter must include events counter by <strong>tx_aborted_errors</strong>,
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">rx_dropped</span></code></dt><dd><p>Number of packets received but not processed,
 e.g. due to lack of resources or unsupported protocol.
-For hardware interfaces this counter should not include packets
-dropped by the device which are counted separately in
+For hardware interfaces this counter may include packets discarded
+due to L2 address filtering but should not include packets dropped
+by the device due to buffer exhaustion which are counted separately in
 <strong>rx_missed_errors</strong> (since procfs folds those two counters together).</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">tx_dropped</span></code></dt><dd><p>Number of packets dropped on their way to transmission,

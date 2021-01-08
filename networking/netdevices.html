@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.7-dragon
+                5.11.8-dragon
               </div>
             
           
@@ -432,8 +432,8 @@ Note: <a class="reference internal" href="kapi.html#c.netif_running" title="neti
 <dt>ndo_do_ioctl:</dt><dd><p>Synchronization: rtnl_lock() semaphore.
 Context: process</p>
 </dd>
-<dt>ndo_get_stats:</dt><dd><p>Synchronization: dev_base_lock rwlock.
-Context: nominally process, but don’t sleep inside an rwlock</p>
+<dt>ndo_get_stats:</dt><dd><p>Synchronization: rtnl_lock() semaphore, dev_base_lock rwlock, or RCU.
+Context: atomic (can’t sleep under rwlock or RCU)</p>
 </dd>
 <dt>ndo_start_xmit:</dt><dd><p>Synchronization: __netif_tx_lock spinlock.</p>
 <p>When the driver sets NETIF_F_LLTX in dev-&gt;features this will be

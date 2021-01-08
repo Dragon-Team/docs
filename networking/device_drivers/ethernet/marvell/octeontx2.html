@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.7-dragon
+                5.11.8-dragon
               </div>
             
           
@@ -599,75 +599,67 @@ hence same VF driver works for both types of devices.</p>
 <h2>Devlink health reporters<a class="headerlink" href="#devlink-health-reporters" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="npa-reporters">
 <h3>NPA Reporters<a class="headerlink" href="#npa-reporters" title="Permalink to this headline">¶</a></h3>
-<p>The NPA reporters are responsible for reporting and recovering the following group of errors
-1. GENERAL events</p>
-<blockquote>
-<div><ul class="simple">
+<p>The NPA reporters are responsible for reporting and recovering the following group of errors:</p>
+<ol class="arabic simple">
+<li><p>GENERAL events</p>
+<ul class="simple">
 <li><p>Error due to operation of unmapped PF.</p></li>
 <li><p>Error due to disabled alloc/free for other HW blocks (NIX, SSO, TIM, DPI and AURA).</p></li>
 </ul>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li><p>ERROR events
-- Fault due to NPA_AQ_INST_S read or NPA_AQ_RES_S write.
-- AQ Doorbell Error.</p></li>
-<li><p>RAS events
-- RAS Error Reporting for NPA_AQ_INST_S/NPA_AQ_RES_S.</p></li>
-<li><p>RVU events
-- Error due to unmapped slot.</p></li>
+</li>
+<li><p>ERROR events</p>
+<ul class="simple">
+<li><p>Fault due to NPA_AQ_INST_S read or NPA_AQ_RES_S write.</p></li>
+<li><p>AQ Doorbell Error.</p></li>
+</ul>
+</li>
+<li><p>RAS events</p>
+<ul class="simple">
+<li><p>RAS Error Reporting for NPA_AQ_INST_S/NPA_AQ_RES_S.</p></li>
+</ul>
+</li>
+<li><p>RVU events</p>
+<ul class="simple">
+<li><p>Error due to unmapped slot.</p></li>
+</ul>
+</li>
 </ol>
+<p>Sample Output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>~# devlink health
+pci/0002:01:00.0:
+  reporter hw_npa_intr
+      state healthy error 2872 recover 2872 last_dump_date 2020-12-10 last_dump_time 09:39:09 grace_period 0 auto_recover true auto_dump true
+  reporter hw_npa_gen
+      state healthy error 2872 recover 2872 last_dump_date 2020-12-11 last_dump_time 04:43:04 grace_period 0 auto_recover true auto_dump true
+  reporter hw_npa_err
+      state healthy error 2871 recover 2871 last_dump_date 2020-12-10 last_dump_time 09:39:17 grace_period 0 auto_recover true auto_dump true
+   reporter hw_npa_ras
+      state healthy error 0 recover 0 last_dump_date 2020-12-10 last_dump_time 09:32:40 grace_period 0 auto_recover true auto_dump true
+</pre></div>
 </div>
-<div class="section" id="sample-output">
-<h3>Sample Output<a class="headerlink" href="#sample-output" title="Permalink to this headline">¶</a></h3>
-<p>~# devlink health
-pci/0002:01:00.0:</p>
+<p>Each reporter dumps the</p>
 <blockquote>
-<div><dl>
-<dt>reporter hw_npa_intr</dt><dd><p>state healthy error 2872 recover 2872 last_dump_date 2020-12-10 last_dump_time 09:39:09 grace_period 0 auto_recover true auto_dump true</p>
-</dd>
-<dt>reporter hw_npa_gen</dt><dd><p>state healthy error 2872 recover 2872 last_dump_date 2020-12-11 last_dump_time 04:43:04 grace_period 0 auto_recover true auto_dump true</p>
-</dd>
-<dt>reporter hw_npa_err</dt><dd><blockquote>
-<div><p>state healthy error 2871 recover 2871 last_dump_date 2020-12-10 last_dump_time 09:39:17 grace_period 0 auto_recover true auto_dump true</p>
-</div></blockquote>
-<dl class="simple">
-<dt>reporter hw_npa_ras</dt><dd><p>state healthy error 0 recover 0 last_dump_date 2020-12-10 last_dump_time 09:32:40 grace_period 0 auto_recover true auto_dump true</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</div></blockquote>
-<dl class="simple">
-<dt>Each reporter dumps the</dt><dd><ul class="simple">
+<div><ul class="simple">
 <li><p>Error Type</p></li>
 <li><p>Error Register value</p></li>
 <li><p>Reason in words</p></li>
 </ul>
-</dd>
-</dl>
-<p>For eg:
-~# devlink health dump show  pci/0002:01:00.0 reporter hw_npa_gen</p>
-<blockquote>
-<div><dl class="simple">
-<dt>NPA_AF_GENERAL:</dt><dd><p>NPA General Interrupt Reg : 1
-NIX0: free disabled RX</p>
-</dd>
-</dl>
 </div></blockquote>
-<dl class="simple">
-<dt>~# devlink health dump show  pci/0002:01:00.0 reporter hw_npa_intr</dt><dd><dl class="simple">
-<dt>NPA_AF_RVU:</dt><dd><p>NPA RVU Interrupt Reg : 1
-Unmap Slot Error</p>
-</dd>
-</dl>
-</dd>
-<dt>~# devlink health dump show  pci/0002:01:00.0 reporter hw_npa_err</dt><dd><dl class="simple">
-<dt>NPA_AF_ERR:</dt><dd><p>NPA Error Interrupt Reg : 4096
-AQ Doorbell Error</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<p>For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>~# devlink health dump show  pci/0002:01:00.0 reporter hw_npa_gen
+ NPA_AF_GENERAL:
+         NPA General Interrupt Reg : 1
+         NIX0: free disabled RX
+~# devlink health dump show  pci/0002:01:00.0 reporter hw_npa_intr
+ NPA_AF_RVU:
+         NPA RVU Interrupt Reg : 1
+         Unmap Slot Error
+~# devlink health dump show  pci/0002:01:00.0 reporter hw_npa_err
+ NPA_AF_ERR:
+        NPA Error Interrupt Reg : 4096
+        AQ Doorbell Error
+</pre></div>
+</div>
 </div>
 </div>
 </div>

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.7-dragon
+                5.11.8-dragon
               </div>
             
           
@@ -2141,6 +2141,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#tegra-pwm-driver">TEGRA PWM DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tegra-serial-driver">TEGRA SERIAL DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tegra-spi-driver">TEGRA SPI DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tegra-quad-spi-driver">TEGRA QUAD SPI DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tegra-video-driver">TEGRA VIDEO DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tegra-xusb-padctl-driver">TEGRA XUSB PADCTL DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tehuti-ethernet-driver">TEHUTI ETHERNET DRIVER</a></li>
@@ -8555,8 +8556,10 @@ Dirk Opfer &lt;<a class="reference external" href="mailto:dirk&#37;&#52;&#48;opf
 </dd>
 <dt class="field-odd">Files</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/arm/toshiba.yaml</span></code>
+<code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/gpio/toshiba,gpio-visconti.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/pinctrl/toshiba,tmpv7700-pinctrl.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">arch/arm64/boot/dts/toshiba/</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/gpio/gpio-visconti.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/pinctrl/visconti/</span></code></p>
 </dd>
 <dt class="field-even">Regex</dt>
@@ -10301,6 +10304,7 @@ Brendan Jackman &lt;<a class="reference external" href="mailto:jackmanb&#37;&#52
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/net/dsa/b53/*</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/linux/dsa/brcm.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/platform_data/b53.h</span></code></p>
 </dd>
 </dl>
@@ -25556,7 +25560,7 @@ Claudio Imbrenda &lt;<a class="reference external" href="mailto:imbrenda&#37;&#5
 <dd class="field-odd"><p>Paolo Bonzini &lt;<a class="reference external" href="mailto:pbonzini&#37;&#52;&#48;redhat&#46;com">pbonzini<span>&#64;</span>redhat<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Reviewer</dt>
-<dd class="field-even"><p>Sean Christopherson &lt;<a class="reference external" href="mailto:sean&#46;j&#46;christopherson&#37;&#52;&#48;intel&#46;com">sean<span>&#46;</span>j<span>&#46;</span>christopherson<span>&#64;</span>intel<span>&#46;</span>com</a>&gt;,
+<dd class="field-even"><p>Sean Christopherson &lt;<a class="reference external" href="mailto:seanjc&#37;&#52;&#48;google&#46;com">seanjc<span>&#64;</span>google<span>&#46;</span>com</a>&gt;,
 Vitaly Kuznetsov &lt;<a class="reference external" href="mailto:vkuznets&#37;&#52;&#48;redhat&#46;com">vkuznets<span>&#64;</span>redhat<span>&#46;</span>com</a>&gt;,
 Wanpeng Li &lt;<a class="reference external" href="mailto:wanpengli&#37;&#52;&#48;tencent&#46;com">wanpengli<span>&#64;</span>tencent<span>&#46;</span>com</a>&gt;,
 Jim Mattson &lt;<a class="reference external" href="mailto:jmattson&#37;&#52;&#48;google&#46;com">jmattson<span>&#64;</span>google<span>&#46;</span>com</a>&gt;,
@@ -28063,7 +28067,7 @@ Bartlomiej Zolnierkiewicz &lt;<a class="reference external" href="mailto:b&#46;z
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
 <dd class="field-odd"><p>Dan Murphy &lt;<a class="reference external" href="mailto:dmurphy&#37;&#52;&#48;ti&#46;com">dmurphy<span>&#64;</span>ti<span>&#46;</span>com</a>&gt;,
-Sriram Dash &lt;<a class="reference external" href="mailto:sriram&#46;dash&#37;&#52;&#48;samsung&#46;com">sriram<span>&#46;</span>dash<span>&#64;</span>samsung<span>&#46;</span>com</a>&gt;</p>
+Pankaj Sharma &lt;<a class="reference external" href="mailto:pankj&#46;sharma&#37;&#52;&#48;samsung&#46;com">pankj<span>&#46;</span>sharma<span>&#64;</span>samsung<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:linux-can&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-can<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
@@ -29893,8 +29897,7 @@ Tudor Ambarus &lt;<a class="reference external" href="mailto:tudor&#46;ambarus&#
 <code class="docutils literal notranslate"><span class="pre">drivers/dma/at_hdmac.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/dma/at_hdmac_regs.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/dma/at_xdmac.c</span></code>
-<code class="docutils literal notranslate"><span class="pre">include/dt-bindings/dma/at91.h</span></code>
-<code class="docutils literal notranslate"><span class="pre">include/linux/platform_data/dma-atmel.h</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">include/dt-bindings/dma/at91.h</span></code></p>
 </dd>
 </dl>
 </div>
@@ -30104,13 +30107,13 @@ Tudor Ambarus &lt;<a class="reference external" href="mailto:tudor&#46;ambarus&#
 <h3>MICROCHIP MCP16502 PMIC DRIVER<a class="headerlink" href="#microchip-mcp16502-pmic-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Andrei Stefanescu &lt;<a class="reference external" href="mailto:andrei&#46;stefanescu&#37;&#52;&#48;microchip&#46;com">andrei<span>&#46;</span>stefanescu<span>&#64;</span>microchip<span>&#46;</span>com</a>&gt;</p>
+<dd class="field-odd"><p>Claudiu Beznea &lt;<a class="reference external" href="mailto:claudiu&#46;beznea&#37;&#52;&#48;microchip&#46;com">claudiu<span>&#46;</span>beznea<span>&#64;</span>microchip<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:linux-arm-kernel&#37;&#52;&#48;lists&#46;infradead&#46;org">linux-arm-kernel<span>&#64;</span>lists<span>&#46;</span>infradead<span>&#46;</span>org</a> (moderated for non-subscribers)</p>
 </dd>
 <dt class="field-odd">Status</dt>
-<dd class="field-odd"><p>Maintained</p>
+<dd class="field-odd"><p>Supported</p>
 </dd>
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/regulator/mcp16502-regulator.txt</span></code>
@@ -38113,7 +38116,8 @@ Siva Rebbagondla &lt;<a class="reference external" href="mailto:siva8118&#37;&#5
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
 <dd class="field-odd"><p>Ohad Ben-Cohen &lt;<a class="reference external" href="mailto:ohad&#37;&#52;&#48;wizery&#46;com">ohad<span>&#64;</span>wizery<span>&#46;</span>com</a>&gt;,
-Bjorn Andersson &lt;<a class="reference external" href="mailto:bjorn&#46;andersson&#37;&#52;&#48;linaro&#46;org">bjorn<span>&#46;</span>andersson<span>&#64;</span>linaro<span>&#46;</span>org</a>&gt;</p>
+Bjorn Andersson &lt;<a class="reference external" href="mailto:bjorn&#46;andersson&#37;&#52;&#48;linaro&#46;org">bjorn<span>&#46;</span>andersson<span>&#64;</span>linaro<span>&#46;</span>org</a>&gt;,
+Mathieu Poirier &lt;<a class="reference external" href="mailto:mathieu&#46;poirier&#37;&#52;&#48;linaro&#46;org">mathieu<span>&#46;</span>poirier<span>&#64;</span>linaro<span>&#46;</span>org</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:linux-remoteproc&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-remoteproc<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
@@ -38139,7 +38143,8 @@ Bjorn Andersson &lt;<a class="reference external" href="mailto:bjorn&#46;anderss
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
 <dd class="field-odd"><p>Ohad Ben-Cohen &lt;<a class="reference external" href="mailto:ohad&#37;&#52;&#48;wizery&#46;com">ohad<span>&#64;</span>wizery<span>&#46;</span>com</a>&gt;,
-Bjorn Andersson &lt;<a class="reference external" href="mailto:bjorn&#46;andersson&#37;&#52;&#48;linaro&#46;org">bjorn<span>&#46;</span>andersson<span>&#64;</span>linaro<span>&#46;</span>org</a>&gt;</p>
+Bjorn Andersson &lt;<a class="reference external" href="mailto:bjorn&#46;andersson&#37;&#52;&#48;linaro&#46;org">bjorn<span>&#46;</span>andersson<span>&#64;</span>linaro<span>&#46;</span>org</a>&gt;,
+Mathieu Poirier &lt;<a class="reference external" href="mailto:mathieu&#46;poirier&#37;&#52;&#48;linaro&#46;org">mathieu<span>&#46;</span>poirier<span>&#64;</span>linaro<span>&#46;</span>org</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:linux-remoteproc&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-remoteproc<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
@@ -43992,6 +43997,25 @@ Lucas Stach &lt;<a class="reference external" href="mailto:dev&#37;&#52;&#48;lyn
 </dd>
 <dt class="field-odd">Files</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/spi/spi-tegra*</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="tegra-quad-spi-driver">
+<h3>TEGRA QUAD SPI DRIVER<a class="headerlink" href="#tegra-quad-spi-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Thierry Reding &lt;<a class="reference external" href="mailto:thierry&#46;reding&#37;&#52;&#48;gmail&#46;com">thierry<span>&#46;</span>reding<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;,
+Jonathan Hunter &lt;<a class="reference external" href="mailto:jonathanh&#37;&#52;&#48;nvidia&#46;com">jonathanh<span>&#64;</span>nvidia<span>&#46;</span>com</a>&gt;,
+Sowjanya Komatineni &lt;<a class="reference external" href="mailto:skomatineni&#37;&#52;&#48;nvidia&#46;com">skomatineni<span>&#64;</span>nvidia<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:linux-tegra&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-tegra<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Maintained</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/spi/spi-tegra210-quad.c</span></code></p>
 </dd>
 </dl>
 </div>

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.7-dragon
+                5.11.8-dragon
               </div>
             
           
@@ -971,6 +971,7 @@ management during spi_message processing</p>
   dma_addr_t rx_dma;
   struct sg_table tx_sg;
   struct sg_table rx_sg;
+  unsigned dummy_data:1;
   unsigned cs_change:1;
   unsigned tx_nbits:3;
   unsigned rx_nbits:3;
@@ -1009,6 +1010,8 @@ management during spi_message processing</p>
 <dt><code class="docutils literal notranslate"><span class="pre">tx_sg</span></code></dt><dd><p>Scatterlist for transmit, currently not for client use</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">rx_sg</span></code></dt><dd><p>Scatterlist for receive, currently not for client use</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">dummy_data</span></code></dt><dd><p>indicates transfer is dummy bytes transfer.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">cs_change</span></code></dt><dd><p>affects chipselect after this transfer completes</p>
 </dd>
