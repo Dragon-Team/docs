@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.8-dragon
+                5.11.9-dragon
               </div>
             
           
@@ -208,6 +208,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rfkill.html">rfkill - RF kill switch support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="serial/index.html">Support for Serial devices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sm501.html">SM501 Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="surface_aggregator/index.html">Surface System Aggregator Module (SSAM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="switchtec.html">Linux Switchtec Support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_file.html">Sync File API Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vfio-mediated-device.html">VFIO Mediated devices</a></li>
@@ -743,6 +744,29 @@ the identifier.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">chan</span></code></dt><dd><p>MHI channel name</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">driver_data</span></code></dt><dd><p>driver data;</p>
+</dd>
+</dl>
+<dl class="c struct">
+<dt id="c.dfl_device_id">
+<em class="property">struct </em><code class="sig-name descname">dfl_device_id</code><a class="headerlink" href="#c.dfl_device_id" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>dfl device identifier</p>
+</dd></dl>
+
+<p><strong>Definition</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct dfl_device_id {
+  __u16 type;
+  __u16 feature_id;
+  kernel_ulong_t driver_data;
+};
+</pre></div>
+</div>
+<p><strong>Members</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">type</span></code></dt><dd><p>DFL FIU type of the device. See enum dfl_id_type.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">feature_id</span></code></dt><dd><p>feature identifier local to its DFL FIU type.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">driver_data</span></code></dt><dd><p>driver specific data.</p>
 </dd>
 </dl>
 </div>

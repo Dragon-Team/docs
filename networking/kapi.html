@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.8-dragon
+                5.11.9-dragon
               </div>
             
           
@@ -3777,7 +3777,7 @@ int <code class="sig-name descname">skb_copy_ubufs</code><span class="sig-paren"
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">sk_buff</span> <span class="pre">*skb</span></code></dt><dd><p>the skb to modify</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">gfp_t</span> <span class="pre">gfp_mask</span></code></dt><dd><p>allocation priority</p>
-<p>This must be called on SKBTX_DEV_ZEROCOPY skb.
+<p>This must be called on skb with SKBFL_ZEROCOPY_ENABLE.
 It will copy all frags into kernel and drop the reference
 to userspace pages.</p>
 <p>If this function is called from an interrupt gfp_mask() must be

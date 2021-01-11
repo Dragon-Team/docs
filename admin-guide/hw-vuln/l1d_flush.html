@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.8-dragon
+                5.11.9-dragon
               </div>
             
           
@@ -391,7 +391,7 @@ mechanism is used, software fallback for the mitigation, is not supported.</p>
 <div class="section" id="mitigation-control-on-the-kernel-command-line">
 <h2>Mitigation control on the kernel command line<a class="headerlink" href="#mitigation-control-on-the-kernel-command-line" title="Permalink to this headline">¶</a></h2>
 <p>The kernel command line allows to control the L1D flush mitigations at boot
-time with the option “l1d_flush_out=”. The valid arguments for this option are:</p>
+time with the option “l1d_flush=”. The valid arguments for this option are:</p>
 <blockquote>
 <div><table class="docutils align-default">
 <colgroup>
@@ -399,9 +399,10 @@ time with the option “l1d_flush_out=”. The valid arguments for this option a
 <col style="width: 84%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p>off</p></td>
-<td><p>Disables the prctl interface, applications trying to use
-the prctl() will fail with an error</p></td>
+<tr class="row-odd"><td><p>on</p></td>
+<td><p>Enables the prctl interface, applications trying to use
+the prctl() will fail with an error if l1d_flush is not
+enabled</p></td>
 </tr>
 </tbody>
 </table>

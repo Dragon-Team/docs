@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.8-dragon
+                5.11.9-dragon
               </div>
             
           
@@ -2913,7 +2913,7 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         feature (tagged TLBs) on capable Intel chips.
                         Default is 1 (enabled)
 
-        l1d_flush_out=  [X86,INTEL]
+        l1d_flush=      [X86,INTEL]
                         Control mitigation for L1D based snooping vulnerability.
 
                         Certain CPUs are vulnerable to an exploit against CPU
@@ -2928,7 +2928,7 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         This parameter controls the mitigation. The
                         options are:
 
-                        off        - Unconditionally disable the mitigation
+                        on         - enable the interface for the mitigation
 
         l1tf=           [X86] Control mitigation of the L1TF vulnerability on
                               affected CPUs

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.8-dragon
+                5.11.9-dragon
               </div>
             
           
@@ -423,12 +423,12 @@ tried to enable it again.</p></td>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>PR_SPEC_L1D_FLUSH_OUT: Flush L1D Cache on context switch out of the task</dt><dd><p>(works only when tasks run on non SMT cores)</p>
+<dt>PR_SPEC_L1D_FLUSH: Flush L1D Cache on context switch out of the task</dt><dd><p>(works only when tasks run on non SMT cores)</p>
 </dd>
 <dt>Invocations:</dt><dd><ul class="simple">
-<li><p>prctl(PR_GET_SPECULATION_CTRL, PR_SPEC_L1D_FLUSH_OUT, 0, 0, 0);</p></li>
-<li><p>prctl(PR_SET_SPECULATION_CTRL, PR_SPEC_L1D_FLUSH_OUT, PR_SPEC_ENABLE, 0, 0);</p></li>
-<li><p>prctl(PR_SET_SPECULATION_CTRL, PR_SPEC_L1D_FLUSH_OUT, PR_SPEC_DISABLE, 0, 0);</p></li>
+<li><p>prctl(PR_GET_SPECULATION_CTRL, PR_SPEC_L1D_FLUSH, 0, 0, 0);</p></li>
+<li><p>prctl(PR_SET_SPECULATION_CTRL, PR_SPEC_L1D_FLUSH, PR_SPEC_ENABLE, 0, 0);</p></li>
+<li><p>prctl(PR_SET_SPECULATION_CTRL, PR_SPEC_L1D_FLUSH, PR_SPEC_DISABLE, 0, 0);</p></li>
 </ul>
 </dd>
 </dl>

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.8-dragon
+                5.11.9-dragon
               </div>
             
           
@@ -513,6 +513,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-ethernet-phy-drivers">BROADCOM ETHERNET PHY DRIVERS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-genet-ethernet-driver">BROADCOM GENET ETHERNET DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-iproc-arm-architecture">BROADCOM IPROC ARM ARCHITECTURE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#broadcom-iproc-gbit-ethernet-driver">BROADCOM IPROC GBIT ETHERNET DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-kona-gpio-driver">BROADCOM KONA GPIO DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-netxtreme-e-roce-driver">BROADCOM NETXTREME-E ROCE DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-nvram-driver">BROADCOM NVRAM DRIVER</a></li>
@@ -537,6 +538,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#c-sky-architecture">C-SKY ARCHITECTURE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#c6x-architecture">C6X ARCHITECTURE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ca8210-ieee-802-15-4-radio-driver">CA8210 IEEE-802.15.4 RADIO DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#canaan-kendryte-k210-soc-reset-controller-driver">CANAAN/KENDRYTE K210 SOC RESET CONTROLLER DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#canaan-kendryte-k210-soc-system-controller-driver">CANAAN/KENDRYTE K210 SOC SYSTEM CONTROLLER DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cachefiles-fs-cache-backend-for-caching-on-mounted-filesystems">CACHEFILES: FS-CACHE BACKEND FOR CACHING ON MOUNTED FILESYSTEMS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cadence-mipi-csi2-bridges">CADENCE MIPI-CSI2 BRIDGES</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cadence-nand-driver">CADENCE NAND DRIVER</a></li>
@@ -1471,6 +1474,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#microsoft-surface-gpe-lid-support-driver">MICROSOFT SURFACE GPE LID SUPPORT DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#microsoft-surface-hardware-platform-support">MICROSOFT SURFACE HARDWARE PLATFORM SUPPORT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#microsoft-surface-pro-3-button-driver">MICROSOFT SURFACE PRO 3 BUTTON DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#microsoft-surface-system-aggregator-subsystem">MICROSOFT SURFACE SYSTEM AGGREGATOR SUBSYSTEM</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#microtek-x6-scanner">MICROTEK X6 SCANNER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mikrotik-crs3xx-98dx3236-board-support">MIKROTIK CRS3XX 98DX3236 BOARD SUPPORT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mipi-ccs-smia-and-smia-image-sensor-driver">MIPI CCS, SMIA AND SMIA++ IMAGE SENSOR DRIVER</a></li>
@@ -4678,7 +4682,7 @@ Leo Li &lt;<a class="reference external" href="mailto:sunpeng&#46;li&#37;&#52;&#
 <dd class="field-odd"><p>Supported</p>
 </dd>
 <dt class="field-even">SCM</dt>
-<dd class="field-even"><p>git git://people.freedesktop.org/~agd5f/linux</p>
+<dd class="field-even"><p>git <a class="reference external" href="https://gitlab.freedesktop.org/agd5f/linux.git">https://gitlab.freedesktop.org/agd5f/linux.git</a></p>
 </dd>
 <dt class="field-odd">Files</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/gpu/drm/amd/amdgpu/amdgpu_amdkfd*.[ch]</span></code>
@@ -10808,6 +10812,7 @@ Florian Fainelli &lt;<a class="reference external" href="mailto:f&#46;fainelli&#
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/net/brcm,bcmgenet.txt</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/net/brcm,unimac-mdio.txt</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/net/ethernet/broadcom/genet/</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/net/ethernet/broadcom/unimac.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/net/mdio/mdio-bcm-unimac.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/platform_data/bcmgenet.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/platform_data/mdio-bcm-unimac.h</span></code></p>
@@ -10855,6 +10860,26 @@ Scott Branden &lt;<a class="reference external" href="mailto:sbranden&#37;&#52;&
 <code class="docutils literal notranslate"><span class="pre">bcm88312</span></code>
 <code class="docutils literal notranslate"><span class="pre">hr2</span></code>
 <code class="docutils literal notranslate"><span class="pre">stingray</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="broadcom-iproc-gbit-ethernet-driver">
+<h3>BROADCOM IPROC GBIT ETHERNET DRIVER<a class="headerlink" href="#broadcom-iproc-gbit-ethernet-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Rafał Miłecki &lt;<a class="reference external" href="mailto:rafal&#37;&#52;&#48;milecki&#46;pl">rafal<span>&#64;</span>milecki<span>&#46;</span>pl</a>&gt;,
+<a class="reference external" href="mailto:bcm-kernel-feedback-list&#37;&#52;&#48;broadcom&#46;com">bcm-kernel-feedback-list<span>&#64;</span>broadcom<span>&#46;</span>com</a></p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:netdev&#37;&#52;&#48;vger&#46;kernel&#46;org">netdev<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Maintained</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/net/brcm,amac.txt</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/net/ethernet/broadcom/bgmac*</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/net/ethernet/broadcom/unimac.h</span></code></p>
 </dd>
 </dl>
 </div>
@@ -11044,7 +11069,8 @@ Kamal Dasu &lt;<a class="reference external" href="mailto:kdasu&#46;kdev&#37;&#5
 <dd class="field-odd"><p>Supported</p>
 </dd>
 <dt class="field-even">Files</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/net/ethernet/broadcom/bcmsysport.*</span></code></p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/net/ethernet/broadcom/bcmsysport.*</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/net/ethernet/broadcom/unimac.h</span></code></p>
 </dd>
 </dl>
 </div>
@@ -11350,6 +11376,43 @@ Aurelien Jacquiot &lt;<a class="reference external" href="mailto:jacquiot&#46;au
 </dd>
 </dl>
 </div>
+<div class="section" id="canaan-kendryte-k210-soc-reset-controller-driver">
+<h3>CANAAN/KENDRYTE K210 SOC RESET CONTROLLER DRIVER<a class="headerlink" href="#canaan-kendryte-k210-soc-reset-controller-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Damien Le Moal &lt;<a class="reference external" href="mailto:damien&#46;lemoal&#37;&#52;&#48;wdc&#46;com">damien<span>&#46;</span>lemoal<span>&#64;</span>wdc<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:linux-kernel&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-kernel<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a>,
+<a class="reference external" href="mailto:linux-riscv&#37;&#52;&#48;lists&#46;infradead&#46;org">linux-riscv<span>&#64;</span>lists<span>&#46;</span>infradead<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Maintained</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/reset/canaan,k210-rst.yaml</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/reset/reset-k210.c</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="canaan-kendryte-k210-soc-system-controller-driver">
+<h3>CANAAN/KENDRYTE K210 SOC SYSTEM CONTROLLER DRIVER<a class="headerlink" href="#canaan-kendryte-k210-soc-system-controller-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Damien Le Moal &lt;<a class="reference external" href="mailto:damien&#46;lemoal&#37;&#52;&#48;wdc&#46;com">damien<span>&#46;</span>lemoal<span>&#64;</span>wdc<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:linux-riscv&#37;&#52;&#48;lists&#46;infradead&#46;org">linux-riscv<span>&#64;</span>lists<span>&#46;</span>infradead<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Maintained</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/soc/canaan/</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/soc/canaan/</span></code></p>
+</dd>
+</dl>
+</div>
 <div class="section" id="cachefiles-fs-cache-backend-for-caching-on-mounted-filesystems">
 <h3>CACHEFILES: FS-CACHE BACKEND FOR CACHING ON MOUNTED FILESYSTEMS<a class="headerlink" href="#cachefiles-fs-cache-backend-for-caching-on-mounted-filesystems" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
@@ -11405,7 +11468,7 @@ Aurelien Jacquiot &lt;<a class="reference external" href="mailto:jacquiot&#46;au
 <h3>CADENCE USB3 DRD IP DRIVER<a class="headerlink" href="#cadence-usb3-drd-ip-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Peter Chen &lt;<a class="reference external" href="mailto:peter&#46;chen&#37;&#52;&#48;nxp&#46;com">peter<span>&#46;</span>chen<span>&#64;</span>nxp<span>&#46;</span>com</a>&gt;,
+<dd class="field-odd"><p>Peter Chen &lt;<a class="reference external" href="mailto:peter&#46;chen&#37;&#52;&#48;kernel&#46;org">peter<span>&#46;</span>chen<span>&#64;</span>kernel<span>&#46;</span>org</a>&gt;,
 Pawel Laszczak &lt;<a class="reference external" href="mailto:pawell&#37;&#52;&#48;cadence&#46;com">pawell<span>&#64;</span>cadence<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Reviewer</dt>
@@ -12090,7 +12153,7 @@ Alex Shi &lt;<a class="reference external" href="mailto:alex&#46;shi&#37;&#52;&#
 <h3>CHIPIDEA USB HIGH SPEED DUAL ROLE CONTROLLER<a class="headerlink" href="#chipidea-usb-high-speed-dual-role-controller" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Peter Chen &lt;<a class="reference external" href="mailto:Peter&#46;Chen&#37;&#52;&#48;nxp&#46;com">Peter<span>&#46;</span>Chen<span>&#64;</span>nxp<span>&#46;</span>com</a>&gt;</p>
+<dd class="field-odd"><p>Peter Chen &lt;<a class="reference external" href="mailto:peter&#46;chen&#37;&#52;&#48;kernel&#46;org">peter<span>&#46;</span>chen<span>&#64;</span>kernel<span>&#46;</span>org</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:linux-usb&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-usb<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
@@ -18888,9 +18951,10 @@ Zhu Yanjun &lt;<a class="reference external" href="mailto:zyjzyj2000&#37;&#52;&#
 <dd class="field-even"><p>Maintained</p>
 </dd>
 <dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/ABI/testing/sysfs-bus-dfl</span></code>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/ABI/testing/sysfs-bus-dfl*</span></code>
 <a class="reference internal" href="../fpga/dfl.html"><span class="doc">fpga/dfl</span></a>
 <code class="docutils literal notranslate"><span class="pre">drivers/fpga/dfl*</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/linux/dfl.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/uapi/linux/fpga-dfl.h</span></code></p>
 </dd>
 </dl>
@@ -24397,7 +24461,7 @@ Shiraz Saleem &lt;<a class="reference external" href="mailto:shiraz&#46;saleem&#
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
 <dd class="field-odd"><p>Christoph Hellwig &lt;<a class="reference external" href="mailto:hch&#37;&#52;&#48;infradead&#46;org">hch<span>&#64;</span>infradead<span>&#46;</span>org</a>&gt;,
-Darrick J. Wong &lt;<a class="reference external" href="mailto:darrick&#46;wong&#37;&#52;&#48;oracle&#46;com">darrick<span>&#46;</span>wong<span>&#64;</span>oracle<span>&#46;</span>com</a>&gt;,
+Darrick J. Wong &lt;<a class="reference external" href="mailto:djwong&#37;&#52;&#48;kernel&#46;org">djwong<span>&#64;</span>kernel<span>&#46;</span>org</a>&gt;,
 <a class="reference external" href="mailto:linux-xfs&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-xfs<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a>,
 <a class="reference external" href="mailto:linux-fsdevel&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-fsdevel<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
 </dd>
@@ -30407,6 +30471,32 @@ Maximilian Luz &lt;<a class="reference external" href="mailto:luzmaximilian&#37;
 </dd>
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/surface/surfacepro3_button.c</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="microsoft-surface-system-aggregator-subsystem">
+<h3>MICROSOFT SURFACE SYSTEM AGGREGATOR SUBSYSTEM<a class="headerlink" href="#microsoft-surface-system-aggregator-subsystem" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Maximilian Luz &lt;<a class="reference external" href="mailto:luzmaximilian&#37;&#52;&#48;gmail&#46;com">luzmaximilian<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Status</dt>
+<dd class="field-even"><p>Maintained</p>
+</dd>
+<dt class="field-odd">Web-page</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://github.com/linux-surface/surface-aggregator-module">https://github.com/linux-surface/surface-aggregator-module</a></p>
+</dd>
+<dt class="field-even">chat</dt>
+<dd class="field-even"><p><a class="reference external" href="irc://chat.freenode.net">irc://chat.freenode.net</a>/##linux-surface</p>
+</dd>
+<dt class="field-odd">Files</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/driver-api/surface_aggregator/</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/platform/surface/aggregator/</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/platform/surface/surface_acpi_notify.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/platform/surface/surface_aggregator_cdev.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/linux/surface_acpi_notify.h</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/linux/surface_aggregator/</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/uapi/linux/surface_aggregator/</span></code></p>
 </dd>
 </dl>
 </div>
@@ -37471,7 +37561,7 @@ Christian König &lt;<a class="reference external" href="mailto:christian&#46;ko
 <dd class="field-odd"><p>Supported</p>
 </dd>
 <dt class="field-even">SCM</dt>
-<dd class="field-even"><p>git git://people.freedesktop.org/~agd5f/linux</p>
+<dd class="field-even"><p>git <a class="reference external" href="https://gitlab.freedesktop.org/agd5f/linux.git">https://gitlab.freedesktop.org/agd5f/linux.git</a></p>
 </dd>
 <dt class="field-odd">Files</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/gpu/drm/amd/</span></code>
@@ -46252,7 +46342,7 @@ Binghui Wang &lt;<a class="reference external" href="mailto:wangbinghui&#37;&#52
 <h3>USB OTG FSM (Finite State Machine)<a class="headerlink" href="#usb-otg-fsm-finite-state-machine" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Peter Chen &lt;<a class="reference external" href="mailto:Peter&#46;Chen&#37;&#52;&#48;nxp&#46;com">Peter<span>&#46;</span>Chen<span>&#64;</span>nxp<span>&#46;</span>com</a>&gt;</p>
+<dd class="field-odd"><p>Peter Chen &lt;<a class="reference external" href="mailto:peter&#46;chen&#37;&#52;&#48;kernel&#46;org">peter<span>&#46;</span>chen<span>&#64;</span>kernel<span>&#46;</span>org</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:linux-usb&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-usb<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
@@ -48862,7 +48952,7 @@ Paul Durrant &lt;<a class="reference external" href="mailto:paul&#37;&#52;&#48;x
 <h3>XFS FILESYSTEM<a class="headerlink" href="#xfs-filesystem" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Darrick J. Wong &lt;<a class="reference external" href="mailto:darrick&#46;wong&#37;&#52;&#48;oracle&#46;com">darrick<span>&#46;</span>wong<span>&#64;</span>oracle<span>&#46;</span>com</a>&gt;,
+<dd class="field-odd"><p>Darrick J. Wong &lt;<a class="reference external" href="mailto:djwong&#37;&#52;&#48;kernel&#46;org">djwong<span>&#64;</span>kernel<span>&#46;</span>org</a>&gt;,
 <a class="reference external" href="mailto:linux-xfs&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-xfs<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
 </dd>
 <dt class="field-even">Mailing list</dt>

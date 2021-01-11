@@ -42,11 +42,12 @@ Mitigation control on the kernel command line
 ---------------------------------------------
 
 The kernel command line allows to control the L1D flush mitigations at boot
-time with the option "l1d_flush_out=". The valid arguments for this option are:
+time with the option "l1d_flush=". The valid arguments for this option are:
 
   ============  =============================================================
-  off		Disables the prctl interface, applications trying to use
-                the prctl() will fail with an error
+  on            Enables the prctl interface, applications trying to use
+                the prctl() will fail with an error if l1d_flush is not
+                enabled
   ============  =============================================================
 
 By default the API is enabled and applications opt-in by using the prctl
@@ -65,5 +66,5 @@ document: :ref:`Documentation/admin-guide/hw-vuln/l1tf.rst <smt_control>`.
 
 **NOTE** : The opt-in of a task for L1D flushing will work only when the
 tasks affinity is limited to cores running in non-SMT mode. Running the task
-on a CPU with SMT enabled would result in the task getting a SIGBUS when 
+on a CPU with SMT enabled would result in the task getting a SIGBUS when
 t executes on the non-SMT core.

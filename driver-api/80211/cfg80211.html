@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.8-dragon
+                5.11.9-dragon
               </div>
             
           
@@ -211,6 +211,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../rfkill.html">rfkill - RF kill switch support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../serial/index.html">Support for Serial devices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sm501.html">SM501 Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../surface_aggregator/index.html">Surface System Aggregator Module (SSAM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../switchtec.html">Linux Switchtec Support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sync_file.html">Sync File API Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../vfio-mediated-device.html">VFIO Mediated devices</a></li>
@@ -1275,6 +1276,8 @@ long/short retry configuration</p>
 <dt><code class="docutils literal notranslate"><span class="pre">max_data_retry_count</span></code></dt><dd><p>maximum supported per TID retry count for
 configuration through the <code class="docutils literal notranslate"><span class="pre">NL80211_TID_CONFIG_ATTR_RETRY_SHORT</span></code> and
 <code class="docutils literal notranslate"><span class="pre">NL80211_TID_CONFIG_ATTR_RETRY_LONG</span></code> attributes</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sar_capa</span></code></dt><dd><p>SAR control capabilities</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">priv</span></code></dt><dd><p>driver private data (sized according to <a class="reference internal" href="#c.wiphy_new" title="wiphy_new"><code class="xref c c-func docutils literal notranslate"><span class="pre">wiphy_new()</span></code></a> parameter)</p>
 </dd>
@@ -3589,6 +3592,8 @@ This callback may sleep.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">reset_tid_config</span></code></dt><dd><p>Reset TID specific configuration for the peer, for the
 given TIDs. This callback may sleep.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">set_sar_specs</span></code></dt><dd><p>Update the SAR (TX power) settings.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>

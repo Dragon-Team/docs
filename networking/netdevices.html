@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.8-dragon
+                5.11.9-dragon
               </div>
             
           
@@ -193,7 +193,11 @@
 <li class="toctree-l2"><a class="reference internal" href="netdev-features.html">Netdev features mess and how to get out from it alive</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Network Devices, the Kernel, and You!</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#struct-net-device-allocation-rules">struct net_device allocation rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#struct-net-device-lifetime-rules">struct net_device lifetime rules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#simple-drivers">Simple drivers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device-management-under-rtnl">Device management under RTNL</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#mtu">MTU</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#struct-net-device-synchronization-rules">struct net_device synchronization rules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#struct-napi-struct-synchronization-rules">struct napi_struct synchronization rules</a></li>
@@ -385,17 +389,159 @@
 <p>The following is a random collection of documentation regarding
 network devices.</p>
 </div>
-<div class="section" id="struct-net-device-allocation-rules">
-<h2>struct net_device allocation rules<a class="headerlink" href="#struct-net-device-allocation-rules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="struct-net-device-lifetime-rules">
+<h2>struct net_device lifetime rules<a class="headerlink" href="#struct-net-device-lifetime-rules" title="Permalink to this headline">¶</a></h2>
 <p>Network device structures need to persist even after module is unloaded and
 must be allocated with <a class="reference internal" href="kapi.html#c.alloc_netdev_mqs" title="alloc_netdev_mqs"><code class="xref c c-func docutils literal notranslate"><span class="pre">alloc_netdev_mqs()</span></code></a> and friends.
 If device has registered successfully, it will be freed on last use
-by <a class="reference internal" href="kapi.html#c.free_netdev" title="free_netdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">free_netdev()</span></code></a>. This is required to handle the pathologic case cleanly
-(example: rmmod mydriver &lt;/sys/class/net/myeth/mtu )</p>
-<p><a class="reference internal" href="kapi.html#c.alloc_netdev_mqs" title="alloc_netdev_mqs"><code class="xref c c-func docutils literal notranslate"><span class="pre">alloc_netdev_mqs()</span></code></a>/alloc_netdev() reserve extra space for driver
+by <a class="reference internal" href="kapi.html#c.free_netdev" title="free_netdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">free_netdev()</span></code></a>. This is required to handle the pathological case cleanly
+(example: <code class="docutils literal notranslate"><span class="pre">rmmod</span> <span class="pre">mydriver</span> <span class="pre">&lt;/sys/class/net/myeth/mtu</span></code>)</p>
+<p><a class="reference internal" href="kapi.html#c.alloc_netdev_mqs" title="alloc_netdev_mqs"><code class="xref c c-func docutils literal notranslate"><span class="pre">alloc_netdev_mqs()</span></code></a> / alloc_netdev() reserve extra space for driver
 private data which gets freed when the network device is freed. If
 separately allocated data is attached to the network device
-(netdev_priv(dev)) then it is up to the module exit handler to free that.</p>
+(<a class="reference internal" href="kapi.html#c.netdev_priv" title="netdev_priv"><code class="xref c c-func docutils literal notranslate"><span class="pre">netdev_priv()</span></code></a>) then it is up to the module exit handler to free that.</p>
+<p>There are two groups of APIs for registering <a class="reference internal" href="kapi.html#c.net_device" title="net_device"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">net_device</span></code></a>.
+First group can be used in normal contexts where <code class="docutils literal notranslate"><span class="pre">rtnl_lock</span></code> is not already
+held: <a class="reference internal" href="kapi.html#c.register_netdev" title="register_netdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">register_netdev()</span></code></a>, <a class="reference internal" href="kapi.html#c.unregister_netdev" title="unregister_netdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">unregister_netdev()</span></code></a>.
+Second group can be used when <code class="docutils literal notranslate"><span class="pre">rtnl_lock</span></code> is already held:
+<a class="reference internal" href="kapi.html#c.register_netdevice" title="register_netdevice"><code class="xref c c-func docutils literal notranslate"><span class="pre">register_netdevice()</span></code></a>, unregister_netdevice(), free_netdevice().</p>
+<div class="section" id="simple-drivers">
+<h3>Simple drivers<a class="headerlink" href="#simple-drivers" title="Permalink to this headline">¶</a></h3>
+<p>Most drivers (especially device drivers) handle lifetime of <a class="reference internal" href="kapi.html#c.net_device" title="net_device"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">net_device</span></code></a>
+in context where <code class="docutils literal notranslate"><span class="pre">rtnl_lock</span></code> is not held (e.g. driver probe and remove paths).</p>
+<p>In that case the <a class="reference internal" href="kapi.html#c.net_device" title="net_device"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">net_device</span></code></a> registration is done using
+the <a class="reference internal" href="kapi.html#c.register_netdev" title="register_netdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">register_netdev()</span></code></a>, and <a class="reference internal" href="kapi.html#c.unregister_netdev" title="unregister_netdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">unregister_netdev()</span></code></a> functions:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">probe</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">struct</span> <span class="n">my_device_priv</span> <span class="o">*</span><span class="n">priv</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>
+
+  <span class="n">dev</span> <span class="o">=</span> <span class="n">alloc_netdev_mqs</span><span class="p">(...);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">dev</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+  <span class="n">priv</span> <span class="o">=</span> <span class="n">netdev_priv</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
+
+  <span class="cm">/* ... do all device setup before calling register_netdev() ...</span>
+<span class="cm">   */</span>
+
+  <span class="n">err</span> <span class="o">=</span> <span class="n">register_netdev</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">goto</span> <span class="n">err_undo</span><span class="p">;</span>
+
+  <span class="cm">/* net_device is visible to the user! */</span>
+
+<span class="nl">err_undo</span><span class="p">:</span>
+  <span class="cm">/* ... undo the device setup ... */</span>
+  <span class="n">free_netdev</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">err</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">remove</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">unregister_netdev</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
+  <span class="n">free_netdev</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that after calling <a class="reference internal" href="kapi.html#c.register_netdev" title="register_netdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">register_netdev()</span></code></a> the device is visible in the system.
+Users can open it and start sending / receiving traffic immediately,
+or run any other callback, so all initialization must be done prior to
+registration.</p>
+<p><a class="reference internal" href="kapi.html#c.unregister_netdev" title="unregister_netdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">unregister_netdev()</span></code></a> closes the device and waits for all users to be done
+with it. The memory of <a class="reference internal" href="kapi.html#c.net_device" title="net_device"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">net_device</span></code></a> itself may still be referenced
+by sysfs but all operations on that device will fail.</p>
+<p><a class="reference internal" href="kapi.html#c.free_netdev" title="free_netdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">free_netdev()</span></code></a> can be called after <a class="reference internal" href="kapi.html#c.unregister_netdev" title="unregister_netdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">unregister_netdev()</span></code></a> returns on when
+<a class="reference internal" href="kapi.html#c.register_netdev" title="register_netdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">register_netdev()</span></code></a> failed.</p>
+</div>
+<div class="section" id="device-management-under-rtnl">
+<h3>Device management under RTNL<a class="headerlink" href="#device-management-under-rtnl" title="Permalink to this headline">¶</a></h3>
+<p>Registering <a class="reference internal" href="kapi.html#c.net_device" title="net_device"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">net_device</span></code></a> while in context which already holds
+the <code class="docutils literal notranslate"><span class="pre">rtnl_lock</span></code> requires extra care. In those scenarios most drivers
+will want to make use of <a class="reference internal" href="kapi.html#c.net_device" title="net_device"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">net_device</span></code></a>’s <code class="docutils literal notranslate"><span class="pre">needs_free_netdev</span></code>
+and <code class="docutils literal notranslate"><span class="pre">priv_destructor</span></code> members for freeing of state.</p>
+<p>Example flow of netdev handling under <code class="docutils literal notranslate"><span class="pre">rtnl_lock</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">my_setup</span><span class="p">(</span><span class="k">struct</span> <span class="n">net_device</span> <span class="o">*</span><span class="n">dev</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">dev</span><span class="o">-&gt;</span><span class="n">needs_free_netdev</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">my_destructor</span><span class="p">(</span><span class="k">struct</span> <span class="n">net_device</span> <span class="o">*</span><span class="n">dev</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">some_obj_destroy</span><span class="p">(</span><span class="n">priv</span><span class="o">-&gt;</span><span class="n">obj</span><span class="p">);</span>
+  <span class="n">some_uninit</span><span class="p">(</span><span class="n">priv</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">create_link</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">struct</span> <span class="n">my_device_priv</span> <span class="o">*</span><span class="n">priv</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>
+
+  <span class="n">ASSERT_RTNL</span><span class="p">();</span>
+
+  <span class="n">dev</span> <span class="o">=</span> <span class="n">alloc_netdev</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">priv</span><span class="p">),</span> <span class="s">&quot;net%d&quot;</span><span class="p">,</span> <span class="n">NET_NAME_UNKNOWN</span><span class="p">,</span> <span class="n">my_setup</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">dev</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+  <span class="n">priv</span> <span class="o">=</span> <span class="n">netdev_priv</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
+
+  <span class="cm">/* Implicit constructor */</span>
+  <span class="n">err</span> <span class="o">=</span> <span class="n">some_init</span><span class="p">(</span><span class="n">priv</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">goto</span> <span class="n">err_free_dev</span><span class="p">;</span>
+
+  <span class="n">priv</span><span class="o">-&gt;</span><span class="n">obj</span> <span class="o">=</span> <span class="n">some_obj_create</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">priv</span><span class="o">-&gt;</span><span class="n">obj</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+    <span class="k">goto</span> <span class="n">err_some_uninit</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="cm">/* End of constructor, set the destructor: */</span>
+  <span class="n">dev</span><span class="o">-&gt;</span><span class="n">priv_destructor</span> <span class="o">=</span> <span class="n">my_destructor</span><span class="p">;</span>
+
+  <span class="n">err</span> <span class="o">=</span> <span class="n">register_netdevice</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="cm">/* register_netdevice() calls destructor on failure */</span>
+    <span class="k">goto</span> <span class="n">err_free_dev</span><span class="p">;</span>
+
+  <span class="cm">/* If anything fails now unregister_netdevice() (or unregister_netdev())</span>
+<span class="cm">   * will take care of calling my_destructor and free_netdev().</span>
+<span class="cm">   */</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="nl">err_some_uninit</span><span class="p">:</span>
+  <span class="n">some_uninit</span><span class="p">(</span><span class="n">priv</span><span class="p">);</span>
+<span class="nl">err_free_dev</span><span class="p">:</span>
+  <span class="n">free_netdev</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">err</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If <a class="reference internal" href="kapi.html#c.net_device" title="net_device"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">net_device</span></code></a>.priv_destructor is set it will be called by the core
+some time after unregister_netdevice(), it will also be called if
+<a class="reference internal" href="kapi.html#c.register_netdevice" title="register_netdevice"><code class="xref c c-func docutils literal notranslate"><span class="pre">register_netdevice()</span></code></a> fails. The callback may be invoked with or without
+<code class="docutils literal notranslate"><span class="pre">rtnl_lock</span></code> held.</p>
+<p>There is no explicit constructor callback, driver “constructs” the private
+netdev state after allocating it and before registration.</p>
+<p>Setting <a class="reference internal" href="kapi.html#c.net_device" title="net_device"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">net_device</span></code></a>.needs_free_netdev makes core call free_netdevice()
+automatically after unregister_netdevice() when all references to the device
+are gone. It only takes effect after a successful call to <a class="reference internal" href="kapi.html#c.register_netdevice" title="register_netdevice"><code class="xref c c-func docutils literal notranslate"><span class="pre">register_netdevice()</span></code></a>
+so if <a class="reference internal" href="kapi.html#c.register_netdevice" title="register_netdevice"><code class="xref c c-func docutils literal notranslate"><span class="pre">register_netdevice()</span></code></a> fails driver is responsible for calling
+<a class="reference internal" href="kapi.html#c.free_netdev" title="free_netdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">free_netdev()</span></code></a>.</p>
+<p><a class="reference internal" href="kapi.html#c.free_netdev" title="free_netdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">free_netdev()</span></code></a> is safe to call on error paths right after unregister_netdevice()
+or when <a class="reference internal" href="kapi.html#c.register_netdevice" title="register_netdevice"><code class="xref c c-func docutils literal notranslate"><span class="pre">register_netdevice()</span></code></a> fails. Parts of netdev (de)registration process
+happen after <code class="docutils literal notranslate"><span class="pre">rtnl_lock</span></code> is released, therefore in those cases <a class="reference internal" href="kapi.html#c.free_netdev" title="free_netdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">free_netdev()</span></code></a>
+will defer some of the processing until <code class="docutils literal notranslate"><span class="pre">rtnl_lock</span></code> is released.</p>
+<p>Devices spawned from struct rtnl_link_ops should never free the
+<a class="reference internal" href="kapi.html#c.net_device" title="net_device"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">net_device</span></code></a> directly.</p>
+<div class="section" id="ndo-init-and-ndo-uninit">
+<h4>.ndo_init and .ndo_uninit<a class="headerlink" href="#ndo-init-and-ndo-uninit" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">.ndo_init</span></code> and <code class="docutils literal notranslate"><span class="pre">.ndo_uninit</span></code> callbacks are called during net_device
+registration and de-registration, under <code class="docutils literal notranslate"><span class="pre">rtnl_lock</span></code>. Drivers can use
+those e.g. when parts of their init process need to run under <code class="docutils literal notranslate"><span class="pre">rtnl_lock</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">.ndo_init</span></code> runs before device is visible in the system, <code class="docutils literal notranslate"><span class="pre">.ndo_uninit</span></code>
+runs during de-registering after device is closed but other subsystems
+may still have outstanding references to the netdevice.</p>
+</div>
+</div>
 </div>
 <div class="section" id="mtu">
 <h2>MTU<a class="headerlink" href="#mtu" title="Permalink to this headline">¶</a></h2>
