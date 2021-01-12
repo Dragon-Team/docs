@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.9-dragon
+                5.11.10-dragon
               </div>
             
           
@@ -545,7 +545,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-platform-twl4030-usb">File /home//ZFS/DATA/DOC/testing/sysfs-platform-twl4030-usb</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-platform-usbip-vudc">File /home//ZFS/DATA/DOC/testing/sysfs-platform-usbip-vudc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-platform-wilco-ec">File /home//ZFS/DATA/DOC/testing/sysfs-platform-wilco-ec</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-platform-profile">File /home//ZFS/DATA/DOC/testing/sysfs-platform_profile</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-power">File /home//ZFS/DATA/DOC/testing/sysfs-power</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-pps">File /home//ZFS/DATA/DOC/testing/sysfs-pps</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-profiling">File /home//ZFS/DATA/DOC/testing/sysfs-profiling</a></li>
@@ -719,9 +718,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../sparc/index.html">Sparc Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../x86/index.html">x86-specific Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xtensa/index.html">Xtensa Architecture</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../filesystems/ext4/index.html">ext4 Data Structures and Algorithms</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../staging/index.html">Unsorted Documentation</a></li>
@@ -11989,7 +11985,7 @@ are listed in this attribute.</p>
 <p>Hardware applied calibration offset (assumed to fix production
 inaccuracies). Values represent a real physical offset expressed
 in SI units (m/s^2 for accelerometer and rad/s for gyroscope).</p>
-<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi">
+<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasd">
 <colgroup>
 <col style="width: 100%" />
 </colgroup>
@@ -12402,17 +12398,17 @@ Up</p></td>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-lptimer-stm32"><span class="std std-ref">sysfs-bus-iio-lptimer-stm32</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-timer-stm32"><span class="std std-ref">sysfs-bus-iio-timer-stm32</span></a></p>
-<p>Reading returns the current preset value. Writing sets the
-preset value. Encoder counts continuously from 0 to preset
-value, depending on direction (up/down).</p>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-lptimer-stm32"><span class="std std-ref">sysfs-bus-iio-lptimer-stm32</span></a></p>
 <p>Reading returns the current preset value.
 Writing sets the preset value.
 When counting up the counter starts from 0 and fires an
 event when reach preset value.
 When counting down the counter start from preset value
 and fire event when reach 0.</p>
+<p>Reading returns the current preset value. Writing sets the
+preset value. Encoder counts continuously from 0 to preset
+value, depending on direction (up/down).</p>
 <table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-count0-quadrature-mode">
 <colgroup>
 <col style="width: 100%" />
@@ -14204,8 +14200,8 @@ out_currentY_currentZ_raw, where Z is the current zone.</p>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-humidity-hdc100x"><span class="std std-ref">sysfs-bus-iio-humidity-hdc100x</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-humidity-hdc2010"><span class="std std-ref">sysfs-bus-iio-humidity-hdc2010</span></a></p>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-humidity-hdc100x"><span class="std std-ref">sysfs-bus-iio-humidity-hdc100x</span></a></p>
 <p>Controls the heater device within the humidity sensor to get
 rid of excess condensation.</p>
 <p>Valid control values are 0 = OFF, and 1 = ON.
@@ -14529,16 +14525,16 @@ in square brackets.</p>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-proximity-as3935"><span class="std std-ref">sysfs-bus-iio-proximity-as3935</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-distance-srf08"><span class="std std-ref">sysfs-bus-iio-distance-srf08</span></a></p>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-proximity-as3935"><span class="std std-ref">sysfs-bus-iio-proximity-as3935</span></a></p>
+<p>Show or set the gain boost of the amp, from 0-31 range.
+default 31</p>
 <p>Show or set the gain boost of the amp, from 0-31 range.
 18 = indoors (default)
 14 = outdoors</p>
 <p>What            /sys/bus/iio/devices/iio:deviceX/noise_level_tripped
 When 1 the noise level is over the trip level and not reporting
-valid data
-Show or set the gain boost of the amp, from 0-31 range.
-default 31</p>
+valid data</p>
 <table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-start-cleaning">
 <colgroup>
 <col style="width: 100%" />
@@ -27778,16 +27774,16 @@ Current state can be also read.</p>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-led-driver-el15203000"><span class="std std-ref">sysfs-class-led-driver-el15203000</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-led-trigger-pattern"><span class="std std-ref">sysfs-class-led-trigger-pattern</span></a></p>
-<p>EL15203000 supports only indefinitely patterns,
-so this file should always store -1.</p>
-<p>For more info, please see:
-<a class="reference internal" href="#abi-file-testing-sysfs-class-led-trigger-pattern"><span class="std std-ref">testing/sysfs-class-led-trigger-pattern</span></a>
-Specify a pattern repeat number. -1 means repeat indefinitely,
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-led-driver-el15203000"><span class="std std-ref">sysfs-class-led-driver-el15203000</span></a></p>
+<p>Specify a pattern repeat number. -1 means repeat indefinitely,
 other negative numbers and number 0 are invalid.</p>
 <p>This file will always return the originally written repeat
-number.</p>
+number.
+EL15203000 supports only indefinitely patterns,
+so this file should always store -1.</p>
+<p>For more info, please see:
+<a class="reference internal" href="#abi-file-testing-sysfs-class-led-trigger-pattern"><span class="std std-ref">testing/sysfs-class-led-trigger-pattern</span></a></p>
 <table class="docutils align-default" id="abi-sys-class-leds-led-rx">
 <colgroup>
 <col style="width: 100%" />
@@ -40648,56 +40644,6 @@ when pressing the power button:</p>
 </pre></div>
 </div>
 </div>
-<table class="docutils align-default" id="abi-sys-firmware-acpi-platform-profile">
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>/sys/firmware/acpi/platform_profile</strong></p></td>
-</tr>
-</tbody>
-</table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-platform-profile"><span class="std std-ref">sysfs-platform_profile</span></a></p>
-<p>Reading this file gives the current selected profile for this
-device. Writing this file with one of the strings from
-platform_profile_choices changes the profile to the new value.</p>
-<table class="docutils align-default" id="abi-sys-firmware-acpi-platform-profile-choices">
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>/sys/firmware/acpi/platform_profile_choices</strong></p></td>
-</tr>
-</tbody>
-</table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-platform-profile"><span class="std std-ref">sysfs-platform_profile</span></a></p>
-<p>This file contains a space-separated list of profiles supported for this device.</p>
-<p>Drivers must use the following standard profile-names:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 82%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>low-power</p></td>
-<td><p>Low power consumption</p></td>
-</tr>
-<tr class="row-even"><td><p>cool</p></td>
-<td><p>Cooler operation</p></td>
-</tr>
-<tr class="row-odd"><td><p>quiet</p></td>
-<td><p>Quieter operation</p></td>
-</tr>
-<tr class="row-even"><td><p>balanced</p></td>
-<td><p>Balance between low power consumption and performance</p></td>
-</tr>
-<tr class="row-odd"><td><p>performance</p></td>
-<td><p>High performance operation</p></td>
-</tr>
-</tbody>
-</table>
-<p>Userspace may expect drivers to offer more than one of these
-standard profile names.</p>
 <table class="docutils align-default" id="abi-sys-firmware-devicetree">
 <colgroup>
 <col style="width: 100%" />
@@ -42969,21 +42915,6 @@ is soft, it could exceed current available user space.</p>
 </table>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-fs-f2fs"><span class="std std-ref">sysfs-fs-f2fs</span></a></p>
 <p>Show status of f2fs superblock in real time.</p>
-<p>value           sb status macro                 description
-0x1             SBI_IS_DIRTY,                   /* dirty flag for checkpoint <em>/
-0x2             SBI_IS_CLOSE,                   /</em> specify unmounting <em>/
-0x4             SBI_NEED_FSCK,                  /</em> need fsck.f2fs to fix <em>/
-0x8             SBI_POR_DOING,                  /</em> recovery is doing or not <em>/
-0x10            SBI_NEED_SB_WRITE,              /</em> need to recover superblock <em>/
-0x20            SBI_NEED_CP,                    /</em> need to checkpoint <em>/
-0x40            SBI_IS_SHUTDOWN,                /</em> shutdown by ioctl <em>/
-0x80            SBI_IS_RECOVERED,               /</em> recovered orphan/data <em>/
-0x100           SBI_CP_DISABLED,                /</em> CP was disabled last mount <em>/
-0x200           SBI_CP_DISABLED_QUICK,          /</em> CP was disabled quickly <em>/
-0x400           SBI_QUOTA_NEED_FLUSH,           /</em> need to flush quota info in CP <em>/
-0x800           SBI_QUOTA_SKIP_FLUSH,           /</em> skip flushing quota in current CP <em>/
-0x1000          SBI_QUOTA_NEED_REPAIR,          /</em> quota file may be corrupted <em>/
-0x2000          SBI_IS_RESIZEFS,                /</em> resizefs is in process <a href="#id1"><span class="problematic" id="id2">*</span></a>/</p>
 <table class="docutils align-default" id="abi-sys-fs-f2fs-disk-umount-discard-timeout">
 <colgroup>
 <col style="width: 100%" />
@@ -49534,10 +49465,10 @@ modification.</p>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_illuminance0_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_proximity0_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressureY_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressure_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasd"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_illuminance0_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasd"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_proximity0_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasd"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressureY_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasd"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressure_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-calibscale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_voltageY_calibscale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-calibscale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_voltageY_supply_calibscale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-calibscale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_voltageY_i_calibscale</span></a></p></li>
@@ -50209,7 +50140,7 @@ modification.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-count-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count_count_mode_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-count-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count_noise_error_available</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-count-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count_quadrature_mode_available</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-quadrature-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count_quadrature_mode_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-count-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_index_index_polarity_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-count-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_index_synchronous_mode_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-county-count-mode"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_countY_count_mode</span></a></p></li>
@@ -50419,7 +50350,7 @@ modification.</p>
 <p>Has the following ABI:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count0-preset"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count0_preset</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-count-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count_quadrature_mode_available</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-quadrature-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count_quadrature_mode_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count0-quadrature-mode"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count0_quadrature_mode</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-polarity-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count_polarity_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count0-polarity"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count0_polarity</span></a></p></li>
@@ -51147,7 +51078,7 @@ level.</p>
 /sys/class/backlight/&lt;backlight&gt;/ambient_light_zone.</p>
 <p>Has the following ABI:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-ambient-light-zone-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l1_daylight_max</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-l1-daylight-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l1_daylight_max</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-l1-daylight-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l2_office_max</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-l1-daylight-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l3_dark_max</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-l1-daylight-dim"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l1_daylight_dim</span></a></p></li>
@@ -51162,7 +51093,7 @@ level.</p>
 <p>Has the following ABI:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-ambient-light-zone-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/&lt;ambient light zone&gt;_max</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-ambient-light-zone-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l1_daylight_max</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-l1-daylight-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l1_daylight_max</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-ambient-light-zone-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l2_bright_max</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-ambient-light-zone-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l3_office_max</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-ambient-light-zone-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l4_indoor_max</span></a></p></li>
@@ -54096,14 +54027,6 @@ sysfs: (&lt;devid&gt; is in the format major:minor)</p>
 <li><p><a class="reference internal" href="#abi-sys-bus-platform-devices-goog000c-00-model-number"><span class="std std-ref">/sys/bus/platform/devices/GOOG000C\:00/model_number</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-platform-devices-goog000c-00-usb-charge"><span class="std std-ref">/sys/bus/platform/devices/GOOG000C\:00/usb_charge</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-platform-devices-goog000c-00-version"><span class="std std-ref">/sys/bus/platform/devices/GOOG000C\:00/version</span></a></p></li>
-</ul>
-</div>
-<div class="section" id="file-home--zfs-data-doc-testing-sysfs-platform-profile">
-<span id="abi-file-testing-sysfs-platform-profile"></span><h2>File /home//ZFS/DATA/DOC/testing/sysfs-platform_profile<a class="headerlink" href="#file-home--zfs-data-doc-testing-sysfs-platform-profile" title="Permalink to this headline">¶</a></h2>
-<p>Has the following ABI:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#abi-sys-firmware-acpi-platform-profile-choices"><span class="std std-ref">/sys/firmware/acpi/platform_profile_choices</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-firmware-acpi-platform-profile"><span class="std std-ref">/sys/firmware/acpi/platform_profile</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="file-home--zfs-data-doc-testing-sysfs-power">

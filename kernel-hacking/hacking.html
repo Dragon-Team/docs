@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.9-dragon
+                5.11.10-dragon
               </div>
             
           
@@ -115,7 +115,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#copy-to-user-copy-from-user-get-user-put-user"><code class="xref c c-func docutils literal notranslate"><span class="pre">copy_to_user()</span></code> / <code class="xref c c-func docutils literal notranslate"><span class="pre">copy_from_user()</span></code> / <code class="xref c c-func docutils literal notranslate"><span class="pre">get_user()</span></code> / <code class="xref c c-func docutils literal notranslate"><span class="pre">put_user()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#kmalloc-kfree"><code class="xref c c-func docutils literal notranslate"><span class="pre">kmalloc()</span></code>/<code class="xref c c-func docutils literal notranslate"><span class="pre">kfree()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#current"><code class="xref c c-func docutils literal notranslate"><span class="pre">current()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#current"><code class="xref c c-macro docutils literal notranslate"><span class="pre">current</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mdelay-udelay"><code class="xref c c-func docutils literal notranslate"><span class="pre">mdelay()</span></code>/<code class="xref c c-func docutils literal notranslate"><span class="pre">udelay()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cpu-to-be32-be32-to-cpu-cpu-to-le32-le32-to-cpu"><code class="xref c c-func docutils literal notranslate"><span class="pre">cpu_to_be32()</span></code>/<code class="xref c c-func docutils literal notranslate"><span class="pre">be32_to_cpu()</span></code>/<code class="xref c c-func docutils literal notranslate"><span class="pre">cpu_to_le32()</span></code>/<code class="xref c c-func docutils literal notranslate"><span class="pre">le32_to_cpu()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#local-irq-save-local-irq-restore"><code class="xref c c-func docutils literal notranslate"><span class="pre">local_irq_save()</span></code>/<code class="xref c c-func docutils literal notranslate"><span class="pre">local_irq_restore()</span></code></a></li>
@@ -226,9 +226,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../sparc/index.html">Sparc Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../x86/index.html">x86-specific Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xtensa/index.html">Xtensa Architecture</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../filesystems/ext4/index.html">ext4 Data Structures and Algorithms</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../staging/index.html">Unsorted Documentation</a></li>
@@ -603,7 +600,7 @@ routine.</p>
 slab cache in <code class="docutils literal notranslate"><span class="pre">include/linux/slab.h</span></code></p>
 </div>
 <div class="section" id="current">
-<h3><code class="xref c c-func docutils literal notranslate"><span class="pre">current()</span></code><a class="headerlink" href="#current" title="Permalink to this headline">¶</a></h3>
+<h3><code class="xref c c-macro docutils literal notranslate"><span class="pre">current</span></code><a class="headerlink" href="#current" title="Permalink to this headline">¶</a></h3>
 <p>Defined in <code class="docutils literal notranslate"><span class="pre">include/asm/current.h</span></code></p>
 <p>This global variable (really a macro) contains a pointer to the current
 task structure, so is only valid in user context. For example, when a

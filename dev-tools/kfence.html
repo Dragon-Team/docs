@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.9-dragon
+                5.11.10-dragon
               </div>
             
           
@@ -195,9 +195,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../xtensa/index.html">Xtensa Architecture</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../filesystems/ext4/index.html">ext4 Data Structures and Algorithms</a></li>
-</ul>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="../staging/index.html">Unsorted Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../staging/index.html#atomic-types">Atomic Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../staging/index.html#atomic-bitops">Atomic bitops</a></li>
@@ -326,9 +323,9 @@ tables being allocated.</p>
 <h3>Error reports<a class="headerlink" href="#error-reports" title="Permalink to this headline">¶</a></h3>
 <p>A typical out-of-bounds access looks like this:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>==================================================================
-BUG: KFENCE: out-of-bounds in test_out_of_bounds_read+0xa3/0x22b
+BUG: KFENCE: out-of-bounds read in test_out_of_bounds_read+0xa3/0x22b
 
-Out-of-bounds access at 0xffffffffb672efff (1B left of kfence-#17):
+Out-of-bounds read at 0xffffffffb672efff (1B left of kfence-#17):
  test_out_of_bounds_read+0xa3/0x22b
  kunit_try_run_case+0x51/0x85
  kunit_generic_run_threadfn_adapter+0x16/0x30
@@ -354,9 +351,9 @@ its origin. Note that, real kernel addresses are only shown for
 <code class="docutils literal notranslate"><span class="pre">CONFIG_DEBUG_KERNEL=y</span></code> builds.</p>
 <p>Use-after-free accesses are reported as:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>==================================================================
-BUG: KFENCE: use-after-free in test_use_after_free_read+0xb3/0x143
+BUG: KFENCE: use-after-free read in test_use_after_free_read+0xb3/0x143
 
-Use-after-free access at 0xffffffffb673dfe0 (in kfence-#24):
+Use-after-free read at 0xffffffffb673dfe0 (in kfence-#24):
  test_use_after_free_read+0xb3/0x143
  kunit_try_run_case+0x51/0x85
  kunit_generic_run_threadfn_adapter+0x16/0x30
@@ -452,9 +449,9 @@ written bytes.</p>
 where it was not possible to determine an associated object, e.g. if adjacent
 object pages had not yet been allocated:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>==================================================================
-BUG: KFENCE: invalid access in test_invalid_access+0x26/0xe0
+BUG: KFENCE: invalid read in test_invalid_access+0x26/0xe0
 
-Invalid access at 0xffffffffb670b00a:
+Invalid read at 0xffffffffb670b00a:
  test_invalid_access+0x26/0xe0
  kunit_try_run_case+0x51/0x85
  kunit_generic_run_threadfn_adapter+0x16/0x30
@@ -673,13 +670,15 @@ allocator’s free codepath. The allocator must check the return value to
 determine if it was a KFENCE object or not.</p>
 <dl class="c function">
 <dt id="c.kfence_handle_page_fault">
-bool <code class="sig-name descname">kfence_handle_page_fault</code><span class="sig-paren">(</span>unsigned long <em>addr</em>, <em class="property">struct</em> pt_regs *<em>regs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.kfence_handle_page_fault" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">kfence_handle_page_fault</code><span class="sig-paren">(</span>unsigned long <em>addr</em>, bool <em>is_write</em>, <em class="property">struct</em> pt_regs *<em>regs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.kfence_handle_page_fault" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>perform page fault handling for KFENCE pages</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">addr</span></code></dt><dd><p>faulting address</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">is_write</span></code></dt><dd><p>is access a write</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">pt_regs</span> <span class="pre">*regs</span></code></dt><dd><p>current struct pt_regs (can be NULL, but shows full stack trace)</p>
 </dd>

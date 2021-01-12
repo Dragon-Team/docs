@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.9-dragon
+                5.11.10-dragon
               </div>
             
           
@@ -202,6 +202,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#the-driver-structure">The driver structure</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#probing-and-attaching">Probing and attaching</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#initializing-the-driver">Initializing the driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-dma">Using DMA</a></li>
 </ul>
 </li>
 </ul>
@@ -289,9 +290,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../sparc/index.html">Sparc Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../x86/index.html">x86-specific Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../xtensa/index.html">Xtensa Architecture</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../filesystems/ext4/index.html">ext4 Data Structures and Algorithms</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../staging/index.html">Unsorted Documentation</a></li>
@@ -513,6 +511,17 @@ module_exit(foo_exit);
 </div>
 <p>The module_mcb_driver() macro can be used to reduce the above code:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>module_mcb_driver(foo_driver);
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-dma">
+<h3>Using DMA<a class="headerlink" href="#using-dma" title="Permalink to this headline">¶</a></h3>
+<p>To make use of the kernel’s DMA-API’s function, you will need to use the
+carrier device’s ‘<a class="reference internal" href="infrastructure.html#c.device" title="device"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">device</span></code></a>’. Fortunately ‘struct mcb_device’ embeds a
+pointer (-&gt;dma_dev) to the carrier’s device for DMA purposes:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ret = dma_set_mask_and_coherent(&amp;mdev-&gt;dma_dev, DMA_BIT_MASK(dma_bits));
+if (rc)
+        /* Handle errors */
 </pre></div>
 </div>
 </div>
