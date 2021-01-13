@@ -212,7 +212,7 @@ which time it will be set using the Dirty tracking mechanism described above.
 		- tsc offset in vmcb
 :Comment:	'raw' because updating the tsc offsets must not be preempted.
 
-:Name:		kvm->mmu_lock
+:Name:		kvm_arch::mmu_lock
 :Type:		spinlock_t
 :Arch:		any
 :Protects:	-shadow page/shadow tlb entry

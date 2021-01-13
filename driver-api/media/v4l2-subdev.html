@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.10-dragon
+                5.11.11-dragon
               </div>
             
           
@@ -486,14 +486,12 @@ subdev device node (if any) is opened/closed.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">media_entity_cleanup</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sd</span><span class="o">-&gt;</span><span class="n">entity</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>If the subdev driver intends to process video and integrate with the media
-framework, it must implement format related functionality using
-<a class="reference internal" href="#c.v4l2_subdev_pad_ops" title="v4l2_subdev_pad_ops"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_subdev_pad_ops</span></code></a> instead of <a class="reference internal" href="#c.v4l2_subdev_video_ops" title="v4l2_subdev_video_ops"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_subdev_video_ops</span></code></a>.</p>
-<p>In that case, the subdev driver may set the link_validate field to provide
-its own link validation function. The link validation function is called for
-every link in the pipeline where both of the ends of the links are V4L2
-sub-devices. The driver is still responsible for validating the correctness
-of the format configuration between sub-devices and video nodes.</p>
+<p>If a sub-device driver implements sink pads, the subdev driver may set the
+link_validate field in :c:type:<a href="#id1"><span class="problematic" id="id2">`</span></a>v4l2_subdev_pad_ops`to provide its own link
+validation function. For every link in the pipeline, the link_validate pad
+operation of the sink end of the link is called. In both cases the driver is
+still responsible for validating the correctness of the format configuration
+between sub-devices and video nodes.</p>
 <p>If link_validate op is not set, the default function
 <a class="reference internal" href="#c.v4l2_subdev_link_validate_default" title="v4l2_subdev_link_validate_default"><code class="xref c c-func docutils literal notranslate"><span class="pre">v4l2_subdev_link_validate_default()</span></code></a> is used instead. This function
 ensures that width, height and the media bus pixel code are equal on both source

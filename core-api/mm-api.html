@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.10-dragon
+                5.11.11-dragon
               </div>
             
           
@@ -1696,7 +1696,7 @@ f_wb_err cursor to the latest value, and return any errors detected there.</p>
 <p><code class="docutils literal notranslate"><span class="pre">0</span></code> on success, negative error code otherwise.</p>
 <dl class="c function">
 <dt id="c.replace_page_cache_page">
-int <code class="sig-name descname">replace_page_cache_page</code><span class="sig-paren">(</span><em class="property">struct</em> page *<em>old</em>, <em class="property">struct</em> page *<em>new</em>, gfp_t <em>gfp_mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.replace_page_cache_page" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">replace_page_cache_page</code><span class="sig-paren">(</span><em class="property">struct</em> page *<em>old</em>, <em class="property">struct</em> page *<em>new</em><span class="sig-paren">)</span><a class="headerlink" href="#c.replace_page_cache_page" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>replace a pagecache page with a new one</p>
 </dd></dl>
 
@@ -1706,8 +1706,6 @@ int <code class="sig-name descname">replace_page_cache_page</code><span class="s
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">page</span> <span class="pre">*new</span></code></dt><dd><p>page to replace with</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">gfp_t</span> <span class="pre">gfp_mask</span></code></dt><dd><p>allocation mode</p>
-</dd>
 </dl>
 <p><strong>Description</strong></p>
 <p>This function replaces a page in the pagecache with a new one.  On
@@ -1716,8 +1714,6 @@ drops it for the old page.  Both the old and new pages must be
 locked.  This function does not add the new page to the LRU, the
 caller must do that.</p>
 <p>The remove + add is atomic.  This function cannot fail.</p>
-<p><strong>Return</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">0</span></code></p>
 <dl class="c function">
 <dt id="c.add_to_page_cache_locked">
 int <code class="sig-name descname">add_to_page_cache_locked</code><span class="sig-paren">(</span><em class="property">struct</em> page *<em>page</em>, <em class="property">struct</em> <a class="reference internal" href="../filesystems/api-summary.html#c.address_space" title="address_space">address_space</a> *<em>mapping</em>, pgoff_t <em>offset</em>, gfp_t <em>gfp_mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.add_to_page_cache_locked" title="Permalink to this definition">¶</a><br /></dt>
@@ -3460,6 +3456,29 @@ int <code class="sig-name descname">follow_pfn</code><span class="sig-paren">(</
 <p>Only IO mappings and raw PFN mappings are allowed.</p>
 <p><strong>Return</strong></p>
 <p>zero and the pfn at <strong>pfn</strong> on success, -ve otherwise.</p>
+<dl class="c function">
+<dt id="c.generic_access_phys">
+int <code class="sig-name descname">generic_access_phys</code><span class="sig-paren">(</span><em class="property">struct</em> vm_area_struct *<em>vma</em>, unsigned long <em>addr</em>, void *<em>buf</em>, int <em>len</em>, int <em>write</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_access_phys" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>generic implementation for iomem mmap access</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">vm_area_struct</span> <span class="pre">*vma</span></code></dt><dd><p>the vma to access</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">addr</span></code></dt><dd><p>userspace addres, not relative offset within <strong>vma</strong></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*buf</span></code></dt><dd><p>buffer to read/write</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">len</span></code></dt><dd><p>length of transfer</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">write</span></code></dt><dd><p>set to FOLL_WRITE when writing, otherwise reading</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This is a generic implementation for <code class="xref c c-type docutils literal notranslate"><span class="pre">vm_operations_struct.access</span></code> for an
+iomem mapping. This callback is used by access_process_vm() when the <strong>vma</strong> is
+not page based.</p>
 <dl class="c function">
 <dt id="c.get_pfnblock_flags_mask">
 unsigned long <code class="sig-name descname">get_pfnblock_flags_mask</code><span class="sig-paren">(</span><em class="property">struct</em> page *<em>page</em>, unsigned long <em>pfn</em>, unsigned long <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.get_pfnblock_flags_mask" title="Permalink to this definition">¶</a><br /></dt>

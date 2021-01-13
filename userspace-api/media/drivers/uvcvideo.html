@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6. The Linux USB Video Class (UVC) driver &mdash; The Linux-Next Dragon Kernel  documentation</title>
+  <title>7. The Linux USB Video Class (UVC) driver &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
 
   
@@ -35,7 +35,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Working with the kernel development community" href="../../../process/index.html" />
-    <link rel="prev" title="5. OMAP 3 Image Signal Processor (ISP) driver" href="omap3isp-uapi.html" /> 
+    <link rel="prev" title="6. OMAP 3 Image Signal Processor (ISP) driver" href="omap3isp-uapi.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.10-dragon
+                5.11.11-dragon
               </div>
             
           
@@ -112,12 +112,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../fdl-appendix.html">GNU Free Documentation License</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">Video4Linux (V4L)  driver-specific documentation</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="cx2341x-uapi.html">1. The cx2341x driver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="imx-uapi.html">2. i.MX Video Capture Driver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="max2175.html">3. Maxim Integrated MAX2175 RF to bits tuner driver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="meye-uapi.html">4. Vaio Picturebook Motion Eye Camera Driver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="omap3isp-uapi.html">5. OMAP 3 Image Signal Processor (ISP) driver</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">6. The Linux USB Video Class (UVC) driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ccs.html">1. MIPI CCS camera sensor driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cx2341x-uapi.html">2. The cx2341x driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="imx-uapi.html">3. i.MX Video Capture Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="max2175.html">4. Maxim Integrated MAX2175 RF to bits tuner driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="meye-uapi.html">5. Vaio Picturebook Motion Eye Camera Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="omap3isp-uapi.html">6. OMAP 3 Image Signal Processor (ISP) driver</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">7. The Linux USB Video Class (UVC) driver</a></li>
 </ul>
 </li>
 </ul>
@@ -259,7 +260,7 @@
         
           <li><a href="index.html">Video4Linux (V4L)  driver-specific documentation</a> &raquo;</li>
         
-      <li><span class="section-number">6. </span>The Linux USB Video Class (UVC) driver</li>
+      <li><span class="section-number">7. </span>The Linux USB Video Class (UVC) driver</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -279,15 +280,15 @@
            <div itemprop="articleBody">
             
   <div class="section" id="the-linux-usb-video-class-uvc-driver">
-<h1><span class="section-number">6. </span>The Linux USB Video Class (UVC) driver<a class="headerlink" href="#the-linux-usb-video-class-uvc-driver" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">7. </span>The Linux USB Video Class (UVC) driver<a class="headerlink" href="#the-linux-usb-video-class-uvc-driver" title="Permalink to this headline">¶</a></h1>
 <p>This file documents some driver-specific aspects of the UVC driver, such as
 driver-specific ioctls and implementation notes.</p>
 <p>Questions and remarks can be sent to the Linux UVC development mailing list at
 <a class="reference external" href="mailto:linux-uvc-devel&#37;&#52;&#48;lists&#46;berlios&#46;de">linux-uvc-devel<span>&#64;</span>lists<span>&#46;</span>berlios<span>&#46;</span>de</a>.</p>
 <div class="section" id="extension-unit-xu-support">
-<h2><span class="section-number">6.1. </span>Extension Unit (XU) support<a class="headerlink" href="#extension-unit-xu-support" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.1. </span>Extension Unit (XU) support<a class="headerlink" href="#extension-unit-xu-support" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="introduction">
-<h3><span class="section-number">6.1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
 <p>The UVC specification allows for vendor-specific extensions through extension
 units (XUs). The Linux UVC driver supports extension unit controls (XU controls)
 through two separate mechanisms:</p>
@@ -306,7 +307,7 @@ maximum flexibility.</p>
 <p>Both mechanisms complement each other and are described in more detail below.</p>
 </div>
 <div class="section" id="control-mappings">
-<h3><span class="section-number">6.1.2. </span>Control mappings<a class="headerlink" href="#control-mappings" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.1.2. </span>Control mappings<a class="headerlink" href="#control-mappings" title="Permalink to this headline">¶</a></h3>
 <p>The UVC driver provides an API for user space applications to define so-called
 control mappings at runtime. These allow for individual XU controls or byte
 ranges thereof to be mapped to new V4L2 controls. Such controls appear and
@@ -348,21 +349,21 @@ application developers are encouraged to use UVCIOC_CTRL_QUERY instead.</p>
 “IOCTL reference” below.</p>
 </div>
 <div class="section" id="security">
-<h3><span class="section-number">6.1.3. </span>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.1.3. </span>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h3>
 <p>The API doesn’t currently provide a fine-grained access control facility. The
 UVCIOC_CTRL_ADD and UVCIOC_CTRL_MAP ioctls require super user permissions.</p>
 <p>Suggestions on how to improve this are welcome.</p>
 </div>
 <div class="section" id="debugging">
-<h3><span class="section-number">6.1.4. </span>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.1.4. </span>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h3>
 <p>In order to debug problems related to XU controls or controls in general it is
 recommended to enable the UVC_TRACE_CONTROL bit in the module parameter ‘trace’.
 This causes extra output to be written into the system log.</p>
 </div>
 <div class="section" id="ioctl-reference">
-<h3><span class="section-number">6.1.5. </span>IOCTL reference<a class="headerlink" href="#ioctl-reference" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.1.5. </span>IOCTL reference<a class="headerlink" href="#ioctl-reference" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="uvcioc-ctrl-map-map-a-uvc-control-to-a-v4l2-control">
-<h4><span class="section-number">6.1.5.1. </span>UVCIOC_CTRL_MAP - Map a UVC control to a V4L2 control<a class="headerlink" href="#uvcioc-ctrl-map-map-a-uvc-control-to-a-v4l2-control" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">7.1.5.1. </span>UVCIOC_CTRL_MAP - Map a UVC control to a V4L2 control<a class="headerlink" href="#uvcioc-ctrl-map-map-a-uvc-control-to-a-v4l2-control" title="Permalink to this headline">¶</a></h4>
 <p>Argument: struct uvc_xu_control_mapping</p>
 <p><strong>Description</strong>:</p>
 <blockquote>
@@ -433,7 +434,7 @@ UVC_CTRL_DATA_TYPE_BITMASK      Bitmask
 </div>
 </div>
 <div class="section" id="uvcioc-ctrl-query-query-a-uvc-xu-control">
-<h4><span class="section-number">6.1.5.2. </span>UVCIOC_CTRL_QUERY - Query a UVC XU control<a class="headerlink" href="#uvcioc-ctrl-query-query-a-uvc-xu-control" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">7.1.5.2. </span>UVCIOC_CTRL_QUERY - Query a UVC XU control<a class="headerlink" href="#uvcioc-ctrl-query-query-a-uvc-xu-control" title="Permalink to this headline">¶</a></h4>
 <p>Argument: struct uvc_xu_control_query</p>
 <p><strong>Description</strong>:</p>
 <blockquote>
@@ -517,7 +518,7 @@ __u8    *data           Control value
         <a href="../../../process/index.html" class="btn btn-neutral float-right" title="Working with the kernel development community" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="omap3isp-uapi.html" class="btn btn-neutral float-left" title="5. OMAP 3 Image Signal Processor (ISP) driver" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="omap3isp-uapi.html" class="btn btn-neutral float-left" title="6. OMAP 3 Image Signal Processor (ISP) driver" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

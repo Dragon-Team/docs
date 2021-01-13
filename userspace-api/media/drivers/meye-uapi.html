@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>4. Vaio Picturebook Motion Eye Camera Driver &mdash; The Linux-Next Dragon Kernel  documentation</title>
+  <title>5. Vaio Picturebook Motion Eye Camera Driver &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
 
   
@@ -34,8 +34,8 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="5. OMAP 3 Image Signal Processor (ISP) driver" href="omap3isp-uapi.html" />
-    <link rel="prev" title="3. Maxim Integrated MAX2175 RF to bits tuner driver" href="max2175.html" /> 
+    <link rel="next" title="6. OMAP 3 Image Signal Processor (ISP) driver" href="omap3isp-uapi.html" />
+    <link rel="prev" title="4. Maxim Integrated MAX2175 RF to bits tuner driver" href="max2175.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.10-dragon
+                5.11.11-dragon
               </div>
             
           
@@ -112,12 +112,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../fdl-appendix.html">GNU Free Documentation License</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">Video4Linux (V4L)  driver-specific documentation</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="cx2341x-uapi.html">1. The cx2341x driver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="imx-uapi.html">2. i.MX Video Capture Driver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="max2175.html">3. Maxim Integrated MAX2175 RF to bits tuner driver</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">4. Vaio Picturebook Motion Eye Camera Driver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="omap3isp-uapi.html">5. OMAP 3 Image Signal Processor (ISP) driver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="uvcvideo.html">6. The Linux USB Video Class (UVC) driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ccs.html">1. MIPI CCS camera sensor driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cx2341x-uapi.html">2. The cx2341x driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="imx-uapi.html">3. i.MX Video Capture Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="max2175.html">4. Maxim Integrated MAX2175 RF to bits tuner driver</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">5. Vaio Picturebook Motion Eye Camera Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="omap3isp-uapi.html">6. OMAP 3 Image Signal Processor (ISP) driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="uvcvideo.html">7. The Linux USB Video Class (UVC) driver</a></li>
 </ul>
 </li>
 </ul>
@@ -259,7 +260,7 @@
         
           <li><a href="index.html">Video4Linux (V4L)  driver-specific documentation</a> &raquo;</li>
         
-      <li><span class="section-number">4. </span>Vaio Picturebook Motion Eye Camera Driver</li>
+      <li><span class="section-number">5. </span>Vaio Picturebook Motion Eye Camera Driver</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -279,12 +280,12 @@
            <div itemprop="articleBody">
             
   <div class="section" id="vaio-picturebook-motion-eye-camera-driver">
-<h1><span class="section-number">4. </span>Vaio Picturebook Motion Eye Camera Driver<a class="headerlink" href="#vaio-picturebook-motion-eye-camera-driver" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">5. </span>Vaio Picturebook Motion Eye Camera Driver<a class="headerlink" href="#vaio-picturebook-motion-eye-camera-driver" title="Permalink to this headline">¶</a></h1>
 <p>Copyright © 2001-2004 Stelian Pop &lt;<a class="reference external" href="mailto:stelian&#37;&#52;&#48;popies&#46;net">stelian<span>&#64;</span>popies<span>&#46;</span>net</a>&gt;</p>
 <p>Copyright © 2001-2002 Alcôve &lt;www.alcove.com&gt;</p>
 <p>Copyright © 2000 Andrew Tridgell &lt;<a class="reference external" href="mailto:tridge&#37;&#52;&#48;samba&#46;org">tridge<span>&#64;</span>samba<span>&#46;</span>org</a>&gt;</p>
 <div class="section" id="private-api">
-<h2><span class="section-number">4.1. </span>Private API<a class="headerlink" href="#private-api" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.1. </span>Private API<a class="headerlink" href="#private-api" title="Permalink to this headline">¶</a></h2>
 <p>The driver supports frame grabbing with the video4linux API,
 so all video4linux tools (like xawtv) should work with this driver.</p>
 <p>Besides the video4linux interface, the driver has a private interface
@@ -327,10 +328,10 @@ available from the first mmap’ed buffer.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="omap3isp-uapi.html" class="btn btn-neutral float-right" title="5. OMAP 3 Image Signal Processor (ISP) driver" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="omap3isp-uapi.html" class="btn btn-neutral float-right" title="6. OMAP 3 Image Signal Processor (ISP) driver" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="max2175.html" class="btn btn-neutral float-left" title="3. Maxim Integrated MAX2175 RF to bits tuner driver" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="max2175.html" class="btn btn-neutral float-left" title="4. Maxim Integrated MAX2175 RF to bits tuner driver" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

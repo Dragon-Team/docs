@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.10-dragon
+                5.11.11-dragon
               </div>
             
           
@@ -121,7 +121,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#config-kasan-vmalloc">CONFIG_KASAN_VMALLOC</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#config-kasan-kunit-test-config-test-kasan-module">CONFIG_KASAN_KUNIT_TEST &amp; CONFIG_TEST_KASAN_MODULE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#config-kasan-kunit-test-and-config-kasan-module-test">CONFIG_KASAN_KUNIT_TEST and CONFIG_KASAN_MODULE_TEST</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#loadable-module">1. Loadable module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#built-in">2. Built-In</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#using-kunit-tool">3. Using kunit_tool</a></li>
@@ -419,13 +419,13 @@ indicates that the entire 8-byte word is inaccessible. KASAN uses different
 negative values to distinguish between different kinds of inaccessible memory
 like redzones or freed memory (see mm/kasan/kasan.h).</p>
 <p>In the report above the arrows point to the shadow byte 03, which means that
-the accessed address is partially accessible.</p>
-<p>For tag-based KASAN this last report section shows the memory tags around the
-accessed address (see <a class="reference internal" href="#implementation-details">Implementation details</a> section).</p>
+the accessed address is partially accessible. For tag-based KASAN modes this
+last report section shows the memory tags around the accessed address
+(see the <a class="reference internal" href="#implementation-details">Implementation details</a> section).</p>
 </div>
 <div class="section" id="boot-parameters">
 <h3>Boot parameters<a class="headerlink" href="#boot-parameters" title="Permalink to this headline">¶</a></h3>
-<p>Hardware tag-based KASAN mode (see the section about different mode below) is
+<p>Hardware tag-based KASAN mode (see the section about various modes below) is
 intended for use in production as a security mitigation. Therefore it supports
 boot parameters that allow to disable KASAN competely or otherwise control
 particular KASAN features.</p>
@@ -563,6 +563,11 @@ pointers with 0xFF pointer tag aren’t checked). The value 0xFE is currently
 reserved to tag freed memory regions.</p>
 <p>Hardware tag-based KASAN currently only supports tagging of
 kmem_cache_alloc/kmalloc and page_alloc memory.</p>
+<p>If the hardware doesn’t support MTE (pre ARMv8.5), hardware tag-based KASAN
+won’t be enabled. In this case all boot parameters are ignored.</p>
+<p>Note, that enabling CONFIG_KASAN_HW_TAGS always results in in-kernel TBI being
+enabled. Even when kasan.mode=off is provided, or when the hardware doesn’t
+support MTE (but supports TBI).</p>
 </div>
 </div>
 <div class="section" id="what-memory-accesses-are-sanitised-by-kasan">
@@ -616,14 +621,14 @@ unmapped. This will require changes in arch-specific code.</p>
 architectures that do not have a fixed module region.</p>
 </div>
 </div>
-<div class="section" id="config-kasan-kunit-test-config-test-kasan-module">
-<h2>CONFIG_KASAN_KUNIT_TEST &amp; CONFIG_TEST_KASAN_MODULE<a class="headerlink" href="#config-kasan-kunit-test-config-test-kasan-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="config-kasan-kunit-test-and-config-kasan-module-test">
+<h2>CONFIG_KASAN_KUNIT_TEST and CONFIG_KASAN_MODULE_TEST<a class="headerlink" href="#config-kasan-kunit-test-and-config-kasan-module-test" title="Permalink to this headline">¶</a></h2>
 <p>KASAN tests consist on two parts:</p>
 <p>1. Tests that are integrated with the KUnit Test Framework. Enabled with
 <code class="docutils literal notranslate"><span class="pre">CONFIG_KASAN_KUNIT_TEST</span></code>. These tests can be run and partially verified
 automatically in a few different ways, see the instructions below.</p>
 <p>2. Tests that are currently incompatible with KUnit. Enabled with
-<code class="docutils literal notranslate"><span class="pre">CONFIG_TEST_KASAN_MODULE</span></code> and can only be run as a module. These tests can
+<code class="docutils literal notranslate"><span class="pre">CONFIG_KASAN_MODULE_TEST</span></code> and can only be run as a module. These tests can
 only be verified manually, by loading the kernel module and inspecting the
 kernel log for KASAN reports.</p>
 <p>Each KUnit-compatible KASAN test prints a KASAN report if an error is detected.

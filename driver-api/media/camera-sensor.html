@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.10-dragon
+                5.11.11-dragon
               </div>
             
           
@@ -374,12 +374,27 @@
 divisors. The clock tree is generally configured by the driver based on a few
 input parameters that are specific to the hardware:: the external clock frequency
 and the link frequency. The two parameters generally are obtained from system
-firmware. No other frequencies should be used in any circumstances.</p>
+firmware. <strong>No other frequencies should be used in any circumstances.</strong></p>
 <p>The reason why the clock frequencies are so important is that the clock signals
 come out of the SoC, and in many cases a specific frequency is designed to be
 used in the system. Using another frequency may cause harmful effects
 elsewhere. Therefore only the pre-determined frequencies are configurable by the
 user.</p>
+<div class="section" id="acpi">
+<h3><span class="section-number">7.2.1. </span>ACPI<a class="headerlink" href="#acpi" title="Permalink to this headline">¶</a></h3>
+<p>Read the “clock-frequency” _DSD property to denote the frequency. The driver can
+rely on this frequency being used.</p>
+</div>
+<div class="section" id="devicetree">
+<h3><span class="section-number">7.2.2. </span>Devicetree<a class="headerlink" href="#devicetree" title="Permalink to this headline">¶</a></h3>
+<p>The currently preferred way to achieve this is using “assigned-clock-rates”
+property. See Documentation/devicetree/bindings/clock/clock-bindings.txt for
+more information. The driver then gets the frequency using <a class="reference internal" href="../../core-api/kernel-api.html#c.clk_get_rate" title="clk_get_rate"><code class="xref c c-func docutils literal notranslate"><span class="pre">clk_get_rate()</span></code></a>.</p>
+<p>This approach has the drawback that there’s no guarantee that the frequency
+hasn’t been modified directly or indirectly by another driver, or supported by
+the board’s clock tree to begin with. Changes to the Common Clock Framework API
+are required to ensure reliability.</p>
+</div>
 </div>
 <div class="section" id="frame-size">
 <h2><span class="section-number">7.3. </span>Frame size<a class="headerlink" href="#frame-size" title="Permalink to this headline">¶</a></h2>

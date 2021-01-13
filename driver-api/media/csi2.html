@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.10-dragon
+                5.11.11-dragon
               </div>
             
           
@@ -384,7 +384,7 @@ control may be used by the receiver to obtain the pixel rate the transmitter
 uses. The <a class="reference internal" href="v4l2-subdev.html#c.v4l2_subdev_video_ops" title="v4l2_subdev_video_ops"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_subdev_video_ops</span></code></a>-&gt;s_stream() callback provides an
 ability to start and stop the stream.</p>
 <p>The value of the V4L2_CID_PIXEL_RATE is calculated as follows:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pixel_rate = link_freq * 2 * nr_of_lanes / bits_per_sample
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pixel_rate = link_freq * 2 * nr_of_lanes * 16 / k / bits_per_sample
 </pre></div>
 </div>
 <p>where</p>
@@ -412,6 +412,9 @@ be obtained from the OF endpoint configuration.</p></td>
 </tr>
 <tr class="row-odd"><td><p>bits_per_sample</p></td>
 <td><p>Number of bits per sample.</p></td>
+</tr>
+<tr class="row-even"><td><p>k</p></td>
+<td><p>16 for D-PHY and 7 for C-PHY</p></td>
 </tr>
 </tbody>
 </table>

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.10-dragon
+                5.11.11-dragon
               </div>
             
           
@@ -1530,23 +1530,6 @@ bool __init_memblock <code class="sig-name descname">memblock_is_region_reserved
 memory block.</p>
 <p><strong>Return</strong></p>
 <p>True if they intersect, false if not.</p>
-<dl class="c function">
-<dt id="c.memblock_enforce_memory_reserved_overlap">
-void <code class="sig-name descname">memblock_enforce_memory_reserved_overlap</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.memblock_enforce_memory_reserved_overlap" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>make sure every range in <strong>memblock.reserved</strong> is covered by <strong>memblock.memory</strong></p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">void</span></code></dt><dd><p>no arguments</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>The data in <strong>memblock.memory</strong> is used to detect zone and node boundaries
-during initialization of the memory map and the page allocator. Make
-sure that every memory range present in <strong>memblock.reserved</strong> is also added
-to <strong>memblock.memory</strong> even if the architecture specific memory
-initialization failed to do so</p>
 <dl class="c function">
 <dt id="c.memblock_free_all">
 unsigned long <code class="sig-name descname">memblock_free_all</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.memblock_free_all" title="Permalink to this definition">¶</a><br /></dt>
