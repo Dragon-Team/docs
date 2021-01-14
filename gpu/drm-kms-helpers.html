@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.11-dragon
+                5.11.12-dragon
               </div>
             
           
@@ -7778,7 +7778,8 @@ making this function a no-op on type 1 adaptors.</p>
 <dl class="c function">
 <dt id="c.drm_lspcon_get_mode">
 int <code class="sig-name descname">drm_lspcon_get_mode</code><span class="sig-paren">(</span><em class="property">struct</em> i2c_adapter *<em>adapter</em>, <em class="property">enum</em> <a class="reference internal" href="#c.drm_lspcon_mode" title="drm_lspcon_mode">drm_lspcon_mode</a> *<em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_lspcon_get_mode" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Get LSPCON’s current mode of operation by reading offset (0x80, 0x41)</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -7787,15 +7788,14 @@ int <code class="sig-name descname">drm_lspcon_get_mode</code><span class="sig-p
 <dt><code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">drm_lspcon_mode</span> <span class="pre">*mode</span></code></dt><dd><p>current lspcon mode of operation output variable</p>
 </dd>
 </dl>
-<p><strong>Description</strong></p>
-<p>reading offset (0x80, 0x41)</p>
 <p><strong>Return</strong></p>
 <p>0 on success, sets the current_mode value to appropriate mode
 -error on failure</p>
 <dl class="c function">
 <dt id="c.drm_lspcon_set_mode">
 int <code class="sig-name descname">drm_lspcon_set_mode</code><span class="sig-paren">(</span><em class="property">struct</em> i2c_adapter *<em>adapter</em>, <em class="property">enum</em> <a class="reference internal" href="#c.drm_lspcon_mode" title="drm_lspcon_mode">drm_lspcon_mode</a> <em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_lspcon_set_mode" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Change LSPCON’s mode of operation by writing offset (0x80, 0x40)</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -7804,8 +7804,6 @@ int <code class="sig-name descname">drm_lspcon_set_mode</code><span class="sig-p
 <dt><code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">drm_lspcon_mode</span> <span class="pre">mode</span></code></dt><dd><p>required mode of operation</p>
 </dd>
 </dl>
-<p><strong>Description</strong></p>
-<p>writing offset (0x80, 0x40)</p>
 <p><strong>Return</strong></p>
 <p>0 on success, -error on failure/timeout</p>
 </div>
@@ -8774,7 +8772,8 @@ int <code class="sig-name descname">drm_dp_calc_pbn_mode</code><span class="sig-
 <dl class="c function">
 <dt id="c.drm_dp_mst_dump_topology">
 void <code class="sig-name descname">drm_dp_mst_dump_topology</code><span class="sig-paren">(</span><em class="property">struct</em> seq_file *<em>m</em>, <em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_mst_topology_mgr" title="drm_dp_mst_topology_mgr">drm_dp_mst_topology_mgr</a> *<em>mgr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_mst_dump_topology" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>dump topology to seq file.</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -8854,7 +8853,8 @@ checking the rest of their state in their
 <dl class="c function">
 <dt id="c.drm_atomic_get_mst_topology_state">
 <em class="property">struct</em> drm_dp_mst_topology_state *<code class="sig-name descname">drm_atomic_get_mst_topology_state</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_atomic_state" title="drm_atomic_state">drm_atomic_state</a> *<em>state</em>, <em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_mst_topology_mgr" title="drm_dp_mst_topology_mgr">drm_dp_mst_topology_mgr</a> *<em>mgr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_atomic_get_mst_topology_state" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>get MST topology state</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">

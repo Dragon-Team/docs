@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.11-dragon
+                5.11.12-dragon
               </div>
             
           
@@ -442,7 +442,6 @@ completed.</p>
   unsigned int            numa_node;
   unsigned int            queue_num;
   atomic_t nr_active;
-  atomic_t elevator_queued;
   struct hlist_node       cpuhp_online;
   struct hlist_node       cpuhp_dead;
   struct kobject          kobj;
@@ -539,8 +538,6 @@ that request is allocated. Else, this member is not used.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">nr_active</span></code></dt><dd><p>Number of active requests. Only used when a tag set is
 shared across request queues.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">elevator_queued</span></code></dt><dd><p>Number of queued requests on hctx.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">cpuhp_online</span></code></dt><dd><p>List to store request if CPU is going to die</p>
 </dd>

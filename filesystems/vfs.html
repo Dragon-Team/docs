@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.11-dragon
+                5.11.12-dragon
               </div>
             
           
@@ -504,7 +504,10 @@ allocated for struct inode.  It is only required if
 -&gt;alloc_inode was defined and simply undoes anything done by
 -&gt;alloc_inode.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">dirty_inode</span></code></dt><dd><p>this method is called by the VFS to mark an inode dirty.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">dirty_inode</span></code></dt><dd><p>this method is called by the VFS when an inode is marked dirty.
+This is specifically for the inode itself being marked dirty,
+not its data.  If the update needs to be persisted by fdatasync(),
+then I_DIRTY_DATASYNC will be set in the flags argument.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">write_inode</span></code></dt><dd><p>this method is called when the VFS needs to write an inode to
 disc.  The second parameter indicates whether the write should
@@ -1424,7 +1427,7 @@ drops to 0</p>
 <dt><code class="docutils literal notranslate"><span class="pre">d_delete</span></code></dt><dd><p>delete a dentry.  If there are no other open references to the
 dentry then the dentry is turned into a negative dentry (the
 d_iput() method is called).  If there are other references, then
-d_drop() is called instead</p>
+<a class="reference internal" href="api-summary.html#c.d_drop" title="d_drop"><code class="xref c c-func docutils literal notranslate"><span class="pre">d_drop()</span></code></a> is called instead</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">d_add</span></code></dt><dd><p>add a dentry to its parents hash list and then calls
 <a class="reference internal" href="api-summary.html#c.d_instantiate" title="d_instantiate"><code class="xref c c-func docutils literal notranslate"><span class="pre">d_instantiate()</span></code></a></p>

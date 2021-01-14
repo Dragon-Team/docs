@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.11-dragon
+                5.11.12-dragon
               </div>
             
           
@@ -706,7 +706,8 @@ for tid based transactions.</p>
 <dl class="c enum">
 <dt id="c.slim_clk_state">
 <em class="property">enum </em><code class="sig-name descname">slim_clk_state</code><a class="headerlink" href="#c.slim_clk_state" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>SLIMbus controller’s clock state used internally for maintaining current clock state.</p>
+</dd></dl>
 
 <p><strong>Constants</strong></p>
 <dl class="simple">
@@ -719,14 +720,11 @@ transition fails, state changes back to SLIM_CLK_ACTIVE</p>
 <dt><code class="docutils literal notranslate"><span class="pre">SLIM_CLK_PAUSED</span></code></dt><dd><p>SLIMbus controller clock has paused.</p>
 </dd>
 </dl>
-<p><strong>Description</strong></p>
-<blockquote>
-<div><p>maintaining current clock state.</p>
-</div></blockquote>
 <dl class="c struct">
 <dt id="c.slim_sched">
 <em class="property">struct </em><code class="sig-name descname">slim_sched</code><a class="headerlink" href="#c.slim_sched" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Framework uses this structure internally for scheduling.</p>
+</dd></dl>
 
 <p><strong>Definition</strong></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct slim_sched {
@@ -753,7 +751,8 @@ messages can be sent on the bus when reconfiguration is in progress.</p>
 <dl class="c enum">
 <dt id="c.slim_port_direction">
 <em class="property">enum </em><code class="sig-name descname">slim_port_direction</code><a class="headerlink" href="#c.slim_port_direction" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>SLIMbus port direction</p>
+</dd></dl>
 
 <p><strong>Constants</strong></p>
 <dl class="simple">
@@ -765,7 +764,8 @@ messages can be sent on the bus when reconfiguration is in progress.</p>
 <dl class="c enum">
 <dt id="c.slim_port_state">
 <em class="property">enum </em><code class="sig-name descname">slim_port_state</code><a class="headerlink" href="#c.slim_port_state" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>SLIMbus Port/Endpoint state machine according to SLIMbus Spec 2.0</p>
+</dd></dl>
 
 <p><strong>Constants</strong></p>
 <dl class="simple">
@@ -781,14 +781,11 @@ entered from unconfigured state after DEFINE_CHANNEL, DEFINE_CONTENT
 and ACTIVATE_CHANNEL core commands. Ready for data transmission.</p>
 </dd>
 </dl>
-<p><strong>Description</strong></p>
-<blockquote>
-<div><p>according to SLIMbus Spec 2.0</p>
-</div></blockquote>
 <dl class="c enum">
 <dt id="c.slim_channel_state">
 <em class="property">enum </em><code class="sig-name descname">slim_channel_state</code><a class="headerlink" href="#c.slim_channel_state" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>SLIMbus channel state machine used by core.</p>
+</dd></dl>
 
 <p><strong>Constants</strong></p>
 <dl class="simple">
@@ -810,7 +807,8 @@ and ACTIVATE_CHANNEL core commands. Ready for data transmission.</p>
 <dl class="c enum">
 <dt id="c.slim_ch_data_fmt">
 <em class="property">enum </em><code class="sig-name descname">slim_ch_data_fmt</code><a class="headerlink" href="#c.slim_ch_data_fmt" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>SLIMbus channel data Type identifiers according to Table 60 of SLIMbus Spec 1.01.01</p>
+</dd></dl>
 
 <p><strong>Constants</strong></p>
 <dl class="simple">
@@ -823,14 +821,11 @@ and ACTIVATE_CHANNEL core commands. Ready for data transmission.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">SLIM_CH_DATA_FMT_PACKED_PDM_AUDIO</span></code></dt><dd><p>Packed PDM audio</p>
 </dd>
 </dl>
-<p><strong>Description</strong></p>
-<blockquote>
-<div><p>Table 60 of SLIMbus Spec 1.01.01</p>
-</div></blockquote>
 <dl class="c enum">
 <dt id="c.slim_ch_aux_bit_fmt">
 <em class="property">enum </em><code class="sig-name descname">slim_ch_aux_bit_fmt</code><a class="headerlink" href="#c.slim_ch_aux_bit_fmt" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>SLIMbus channel Aux Field format IDs according to Table 63 of SLIMbus Spec 2.0</p>
+</dd></dl>
 
 <p><strong>Constants</strong></p>
 <dl class="simple">
@@ -841,10 +836,6 @@ and ACTIVATE_CHANNEL core commands. Ready for data transmission.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">SLIM_CH_AUX_FMT_USER_DEFINED</span></code></dt><dd><p>User defined</p>
 </dd>
 </dl>
-<p><strong>Description</strong></p>
-<blockquote>
-<div><p>Table 63 of SLIMbus Spec 2.0</p>
-</div></blockquote>
 <dl class="c struct">
 <dt id="c.slim_channel">
 <em class="property">struct </em><code class="sig-name descname">slim_channel</code><a class="headerlink" href="#c.slim_channel" title="Permalink to this definition">¶</a><br /></dt>
@@ -906,7 +897,8 @@ and ACTIVATE_CHANNEL core commands. Ready for data transmission.</p>
 <dl class="c enum">
 <dt id="c.slim_transport_protocol">
 <em class="property">enum </em><code class="sig-name descname">slim_transport_protocol</code><a class="headerlink" href="#c.slim_transport_protocol" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>SLIMbus Transport protocol list from Table 47 of SLIMbus 2.0 specs.</p>
+</dd></dl>
 
 <p><strong>Constants</strong></p>
 <dl class="simple">
@@ -930,10 +922,6 @@ but pull is a unicast.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">SLIM_PROTO_EXT_HALF_DUP</span></code></dt><dd><p>Extended Asynchronous Protocol-Half-duplex</p>
 </dd>
 </dl>
-<p><strong>Description</strong></p>
-<blockquote>
-<div><p>Table 47 of SLIMbus 2.0 specs.</p>
-</div></blockquote>
 <dl class="c struct">
 <dt id="c.slim_stream_runtime">
 <em class="property">struct </em><code class="sig-name descname">slim_stream_runtime</code><a class="headerlink" href="#c.slim_stream_runtime" title="Permalink to this definition">¶</a><br /></dt>

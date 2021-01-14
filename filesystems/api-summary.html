@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.11-dragon
+                5.11.12-dragon
               </div>
             
           
@@ -544,6 +544,28 @@ struct file.</p>
 <div class="section" id="the-directory-cache">
 <h3>The Directory Cache<a class="headerlink" href="#the-directory-cache" title="Permalink to this headline">¶</a></h3>
 <dl class="c function">
+<dt id="c.d_drop">
+void <code class="sig-name descname">d_drop</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_drop" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>drop a dentry</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*dentry</span></code></dt><dd><p>dentry to drop</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p><a class="reference internal" href="#c.d_drop" title="d_drop"><code class="xref c c-func docutils literal notranslate"><span class="pre">d_drop()</span></code></a> unhashes the entry from the parent dentry hashes, so that it won’t
+be found through a VFS lookup any more. Note that this is different from
+deleting the dentry - d_delete will try to mark the dentry negative if
+possible, giving a successful _negative_ lookup, while d_drop will
+just make the cache lookup fail.</p>
+<p><a class="reference internal" href="#c.d_drop" title="d_drop"><code class="xref c c-func docutils literal notranslate"><span class="pre">d_drop()</span></code></a> is used mainly for stuff that wants to invalidate a dentry for some
+reason (NFS timeouts or autofs deletes).</p>
+<p>__d_drop requires dentry-&gt;d_lock</p>
+<p>___d_drop doesn’t mark dentry as “unhashed”
+(dentry-&gt;d_hash.pprev will be LIST_POISON2, not NULL).</p>
+<dl class="c function">
 <dt id="c.d_find_any_alias">
 <em class="property">struct</em> dentry *<code class="sig-name descname">d_find_any_alias</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_find_any_alias" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find any alias for a given inode</p>
@@ -557,6 +579,26 @@ struct file.</p>
 <p><strong>Description</strong></p>
 <p>If any aliases exist for the given inode, take and return a
 reference for one of them.  If no aliases exist, return <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<dl class="c function">
+<dt id="c.d_find_alias">
+<em class="property">struct</em> dentry *<code class="sig-name descname">d_find_alias</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_find_alias" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>grab a hashed alias of inode</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*inode</span></code></dt><dd><p>inode in question</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>If inode has a hashed alias, or is a directory and has any alias,
+acquire the reference to alias and return it. Otherwise return NULL.
+Notice that if inode is a directory there can be only one alias and
+it can be unhashed only if it has no children, or if it is the root
+of a filesystem, or if the directory was renamed and d_revalidate
+was the first vfs operation to notice.</p>
+<p>If the inode has an IS_ROOT, DCACHE_DISCONNECTED alias, then prefer
+any other hashed alias over that one.</p>
 <dl class="c function">
 <dt id="c.shrink_dcache_sb">
 void <code class="sig-name descname">shrink_dcache_sb</code><span class="sig-paren">(</span><em class="property">struct</em> super_block *<em>sb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.shrink_dcache_sb" title="Permalink to this definition">¶</a><br /></dt>
@@ -1851,6 +1893,21 @@ internal writers are finished we call -&gt;freeze_fs() to finish filesystem
 freezing. Then we transition to SB_FREEZE_COMPLETE state. This state is
 mostly auxiliary for filesystems to verify they do not modify frozen fs.</p>
 <p>sb-&gt;s_writers.frozen is protected by sb-&gt;s_umount.</p>
+<dl class="c function">
+<dt id="c.thaw_super">
+int <code class="sig-name descname">thaw_super</code><span class="sig-paren">(</span><em class="property">struct</em> super_block *<em>sb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.thaw_super" title="Permalink to this definition">¶</a><br /></dt>
+<dd><ul class="simple">
+<li><p>unlock filesystem</p></li>
+</ul>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">super_block</span> <span class="pre">*sb</span></code></dt><dd><p>the super to thaw</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Unlocks the filesystem and marks it writeable again after <a class="reference internal" href="#c.freeze_super" title="freeze_super"><code class="xref c c-func docutils literal notranslate"><span class="pre">freeze_super()</span></code></a>.</p>
 </div>
 <div class="section" id="file-locks">
 <h3>File Locks<a class="headerlink" href="#file-locks" title="Permalink to this headline">¶</a></h3>
@@ -2191,7 +2248,9 @@ int <code class="sig-name descname">flock_lock_inode_wait</code><span class="sig
 <dl class="c function">
 <dt id="c.sys_flock">
 long <code class="sig-name descname">sys_flock</code><span class="sig-paren">(</span>unsigned int <em>fd</em>, unsigned int <em>cmd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sys_flock" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>flock() system call.</p>
+<dd><ul class="simple">
+<li><p>flock() system call.</p></li>
+</ul>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -2674,7 +2733,8 @@ blocks on-disk.</p>
 <dl class="c function">
 <dt id="c.clean_bdev_aliases">
 void <code class="sig-name descname">clean_bdev_aliases</code><span class="sig-paren">(</span><em class="property">struct</em> block_device *<em>bdev</em>, sector_t <em>block</em>, sector_t <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clean_bdev_aliases" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>clean a range of buffers in block device</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -2701,7 +2761,7 @@ need to.  That happens here.</p>
 <dl class="c function">
 <dt id="c.ll_rw_block">
 void <code class="sig-name descname">ll_rw_block</code><span class="sig-paren">(</span>int <em>op</em>, int <em>op_flags</em>, int <em>nr</em>, <em class="property">struct</em> buffer_head *<em>bhs</em>[]<span class="sig-paren">)</span><a class="headerlink" href="#c.ll_rw_block" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>level access to block devices (DEPRECATED)</p>
+<dd><p>low-level access to block devices (DEPRECATED)</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -3614,26 +3674,27 @@ mapping-&gt;host which is NULL for the swapper space.</p>
 <dl class="c function">
 <dt id="c.__mark_inode_dirty">
 void <code class="sig-name descname">__mark_inode_dirty</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__mark_inode_dirty" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>internal function</p>
+<dd><p>internal function to mark an inode dirty</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*inode</span></code></dt><dd><p>inode to mark</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">flags</span></code></dt><dd><p>what kind of dirty (i.e. I_DIRTY_SYNC)</p>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">flags</span></code></dt><dd><p>what kind of dirty, e.g. I_DIRTY_SYNC.  This can be a combination of
+multiple I_DIRTY_* flags, except that I_DIRTY_TIME can’t be combined
+with I_DIRTY_PAGES.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Mark an inode as dirty. Callers should use mark_inode_dirty or
-mark_inode_dirty_sync.</p>
-<p>Put the inode on the super block’s dirty list.</p>
-<p>CAREFUL! We mark it dirty unconditionally, but move it onto the
-dirty list only if it is hashed or if it refers to a blockdev.
-If it was not hashed, it will never be added to the dirty list
-even if it is later hashed, as it will have been marked dirty already.</p>
-<p>In short, make sure you hash any inodes _before_ you start marking
-them dirty.</p>
+<p>Mark an inode as dirty.  We notify the filesystem, then update the inode’s
+dirty flags.  Then, if needed we add the inode to the appropriate dirty list.</p>
+<p>Most callers should use mark_inode_dirty() or mark_inode_dirty_sync()
+instead of calling this directly.</p>
+<p>CAREFUL!  We only add the inode to the dirty list if it is hashed or if it
+refers to a blockdev.  Unhashed inodes will never be added to the dirty list
+even if they are later hashed, as they will have been marked dirty already.</p>
+<p>In short, ensure you hash any inodes _before_ you start marking them dirty.</p>
 <p>Note that for blockdevs, inode-&gt;dirtied_when represents the dirtying time of
 the block-special inode (/dev/hda1) itself.  And the -&gt;dirtied_when field of
 the kernel-internal blockdev inode represents the dirtying time of the

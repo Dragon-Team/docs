@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.11-dragon
+                5.11.12-dragon
               </div>
             
           
@@ -1005,7 +1005,8 @@ the <a class="reference internal" href="#c.edac_pci_alloc_ctl_info" title="edac_
 <dl class="c function">
 <dt id="c.edac_pci_alloc_ctl_info">
 <em class="property">struct</em> edac_pci_ctl_info *<code class="sig-name descname">edac_pci_alloc_ctl_info</code><span class="sig-paren">(</span>unsigned int <em>sz_pvt</em>, <em class="property">const</em> char *<em>edac_pci_name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.edac_pci_alloc_ctl_info" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>The alloc() function for the ‘edac_pci’ control info structure.</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -1015,10 +1016,6 @@ the <a class="reference internal" href="#c.edac_pci_alloc_ctl_info" title="edac_
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<blockquote>
-<div><p>The alloc() function for the ‘edac_pci’ control info
-structure.</p>
-</div></blockquote>
 <p>The chip driver will allocate one of these for each
 edac_pci it is going to control/register with the EDAC CORE.</p>
 <p><strong>Return</strong></p>
@@ -1026,7 +1023,8 @@ edac_pci it is going to control/register with the EDAC CORE.</p>
 <dl class="c function">
 <dt id="c.edac_pci_free_ctl_info">
 void <code class="sig-name descname">edac_pci_free_ctl_info</code><span class="sig-paren">(</span><em class="property">struct</em> edac_pci_ctl_info *<em>pci</em><span class="sig-paren">)</span><a class="headerlink" href="#c.edac_pci_free_ctl_info" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Last action on the pci control structure.</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -1034,9 +1032,6 @@ void <code class="sig-name descname">edac_pci_free_ctl_info</code><span class="s
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<blockquote>
-<div><p>Last action on the pci control structure.</p>
-</div></blockquote>
 <p>Calls the remove sysfs information, which will unregister
 this control struct’s kobj. When that kobj’s ref count
 goes to zero, its release function will be call and then
@@ -1044,7 +1039,8 @@ goes to zero, its release function will be call and then
 <dl class="c function">
 <dt id="c.edac_pci_alloc_index">
 int <code class="sig-name descname">edac_pci_alloc_index</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.edac_pci_alloc_index" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Allocate a unique PCI index number</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -1058,7 +1054,8 @@ int <code class="sig-name descname">edac_pci_alloc_index</code><span class="sig-
 <dl class="c function">
 <dt id="c.edac_pci_add_device">
 int <code class="sig-name descname">edac_pci_add_device</code><span class="sig-paren">(</span><em class="property">struct</em> edac_pci_ctl_info *<em>pci</em>, int <em>edac_idx</em><span class="sig-paren">)</span><a class="headerlink" href="#c.edac_pci_add_device" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Insert the ‘edac_dev’ structure into the edac_pci global list and create sysfs entries associated with edac_pci structure.</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -1068,11 +1065,6 @@ int <code class="sig-name descname">edac_pci_add_device</code><span class="sig-p
 ‘edac_pci’ structure.</p>
 </dd>
 </dl>
-<p><strong>Description</strong></p>
-<blockquote>
-<div><p>edac_pci global list and create sysfs entries associated with
-edac_pci structure.</p>
-</div></blockquote>
 <p><strong>Return</strong></p>
 <blockquote>
 <div><p>0 on Success, or an error code on failure</p>
@@ -1284,7 +1276,8 @@ void <code class="sig-name descname">edac_device_handle_ue_count</code><span cla
 <dl class="c function">
 <dt id="c.edac_device_handle_ce">
 void <code class="sig-name descname">edac_device_handle_ce</code><span class="sig-paren">(</span><em class="property">struct</em> edac_device_ctl_info *<em>edac_dev</em>, int <em>inst_nr</em>, int <em>block_nr</em>, <em class="property">const</em> char *<em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.edac_device_handle_ce" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Log a single correctable error</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -1300,7 +1293,8 @@ void <code class="sig-name descname">edac_device_handle_ce</code><span class="si
 <dl class="c function">
 <dt id="c.edac_device_handle_ue">
 void <code class="sig-name descname">edac_device_handle_ue</code><span class="sig-paren">(</span><em class="property">struct</em> edac_device_ctl_info *<em>edac_dev</em>, int <em>inst_nr</em>, int <em>block_nr</em>, <em class="property">const</em> char *<em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.edac_device_handle_ue" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Log a single uncorrectable error</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -1316,7 +1310,8 @@ void <code class="sig-name descname">edac_device_handle_ue</code><span class="si
 <dl class="c function">
 <dt id="c.edac_device_alloc_index">
 int <code class="sig-name descname">edac_device_alloc_index</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.edac_device_alloc_index" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Allocate a unique device index number</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">

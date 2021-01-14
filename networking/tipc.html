@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.11-dragon
+                5.11.12-dragon
               </div>
             
           
@@ -1511,7 +1511,8 @@ on the same message (i.e. recursive).</p>
 <dl class="c function">
 <dt id="c.tipc_crypto_key_synch">
 void <code class="sig-name descname">tipc_crypto_key_synch</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_crypto" title="tipc_crypto">tipc_crypto</a> *<em>rx</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_crypto_key_synch" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Synch own key data according to peer key status</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -2213,7 +2214,8 @@ void <code class="sig-name descname">tipc_link_set_skb_retransmit_time</code><sp
 <dl class="c function">
 <dt id="c.tipc_link_xmit">
 int <code class="sig-name descname">tipc_link_xmit</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_link" title="tipc_link">tipc_link</a> *<em>l</em>, <em class="property">struct</em> sk_buff_head *<em>list</em>, <em class="property">struct</em> sk_buff_head *<em>xmitq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_link_xmit" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>enqueue buffer list according to queue situation</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -2341,7 +2343,8 @@ There may also be unrequested tailroom present at the buffer’s end.</p>
 <dl class="c function">
 <dt id="c.tipc_msg_append">
 int <code class="sig-name descname">tipc_msg_append</code><span class="sig-paren">(</span><em class="property">struct</em> tipc_msg *<em>_hdr</em>, <em class="property">struct</em> msghdr *<em>m</em>, int <em>dlen</em>, int <em>mss</em>, <em class="property">struct</em> sk_buff_head *<em>txq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_msg_append" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Append data to tail of an existing buffer queue</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -2448,7 +2451,8 @@ Otherwise, “false” if the skb cannot be bundled at all.</p>
 <dl class="c function">
 <dt id="c.tipc_msg_extract">
 bool <code class="sig-name descname">tipc_msg_extract</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> **<em>iskb</em>, int *<em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_msg_extract" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>extract bundled inner packet from buffer</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -2466,7 +2470,8 @@ Consumes outer buffer when last packet extracted</p>
 <dl class="c function">
 <dt id="c.tipc_msg_reverse">
 bool <code class="sig-name descname">tipc_msg_reverse</code><span class="sig-paren">(</span>u32 <em>own_node</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> **<em>skb</em>, int <em>err</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_msg_reverse" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>swap source and destination addresses and add error code</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -2483,7 +2488,8 @@ Replaces consumed buffer with new one when successful</p>
 <dl class="c function">
 <dt id="c.tipc_msg_lookup_dest">
 bool <code class="sig-name descname">tipc_msg_lookup_dest</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, int *<em>err</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_msg_lookup_dest" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>try to find new destination for named message</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -3163,7 +3169,8 @@ int <code class="sig-name descname">tipc_node_get_linkname</code><span class="si
 <dl class="c function">
 <dt id="c.tipc_node_xmit">
 int <code class="sig-name descname">tipc_node_xmit</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> sk_buff_head *<em>list</em>, u32 <em>dnode</em>, int <em>selector</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_node_xmit" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>general link level function for message sending</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">

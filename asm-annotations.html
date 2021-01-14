@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.11-dragon
+                5.11.12-dragon
               </div>
             
           
@@ -393,6 +393,14 @@ SYM_CODE_END(bad_put_user)
 <p>Again, every <code class="docutils literal notranslate"><span class="pre">SYM_CODE_START*</span></code> <strong>shall</strong> be coupled by <code class="docutils literal notranslate"><span class="pre">SYM_CODE_END</span></code>.</p>
 <p>To some extent, this category corresponds to deprecated <code class="docutils literal notranslate"><span class="pre">ENTRY</span></code> and
 <code class="docutils literal notranslate"><span class="pre">END</span></code>. Except <code class="docutils literal notranslate"><span class="pre">END</span></code> had several other meanings too.</p>
+<p>Developers should avoid using local symbol names that are prefixed with
+<code class="docutils literal notranslate"><span class="pre">.L</span></code>, as this has special meaning for the assembler; a symbol entry will
+not be emitted into the symbol table. This can prevent <code class="docutils literal notranslate"><span class="pre">objtool</span></code> from
+generating correct unwind info. Symbols with STB_LOCAL binding may still be
+used, and <code class="docutils literal notranslate"><span class="pre">.L</span></code> prefixed local symbol names are still generally useable
+within a function, but <code class="docutils literal notranslate"><span class="pre">.L</span></code> prefixed local symbol names should not be used
+to denote the beginning or end of code regions via
+<code class="docutils literal notranslate"><span class="pre">SYM_CODE_START_LOCAL</span></code>/<code class="docutils literal notranslate"><span class="pre">SYM_CODE_END</span></code>.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SYM_INNER_LABEL*</span></code> is used to denote a label inside some
 <code class="docutils literal notranslate"><span class="pre">SYM_{CODE,FUNC}_START</span></code> and <code class="docutils literal notranslate"><span class="pre">SYM_{CODE,FUNC}_END</span></code>.  They are very similar

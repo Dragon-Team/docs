@@ -57,7 +57,7 @@
             
             
               <div class="version">
-                5.11.11-dragon
+                5.11.12-dragon
               </div>
             
           
@@ -252,7 +252,7 @@
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Original</dt>
-<dd class="field-odd"><p><span class="xref std std-ref"><a class="reference internal" href="../../../mips/ingenic-tcu.html"><span class="doc">Ingenic JZ47xx SoCs Timer/Counter Unit hardware</span></a></span></p>
+<dd class="field-odd"><p><a class="reference internal" href="../../../mips/ingenic-tcu.html"><span class="doc">Ingenic JZ47xx SoCs Timer/Counter Unit hardware</span></a></p>
 </dd>
 <dt class="field-even">Translator</dt>
 <dd class="field-even"><p>Yanteng Si &lt;<a class="reference external" href="mailto:siyanteng&#37;&#52;&#48;loongson&#46;cn">siyanteng<span>&#64;</span>loongson<span>&#46;</span>cn</a>&gt;</p>
@@ -311,6 +311,32 @@
 <div class="section" id="id1">
 <h2><span class="section-number">2.1. </span>实现<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>TCU硬件的功能分布在多个驱动程序：</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>时钟</p></td>
+<td><p>drivers/clk/ingenic/tcu.c</p></td>
+</tr>
+<tr class="row-even"><td><p>中断</p></td>
+<td><p>drivers/irqchip/irq-ingenic-tcu.c</p></td>
+</tr>
+<tr class="row-odd"><td><p>定时器</p></td>
+<td><p>drivers/clocksource/ingenic-timer.c</p></td>
+</tr>
+<tr class="row-even"><td><p>OST</p></td>
+<td><p>drivers/clocksource/ingenic-ost.c</p></td>
+</tr>
+<tr class="row-odd"><td><p>脉冲宽度调制器</p></td>
+<td><p>drivers/pwm/pwm-jz4740.c</p></td>
+</tr>
+<tr class="row-even"><td><p>看门狗</p></td>
+<td><p>drivers/watchdog/jz4740_wdt.c</p></td>
+</tr>
+</tbody>
+</table>
 <p>因为可以从相同的寄存器控制属于不同驱动程序和框架的TCU的各种功能，所以
 所有这些驱动程序都通过相同的控制总线通用接口访问它们的寄存器。</p>
 <p>有关TCU驱动程序的设备树绑定的更多信息，请参阅:

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.11-dragon
+                5.11.12-dragon
               </div>
             
           
@@ -6506,13 +6506,11 @@ number of valid entries in the ‘entries’ array, which is then filled.</p>
 userspace should not expect to get any particular value there.</p>
 <p>Note, vcpu version of KVM_GET_SUPPORTED_HV_CPUID is currently deprecated. Unlike
 system ioctl which exposes all supported feature bits unconditionally, vcpu
-version has the following quirks:
-- HYPERV_CPUID_NESTED_FEATURES leaf and HV_X64_ENLIGHTENED_VMCS_RECOMMENDED</p>
-<blockquote>
-<div><p>feature bit are only exposed when Enlightened VMCS was previously enabled
-on the corresponding vCPU (KVM_CAP_HYPERV_ENLIGHTENED_VMCS).</p>
-</div></blockquote>
+version has the following quirks:</p>
 <ul class="simple">
+<li><p>HYPERV_CPUID_NESTED_FEATURES leaf and HV_X64_ENLIGHTENED_VMCS_RECOMMENDED
+feature bit are only exposed when Enlightened VMCS was previously enabled
+on the corresponding vCPU (KVM_CAP_HYPERV_ENLIGHTENED_VMCS).</p></li>
 <li><p>HV_STIMER_DIRECT_MODE_AVAILABLE bit is only exposed with in-kernel LAPIC.
 (presumes KVM_CREATE_IRQCHIP has already been called).</p></li>
 </ul>

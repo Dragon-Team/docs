@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.11-dragon
+                5.11.12-dragon
               </div>
             
           
@@ -1267,7 +1267,8 @@ in cases where there is no list.</p>
 <dl class="c function">
 <dt id="c.hlist_fake">
 bool <code class="sig-name descname">hlist_fake</code><span class="sig-paren">(</span><em class="property">struct</em> hlist_node *<em>h</em><span class="sig-paren">)</span><a class="headerlink" href="#c.hlist_fake" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Is this node a fake hlist?</p>
+</dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
@@ -6415,7 +6416,9 @@ void <code class="sig-name descname">relay_flush</code><span class="sig-paren">(
 <dl class="c function">
 <dt id="c.relay_mmap_buf">
 int <code class="sig-name descname">relay_mmap_buf</code><span class="sig-paren">(</span><em class="property">struct</em> rchan_buf *<em>buf</em>, <em class="property">struct</em> vm_area_struct *<em>vma</em><span class="sig-paren">)</span><a class="headerlink" href="#c.relay_mmap_buf" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>mmap channel buffer to process address space</p>
+<dd><ul class="simple">
+<li><p>mmap channel buffer to process address space</p></li>
+</ul>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -9330,7 +9333,9 @@ a block device.</p>
 <dl class="c function">
 <dt id="c.blk_trace_ioctl">
 int <code class="sig-name descname">blk_trace_ioctl</code><span class="sig-paren">(</span><em class="property">struct</em> block_device *<em>bdev</em>, unsigned <em>cmd</em>, char __user *<em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_trace_ioctl" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>handle the ioctls associated with tracing</p>
+<dd><ul class="simple">
+<li><p>handle the ioctls associated with tracing</p></li>
+</ul>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -9345,7 +9350,9 @@ int <code class="sig-name descname">blk_trace_ioctl</code><span class="sig-paren
 <dl class="c function">
 <dt id="c.blk_trace_shutdown">
 void <code class="sig-name descname">blk_trace_shutdown</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_trace_shutdown" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>stop and cleanup trace structures</p>
+<dd><ul class="simple">
+<li><p>stop and cleanup trace structures</p></li>
+</ul>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -10194,7 +10201,7 @@ structure is used to manage data for these calls.</p>
 <dl class="c function">
 <dt id="c.clk_notifier_register">
 int <code class="sig-name descname">clk_notifier_register</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em>, <em class="property">struct</em> notifier_block *<em>nb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_notifier_register" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>change notifier callback</p>
+<dd><p>register a clock rate-change notifier callback</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -10211,7 +10218,7 @@ failure.</p>
 <dl class="c function">
 <dt id="c.clk_notifier_unregister">
 int <code class="sig-name descname">clk_notifier_unregister</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em>, <em class="property">struct</em> notifier_block *<em>nb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_notifier_unregister" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>change notifier callback</p>
+<dd><p>unregister a clock rate-change notifier callback</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -11563,11 +11570,18 @@ ordering guarantees for either the CPU or the compiler.</p>
 <code class="sig-name descname">kfree_rcu</code><a class="headerlink" href="#c.kfree_rcu" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
-<p><code class="docutils literal notranslate"><span class="pre">kfree_rcu</span> <span class="pre">()</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">kfree_rcu</span> <span class="pre">(ptr,</span> <span class="pre">rhf...)</span></code></p>
 <blockquote>
 <div><p>kfree an object after a grace period.</p>
 </div></blockquote>
 <p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">ptr</span></code></dt><dd><p>pointer to kfree for both single- and double-argument invocations.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">rhf...</span></code></dt><dd><p>the name of the struct rcu_head within the type of <strong>ptr</strong>,
+but only for double-argument invocations.</p>
+</dd>
+</dl>
 <p><strong>Description</strong></p>
 <p>Many rcu callbacks functions just call <a class="reference internal" href="mm-api.html#c.kfree" title="kfree"><code class="xref c c-func docutils literal notranslate"><span class="pre">kfree()</span></code></a> on the base structure.
 These functions are trivial, but their size adds up, and furthermore
