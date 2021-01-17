@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.12-dragon
+                5.11.13-dragon
               </div>
             
           
@@ -934,6 +934,22 @@ void <code class="sig-name descname">pci_d3cold_disable</code><span class="sig-p
 <p>This function can be used in drivers to disable D3cold from the device
 they handle.  It also updates upstream PCI bridge PM capabilities
 accordingly.</p>
+<dl class="c function">
+<dt id="c.pci_rebar_get_possible_sizes">
+u32 <code class="sig-name descname">pci_rebar_get_possible_sizes</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>pdev</em>, int <em>bar</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_rebar_get_possible_sizes" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>get possible sizes for BAR</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">pci_dev</span> <span class="pre">*pdev</span></code></dt><dd><p>PCI device</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">bar</span></code></dt><dd><p>BAR to query</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Get the possible sizes of a resizable BAR as bitmask defined in the spec
+(bit 0=1MB, bit 19=512GB). Returns 0 if BAR isn’t resizable.</p>
 <dl class="c function">
 <dt id="c.pci_enable_atomic_ops_to_root">
 int <code class="sig-name descname">pci_enable_atomic_ops_to_root</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em>, u32 <em>cap_mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_enable_atomic_ops_to_root" title="Permalink to this definition">¶</a><br /></dt>

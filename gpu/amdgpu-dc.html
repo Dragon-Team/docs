@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.12-dragon
+                5.11.13-dragon
               </div>
             
           
@@ -432,12 +432,6 @@ in nits.</p>
   uint32_t dmcu_fw_version;
   const struct gpu_info_soc_bounding_box_v1_0 *soc_bounding_box;
   uint32_t active_vblank_irq_count;
-#ifdef CONFIG_DEBUG_FS;
-  struct drm_property *crc_win_x_start_property;
-  struct drm_property *crc_win_y_start_property;
-  struct drm_property *crc_win_x_end_property;
-  struct drm_property *crc_win_y_end_property;
-#endif;
   struct amdgpu_encoder mst_encoders[AMDGPU_DM_MAX_CRTC];
   bool force_timing_sync;
 };
@@ -532,14 +526,6 @@ triggered.</p>
 available in FW</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">active_vblank_irq_count</span></code></dt><dd><p>number of currently active vblank irqs</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">crc_win_x_start_property</span></code></dt><dd><p>X start of the crc calculation window</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">crc_win_y_start_property</span></code></dt><dd><p>Y start of the crc calculation window</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">crc_win_x_end_property</span></code></dt><dd><p>X end of the crc calculation window</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">crc_win_y_end_property</span></code></dt><dd><p>Y end of the crc calculation window</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">mst_encoders</span></code></dt><dd><p>fake encoders used for DP MST.</p>
 </dd>

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.12-dragon
+                5.11.13-dragon
               </div>
             
           
@@ -4050,7 +4050,7 @@ setup.  Returns the newly created file* or an error pointer.</p>
 <dl class="c function">
 <dt id="c.anon_inode_getfd">
 int <code class="sig-name descname">anon_inode_getfd</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em>, <em class="property">const</em> <em class="property">struct</em> file_operations *<em>fops</em>, void *<em>priv</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.anon_inode_getfd" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>creates a new file instance by hooking it up to an anonymous inode, and a dentry that describe the “class” of the file</p>
+<dd><p>creates a new file instance by hooking it up to an anonymous inode and a dentry that describe the “class” of the file</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -4065,11 +4065,12 @@ int <code class="sig-name descname">anon_inode_getfd</code><span class="sig-pare
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Creates a new file by hooking it on a single inode. This is useful for files
-that do not need to have a full-fledged inode in order to operate correctly.
-All the files created with <a class="reference internal" href="#c.anon_inode_getfd" title="anon_inode_getfd"><code class="xref c c-func docutils literal notranslate"><span class="pre">anon_inode_getfd()</span></code></a> will share a single inode,
-hence saving memory and avoiding code duplication for the file/inode/dentry
-setup.  Returns new descriptor or an error code.</p>
+<p>Creates a new file by hooking it on a single inode. This is
+useful for files that do not need to have a full-fledged inode in
+order to operate correctly.  All the files created with
+<a class="reference internal" href="#c.anon_inode_getfd" title="anon_inode_getfd"><code class="xref c c-func docutils literal notranslate"><span class="pre">anon_inode_getfd()</span></code></a> will use the same singleton inode, reducing
+memory use and avoiding code duplication for the file/inode/dentry
+setup.  Returns a newly created file descriptor or an error code.</p>
 <dl class="c function">
 <dt id="c.setattr_prepare">
 int <code class="sig-name descname">setattr_prepare</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em>, <em class="property">struct</em> iattr *<em>attr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.setattr_prepare" title="Permalink to this definition">¶</a><br /></dt>
@@ -4545,40 +4546,6 @@ directly, without calling -&gt;get_link().  But -&gt;get_link() still must be se
 to mark the inode_operations as being for a symlink.</p>
 <p><strong>Return</strong></p>
 <p>the symlink target</p>
-<dl class="c function">
-<dt id="c.generic_ci_d_compare">
-int <code class="sig-name descname">generic_ci_d_compare</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> dentry *<em>dentry</em>, unsigned int <em>len</em>, <em class="property">const</em> char *<em>str</em>, <em class="property">const</em> <em class="property">struct</em> qstr *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_ci_d_compare" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>generic d_compare implementation for casefolding filesystems</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*dentry</span></code></dt><dd><p>dentry whose name we are checking against</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">len</span></code></dt><dd><p>len of name of dentry</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*str</span></code></dt><dd><p>str pointer to name of dentry</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">qstr</span> <span class="pre">*name</span></code></dt><dd><p>Name to compare against</p>
-</dd>
-</dl>
-<p><strong>Return</strong></p>
-<p>0 if names match, 1 if mismatch, or -ERRNO</p>
-<dl class="c function">
-<dt id="c.generic_ci_d_hash">
-int <code class="sig-name descname">generic_ci_d_hash</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> dentry *<em>dentry</em>, <em class="property">struct</em> qstr *<em>str</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_ci_d_hash" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>generic d_hash implementation for casefolding filesystems</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*dentry</span></code></dt><dd><p>dentry of the parent directory</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">qstr</span> <span class="pre">*str</span></code></dt><dd><p>qstr of name whose hash we should fill in</p>
-</dd>
-</dl>
-<p><strong>Return</strong></p>
-<p>0 if hash was successful or unchanged, and -EINVAL on error</p>
 <dl class="c function">
 <dt id="c.generic_set_encrypted_ci_d_ops">
 void <code class="sig-name descname">generic_set_encrypted_ci_d_ops</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_set_encrypted_ci_d_ops" title="Permalink to this definition">¶</a><br /></dt>

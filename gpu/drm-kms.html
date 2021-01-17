@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.12-dragon
+                5.11.13-dragon
               </div>
             
           
@@ -150,6 +150,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#crtc-abstraction">CRTC Abstraction</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#crtc-functions-reference">CRTC Functions Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#color-management-functions-reference">Color Management Functions Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#frame-buffer-abstraction">Frame Buffer Abstraction</a><ul>
@@ -164,6 +165,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#dumb-buffer-objects">Dumb Buffer Objects</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#plane-abstraction">Plane Abstraction</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#plane-functions-reference">Plane Functions Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plane-composition-functions-reference">Plane Composition Functions Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plane-damage-tracking-functions-reference">Plane Damage Tracking Functions Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#display-modes-function-reference">Display Modes Function Reference</a></li>
@@ -182,7 +185,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#standard-connector-properties">Standard Connector Properties</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#hdmi-specific-connector-properties">HDMI Specific Connector Properties</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#standard-crtc-properties">Standard CRTC Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#standard-plane-properties">Standard Plane Properties</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#plane-composition-properties">Plane Composition Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#damage-tracking-properties">Damage Tracking Properties</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#color-management-properties">Color Management Properties</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tile-group-property">Tile Group Property</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#explicit-fencing-properties">Explicit Fencing Properties</a></li>
@@ -713,7 +718,6 @@ involve drivers.</p>
   struct drm_property *hdcp_content_type_property;
   uint32_t preferred_depth, prefer_shadow;
   bool prefer_shadow_fbdev;
-  bool require_vt_switch_fbdev;
   bool quirk_addfb_prefer_xbgr_30bpp;
   bool quirk_addfb_prefer_host_byte_order;
   bool async_page_flip;
@@ -1022,8 +1026,6 @@ Protected Content.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">prefer_shadow</span></code></dt><dd><p>hint to userspace to prefer shadow-fb rendering</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">prefer_shadow_fbdev</span></code></dt><dd><p>Hint to framebuffer emulation to prefer shadow-fb rendering.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">require_vt_switch_fbdev</span></code></dt><dd><p>Hint to framebuffer emulation to enable VT switching on suspend/resume.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">quirk_addfb_prefer_xbgr_30bpp</span></code></dt><dd><p>Special hack for legacy ADDFB to keep nouveau userspace happy. Should
 only ever be set by the nouveau kernel driver.</p>
@@ -1536,6 +1538,7 @@ ordering between <code class="xref c c-type docutils literal notranslate"><span 
 and modeset state change.</p>
 <p>For an implementation of how to use this look at
 <a class="reference internal" href="drm-kms-helpers.html#c.drm_atomic_helper_setup_commit" title="drm_atomic_helper_setup_commit"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_setup_commit()</span></code></a> from the atomic helper library.</p>
+<p>See also <a class="reference internal" href="#c.drm_crtc_commit_wait" title="drm_crtc_commit_wait"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_crtc_commit_wait()</span></code></a>.</p>
 <dl class="c struct">
 <dt id="c.drm_private_state_funcs">
 <em class="property">struct </em><code class="sig-name descname">drm_private_state_funcs</code><a class="headerlink" href="#c.drm_private_state_funcs" title="Permalink to this definition">¶</a><br /></dt>
@@ -1613,6 +1616,23 @@ to the DRM device lifetime. This implies that:</p>
 <dt>2/ all calls to drm_atomic_private_obj_fini() must be done after calling</dt><dd><p><a class="reference internal" href="drm-internals.html#c.drm_dev_unregister" title="drm_dev_unregister"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_dev_unregister()</span></code></a></p>
 </dd>
 </dl>
+<p>If that private object is used to store a state shared by multiple
+CRTCs, proper care must be taken to ensure that non-blocking commits are
+properly ordered to avoid a use-after-free issue.</p>
+<p>Indeed, assuming a sequence of two non-blocking <a class="reference internal" href="#c.drm_atomic_commit" title="drm_atomic_commit"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_atomic_commit</span></code></a> on two
+different <a class="reference internal" href="#c.drm_crtc" title="drm_crtc"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc</span></code></a> using different <a class="reference internal" href="#c.drm_plane" title="drm_plane"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane</span></code></a> and <a class="reference internal" href="#c.drm_connector" title="drm_connector"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_connector</span></code></a>, so with no
+resources shared, there’s no guarantee on which commit is going to happen
+first. However, the second <a class="reference internal" href="#c.drm_atomic_commit" title="drm_atomic_commit"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_atomic_commit</span></code></a> will consider the first
+<a class="reference internal" href="#c.drm_private_obj" title="drm_private_obj"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_private_obj</span></code></a> its old state, and will be in charge of freeing it whenever
+the second <a class="reference internal" href="#c.drm_atomic_commit" title="drm_atomic_commit"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_atomic_commit</span></code></a> is done.</p>
+<p>If the first <a class="reference internal" href="#c.drm_atomic_commit" title="drm_atomic_commit"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_atomic_commit</span></code></a> happens after it, it will consider its
+<a class="reference internal" href="#c.drm_private_obj" title="drm_private_obj"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_private_obj</span></code></a> the new state and will be likely to access it, resulting in
+an access to a freed memory region. Drivers should store (and get a reference
+to) the <a class="reference internal" href="#c.drm_crtc_commit" title="drm_crtc_commit"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc_commit</span></code></a> structure in our private state in
+<a class="reference internal" href="drm-kms-helpers.html#c.drm_mode_config_helper_funcs" title="drm_mode_config_helper_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_mode_config_helper_funcs.atomic_commit_setup</span></code></a>, and then wait for that
+commit to complete as the first step of
+<a class="reference internal" href="drm-kms-helpers.html#c.drm_mode_config_helper_funcs" title="drm_mode_config_helper_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_mode_config_helper_funcs.atomic_commit_tail</span></code></a>, similar to
+<a class="reference internal" href="drm-kms-helpers.html#c.drm_atomic_helper_wait_for_dependencies" title="drm_atomic_helper_wait_for_dependencies"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_wait_for_dependencies()</span></code></a>.</p>
 <dl class="c macro">
 <dt id="c.drm_for_each_privobj">
 <code class="sig-name descname">drm_for_each_privobj</code><a class="headerlink" href="#c.drm_for_each_privobj" title="Permalink to this definition">¶</a><br /></dt>
@@ -2396,6 +2416,22 @@ conversion, or modifying signals polarities.</p>
 </dd>
 </dl>
 <dl class="c function">
+<dt id="c.drm_crtc_commit_wait">
+int <code class="sig-name descname">drm_crtc_commit_wait</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_crtc_commit" title="drm_crtc_commit">drm_crtc_commit</a> *<em>commit</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_crtc_commit_wait" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Waits for a commit to complete</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_crtc_commit</span> <span class="pre">*commit</span></code></dt><dd><p><a class="reference internal" href="#c.drm_crtc_commit" title="drm_crtc_commit"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc_commit</span></code></a> to wait for</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Waits for a given <a class="reference internal" href="#c.drm_crtc_commit" title="drm_crtc_commit"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc_commit</span></code></a> to be programmed into the
+hardware and flipped to.</p>
+<p>0 on success, a negative error code otherwise.</p>
+<p><strong>Return</strong></p>
+<dl class="c function">
 <dt id="c.drm_atomic_state_default_release">
 void <code class="sig-name descname">drm_atomic_state_default_release</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_atomic_state" title="drm_atomic_state">drm_atomic_state</a> *<em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_atomic_state_default_release" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>release memory initialized by drm_atomic_state_init</p>
@@ -3043,7 +3079,7 @@ with a call to <a class="reference internal" href="#c.drm_crtc_init_with_planes"
 <a class="reference internal" href="#c.drm_crtc_funcs" title="drm_crtc_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc_funcs.page_flip</span></code></a> and <a class="reference internal" href="#c.drm_crtc_funcs" title="drm_crtc_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc_funcs.cursor_set2</span></code></a>, and other legacy
 operations like <a class="reference internal" href="#c.drm_crtc_funcs" title="drm_crtc_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc_funcs.gamma_set</span></code></a>. For atomic drivers all these
 features are controlled through <a class="reference internal" href="#c.drm_property" title="drm_property"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_property</span></code></a> and
-<a class="reference internal" href="#c.drm_mode_config_funcs" title="drm_mode_config_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_mode_config_funcs.atomic_check</span></code></a> and <a class="reference internal" href="#c.drm_mode_config_funcs" title="drm_mode_config_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_mode_config_funcs.atomic_check</span></code></a>.</p>
+<a class="reference internal" href="#c.drm_mode_config_funcs" title="drm_mode_config_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_mode_config_funcs.atomic_check</span></code></a>.</p>
 <div class="section" id="crtc-functions-reference">
 <h3>CRTC Functions Reference<a class="headerlink" href="#crtc-functions-reference" title="Permalink to this headline">¶</a></h3>
 <dl class="c struct">
@@ -3374,7 +3410,7 @@ universal plane support and register a proper cursor plane using
 <p>Atomic drivers who want to support gamma tables should implement the
 atomic color management support, enabled by calling
 <a class="reference internal" href="#c.drm_crtc_enable_color_mgmt" title="drm_crtc_enable_color_mgmt"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_crtc_enable_color_mgmt()</span></code></a>, which then supports the legacy gamma
-interface through the <a class="reference internal" href="drm-kms-helpers.html#c.drm_atomic_helper_legacy_gamma_set" title="drm_atomic_helper_legacy_gamma_set"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_legacy_gamma_set()</span></code></a>
+interface through the drm_atomic_helper_legacy_gamma_set()
 compatibility implementation.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">destroy</span></code></dt><dd><p>Clean up CRTC resources. This is only called at driver unload time
@@ -4021,6 +4057,8 @@ planes). For really simple hardware which has only 1 plane look at
 The <a class="reference internal" href="#c.drm_crtc_funcs" title="drm_crtc_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc_funcs.destroy</span></code></a> hook should call <a class="reference internal" href="#c.drm_crtc_cleanup" title="drm_crtc_cleanup"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_crtc_cleanup()</span></code></a> and <a class="reference internal" href="../core-api/mm-api.html#c.kfree" title="kfree"><code class="xref c c-func docutils literal notranslate"><span class="pre">kfree()</span></code></a>
 the crtc structure. The crtc structure should not be allocated with
 devm_kzalloc().</p>
+<p>The <strong>primary</strong> and <strong>cursor</strong> planes are only relevant for legacy uAPI, see
+<a class="reference internal" href="#c.drm_crtc" title="drm_crtc"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc.primary</span></code></a> and <a class="reference internal" href="#c.drm_crtc" title="drm_crtc"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc.cursor</span></code></a>.</p>
 <p><strong>Note</strong></p>
 <p>consider using <a class="reference internal" href="#c.drmm_crtc_alloc_with_planes" title="drmm_crtc_alloc_with_planes"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_crtc_alloc_with_planes()</span></code></a> instead of
 <a class="reference internal" href="#c.drm_crtc_init_with_planes" title="drm_crtc_init_with_planes"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_crtc_init_with_planes()</span></code></a> to let the DRM managed resource infrastructure
@@ -4098,6 +4136,173 @@ BIT(DRM_SCALING_FILTER_DEFAULT).</p>
 CRTC.</p>
 <p><strong>Return</strong></p>
 <p>Zero for success or -errno</p>
+</div>
+<div class="section" id="color-management-functions-reference">
+<h3>Color Management Functions Reference<a class="headerlink" href="#color-management-functions-reference" title="Permalink to this headline">¶</a></h3>
+<dl class="c function">
+<dt id="c.drm_color_ctm_s31_32_to_qm_n">
+u64 <code class="sig-name descname">drm_color_ctm_s31_32_to_qm_n</code><span class="sig-paren">(</span>u64 <em>user_input</em>, u32 <em>m</em>, u32 <em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_color_ctm_s31_32_to_qm_n" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">u64</span> <span class="pre">user_input</span></code></dt><dd><p>input value</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">m</span></code></dt><dd><p>number of integer bits, only support m &lt;= 32, include the sign-bit</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">n</span></code></dt><dd><p>number of fractional bits, only support n &lt;= 32</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Convert and clamp S31.32 sign-magnitude to Qm.n (signed 2’s complement).
+The sign-bit BIT(m+n-1) and above are 0 for positive value and 1 for negative
+the range of value is [-2^(m-1), 2^(m-1) - 2^-n]</p>
+<p>For example
+A Q3.12 format number:
+- required bit: 3 + 12 = 15bits
+- range: [-2^2, 2^2 - 2^−15]</p>
+<p><strong>NOTE</strong></p>
+<dl class="simple">
+<dt>the m can be zero if all bit_precision are used to present fractional</dt><dd><p>bits like Q0.32</p>
+</dd>
+</dl>
+<dl class="c function">
+<dt id="c.drm_crtc_enable_color_mgmt">
+void <code class="sig-name descname">drm_crtc_enable_color_mgmt</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_crtc" title="drm_crtc">drm_crtc</a> *<em>crtc</em>, uint <em>degamma_lut_size</em>, bool <em>has_ctm</em>, uint <em>gamma_lut_size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_crtc_enable_color_mgmt" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>enable color management properties</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_crtc</span> <span class="pre">*crtc</span></code></dt><dd><p>DRM CRTC</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">uint</span> <span class="pre">degamma_lut_size</span></code></dt><dd><p>the size of the degamma lut (before CSC)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">has_ctm</span></code></dt><dd><p>whether to attach ctm_property for CSC matrix</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">uint</span> <span class="pre">gamma_lut_size</span></code></dt><dd><p>the size of the gamma lut (after CSC)</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function lets the driver enable the color correction
+properties on a CRTC. This includes 3 degamma, csc and gamma
+properties that userspace can set and 2 size properties to inform
+the userspace of the lut sizes. Each of the properties are
+optional. The gamma and degamma properties are only attached if
+their size is not 0 and ctm_property is only attached if has_ctm is
+true.</p>
+<dl class="c function">
+<dt id="c.drm_mode_crtc_set_gamma_size">
+int <code class="sig-name descname">drm_mode_crtc_set_gamma_size</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_crtc" title="drm_crtc">drm_crtc</a> *<em>crtc</em>, int <em>gamma_size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_mode_crtc_set_gamma_size" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>set the gamma table size</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_crtc</span> <span class="pre">*crtc</span></code></dt><dd><p>CRTC to set the gamma table size for</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">gamma_size</span></code></dt><dd><p>size of the gamma table</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Drivers which support gamma tables should set this to the supported gamma
+table size when initializing the CRTC. Currently the drm core only supports a
+fixed gamma table size.</p>
+<p><strong>Return</strong></p>
+<p>Zero on success, negative errno on failure.</p>
+<dl class="c function">
+<dt id="c.drm_plane_create_color_properties">
+int <code class="sig-name descname">drm_plane_create_color_properties</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_plane" title="drm_plane">drm_plane</a> *<em>plane</em>, u32 <em>supported_encodings</em>, u32 <em>supported_ranges</em>, <em class="property">enum</em> drm_color_encoding <em>default_encoding</em>, <em class="property">enum</em> drm_color_range <em>default_range</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_plane_create_color_properties" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>color encoding related plane properties</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane</span> <span class="pre">*plane</span></code></dt><dd><p>plane object</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">supported_encodings</span></code></dt><dd><p>bitfield indicating supported color encodings</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">supported_ranges</span></code></dt><dd><p>bitfileld indicating supported color ranges</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">drm_color_encoding</span> <span class="pre">default_encoding</span></code></dt><dd><p>default color encoding</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">drm_color_range</span> <span class="pre">default_range</span></code></dt><dd><p>default color range</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Create and attach plane specific COLOR_ENCODING and COLOR_RANGE
+properties to <strong>plane</strong>. The supported encodings and ranges should
+be provided in supported_encodings and supported_ranges bitmasks.
+Each bit set in the bitmask indicates that its number as enum
+value is supported.</p>
+<dl class="c function">
+<dt id="c.drm_color_lut_check">
+int <code class="sig-name descname">drm_color_lut_check</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_property_blob" title="drm_property_blob">drm_property_blob</a> *<em>lut</em>, u32 <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_color_lut_check" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>check validity of lookup table</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">drm_property_blob</span> <span class="pre">*lut</span></code></dt><dd><p>property blob containing LUT to check</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">tests</span></code></dt><dd><p>bitmask of tests to run</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Helper to check whether a userspace-provided lookup table is valid and
+satisfies hardware requirements.  Drivers pass a bitmask indicating which of
+the tests in <a class="reference internal" href="#c.drm_color_lut_tests" title="drm_color_lut_tests"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_color_lut_tests</span></code></a> should be performed.</p>
+<p>Returns 0 on success, -EINVAL on failure.</p>
+<dl class="c function">
+<dt id="c.drm_color_lut_extract">
+u32 <code class="sig-name descname">drm_color_lut_extract</code><span class="sig-paren">(</span>u32 <em>user_input</em>, int <em>bit_precision</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_color_lut_extract" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>clamp and round LUT entries</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">user_input</span></code></dt><dd><p>input value</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">bit_precision</span></code></dt><dd><p>number of bits the hw LUT supports</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Extract a degamma/gamma LUT value provided by user (in the form of
+<code class="xref c c-type docutils literal notranslate"><span class="pre">drm_color_lut</span></code> entries) and round it to the precision supported by the
+hardware.</p>
+<dl class="c function">
+<dt id="c.drm_color_lut_size">
+int <code class="sig-name descname">drm_color_lut_size</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_property_blob" title="drm_property_blob">drm_property_blob</a> *<em>blob</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_color_lut_size" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>calculate the number of entries in the LUT</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">drm_property_blob</span> <span class="pre">*blob</span></code></dt><dd><p>blob containing the LUT</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p>The number of entries in the color LUT stored in <strong>blob</strong>.</p>
+<dl class="c enum">
+<dt id="c.drm_color_lut_tests">
+<em class="property">enum </em><code class="sig-name descname">drm_color_lut_tests</code><a class="headerlink" href="#c.drm_color_lut_tests" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>hw-specific LUT tests to perform</p>
+</dd></dl>
+
+<p><strong>Constants</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">DRM_COLOR_LUT_EQUAL_CHANNELS</span></code></dt><dd><p>Checks whether the entries of a LUT all have equal values for the
+red, green, and blue channels.  Intended for hardware that only
+accepts a single value per LUT entry and assumes that value applies
+to all three color components.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">DRM_COLOR_LUT_NON_DECREASING</span></code></dt><dd><p>Checks whether the entries of a LUT are always flat or increasing
+(never decreasing).</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>The <a class="reference internal" href="#c.drm_color_lut_check" title="drm_color_lut_check"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_color_lut_check()</span></code></a> function takes a bitmask of the values here to
+determine which tests to apply to a userspace-provided LUT.</p>
 </div>
 </div>
 <div class="section" id="frame-buffer-abstraction">
@@ -4944,9 +5149,10 @@ graphics unnecessarily complex.</p>
 create dumb buffers suitable for scanout, which can then be used to create
 KMS frame buffers.</p>
 <p>To support dumb objects drivers must implement the <a class="reference internal" href="drm-internals.html#c.drm_driver" title="drm_driver"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_driver.dumb_create</span></code></a>
-operation. <a class="reference internal" href="drm-internals.html#c.drm_driver" title="drm_driver"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_driver.dumb_destroy</span></code></a> defaults to <a class="reference internal" href="drm-mm.html#c.drm_gem_dumb_destroy" title="drm_gem_dumb_destroy"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_dumb_destroy()</span></code></a> if
-not set and <a class="reference internal" href="drm-internals.html#c.drm_driver" title="drm_driver"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_driver.dumb_map_offset</span></code></a> defaults to
-<a class="reference internal" href="drm-mm.html#c.drm_gem_dumb_map_offset" title="drm_gem_dumb_map_offset"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_dumb_map_offset()</span></code></a>. See the callbacks for further details.</p>
+and <a class="reference internal" href="drm-internals.html#c.drm_driver" title="drm_driver"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_driver.dumb_map_offset</span></code></a> operations (the latter defaults to
+<a class="reference internal" href="drm-mm.html#c.drm_gem_dumb_map_offset" title="drm_gem_dumb_map_offset"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_dumb_map_offset()</span></code></a> if not set). Drivers that don’t use GEM handles
+additionally need to implement the <a class="reference internal" href="drm-internals.html#c.drm_driver" title="drm_driver"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_driver.dumb_destroy</span></code></a> operation. See
+the callbacks for further details.</p>
 <p>Note that dumb objects may not be used for gpu acceleration, as has been
 attempted on some ARM embedded platforms. Such drivers really must have
 a hardware-specific ioctl to allocate suitable buffer objects.</p>
@@ -4956,20 +5162,27 @@ a hardware-specific ioctl to allocate suitable buffer objects.</p>
 <p>A plane represents an image source that can be blended with or overlayed on
 top of a CRTC during the scanout process. Planes take their input data from a
 <a class="reference internal" href="#c.drm_framebuffer" title="drm_framebuffer"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_framebuffer</span></code></a> object. The plane itself specifies the cropping and scaling
-of that image, and where it is placed on the visible are of a display
+of that image, and where it is placed on the visible area of a display
 pipeline, represented by <a class="reference internal" href="#c.drm_crtc" title="drm_crtc"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc</span></code></a>. A plane can also have additional
 properties that specify how the pixels are positioned and blended, like
 rotation or Z-position. All these properties are stored in <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state</span></code></a>.</p>
 <p>To create a plane, a KMS drivers allocates and zeroes an instances of
 <a class="reference internal" href="#c.drm_plane" title="drm_plane"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane</span></code></a> (possibly as part of a larger structure) and registers it
 with a call to <a class="reference internal" href="#c.drm_universal_plane_init" title="drm_universal_plane_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_universal_plane_init()</span></code></a>.</p>
-<p>Cursor and overlay planes are optional. All drivers should provide one
-primary plane per CRTC to avoid surprising userspace too much. See <a class="reference internal" href="#c.drm_plane_type" title="drm_plane_type"><code class="xref c c-enum docutils literal notranslate"><span class="pre">enum</span>
-<span class="pre">drm_plane_type</span></code></a> for a more in-depth discussion of these special uapi-relevant
-plane types. Special planes are associated with their CRTC by calling
-<a class="reference internal" href="#c.drm_crtc_init_with_planes" title="drm_crtc_init_with_planes"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_crtc_init_with_planes()</span></code></a>.</p>
 <p>The type of a plane is exposed in the immutable “type” enumeration property,
-which has one of the following values: “Overlay”, “Primary”, “Cursor”.</p>
+which has one of the following values: “Overlay”, “Primary”, “Cursor” (see
+<a class="reference internal" href="#c.drm_plane_type" title="drm_plane_type"><code class="xref c c-enum docutils literal notranslate"><span class="pre">enum</span> <span class="pre">drm_plane_type</span></code></a>). A plane can be compatible with multiple CRTCs, see
+<a class="reference internal" href="#c.drm_plane" title="drm_plane"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane.possible_crtcs</span></code></a>.</p>
+<p>Each CRTC must have a unique primary plane userspace can attach to enable
+the CRTC. In other words, userspace must be able to attach a different
+primary plane to each CRTC at the same time. Primary planes can still be
+compatible with multiple CRTCs. There must be exactly as many primary planes
+as there are CRTCs.</p>
+<p>Legacy uAPI doesn’t expose the primary and cursor planes directly. DRM core
+relies on the driver to set the primary and optionally the cursor plane used
+for legacy IOCTLs. This is done by calling <a class="reference internal" href="#c.drm_crtc_init_with_planes" title="drm_crtc_init_with_planes"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_crtc_init_with_planes()</span></code></a>. All
+drivers must provide one primary plane per CRTC to avoid surprising legacy
+userspace too much.</p>
 <div class="section" id="plane-functions-reference">
 <h3>Plane Functions Reference<a class="headerlink" href="#plane-functions-reference" title="Permalink to this headline">¶</a></h3>
 <dl class="c struct">
@@ -5795,6 +6008,401 @@ BIT(DRM_SCALING_FILTER_DEFAULT).</p>
 plane.</p>
 <p><strong>Return</strong></p>
 <p>Zero for success or -errno</p>
+</div>
+<div class="section" id="plane-composition-functions-reference">
+<h3>Plane Composition Functions Reference<a class="headerlink" href="#plane-composition-functions-reference" title="Permalink to this headline">¶</a></h3>
+<dl class="c function">
+<dt id="c.drm_plane_create_alpha_property">
+int <code class="sig-name descname">drm_plane_create_alpha_property</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_plane" title="drm_plane">drm_plane</a> *<em>plane</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_plane_create_alpha_property" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>create a new alpha property</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane</span> <span class="pre">*plane</span></code></dt><dd><p>drm plane</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function creates a generic, mutable, alpha property and enables support
+for it in the DRM core. It is attached to <strong>plane</strong>.</p>
+<p>The alpha property will be allowed to be within the bounds of 0
+(transparent) to 0xffff (opaque).</p>
+<p><strong>Return</strong></p>
+<p>0 on success, negative error code on failure.</p>
+<dl class="c function">
+<dt id="c.drm_plane_create_rotation_property">
+int <code class="sig-name descname">drm_plane_create_rotation_property</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_plane" title="drm_plane">drm_plane</a> *<em>plane</em>, unsigned int <em>rotation</em>, unsigned int <em>supported_rotations</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_plane_create_rotation_property" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>create a new rotation property</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane</span> <span class="pre">*plane</span></code></dt><dd><p>drm plane</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">rotation</span></code></dt><dd><p>initial value of the rotation property</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">supported_rotations</span></code></dt><dd><p>bitmask of supported rotations and reflections</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This creates a new property with the selected support for transformations.</p>
+<p>Since a rotation by 180° degress is the same as reflecting both along the x
+and the y axis the rotation property is somewhat redundant. Drivers can use
+<a class="reference internal" href="#c.drm_rotation_simplify" title="drm_rotation_simplify"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_rotation_simplify()</span></code></a> to normalize values of this property.</p>
+<p>The property exposed to userspace is a bitmask property (see
+<a class="reference internal" href="#c.drm_property_create_bitmask" title="drm_property_create_bitmask"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_property_create_bitmask()</span></code></a>) called “rotation” and has the following
+bitmask enumaration values:</p>
+<dl class="simple">
+<dt>DRM_MODE_ROTATE_0:</dt><dd><p>“rotate-0”</p>
+</dd>
+<dt>DRM_MODE_ROTATE_90:</dt><dd><p>“rotate-90”</p>
+</dd>
+<dt>DRM_MODE_ROTATE_180:</dt><dd><p>“rotate-180”</p>
+</dd>
+<dt>DRM_MODE_ROTATE_270:</dt><dd><p>“rotate-270”</p>
+</dd>
+<dt>DRM_MODE_REFLECT_X:</dt><dd><p>“reflect-x”</p>
+</dd>
+<dt>DRM_MODE_REFLECT_Y:</dt><dd><p>“reflect-y”</p>
+</dd>
+</dl>
+<p>Rotation is the specified amount in degrees in counter clockwise direction,
+the X and Y axis are within the source rectangle, i.e.  the X/Y axis before
+rotation. After reflection, the rotation is applied to the image sampled from
+the source rectangle, before scaling it to fit the destination rectangle.</p>
+<dl class="c function">
+<dt id="c.drm_rotation_simplify">
+unsigned int <code class="sig-name descname">drm_rotation_simplify</code><span class="sig-paren">(</span>unsigned int <em>rotation</em>, unsigned int <em>supported_rotations</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_rotation_simplify" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Try to simplify the rotation</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">rotation</span></code></dt><dd><p>Rotation to be simplified</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">supported_rotations</span></code></dt><dd><p>Supported rotations</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Attempt to simplify the rotation to a form that is supported.
+Eg. if the hardware supports everything except DRM_MODE_REFLECT_X
+one could call this function like this:</p>
+<dl class="simple">
+<dt>drm_rotation_simplify(rotation, DRM_MODE_ROTATE_0 |</dt><dd><p>DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_180 |
+DRM_MODE_ROTATE_270 | DRM_MODE_REFLECT_Y);</p>
+</dd>
+</dl>
+<p>to eliminate the DRM_MODE_ROTATE_X flag. Depending on what kind of
+transforms the hardware supports, this function may not
+be able to produce a supported transform, so the caller should
+check the result afterwards.</p>
+<dl class="c function">
+<dt id="c.drm_plane_create_zpos_property">
+int <code class="sig-name descname">drm_plane_create_zpos_property</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_plane" title="drm_plane">drm_plane</a> *<em>plane</em>, unsigned int <em>zpos</em>, unsigned int <em>min</em>, unsigned int <em>max</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_plane_create_zpos_property" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>create mutable zpos property</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane</span> <span class="pre">*plane</span></code></dt><dd><p>drm plane</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">zpos</span></code></dt><dd><p>initial value of zpos property</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">min</span></code></dt><dd><p>minimal possible value of zpos property</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">max</span></code></dt><dd><p>maximal possible value of zpos property</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function initializes generic mutable zpos property and enables support
+for it in drm core. Drivers can then attach this property to planes to enable
+support for configurable planes arrangement during blending operation.
+Drivers that attach a mutable zpos property to any plane should call the
+<a class="reference internal" href="#c.drm_atomic_normalize_zpos" title="drm_atomic_normalize_zpos"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_normalize_zpos()</span></code></a> helper during their implementation of
+<a class="reference internal" href="#c.drm_mode_config_funcs" title="drm_mode_config_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_mode_config_funcs.atomic_check()</span></code></a>, which will update the normalized zpos
+values and store them in <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state.normalized_zpos</span></code></a>. Usually min
+should be set to 0 and max to maximal number of planes for given crtc - 1.</p>
+<p>If zpos of some planes cannot be changed (like fixed background or
+cursor/topmost planes), drivers shall adjust the min/max values and assign
+those planes immutable zpos properties with lower or higher values (for more
+information, see <a class="reference internal" href="#c.drm_plane_create_zpos_immutable_property" title="drm_plane_create_zpos_immutable_property"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_plane_create_zpos_immutable_property()</span></code></a> function). In such
+case drivers shall also assign proper initial zpos values for all planes in
+its plane_reset() callback, so the planes will be always sorted properly.</p>
+<p>See also <a class="reference internal" href="#c.drm_atomic_normalize_zpos" title="drm_atomic_normalize_zpos"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_normalize_zpos()</span></code></a>.</p>
+<p>The property exposed to userspace is called “zpos”.</p>
+<p><strong>Return</strong></p>
+<p>Zero on success, negative errno on failure.</p>
+<dl class="c function">
+<dt id="c.drm_plane_create_zpos_immutable_property">
+int <code class="sig-name descname">drm_plane_create_zpos_immutable_property</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_plane" title="drm_plane">drm_plane</a> *<em>plane</em>, unsigned int <em>zpos</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_plane_create_zpos_immutable_property" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>create immuttable zpos property</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane</span> <span class="pre">*plane</span></code></dt><dd><p>drm plane</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">zpos</span></code></dt><dd><p>value of zpos property</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function initializes generic immutable zpos property and enables
+support for it in drm core. Using this property driver lets userspace
+to get the arrangement of the planes for blending operation and notifies
+it that the hardware (or driver) doesn’t support changing of the planes’
+order. For mutable zpos see <a class="reference internal" href="#c.drm_plane_create_zpos_property" title="drm_plane_create_zpos_property"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_plane_create_zpos_property()</span></code></a>.</p>
+<p>The property exposed to userspace is called “zpos”.</p>
+<p><strong>Return</strong></p>
+<p>Zero on success, negative errno on failure.</p>
+<dl class="c function">
+<dt id="c.drm_atomic_normalize_zpos">
+int <code class="sig-name descname">drm_atomic_normalize_zpos</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device">drm_device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.drm_atomic_state" title="drm_atomic_state">drm_atomic_state</a> *<em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_atomic_normalize_zpos" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>calculate normalized zpos values for all crtcs</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_device</span> <span class="pre">*dev</span></code></dt><dd><p>DRM device</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_atomic_state</span> <span class="pre">*state</span></code></dt><dd><p>atomic state of DRM device</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function calculates normalized zpos value for all modified planes in
+the provided atomic state of DRM device.</p>
+<p>For every CRTC this function checks new states of all planes assigned to
+it and calculates normalized zpos value for these planes. Planes are compared
+first by their zpos values, then by plane id (if zpos is equal). The plane
+with lowest zpos value is at the bottom. The <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state.normalized_zpos</span></code></a>
+is then filled with unique values from 0 to number of active planes in crtc
+minus one.</p>
+<p>RETURNS
+Zero for success or -errno</p>
+<dl class="c function">
+<dt id="c.drm_plane_create_blend_mode_property">
+int <code class="sig-name descname">drm_plane_create_blend_mode_property</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_plane" title="drm_plane">drm_plane</a> *<em>plane</em>, unsigned int <em>supported_modes</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_plane_create_blend_mode_property" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>create a new blend mode property</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane</span> <span class="pre">*plane</span></code></dt><dd><p>drm plane</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">supported_modes</span></code></dt><dd><p>bitmask of supported modes, must include
+BIT(DRM_MODE_BLEND_PREMULTI). Current DRM assumption is
+that alpha is premultiplied, and old userspace can break if
+the property defaults to anything else.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This creates a new property describing the blend mode.</p>
+<p>The property exposed to userspace is an enumeration property (see
+<a class="reference internal" href="#c.drm_property_create_enum" title="drm_property_create_enum"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_property_create_enum()</span></code></a>) called “pixel blend mode” and has the
+following enumeration values:</p>
+<dl class="simple">
+<dt>“None”:</dt><dd><p>Blend formula that ignores the pixel alpha.</p>
+</dd>
+<dt>“Pre-multiplied”:</dt><dd><p>Blend formula that assumes the pixel color values have been already
+pre-multiplied with the alpha channel values.</p>
+</dd>
+<dt>“Coverage”:</dt><dd><p>Blend formula that assumes the pixel color values have not been
+pre-multiplied and will do so when blending them to the background color
+values.</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p>Zero for success or -errno</p>
+</div>
+<div class="section" id="plane-damage-tracking-functions-reference">
+<h3>Plane Damage Tracking Functions Reference<a class="headerlink" href="#plane-damage-tracking-functions-reference" title="Permalink to this headline">¶</a></h3>
+<dl class="c function">
+<dt id="c.drm_plane_enable_fb_damage_clips">
+void <code class="sig-name descname">drm_plane_enable_fb_damage_clips</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_plane" title="drm_plane">drm_plane</a> *<em>plane</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_plane_enable_fb_damage_clips" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Enables plane fb damage clips property.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane</span> <span class="pre">*plane</span></code></dt><dd><p>Plane on which to enable damage clips property.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function lets driver to enable the damage clips property on a plane.</p>
+<dl class="c function">
+<dt id="c.drm_atomic_helper_check_plane_damage">
+void <code class="sig-name descname">drm_atomic_helper_check_plane_damage</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_atomic_state" title="drm_atomic_state">drm_atomic_state</a> *<em>state</em>, <em class="property">struct</em> <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state">drm_plane_state</a> *<em>plane_state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_atomic_helper_check_plane_damage" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Verify plane damage on atomic_check.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_atomic_state</span> <span class="pre">*state</span></code></dt><dd><p>The driver state object.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane_state</span> <span class="pre">*plane_state</span></code></dt><dd><p>Plane state for which to verify damage.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This helper function makes sure that damage from plane state is discarded
+for full modeset. If there are more reasons a driver would want to do a full
+plane update rather than processing individual damage regions, then those
+cases should be taken care of here.</p>
+<p>Note that <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state.fb_damage_clips</span></code></a> == NULL in plane state means that
+full plane update should happen. It also ensure helper iterator will return
+<a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state.src</span></code></a> as damage.</p>
+<dl class="c function">
+<dt id="c.drm_atomic_helper_dirtyfb">
+int <code class="sig-name descname">drm_atomic_helper_dirtyfb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_framebuffer" title="drm_framebuffer">drm_framebuffer</a> *<em>fb</em>, <em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_file" title="drm_file">drm_file</a> *<em>file_priv</em>, unsigned int <em>flags</em>, unsigned int <em>color</em>, <em class="property">struct</em> drm_clip_rect *<em>clips</em>, unsigned int <em>num_clips</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_atomic_helper_dirtyfb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Helper for dirtyfb.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_framebuffer</span> <span class="pre">*fb</span></code></dt><dd><p>DRM framebuffer.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_file</span> <span class="pre">*file_priv</span></code></dt><dd><p>Drm file for the ioctl call.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">flags</span></code></dt><dd><p>Dirty fb annotate flags.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">color</span></code></dt><dd><p>Color for annotate fill.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_clip_rect</span> <span class="pre">*clips</span></code></dt><dd><p>Dirty region.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">num_clips</span></code></dt><dd><p>Count of clip in clips.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>A helper to implement <a class="reference internal" href="#c.drm_framebuffer_funcs" title="drm_framebuffer_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_framebuffer_funcs.dirty</span></code></a> using damage interface
+during plane update. If num_clips is 0 then this helper will do a full plane
+update. This is the same behaviour expected by DIRTFB IOCTL.</p>
+<p>Note that this helper is blocking implementation. This is what current
+drivers and userspace expect in their DIRTYFB IOCTL implementation, as a way
+to rate-limit userspace and make sure its rendering doesn’t get ahead of
+uploading new data too much.</p>
+<p><strong>Return</strong></p>
+<p>Zero on success, negative errno on failure.</p>
+<dl class="c function">
+<dt id="c.drm_atomic_helper_damage_iter_init">
+void <code class="sig-name descname">drm_atomic_helper_damage_iter_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_atomic_helper_damage_iter" title="drm_atomic_helper_damage_iter">drm_atomic_helper_damage_iter</a> *<em>iter</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state">drm_plane_state</a> *<em>old_state</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state">drm_plane_state</a> *<em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_atomic_helper_damage_iter_init" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialize the damage iterator.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_atomic_helper_damage_iter</span> <span class="pre">*iter</span></code></dt><dd><p>The iterator to initialize.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">drm_plane_state</span> <span class="pre">*old_state</span></code></dt><dd><p>Old plane state for validation.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">drm_plane_state</span> <span class="pre">*state</span></code></dt><dd><p>Plane state from which to iterate the damage clips.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Initialize an iterator, which clips plane damage
+<a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state.fb_damage_clips</span></code></a> to plane <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state.src</span></code></a>. This iterator
+returns full plane src in case damage is not present because either
+user-space didn’t sent or driver discarded it (it want to do full plane
+update). Currently this iterator returns full plane src in case plane src
+changed but that can be changed in future to return damage.</p>
+<p>For the case when plane is not visible or plane update should not happen the
+first call to iter_next will return false. Note that this helper use clipped
+<a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state.src</span></code></a>, so driver calling this helper should have called
+<a class="reference internal" href="drm-kms-helpers.html#c.drm_atomic_helper_check_plane_state" title="drm_atomic_helper_check_plane_state"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_check_plane_state()</span></code></a> earlier.</p>
+<dl class="c function">
+<dt id="c.drm_atomic_helper_damage_iter_next">
+bool <code class="sig-name descname">drm_atomic_helper_damage_iter_next</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_atomic_helper_damage_iter" title="drm_atomic_helper_damage_iter">drm_atomic_helper_damage_iter</a> *<em>iter</em>, <em class="property">struct</em> <a class="reference internal" href="drm-kms-helpers.html#c.drm_rect" title="drm_rect">drm_rect</a> *<em>rect</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_atomic_helper_damage_iter_next" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Advance the damage iterator.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_atomic_helper_damage_iter</span> <span class="pre">*iter</span></code></dt><dd><p>The iterator to advance.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_rect</span> <span class="pre">*rect</span></code></dt><dd><p>Return a rectangle in fb coordinate clipped to plane src.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Since plane src is in 16.16 fixed point and damage clips are whole number,
+this iterator round off clips that intersect with plane src. Round down for
+x1/y1 and round up for x2/y2 for the intersected coordinate. Similar rounding
+off for full plane src, in case it’s returned as damage. This iterator will
+skip damage clips outside of plane src.</p>
+<p>If the first call to iterator next returns false then it means no need to
+update the plane.</p>
+<p><strong>Return</strong></p>
+<p>True if the output is valid, false if reached the end.</p>
+<dl class="c function">
+<dt id="c.drm_atomic_helper_damage_merged">
+bool <code class="sig-name descname">drm_atomic_helper_damage_merged</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state">drm_plane_state</a> *<em>old_state</em>, <em class="property">struct</em> <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state">drm_plane_state</a> *<em>state</em>, <em class="property">struct</em> <a class="reference internal" href="drm-kms-helpers.html#c.drm_rect" title="drm_rect">drm_rect</a> *<em>rect</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_atomic_helper_damage_merged" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Merged plane damage</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">drm_plane_state</span> <span class="pre">*old_state</span></code></dt><dd><p>Old plane state for validation.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane_state</span> <span class="pre">*state</span></code></dt><dd><p>Plane state from which to iterate the damage clips.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_rect</span> <span class="pre">*rect</span></code></dt><dd><p>Returns the merged damage rectangle</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function merges any valid plane damage clips into one rectangle and
+returns it in <strong>rect</strong>.</p>
+<p>For details see: <a class="reference internal" href="#c.drm_atomic_helper_damage_iter_init" title="drm_atomic_helper_damage_iter_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_damage_iter_init()</span></code></a> and
+<a class="reference internal" href="#c.drm_atomic_helper_damage_iter_next" title="drm_atomic_helper_damage_iter_next"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_damage_iter_next()</span></code></a>.</p>
+<p><strong>Return</strong></p>
+<p>True if there is valid plane damage otherwise false.</p>
+<dl class="c macro">
+<dt id="c.drm_atomic_for_each_plane_damage">
+<code class="sig-name descname">drm_atomic_for_each_plane_damage</code><a class="headerlink" href="#c.drm_atomic_for_each_plane_damage" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<p><code class="docutils literal notranslate"><span class="pre">drm_atomic_for_each_plane_damage</span> <span class="pre">(iter,</span> <span class="pre">rect)</span></code></p>
+<blockquote>
+<div><p>Iterator macro for plane damage.</p>
+</div></blockquote>
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">iter</span></code></dt><dd><p>The iterator to advance.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">rect</span></code></dt><dd><p>Return a rectangle in fb coordinate clipped to plane src.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Note that if the first call to iterator macro return false then no need to do
+plane update. Iterator will return full plane src when damage is not passed
+by user-space.</p>
+<dl class="c struct">
+<dt id="c.drm_atomic_helper_damage_iter">
+<em class="property">struct </em><code class="sig-name descname">drm_atomic_helper_damage_iter</code><a class="headerlink" href="#c.drm_atomic_helper_damage_iter" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Closure structure for damage iterator.</p>
+</dd></dl>
+
+<p><strong>Definition</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct drm_atomic_helper_damage_iter {
+};
+</pre></div>
+</div>
+<p><strong>Members</strong></p>
+<p><strong>Description</strong></p>
+<p>This structure tracks state needed to walk the list of plane damage clips.</p>
+<dl class="c function">
+<dt id="c.drm_helper_get_plane_damage_clips">
+<em class="property">struct</em> <a class="reference internal" href="drm-kms-helpers.html#c.drm_rect" title="drm_rect">drm_rect</a> *<code class="sig-name descname">drm_helper_get_plane_damage_clips</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state">drm_plane_state</a> *<em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_helper_get_plane_damage_clips" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns damage clips in <a class="reference internal" href="drm-kms-helpers.html#c.drm_rect" title="drm_rect"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_rect</span></code></a>.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">drm_plane_state</span> <span class="pre">*state</span></code></dt><dd><p>Plane state.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Returns plane damage rectangles in internal <a class="reference internal" href="drm-kms-helpers.html#c.drm_rect" title="drm_rect"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_rect</span></code></a>. Currently <a class="reference internal" href="drm-kms-helpers.html#c.drm_rect" title="drm_rect"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_rect</span></code></a>
+can be obtained by simply typecasting <a class="reference internal" href="drm-uapi.html#c.drm_mode_rect" title="drm_mode_rect"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_mode_rect</span></code></a>. This is because both
+are signed 32 and during <a class="reference internal" href="#c.drm_atomic_check_only" title="drm_atomic_check_only"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_check_only()</span></code></a> it is verified that damage
+clips are inside fb.</p>
+<p><strong>Return</strong></p>
+<p>Clips in plane fb_damage_clips blob property.</p>
 </div>
 </div>
 <div class="section" id="display-modes-function-reference">
@@ -6914,6 +7522,52 @@ connectors that no longer exist.</p>
 </dd>
 </dl>
 <dl class="c struct">
+<dt id="c.drm_hdmi_dsc_cap">
+<em class="property">struct </em><code class="sig-name descname">drm_hdmi_dsc_cap</code><a class="headerlink" href="#c.drm_hdmi_dsc_cap" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>DSC capabilities of HDMI sink</p>
+</dd></dl>
+
+<p><strong>Definition</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct drm_hdmi_dsc_cap {
+  bool v_1p2;
+  bool native_420;
+  bool all_bpp;
+  u8 bpc_supported;
+  u8 max_slices;
+  int clk_per_slice;
+  u8 max_lanes;
+  u8 max_frl_rate_per_lane;
+  u8 total_chunk_kbytes;
+};
+</pre></div>
+</div>
+<p><strong>Members</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">v_1p2</span></code></dt><dd><p>flag for dsc1.2 version support by sink</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">native_420</span></code></dt><dd><p>Does sink support DSC with 4:2:0 compression</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">all_bpp</span></code></dt><dd><p>Does sink support all bpp with 4:4:4: or 4:2:2
+compressed formats</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bpc_supported</span></code></dt><dd><p>compressed bpc supported by sink : 10, 12 or 16 bpc</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">max_slices</span></code></dt><dd><p>maximum number of Horizontal slices supported by</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">clk_per_slice</span></code></dt><dd><p>max pixel clock in MHz supported per slice</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">max_lanes</span></code></dt><dd><p>dsc max lanes supported for Fixed rate Link training</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">max_frl_rate_per_lane</span></code></dt><dd><p>maximum frl rate with DSC per lane</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">total_chunk_kbytes</span></code></dt><dd><p>max size of chunks in KBs supported per line</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Describes the DSC support provided by HDMI 2.1 sink.
+The information is fetched fom additional HFVSDB blocks defined
+for HDMI 2.1.</p>
+<dl class="c struct">
 <dt id="c.drm_hdmi_info">
 <em class="property">struct </em><code class="sig-name descname">drm_hdmi_info</code><a class="headerlink" href="#c.drm_hdmi_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>runtime information about the connected HDMI sink</p>
@@ -6926,6 +7580,9 @@ connectors that no longer exist.</p>
   unsigned long y420_cmdb_modes[BITS_TO_LONGS(256)];
   u64 y420_cmdb_map;
   u8 y420_dc_modes;
+  u8 max_frl_rate_per_lane;
+  u8 max_lanes;
+  struct drm_hdmi_dsc_cap dsc_cap;
 };
 </pre></div>
 </div>
@@ -6946,6 +7603,12 @@ VICs.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">y420_cmdb_map</span></code></dt><dd><p>bitmap of SVD index, to extraxt vcb modes</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">y420_dc_modes</span></code></dt><dd><p>bitmap of deep color support index</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">max_frl_rate_per_lane</span></code></dt><dd><p>support fixed rate link</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">max_lanes</span></code></dt><dd><p>supported by sink</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">dsc_cap</span></code></dt><dd><p>DSC capabilities of the sink</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
@@ -9695,6 +10358,8 @@ need to grab that lock too need to do so outside of the acquire context
 </div>
 <div class="section" id="kms-properties">
 <h2>KMS Properties<a class="headerlink" href="#kms-properties" title="Permalink to this headline">¶</a></h2>
+<p>This section of the documentation is primarily aimed at user-space developers.
+For the driver APIs, see the other sections.</p>
 <div class="section" id="property-types-and-blob-property-support">
 <h3>Property Types and Blob Property Support<a class="headerlink" href="#property-types-and-blob-property-support" title="Permalink to this headline">¶</a></h3>
 <p>Properties as represented by <a class="reference internal" href="#c.drm_property" title="drm_property"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_property</span></code></a> are used to extend the modeset
@@ -9790,7 +10455,7 @@ instance values combine one or more of the enumerated bits defined
 by the property. Bitmask properties are created using
 <a class="reference internal" href="#c.drm_property_create_bitmask" title="drm_property_create_bitmask"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_property_create_bitmask()</span></code></a>.</p>
 </dd>
-<dt>DRM_MODE_PROB_OBJECT</dt><dd><p>Object properties are used to link modeset objects. This is used
+<dt>DRM_MODE_PROP_OBJECT</dt><dd><p>Object properties are used to link modeset objects. This is used
 extensively in the atomic support to create the display pipeline,
 by linking <a class="reference internal" href="#c.drm_framebuffer" title="drm_framebuffer"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_framebuffer</span></code></a> to <a class="reference internal" href="#c.drm_plane" title="drm_plane"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane</span></code></a>, <a class="reference internal" href="#c.drm_plane" title="drm_plane"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane</span></code></a> to
 <a class="reference internal" href="#c.drm_crtc" title="drm_crtc"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc</span></code></a> and <a class="reference internal" href="#c.drm_connector" title="drm_connector"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_connector</span></code></a> to <a class="reference internal" href="#c.drm_crtc" title="drm_crtc"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc</span></code></a>. An object property can
@@ -10637,6 +11302,17 @@ user-space must set this property to 0.</p>
 </dd>
 </dl>
 </div>
+<div class="section" id="standard-plane-properties">
+<h3>Standard Plane Properties<a class="headerlink" href="#standard-plane-properties" title="Permalink to this headline">¶</a></h3>
+<p>DRM planes have a few standardized properties:</p>
+<dl class="simple">
+<dt>IN_FORMATS:</dt><dd><p>Blob property which contains the set of buffer format and modifier
+pairs supported by this plane. The blob is a struct
+drm_format_modifier_blob. Without this property the plane doesn’t
+support buffers with modifiers. Userspace cannot change this property.</p>
+</dd>
+</dl>
+</div>
 <div class="section" id="plane-composition-properties">
 <h3>Plane Composition Properties<a class="headerlink" href="#plane-composition-properties" title="Permalink to this headline">¶</a></h3>
 <p>The basic plane composition model supported by standard plane properties only
@@ -10782,11 +11458,6 @@ assumed to be 1.0</p>
 </dl>
 </div></blockquote>
 </dd>
-<dt>IN_FORMATS:</dt><dd><p>Blob property which contains the set of buffer format and modifier
-pairs supported by this plane. The blob is a drm_format_modifier_blob
-struct. Without this property the plane doesn’t support buffers with
-modifiers. Userspace cannot change this property.</p>
-</dd>
 </dl>
 <p>Note that all the property extensions described here apply either to the
 plane or the CRTC (e.g. for the background color, which currently is not
@@ -10804,209 +11475,9 @@ exposed and assumed to be black).</p>
 </dl>
 <p>Drivers can set up this property for a plane by calling
 drm_plane_create_scaling_filter_property</p>
-<dl class="c function">
-<dt id="c.drm_plane_create_alpha_property">
-int <code class="sig-name descname">drm_plane_create_alpha_property</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_plane" title="drm_plane">drm_plane</a> *<em>plane</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_plane_create_alpha_property" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>create a new alpha property</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane</span> <span class="pre">*plane</span></code></dt><dd><p>drm plane</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This function creates a generic, mutable, alpha property and enables support
-for it in the DRM core. It is attached to <strong>plane</strong>.</p>
-<p>The alpha property will be allowed to be within the bounds of 0
-(transparent) to 0xffff (opaque).</p>
-<p><strong>Return</strong></p>
-<p>0 on success, negative error code on failure.</p>
-<dl class="c function">
-<dt id="c.drm_plane_create_rotation_property">
-int <code class="sig-name descname">drm_plane_create_rotation_property</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_plane" title="drm_plane">drm_plane</a> *<em>plane</em>, unsigned int <em>rotation</em>, unsigned int <em>supported_rotations</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_plane_create_rotation_property" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>create a new rotation property</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane</span> <span class="pre">*plane</span></code></dt><dd><p>drm plane</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">rotation</span></code></dt><dd><p>initial value of the rotation property</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">supported_rotations</span></code></dt><dd><p>bitmask of supported rotations and reflections</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This creates a new property with the selected support for transformations.</p>
-<p>Since a rotation by 180° degress is the same as reflecting both along the x
-and the y axis the rotation property is somewhat redundant. Drivers can use
-<a class="reference internal" href="#c.drm_rotation_simplify" title="drm_rotation_simplify"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_rotation_simplify()</span></code></a> to normalize values of this property.</p>
-<p>The property exposed to userspace is a bitmask property (see
-<a class="reference internal" href="#c.drm_property_create_bitmask" title="drm_property_create_bitmask"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_property_create_bitmask()</span></code></a>) called “rotation” and has the following
-bitmask enumaration values:</p>
-<dl class="simple">
-<dt>DRM_MODE_ROTATE_0:</dt><dd><p>“rotate-0”</p>
-</dd>
-<dt>DRM_MODE_ROTATE_90:</dt><dd><p>“rotate-90”</p>
-</dd>
-<dt>DRM_MODE_ROTATE_180:</dt><dd><p>“rotate-180”</p>
-</dd>
-<dt>DRM_MODE_ROTATE_270:</dt><dd><p>“rotate-270”</p>
-</dd>
-<dt>DRM_MODE_REFLECT_X:</dt><dd><p>“reflect-x”</p>
-</dd>
-<dt>DRM_MODE_REFLECT_Y:</dt><dd><p>“reflect-y”</p>
-</dd>
-</dl>
-<p>Rotation is the specified amount in degrees in counter clockwise direction,
-the X and Y axis are within the source rectangle, i.e.  the X/Y axis before
-rotation. After reflection, the rotation is applied to the image sampled from
-the source rectangle, before scaling it to fit the destination rectangle.</p>
-<dl class="c function">
-<dt id="c.drm_rotation_simplify">
-unsigned int <code class="sig-name descname">drm_rotation_simplify</code><span class="sig-paren">(</span>unsigned int <em>rotation</em>, unsigned int <em>supported_rotations</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_rotation_simplify" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Try to simplify the rotation</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">rotation</span></code></dt><dd><p>Rotation to be simplified</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">supported_rotations</span></code></dt><dd><p>Supported rotations</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Attempt to simplify the rotation to a form that is supported.
-Eg. if the hardware supports everything except DRM_MODE_REFLECT_X
-one could call this function like this:</p>
-<dl class="simple">
-<dt>drm_rotation_simplify(rotation, DRM_MODE_ROTATE_0 |</dt><dd><p>DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_180 |
-DRM_MODE_ROTATE_270 | DRM_MODE_REFLECT_Y);</p>
-</dd>
-</dl>
-<p>to eliminate the DRM_MODE_ROTATE_X flag. Depending on what kind of
-transforms the hardware supports, this function may not
-be able to produce a supported transform, so the caller should
-check the result afterwards.</p>
-<dl class="c function">
-<dt id="c.drm_plane_create_zpos_property">
-int <code class="sig-name descname">drm_plane_create_zpos_property</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_plane" title="drm_plane">drm_plane</a> *<em>plane</em>, unsigned int <em>zpos</em>, unsigned int <em>min</em>, unsigned int <em>max</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_plane_create_zpos_property" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>create mutable zpos property</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane</span> <span class="pre">*plane</span></code></dt><dd><p>drm plane</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">zpos</span></code></dt><dd><p>initial value of zpos property</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">min</span></code></dt><dd><p>minimal possible value of zpos property</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">max</span></code></dt><dd><p>maximal possible value of zpos property</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This function initializes generic mutable zpos property and enables support
-for it in drm core. Drivers can then attach this property to planes to enable
-support for configurable planes arrangement during blending operation.
-Drivers that attach a mutable zpos property to any plane should call the
-<a class="reference internal" href="#c.drm_atomic_normalize_zpos" title="drm_atomic_normalize_zpos"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_normalize_zpos()</span></code></a> helper during their implementation of
-<a class="reference internal" href="#c.drm_mode_config_funcs" title="drm_mode_config_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_mode_config_funcs.atomic_check()</span></code></a>, which will update the normalized zpos
-values and store them in <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state.normalized_zpos</span></code></a>. Usually min
-should be set to 0 and max to maximal number of planes for given crtc - 1.</p>
-<p>If zpos of some planes cannot be changed (like fixed background or
-cursor/topmost planes), drivers shall adjust the min/max values and assign
-those planes immutable zpos properties with lower or higher values (for more
-information, see <a class="reference internal" href="#c.drm_plane_create_zpos_immutable_property" title="drm_plane_create_zpos_immutable_property"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_plane_create_zpos_immutable_property()</span></code></a> function). In such
-case drivers shall also assign proper initial zpos values for all planes in
-its plane_reset() callback, so the planes will be always sorted properly.</p>
-<p>See also <a class="reference internal" href="#c.drm_atomic_normalize_zpos" title="drm_atomic_normalize_zpos"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_normalize_zpos()</span></code></a>.</p>
-<p>The property exposed to userspace is called “zpos”.</p>
-<p><strong>Return</strong></p>
-<p>Zero on success, negative errno on failure.</p>
-<dl class="c function">
-<dt id="c.drm_plane_create_zpos_immutable_property">
-int <code class="sig-name descname">drm_plane_create_zpos_immutable_property</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_plane" title="drm_plane">drm_plane</a> *<em>plane</em>, unsigned int <em>zpos</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_plane_create_zpos_immutable_property" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>create immuttable zpos property</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane</span> <span class="pre">*plane</span></code></dt><dd><p>drm plane</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">zpos</span></code></dt><dd><p>value of zpos property</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This function initializes generic immutable zpos property and enables
-support for it in drm core. Using this property driver lets userspace
-to get the arrangement of the planes for blending operation and notifies
-it that the hardware (or driver) doesn’t support changing of the planes’
-order. For mutable zpos see <a class="reference internal" href="#c.drm_plane_create_zpos_property" title="drm_plane_create_zpos_property"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_plane_create_zpos_property()</span></code></a>.</p>
-<p>The property exposed to userspace is called “zpos”.</p>
-<p><strong>Return</strong></p>
-<p>Zero on success, negative errno on failure.</p>
-<dl class="c function">
-<dt id="c.drm_atomic_normalize_zpos">
-int <code class="sig-name descname">drm_atomic_normalize_zpos</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device">drm_device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.drm_atomic_state" title="drm_atomic_state">drm_atomic_state</a> *<em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_atomic_normalize_zpos" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>calculate normalized zpos values for all crtcs</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_device</span> <span class="pre">*dev</span></code></dt><dd><p>DRM device</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_atomic_state</span> <span class="pre">*state</span></code></dt><dd><p>atomic state of DRM device</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This function calculates normalized zpos value for all modified planes in
-the provided atomic state of DRM device.</p>
-<p>For every CRTC this function checks new states of all planes assigned to
-it and calculates normalized zpos value for these planes. Planes are compared
-first by their zpos values, then by plane id (if zpos is equal). The plane
-with lowest zpos value is at the bottom. The <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state.normalized_zpos</span></code></a>
-is then filled with unique values from 0 to number of active planes in crtc
-minus one.</p>
-<p>RETURNS
-Zero for success or -errno</p>
-<dl class="c function">
-<dt id="c.drm_plane_create_blend_mode_property">
-int <code class="sig-name descname">drm_plane_create_blend_mode_property</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_plane" title="drm_plane">drm_plane</a> *<em>plane</em>, unsigned int <em>supported_modes</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_plane_create_blend_mode_property" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>create a new blend mode property</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane</span> <span class="pre">*plane</span></code></dt><dd><p>drm plane</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">supported_modes</span></code></dt><dd><p>bitmask of supported modes, must include
-BIT(DRM_MODE_BLEND_PREMULTI). Current DRM assumption is
-that alpha is premultiplied, and old userspace can break if
-the property defaults to anything else.</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This creates a new property describing the blend mode.</p>
-<p>The property exposed to userspace is an enumeration property (see
-<a class="reference internal" href="#c.drm_property_create_enum" title="drm_property_create_enum"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_property_create_enum()</span></code></a>) called “pixel blend mode” and has the
-following enumeration values:</p>
-<dl class="simple">
-<dt>“None”:</dt><dd><p>Blend formula that ignores the pixel alpha.</p>
-</dd>
-<dt>“Pre-multiplied”:</dt><dd><p>Blend formula that assumes the pixel color values have been already
-pre-multiplied with the alpha channel values.</p>
-</dd>
-<dt>“Coverage”:</dt><dd><p>Blend formula that assumes the pixel color values have not been
-pre-multiplied and will do so when blending them to the background color
-values.</p>
-</dd>
-</dl>
-<p><strong>Return</strong></p>
-<p>Zero for success or -errno</p>
-<div class="section" id="fb-damage-clips">
-<h4>FB_DAMAGE_CLIPS<a class="headerlink" href="#fb-damage-clips" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="damage-tracking-properties">
+<h3>Damage Tracking Properties<a class="headerlink" href="#damage-tracking-properties" title="Permalink to this headline">¶</a></h3>
 <p>FB_DAMAGE_CLIPS is an optional plane property which provides a means to
 specify a list of damage rectangles on a plane in framebuffer coordinates of
 the framebuffer attached to the plane. In current context damage is the area
@@ -11036,195 +11507,6 @@ FB_DAMAGE_CLIPS property by calling <a class="reference internal" href="#c.drm_p
 Drivers implementing damage can use <a class="reference internal" href="#c.drm_atomic_helper_damage_iter_init" title="drm_atomic_helper_damage_iter_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_damage_iter_init()</span></code></a> and
 <a class="reference internal" href="#c.drm_atomic_helper_damage_iter_next" title="drm_atomic_helper_damage_iter_next"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_damage_iter_next()</span></code></a> helper iterator function to get damage
 rectangles clipped to <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state.src</span></code></a>.</p>
-<dl class="c function">
-<dt id="c.drm_plane_enable_fb_damage_clips">
-void <code class="sig-name descname">drm_plane_enable_fb_damage_clips</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_plane" title="drm_plane">drm_plane</a> *<em>plane</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_plane_enable_fb_damage_clips" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Enables plane fb damage clips property.</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane</span> <span class="pre">*plane</span></code></dt><dd><p>Plane on which to enable damage clips property.</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This function lets driver to enable the damage clips property on a plane.</p>
-<dl class="c function">
-<dt id="c.drm_atomic_helper_check_plane_damage">
-void <code class="sig-name descname">drm_atomic_helper_check_plane_damage</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_atomic_state" title="drm_atomic_state">drm_atomic_state</a> *<em>state</em>, <em class="property">struct</em> <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state">drm_plane_state</a> *<em>plane_state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_atomic_helper_check_plane_damage" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Verify plane damage on atomic_check.</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_atomic_state</span> <span class="pre">*state</span></code></dt><dd><p>The driver state object.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane_state</span> <span class="pre">*plane_state</span></code></dt><dd><p>Plane state for which to verify damage.</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This helper function makes sure that damage from plane state is discarded
-for full modeset. If there are more reasons a driver would want to do a full
-plane update rather than processing individual damage regions, then those
-cases should be taken care of here.</p>
-<p>Note that <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state.fb_damage_clips</span></code></a> == NULL in plane state means that
-full plane update should happen. It also ensure helper iterator will return
-<a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state.src</span></code></a> as damage.</p>
-<dl class="c function">
-<dt id="c.drm_atomic_helper_dirtyfb">
-int <code class="sig-name descname">drm_atomic_helper_dirtyfb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_framebuffer" title="drm_framebuffer">drm_framebuffer</a> *<em>fb</em>, <em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_file" title="drm_file">drm_file</a> *<em>file_priv</em>, unsigned int <em>flags</em>, unsigned int <em>color</em>, <em class="property">struct</em> drm_clip_rect *<em>clips</em>, unsigned int <em>num_clips</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_atomic_helper_dirtyfb" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Helper for dirtyfb.</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_framebuffer</span> <span class="pre">*fb</span></code></dt><dd><p>DRM framebuffer.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_file</span> <span class="pre">*file_priv</span></code></dt><dd><p>Drm file for the ioctl call.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">flags</span></code></dt><dd><p>Dirty fb annotate flags.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">color</span></code></dt><dd><p>Color for annotate fill.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_clip_rect</span> <span class="pre">*clips</span></code></dt><dd><p>Dirty region.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">num_clips</span></code></dt><dd><p>Count of clip in clips.</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>A helper to implement <a class="reference internal" href="#c.drm_framebuffer_funcs" title="drm_framebuffer_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_framebuffer_funcs.dirty</span></code></a> using damage interface
-during plane update. If num_clips is 0 then this helper will do a full plane
-update. This is the same behaviour expected by DIRTFB IOCTL.</p>
-<p>Note that this helper is blocking implementation. This is what current
-drivers and userspace expect in their DIRTYFB IOCTL implementation, as a way
-to rate-limit userspace and make sure its rendering doesn’t get ahead of
-uploading new data too much.</p>
-<p><strong>Return</strong></p>
-<p>Zero on success, negative errno on failure.</p>
-<dl class="c function">
-<dt id="c.drm_atomic_helper_damage_iter_init">
-void <code class="sig-name descname">drm_atomic_helper_damage_iter_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_atomic_helper_damage_iter" title="drm_atomic_helper_damage_iter">drm_atomic_helper_damage_iter</a> *<em>iter</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state">drm_plane_state</a> *<em>old_state</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state">drm_plane_state</a> *<em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_atomic_helper_damage_iter_init" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Initialize the damage iterator.</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_atomic_helper_damage_iter</span> <span class="pre">*iter</span></code></dt><dd><p>The iterator to initialize.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">drm_plane_state</span> <span class="pre">*old_state</span></code></dt><dd><p>Old plane state for validation.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">drm_plane_state</span> <span class="pre">*state</span></code></dt><dd><p>Plane state from which to iterate the damage clips.</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Initialize an iterator, which clips plane damage
-<a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state.fb_damage_clips</span></code></a> to plane <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state.src</span></code></a>. This iterator
-returns full plane src in case damage is not present because either
-user-space didn’t sent or driver discarded it (it want to do full plane
-update). Currently this iterator returns full plane src in case plane src
-changed but that can be changed in future to return damage.</p>
-<p>For the case when plane is not visible or plane update should not happen the
-first call to iter_next will return false. Note that this helper use clipped
-<a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state.src</span></code></a>, so driver calling this helper should have called
-<a class="reference internal" href="drm-kms-helpers.html#c.drm_atomic_helper_check_plane_state" title="drm_atomic_helper_check_plane_state"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_check_plane_state()</span></code></a> earlier.</p>
-<dl class="c function">
-<dt id="c.drm_atomic_helper_damage_iter_next">
-bool <code class="sig-name descname">drm_atomic_helper_damage_iter_next</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_atomic_helper_damage_iter" title="drm_atomic_helper_damage_iter">drm_atomic_helper_damage_iter</a> *<em>iter</em>, <em class="property">struct</em> <a class="reference internal" href="drm-kms-helpers.html#c.drm_rect" title="drm_rect">drm_rect</a> *<em>rect</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_atomic_helper_damage_iter_next" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Advance the damage iterator.</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_atomic_helper_damage_iter</span> <span class="pre">*iter</span></code></dt><dd><p>The iterator to advance.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_rect</span> <span class="pre">*rect</span></code></dt><dd><p>Return a rectangle in fb coordinate clipped to plane src.</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Since plane src is in 16.16 fixed point and damage clips are whole number,
-this iterator round off clips that intersect with plane src. Round down for
-x1/y1 and round up for x2/y2 for the intersected coordinate. Similar rounding
-off for full plane src, in case it’s returned as damage. This iterator will
-skip damage clips outside of plane src.</p>
-<p>If the first call to iterator next returns false then it means no need to
-update the plane.</p>
-<p><strong>Return</strong></p>
-<p>True if the output is valid, false if reached the end.</p>
-<dl class="c function">
-<dt id="c.drm_atomic_helper_damage_merged">
-bool <code class="sig-name descname">drm_atomic_helper_damage_merged</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state">drm_plane_state</a> *<em>old_state</em>, <em class="property">struct</em> <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state">drm_plane_state</a> *<em>state</em>, <em class="property">struct</em> <a class="reference internal" href="drm-kms-helpers.html#c.drm_rect" title="drm_rect">drm_rect</a> *<em>rect</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_atomic_helper_damage_merged" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Merged plane damage</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">drm_plane_state</span> <span class="pre">*old_state</span></code></dt><dd><p>Old plane state for validation.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane_state</span> <span class="pre">*state</span></code></dt><dd><p>Plane state from which to iterate the damage clips.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_rect</span> <span class="pre">*rect</span></code></dt><dd><p>Returns the merged damage rectangle</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This function merges any valid plane damage clips into one rectangle and
-returns it in <strong>rect</strong>.</p>
-<p>For details see: <a class="reference internal" href="#c.drm_atomic_helper_damage_iter_init" title="drm_atomic_helper_damage_iter_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_damage_iter_init()</span></code></a> and
-<a class="reference internal" href="#c.drm_atomic_helper_damage_iter_next" title="drm_atomic_helper_damage_iter_next"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_damage_iter_next()</span></code></a>.</p>
-<p><strong>Return</strong></p>
-<p>True if there is valid plane damage otherwise false.</p>
-<dl class="c macro">
-<dt id="c.drm_atomic_for_each_plane_damage">
-<code class="sig-name descname">drm_atomic_for_each_plane_damage</code><a class="headerlink" href="#c.drm_atomic_for_each_plane_damage" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<p><code class="docutils literal notranslate"><span class="pre">drm_atomic_for_each_plane_damage</span> <span class="pre">(iter,</span> <span class="pre">rect)</span></code></p>
-<blockquote>
-<div><p>Iterator macro for plane damage.</p>
-</div></blockquote>
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">iter</span></code></dt><dd><p>The iterator to advance.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">rect</span></code></dt><dd><p>Return a rectangle in fb coordinate clipped to plane src.</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Note that if the first call to iterator macro return false then no need to do
-plane update. Iterator will return full plane src when damage is not passed
-by user-space.</p>
-<dl class="c struct">
-<dt id="c.drm_atomic_helper_damage_iter">
-<em class="property">struct </em><code class="sig-name descname">drm_atomic_helper_damage_iter</code><a class="headerlink" href="#c.drm_atomic_helper_damage_iter" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Closure structure for damage iterator.</p>
-</dd></dl>
-
-<p><strong>Definition</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct drm_atomic_helper_damage_iter {
-};
-</pre></div>
-</div>
-<p><strong>Members</strong></p>
-<p><strong>Description</strong></p>
-<p>This structure tracks state needed to walk the list of plane damage clips.</p>
-<dl class="c function">
-<dt id="c.drm_helper_get_plane_damage_clips">
-<em class="property">struct</em> <a class="reference internal" href="drm-kms-helpers.html#c.drm_rect" title="drm_rect">drm_rect</a> *<code class="sig-name descname">drm_helper_get_plane_damage_clips</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_plane_state" title="drm_plane_state">drm_plane_state</a> *<em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_helper_get_plane_damage_clips" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns damage clips in <a class="reference internal" href="drm-kms-helpers.html#c.drm_rect" title="drm_rect"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_rect</span></code></a>.</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">drm_plane_state</span> <span class="pre">*state</span></code></dt><dd><p>Plane state.</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Returns plane damage rectangles in internal <a class="reference internal" href="drm-kms-helpers.html#c.drm_rect" title="drm_rect"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_rect</span></code></a>. Currently <a class="reference internal" href="drm-kms-helpers.html#c.drm_rect" title="drm_rect"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_rect</span></code></a>
-can be obtained by simply typecasting <a class="reference internal" href="drm-uapi.html#c.drm_mode_rect" title="drm_mode_rect"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_mode_rect</span></code></a>. This is because both
-are signed 32 and during <a class="reference internal" href="#c.drm_atomic_check_only" title="drm_atomic_check_only"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_check_only()</span></code></a> it is verified that damage
-clips are inside fb.</p>
-<p><strong>Return</strong></p>
-<p>Clips in plane fb_damage_clips blob property.</p>
-</div>
 </div>
 <div class="section" id="color-management-properties">
 <h3>Color Management Properties<a class="headerlink" href="#color-management-properties" title="Permalink to this headline">¶</a></h3>
@@ -11277,9 +11559,8 @@ modes) appropriately.</p>
 </dd>
 </dl>
 <p>There is also support for a legacy gamma table, which is set up by calling
-<a class="reference internal" href="#c.drm_mode_crtc_set_gamma_size" title="drm_mode_crtc_set_gamma_size"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_mode_crtc_set_gamma_size()</span></code></a>. Drivers which support both should use
-<a class="reference internal" href="drm-kms-helpers.html#c.drm_atomic_helper_legacy_gamma_set" title="drm_atomic_helper_legacy_gamma_set"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_legacy_gamma_set()</span></code></a> to alias the legacy gamma ramp with the
-“GAMMA_LUT” property above.</p>
+<a class="reference internal" href="#c.drm_mode_crtc_set_gamma_size" title="drm_mode_crtc_set_gamma_size"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_mode_crtc_set_gamma_size()</span></code></a>. The DRM core will then alias the legacy gamma
+ramp with “GAMMA_LUT” or, if that is unavailable, “DEGAMMA_LUT”.</p>
 <p>Support for different non RGB color encodings is controlled through
 <a class="reference internal" href="#c.drm_plane" title="drm_plane"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane</span></code></a> specific COLOR_ENCODING and COLOR_RANGE properties. They
 are set up by calling <a class="reference internal" href="#c.drm_plane_create_color_properties" title="drm_plane_create_color_properties"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_plane_create_color_properties()</span></code></a>.</p>
@@ -11293,172 +11574,6 @@ color parameter ranges. The driver can provide a subset of
 standard enum values supported by the DRM plane.</p>
 </dd>
 </dl>
-<dl class="c function">
-<dt id="c.drm_color_ctm_s31_32_to_qm_n">
-u64 <code class="sig-name descname">drm_color_ctm_s31_32_to_qm_n</code><span class="sig-paren">(</span>u64 <em>user_input</em>, u32 <em>m</em>, u32 <em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_color_ctm_s31_32_to_qm_n" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">u64</span> <span class="pre">user_input</span></code></dt><dd><p>input value</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">m</span></code></dt><dd><p>number of integer bits, only support m &lt;= 32, include the sign-bit</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">n</span></code></dt><dd><p>number of fractional bits, only support n &lt;= 32</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Convert and clamp S31.32 sign-magnitude to Qm.n (signed 2’s complement).
-The sign-bit BIT(m+n-1) and above are 0 for positive value and 1 for negative
-the range of value is [-2^(m-1), 2^(m-1) - 2^-n]</p>
-<p>For example
-A Q3.12 format number:
-- required bit: 3 + 12 = 15bits
-- range: [-2^2, 2^2 - 2^−15]</p>
-<p><strong>NOTE</strong></p>
-<dl class="simple">
-<dt>the m can be zero if all bit_precision are used to present fractional</dt><dd><p>bits like Q0.32</p>
-</dd>
-</dl>
-<dl class="c function">
-<dt id="c.drm_crtc_enable_color_mgmt">
-void <code class="sig-name descname">drm_crtc_enable_color_mgmt</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_crtc" title="drm_crtc">drm_crtc</a> *<em>crtc</em>, uint <em>degamma_lut_size</em>, bool <em>has_ctm</em>, uint <em>gamma_lut_size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_crtc_enable_color_mgmt" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>enable color management properties</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_crtc</span> <span class="pre">*crtc</span></code></dt><dd><p>DRM CRTC</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">uint</span> <span class="pre">degamma_lut_size</span></code></dt><dd><p>the size of the degamma lut (before CSC)</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">has_ctm</span></code></dt><dd><p>whether to attach ctm_property for CSC matrix</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">uint</span> <span class="pre">gamma_lut_size</span></code></dt><dd><p>the size of the gamma lut (after CSC)</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This function lets the driver enable the color correction
-properties on a CRTC. This includes 3 degamma, csc and gamma
-properties that userspace can set and 2 size properties to inform
-the userspace of the lut sizes. Each of the properties are
-optional. The gamma and degamma properties are only attached if
-their size is not 0 and ctm_property is only attached if has_ctm is
-true.</p>
-<p>Drivers should use <a class="reference internal" href="drm-kms-helpers.html#c.drm_atomic_helper_legacy_gamma_set" title="drm_atomic_helper_legacy_gamma_set"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_legacy_gamma_set()</span></code></a> to implement the
-legacy <a class="reference internal" href="#c.drm_crtc_funcs" title="drm_crtc_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc_funcs.gamma_set</span></code></a> callback.</p>
-<dl class="c function">
-<dt id="c.drm_mode_crtc_set_gamma_size">
-int <code class="sig-name descname">drm_mode_crtc_set_gamma_size</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_crtc" title="drm_crtc">drm_crtc</a> *<em>crtc</em>, int <em>gamma_size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_mode_crtc_set_gamma_size" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>set the gamma table size</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_crtc</span> <span class="pre">*crtc</span></code></dt><dd><p>CRTC to set the gamma table size for</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">gamma_size</span></code></dt><dd><p>size of the gamma table</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Drivers which support gamma tables should set this to the supported gamma
-table size when initializing the CRTC. Currently the drm core only supports a
-fixed gamma table size.</p>
-<p><strong>Return</strong></p>
-<p>Zero on success, negative errno on failure.</p>
-<dl class="c function">
-<dt id="c.drm_plane_create_color_properties">
-int <code class="sig-name descname">drm_plane_create_color_properties</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_plane" title="drm_plane">drm_plane</a> *<em>plane</em>, u32 <em>supported_encodings</em>, u32 <em>supported_ranges</em>, <em class="property">enum</em> drm_color_encoding <em>default_encoding</em>, <em class="property">enum</em> drm_color_range <em>default_range</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_plane_create_color_properties" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>color encoding related plane properties</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane</span> <span class="pre">*plane</span></code></dt><dd><p>plane object</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">supported_encodings</span></code></dt><dd><p>bitfield indicating supported color encodings</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">supported_ranges</span></code></dt><dd><p>bitfileld indicating supported color ranges</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">drm_color_encoding</span> <span class="pre">default_encoding</span></code></dt><dd><p>default color encoding</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">drm_color_range</span> <span class="pre">default_range</span></code></dt><dd><p>default color range</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Create and attach plane specific COLOR_ENCODING and COLOR_RANGE
-properties to <strong>plane</strong>. The supported encodings and ranges should
-be provided in supported_encodings and supported_ranges bitmasks.
-Each bit set in the bitmask indicates that its number as enum
-value is supported.</p>
-<dl class="c function">
-<dt id="c.drm_color_lut_check">
-int <code class="sig-name descname">drm_color_lut_check</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_property_blob" title="drm_property_blob">drm_property_blob</a> *<em>lut</em>, u32 <em>tests</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_color_lut_check" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>check validity of lookup table</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">drm_property_blob</span> <span class="pre">*lut</span></code></dt><dd><p>property blob containing LUT to check</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">tests</span></code></dt><dd><p>bitmask of tests to run</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Helper to check whether a userspace-provided lookup table is valid and
-satisfies hardware requirements.  Drivers pass a bitmask indicating which of
-the tests in <a class="reference internal" href="#c.drm_color_lut_tests" title="drm_color_lut_tests"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_color_lut_tests</span></code></a> should be performed.</p>
-<p>Returns 0 on success, -EINVAL on failure.</p>
-<dl class="c function">
-<dt id="c.drm_color_lut_extract">
-u32 <code class="sig-name descname">drm_color_lut_extract</code><span class="sig-paren">(</span>u32 <em>user_input</em>, int <em>bit_precision</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_color_lut_extract" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>clamp and round LUT entries</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">user_input</span></code></dt><dd><p>input value</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">bit_precision</span></code></dt><dd><p>number of bits the hw LUT supports</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Extract a degamma/gamma LUT value provided by user (in the form of
-<code class="xref c c-type docutils literal notranslate"><span class="pre">drm_color_lut</span></code> entries) and round it to the precision supported by the
-hardware.</p>
-<dl class="c function">
-<dt id="c.drm_color_lut_size">
-int <code class="sig-name descname">drm_color_lut_size</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_property_blob" title="drm_property_blob">drm_property_blob</a> *<em>blob</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_color_lut_size" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>calculate the number of entries in the LUT</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">drm_property_blob</span> <span class="pre">*blob</span></code></dt><dd><p>blob containing the LUT</p>
-</dd>
-</dl>
-<p><strong>Return</strong></p>
-<p>The number of entries in the color LUT stored in <strong>blob</strong>.</p>
-<dl class="c enum">
-<dt id="c.drm_color_lut_tests">
-<em class="property">enum </em><code class="sig-name descname">drm_color_lut_tests</code><a class="headerlink" href="#c.drm_color_lut_tests" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>hw-specific LUT tests to perform</p>
-</dd></dl>
-
-<p><strong>Constants</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">DRM_COLOR_LUT_EQUAL_CHANNELS</span></code></dt><dd><p>Checks whether the entries of a LUT all have equal values for the
-red, green, and blue channels.  Intended for hardware that only
-accepts a single value per LUT entry and assumes that value applies
-to all three color components.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">DRM_COLOR_LUT_NON_DECREASING</span></code></dt><dd><p>Checks whether the entries of a LUT are always flat or increasing
-(never decreasing).</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>The <a class="reference internal" href="#c.drm_color_lut_check" title="drm_color_lut_check"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_color_lut_check()</span></code></a> function takes a bitmask of the values here to
-determine which tests to apply to a userspace-provided LUT.</p>
 </div>
 <div class="section" id="tile-group-property">
 <h3>Tile Group Property<a class="headerlink" href="#tile-group-property" title="Permalink to this headline">¶</a></h3>
@@ -12427,7 +12542,7 @@ display     |                                        |
             |↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓|   updates the
             |                                        |   frame as it
             |                                        |   travels down
-            |                                        |   (&quot;sacn out&quot;)
+            |                                        |   (&quot;scan out&quot;)
             |               Old frame                |
             |                                        |
             |                                        |

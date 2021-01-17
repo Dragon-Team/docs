@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.12-dragon
+                5.11.13-dragon
               </div>
             
           
@@ -587,6 +587,7 @@ config_item_type:</p>
         struct config_group *(*make_group)(struct config_group *group,
                                            const char *name);
         int (*commit_item)(struct config_item *item);
+        int (*uncommit_item)(struct config_item *item);
         void (*disconnect_notify)(struct config_group *group,
                                   struct config_item *item);
         void (*drop_item)(struct config_group *group,
@@ -764,10 +765,6 @@ pass up an error.</p>
 </div>
 <div class="section" id="committable-items">
 <h2>Committable Items<a class="headerlink" href="#committable-items" title="Permalink to this headline">¶</a></h2>
-<dl class="simple">
-<dt>Note:</dt><dd><p>Committable items are currently unimplemented.</p>
-</dd>
-</dl>
 <p>Some config_items cannot have a valid initial state.  That is, no
 default values can be specified for the item’s attributes such that the
 item can do its work.  Userspace must configure one or more attributes,
@@ -802,7 +799,7 @@ method returns zero and the item is moved to the “live” directory.</p>
 <p>As rmdir(2) does not work in the “live” directory, an item must be
 shutdown, or “uncommitted”.  Again, this is done via rename(2), this
 time from the “live” directory back to the “pending” one.  The subsystem
-is notified by the ct_group_ops-&gt;uncommit_object() method.</p>
+is notified by the ct_group_ops-&gt;uncommit_item() method.</p>
 </div>
 </div>
 

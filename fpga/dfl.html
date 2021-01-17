@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.12-dragon
+                5.11.13-dragon
               </div>
             
           
@@ -732,18 +732,32 @@ VSEC ID of 0x43 for this purpose.  The vendor specific
 data begins with a 4 byte vendor specific register for the number of DFLs followed 4 byte
 Offset/BIR vendor specific registers for each DFL. Bits 2:0 of Offset/BIR register
 indicates the BAR, and bits 31:3 form the 8 byte aligned offset where bits 2:0 are
-zero:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+----------------------------+
-|31     Number of DFLS      0|
-+----------------------------+
-|31     Offset     3|2 BIR  0|
-+----------------------------+
-              . . .
-+----------------------------+
-|31     Offset     3|2 BIR  0|
-+----------------------------+
-</pre></div>
-</div>
+zero.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>31     Number of DFLS      0</p></td>
+</tr>
+<tr class="row-even"><td><p>31     Offset     3|2 BIR  0</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><p>…</p>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>31     Offset     3|2 BIR  0</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 <p>Being able to specify more than one DFL per BAR has been considered, but it
 was determined the use case did not provide value.  Specifying a single DFL
 per BAR simplifies the implementation and allows for extra error checking.</p>

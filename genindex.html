@@ -57,7 +57,7 @@
             
             
               <div class="version">
-                5.11.12-dragon
+                5.11.13-dragon
               </div>
             
           
@@ -3178,8 +3178,6 @@
 </li>
       <li><a href="core-api/kernel-api.html#c.DEFINE_KFIFO">DEFINE_KFIFO (C macro)</a>
 </li>
-      <li><a href="locking/seqlock.html#c.DEFINE_SEQLOCK">DEFINE_SEQLOCK (C macro)</a>
-</li>
       <li><a href="core-api/xarray.html#c.DEFINE_XARRAY">DEFINE_XARRAY (C macro)</a>
 </li>
       <li><a href="core-api/xarray.html#c.DEFINE_XARRAY_ALLOC">DEFINE_XARRAY_ALLOC (C macro)</a>
@@ -3507,6 +3505,8 @@
       <li><a href="driver-api/infrastructure.html#c.devm_device_remove_groups">devm_device_remove_groups (C function)</a>
 </li>
       <li><a href="gpu/drm-internals.html#c.devm_drm_dev_alloc">devm_drm_dev_alloc (C macro)</a>
+</li>
+      <li><a href="gpu/drm-internals.html#c.devm_drm_irq_install">devm_drm_irq_install (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.devm_drm_panel_bridge_add">devm_drm_panel_bridge_add (C function)</a>
 </li>
@@ -4288,8 +4288,6 @@
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_atomic_helper_fake_vblank">drm_atomic_helper_fake_vblank (C function)</a>
 </li>
-      <li><a href="gpu/drm-kms-helpers.html#c.drm_atomic_helper_legacy_gamma_set">drm_atomic_helper_legacy_gamma_set (C function)</a>
-</li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_atomic_helper_page_flip">drm_atomic_helper_page_flip (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_atomic_helper_page_flip_target">drm_atomic_helper_page_flip_target (C function)</a>
@@ -4448,6 +4446,16 @@
 </li>
       <li><a href="gpu/drm-client.html#c.drm_client_buffer_vunmap">drm_client_buffer_vunmap (C function)</a>
 </li>
+      <li><a href="gpu/drm-uapi.html#c.DRM_CLIENT_CAP_ASPECT_RATIO">DRM_CLIENT_CAP_ASPECT_RATIO (C macro)</a>
+</li>
+      <li><a href="gpu/drm-uapi.html#c.DRM_CLIENT_CAP_ATOMIC">DRM_CLIENT_CAP_ATOMIC (C macro)</a>
+</li>
+      <li><a href="gpu/drm-uapi.html#c.DRM_CLIENT_CAP_STEREO_3D">DRM_CLIENT_CAP_STEREO_3D (C macro)</a>
+</li>
+      <li><a href="gpu/drm-uapi.html#c.DRM_CLIENT_CAP_UNIVERSAL_PLANES">DRM_CLIENT_CAP_UNIVERSAL_PLANES (C macro)</a>
+</li>
+      <li><a href="gpu/drm-uapi.html#c.DRM_CLIENT_CAP_WRITEBACK_CONNECTORS">DRM_CLIENT_CAP_WRITEBACK_CONNECTORS (C macro)</a>
+</li>
       <li><a href="gpu/drm-client.html#c.drm_client_dev">drm_client_dev (C struct)</a>
 </li>
       <li><a href="gpu/drm-client.html#c.drm_client_dev_hotplug">drm_client_dev_hotplug (C function)</a>
@@ -4599,6 +4607,8 @@
       <li><a href="gpu/drm-kms.html#c.drm_crtc_commit_get">drm_crtc_commit_get (C function)</a>
 </li>
       <li><a href="gpu/drm-kms.html#c.drm_crtc_commit_put">drm_crtc_commit_put (C function)</a>
+</li>
+      <li><a href="gpu/drm-kms.html#c.drm_crtc_commit_wait">drm_crtc_commit_wait (C function)</a>
 </li>
       <li><a href="gpu/drm-kms.html#c.drm_crtc_create_scaling_filter_property">drm_crtc_create_scaling_filter_property (C function)</a>
 </li>
@@ -4770,6 +4780,8 @@
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_downstream_mode">drm_dp_downstream_mode (C function)</a>
 </li>
+      <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_downstream_rgb_to_ycbcr_conversion">drm_dp_downstream_rgb_to_ycbcr_conversion (C function)</a>
+</li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_dpcd_read">drm_dp_dpcd_read (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_dpcd_read_link_status">drm_dp_dpcd_read_link_status (C function)</a>
@@ -4807,6 +4819,8 @@
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_get_dual_mode_type_name">drm_dp_get_dual_mode_type_name (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_get_edid_quirks">drm_dp_get_edid_quirks (C function)</a>
+</li>
+      <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_get_pcon_max_frl_bw">drm_dp_get_pcon_max_frl_bw (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_get_phy_test_pattern">drm_dp_get_phy_test_pattern (C function)</a>
 </li>
@@ -4860,12 +4874,12 @@
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_reset_vcpi_slots">drm_dp_mst_reset_vcpi_slots (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_topology_get_mstb">drm_dp_mst_topology_get_mstb (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_topology_get_port">drm_dp_mst_topology_get_port (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_topology_mgr">drm_dp_mst_topology_mgr (C struct)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_topology_mgr_destroy">drm_dp_mst_topology_mgr_destroy (C function)</a>
@@ -4885,6 +4899,28 @@
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_topology_try_get_mstb">drm_dp_mst_topology_try_get_mstb (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_topology_try_get_port">drm_dp_mst_topology_try_get_port (C function)</a>
+</li>
+      <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_pcon_frl_configure_1">drm_dp_pcon_frl_configure_1 (C function)</a>
+</li>
+      <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_pcon_frl_configure_2">drm_dp_pcon_frl_configure_2 (C function)</a>
+</li>
+      <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_pcon_frl_enable">drm_dp_pcon_frl_enable (C function)</a>
+</li>
+      <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_pcon_frl_prepare">drm_dp_pcon_frl_prepare (C function)</a>
+</li>
+      <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_pcon_hdmi_frl_link_error_count">drm_dp_pcon_hdmi_frl_link_error_count (C function)</a>
+</li>
+      <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_pcon_hdmi_link_active">drm_dp_pcon_hdmi_link_active (C function)</a>
+</li>
+      <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_pcon_hdmi_link_mode">drm_dp_pcon_hdmi_link_mode (C function)</a>
+</li>
+      <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_pcon_is_frl_ready">drm_dp_pcon_is_frl_ready (C function)</a>
+</li>
+      <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_pcon_pps_default">drm_dp_pcon_pps_default (C function)</a>
+</li>
+      <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_pcon_pps_override_buf">drm_dp_pcon_pps_override_buf (C function)</a>
+</li>
+      <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_pcon_reset_frl_config">drm_dp_pcon_reset_frl_config (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_phy_test_params">drm_dp_phy_test_params (C struct)</a>
 </li>
@@ -5218,23 +5254,21 @@
 </li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_cma_free_object">drm_gem_cma_free_object (C function)</a>
 </li>
+      <li><a href="gpu/drm-mm.html#c.drm_gem_cma_get_sg_table">drm_gem_cma_get_sg_table (C function)</a>
+</li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_cma_get_unmapped_area">drm_gem_cma_get_unmapped_area (C function)</a>
 </li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_cma_mmap">drm_gem_cma_mmap (C function)</a>
 </li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_cma_object">drm_gem_cma_object (C struct)</a>
 </li>
-      <li><a href="gpu/drm-mm.html#c.drm_gem_cma_prime_get_sg_table">drm_gem_cma_prime_get_sg_table (C function)</a>
-</li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_cma_prime_import_sg_table">drm_gem_cma_prime_import_sg_table (C function)</a>
 </li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_cma_prime_import_sg_table_vmap">drm_gem_cma_prime_import_sg_table_vmap (C function)</a>
 </li>
-      <li><a href="gpu/drm-mm.html#c.drm_gem_cma_prime_mmap">drm_gem_cma_prime_mmap (C function)</a>
-</li>
-      <li><a href="gpu/drm-mm.html#c.drm_gem_cma_prime_vmap">drm_gem_cma_prime_vmap (C function)</a>
-</li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_cma_print_info">drm_gem_cma_print_info (C function)</a>
+</li>
+      <li><a href="gpu/drm-mm.html#c.drm_gem_cma_vmap">drm_gem_cma_vmap (C function)</a>
 </li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_create_mmap_offset">drm_gem_create_mmap_offset (C function)</a>
 </li>
@@ -5251,8 +5285,6 @@
       <li><a href="gpu/drm-mm.html#c.drm_gem_dmabuf_vmap">drm_gem_dmabuf_vmap (C function)</a>
 </li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_dmabuf_vunmap">drm_gem_dmabuf_vunmap (C function)</a>
-</li>
-      <li><a href="gpu/drm-mm.html#c.drm_gem_dumb_destroy">drm_gem_dumb_destroy (C function)</a>
 </li>
       <li><a href="gpu/drm-mm.html#c.drm_gem_dumb_map_offset">drm_gem_dumb_map_offset (C function)</a>
 </li>
@@ -5451,6 +5483,8 @@
       <li><a href="gpu/drm-kms-helpers.html#c.drm_hdmi_avi_infoframe_from_display_mode">drm_hdmi_avi_infoframe_from_display_mode (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_hdmi_avi_infoframe_quant_range">drm_hdmi_avi_infoframe_quant_range (C function)</a>
+</li>
+      <li><a href="gpu/drm-kms.html#c.drm_hdmi_dsc_cap">drm_hdmi_dsc_cap (C struct)</a>
 </li>
       <li><a href="gpu/drm-kms.html#c.drm_hdmi_info">drm_hdmi_info (C struct)</a>
 </li>
@@ -5904,7 +5938,7 @@
 </li>
       <li><a href="gpu/drm-mm.html#c.drm_prime_pages_to_sg">drm_prime_pages_to_sg (C function)</a>
 </li>
-      <li><a href="gpu/drm-mm.html#c.drm_prime_sg_to_page_addr_arrays">drm_prime_sg_to_page_addr_arrays (C function)</a>
+      <li><a href="gpu/drm-mm.html#c.drm_prime_sg_to_dma_addr_array">drm_prime_sg_to_dma_addr_array (C function)</a>
 </li>
       <li><a href="gpu/drm-internals.html#c.drm_print_bits">drm_print_bits (C function)</a>
 </li>
@@ -7526,10 +7560,6 @@
 </li>
       <li><a href="filesystems/api-summary.html#c.generic_check_addressable">generic_check_addressable (C function)</a>
 </li>
-      <li><a href="filesystems/api-summary.html#c.generic_ci_d_compare">generic_ci_d_compare (C function)</a>
-</li>
-      <li><a href="filesystems/api-summary.html#c.generic_ci_d_hash">generic_ci_d_hash (C function)</a>
-</li>
       <li><a href="filesystems/api-summary.html#c.generic_fh_to_dentry">generic_fh_to_dentry (C function)</a>
 </li>
       <li><a href="filesystems/api-summary.html#c.generic_fh_to_parent">generic_fh_to_parent (C function)</a>
@@ -7668,10 +7698,10 @@
 </li>
       <li><a href="core-api/mm-api.html#c.get_pfn_range_for_nid">get_pfn_range_for_nid (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core-api/mm-api.html#c.get_pfnblock_flags_mask">get_pfnblock_flags_mask (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="networking/kapi.html#c.get_phy_c22_id">get_phy_c22_id (C function)</a>
 </li>
       <li><a href="networking/kapi.html#c.get_phy_c45_ids">get_phy_c45_ids (C function)</a>
@@ -12913,6 +12943,8 @@
       <li><a href="driver-api/pci/pci.html#c.pci_read_legacy_io">pci_read_legacy_io (C function)</a>
 </li>
       <li><a href="driver-api/pci/pci.html#c.pci_read_rom">pci_read_rom (C function)</a>
+</li>
+      <li><a href="driver-api/pci/pci.html#c.pci_rebar_get_possible_sizes">pci_rebar_get_possible_sizes (C function)</a>
 </li>
       <li><a href="driver-api/pci/pci.html#c.pci_reenable_device">pci_reenable_device (C function)</a>
 </li>

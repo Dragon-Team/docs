@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.12-dragon
+                5.11.13-dragon
               </div>
             
           
@@ -505,7 +505,6 @@ possibily leaving the hardware enabled.</p>
 
 <p><strong>Definition</strong></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct drm_device {
-  struct list_head legacy_dev_list;
   int if_version;
   struct kref ref;
   struct device *dev;
@@ -514,11 +513,7 @@ possibily leaving the hardware enabled.</p>
     void *final_kfree;
     spinlock_t lock;
   } managed;
-#ifdef CONFIG_DRM_LEGACY;
-  struct drm_driver *driver;
-#else;
   const struct drm_driver *driver;
-#endif;
   void *dev_private;
   struct drm_minor *primary;
   struct drm_minor *render;
@@ -546,10 +541,6 @@ possibily leaving the hardware enabled.</p>
   struct list_head vblank_event_list;
   spinlock_t event_lock;
   struct drm_agp_head *agp;
-  struct pci_dev *pdev;
-#ifdef __alpha__;
-  struct pci_controller *hose;
-#endif;
   unsigned int num_crtcs;
   struct drm_mode_config mode_config;
   struct mutex object_name_lock;
@@ -563,8 +554,6 @@ possibily leaving the hardware enabled.</p>
 </div>
 <p><strong>Members</strong></p>
 <dl>
-<dt><code class="docutils literal notranslate"><span class="pre">legacy_dev_list</span></code></dt><dd><p>List of devices per driver for stealth attach cleanup</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">if_version</span></code></dt><dd><p>Highest interface version set</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">ref</span></code></dt><dd><p>Object ref-count</p>
@@ -573,8 +562,6 @@ possibily leaving the hardware enabled.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">managed</span></code></dt><dd><p>Managed resources linked to the lifetime of this <a class="reference internal" href="#c.drm_device" title="drm_device"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_device</span></code></a> as
 tracked by <strong>ref</strong>.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">driver</span></code></dt><dd><p>DRM driver managing the device</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">driver</span></code></dt><dd><p>DRM driver managing the device</p>
 </dd>
@@ -672,10 +659,6 @@ to use the per-crtc value.</p>
 general. See <a class="reference internal" href="#c.drm_send_event" title="drm_send_event"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_send_event()</span></code></a> and <a class="reference internal" href="#c.drm_send_event_locked" title="drm_send_event_locked"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_send_event_locked()</span></code></a>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">agp</span></code></dt><dd><p>AGP data</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">pdev</span></code></dt><dd><p>PCI device structure</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">hose</span></code></dt><dd><p>PCI hose, only used on ALPHA platforms.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">num_crtcs</span></code></dt><dd><p>Number of CRTCs on this device</p>
 </dd>
@@ -938,7 +921,7 @@ drivers must not overwrite this.</p>
 Since buffer objects must be reference counted in the kernel a buffer object
 won’t be immediately freed if a framebuffer modeset object still uses it.</p>
 <p>Called by the user via ioctl.</p>
-<p>The default implementation is <a class="reference internal" href="drm-mm.html#c.drm_gem_dumb_destroy" title="drm_gem_dumb_destroy"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_dumb_destroy()</span></code></a>. GEM based drivers
+<p>The default implementation is drm_gem_dumb_destroy(). GEM based drivers
 must not overwrite this.</p>
 <p>Returns:</p>
 <p>Zero on success, negative errno on failure.</p>
@@ -1349,6 +1332,26 @@ The sanity checks are only to catch buggy user modesetting drivers which call
 the same function through an ioctl.</p>
 <p><strong>Return</strong></p>
 <p>Zero on success or a negative error code on failure.</p>
+<dl class="c function">
+<dt id="c.devm_drm_irq_install">
+int <code class="sig-name descname">devm_drm_irq_install</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_device" title="drm_device">drm_device</a> *<em>dev</em>, int <em>irq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_drm_irq_install" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>install IRQ handler</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_device</span> <span class="pre">*dev</span></code></dt><dd><p>DRM device</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">irq</span></code></dt><dd><p>IRQ number to install the handler for</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>devm_drm_irq_install is a  help function of drm_irq_install.</p>
+<p>if the driver uses devm_drm_irq_install, there is no need
+to call drm_irq_uninstall when the drm module get unloaded,
+as this will done automagically.</p>
+<p><strong>Return</strong></p>
+<p>Zero on success or a negative error code on failure.</p>
 </div>
 <div class="section" id="memory-manager-initialization">
 <h4>Memory Manager Initialization<a class="headerlink" href="#memory-manager-initialization" title="Permalink to this headline">¶</a></h4>
@@ -1593,13 +1596,13 @@ void <code class="sig-name descname">drm_pci_free</code><span class="sig-paren">
 removed.</p>
 <dl class="c function">
 <dt id="c.drm_legacy_pci_init">
-int <code class="sig-name descname">drm_legacy_pci_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_driver" title="drm_driver">drm_driver</a> *<em>driver</em>, <em class="property">struct</em> <a class="reference internal" href="../PCI/pci.html#c.pci_driver" title="pci_driver">pci_driver</a> *<em>pdriver</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_legacy_pci_init" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">drm_legacy_pci_init</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_driver" title="drm_driver">drm_driver</a> *<em>driver</em>, <em class="property">struct</em> <a class="reference internal" href="../PCI/pci.html#c.pci_driver" title="pci_driver">pci_driver</a> *<em>pdriver</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_legacy_pci_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>shadow-attach a legacy DRM PCI driver</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_driver</span> <span class="pre">*driver</span></code></dt><dd><p>DRM device driver</p>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">drm_driver</span> <span class="pre">*driver</span></code></dt><dd><p>DRM device driver</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">pci_driver</span> <span class="pre">*pdriver</span></code></dt><dd><p>PCI device driver</p>
 </dd>
@@ -1610,13 +1613,13 @@ int <code class="sig-name descname">drm_legacy_pci_init</code><span class="sig-p
 <p>0 on success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.drm_legacy_pci_exit">
-void <code class="sig-name descname">drm_legacy_pci_exit</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_driver" title="drm_driver">drm_driver</a> *<em>driver</em>, <em class="property">struct</em> <a class="reference internal" href="../PCI/pci.html#c.pci_driver" title="pci_driver">pci_driver</a> *<em>pdriver</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_legacy_pci_exit" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">drm_legacy_pci_exit</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_driver" title="drm_driver">drm_driver</a> *<em>driver</em>, <em class="property">struct</em> <a class="reference internal" href="../PCI/pci.html#c.pci_driver" title="pci_driver">pci_driver</a> *<em>pdriver</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_legacy_pci_exit" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unregister shadow-attach legacy DRM driver</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_driver</span> <span class="pre">*driver</span></code></dt><dd><p>DRM device driver</p>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">drm_driver</span> <span class="pre">*driver</span></code></dt><dd><p>DRM device driver</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">pci_driver</span> <span class="pre">*pdriver</span></code></dt><dd><p>PCI device driver</p>
 </dd>
@@ -1650,8 +1653,7 @@ own needs, e.g. to signal completion of rendering.</p>
 <p>The memory mapping implementation will vary depending on how the driver
 manages memory. Legacy drivers will use the deprecated drm_legacy_mmap()
 function, modern drivers should use one of the provided memory-manager
-specific implementations. For GEM-based drivers this is <a class="reference internal" href="drm-mm.html#c.drm_gem_mmap" title="drm_gem_mmap"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_mmap()</span></code></a>, and
-for drivers which use the CMA GEM helpers it’s <a class="reference internal" href="drm-mm.html#c.drm_gem_cma_mmap" title="drm_gem_cma_mmap"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_cma_mmap()</span></code></a>.</p>
+specific implementations. For GEM-based drivers this is <a class="reference internal" href="drm-mm.html#c.drm_gem_mmap" title="drm_gem_mmap"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_gem_mmap()</span></code></a>.</p>
 <p>No other file operations are supported by the DRM userspace API. Overall the
 following is an example <code class="xref c c-type docutils literal notranslate"><span class="pre">file_operations</span></code> structure:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>static const example_drm_fops = {

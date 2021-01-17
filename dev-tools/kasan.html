@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.12-dragon
+                5.11.13-dragon
               </div>
             
           
@@ -137,6 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="kgdb.html">Using kgdb, kdb and the kernel debugger internals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kselftest.html">Linux Kernel Selftests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kunit/index.html">KUnit - Unit Testing for the Linux Kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgo.html">Using PGO with the Linux kernel</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../doc-guide/index.html">How to write kernel documentation</a></li>
@@ -429,37 +430,14 @@ last report section shows the memory tags around the accessed address
 intended for use in production as a security mitigation. Therefore it supports
 boot parameters that allow to disable KASAN competely or otherwise control
 particular KASAN features.</p>
-<p>The things that can be controlled are:</p>
-<ol class="arabic simple">
-<li><p>Whether KASAN is enabled at all.</p></li>
-<li><p>Whether KASAN collects and saves alloc/free stacks.</p></li>
-<li><p>Whether KASAN panics on a detected bug or not.</p></li>
-</ol>
-<p>The <code class="docutils literal notranslate"><span class="pre">kasan.mode</span></code> boot parameter allows to choose one of three main modes:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">kasan.mode=off</span></code> - KASAN is disabled, no tag checks are performed</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kasan.mode=prod</span></code> - only essential production features are enabled</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kasan.mode=full</span></code> - all KASAN features are enabled</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kasan=off</span></code> or <code class="docutils literal notranslate"><span class="pre">=on</span></code> controls whether KASAN is enabled (default: <code class="docutils literal notranslate"><span class="pre">on</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kasan.stacktrace=off</span></code> or <code class="docutils literal notranslate"><span class="pre">=on</span></code> disables or enables alloc and free stack
+traces collection (default: <code class="docutils literal notranslate"><span class="pre">on</span></code> for <code class="docutils literal notranslate"><span class="pre">CONFIG_DEBUG_KERNEL=y</span></code>, otherwise
+<code class="docutils literal notranslate"><span class="pre">off</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kasan.fault=report</span></code> or <code class="docutils literal notranslate"><span class="pre">=panic</span></code> controls whether to only print a KASAN
+report or also panic the kernel (default: <code class="docutils literal notranslate"><span class="pre">report</span></code>).</p></li>
 </ul>
-<p>The chosen mode provides default control values for the features mentioned
-above. However it’s also possible to override the default values by providing:</p>
-<ul class="simple">
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">kasan.stacktrace=off</span></code> or <code class="docutils literal notranslate"><span class="pre">=on</span></code> - enable alloc/free stack collection</dt><dd><dl class="simple">
-<dt>(default: <code class="docutils literal notranslate"><span class="pre">on</span></code> for <code class="docutils literal notranslate"><span class="pre">mode=full</span></code>,</dt><dd><p>otherwise <code class="docutils literal notranslate"><span class="pre">off</span></code>)</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">kasan.fault=report</span></code> or <code class="docutils literal notranslate"><span class="pre">=panic</span></code> - only print KASAN report or also panic</dt><dd><p>(default: <code class="docutils literal notranslate"><span class="pre">report</span></code>)</p>
-</dd>
-</dl>
-</li>
-</ul>
-<p>If <code class="docutils literal notranslate"><span class="pre">kasan.mode</span></code> parameter is not provided, it defaults to <code class="docutils literal notranslate"><span class="pre">full</span></code> when
-<code class="docutils literal notranslate"><span class="pre">CONFIG_DEBUG_KERNEL</span></code> is enabled, and to <code class="docutils literal notranslate"><span class="pre">prod</span></code> otherwise.</p>
 </div>
 <div class="section" id="for-developers">
 <h3>For developers<a class="headerlink" href="#for-developers" title="Permalink to this headline">¶</a></h3>

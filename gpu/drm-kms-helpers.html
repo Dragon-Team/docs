@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.12-dragon
+                5.11.13-dragon
               </div>
             
           
@@ -953,12 +953,17 @@ EDID property by calling <a class="reference internal" href="drm-kms.html#c.drm_
 <p>The usual way to implement this is to cache the EDID retrieved in the
 probe callback somewhere in the driver-private connector structure.
 In this function drivers then parse the modes in the EDID and add
-them by calling <a class="reference internal" href="#c.drm_add_edid_modes" title="drm_add_edid_modes"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_add_edid_modes()</span></code></a>. But connectors that driver a
+them by calling <a class="reference internal" href="#c.drm_add_edid_modes" title="drm_add_edid_modes"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_add_edid_modes()</span></code></a>. But connectors that drive a
 fixed panel can also manually add specific modes using
 <a class="reference internal" href="drm-kms.html#c.drm_mode_probed_add" title="drm_mode_probed_add"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_mode_probed_add()</span></code></a>. Drivers which manually add modes should also
 make sure that the <a class="reference internal" href="drm-kms.html#c.drm_connector" title="drm_connector"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_connector.display_info</span></code></a>,
 <a class="reference internal" href="drm-kms.html#c.drm_connector" title="drm_connector"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_connector.width_mm</span></code></a> and <a class="reference internal" href="drm-kms.html#c.drm_connector" title="drm_connector"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_connector.height_mm</span></code></a> fields are
 filled in.</p>
+<p>Note that the caller function will automatically add standard VESA
+DMT modes up to 1024x768 if the .get_modes() helper operation returns
+no mode and if the connector status is connector_status_connected or
+connector_status_unknown. There is no need to call
+<a class="reference internal" href="#c.drm_add_modes_noedid" title="drm_add_modes_noedid"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_add_modes_noedid()</span></code></a> manually in that case.</p>
 <p>Virtual drivers that just want some standard VESA mode with a given
 resolution can call <a class="reference internal" href="#c.drm_add_modes_noedid" title="drm_add_modes_noedid"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_add_modes_noedid()</span></code></a>, and mark the preferred
 one using <a class="reference internal" href="#c.drm_set_preferred_mode" title="drm_set_preferred_mode"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_set_preferred_mode()</span></code></a>.</p>
@@ -1148,11 +1153,11 @@ void <code class="sig-name descname">drm_connector_helper_add</code><span class=
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct drm_plane_helper_funcs {
   int (*prepare_fb)(struct drm_plane *plane, struct drm_plane_state *new_state);
   void (*cleanup_fb)(struct drm_plane *plane, struct drm_plane_state *old_state);
-  int (*atomic_check)(struct drm_plane *plane, struct drm_plane_state *state);
-  void (*atomic_update)(struct drm_plane *plane, struct drm_plane_state *old_state);
-  void (*atomic_disable)(struct drm_plane *plane, struct drm_plane_state *old_state);
-  int (*atomic_async_check)(struct drm_plane *plane, struct drm_plane_state *state);
-  void (*atomic_async_update)(struct drm_plane *plane, struct drm_plane_state *new_state);
+  int (*atomic_check)(struct drm_plane *plane, struct drm_atomic_state *state);
+  void (*atomic_update)(struct drm_plane *plane, struct drm_atomic_state *state);
+  void (*atomic_disable)(struct drm_plane *plane, struct drm_atomic_state *state);
+  int (*atomic_async_check)(struct drm_plane *plane, struct drm_atomic_state *state);
+  void (*atomic_async_update)(struct drm_plane *plane, struct drm_atomic_state *state);
 };
 </pre></div>
 </div>
@@ -1202,9 +1207,8 @@ until a maximal configuration is reached.</p>
 transitional plane helpers, but it is optional.</p>
 <p>NOTE:</p>
 <p>This function is called in the check phase of an atomic update. The
-driver is not allowed to change anything outside of the free-standing
-state objects passed-in or assembled in the overall <a class="reference internal" href="drm-kms.html#c.drm_atomic_state" title="drm_atomic_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_atomic_state</span></code></a>
-update tracking structure.</p>
+driver is not allowed to change anything outside of the
+<a class="reference internal" href="drm-kms.html#c.drm_atomic_state" title="drm_atomic_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_atomic_state</span></code></a> update tracking structure.</p>
 <p>RETURNS:</p>
 <p>0 on success, -EINVAL if the state or the transition can’t be
 supported, -ENOMEM on memory allocation failure and -EDEADLK if an
@@ -1237,7 +1241,7 @@ the tradeoffs and variants of plane commit helpers.</p>
 <p>This callback is used by the atomic modeset helpers and by the
 transitional plane helpers, but it is optional.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">atomic_async_check</span></code></dt><dd><p>Drivers should set this function pointer to check if the plane state
+<dt><code class="docutils literal notranslate"><span class="pre">atomic_async_check</span></code></dt><dd><p>Drivers should set this function pointer to check if the atomic state
 can be updated in a async fashion. Here async means “not vblank
 synchronized”.</p>
 <p>This hook is called by drm_atomic_async_check() to establish if a
@@ -1255,11 +1259,9 @@ synchronized”.</p>
 <p>An async update will happen on legacy cursor updates. An async
 update won’t happen if there is an outstanding commit modifying
 the same plane.</p>
-<p>Note that unlike <a class="reference internal" href="#c.drm_plane_helper_funcs" title="drm_plane_helper_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_helper_funcs.atomic_update</span></code></a> this hook
-takes the new <a class="reference internal" href="drm-kms.html#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state</span></code></a> as parameter. When doing async_update
-drivers shouldn’t replace the <a class="reference internal" href="drm-kms.html#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state</span></code></a> but update the
-current one with the new plane configurations in the new
-plane_state.</p>
+<p>When doing async_update drivers shouldn’t replace the
+<a class="reference internal" href="drm-kms.html#c.drm_plane_state" title="drm_plane_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane_state</span></code></a> but update the current one with the new plane
+configurations in the new plane_state.</p>
 <p>Drivers should also swap the framebuffers between current plane
 state (<a class="reference internal" href="drm-kms.html#c.drm_plane" title="drm_plane"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane.state</span></code></a>) and new_state.
 This is required since cleanup for async commits is performed on
@@ -1305,6 +1307,7 @@ void <code class="sig-name descname">drm_plane_helper_add</code><span class="sig
 <p><strong>Definition</strong></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct drm_mode_config_helper_funcs {
   void (*atomic_commit_tail)(struct drm_atomic_state *state);
+  int (*atomic_commit_setup)(struct drm_atomic_state *state);
 };
 </pre></div>
 </div>
@@ -1337,6 +1340,19 @@ which can happen much earlier than the last hardware access needed to
 shut off the display pipeline completely.</p>
 <p>This hook is optional, the default implementation is
 <a class="reference internal" href="#c.drm_atomic_helper_commit_tail" title="drm_atomic_helper_commit_tail"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_commit_tail()</span></code></a>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">atomic_commit_setup</span></code></dt><dd><p>This hook is used by the default atomic_commit() hook implemented in
+<a class="reference internal" href="#c.drm_atomic_helper_commit" title="drm_atomic_helper_commit"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_commit()</span></code></a> together with the nonblocking helpers (see
+<a class="reference internal" href="#c.drm_atomic_helper_setup_commit" title="drm_atomic_helper_setup_commit"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_setup_commit()</span></code></a>) to extend the DRM commit setup. It
+is not used by the atomic helpers.</p>
+<p>This function is called at the end of
+<a class="reference internal" href="#c.drm_atomic_helper_setup_commit" title="drm_atomic_helper_setup_commit"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_setup_commit()</span></code></a>, so once the commit has been
+properly setup across the generic DRM object states. It allows
+drivers to do some additional commit tracking that isn’t related to a
+CRTC, plane or connector, tracked in a <a class="reference internal" href="drm-kms.html#c.drm_private_obj" title="drm_private_obj"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_private_obj</span></code></a> structure.</p>
+<p>Note that the documentation of <a class="reference internal" href="drm-kms.html#c.drm_private_obj" title="drm_private_obj"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_private_obj</span></code></a> has more details on
+how one should implement this.</p>
+<p>This hook is optional.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
@@ -1905,6 +1921,8 @@ int <code class="sig-name descname">drm_atomic_helper_setup_commit</code><span c
 nonblocking commits. Drivers using the nonblocking commit infrastructure
 should always call this function from their
 <a class="reference internal" href="drm-kms.html#c.drm_mode_config_funcs" title="drm_mode_config_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_mode_config_funcs.atomic_commit</span></code></a> hook.</p>
+<p>Drivers that need to extend the commit setup to private objects can use the
+<a class="reference internal" href="#c.drm_mode_config_helper_funcs" title="drm_mode_config_helper_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_mode_config_helper_funcs.atomic_commit_setup</span></code></a> hook.</p>
 <p>To be able to use this support drivers need to use a few more helper
 functions. <a class="reference internal" href="#c.drm_atomic_helper_wait_for_dependencies" title="drm_atomic_helper_wait_for_dependencies"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_wait_for_dependencies()</span></code></a> must be called before
 actually committing the hardware state, and for nonblocking commits this call
@@ -2445,32 +2463,6 @@ Similar to <a class="reference internal" href="#c.drm_atomic_helper_page_flip" t
 target vblank period to flip.</p>
 <p><strong>Return</strong></p>
 <p>Returns 0 on success, negative errno numbers on failure.</p>
-<dl class="c function">
-<dt id="c.drm_atomic_helper_legacy_gamma_set">
-int <code class="sig-name descname">drm_atomic_helper_legacy_gamma_set</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_crtc" title="drm_crtc">drm_crtc</a> *<em>crtc</em>, u16 *<em>red</em>, u16 *<em>green</em>, u16 *<em>blue</em>, uint32_t <em>size</em>, <em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_modeset_acquire_ctx" title="drm_modeset_acquire_ctx">drm_modeset_acquire_ctx</a> *<em>ctx</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_atomic_helper_legacy_gamma_set" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>set the legacy gamma correction table</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_crtc</span> <span class="pre">*crtc</span></code></dt><dd><p>CRTC object</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">u16</span> <span class="pre">*red</span></code></dt><dd><p>red correction table</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">u16</span> <span class="pre">*green</span></code></dt><dd><p>green correction table</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">u16</span> <span class="pre">*blue</span></code></dt><dd><p>green correction table</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">uint32_t</span> <span class="pre">size</span></code></dt><dd><p>size of the tables</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_modeset_acquire_ctx</span> <span class="pre">*ctx</span></code></dt><dd><p>lock acquire context</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Implements support for legacy gamma correction table for drivers
-that support color management through the DEGAMMA_LUT/GAMMA_LUT
-properties. See <a class="reference internal" href="drm-kms.html#c.drm_crtc_enable_color_mgmt" title="drm_crtc_enable_color_mgmt"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_crtc_enable_color_mgmt()</span></code></a> and the containing chapter for
-how the atomic color management and gamma tables work.</p>
 <dl class="c function">
 <dt id="c.drm_atomic_helper_bridge_propagate_bus_fmt">
 u32 *<code class="sig-name descname">drm_atomic_helper_bridge_propagate_bus_fmt</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_bridge" title="drm_bridge">drm_bridge</a> *<em>bridge</em>, <em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_bridge_state" title="drm_bridge_state">drm_bridge_state</a> *<em>bridge_state</em>, <em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_crtc_state" title="drm_crtc_state">drm_crtc_state</a> *<em>crtc_state</em>, <em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_connector_state" title="drm_connector_state">drm_connector_state</a> *<em>conn_state</em>, u32 <em>output_fmt</em>, unsigned int *<em>num_input_fmts</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_atomic_helper_bridge_propagate_bus_fmt" title="Permalink to this definition">¶</a><br /></dt>
@@ -7063,6 +7055,24 @@ bool <code class="sig-name descname">drm_dp_downstream_444_to_420_conversion</co
 <p><strong>Return</strong></p>
 <p>whether the downstream facing port can convert YCbCr 4:4:4 to 4:2:0</p>
 <dl class="c function">
+<dt id="c.drm_dp_downstream_rgb_to_ycbcr_conversion">
+bool <code class="sig-name descname">drm_dp_downstream_rgb_to_ycbcr_conversion</code><span class="sig-paren">(</span><em class="property">const</em> u8 <em>dpcd</em>[<em>DP_RECEIVER_CAP_SIZE</em>], <em class="property">const</em> u8 <em>port_cap</em>[4], u8 <em>color_spc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_downstream_rgb_to_ycbcr_conversion" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>determine downstream facing port RGB-&gt;YCbCr conversion capability</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">u8</span> <span class="pre">dpcd[DP_RECEIVER_CAP_SIZE]</span></code></dt><dd><p>DisplayPort configuration data</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">u8</span> <span class="pre">port_cap[4]</span></code></dt><dd><p>downstream facing port capabilities</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">color_spc</span></code></dt><dd><p><em>undescribed</em></p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p>whether the downstream facing port can convert RGB-&gt;YCbCr for a given
+colorspace.</p>
+<dl class="c function">
 <dt id="c.drm_dp_downstream_mode">
 <em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_display_mode" title="drm_display_mode">drm_display_mode</a> *<code class="sig-name descname">drm_dp_downstream_mode</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device">drm_device</a> *<em>dev</em>, <em class="property">const</em> u8 <em>dpcd</em>[<em>DP_RECEIVER_CAP_SIZE</em>], <em class="property">const</em> u8 <em>port_cap</em>[4]<span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_downstream_mode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return a mode for downstream facing port</p>
@@ -7532,6 +7542,188 @@ int <code class="sig-name descname">drm_dp_set_phy_test_pattern</code><span clas
 </dl>
 <p><strong>Description</strong></p>
 <p>Returns 0 on success or a negative error code on failure.</p>
+<dl class="c function">
+<dt id="c.drm_dp_get_pcon_max_frl_bw">
+int <code class="sig-name descname">drm_dp_get_pcon_max_frl_bw</code><span class="sig-paren">(</span><em class="property">const</em> u8 <em>dpcd</em>[<em>DP_RECEIVER_CAP_SIZE</em>], <em class="property">const</em> u8 <em>port_cap</em>[4]<span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_get_pcon_max_frl_bw" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>maximum frl supported by PCON</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">u8</span> <span class="pre">dpcd[DP_RECEIVER_CAP_SIZE]</span></code></dt><dd><p>DisplayPort configuration data</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">u8</span> <span class="pre">port_cap[4]</span></code></dt><dd><p>port capabilities</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Returns maximum frl bandwidth supported by PCON in GBPS,
+returns 0 if not supported.</p>
+<dl class="c function">
+<dt id="c.drm_dp_pcon_frl_prepare">
+int <code class="sig-name descname">drm_dp_pcon_frl_prepare</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_aux" title="drm_dp_aux">drm_dp_aux</a> *<em>aux</em>, bool <em>enable_frl_ready_hpd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_pcon_frl_prepare" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Prepare PCON for FRL.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_dp_aux</span> <span class="pre">*aux</span></code></dt><dd><p>DisplayPort AUX channel</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">enable_frl_ready_hpd</span></code></dt><dd><p><em>undescribed</em></p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Returns 0 if success, else returns negative error code.</p>
+<dl class="c function">
+<dt id="c.drm_dp_pcon_is_frl_ready">
+bool <code class="sig-name descname">drm_dp_pcon_is_frl_ready</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_aux" title="drm_dp_aux">drm_dp_aux</a> *<em>aux</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_pcon_is_frl_ready" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Is PCON ready for FRL</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_dp_aux</span> <span class="pre">*aux</span></code></dt><dd><p>DisplayPort AUX channel</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Returns true if success, else returns false.</p>
+<dl class="c function">
+<dt id="c.drm_dp_pcon_frl_configure_1">
+int <code class="sig-name descname">drm_dp_pcon_frl_configure_1</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_aux" title="drm_dp_aux">drm_dp_aux</a> *<em>aux</em>, int <em>max_frl_gbps</em>, bool <em>concurrent_mode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_pcon_frl_configure_1" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set HDMI LINK Configuration-Step1</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_dp_aux</span> <span class="pre">*aux</span></code></dt><dd><p>DisplayPort AUX channel</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">max_frl_gbps</span></code></dt><dd><p>maximum frl bw to be configured between PCON and HDMI sink</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">concurrent_mode</span></code></dt><dd><p>true if concurrent mode or operation is required,
+false otherwise.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Returns 0 if success, else returns negative error code.</p>
+<dl class="c function">
+<dt id="c.drm_dp_pcon_frl_configure_2">
+int <code class="sig-name descname">drm_dp_pcon_frl_configure_2</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_aux" title="drm_dp_aux">drm_dp_aux</a> *<em>aux</em>, int <em>max_frl_mask</em>, bool <em>extended_train_mode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_pcon_frl_configure_2" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set HDMI Link configuration Step-2</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_dp_aux</span> <span class="pre">*aux</span></code></dt><dd><p>DisplayPort AUX channel</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">max_frl_mask</span></code></dt><dd><p>Max FRL BW to be tried by the PCON with HDMI Sink</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">extended_train_mode</span></code></dt><dd><p>true for Extended Mode, false for Normal Mode.
+In Normal mode, the PCON tries each frl bw from the max_frl_mask starting
+from min, and stops when link training is successful. In Extended mode, all
+frl bw selected in the mask are trained by the PCON.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Returns 0 if success, else returns negative error code.</p>
+<dl class="c function">
+<dt id="c.drm_dp_pcon_reset_frl_config">
+int <code class="sig-name descname">drm_dp_pcon_reset_frl_config</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_aux" title="drm_dp_aux">drm_dp_aux</a> *<em>aux</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_pcon_reset_frl_config" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Re-Set HDMI Link configuration.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_dp_aux</span> <span class="pre">*aux</span></code></dt><dd><p>DisplayPort AUX channel</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Returns 0 if success, else returns negative error code.</p>
+<dl class="c function">
+<dt id="c.drm_dp_pcon_frl_enable">
+int <code class="sig-name descname">drm_dp_pcon_frl_enable</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_aux" title="drm_dp_aux">drm_dp_aux</a> *<em>aux</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_pcon_frl_enable" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Enable HDMI link through FRL</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_dp_aux</span> <span class="pre">*aux</span></code></dt><dd><p>DisplayPort AUX channel</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Returns 0 if success, else returns negative error code.</p>
+<dl class="c function">
+<dt id="c.drm_dp_pcon_hdmi_link_active">
+bool <code class="sig-name descname">drm_dp_pcon_hdmi_link_active</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_aux" title="drm_dp_aux">drm_dp_aux</a> *<em>aux</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_pcon_hdmi_link_active" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>check if the PCON HDMI LINK status is active.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_dp_aux</span> <span class="pre">*aux</span></code></dt><dd><p>DisplayPort AUX channel</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Returns true if link is active else returns false.</p>
+<dl class="c function">
+<dt id="c.drm_dp_pcon_hdmi_link_mode">
+int <code class="sig-name descname">drm_dp_pcon_hdmi_link_mode</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_aux" title="drm_dp_aux">drm_dp_aux</a> *<em>aux</em>, u8 *<em>frl_trained_mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_pcon_hdmi_link_mode" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>get the PCON HDMI LINK MODE</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_dp_aux</span> <span class="pre">*aux</span></code></dt><dd><p>DisplayPort AUX channel</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">*frl_trained_mask</span></code></dt><dd><p>pointer to store bitmask of the trained bw configuration.
+Valid only if the MODE returned is FRL. For Normal Link training mode
+only 1 of the bits will be set, but in case of Extended mode, more than
+one bits can be set.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Returns the link mode : TMDS or FRL on success, else returns negative error
+code.</p>
+<dl class="c function">
+<dt id="c.drm_dp_pcon_hdmi_frl_link_error_count">
+void <code class="sig-name descname">drm_dp_pcon_hdmi_frl_link_error_count</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_aux" title="drm_dp_aux">drm_dp_aux</a> *<em>aux</em>, <em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_connector" title="drm_connector">drm_connector</a> *<em>connector</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_pcon_hdmi_frl_link_error_count" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>print the error count per lane during link failure between PCON and HDMI sink</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_dp_aux</span> <span class="pre">*aux</span></code></dt><dd><p>DisplayPort AUX channel</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_connector</span> <span class="pre">*connector</span></code></dt><dd><p>DRM connector
+code.</p>
+</dd>
+</dl>
+<dl class="c function">
+<dt id="c.drm_dp_pcon_pps_default">
+int <code class="sig-name descname">drm_dp_pcon_pps_default</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_aux" title="drm_dp_aux">drm_dp_aux</a> *<em>aux</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_pcon_pps_default" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Let PCON fill the default pps parameters for DSC1.2 between PCON &amp; HDMI2.1 sink</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_dp_aux</span> <span class="pre">*aux</span></code></dt><dd><p>DisplayPort AUX channel</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Returns 0 on success, else returns negative error code.</p>
+<dl class="c function">
+<dt id="c.drm_dp_pcon_pps_override_buf">
+int <code class="sig-name descname">drm_dp_pcon_pps_override_buf</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_aux" title="drm_dp_aux">drm_dp_aux</a> *<em>aux</em>, u8 <em>pps_buf</em>[128]<span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_pcon_pps_override_buf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Configure PPS encoder override buffer for HDMI sink</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_dp_aux</span> <span class="pre">*aux</span></code></dt><dd><p>DisplayPort AUX channel</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">pps_buf[128]</span></code></dt><dd><p>128 bytes to be written into PPS buffer for HDMI sink by PCON.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Returns 0 on success, else returns negative error code.</p>
 </div>
 <div class="section" id="display-port-cec-helper-functions-reference">
 <h2>Display Port CEC Helper Functions Reference<a class="headerlink" href="#display-port-cec-helper-functions-reference" title="Permalink to this headline">¶</a></h2>
