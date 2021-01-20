@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -1373,13 +1373,14 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         insecure, please do not use on production kernels.
 
         debug_locks_verbose=
-                        [KNL] verbose self-tests
-                        Format=&lt;0|1&gt;
+                        [KNL] verbose locking self-tests
+                        Format: &lt;int&gt;
                         Print debugging info while doing the locking API
                         self-tests.
-                        We default to 0 (no extra messages), setting it to
-                        1 will print _a lot_ more information - normally
-                        only useful to kernel developers.
+                        Bitmask for the various LOCKTYPE_ tests. Defaults to 0
+                        (no extra messages), setting it to -1 (all bits set)
+                        will print _a_lot_ more information - normally only
+                        useful to lockdep developers.
 
         debug_objects   [KNL] Enable object debugging
 
@@ -2121,6 +2122,20 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         architecture dependent.  See also
                         Documentation/admin-guide/mm/hugetlbpage.rst.
                         Format: size[KMG]
+
+        hugetlb_free_vmemmap=
+                        [KNL] When CONFIG_HUGETLB_PAGE_FREE_VMEMMAP is set,
+                        this controls freeing unused vmemmap pages associated
+                        with each HugeTLB page. When this option is enabled,
+                        we disable PMD/huge page mapping of vmemmap pages which
+                        increase page table pages. So if a user/sysadmin only
+                        uses a small number of HugeTLB pages (as a percentage
+                        of system memory), they could end up using more memory
+                        with hugetlb_free_vmemmap on as opposed to off.
+                        Format: { on | off (default) }
+
+                        on:  enable the feature
+                        off: disable the feature
 
         hung_task_panic=
                         [KNL] Should the hung task detector generate panics.
@@ -4064,20 +4079,6 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         Format: &lt;mux_mode0.mode_name=value&gt;...
                         For example, to override I2C bus2:
                         omap_mux=i2c2_scl.i2c2_scl=0x100,i2c2_sda.i2c2_sda=0x100
-
-        oprofile.timer= [HW]
-                        Use timer interrupt instead of performance counters
-
-        oprofile.cpu_type=      Force an oprofile cpu type
-                        This might be useful if you have an older oprofile
-                        userland or if you want common events.
-                        Format: { arch_perfmon }
-                        arch_perfmon: [X86] Force use of architectural
-                                perfmon on Intel CPUs instead of the
-                                CPU specific event set.
-                        timer: [X86] Force use of architectural NMI
-                                timer mode (see also oprofile.timer
-                                for generic hr timer mode)
 
         oops=panic      Always panic on oopses. Default is to just kill the
                         process, but there is a small probability of

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -876,6 +876,8 @@ and is accessed only in response to a driver setup() callback.</p>
   struct list_head                ep_list;
   enum usb_device_speed           speed;
   enum usb_device_speed           max_speed;
+  enum usb_ssp_rate               ssp_rate;
+  enum usb_ssp_rate               max_ssp_rate;
   enum usb_device_state           state;
   const char                      *name;
   struct device                   dev;
@@ -922,6 +924,12 @@ driver setup() requests</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">max_speed</span></code></dt><dd><p>Maximal speed the UDC can handle.  UDC must support this
 and all slower speeds.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ssp_rate</span></code></dt><dd><p>Current connected SuperSpeed Plus signaling rate and lane count.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">max_ssp_rate</span></code></dt><dd><p>Maximum SuperSpeed Plus signaling rate and lane count the UDC
+can handle. The UDC must support this and all slower speeds and lower
+number of lanes.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">state</span></code></dt><dd><p>the state we are now (attached, suspended, configured, etc)</p>
 </dd>

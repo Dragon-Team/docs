@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -162,6 +162,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">USB4 and Thunderbolt</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#security-levels-and-how-to-use-them">Security levels and how to use them</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#authorizing-devices-when-security-level-is-user-or-secure">Authorizing devices when security level is <code class="docutils literal notranslate"><span class="pre">user</span></code> or <code class="docutils literal notranslate"><span class="pre">secure</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#de-authorizing-devices">De-authorizing devices</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dma-protection-utilizing-iommu">DMA protection utilizing IOMMU</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#upgrading-nvm-on-thunderbolt-device-host-or-retimer">Upgrading NVM on Thunderbolt device, host or retimer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#upgrading-nvm-when-host-controller-is-in-safe-mode">Upgrading NVM when host controller is in safe mode</a></li>
@@ -470,6 +471,21 @@ returned to the user.</p>
 <p>If the user still wants to connect the device they can either approve
 the device without a key or write a new key and write 1 to the
 <code class="docutils literal notranslate"><span class="pre">authorized</span></code> file to get the new key stored on the device NVM.</p>
+</div>
+<div class="section" id="de-authorizing-devices">
+<h2>De-authorizing devices<a class="headerlink" href="#de-authorizing-devices" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to de-authorize devices by writing <code class="docutils literal notranslate"><span class="pre">0</span></code> to their
+<code class="docutils literal notranslate"><span class="pre">authorized</span></code> attribute. This requires support from the connection
+manager implementation and can be checked by reading domain
+<code class="docutils literal notranslate"><span class="pre">deauthorization</span></code> attribute. If it reads <code class="docutils literal notranslate"><span class="pre">1</span></code> then the feature is
+supported.</p>
+<p>When a device is de-authorized the PCIe tunnel from the parent device
+PCIe downstream (or root) port to the device PCIe upstream port is torn
+down. This is essentially the same thing as PCIe hot-remove and the PCIe
+toplogy in question will not be accessible anymore until the device is
+authorized again. If there is storage such as NVMe or similar involved,
+there is a risk for data loss if the filesystem on that storage is not
+properly shut down. You have been warned!</p>
 </div>
 <div class="section" id="dma-protection-utilizing-iommu">
 <h2>DMA protection utilizing IOMMU<a class="headerlink" href="#dma-protection-utilizing-iommu" title="Permalink to this headline">¶</a></h2>

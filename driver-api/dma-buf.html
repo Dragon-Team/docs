@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -977,6 +977,11 @@ the scatter list are PAGE_SIZE aligned.</p>
 <p>On failure, returns a negative error value wrapped into a pointer.
 May also return -EINTR when a signal was received while being
 blocked.</p>
+<p>Note that exporters should not try to cache the scatter list, or
+return the same one for multiple calls. Caching is done either by the
+DMA-BUF code (for non-dynamic importers) or the importer. Ownership
+of the scatter list is transferred to the caller, and returned by
+<strong>unmap_dma_buf</strong>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">unmap_dma_buf</span></code></dt><dd><p>This is called by <a class="reference internal" href="#c.dma_buf_unmap_attachment" title="dma_buf_unmap_attachment"><code class="xref c c-func docutils literal notranslate"><span class="pre">dma_buf_unmap_attachment()</span></code></a> and should unmap and
 release the <code class="xref c c-type docutils literal notranslate"><span class="pre">sg_table</span></code> allocated in <strong>map_dma_buf</strong>, and it is mandatory.

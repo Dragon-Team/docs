@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -679,24 +679,6 @@ reset_bus.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">refcnt</span></code></dt><dd><p>reference counter</p>
 </dd>
 </dl>
-<dl class="c macro">
-<dt id="c.module_w1_family">
-<code class="sig-name descname">module_w1_family</code><a class="headerlink" href="#c.module_w1_family" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<p><code class="docutils literal notranslate"><span class="pre">module_w1_family</span> <span class="pre">(__w1_family)</span></code></p>
-<blockquote>
-<div><p>Helper macro for registering a 1-Wire families</p>
-</div></blockquote>
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">__w1_family</span></code></dt><dd><p>w1_family struct</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Helper macro for 1-Wire families which do not do anything special in module
-init/exit. This eliminates a lot of boilerplate. Each module may only
-use this macro once, and calling it replaces <a class="reference internal" href="basics.html#c.module_init" title="module_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">module_init()</span></code></a> and <a class="reference internal" href="basics.html#c.module_exit" title="module_exit"><code class="xref c c-func docutils literal notranslate"><span class="pre">module_exit()</span></code></a></p>
 </div>
 <div class="section" id="drivers-w1-w1-c">
 <h3>drivers/w1/w1.c<a class="headerlink" href="#drivers-w1-w1-c" title="Permalink to this headline">¶</a></h3>

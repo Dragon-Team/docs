@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -446,9 +446,9 @@ Ethernet over USB link</p></td>
 </div></blockquote>
 <p>and after creating the functions/ecm.&lt;instance name&gt; they contain default
 values: qmult is 5, dev_addr and host_addr are randomly selected.
-Except for ifname they can be written to until the function is linked to a
-configuration. The ifname is read-only and contains the name of the interface
-which was assigned by the net core, e. g. usb0.</p>
+The ifname can be written to if the function is not bound. A write must be an
+interface pattern such as “usb%d”, which will cause the net core to choose the
+next free usbX interface. By default, it is set to “usb%d”.</p>
 </div>
 <div class="section" id="testing-the-ecm-function">
 <h3>Testing the ECM function<a class="headerlink" href="#testing-the-ecm-function" title="Permalink to this headline">¶</a></h3>
@@ -497,9 +497,9 @@ Ethernet over USB link</p></td>
 </div></blockquote>
 <p>and after creating the functions/ecm.&lt;instance name&gt; they contain default
 values: qmult is 5, dev_addr and host_addr are randomly selected.
-Except for ifname they can be written to until the function is linked to a
-configuration. The ifname is read-only and contains the name of the interface
-which was assigned by the net core, e. g. usb0.</p>
+The ifname can be written to if the function is not bound. A write must be an
+interface pattern such as “usb%d”, which will cause the net core to choose the
+next free usbX interface. By default, it is set to “usb%d”.</p>
 </div>
 <div class="section" id="testing-the-ecm-subset-function">
 <h3>Testing the ECM subset function<a class="headerlink" href="#testing-the-ecm-subset-function" title="Permalink to this headline">¶</a></h3>
@@ -548,9 +548,9 @@ Ethernet over USB link</p></td>
 </div></blockquote>
 <p>and after creating the functions/eem.&lt;instance name&gt; they contain default
 values: qmult is 5, dev_addr and host_addr are randomly selected.
-Except for ifname they can be written to until the function is linked to a
-configuration. The ifname is read-only and contains the name of the interface
-which was assigned by the net core, e. g. usb0.</p>
+The ifname can be written to if the function is not bound. A write must be an
+interface pattern such as “usb%d”, which will cause the net core to choose the
+next free usbX interface. By default, it is set to “usb%d”.</p>
 </div>
 <div class="section" id="testing-the-eem-function">
 <h3>Testing the EEM function<a class="headerlink" href="#testing-the-eem-function" title="Permalink to this headline">¶</a></h3>
@@ -895,9 +895,9 @@ Ethernet over USB link</p></td>
 </div></blockquote>
 <p>and after creating the functions/ncm.&lt;instance name&gt; they contain default
 values: qmult is 5, dev_addr and host_addr are randomly selected.
-Except for ifname they can be written to until the function is linked to a
-configuration. The ifname is read-only and contains the name of the interface
-which was assigned by the net core, e. g. usb0.</p>
+The ifname can be written to if the function is not bound. A write must be an
+interface pattern such as “usb%d”, which will cause the net core to choose the
+next free usbX interface. By default, it is set to “usb%d”.</p>
 </div>
 <div class="section" id="testing-the-ncm-function">
 <h3>Testing the NCM function<a class="headerlink" href="#testing-the-ncm-function" title="Permalink to this headline">¶</a></h3>
@@ -1043,9 +1043,9 @@ Ethernet over USB link</p></td>
 </div></blockquote>
 <p>and after creating the functions/rndis.&lt;instance name&gt; they contain default
 values: qmult is 5, dev_addr and host_addr are randomly selected.
-Except for ifname they can be written to until the function is linked to a
-configuration. The ifname is read-only and contains the name of the interface
-which was assigned by the net core, e. g. usb0.</p>
+The ifname can be written to if the function is not bound. A write must be an
+interface pattern such as “usb%d”, which will cause the net core to choose the
+next free usbX interface. By default, it is set to “usb%d”.</p>
 </div>
 <div class="section" id="testing-the-rndis-function">
 <h3>Testing the RNDIS function<a class="headerlink" href="#testing-the-rndis-function" title="Permalink to this headline">¶</a></h3>

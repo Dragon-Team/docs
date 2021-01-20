@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -1584,9 +1584,8 @@ int <code class="sig-name descname">ssh_rtl_init</code><span class="sig-paren">(
 <p><strong>Description</strong></p>
 <p>Initializes the given request transport layer and associated packet
 transport layer. Transmitter and receiver threads must be started
-separately via ssh_rtl_tx_start() and ssh_rtl_rx_start(), after the
-request-layer has been initialized and the lower-level serial device layer
-has been set up.</p>
+separately via <a class="reference internal" href="#c.ssh_rtl_start" title="ssh_rtl_start"><code class="xref c c-func docutils literal notranslate"><span class="pre">ssh_rtl_start()</span></code></a>, after the request-layer has been
+initialized and the lower-level serial device layer has been set up.</p>
 <p><strong>Return</strong></p>
 <p>Returns zero on success and a nonzero error code on failure.</p>
 <dl class="c function">

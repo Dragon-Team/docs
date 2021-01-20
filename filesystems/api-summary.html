@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -544,28 +544,6 @@ struct file.</p>
 <div class="section" id="the-directory-cache">
 <h3>The Directory Cache<a class="headerlink" href="#the-directory-cache" title="Permalink to this headline">¶</a></h3>
 <dl class="c function">
-<dt id="c.d_drop">
-void <code class="sig-name descname">d_drop</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_drop" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>drop a dentry</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*dentry</span></code></dt><dd><p>dentry to drop</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p><a class="reference internal" href="#c.d_drop" title="d_drop"><code class="xref c c-func docutils literal notranslate"><span class="pre">d_drop()</span></code></a> unhashes the entry from the parent dentry hashes, so that it won’t
-be found through a VFS lookup any more. Note that this is different from
-deleting the dentry - d_delete will try to mark the dentry negative if
-possible, giving a successful _negative_ lookup, while d_drop will
-just make the cache lookup fail.</p>
-<p><a class="reference internal" href="#c.d_drop" title="d_drop"><code class="xref c c-func docutils literal notranslate"><span class="pre">d_drop()</span></code></a> is used mainly for stuff that wants to invalidate a dentry for some
-reason (NFS timeouts or autofs deletes).</p>
-<p>__d_drop requires dentry-&gt;d_lock</p>
-<p>___d_drop doesn’t mark dentry as “unhashed”
-(dentry-&gt;d_hash.pprev will be LIST_POISON2, not NULL).</p>
-<dl class="c function">
 <dt id="c.d_find_any_alias">
 <em class="property">struct</em> dentry *<code class="sig-name descname">d_find_any_alias</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_find_any_alias" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find any alias for a given inode</p>
@@ -579,26 +557,6 @@ reason (NFS timeouts or autofs deletes).</p>
 <p><strong>Description</strong></p>
 <p>If any aliases exist for the given inode, take and return a
 reference for one of them.  If no aliases exist, return <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<dl class="c function">
-<dt id="c.d_find_alias">
-<em class="property">struct</em> dentry *<code class="sig-name descname">d_find_alias</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_find_alias" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>grab a hashed alias of inode</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*inode</span></code></dt><dd><p>inode in question</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>If inode has a hashed alias, or is a directory and has any alias,
-acquire the reference to alias and return it. Otherwise return NULL.
-Notice that if inode is a directory there can be only one alias and
-it can be unhashed only if it has no children, or if it is the root
-of a filesystem, or if the directory was renamed and d_revalidate
-was the first vfs operation to notice.</p>
-<p>If the inode has an IS_ROOT, DCACHE_DISCONNECTED alias, then prefer
-any other hashed alias over that one.</p>
 <dl class="c function">
 <dt id="c.shrink_dcache_sb">
 void <code class="sig-name descname">shrink_dcache_sb</code><span class="sig-paren">(</span><em class="property">struct</em> super_block *<em>sb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.shrink_dcache_sb" title="Permalink to this definition">¶</a><br /></dt>
@@ -1476,30 +1434,6 @@ returned 1 and NULL otherwise.</p>
 It is also not permitted to sleep.</p>
 <p>The caller must hold the RCU read lock.</p>
 <dl class="c function">
-<dt id="c.find_inode_by_ino_rcu">
-<em class="property">struct</em> inode *<code class="sig-name descname">find_inode_by_ino_rcu</code><span class="sig-paren">(</span><em class="property">struct</em> super_block *<em>sb</em>, unsigned long <em>ino</em><span class="sig-paren">)</span><a class="headerlink" href="#c.find_inode_by_ino_rcu" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Find an inode in the inode cache</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">super_block</span> <span class="pre">*sb</span></code></dt><dd><p>Super block of file system to search</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">ino</span></code></dt><dd><p>The inode number to match</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Search for the inode specified by <strong>hashval</strong> and <strong>data</strong> in the inode cache,
-where the helper function <strong>test</strong> will return 0 if the inode does not match
-and 1 if it does.  The <strong>test</strong> function must be responsible for taking the
-i_lock spin_lock and checking i_state for an inode being freed or being
-initialized.</p>
-<p>If successful, this will return the inode for which the <strong>test</strong> function
-returned 1 and NULL otherwise.</p>
-<p>The <strong>test</strong> function is not permitted to take a ref on any inode presented.
-It is also not permitted to sleep.</p>
-<p>The caller must hold the RCU read lock.</p>
-<dl class="c function">
 <dt id="c.iput">
 void <code class="sig-name descname">iput</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iput" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>put an inode</p>
@@ -1893,21 +1827,6 @@ internal writers are finished we call -&gt;freeze_fs() to finish filesystem
 freezing. Then we transition to SB_FREEZE_COMPLETE state. This state is
 mostly auxiliary for filesystems to verify they do not modify frozen fs.</p>
 <p>sb-&gt;s_writers.frozen is protected by sb-&gt;s_umount.</p>
-<dl class="c function">
-<dt id="c.thaw_super">
-int <code class="sig-name descname">thaw_super</code><span class="sig-paren">(</span><em class="property">struct</em> super_block *<em>sb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.thaw_super" title="Permalink to this definition">¶</a><br /></dt>
-<dd><ul class="simple">
-<li><p>unlock filesystem</p></li>
-</ul>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">super_block</span> <span class="pre">*sb</span></code></dt><dd><p>the super to thaw</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Unlocks the filesystem and marks it writeable again after <a class="reference internal" href="#c.freeze_super" title="freeze_super"><code class="xref c c-func docutils literal notranslate"><span class="pre">freeze_super()</span></code></a>.</p>
 </div>
 <div class="section" id="file-locks">
 <h3>File Locks<a class="headerlink" href="#file-locks" title="Permalink to this headline">¶</a></h3>
@@ -3504,23 +3423,6 @@ as long as the traversal is guarded by <a class="reference internal" href="../co
 the _rcu list-mutation primitives such as <a class="reference internal" href="../core-api/kernel-api.html#c.hlist_add_head_rcu" title="hlist_add_head_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">hlist_add_head_rcu()</span></code></a>
 as long as the traversal is guarded by <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_read_lock" title="rcu_read_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_read_lock()</span></code></a>.</p>
 <dl class="c function">
-<dt id="c.seq_hlist_start_percpu">
-<em class="property">struct</em> hlist_node *<code class="sig-name descname">seq_hlist_start_percpu</code><span class="sig-paren">(</span><em class="property">struct</em> hlist_head __percpu *<em>head</em>, int *<em>cpu</em>, loff_t <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#c.seq_hlist_start_percpu" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>start an iteration of a percpu hlist array</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">hlist_head</span> <span class="pre">__percpu</span> <span class="pre">*head</span></code></dt><dd><p>pointer to percpu array of struct hlist_heads</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*cpu</span></code></dt><dd><p>pointer to cpu “cursor”</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">loff_t</span> <span class="pre">pos</span></code></dt><dd><p>start position of sequence</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Called at seq_file-&gt;op-&gt;<a class="reference internal" href="../networking/ieee802154.html#c.start" title="start"><code class="xref c c-func docutils literal notranslate"><span class="pre">start()</span></code></a>.</p>
-<dl class="c function">
 <dt id="c.seq_hlist_next_percpu">
 <em class="property">struct</em> hlist_node *<code class="sig-name descname">seq_hlist_next_percpu</code><span class="sig-paren">(</span>void *<em>v</em>, <em class="property">struct</em> hlist_head __percpu *<em>head</em>, int *<em>cpu</em>, loff_t *<em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#c.seq_hlist_next_percpu" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>move to the next position of the percpu hlist array</p>
@@ -4071,6 +3973,28 @@ order to operate correctly.  All the files created with
 <a class="reference internal" href="#c.anon_inode_getfd" title="anon_inode_getfd"><code class="xref c c-func docutils literal notranslate"><span class="pre">anon_inode_getfd()</span></code></a> will use the same singleton inode, reducing
 memory use and avoiding code duplication for the file/inode/dentry
 setup.  Returns a newly created file descriptor or an error code.</p>
+<dl class="c function">
+<dt id="c.anon_inode_getfd_secure">
+int <code class="sig-name descname">anon_inode_getfd_secure</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em>, <em class="property">const</em> <em class="property">struct</em> file_operations *<em>fops</em>, void *<em>priv</em>, int <em>flags</em>, <em class="property">const</em> <em class="property">struct</em> inode *<em>context_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.anon_inode_getfd_secure" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Like <a class="reference internal" href="#c.anon_inode_getfd" title="anon_inode_getfd"><code class="xref c c-func docutils literal notranslate"><span class="pre">anon_inode_getfd()</span></code></a>, but creates a new !S_PRIVATE anon inode rather than reuse the singleton anon inode, and calls the inode_init_security_anon() LSM hook. This allows the inode to have its own security context and for a LSM to reject creation of the inode.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*name</span></code></dt><dd><p>[in]    name of the “class” of the new file</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">file_operations</span> <span class="pre">*fops</span></code></dt><dd><p>[in]    file operations for the new file</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*priv</span></code></dt><dd><p>[in]    private data for the new file (will be file’s private_data)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">flags</span></code></dt><dd><p>[in]    flags</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*context_inode</span></code></dt><dd><p>[in]    the logical relationship with the new inode (optional)</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>The LSM may use <strong>context_inode</strong> in inode_init_security_anon(), but a
+reference to it is not held.</p>
 <dl class="c function">
 <dt id="c.setattr_prepare">
 int <code class="sig-name descname">setattr_prepare</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em>, <em class="property">struct</em> iattr *<em>attr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.setattr_prepare" title="Permalink to this definition">¶</a><br /></dt>

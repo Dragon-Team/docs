@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -1579,13 +1579,13 @@ DW - 8 byte (eBPF only)
 </pre></div>
 </div>
 <p>Mode modifier is one of:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BPF_IMM  0x00  /* used for 32-bit mov in classic BPF and 64-bit in eBPF */
-BPF_ABS  0x20
-BPF_IND  0x40
-BPF_MEM  0x60
-BPF_LEN  0x80  /* classic BPF only, reserved in eBPF */
-BPF_MSH  0xa0  /* classic BPF only, reserved in eBPF */
-BPF_XADD 0xc0  /* eBPF only, exclusive add */
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BPF_IMM     0x00  /* used for 32-bit mov in classic BPF and 64-bit in eBPF */
+BPF_ABS     0x20
+BPF_IND     0x40
+BPF_MEM     0x60
+BPF_LEN     0x80  /* classic BPF only, reserved in eBPF */
+BPF_MSH     0xa0  /* classic BPF only, reserved in eBPF */
+BPF_ATOMIC  0xc0  /* eBPF only, atomic operations */
 </pre></div>
 </div>
 <p>eBPF has two non-generic instructions: (BPF_ABS | &lt;size&gt; | BPF_LD) and
@@ -1614,12 +1614,46 @@ explicit inputs to these instructions.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BPF_MEM | &lt;size&gt; | BPF_STX:  *(size *) (dst_reg + off) = src_reg
 BPF_MEM | &lt;size&gt; | BPF_ST:   *(size *) (dst_reg + off) = imm32
 BPF_MEM | &lt;size&gt; | BPF_LDX:  dst_reg = *(size *) (src_reg + off)
-BPF_XADD | BPF_W  | BPF_STX: lock xadd *(u32 *)(dst_reg + off16) += src_reg
-BPF_XADD | BPF_DW | BPF_STX: lock xadd *(u64 *)(dst_reg + off16) += src_reg
 </pre></div>
 </div>
-<p>Where size is one of: BPF_B or BPF_H or BPF_W or BPF_DW. Note that 1 and
-2 byte atomic increments are not supported.</p>
+<p>Where size is one of: BPF_B or BPF_H or BPF_W or BPF_DW.</p>
+<p>It also includes atomic operations, which use the immediate field for extra
+encoding:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.imm = BPF_ADD, .code = BPF_ATOMIC | BPF_W  | BPF_STX: lock xadd *(u32 *)(dst_reg + off16) += src_reg
+.imm = BPF_ADD, .code = BPF_ATOMIC | BPF_DW | BPF_STX: lock xadd *(u64 *)(dst_reg + off16) += src_reg
+</pre></div>
+</div>
+<p>The basic atomic operations supported are:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BPF_ADD
+BPF_AND
+BPF_OR
+BPF_XOR
+</pre></div>
+</div>
+<p>Each having equivalent semantics with the <code class="docutils literal notranslate"><span class="pre">BPF_ADD</span></code> example, that is: the
+memory location addresed by <code class="docutils literal notranslate"><span class="pre">dst_reg</span> <span class="pre">+</span> <span class="pre">off</span></code> is atomically modified, with
+<code class="docutils literal notranslate"><span class="pre">src_reg</span></code> as the other operand. If the <code class="docutils literal notranslate"><span class="pre">BPF_FETCH</span></code> flag is set in the
+immediate, then these operations also overwrite <code class="docutils literal notranslate"><span class="pre">src_reg</span></code> with the
+value that was in memory before it was modified.</p>
+<p>The more special operations are:</p>
+<blockquote>
+<div><p>BPF_XCHG</p>
+</div></blockquote>
+<p>This atomically exchanges <code class="docutils literal notranslate"><span class="pre">src_reg</span></code> with the value addressed by <code class="docutils literal notranslate"><span class="pre">dst_reg</span> <span class="pre">+</span>
+<span class="pre">off</span></code>.</p>
+<blockquote>
+<div><p>BPF_CMPXCHG</p>
+</div></blockquote>
+<p>This atomically compares the value addressed by <code class="docutils literal notranslate"><span class="pre">dst_reg</span> <span class="pre">+</span> <span class="pre">off</span></code> with
+<code class="docutils literal notranslate"><span class="pre">R0</span></code>. If they match it is replaced with <code class="docutils literal notranslate"><span class="pre">src_reg</span></code>, The value that was there
+before is loaded back to <code class="docutils literal notranslate"><span class="pre">R0</span></code>.</p>
+<p>Note that 1 and 2 byte atomic operations are not supported.</p>
+<p>Except <code class="docutils literal notranslate"><span class="pre">BPF_ADD</span></code> _without_ <code class="docutils literal notranslate"><span class="pre">BPF_FETCH</span></code> (for legacy reasons), all 4 byte
+atomic operations require alu32 mode. Clang enables this mode by default in
+architecture v3 (<code class="docutils literal notranslate"><span class="pre">-mcpu=v3</span></code>). For older versions it can be enabled with
+<code class="docutils literal notranslate"><span class="pre">-Xclang</span> <span class="pre">-target-feature</span> <span class="pre">-Xclang</span> <span class="pre">+alu32</span></code>.</p>
+<p>You may encounter BPF_XADD - this is a legacy name for BPF_ATOMIC, referring to
+the exclusive-add operation encoded when the immediate field is zero.</p>
 <p>eBPF has one 16-byte instruction: BPF_LD | BPF_DW | BPF_IMM which consists
 of two consecutive <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">bpf_insn</span></code> 8-byte blocks and interpreted as single
 instruction that loads 64-bit immediate value into a dst_reg.

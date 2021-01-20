@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -1208,23 +1208,6 @@ int <code class="sig-name descname">rio_map_outb_region</code><span class="sig-p
 <p>0 – Success.</p>
 <p><strong>Description</strong></p>
 <p>This function will create the mapping from RIO space to local memory.</p>
-<dl class="c function">
-<dt id="c.rio_unmap_outb_region">
-void <code class="sig-name descname">rio_unmap_outb_region</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.rio_mport" title="rio_mport">rio_mport</a> *<em>mport</em>, u16 <em>destid</em>, u64 <em>rstart</em><span class="sig-paren">)</span><a class="headerlink" href="#c.rio_unmap_outb_region" title="Permalink to this definition">¶</a><br /></dt>
-<dd><ul class="simple">
-<li><p>Unmap the inbound memory region</p></li>
-</ul>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">rio_mport</span> <span class="pre">*mport</span></code></dt><dd><p>Master port</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">u16</span> <span class="pre">destid</span></code></dt><dd><p>destination id mapping points to</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">u64</span> <span class="pre">rstart</span></code></dt><dd><p>RIO base address window translates to</p>
-</dd>
-</dl>
 <dl class="c function">
 <dt id="c.rio_mport_get_physefb">
 u32 <code class="sig-name descname">rio_mport_get_physefb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.rio_mport" title="rio_mport">rio_mport</a> *<em>port</em>, int <em>local</em>, u16 <em>destid</em>, u8 <em>hopcount</em>, u32 *<em>rmap</em><span class="sig-paren">)</span><a class="headerlink" href="#c.rio_mport_get_physefb" title="Permalink to this definition">¶</a><br /></dt>

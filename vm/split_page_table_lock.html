@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -333,7 +333,7 @@ to taken lock or NULL if allocation failed;</p>
 </div></blockquote>
 <p>Split page table lock for PTE tables is enabled compile-time if
 CONFIG_SPLIT_PTLOCK_CPUS (usually 4) is less or equal to NR_CPUS.
-If split lock is disabled, all tables guaded by mm-&gt;page_table_lock.</p>
+If split lock is disabled, all tables are guarded by mm-&gt;page_table_lock.</p>
 <p>Split page table lock for PMD tables is enabled, if it’s enabled for PTE
 tables and the architecture supports it (see below).</p>
 <div class="section" id="hugetlb-and-split-page-table-lock">

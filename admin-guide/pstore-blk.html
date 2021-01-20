@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -560,33 +560,6 @@ device number, sector count and start sector of the whole disk.</p>
 <h2>pstore block internals<a class="headerlink" href="#pstore-block-internals" title="Permalink to this headline">¶</a></h2>
 <p>For developer reference, here are all the important structures and APIs:</p>
 <dl class="c struct">
-<dt id="c.psz_buffer">
-<em class="property">struct </em><code class="sig-name descname">psz_buffer</code><a class="headerlink" href="#c.psz_buffer" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>header of zone to flush to storage</p>
-</dd></dl>
-
-<p><strong>Definition</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct psz_buffer {
-#define PSZ_SIG (0x43474244) ;
-  uint32_t sig;
-  atomic_t datalen;
-  atomic_t start;
-  uint8_t data[];
-};
-</pre></div>
-</div>
-<p><strong>Members</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">sig</span></code></dt><dd><p>signature to indicate header (PSZ_SIG xor PSZONE-type value)</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">datalen</span></code></dt><dd><p>length of data in <strong>data</strong></p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">start</span></code></dt><dd><p>offset into <strong>data</strong> where the beginning of the stored bytes begin</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">data</span></code></dt><dd><p>zone data.</p>
-</dd>
-</dl>
-<dl class="c struct">
 <dt id="c.psz_kmsg_header">
 <em class="property">struct </em><code class="sig-name descname">psz_kmsg_header</code><a class="headerlink" href="#c.psz_kmsg_header" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>kmsg dump-specific header to flush to storage</p>
@@ -620,7 +593,7 @@ device number, sector count and start sector of the whole disk.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>This is a sub-header for a kmsg dump, trailing after <a class="reference internal" href="#c.psz_buffer" title="psz_buffer"><code class="xref c c-type docutils literal notranslate"><span class="pre">psz_buffer</span></code></a>.</p>
+<p>This is a sub-header for a kmsg dump, trailing after <code class="xref c c-type docutils literal notranslate"><span class="pre">psz_buffer</span></code>.</p>
 <dl class="c struct">
 <dt id="c.pstore_zone">
 <em class="property">struct </em><code class="sig-name descname">pstore_zone</code><a class="headerlink" href="#c.pstore_zone" title="Permalink to this definition">¶</a><br /></dt>

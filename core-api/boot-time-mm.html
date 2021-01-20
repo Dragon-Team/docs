@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -606,56 +606,6 @@ is initialized.</p>
 </dl>
 <p><strong>Description</strong></p>
 <p>Walks over configured memory ranges.</p>
-<dl class="c macro">
-<dt id="c.for_each_free_mem_pfn_range_in_zone">
-<code class="sig-name descname">for_each_free_mem_pfn_range_in_zone</code><a class="headerlink" href="#c.for_each_free_mem_pfn_range_in_zone" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<p><code class="docutils literal notranslate"><span class="pre">for_each_free_mem_pfn_range_in_zone</span> <span class="pre">(i,</span> <span class="pre">zone,</span> <span class="pre">p_start,</span> <span class="pre">p_end)</span></code></p>
-<blockquote>
-<div><p>iterate through zone specific free memblock areas</p>
-</div></blockquote>
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">i</span></code></dt><dd><p>u64 used as loop variable</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">zone</span></code></dt><dd><p>zone in which all of the memory blocks reside</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">p_start</span></code></dt><dd><p>ptr to phys_addr_t for start address of the range, can be <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">p_end</span></code></dt><dd><p>ptr to phys_addr_t for end address of the range, can be <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Walks over free (memory &amp;&amp; !reserved) areas of memblock in a specific
-zone. Available once memblock and an empty zone is initialized. The main
-assumption is that the zone start, end, and pgdat have been associated.
-This way we can use the zone to determine NUMA node, and if a given part
-of the memblock is valid for the zone.</p>
-<dl class="c macro">
-<dt id="c.for_each_free_mem_pfn_range_in_zone_from">
-<code class="sig-name descname">for_each_free_mem_pfn_range_in_zone_from</code><a class="headerlink" href="#c.for_each_free_mem_pfn_range_in_zone_from" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<p><code class="docutils literal notranslate"><span class="pre">for_each_free_mem_pfn_range_in_zone_from</span> <span class="pre">(i,</span> <span class="pre">zone,</span> <span class="pre">p_start,</span> <span class="pre">p_end)</span></code></p>
-<blockquote>
-<div><p>iterate through zone specific free memblock areas from a given point</p>
-</div></blockquote>
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">i</span></code></dt><dd><p>u64 used as loop variable</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">zone</span></code></dt><dd><p>zone in which all of the memory blocks reside</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">p_start</span></code></dt><dd><p>ptr to phys_addr_t for start address of the range, can be <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">p_end</span></code></dt><dd><p>ptr to phys_addr_t for end address of the range, can be <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Walks over free (memory &amp;&amp; !reserved) areas of memblock in a specific
-zone, continuing from current position. Available as soon as memblock is
-initialized.</p>
 <dl class="c macro">
 <dt id="c.for_each_free_mem_range">
 <code class="sig-name descname">for_each_free_mem_range</code><a class="headerlink" href="#c.for_each_free_mem_range" title="Permalink to this definition">¶</a><br /></dt>

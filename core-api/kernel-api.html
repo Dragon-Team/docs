@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -4569,27 +4569,6 @@ uint8_t <code class="sig-name descname">crc4</code><span class="sig-paren">(</sp
 <p>The <strong>x</strong> value is treated as left-aligned, and bits above <strong>bits</strong> are ignored
 in the crc calculations.</p>
 <dl class="c function">
-<dt id="c.crc7_be">
-u8 <code class="sig-name descname">crc7_be</code><span class="sig-paren">(</span>u8 <em>crc</em>, <em class="property">const</em> u8 *<em>buffer</em>, size_t <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crc7_be" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>update the CRC7 for the data buffer</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">crc</span></code></dt><dd><p>previous CRC7 value</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">u8</span> <span class="pre">*buffer</span></code></dt><dd><p>data pointer</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">len</span></code></dt><dd><p>number of bytes in the buffer</p>
-</dd>
-</dl>
-<p><strong>Context</strong></p>
-<p>any</p>
-<p><strong>Description</strong></p>
-<p>Returns the updated CRC7 value.
-The CRC7 is left-aligned in the byte (the lsbit is always 0), as that
-makes the computation easier, and all callers want it in that form.</p>
-<dl class="c function">
 <dt id="c.crc8_populate_msb">
 void <code class="sig-name descname">crc8_populate_msb</code><span class="sig-paren">(</span>u8 <em>table</em>[<em>CRC8_TABLE_SIZE</em>], u8 <em>polynomial</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crc8_populate_msb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>fill crc table for given polynomial in reverse bit order.</p>
@@ -7487,7 +7466,7 @@ void <code class="sig-name descname">audit_log_end</code><span class="sig-paren"
 <p><strong>Description</strong></p>
 <p>We can not do a netlink send inside an irq context because it blocks (last
 arg, flags, is not set to MSG_DONTWAIT), so the audit buffer is placed on a
-queue and a tasklet is scheduled to remove them from the queue outside the
+queue and a kthread is scheduled to remove them from the queue outside the
 irq context.  May be called in any context.</p>
 <dl class="c function">
 <dt id="c.audit_log">

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -891,24 +891,6 @@ bool <code class="sig-name descname">is_idle_task</code><span class="sig-paren">
 </dl>
 <p><strong>Return</strong></p>
 <p>1 if <strong>p</strong> is an idle task. 0 otherwise.</p>
-<dl class="c enum">
-<dt id="c.cpu_util_type">
-<em class="property">enum </em><code class="sig-name descname">cpu_util_type</code><a class="headerlink" href="#c.cpu_util_type" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>CPU utilization type</p>
-</dd></dl>
-
-<p><strong>Constants</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">FREQUENCY_UTIL</span></code></dt><dd><p>Utilization used to select frequency</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">ENERGY_UTIL</span></code></dt><dd><p>Utilization used during energy calculation</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>The utilization signals of all scheduling classes (CFS/RT/DL) and IRQ time
-need to be aggregated differently depending on the usage made of them. This
-enum is used within sched_cpu_util() to differentiate the types of
-utilization expected by the callers, and adjust the aggregation accordingly.</p>
 <dl class="c function">
 <dt id="c.wake_up_process">
 int <code class="sig-name descname">wake_up_process</code><span class="sig-paren">(</span><em class="property">struct</em> task_struct *<em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wake_up_process" title="Permalink to this definition">¶</a><br /></dt>

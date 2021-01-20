@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -353,6 +353,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-class-led-trigger-netdev">File /testing/sysfs-class-led-trigger-netdev</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-class-led-trigger-oneshot">File /testing/sysfs-class-led-trigger-oneshot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-class-led-trigger-pattern">File /testing/sysfs-class-led-trigger-pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-class-led-trigger-tty">File /testing/sysfs-class-led-trigger-tty</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-class-led-trigger-usbport">File /testing/sysfs-class-led-trigger-usbport</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-class-leds-gt683r">File /testing/sysfs-class-leds-gt683r</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-class-mei">File /testing/sysfs-class-mei</a></li>
@@ -11963,7 +11964,7 @@ to the _raw output.</p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio"><span class="std std-ref">sysfs-bus-iio</span></a></p>
 <p>If a discrete set of scale values is available, they
 are listed in this attribute.</p>
-<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasr">
+<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasn">
 <colgroup>
 <col style="width: 100%" />
 </colgroup>
@@ -13993,11 +13994,8 @@ Typically a part number.</p>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio"><span class="std std-ref">sysfs-bus-iio</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-frequency-adf4371"><span class="std std-ref">sysfs-bus-iio-frequency-adf4371</span></a></p>
-<p>Output frequency for channel Y in Hz. The number must always be
-specified and unique if the output corresponds to a single
-channel.</p>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio"><span class="std std-ref">sysfs-bus-iio</span></a></p>
 <p>Stores the PLL frequency in Hz for channel Y.
 Reading returns the actual frequency in Hz.
 The ADF4371 has an integrated VCO with fundamendal output
@@ -14018,6 +14016,9 @@ frequencies from 62500000 Hz to 8000000000 Hz.</p>
 <p>Note: writes to one of the channels will affect the frequency of
 all the other channels, since it involves changing the VCO
 fundamental output frequency.</p>
+<p>Output frequency for channel Y in Hz. The number must always be
+specified and unique if the output corresponds to a single
+channel.</p>
 <table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-frequency-increment">
 <colgroup>
 <col style="width: 100%" />
@@ -14201,8 +14202,8 @@ out_currentY_currentZ_raw, where Z is the current zone.</p>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-humidity-hdc100x"><span class="std std-ref">sysfs-bus-iio-humidity-hdc100x</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-humidity-hdc2010"><span class="std std-ref">sysfs-bus-iio-humidity-hdc2010</span></a></p>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-humidity-hdc100x"><span class="std std-ref">sysfs-bus-iio-humidity-hdc100x</span></a></p>
 <p>Controls the heater device within the humidity sensor to get
 rid of excess condensation.</p>
 <p>Valid control values are 0 = OFF, and 1 = ON.
@@ -21148,8 +21149,7 @@ are free to create needed API under optee-ta-&lt;uuid&gt; directory.</p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-thunderbolt"><span class="std std-ref">sysfs-bus-thunderbolt</span></a></p>
 <p>This attribute is used to authorize Thunderbolt devices
 after they have been connected. If the device is not
-authorized, no devices such as PCIe and Display port are
-available to the system.</p>
+authorized, no PCIe devices are available to the system.</p>
 <p>Contents of this attribute will be 0 when the device is not
 yet authorized.</p>
 <p>Possible values are supported:</p>
@@ -21159,7 +21159,11 @@ yet authorized.</p>
 <col style="width: 96%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p>1</p></td>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>The device will be de-authorized (only supported if
+deauthorization attribute under domain contains 1)</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
 <td><p>The device will be authorized and connected</p></td>
 </tr>
 </tbody>
@@ -21172,11 +21176,15 @@ values are:</p>
 <col style="width: 97%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p>1</p></td>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>The device will be de-authorized (only supported if
+deauthorization attribute under domain contains 1)</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
 <td><p>The 32 byte hex string is added to the device NVM and
 the device is authorized.</p></td>
 </tr>
-<tr class="row-even"><td><p>2</p></td>
+<tr class="row-odd"><td><p>2</p></td>
 <td><p>Send a challenge based on the 32 byte hex string. If the
 challenge response from device is valid, the device is
 authorized. In case of failure errno will be ENOKEY if
@@ -21246,6 +21254,20 @@ consideration.</p>
 <p>Software always updates a full list in each write.</p>
 <p>If a device is authorized automatically during boot its
 boot attribute is set to 1.</p>
+<table class="docutils align-default" id="abi-sys-bus-thunderbolt-devices-domainx-deauthorization">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/bus/thunderbolt/devices/…/domainX/deauthorization</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-thunderbolt"><span class="std std-ref">sysfs-bus-thunderbolt</span></a></p>
+<p>This attribute tells whether the system supports
+de-authorization of devices. Value of 1 means user can
+de-authorize PCIe tunnel by writing 0 to authorized
+attribute under each device.</p>
 <table class="docutils align-default" id="abi-sys-bus-thunderbolt-devices-domainx-iommu-dma-protection">
 <colgroup>
 <col style="width: 100%" />
@@ -27851,16 +27873,16 @@ Current state can be also read.</p>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-led-trigger-pattern"><span class="std std-ref">sysfs-class-led-trigger-pattern</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-led-driver-el15203000"><span class="std std-ref">sysfs-class-led-driver-el15203000</span></a></p>
-<p>Specify a pattern repeat number. -1 means repeat indefinitely,
-other negative numbers and number 0 are invalid.</p>
-<p>This file will always return the originally written repeat
-number.
-EL15203000 supports only indefinitely patterns,
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-led-trigger-pattern"><span class="std std-ref">sysfs-class-led-trigger-pattern</span></a></p>
+<p>EL15203000 supports only indefinitely patterns,
 so this file should always store -1.</p>
 <p>For more info, please see:
-<a class="reference internal" href="#abi-file-testing-sysfs-class-led-trigger-pattern"><span class="std std-ref">testing/sysfs-class-led-trigger-pattern</span></a></p>
+<a class="reference internal" href="#abi-file-testing-sysfs-class-led-trigger-pattern"><span class="std std-ref">testing/sysfs-class-led-trigger-pattern</span></a>
+Specify a pattern repeat number. -1 means repeat indefinitely,
+other negative numbers and number 0 are invalid.</p>
+<p>This file will always return the originally written repeat
+number.</p>
 <table class="docutils align-default" id="abi-sys-class-leds-led-rx">
 <colgroup>
 <col style="width: 100%" />
@@ -27903,6 +27925,17 @@ of LED events.</p>
 scheduler is chosen. Trigger specific parameters can appear in
 /sys/class/leds/&lt;led&gt; once a given trigger is selected. For
 their documentation see <cite>sysfs-class-led-trigger-*</cite>.</p>
+<table class="docutils align-default" id="abi-sys-class-leds-led-ttyname">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/class/leds/&lt;led&gt;/ttyname</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-led-trigger-tty"><span class="std std-ref">sysfs-class-led-trigger-tty</span></a></p>
+<p>Specifies the tty device name of the triggering tty</p>
 <table class="docutils align-default" id="abi-sys-class-leds-led-tx">
 <colgroup>
 <col style="width: 100%" />
@@ -49708,12 +49741,12 @@ modification.</p>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-scale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_x_scale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-scale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_y_scale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-scale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_z_scale</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_x_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_y_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_z_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasn"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_x_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasn"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_y_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasn"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_z_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasn"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasn"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasn"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_illuminance0_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_proximity0_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressureY_calibbias</span></a></p></li>
@@ -49789,7 +49822,7 @@ modification.</p>
 <li><p><a class="reference internal" href="#abi-sys-iio-devicex-out-voltagey-powerdown-mode-available"><span class="std std-ref">/sys/…/iio:deviceX/out_altvoltage_powerdown_mode_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-voltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_voltageY_powerdown</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-voltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_voltage_powerdown</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_powerdown</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-voltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_powerdown</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-voltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltage_powerdown</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-frequency"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-phase"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_phase</span></a></p></li>
@@ -50389,7 +50422,7 @@ modification.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-count-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count_count_mode_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-count-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count_noise_error_available</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-count-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count_quadrature_mode_available</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-quadrature-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count_quadrature_mode_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-count-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_index_index_polarity_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-count-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_index_synchronous_mode_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-county-count-mode"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_countY_count_mode</span></a></p></li>
@@ -50467,7 +50500,7 @@ modification.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-frequency"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-name"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_name</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_powerdown</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-voltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_powerdown</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="file-home--zfs-data-doc-testing-sysfs-bus-iio-gyro-bmg160">
@@ -50508,12 +50541,12 @@ modification.</p>
 <span id="abi-file-testing-sysfs-bus-iio-icm42600"></span><h2>File /testing/sysfs-bus-iio-icm42600<a class="headerlink" href="#file-home--zfs-data-doc-testing-sysfs-bus-iio-icm42600" title="Permalink to this headline">¶</a></h2>
 <p>Has the following ABI:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_x_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_y_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_z_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasn"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_x_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasn"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_y_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasn"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_z_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasn"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasn"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasn"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-calibbias-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_calibbias_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-calibbias-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_calibbias_available</span></a></p></li>
 </ul>
@@ -50599,7 +50632,7 @@ modification.</p>
 <p>Has the following ABI:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count0-preset"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count0_preset</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-count-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count_quadrature_mode_available</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-quadrature-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count_quadrature_mode_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count0-quadrature-mode"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count0_quadrature_mode</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-polarity-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count_polarity_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count0-polarity"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count0_polarity</span></a></p></li>
@@ -51128,6 +51161,7 @@ saw any problems).</p>
 <li><p><a class="reference internal" href="#abi-sys-bus-thunderbolt-devices-xdomain-tx-speed"><span class="std std-ref">/sys/bus/thunderbolt/devices/&lt;xdomain&gt;/tx_speed</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-thunderbolt-devices-xdomain-tx-lanes"><span class="std std-ref">/sys/bus/thunderbolt/devices/&lt;xdomain&gt;/tx_lanes</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-thunderbolt-devices-domainx-boot-acl"><span class="std std-ref">/sys/bus/thunderbolt/devices/…/domainX/boot_acl</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-thunderbolt-devices-domainx-deauthorization"><span class="std std-ref">/sys/bus/thunderbolt/devices/…/domainX/deauthorization</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-thunderbolt-devices-domainx-iommu-dma-protection"><span class="std std-ref">/sys/bus/thunderbolt/devices/…/domainX/iommu_dma_protection</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-thunderbolt-devices-domainx-security"><span class="std std-ref">/sys/bus/thunderbolt/devices/…/domainX/security</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-thunderbolt-devices-authorized"><span class="std std-ref">/sys/bus/thunderbolt/devices/…/authorized</span></a></p></li>
@@ -51728,6 +51762,13 @@ For example, the real path of the attribute /sys/class/cxl/afu0.0s/irqs_max is
 <li><p><a class="reference internal" href="#abi-sys-class-leds-led-pattern"><span class="std std-ref">/sys/class/leds/&lt;led&gt;/pattern</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-leds-led-hw-pattern"><span class="std std-ref">/sys/class/leds/&lt;led&gt;/hw_pattern</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-leds-led-repeat"><span class="std std-ref">/sys/class/leds/&lt;led&gt;/repeat</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="file-home--zfs-data-doc-testing-sysfs-class-led-trigger-tty">
+<span id="abi-file-testing-sysfs-class-led-trigger-tty"></span><h2>File /testing/sysfs-class-led-trigger-tty<a class="headerlink" href="#file-home--zfs-data-doc-testing-sysfs-class-led-trigger-tty" title="Permalink to this headline">¶</a></h2>
+<p>Has the following ABI:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#abi-sys-class-leds-led-ttyname"><span class="std std-ref">/sys/class/leds/&lt;led&gt;/ttyname</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="file-home--zfs-data-doc-testing-sysfs-class-led-trigger-usbport">

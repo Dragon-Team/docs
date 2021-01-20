@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -752,7 +752,60 @@ enough to identify what failed, like below.</p>
 field and reuse <code class="docutils literal notranslate"><span class="pre">cases</span></code>.</p></li>
 </ul>
 </li>
+<li><p>be converted to a “parameterized test”, see below.</p></li>
 </ul>
+<div class="section" id="parameterized-testing">
+<h4>Parameterized Testing<a class="headerlink" href="#parameterized-testing" title="Permalink to this headline">¶</a></h4>
+<p>The table-driven testing pattern is common enough that KUnit has special
+support for it.</p>
+<p>Reusing the same <code class="docutils literal notranslate"><span class="pre">cases</span></code> array from above, we can write the test as a
+“parameterized test” with the following.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// This is copy-pasted from above.</span>
+<span class="k">struct</span> <span class="n">sha1_test_case</span> <span class="p">{</span>
+        <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">str</span><span class="p">;</span>
+        <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">sha1</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="n">sha1_test_case</span> <span class="n">cases</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">{</span>
+                <span class="p">.</span><span class="n">str</span> <span class="o">=</span> <span class="s">&quot;hello world&quot;</span><span class="p">,</span>
+                <span class="p">.</span><span class="n">sha1</span> <span class="o">=</span> <span class="s">&quot;2aae6c35c94fcfb415dbe95f408b9ce91ee846ed&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+                <span class="p">.</span><span class="n">str</span> <span class="o">=</span> <span class="s">&quot;hello world!&quot;</span><span class="p">,</span>
+                <span class="p">.</span><span class="n">sha1</span> <span class="o">=</span> <span class="s">&quot;430ce34d020724ed75a196dfc2ad67c77772d169&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="c1">// Need a helper function to generate a name for each test case.</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">case_to_desc</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">sha1_test_case</span> <span class="o">*</span><span class="n">t</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">desc</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="n">strcpy</span><span class="p">(</span><span class="n">desc</span><span class="p">,</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">str</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// Creates `sha1_gen_params()` to iterate over `cases`.</span>
+<span class="n">KUNIT_ARRAY_PARAM</span><span class="p">(</span><span class="n">sha1</span><span class="p">,</span> <span class="n">cases</span><span class="p">,</span> <span class="n">case_to_desc</span><span class="p">);</span>
+
+<span class="c1">// Looks no different from a normal test.</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">sha1_test</span><span class="p">(</span><span class="k">struct</span> <span class="n">kunit</span> <span class="o">*</span><span class="n">test</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="c1">// This function can just contain the body of the for-loop.</span>
+        <span class="c1">// The former `cases[i]` is accessible under test-&gt;param_value.</span>
+        <span class="kt">char</span> <span class="n">out</span><span class="p">[</span><span class="mi">40</span><span class="p">];</span>
+        <span class="k">struct</span> <span class="n">sha1_test_case</span> <span class="o">*</span><span class="n">test_param</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sha1_test_case</span> <span class="o">*</span><span class="p">)(</span><span class="n">test</span><span class="o">-&gt;</span><span class="n">param_value</span><span class="p">);</span>
+
+        <span class="n">sha1sum</span><span class="p">(</span><span class="n">test_param</span><span class="o">-&gt;</span><span class="n">str</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
+        <span class="n">KUNIT_EXPECT_STREQ_MSG</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">out</span><span class="p">,</span> <span class="n">test_param</span><span class="o">-&gt;</span><span class="n">sha1</span><span class="p">,</span>
+                              <span class="s">&quot;sha1sum(%s)&quot;</span><span class="p">,</span> <span class="n">test_param</span><span class="o">-&gt;</span><span class="n">str</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Instead of KUNIT_CASE, we use KUNIT_CASE_PARAM and pass in the</span>
+<span class="c1">// function declared by KUNIT_ARRAY_PARAM.</span>
+<span class="k">static</span> <span class="k">struct</span> <span class="n">kunit_case</span> <span class="n">sha1_test_cases</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">KUNIT_CASE_PARAM</span><span class="p">(</span><span class="n">sha1_test</span><span class="p">,</span> <span class="n">sha1_gen_params</span><span class="p">),</span>
+        <span class="p">{}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="kunit-on-non-uml-architectures">

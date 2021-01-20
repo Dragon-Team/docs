@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.13-dragon
+                5.11.14-dragon
               </div>
             
           
@@ -8256,6 +8256,21 @@ The caller must hold the RTNL lock.</p>
 careful with locks. The caller must hold RCU lock.
 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> is returned if no slave is found.</p>
 <dl class="c function">
+<dt id="c.netdev_sk_get_lowest_dev">
+<em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<code class="sig-name descname">netdev_sk_get_lowest_dev</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.sock" title="sock">sock</a> *<em>sk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.netdev_sk_get_lowest_dev" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the lowest device in chain given device and socket</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">net_device</span> <span class="pre">*dev</span></code></dt><dd><p>device</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">sock</span> <span class="pre">*sk</span></code></dt><dd><p>the socket</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> is returned if no lower device is found.</p>
+<dl class="c function">
 <dt id="c.netdev_lower_state_changed">
 void <code class="sig-name descname">netdev_lower_state_changed</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<em>lower_dev</em>, void *<em>lower_state_info</em><span class="sig-paren">)</span><a class="headerlink" href="#c.netdev_lower_state_changed" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Dispatch event about lower device state change</p>
@@ -12144,6 +12159,8 @@ enabled, then we force a configuration.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">PHY_INTERFACE_MODE_QSGMII</span></code></dt><dd><p>Quad SGMII</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">PHY_INTERFACE_MODE_TRGMII</span></code></dt><dd><p>Turbo RGMII</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PHY_INTERFACE_MODE_100BASEX</span></code></dt><dd><p>100 BaseX</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">PHY_INTERFACE_MODE_1000BASEX</span></code></dt><dd><p>1000 BaseX</p>
 </dd>
