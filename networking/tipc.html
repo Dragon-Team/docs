@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Linux Kernel TIPC &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -355,6 +357,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -368,7 +372,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/networking/tipc.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -825,7 +829,7 @@ int <code class="sig-name descname">bearer_name_validate</code><span class="sig-
 <p>1 if bearer name is valid, otherwise 0.</p>
 <dl class="c function">
 <dt id="c.tipc_bearer_find">
-<em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<code class="sig-name descname">tipc_bearer_find</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_bearer_find" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<code class="sig-name descname">tipc_bearer_find</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer_find" title="net">net</a> *<em>net</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_bearer_find" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>locates bearer object with matching bearer name</p>
 </dd></dl>
 
@@ -838,7 +842,7 @@ int <code class="sig-name descname">bearer_name_validate</code><span class="sig-
 </dl>
 <dl class="c function">
 <dt id="c.tipc_enable_bearer">
-int <code class="sig-name descname">tipc_enable_bearer</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">const</em> char *<em>name</em>, u32 <em>disc_domain</em>, u32 <em>prio</em>, <em class="property">struct</em> nlattr *<em>attr</em>[]<span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_enable_bearer" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">tipc_enable_bearer</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_enable_bearer" title="net">net</a> *<em>net</em>, <em class="property">const</em> char *<em>name</em>, u32 <em>disc_domain</em>, u32 <em>prio</em>, <em class="property">struct</em> nlattr *<em>attr</em>[]<span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_enable_bearer" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>enable bearer with the given name</p>
 </dd></dl>
 
@@ -857,7 +861,7 @@ int <code class="sig-name descname">tipc_enable_bearer</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.tipc_reset_bearer">
-int <code class="sig-name descname">tipc_reset_bearer</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_reset_bearer" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">tipc_reset_bearer</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_reset_bearer" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_reset_bearer" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Reset all links established over this bearer</p>
 </dd></dl>
 
@@ -870,7 +874,7 @@ int <code class="sig-name descname">tipc_reset_bearer</code><span class="sig-par
 </dl>
 <dl class="c function">
 <dt id="c.bearer_disable">
-void <code class="sig-name descname">bearer_disable</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bearer_disable" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">bearer_disable</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.bearer_disable" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bearer_disable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>disable this bearer</p>
 </dd></dl>
 
@@ -885,7 +889,7 @@ void <code class="sig-name descname">bearer_disable</code><span class="sig-paren
 <p>This routine assumes caller holds RTNL lock.</p>
 <dl class="c function">
 <dt id="c.tipc_l2_send_msg">
-int <code class="sig-name descname">tipc_l2_send_msg</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_media_addr" title="tipc_media_addr">tipc_media_addr</a> *<em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_l2_send_msg" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">tipc_l2_send_msg</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_l2_send_msg" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_media_addr" title="tipc_media_addr">tipc_media_addr</a> *<em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_l2_send_msg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>send a TIPC packet out over an L2 interface</p>
 </dd></dl>
 
@@ -1018,7 +1022,7 @@ int <code class="sig-name descname">tipc_parse_udp_addr</code><span class="sig-p
 </dl>
 <dl class="c function">
 <dt id="c.tipc_udp_enable">
-int <code class="sig-name descname">tipc_udp_enable</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em>, <em class="property">struct</em> nlattr *<em>attrs</em>[]<span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_udp_enable" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">tipc_udp_enable</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_udp_enable" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em>, <em class="property">struct</em> nlattr *<em>attrs</em>[]<span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_udp_enable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>callback to create a new udp bearer instance</p>
 </dd></dl>
 
@@ -1367,7 +1371,7 @@ int <code class="sig-name descname">tipc_aead_encrypt</code><span class="sig-par
 </ul>
 <dl class="c function">
 <dt id="c.tipc_aead_decrypt">
-int <code class="sig-name descname">tipc_aead_decrypt</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_aead" title="tipc_aead">tipc_aead</a> *<em>aead</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_aead_decrypt" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">tipc_aead_decrypt</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_aead_decrypt" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_aead" title="tipc_aead">tipc_aead</a> *<em>aead</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_aead_decrypt" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Decrypt an encrypted message</p>
 </dd></dl>
 
@@ -1403,7 +1407,7 @@ bool <code class="sig-name descname">tipc_ehdr_validate</code><span class="sig-p
 <p>“true” if this is a valid encryption message, otherwise “false”</p>
 <dl class="c function">
 <dt id="c.tipc_ehdr_build">
-int <code class="sig-name descname">tipc_ehdr_build</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_aead" title="tipc_aead">tipc_aead</a> *<em>aead</em>, u8 <em>tx_key</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_crypto" title="tipc_crypto">tipc_crypto</a> *<em>__rx</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_ehdr_build" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">tipc_ehdr_build</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_ehdr_build" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_aead" title="tipc_aead">tipc_aead</a> *<em>aead</em>, u8 <em>tx_key</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_crypto" title="tipc_crypto">tipc_crypto</a> *<em>__rx</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_ehdr_build" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Build TIPC encryption message header</p>
 </dd></dl>
 
@@ -1531,7 +1535,7 @@ distributing process.</p>
 <p>The “per-peer” sndnxt is also reset when the peer key has switched.</p>
 <dl class="c function">
 <dt id="c.tipc_crypto_xmit">
-int <code class="sig-name descname">tipc_crypto_xmit</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> **<em>skb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_media_addr" title="tipc_media_addr">tipc_media_addr</a> *<em>dst</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_node" title="tipc_node">tipc_node</a> *<em>__dnode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_crypto_xmit" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">tipc_crypto_xmit</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_crypto_xmit" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> **<em>skb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_media_addr" title="tipc_media_addr">tipc_media_addr</a> *<em>dst</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_node" title="tipc_node">tipc_node</a> *<em>__dnode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_crypto_xmit" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Build &amp; encrypt TIPC message for xmit</p>
 </dd></dl>
 
@@ -1581,7 +1585,7 @@ Otherwise, the skb is freed!</p>
 </ul>
 <dl class="c function">
 <dt id="c.tipc_crypto_rcv">
-int <code class="sig-name descname">tipc_crypto_rcv</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_crypto" title="tipc_crypto">tipc_crypto</a> *<em>rx</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> **<em>skb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_crypto_rcv" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">tipc_crypto_rcv</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_crypto_rcv" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_crypto" title="tipc_crypto">tipc_crypto</a> *<em>rx</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> **<em>skb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_crypto_rcv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Decrypt an encrypted TIPC message from peer</p>
 </dd></dl>
 
@@ -1630,7 +1634,7 @@ cluster key(s) can be taken for decryption (- recursive).</p>
 </ul>
 <dl class="c function">
 <dt id="c.tipc_crypto_msg_rcv">
-void <code class="sig-name descname">tipc_crypto_msg_rcv</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_crypto_msg_rcv" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">tipc_crypto_msg_rcv</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_crypto_msg_rcv" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_crypto_msg_rcv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Common ‘MSG_CRYPTO’ processing point</p>
 </dd></dl>
 
@@ -1660,7 +1664,7 @@ int <code class="sig-name descname">tipc_crypto_key_distr</code><span class="sig
 <p>0 in case of success, otherwise &lt; 0</p>
 <dl class="c function">
 <dt id="c.tipc_crypto_key_xmit">
-int <code class="sig-name descname">tipc_crypto_key_xmit</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> tipc_aead_key *<em>skey</em>, u16 <em>gen</em>, u8 <em>mode</em>, u32 <em>dnode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_crypto_key_xmit" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">tipc_crypto_key_xmit</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_crypto_key_xmit" title="net">net</a> *<em>net</em>, <em class="property">struct</em> tipc_aead_key *<em>skey</em>, u16 <em>gen</em>, u8 <em>mode</em>, u32 <em>dnode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_crypto_key_xmit" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Send a session key</p>
 </dd></dl>
 
@@ -1792,7 +1796,7 @@ rekeying if needed.</p>
 </dl>
 <dl class="c function">
 <dt id="c.tipc_disc_init_msg">
-void <code class="sig-name descname">tipc_disc_init_msg</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, u32 <em>mtyp</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_disc_init_msg" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">tipc_disc_init_msg</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_disc_init_msg" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, u32 <em>mtyp</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_disc_init_msg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>initialize a link setup message</p>
 </dd></dl>
 
@@ -1824,7 +1828,7 @@ void <code class="sig-name descname">disc_dupl_alert</code><span class="sig-pare
 </dl>
 <dl class="c function">
 <dt id="c.tipc_disc_rcv">
-void <code class="sig-name descname">tipc_disc_rcv</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_disc_rcv" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">tipc_disc_rcv</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_disc_rcv" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_disc_rcv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>handle incoming discovery message (request or response)</p>
 </dd></dl>
 
@@ -1839,7 +1843,7 @@ void <code class="sig-name descname">tipc_disc_rcv</code><span class="sig-paren"
 </dl>
 <dl class="c function">
 <dt id="c.tipc_disc_create">
-int <code class="sig-name descname">tipc_disc_create</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_media_addr" title="tipc_media_addr">tipc_media_addr</a> *<em>dest</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> **<em>skb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_disc_create" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">tipc_disc_create</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_disc_create" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_media_addr" title="tipc_media_addr">tipc_media_addr</a> *<em>dest</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> **<em>skb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_disc_create" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create object to send periodic link setup requests</p>
 </dd></dl>
 
@@ -1869,7 +1873,7 @@ void <code class="sig-name descname">tipc_disc_delete</code><span class="sig-par
 </dl>
 <dl class="c function">
 <dt id="c.tipc_disc_reset">
-void <code class="sig-name descname">tipc_disc_reset</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_disc_reset" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">tipc_disc_reset</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_disc_reset" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_disc_reset" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>reset object to send periodic link setup requests</p>
 </dd></dl>
 
@@ -2062,7 +2066,7 @@ void <code class="sig-name descname">tipc_disc_reset</code><span class="sig-pare
 </dl>
 <dl class="c function">
 <dt id="c.tipc_link_create">
-bool <code class="sig-name descname">tipc_link_create</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, char *<em>if_name</em>, int <em>bearer_id</em>, int <em>tolerance</em>, char <em>net_plane</em>, u32 <em>mtu</em>, int <em>priority</em>, u32 <em>min_win</em>, u32 <em>max_win</em>, u32 <em>session</em>, u32 <em>self</em>, u32 <em>peer</em>, u8 *<em>peer_id</em>, u16 <em>peer_caps</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_link" title="tipc_link">tipc_link</a> *<em>bc_sndlink</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_link" title="tipc_link">tipc_link</a> *<em>bc_rcvlink</em>, <em class="property">struct</em> sk_buff_head *<em>inputq</em>, <em class="property">struct</em> sk_buff_head *<em>namedq</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_link" title="tipc_link">tipc_link</a> **<em>link</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_link_create" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">tipc_link_create</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_link_create" title="net">net</a> *<em>net</em>, char *<em>if_name</em>, int <em>bearer_id</em>, int <em>tolerance</em>, char <em>net_plane</em>, u32 <em>mtu</em>, int <em>priority</em>, u32 <em>min_win</em>, u32 <em>max_win</em>, u32 <em>session</em>, u32 <em>self</em>, u32 <em>peer</em>, u8 *<em>peer_id</em>, u16 <em>peer_caps</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_link" title="tipc_link">tipc_link</a> *<em>bc_sndlink</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_link" title="tipc_link">tipc_link</a> *<em>bc_rcvlink</em>, <em class="property">struct</em> sk_buff_head *<em>inputq</em>, <em class="property">struct</em> sk_buff_head *<em>namedq</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_link" title="tipc_link">tipc_link</a> **<em>link</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_link_create" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create a new link</p>
 </dd></dl>
 
@@ -2111,7 +2115,7 @@ bool <code class="sig-name descname">tipc_link_create</code><span class="sig-par
 <p>true if link was created, otherwise false</p>
 <dl class="c function">
 <dt id="c.tipc_link_bc_create">
-bool <code class="sig-name descname">tipc_link_bc_create</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, u32 <em>ownnode</em>, u32 <em>peer</em>, u8 *<em>peer_id</em>, int <em>mtu</em>, u32 <em>min_win</em>, u32 <em>max_win</em>, u16 <em>peer_caps</em>, <em class="property">struct</em> sk_buff_head *<em>inputq</em>, <em class="property">struct</em> sk_buff_head *<em>namedq</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_link" title="tipc_link">tipc_link</a> *<em>bc_sndlink</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_link" title="tipc_link">tipc_link</a> **<em>link</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_link_bc_create" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">tipc_link_bc_create</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_link_bc_create" title="net">net</a> *<em>net</em>, u32 <em>ownnode</em>, u32 <em>peer</em>, u8 *<em>peer_id</em>, int <em>mtu</em>, u32 <em>min_win</em>, u32 <em>max_win</em>, u16 <em>peer_caps</em>, <em class="property">struct</em> sk_buff_head *<em>inputq</em>, <em class="property">struct</em> sk_buff_head *<em>namedq</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_link" title="tipc_link">tipc_link</a> *<em>bc_sndlink</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_link" title="tipc_link">tipc_link</a> **<em>link</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_link_bc_create" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create new link to be used for broadcast</p>
 </dd></dl>
 
@@ -2487,7 +2491,7 @@ Replaces consumed buffer with new one when successful</p>
 <p>true if success, otherwise false</p>
 <dl class="c function">
 <dt id="c.tipc_msg_lookup_dest">
-bool <code class="sig-name descname">tipc_msg_lookup_dest</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, int *<em>err</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_msg_lookup_dest" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">tipc_msg_lookup_dest</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_msg_lookup_dest" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, int *<em>err</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_msg_lookup_dest" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>try to find new destination for named message</p>
 </dd></dl>
 
@@ -2699,7 +2703,7 @@ void <code class="sig-name descname">tipc_service_subscribe</code><span class="s
 </dl>
 <dl class="c function">
 <dt id="c.tipc_nametbl_translate">
-u32 <code class="sig-name descname">tipc_nametbl_translate</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, u32 <em>type</em>, u32 <em>instance</em>, u32 *<em>dnode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_nametbl_translate" title="Permalink to this definition">¶</a><br /></dt>
+u32 <code class="sig-name descname">tipc_nametbl_translate</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_nametbl_translate" title="net">net</a> *<em>net</em>, u32 <em>type</em>, u32 <em>instance</em>, u32 *<em>dnode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_nametbl_translate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>perform service instance to socket translation</p>
 </dd></dl>
 
@@ -2726,7 +2730,7 @@ node and return the published (non-zero) port number
 we must look in the local binding list first</p>
 <dl class="c function">
 <dt id="c.tipc_nametbl_withdraw">
-int <code class="sig-name descname">tipc_nametbl_withdraw</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, u32 <em>type</em>, u32 <em>lower</em>, u32 <em>upper</em>, u32 <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_nametbl_withdraw" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">tipc_nametbl_withdraw</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_nametbl_withdraw" title="net">net</a> *<em>net</em>, u32 <em>type</em>, u32 <em>lower</em>, u32 <em>upper</em>, u32 <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_nametbl_withdraw" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>withdraw a service binding</p>
 </dd></dl>
 
@@ -2767,7 +2771,7 @@ void <code class="sig-name descname">tipc_nametbl_unsubscribe</code><span class=
 </dl>
 <dl class="c function">
 <dt id="c.tipc_service_delete">
-void <code class="sig-name descname">tipc_service_delete</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_service" title="tipc_service">tipc_service</a> *<em>sc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_service_delete" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">tipc_service_delete</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_service_delete" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_service" title="tipc_service">tipc_service</a> *<em>sc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_service_delete" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>purge all publications for a service and delete it</p>
 </dd></dl>
 
@@ -2793,7 +2797,7 @@ void <code class="sig-name descname">publ_to_item</code><span class="sig-paren">
 </dl>
 <dl class="c function">
 <dt id="c.named_prepare_buf">
-<em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<code class="sig-name descname">named_prepare_buf</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, u32 <em>type</em>, u32 <em>size</em>, u32 <em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#c.named_prepare_buf" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<code class="sig-name descname">named_prepare_buf</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.named_prepare_buf" title="net">net</a> *<em>net</em>, u32 <em>type</em>, u32 <em>size</em>, u32 <em>dest</em><span class="sig-paren">)</span><a class="headerlink" href="#c.named_prepare_buf" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate &amp; initialize a publication message</p>
 </dd></dl>
 
@@ -2812,7 +2816,7 @@ void <code class="sig-name descname">publ_to_item</code><span class="sig-paren">
 <p>The buffer returned is of size INT_H_SIZE + payload size</p>
 <dl class="c function">
 <dt id="c.tipc_named_publish">
-<em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<code class="sig-name descname">tipc_named_publish</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.publication" title="publication">publication</a> *<em>publ</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_named_publish" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<code class="sig-name descname">tipc_named_publish</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_named_publish" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.publication" title="publication">publication</a> *<em>publ</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_named_publish" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>tell other nodes about a new publication by this node</p>
 </dd></dl>
 
@@ -2825,7 +2829,7 @@ void <code class="sig-name descname">publ_to_item</code><span class="sig-paren">
 </dl>
 <dl class="c function">
 <dt id="c.tipc_named_withdraw">
-<em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<code class="sig-name descname">tipc_named_withdraw</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.publication" title="publication">publication</a> *<em>publ</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_named_withdraw" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<code class="sig-name descname">tipc_named_withdraw</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_named_withdraw" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.publication" title="publication">publication</a> *<em>publ</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_named_withdraw" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>tell other nodes about a withdrawn publication by this node</p>
 </dd></dl>
 
@@ -2838,7 +2842,7 @@ void <code class="sig-name descname">publ_to_item</code><span class="sig-paren">
 </dl>
 <dl class="c function">
 <dt id="c.named_distribute">
-void <code class="sig-name descname">named_distribute</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> sk_buff_head *<em>list</em>, u32 <em>dnode</em>, <em class="property">struct</em> list_head *<em>pls</em>, u16 <em>seqno</em><span class="sig-paren">)</span><a class="headerlink" href="#c.named_distribute" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">named_distribute</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.named_distribute" title="net">net</a> *<em>net</em>, <em class="property">struct</em> sk_buff_head *<em>list</em>, u32 <em>dnode</em>, <em class="property">struct</em> list_head *<em>pls</em>, u16 <em>seqno</em><span class="sig-paren">)</span><a class="headerlink" href="#c.named_distribute" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>prepare name info for bulk distribution to another node</p>
 </dd></dl>
 
@@ -2857,7 +2861,7 @@ void <code class="sig-name descname">named_distribute</code><span class="sig-par
 </dl>
 <dl class="c function">
 <dt id="c.tipc_named_node_up">
-void <code class="sig-name descname">tipc_named_node_up</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, u32 <em>dnode</em>, u16 <em>capabilities</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_named_node_up" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">tipc_named_node_up</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_named_node_up" title="net">net</a> *<em>net</em>, u32 <em>dnode</em>, u16 <em>capabilities</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_named_node_up" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>tell specified node about all publications by this node</p>
 </dd></dl>
 
@@ -2872,7 +2876,7 @@ void <code class="sig-name descname">tipc_named_node_up</code><span class="sig-p
 </dl>
 <dl class="c function">
 <dt id="c.tipc_publ_purge">
-void <code class="sig-name descname">tipc_publ_purge</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.publication" title="publication">publication</a> *<em>publ</em>, u32 <em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_publ_purge" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">tipc_publ_purge</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_publ_purge" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.publication" title="publication">publication</a> *<em>publ</em>, u32 <em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_publ_purge" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove publication associated with a failed node</p>
 </dd></dl>
 
@@ -2890,7 +2894,7 @@ void <code class="sig-name descname">tipc_publ_purge</code><span class="sig-pare
 Removes publication structure from name table &amp; deletes it.</p>
 <dl class="c function">
 <dt id="c.tipc_update_nametbl">
-bool <code class="sig-name descname">tipc_update_nametbl</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.distr_item" title="distr_item">distr_item</a> *<em>i</em>, u32 <em>node</em>, u32 <em>dtype</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_update_nametbl" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">tipc_update_nametbl</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_update_nametbl" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.distr_item" title="distr_item">distr_item</a> *<em>i</em>, u32 <em>node</em>, u32 <em>dtype</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_update_nametbl" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>try to process a nametable update and notify subscribers</p>
 </dd></dl>
 
@@ -2911,7 +2915,7 @@ bool <code class="sig-name descname">tipc_update_nametbl</code><span class="sig-
 <p>the publication item if successful, otherwise NULL.</p>
 <dl class="c function">
 <dt id="c.tipc_named_rcv">
-void <code class="sig-name descname">tipc_named_rcv</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> sk_buff_head *<em>namedq</em>, u16 *<em>rcv_nxt</em>, bool *<em>open</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_named_rcv" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">tipc_named_rcv</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_named_rcv" title="net">net</a> *<em>net</em>, <em class="property">struct</em> sk_buff_head *<em>namedq</em>, u16 *<em>rcv_nxt</em>, bool *<em>open</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_named_rcv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>process name table update messages sent by another node</p>
 </dd></dl>
 
@@ -2928,7 +2932,7 @@ void <code class="sig-name descname">tipc_named_rcv</code><span class="sig-paren
 </dl>
 <dl class="c function">
 <dt id="c.tipc_named_reinit">
-void <code class="sig-name descname">tipc_named_reinit</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_named_reinit" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">tipc_named_reinit</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_named_reinit" title="net">net</a> *<em>net</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_named_reinit" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>re-initialize local publications</p>
 </dd></dl>
 
@@ -3147,7 +3151,7 @@ void <code class="sig-name descname">__tipc_node_link_down</code><span class="si
 </dl>
 <dl class="c function">
 <dt id="c.tipc_node_get_linkname">
-int <code class="sig-name descname">tipc_node_get_linkname</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, u32 <em>bearer_id</em>, u32 <em>addr</em>, char *<em>linkname</em>, size_t <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_node_get_linkname" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">tipc_node_get_linkname</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_node_get_linkname" title="net">net</a> *<em>net</em>, u32 <em>bearer_id</em>, u32 <em>addr</em>, char *<em>linkname</em>, size_t <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_node_get_linkname" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get the name of a link</p>
 </dd></dl>
 
@@ -3168,7 +3172,7 @@ int <code class="sig-name descname">tipc_node_get_linkname</code><span class="si
 <p>0 on success</p>
 <dl class="c function">
 <dt id="c.tipc_node_xmit">
-int <code class="sig-name descname">tipc_node_xmit</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> sk_buff_head *<em>list</em>, u32 <em>dnode</em>, int <em>selector</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_node_xmit" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">tipc_node_xmit</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_node_xmit" title="net">net</a> *<em>net</em>, <em class="property">struct</em> sk_buff_head *<em>list</em>, u32 <em>dnode</em>, int <em>selector</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_node_xmit" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>general link level function for message sending</p>
 </dd></dl>
 
@@ -3188,7 +3192,7 @@ Consumes the buffer chain.</p>
 <p>0 if success, otherwise: -ELINKCONG,-EHOSTUNREACH,-EMSGSIZE,-ENOBUF</p>
 <dl class="c function">
 <dt id="c.tipc_node_bc_rcv">
-void <code class="sig-name descname">tipc_node_bc_rcv</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, int <em>bearer_id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_node_bc_rcv" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">tipc_node_bc_rcv</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_node_bc_rcv" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, int <em>bearer_id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_node_bc_rcv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>process TIPC broadcast packet arriving from off-node</p>
 </dd></dl>
 
@@ -3224,7 +3228,7 @@ bool <code class="sig-name descname">tipc_node_check_state</code><span class="si
 <p>true if state and msg are ok, otherwise false</p>
 <dl class="c function">
 <dt id="c.tipc_rcv">
-void <code class="sig-name descname">tipc_rcv</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_rcv" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">tipc_rcv</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_rcv" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_bearer" title="tipc_bearer">tipc_bearer</a> *<em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_rcv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>process TIPC packets/messages arriving from off-node</p>
 </dd></dl>
 
@@ -3403,7 +3407,7 @@ void <code class="sig-name descname">tsk_rej_rx_queue</code><span class="sig-par
 <p>Caller must hold socket lock</p>
 <dl class="c function">
 <dt id="c.tipc_sk_create">
-int <code class="sig-name descname">tipc_sk_create</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.socket" title="socket">socket</a> *<em>sock</em>, int <em>protocol</em>, int <em>kern</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_sk_create" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">tipc_sk_create</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_sk_create" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.socket" title="socket">socket</a> *<em>sock</em>, int <em>protocol</em>, int <em>kern</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_sk_create" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create a TIPC socket</p>
 </dd></dl>
 
@@ -3497,7 +3501,7 @@ a completely predictable manner).</p>
 </dl>
 <dl class="c function">
 <dt id="c.tipc_poll">
-__poll_t <code class="sig-name descname">tipc_poll</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.socket" title="socket">socket</a> *<em>sock</em>, poll_table *<em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_poll" title="Permalink to this definition">¶</a><br /></dt>
+__poll_t <code class="sig-name descname">tipc_poll</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_poll" title="file">file</a> *<em>file</em>, <em class="property">struct</em> <a class="reference internal" href="kapi.html#c.socket" title="socket">socket</a> *<em>sock</em>, poll_table *<em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_poll" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>read and possibly block on pollmask</p>
 </dd></dl>
 
@@ -3546,7 +3550,7 @@ int <code class="sig-name descname">tipc_sendmcast</code><span class="sig-paren"
 <p>the number of bytes sent on success, or errno</p>
 <dl class="c function">
 <dt id="c.tipc_send_group_msg">
-int <code class="sig-name descname">tipc_send_group_msg</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_sock" title="tipc_sock">tipc_sock</a> *<em>tsk</em>, <em class="property">struct</em> msghdr *<em>m</em>, <em class="property">struct</em> tipc_member *<em>mb</em>, u32 <em>dnode</em>, u32 <em>dport</em>, int <em>dlen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_send_group_msg" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">tipc_send_group_msg</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_send_group_msg" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.tipc_sock" title="tipc_sock">tipc_sock</a> *<em>tsk</em>, <em class="property">struct</em> msghdr *<em>m</em>, <em class="property">struct</em> tipc_member *<em>mb</em>, u32 <em>dnode</em>, u32 <em>dport</em>, int <em>dlen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_send_group_msg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>send a message to a member in the group</p>
 </dd></dl>
 
@@ -3653,7 +3657,7 @@ int <code class="sig-name descname">tipc_send_group_mcast</code><span class="sig
 <p>the number of bytes sent on success, or errno</p>
 <dl class="c function">
 <dt id="c.tipc_sk_mcast_rcv">
-void <code class="sig-name descname">tipc_sk_mcast_rcv</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> sk_buff_head *<em>arrvq</em>, <em class="property">struct</em> sk_buff_head *<em>inputq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_sk_mcast_rcv" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">tipc_sk_mcast_rcv</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_sk_mcast_rcv" title="net">net</a> *<em>net</em>, <em class="property">struct</em> sk_buff_head *<em>arrvq</em>, <em class="property">struct</em> sk_buff_head *<em>inputq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_sk_mcast_rcv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Deliver multicast messages to all destination sockets</p>
 </dd></dl>
 
@@ -3942,7 +3946,7 @@ void <code class="sig-name descname">tipc_sk_enqueue</code><span class="sig-pare
 <p>Caller must hold socket lock</p>
 <dl class="c function">
 <dt id="c.tipc_sk_rcv">
-void <code class="sig-name descname">tipc_sk_rcv</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> sk_buff_head *<em>inputq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_sk_rcv" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">tipc_sk_rcv</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tipc_sk_rcv" title="net">net</a> *<em>net</em>, <em class="property">struct</em> sk_buff_head *<em>inputq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tipc_sk_rcv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>handle a chain of incoming buffers</p>
 </dd></dl>
 
@@ -4322,37 +4326,29 @@ int <code class="sig-name descname">tipc_list_dump</code><span class="sig-paren"
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="tproxy.html" class="btn btn-neutral float-right" title="Transparent proxy support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="timestamping.html" class="btn btn-neutral float-left" title="Timestamping" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="tproxy.html" class="btn btn-neutral float-right" title="Transparent proxy support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="timestamping.html" class="btn btn-neutral float-left" title="Timestamping" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

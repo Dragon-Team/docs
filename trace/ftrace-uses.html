@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Using ftrace to hook to functions &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -251,6 +253,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -264,7 +268,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/trace/ftrace-uses.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -311,7 +315,7 @@ as well as what protections the callback will perform and not require
 ftrace to handle.</p>
 <p>There is only one field that is needed to be set when registering
 an ftrace_ops with ftrace:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">ftrace_ops</span> <span class="n">ops</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">ftrace_ops</span> <span class="n">ops</span> <span class="o">=</span> <span class="p">{</span>
       <span class="p">.</span><span class="n">func</span>                    <span class="o">=</span> <span class="n">my_callback_func</span><span class="p">,</span>
       <span class="p">.</span><span class="n">flags</span>                   <span class="o">=</span> <span class="n">MY_FTRACE_FLAGS</span>
       <span class="p">.</span><span class="n">private</span>                 <span class="o">=</span> <span class="n">any_private_data_structure</span><span class="p">,</span>
@@ -345,7 +349,7 @@ may take some time to finish.</p>
 <h2>The callback function<a class="headerlink" href="#the-callback-function" title="Permalink to this headline">¶</a></h2>
 <p>The prototype of the callback function is as follows (as of v4.14):</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">callback_func</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">ip</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">parent_ip</span><span class="p">,</span>
-                   <span class="k">struct</span> <span class="n">ftrace_ops</span> <span class="o">*</span><span class="n">op</span><span class="p">,</span> <span class="k">struct</span> <span class="n">pt_regs</span> <span class="o">*</span><span class="n">regs</span><span class="p">);</span>
+                   <span class="k">struct</span> <span class="nc">ftrace_ops</span> <span class="o">*</span><span class="n">op</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">pt_regs</span> <span class="o">*</span><span class="n">regs</span><span class="p">);</span>
 </pre></div>
 </div>
 <dl class="simple">
@@ -466,7 +470,7 @@ stays protected.</p>
 <h2>Filtering which functions to trace<a class="headerlink" href="#filtering-which-functions-to-trace" title="Permalink to this headline">¶</a></h2>
 <p>If a callback is only to be called from specific functions, a filter must be
 set up. The filters are added by name, or ip if it is known.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">ftrace_set_filter</span><span class="p">(</span><span class="k">struct</span> <span class="n">ftrace_ops</span> <span class="o">*</span><span class="n">ops</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">ftrace_set_filter</span><span class="p">(</span><span class="k">struct</span> <span class="nc">ftrace_ops</span> <span class="o">*</span><span class="n">ops</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span>
                       <span class="kt">int</span> <span class="n">len</span><span class="p">,</span> <span class="kt">int</span> <span class="n">reset</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -511,7 +515,7 @@ two lists are non-empty and contain the same functions, the callback will not
 be called by any function.</p>
 <p>An empty “notrace” list means to allow all functions defined by the filter
 to be traced.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">ftrace_set_notrace</span><span class="p">(</span><span class="k">struct</span> <span class="n">ftrace_ops</span> <span class="o">*</span><span class="n">ops</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">ftrace_set_notrace</span><span class="p">(</span><span class="k">struct</span> <span class="nc">ftrace_ops</span> <span class="o">*</span><span class="n">ops</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span>
                        <span class="kt">int</span> <span class="n">len</span><span class="p">,</span> <span class="kt">int</span> <span class="n">reset</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -563,37 +567,29 @@ new setting of the filter.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="kprobes.html" class="btn btn-neutral float-right" title="Kernel Probes (Kprobes)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="ftrace.html" class="btn btn-neutral float-left" title="ftrace - Function Tracer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="kprobes.html" class="btn btn-neutral float-right" title="Kernel Probes (Kprobes)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ftrace.html" class="btn btn-neutral float-left" title="ftrace - Function Tracer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

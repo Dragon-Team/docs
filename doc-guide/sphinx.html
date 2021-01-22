@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Introduction &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -240,6 +242,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -253,7 +257,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/doc-guide/sphinx.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -464,7 +468,7 @@ function prototype:</p>
 <em>rename</em> the reference name of a function with a common name like <code class="docutils literal notranslate"><span class="pre">open</span></code> or
 <code class="docutils literal notranslate"><span class="pre">ioctl</span></code>:</p>
 <div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">c:function</span><span class="p">::</span> int ioctl( int fd, int request )
-   <span class="nc">:name:</span> <span class="nf">VIDIOC_LOG_STATUS</span>
+   <span class="nc">:name:</span> VIDIOC_LOG_STATUS
 </pre></div>
 </div>
 <p>The func-name (e.g. ioctl) remains in the output but the ref-name changed from
@@ -514,7 +518,7 @@ list is the <em>table-row</em>. In the <em>table-row</em> there is only one mark
 the list of the cells in this <em>table-row</em>. Exceptions are <em>comments</em> ( <code class="docutils literal notranslate"><span class="pre">..</span></code> )
 and <em>targets</em> (e.g. a ref to <code class="docutils literal notranslate"><span class="pre">:ref:`last</span> <span class="pre">row</span> <span class="pre">&lt;last</span> <span class="pre">row&gt;`</span></code> / <a class="reference internal" href="#last-row"><span class="std std-ref">last row</span></a>).</p>
 <div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">flat-table</span><span class="p">::</span> table title
-   <span class="nc">:widths:</span> <span class="nf">2 1 1 3</span>
+   <span class="nc">:widths:</span> 2 1 1 3
 
    <span class="m">*</span> - head col 1
      <span class="m">-</span> head col 2
@@ -654,37 +658,29 @@ you want to refer to it (<a class="reference internal" href="#hello-svg-render">
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="kernel-doc.html" class="btn btn-neutral float-right" title="Writing kernel-doc comments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="index.html" class="btn btn-neutral float-left" title="How to write kernel documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="kernel-doc.html" class="btn btn-neutral float-right" title="Writing kernel-doc comments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="How to write kernel documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Kernel Connector &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -322,6 +324,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -335,7 +339,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/driver-api/connector.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -463,6 +467,35 @@ to the specified group.</p>
 <p>It can be safely called from softirq context, but may silently
 fail under strong memory pressure.</p>
 <p>If there are no listeners for given group <code class="docutils literal notranslate"><span class="pre">-ESRCH</span></code> can be returned.</p>
+<dl class="c function">
+<dt id="c.cn_netlink_send">
+int <code class="sig-name descname">cn_netlink_send</code><span class="sig-paren">(</span><em class="property">struct</em> cn_msg *<em>msg</em>, u32 <em>portid</em>, u32 <em>group</em>, gfp_t <em>gfp_mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cn_netlink_send" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sends message to the specified groups.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">cn_msg</span> <span class="pre">*msg</span></code></dt><dd><p>message header(with attached data).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">portid</span></code></dt><dd><p>destination port.
+If non-zero the message will be sent to the given port,
+which should be set to the original sender.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">group</span></code></dt><dd><p>destination group.
+If <strong>portid</strong> and <strong>group</strong> is zero, then appropriate group will
+be searched through all registered connector users, and
+message will be delivered to the group which was created
+for user with the same ID as in <strong>msg</strong>.
+If <strong>group</strong> is not zero, then message will be delivered
+to the specified group.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">gfp_t</span> <span class="pre">gfp_mask</span></code></dt><dd><p>GFP mask.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>It can be safely called from softirq context, but may silently
+fail under strong memory pressure.</p>
+<p>If there are no listeners for given group <code class="docutils literal notranslate"><span class="pre">-ESRCH</span></code> can be returned.</p>
 <dl class="simple">
 <dt>Note:</dt><dd><p>When registering new callback user, connector core assigns
 netlink group to the user which is equal to its id.idx.</p>
@@ -557,37 +590,29 @@ and CONFIG_SAMPLES.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="console.html" class="btn btn-neutral float-right" title="Console Drivers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="backlight/lp855x-driver.html" class="btn btn-neutral float-left" title="Kernel driver lp855x" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="console.html" class="btn btn-neutral float-right" title="Console Drivers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="backlight/lp855x-driver.html" class="btn btn-neutral float-left" title="Kernel driver lp855x" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

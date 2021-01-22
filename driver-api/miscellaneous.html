@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Parallel Port Devices &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -315,6 +317,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -328,7 +332,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/driver-api/miscellaneous.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -344,6 +348,39 @@
             
   <div class="section" id="parallel-port-devices">
 <h1>Parallel Port Devices<a class="headerlink" href="#parallel-port-devices" title="Permalink to this headline">¶</a></h1>
+<dl class="c macro">
+<dt id="c.parport_register_driver">
+<code class="sig-name descname">parport_register_driver</code><a class="headerlink" href="#c.parport_register_driver" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<p><code class="docutils literal notranslate"><span class="pre">parport_register_driver</span> <span class="pre">(driver)</span></code></p>
+<blockquote>
+<div><p>register a parallel port device driver</p>
+</div></blockquote>
+<p><strong>Parameters</strong></p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">driver</span></code></dt><dd><p>structure describing the driver</p>
+<p>This can be called by a parallel port device driver in order
+to receive notifications about ports being found in the
+system, as well as ports no longer available.</p>
+<p>If devmodel is true then the new device model is used
+for registration.</p>
+<p>The <strong>driver</strong> structure is allocated by the caller and must not be
+deallocated until after calling <a class="reference internal" href="#c.parport_unregister_driver" title="parport_unregister_driver"><code class="xref c c-func docutils literal notranslate"><span class="pre">parport_unregister_driver()</span></code></a>.</p>
+<p>If using the non device model:
+The driver’s attach() function may block.  The port that
+attach() is given will be valid for the duration of the
+callback, but if the driver wants to take a copy of the
+pointer it must call <a class="reference internal" href="#c.parport_get_port" title="parport_get_port"><code class="xref c c-func docutils literal notranslate"><span class="pre">parport_get_port()</span></code></a> to do so.  Calling
+parport_register_device() on that port will do this for you.</p>
+<p>The driver’s detach() function may block.  The port that
+detach() is given will be valid for the duration of the
+callback, but if the driver wants to take a copy of the
+pointer it must call <a class="reference internal" href="#c.parport_get_port" title="parport_get_port"><code class="xref c c-func docutils literal notranslate"><span class="pre">parport_get_port()</span></code></a> to do so.</p>
+<p>Returns 0 on success. The non device model will always succeeds.
+but the new device model can fail and will return the error code.</p>
+</dd>
+</dl>
 <dl class="c function">
 <dt id="c.parport_yield">
 int <code class="sig-name descname">parport_yield</code><span class="sig-paren">(</span><em class="property">struct</em> pardevice *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_yield" title="Permalink to this definition">¶</a><br /></dt>
@@ -524,6 +561,40 @@ up.</p>
 </dd>
 </dl>
 <dl class="c function">
+<dt id="c.__parport_register_driver">
+int <code class="sig-name descname">__parport_register_driver</code><span class="sig-paren">(</span><em class="property">struct</em> parport_driver *<em>drv</em>, <em class="property">struct</em> module *<em>owner</em>, <em class="property">const</em> char *<em>mod_name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__parport_register_driver" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>register a parallel port device driver</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">parport_driver</span> <span class="pre">*drv</span></code></dt><dd><p>structure describing the driver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">module</span> <span class="pre">*owner</span></code></dt><dd><p>owner module of drv</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*mod_name</span></code></dt><dd><p>module name string</p>
+<p>This can be called by a parallel port device driver in order
+to receive notifications about ports being found in the
+system, as well as ports no longer available.</p>
+<p>If devmodel is true then the new device model is used
+for registration.</p>
+<p>The <strong>drv</strong> structure is allocated by the caller and must not be
+deallocated until after calling <a class="reference internal" href="#c.parport_unregister_driver" title="parport_unregister_driver"><code class="xref c c-func docutils literal notranslate"><span class="pre">parport_unregister_driver()</span></code></a>.</p>
+<p>If using the non device model:
+The driver’s attach() function may block.  The port that
+attach() is given will be valid for the duration of the
+callback, but if the driver wants to take a copy of the
+pointer it must call <a class="reference internal" href="#c.parport_get_port" title="parport_get_port"><code class="xref c c-func docutils literal notranslate"><span class="pre">parport_get_port()</span></code></a> to do so.  Calling
+parport_register_device() on that port will do this for you.</p>
+<p>The driver’s detach() function may block.  The port that
+detach() is given will be valid for the duration of the
+callback, but if the driver wants to take a copy of the
+pointer it must call <a class="reference internal" href="#c.parport_get_port" title="parport_get_port"><code class="xref c c-func docutils literal notranslate"><span class="pre">parport_get_port()</span></code></a> to do so.</p>
+<p>Returns 0 on success. The non device model will always succeeds.
+but the new device model can fail and will return the error code.</p>
+</dd>
+</dl>
+<dl class="c function">
 <dt id="c.parport_unregister_driver">
 void <code class="sig-name descname">parport_unregister_driver</code><span class="sig-paren">(</span><em class="property">struct</em> parport_driver *<em>drv</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_unregister_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>deregister a parallel port device driver</p>
@@ -532,10 +603,10 @@ void <code class="sig-name descname">parport_unregister_driver</code><span class
 <p><strong>Parameters</strong></p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">parport_driver</span> <span class="pre">*drv</span></code></dt><dd><p>structure describing the driver that was given to
-parport_register_driver()</p>
+<a class="reference internal" href="#c.parport_register_driver" title="parport_register_driver"><code class="xref c c-func docutils literal notranslate"><span class="pre">parport_register_driver()</span></code></a></p>
 <blockquote>
 <div><p>This should be called by a parallel port device driver that
-has registered itself using parport_register_driver() when it
+has registered itself using <a class="reference internal" href="#c.parport_register_driver" title="parport_register_driver"><code class="xref c c-func docutils literal notranslate"><span class="pre">parport_register_driver()</span></code></a> when it
 is about to be unloaded.</p>
 <p>When it returns, the driver’s attach() routine will no longer
 be called, and for each port that attach() was called for, the
@@ -597,7 +668,7 @@ the relevant members of the parport structure that is returned
 and represents the port.  They should not be tampered with
 after calling parport_announce_port, however.</p>
 <p>If there are parallel port device drivers in the system that
-have registered themselves using parport_register_driver(),
+have registered themselves using <a class="reference internal" href="#c.parport_register_driver" title="parport_register_driver"><code class="xref c c-func docutils literal notranslate"><span class="pre">parport_register_driver()</span></code></a>,
 they are not told about the port at this time; that is done by
 <a class="reference internal" href="#c.parport_announce_port" title="parport_announce_port"><code class="xref c c-func docutils literal notranslate"><span class="pre">parport_announce_port()</span></code></a>.</p>
 <p>The <strong>ops</strong> structure is allocated by the caller, and must not be
@@ -619,7 +690,7 @@ void <code class="sig-name descname">parport_announce_port</code><span class="si
 parport_register_port, and performed any necessary
 initialisation or adjustments, it should call
 <a class="reference internal" href="#c.parport_announce_port" title="parport_announce_port"><code class="xref c c-func docutils literal notranslate"><span class="pre">parport_announce_port()</span></code></a> in order to notify all device drivers
-that have called parport_register_driver().  Their attach()
+that have called <a class="reference internal" href="#c.parport_register_driver" title="parport_register_driver"><code class="xref c c-func docutils literal notranslate"><span class="pre">parport_register_driver()</span></code></a>.  Their attach()
 functions will be called, with <strong>port</strong> as the parameter.</p>
 </dd>
 </dl>
@@ -640,7 +711,7 @@ want to use it.</p>
 operations structure replaced with one containing ‘null’
 operations that return errors or just don’t do anything.</p>
 <p>Any drivers that have registered themselves using
-parport_register_driver() are notified that the port is no
+<a class="reference internal" href="#c.parport_register_driver" title="parport_register_driver"><code class="xref c c-func docutils literal notranslate"><span class="pre">parport_register_driver()</span></code></a> are notified that the port is no
 longer accessible by having their detach() routines called
 with <strong>port</strong> as the parameter.</p>
 </dd>
@@ -1846,37 +1917,29 @@ automatically released on driver detach.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="mei/index.html" class="btn btn-neutral float-right" title="Intel(R) Management Engine Interface (Intel(R) MEI)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="mtdnand.html" class="btn btn-neutral float-left" title="MTD NAND Driver Programming Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="mei/index.html" class="btn btn-neutral float-right" title="Intel(R) Management Engine Interface (Intel(R) MEI)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="mtdnand.html" class="btn btn-neutral float-left" title="MTD NAND Driver Programming Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

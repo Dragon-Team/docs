@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>DRM Internals &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -255,6 +257,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -268,7 +272,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/gpu/drm-internals.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -377,24 +381,24 @@ paths fully protected by <a class="reference internal" href="#c.drm_dev_enter" t
 <p>The following example shows a typical structure of a DRM display driver.
 The example focus on the probe() function and the other functions that is
 almost always present and serves as a demonstration of <a class="reference internal" href="#c.devm_drm_dev_alloc" title="devm_drm_dev_alloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">devm_drm_dev_alloc()</span></code></a>.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">driver_device</span> <span class="p">{</span>
-        <span class="k">struct</span> <span class="n">drm_device</span> <span class="n">drm</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">driver_device</span> <span class="p">{</span>
+        <span class="k">struct</span> <span class="nc">drm_device</span> <span class="n">drm</span><span class="p">;</span>
         <span class="kt">void</span> <span class="o">*</span><span class="n">userspace_facing</span><span class="p">;</span>
-        <span class="k">struct</span> <span class="n">clk</span> <span class="o">*</span><span class="n">pclk</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="nc">clk</span> <span class="o">*</span><span class="n">pclk</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="k">static</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">drm_driver</span> <span class="n">driver_drm_driver</span> <span class="o">=</span> <span class="p">{</span>
+<span class="k">static</span> <span class="k">const</span> <span class="k">struct</span> <span class="nc">drm_driver</span> <span class="n">driver_drm_driver</span> <span class="o">=</span> <span class="p">{</span>
         <span class="p">[...]</span>
 <span class="p">};</span>
 
-<span class="k">static</span> <span class="kt">int</span> <span class="nf">driver_probe</span><span class="p">(</span><span class="k">struct</span> <span class="n">platform_device</span> <span class="o">*</span><span class="n">pdev</span><span class="p">)</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">driver_probe</span><span class="p">(</span><span class="k">struct</span> <span class="nc">platform_device</span> <span class="o">*</span><span class="n">pdev</span><span class="p">)</span>
 <span class="p">{</span>
-        <span class="k">struct</span> <span class="n">driver_device</span> <span class="o">*</span><span class="n">priv</span><span class="p">;</span>
-        <span class="k">struct</span> <span class="n">drm_device</span> <span class="o">*</span><span class="n">drm</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="nc">driver_device</span> <span class="o">*</span><span class="n">priv</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="nc">drm_device</span> <span class="o">*</span><span class="n">drm</span><span class="p">;</span>
         <span class="kt">int</span> <span class="n">ret</span><span class="p">;</span>
 
         <span class="n">priv</span> <span class="o">=</span> <span class="n">devm_drm_dev_alloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pdev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">driver_drm_driver</span><span class="p">,</span>
-                                  <span class="k">struct</span> <span class="n">driver_device</span><span class="p">,</span> <span class="n">drm</span><span class="p">);</span>
+                                  <span class="k">struct</span> <span class="nc">driver_device</span><span class="p">,</span> <span class="n">drm</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">IS_ERR</span><span class="p">(</span><span class="n">priv</span><span class="p">))</span>
                 <span class="k">return</span> <span class="n">PTR_ERR</span><span class="p">(</span><span class="n">priv</span><span class="p">);</span>
         <span class="n">drm</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">priv</span><span class="o">-&gt;</span><span class="n">drm</span><span class="p">;</span>
@@ -427,9 +431,9 @@ almost always present and serves as a demonstration of <a class="reference inter
 <span class="p">}</span>
 
 <span class="c1">// This function is called before the devm_ resources are released</span>
-<span class="k">static</span> <span class="kt">int</span> <span class="nf">driver_remove</span><span class="p">(</span><span class="k">struct</span> <span class="n">platform_device</span> <span class="o">*</span><span class="n">pdev</span><span class="p">)</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">driver_remove</span><span class="p">(</span><span class="k">struct</span> <span class="nc">platform_device</span> <span class="o">*</span><span class="n">pdev</span><span class="p">)</span>
 <span class="p">{</span>
-        <span class="k">struct</span> <span class="n">drm_device</span> <span class="o">*</span><span class="n">drm</span> <span class="o">=</span> <span class="n">platform_get_drvdata</span><span class="p">(</span><span class="n">pdev</span><span class="p">);</span>
+        <span class="k">struct</span> <span class="nc">drm_device</span> <span class="o">*</span><span class="n">drm</span> <span class="o">=</span> <span class="n">platform_get_drvdata</span><span class="p">(</span><span class="n">pdev</span><span class="p">);</span>
 
         <span class="n">drm_dev_unregister</span><span class="p">(</span><span class="n">drm</span><span class="p">);</span>
         <span class="n">drm_atomic_helper_shutdown</span><span class="p">(</span><span class="n">drm</span><span class="p">)</span>
@@ -438,28 +442,28 @@ almost always present and serves as a demonstration of <a class="reference inter
 <span class="p">}</span>
 
 <span class="c1">// This function is called on kernel restart and shutdown</span>
-<span class="k">static</span> <span class="kt">void</span> <span class="nf">driver_shutdown</span><span class="p">(</span><span class="k">struct</span> <span class="n">platform_device</span> <span class="o">*</span><span class="n">pdev</span><span class="p">)</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="n">driver_shutdown</span><span class="p">(</span><span class="k">struct</span> <span class="nc">platform_device</span> <span class="o">*</span><span class="n">pdev</span><span class="p">)</span>
 <span class="p">{</span>
         <span class="n">drm_atomic_helper_shutdown</span><span class="p">(</span><span class="n">platform_get_drvdata</span><span class="p">(</span><span class="n">pdev</span><span class="p">));</span>
 <span class="p">}</span>
 
-<span class="k">static</span> <span class="kt">int</span> <span class="n">__maybe_unused</span> <span class="nf">driver_pm_suspend</span><span class="p">(</span><span class="k">struct</span> <span class="n">device</span> <span class="o">*</span><span class="n">dev</span><span class="p">)</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">__maybe_unused</span> <span class="n">driver_pm_suspend</span><span class="p">(</span><span class="k">struct</span> <span class="nc">device</span> <span class="o">*</span><span class="n">dev</span><span class="p">)</span>
 <span class="p">{</span>
-        <span class="k">return</span> <span class="n">drm_mode_config_helper_suspend</span><span class="p">(</span><span class="n">dev_get_drvdata</span><span class="p">(</span><span class="n">dev</span><span class="p">));</span>
+        <span class="k">return</span> <span class="nf">drm_mode_config_helper_suspend</span><span class="p">(</span><span class="n">dev_get_drvdata</span><span class="p">(</span><span class="n">dev</span><span class="p">));</span>
 <span class="p">}</span>
 
-<span class="k">static</span> <span class="kt">int</span> <span class="n">__maybe_unused</span> <span class="nf">driver_pm_resume</span><span class="p">(</span><span class="k">struct</span> <span class="n">device</span> <span class="o">*</span><span class="n">dev</span><span class="p">)</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">__maybe_unused</span> <span class="n">driver_pm_resume</span><span class="p">(</span><span class="k">struct</span> <span class="nc">device</span> <span class="o">*</span><span class="n">dev</span><span class="p">)</span>
 <span class="p">{</span>
         <span class="n">drm_mode_config_helper_resume</span><span class="p">(</span><span class="n">dev_get_drvdata</span><span class="p">(</span><span class="n">dev</span><span class="p">));</span>
 
         <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">static</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">dev_pm_ops</span> <span class="n">driver_pm_ops</span> <span class="o">=</span> <span class="p">{</span>
+<span class="k">static</span> <span class="k">const</span> <span class="k">struct</span> <span class="nc">dev_pm_ops</span> <span class="n">driver_pm_ops</span> <span class="o">=</span> <span class="p">{</span>
         <span class="n">SET_SYSTEM_SLEEP_PM_OPS</span><span class="p">(</span><span class="n">driver_pm_suspend</span><span class="p">,</span> <span class="n">driver_pm_resume</span><span class="p">)</span>
 <span class="p">};</span>
 
-<span class="k">static</span> <span class="k">struct</span> <span class="n">platform_driver</span> <span class="n">driver_driver</span> <span class="o">=</span> <span class="p">{</span>
+<span class="k">static</span> <span class="k">struct</span> <span class="nc">platform_driver</span> <span class="n">driver_driver</span> <span class="o">=</span> <span class="p">{</span>
         <span class="p">.</span><span class="n">driver</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="p">[...]</span>
                 <span class="p">.</span><span class="n">pm</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">driver_pm_ops</span><span class="p">,</span>
@@ -1905,7 +1909,7 @@ bool <code class="sig-name descname">drm_is_render_client</code><span class="sig
 <p>See also the <a class="reference internal" href="drm-uapi.html#drm-render-node"><span class="std std-ref">section on render nodes</span></a>.</p>
 <dl class="c function">
 <dt id="c.drm_open">
-int <code class="sig-name descname">drm_open</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> file *<em>filp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_open" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">drm_open</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_open" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> file *<em>filp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_open" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>open method for DRM file</p>
 </dd></dl>
 
@@ -1924,7 +1928,7 @@ resources for it. It also calls the <a class="reference internal" href="#c.drm_d
 <p><strong>Return</strong></p>
 <dl class="c function">
 <dt id="c.drm_release">
-int <code class="sig-name descname">drm_release</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> file *<em>filp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_release" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">drm_release</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_release" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> file *<em>filp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_release" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>release method for DRM file</p>
 </dd></dl>
 
@@ -1944,7 +1948,7 @@ DRM device also proceeds to call the <a class="reference internal" href="#c.drm_
 <p><strong>Return</strong></p>
 <dl class="c function">
 <dt id="c.drm_release_noglobal">
-int <code class="sig-name descname">drm_release_noglobal</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> file *<em>filp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_release_noglobal" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">drm_release_noglobal</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_release_noglobal" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> file *<em>filp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_release_noglobal" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>release method for DRM file</p>
 </dd></dl>
 
@@ -2138,7 +2142,7 @@ DRM file for this event still exists and can call this function upon
 completion of the asynchronous work unconditionally.</p>
 <dl class="c function">
 <dt id="c.drm_get_unmapped_area">
-unsigned long <code class="sig-name descname">drm_get_unmapped_area</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, unsigned long <em>uaddr</em>, unsigned long <em>len</em>, unsigned long <em>pgoff</em>, unsigned long <em>flags</em>, <em class="property">struct</em> drm_vma_offset_manager *<em>mgr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_get_unmapped_area" title="Permalink to this definition">¶</a><br /></dt>
+unsigned long <code class="sig-name descname">drm_get_unmapped_area</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_get_unmapped_area" title="file">file</a> *<em>file</em>, unsigned long <em>uaddr</em>, unsigned long <em>len</em>, unsigned long <em>pgoff</em>, unsigned long <em>flags</em>, <em class="property">struct</em> drm_vma_offset_manager *<em>mgr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_get_unmapped_area" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get an unused user-space virtual memory area suitable for huge page table entries.</p>
 </dd></dl>
 
@@ -2660,37 +2664,29 @@ functions are deprecated and should not be used.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="drm-mm.html" class="btn btn-neutral float-right" title="DRM Memory Management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="drm-mm.html" class="btn btn-neutral float-right" title="DRM Memory Management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Network Devices, the Kernel, and You! &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -352,6 +354,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -365,7 +369,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/networking/netdevices.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -410,7 +414,7 @@ in context where <code class="docutils literal notranslate"><span class="pre">rt
 the <a class="reference internal" href="kapi.html#c.register_netdev" title="register_netdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">register_netdev()</span></code></a>, and <a class="reference internal" href="kapi.html#c.unregister_netdev" title="unregister_netdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">unregister_netdev()</span></code></a> functions:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">probe</span><span class="p">()</span>
 <span class="p">{</span>
-  <span class="k">struct</span> <span class="n">my_device_priv</span> <span class="o">*</span><span class="n">priv</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="nc">my_device_priv</span> <span class="o">*</span><span class="n">priv</span><span class="p">;</span>
   <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>
 
   <span class="n">dev</span> <span class="o">=</span> <span class="n">alloc_netdev_mqs</span><span class="p">(...);</span>
@@ -457,20 +461,20 @@ the <code class="docutils literal notranslate"><span class="pre">rtnl_lock</span
 will want to make use of <a class="reference internal" href="kapi.html#c.net_device" title="net_device"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">net_device</span></code></a>’s <code class="docutils literal notranslate"><span class="pre">needs_free_netdev</span></code>
 and <code class="docutils literal notranslate"><span class="pre">priv_destructor</span></code> members for freeing of state.</p>
 <p>Example flow of netdev handling under <code class="docutils literal notranslate"><span class="pre">rtnl_lock</span></code>:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">my_setup</span><span class="p">(</span><span class="k">struct</span> <span class="n">net_device</span> <span class="o">*</span><span class="n">dev</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="n">my_setup</span><span class="p">(</span><span class="k">struct</span> <span class="nc">net_device</span> <span class="o">*</span><span class="n">dev</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">dev</span><span class="o">-&gt;</span><span class="n">needs_free_netdev</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">static</span> <span class="kt">void</span> <span class="nf">my_destructor</span><span class="p">(</span><span class="k">struct</span> <span class="n">net_device</span> <span class="o">*</span><span class="n">dev</span><span class="p">)</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="n">my_destructor</span><span class="p">(</span><span class="k">struct</span> <span class="nc">net_device</span> <span class="o">*</span><span class="n">dev</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">some_obj_destroy</span><span class="p">(</span><span class="n">priv</span><span class="o">-&gt;</span><span class="n">obj</span><span class="p">);</span>
   <span class="n">some_uninit</span><span class="p">(</span><span class="n">priv</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="kt">int</span> <span class="nf">create_link</span><span class="p">()</span>
+<span class="kt">int</span> <span class="n">create_link</span><span class="p">()</span>
 <span class="p">{</span>
-  <span class="k">struct</span> <span class="n">my_device_priv</span> <span class="o">*</span><span class="n">priv</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="nc">my_device_priv</span> <span class="o">*</span><span class="n">priv</span><span class="p">;</span>
   <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>
 
   <span class="n">ASSERT_RTNL</span><span class="p">();</span>
@@ -630,37 +634,29 @@ will be called with interrupts disabled by netconsole.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="netfilter-sysctl.html" class="btn btn-neutral float-right" title="Netfilter Sysfs variables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="netdev-features.html" class="btn btn-neutral float-left" title="Netdev features mess and how to get out from it alive" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="netfilter-sysctl.html" class="btn btn-neutral float-right" title="Netfilter Sysfs variables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="netdev-features.html" class="btn btn-neutral float-left" title="Netdev features mess and how to get out from it alive" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Memory Tagging Extension (MTE) in AArch64 Linux &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -248,6 +250,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -261,7 +265,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/arm64/memory-tagging-extension.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -510,7 +514,7 @@ address ABI control and MTE configuration of a process as per the
         <span class="p">}</span>
 
         <span class="n">a</span> <span class="o">=</span> <span class="n">mmap</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">page_sz</span><span class="p">,</span> <span class="n">PROT_READ</span> <span class="o">|</span> <span class="n">PROT_WRITE</span><span class="p">,</span>
-                 <span class="n">MAP_PRIVATE</span> <span class="o">|</span> <span class="n">MAP_ANONYMOUS</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+                 <span class="n">MAP_PRIVATE</span> <span class="o">|</span> <span class="n">MAP_ANONYMOUS</span><span class="p">,</span> <span class="mi">-1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">MAP_FAILED</span><span class="p">)</span> <span class="p">{</span>
                 <span class="n">perror</span><span class="p">(</span><span class="s">&quot;mmap() failed&quot;</span><span class="p">);</span>
                 <span class="k">return</span> <span class="n">EXIT_FAILURE</span><span class="p">;</span>
@@ -563,37 +567,29 @@ address ABI control and MTE configuration of a process as per the
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="perf.html" class="btn btn-neutral float-right" title="Perf Event Attributes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="memory.html" class="btn btn-neutral float-left" title="Memory Layout on AArch64 Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="perf.html" class="btn btn-neutral float-right" title="Perf Event Attributes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="memory.html" class="btn btn-neutral float-left" title="Memory Layout on AArch64 Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

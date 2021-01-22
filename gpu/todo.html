@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>TODO list &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -174,14 +176,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#remove-load-unload-callbacks-from-all-non-driver-legacy-drivers">Remove load/unload callbacks from all non-DRIVER_LEGACY drivers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#replace-drm-detect-hdmi-monitor-with-drm-display-info-is-hdmi">Replace drm_detect_hdmi_monitor() with drm_display_info.is_hdmi</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#consolidate-custom-driver-modeset-properties">Consolidate custom driver modeset properties</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#plumb-drm-atomic-state-all-over">Plumb drm_atomic_state all over</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#use-struct-dma-buf-map-throughout-codebase">Use struct dma_buf_map throughout codebase</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#core-refactorings">Core refactorings</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#make-panic-handling-work">Make panic handling work</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#clean-up-the-debugfs-support">Clean up the debugfs support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#kms-cleanups">KMS cleanups</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#object-lifetime-fixes">Object lifetime fixes</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#better-testing">Better Testing</a></li>
 </ul>
 </li>
@@ -284,6 +285,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -297,7 +300,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/gpu/todo.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -656,42 +659,6 @@ if available:</p>
 <p>Contact: Emil Velikov, respective driver maintainers</p>
 <p>Level: Intermediate</p>
 </div>
-<div class="section" id="plumb-drm-atomic-state-all-over">
-<h2>Plumb drm_atomic_state all over<a class="headerlink" href="#plumb-drm-atomic-state-all-over" title="Permalink to this headline">¶</a></h2>
-<p>Currently various atomic functions take just a single or a handful of
-object states (eg. plane state). While that single object state can
-suffice for some simple cases, we often have to dig out additional
-object states for dealing with various dependencies between the individual
-objects or the hardware they represent. The process of digging out the
-additional states is rather non-intuitive and error prone.</p>
-<p>To fix that most functions should rather take the overall
-drm_atomic_state as one of their parameters. The other parameters
-would generally be the object(s) we mainly want to interact with.</p>
-<p>For example, instead of</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">atomic_check</span><span class="p">)(</span><span class="k">struct</span> <span class="n">drm_plane</span> <span class="o">*</span><span class="n">plane</span><span class="p">,</span> <span class="k">struct</span> <span class="n">drm_plane_state</span> <span class="o">*</span><span class="n">state</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>we would have something like</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">atomic_check</span><span class="p">)(</span><span class="k">struct</span> <span class="n">drm_plane</span> <span class="o">*</span><span class="n">plane</span><span class="p">,</span> <span class="k">struct</span> <span class="n">drm_atomic_state</span> <span class="o">*</span><span class="n">state</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>The implementation can then trivially gain access to any required object
-state(s) via <a class="reference internal" href="drm-kms.html#c.drm_atomic_get_plane_state" title="drm_atomic_get_plane_state"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_get_plane_state()</span></code></a>, <a class="reference internal" href="drm-kms.html#c.drm_atomic_get_new_plane_state" title="drm_atomic_get_new_plane_state"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_get_new_plane_state()</span></code></a>,
-<a class="reference internal" href="drm-kms.html#c.drm_atomic_get_old_plane_state" title="drm_atomic_get_old_plane_state"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_get_old_plane_state()</span></code></a>, and their equivalents for
-other object types.</p>
-<p>Additionally many drivers currently access the object-&gt;state pointer
-directly in their commit functions. That is not going to work if we
-eg. want to allow deeper commit pipelines as those pointers could
-then point to the states corresponding to a future commit instead of
-the current commit we’re trying to process. Also non-blocking commits
-execute locklessly so there are serious concerns with dereferencing
-the object-&gt;state pointers without holding the locks that protect them.
-Use of <a class="reference internal" href="drm-kms.html#c.drm_atomic_get_new_plane_state" title="drm_atomic_get_new_plane_state"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_get_new_plane_state()</span></code></a>, <a class="reference internal" href="drm-kms.html#c.drm_atomic_get_old_plane_state" title="drm_atomic_get_old_plane_state"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_get_old_plane_state()</span></code></a>,
-etc. avoids these problems as well since they relate to a specific
-commit via the passed in drm_atomic_state.</p>
-<p>Contact: Ville Syrjälä, Daniel Vetter</p>
-<p>Level: Intermediate</p>
-</div>
 <div class="section" id="use-struct-dma-buf-map-throughout-codebase">
 <h2>Use struct dma_buf_map throughout codebase<a class="headerlink" href="#use-struct-dma-buf-map-throughout-codebase" title="Permalink to this headline">¶</a></h2>
 <p>Pointers to shared device memory are stored in <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_map" title="dma_buf_map"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf_map</span></code></a>. Each
@@ -767,19 +734,21 @@ debugfs_init.</p></li>
 <p>Contact: Daniel Vetter</p>
 <p>Level: Intermediate</p>
 </div>
-<div class="section" id="kms-cleanups">
-<h2>KMS cleanups<a class="headerlink" href="#kms-cleanups" title="Permalink to this headline">¶</a></h2>
-<p>Some of these date from the very introduction of KMS in 2008 …</p>
+<div class="section" id="object-lifetime-fixes">
+<h2>Object lifetime fixes<a class="headerlink" href="#object-lifetime-fixes" title="Permalink to this headline">¶</a></h2>
+<p>There’s two related issues here</p>
 <ul class="simple">
-<li><p>Make -&gt;funcs and -&gt;helper_private vtables optional. There’s a bunch of empty
-function tables in drivers, but before we can remove them we need to make sure
-that all the users in helpers and drivers do correctly check for a NULL
-vtable.</p></li>
-<li><p>Cleanup up the various -&gt;destroy callbacks. A lot of them just wrapt the
-drm_*_cleanup implementations and can be removed. Some tack a <a class="reference internal" href="../core-api/mm-api.html#c.kfree" title="kfree"><code class="xref c c-func docutils literal notranslate"><span class="pre">kfree()</span></code></a> at the
-end, for which we could add drm_*_cleanup_kfree(). And then there’s the (for
-historical reasons) misnamed <a class="reference internal" href="drm-kms-helpers.html#c.drm_primary_helper_destroy" title="drm_primary_helper_destroy"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_primary_helper_destroy()</span></code></a> function.</p></li>
+<li><p>Cleanup up the various -&gt;destroy callbacks, which often are all the same
+simple code.</p></li>
+<li><p>Lots of drivers erroneously allocate DRM modeset objects using devm_kzalloc,
+which results in use-after free issues on driver unload. This can be serious
+trouble even for drivers for hardware integrated on the SoC due to
+EPROBE_DEFERRED backoff.</p></li>
 </ul>
+<p>Both these problems can be solved by switching over to <a class="reference internal" href="drm-internals.html#c.drmm_kzalloc" title="drmm_kzalloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_kzalloc()</span></code></a>, and the
+various convenience wrappers provided, e.g. <a class="reference internal" href="drm-kms.html#c.drmm_crtc_alloc_with_planes" title="drmm_crtc_alloc_with_planes"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_crtc_alloc_with_planes()</span></code></a>,
+<a class="reference internal" href="drm-kms.html#c.drmm_universal_plane_alloc" title="drmm_universal_plane_alloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_universal_plane_alloc()</span></code></a>, … and so on.</p>
+<p>Contact: Daniel Vetter</p>
 <p>Level: Intermediate</p>
 <div class="section" id="better-testing">
 <h3>Better Testing<a class="headerlink" href="#better-testing" title="Permalink to this headline">¶</a></h3>
@@ -807,7 +776,6 @@ the non-i915 specific modeset tests.</p>
 <p>See the documentation of <a class="reference internal" href="vkms.html#vkms"><span class="std std-ref">VKMS</span></a> for more details. This is an ideal
 internship task, since it only requires a virtual machine and can be sized to
 fit the available time.</p>
-<p>Contact: Daniel Vetter</p>
 <p>Level: See details</p>
 </div>
 <div class="section" id="backlight-refactoring">
@@ -884,37 +852,29 @@ and Weston.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../security/index.html" class="btn btn-neutral float-right" title="Security Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="vgaarbiter.html" class="btn btn-neutral float-left" title="VGA Arbiter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="../security/index.html" class="btn btn-neutral float-right" title="Security Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="vgaarbiter.html" class="btn btn-neutral float-left" title="VGA Arbiter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

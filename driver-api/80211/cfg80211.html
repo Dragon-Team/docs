@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>cfg80211 subsystem &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -331,6 +333,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -346,7 +350,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../../_sources/driver-api/80211/cfg80211.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -673,7 +677,7 @@ iftype_data).</p>
 is able to operate in.</p>
 <dl class="c function">
 <dt id="c.wiphy_read_of_freq_limits">
-void <code class="sig-name descname">wiphy_read_of_freq_limits</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_read_of_freq_limits" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">wiphy_read_of_freq_limits</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy_read_of_freq_limits" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_read_of_freq_limits" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>read frequency limits from device tree</p>
 </dd></dl>
 
@@ -879,11 +883,11 @@ combination must be greater or equal to this value.</p>
 combinations it supports concurrently.</p>
 <ol class="arabic">
 <li><p>Allow #STA &lt;= 1, #AP &lt;= 1, matching BI, channels = 1, 2 total:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">ieee80211_iface_limit</span> <span class="n">limits1</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">ieee80211_iface_limit</span> <span class="n">limits1</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
         <span class="p">{</span> <span class="p">.</span><span class="n">max</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="p">.</span><span class="n">types</span> <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="n">NL80211_IFTYPE_STATION</span><span class="p">),</span> <span class="p">},</span>
         <span class="p">{</span> <span class="p">.</span><span class="n">max</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="p">.</span><span class="n">types</span> <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="n">NL80211_IFTYPE_AP</span><span class="p">},</span> <span class="p">},</span>
 <span class="p">};</span>
-<span class="k">struct</span> <span class="n">ieee80211_iface_combination</span> <span class="n">combination1</span> <span class="o">=</span> <span class="p">{</span>
+<span class="k">struct</span> <span class="nc">ieee80211_iface_combination</span> <span class="n">combination1</span> <span class="o">=</span> <span class="p">{</span>
         <span class="p">.</span><span class="n">limits</span> <span class="o">=</span> <span class="n">limits1</span><span class="p">,</span>
         <span class="p">.</span><span class="n">n_limits</span> <span class="o">=</span> <span class="n">ARRAY_SIZE</span><span class="p">(</span><span class="n">limits1</span><span class="p">),</span>
         <span class="p">.</span><span class="n">max_interfaces</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
@@ -893,11 +897,11 @@ combinations it supports concurrently.</p>
 </div>
 </li>
 <li><p>Allow #{AP, P2P-GO} &lt;= 8, channels = 1, 8 total:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">ieee80211_iface_limit</span> <span class="n">limits2</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">ieee80211_iface_limit</span> <span class="n">limits2</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
         <span class="p">{</span> <span class="p">.</span><span class="n">max</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="p">.</span><span class="n">types</span> <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="n">NL80211_IFTYPE_AP</span><span class="p">)</span> <span class="o">|</span>
                              <span class="n">BIT</span><span class="p">(</span><span class="n">NL80211_IFTYPE_P2P_GO</span><span class="p">),</span> <span class="p">},</span>
 <span class="p">};</span>
-<span class="k">struct</span> <span class="n">ieee80211_iface_combination</span> <span class="n">combination2</span> <span class="o">=</span> <span class="p">{</span>
+<span class="k">struct</span> <span class="nc">ieee80211_iface_combination</span> <span class="n">combination2</span> <span class="o">=</span> <span class="p">{</span>
         <span class="p">.</span><span class="n">limits</span> <span class="o">=</span> <span class="n">limits2</span><span class="p">,</span>
         <span class="p">.</span><span class="n">n_limits</span> <span class="o">=</span> <span class="n">ARRAY_SIZE</span><span class="p">(</span><span class="n">limits2</span><span class="p">),</span>
         <span class="p">.</span><span class="n">max_interfaces</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
@@ -908,12 +912,12 @@ combinations it supports concurrently.</p>
 </li>
 <li><p>Allow #STA &lt;= 1, #{P2P-client,P2P-GO} &lt;= 3 on two channels, 4 total.</p>
 <p>This allows for an infrastructure connection and three P2P connections.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">ieee80211_iface_limit</span> <span class="n">limits3</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">ieee80211_iface_limit</span> <span class="n">limits3</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
         <span class="p">{</span> <span class="p">.</span><span class="n">max</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="p">.</span><span class="n">types</span> <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="n">NL80211_IFTYPE_STATION</span><span class="p">),</span> <span class="p">},</span>
         <span class="p">{</span> <span class="p">.</span><span class="n">max</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="p">.</span><span class="n">types</span> <span class="o">=</span> <span class="n">BIT</span><span class="p">(</span><span class="n">NL80211_IFTYPE_P2P_GO</span><span class="p">)</span> <span class="o">|</span>
                              <span class="n">BIT</span><span class="p">(</span><span class="n">NL80211_IFTYPE_P2P_CLIENT</span><span class="p">),</span> <span class="p">},</span>
 <span class="p">};</span>
-<span class="k">struct</span> <span class="n">ieee80211_iface_combination</span> <span class="n">combination3</span> <span class="o">=</span> <span class="p">{</span>
+<span class="k">struct</span> <span class="nc">ieee80211_iface_combination</span> <span class="n">combination3</span> <span class="o">=</span> <span class="p">{</span>
         <span class="p">.</span><span class="n">limits</span> <span class="o">=</span> <span class="n">limits3</span><span class="p">,</span>
         <span class="p">.</span><span class="n">n_limits</span> <span class="o">=</span> <span class="n">ARRAY_SIZE</span><span class="p">(</span><span class="n">limits3</span><span class="p">),</span>
         <span class="p">.</span><span class="n">max_interfaces</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
@@ -1284,7 +1288,7 @@ configuration through the <code class="docutils literal notranslate"><span class
 </dl>
 <dl class="c function">
 <dt id="c.wiphy_priv">
-void *<code class="sig-name descname">wiphy_priv</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_priv" title="Permalink to this definition">¶</a><br /></dt>
+void *<code class="sig-name descname">wiphy_priv</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy_priv" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_priv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return priv from wiphy</p>
 </dd></dl>
 
@@ -1310,7 +1314,7 @@ void *<code class="sig-name descname">wiphy_priv</code><span class="sig-paren">(
 <p>The wiphy of <strong>priv</strong>.</p>
 <dl class="c function">
 <dt id="c.set_wiphy_dev">
-void <code class="sig-name descname">set_wiphy_dev</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em>, <em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.set_wiphy_dev" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">set_wiphy_dev</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.set_wiphy_dev" title="wiphy">wiphy</a> *<em>wiphy</em>, <em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.set_wiphy_dev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set device pointer for wiphy</p>
 </dd></dl>
 
@@ -1323,7 +1327,7 @@ void <code class="sig-name descname">set_wiphy_dev</code><span class="sig-paren"
 </dl>
 <dl class="c function">
 <dt id="c.wiphy_dev">
-<em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<code class="sig-name descname">wiphy_dev</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_dev" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<code class="sig-name descname">wiphy_dev</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy_dev" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_dev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get wiphy dev pointer</p>
 </dd></dl>
 
@@ -1336,7 +1340,7 @@ void <code class="sig-name descname">set_wiphy_dev</code><span class="sig-paren"
 <p>The dev of <strong>wiphy</strong>.</p>
 <dl class="c function">
 <dt id="c.wiphy_name">
-<em class="property">const</em> char *<code class="sig-name descname">wiphy_name</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_name" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">const</em> char *<code class="sig-name descname">wiphy_name</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.wiphy_name" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_name" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get wiphy name</p>
 </dd></dl>
 
@@ -1368,7 +1372,7 @@ void <code class="sig-name descname">set_wiphy_dev</code><span class="sig-paren"
 assigned to each netdev’s ieee80211_ptr for proper operation.</p>
 <dl class="c function">
 <dt id="c.wiphy_register">
-int <code class="sig-name descname">wiphy_register</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_register" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">wiphy_register</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy_register" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a wiphy with cfg80211</p>
 </dd></dl>
 
@@ -1381,7 +1385,7 @@ int <code class="sig-name descname">wiphy_register</code><span class="sig-paren"
 <p>A non-negative wiphy index or a negative error code.</p>
 <dl class="c function">
 <dt id="c.wiphy_unregister">
-void <code class="sig-name descname">wiphy_unregister</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_unregister" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">wiphy_unregister</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy_unregister" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_unregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>deregister a wiphy from cfg80211</p>
 </dd></dl>
 
@@ -1396,7 +1400,7 @@ pointer, but the call may sleep to wait for an outstanding
 request that is being handled.</p>
 <dl class="c function">
 <dt id="c.wiphy_free">
-void <code class="sig-name descname">wiphy_free</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_free" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">wiphy_free</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy_free" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_free" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>free wiphy</p>
 </dd></dl>
 
@@ -1623,7 +1627,7 @@ void *<code class="sig-name descname">wdev_priv</code><span class="sig-paren">(<
 <p>The wiphy priv of <strong>wdev</strong>.</p>
 <dl class="c function">
 <dt id="c.cfg80211_check_combinations">
-int <code class="sig-name descname">cfg80211_check_combinations</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em>, <em class="property">struct</em> iface_combination_params *<em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cfg80211_check_combinations" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">cfg80211_check_combinations</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.cfg80211_check_combinations" title="wiphy">wiphy</a> *<em>wiphy</em>, <em class="property">struct</em> iface_combination_params *<em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cfg80211_check_combinations" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check interface combinations</p>
 </dd></dl>
 
@@ -2202,6 +2206,8 @@ to unknown)</p>
 <dt><code class="docutils literal notranslate"><span class="pre">RATE_INFO_FLAGS_HE_MCS</span></code></dt><dd><p>HE MCS information</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">RATE_INFO_FLAGS_EDMG</span></code></dt><dd><p>60GHz MCS in EDMG mode</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">RATE_INFO_FLAGS_EXTENDED_SC_DMG</span></code></dt><dd><p>60GHz extended SC MCS</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
@@ -4472,7 +4478,7 @@ void <code class="sig-name descname">cfg80211_scan_done</code><span class="sig-p
 </dl>
 <dl class="c function">
 <dt id="c.cfg80211_inform_bss_frame_data">
-<em class="property">struct</em> <a class="reference internal" href="#c.cfg80211_bss" title="cfg80211_bss">cfg80211_bss</a> *<code class="sig-name descname">cfg80211_inform_bss_frame_data</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em>, <em class="property">struct</em> <a class="reference internal" href="#c.cfg80211_inform_bss" title="cfg80211_inform_bss">cfg80211_inform_bss</a> *<em>data</em>, <em class="property">struct</em> ieee80211_mgmt *<em>mgmt</em>, size_t <em>len</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cfg80211_inform_bss_frame_data" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.cfg80211_bss" title="cfg80211_bss">cfg80211_bss</a> *<code class="sig-name descname">cfg80211_inform_bss_frame_data</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.cfg80211_inform_bss_frame_data" title="wiphy">wiphy</a> *<em>wiphy</em>, <em class="property">struct</em> <a class="reference internal" href="#c.cfg80211_inform_bss" title="cfg80211_inform_bss">cfg80211_inform_bss</a> *<em>data</em>, <em class="property">struct</em> ieee80211_mgmt *<em>mgmt</em>, size_t <em>len</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cfg80211_inform_bss_frame_data" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>inform cfg80211 of a received BSS frame</p>
 </dd></dl>
 
@@ -4497,7 +4503,7 @@ the BSS should be updated/added.</p>
 Or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> on error.</p>
 <dl class="c function">
 <dt id="c.cfg80211_inform_bss_data">
-<em class="property">struct</em> <a class="reference internal" href="#c.cfg80211_bss" title="cfg80211_bss">cfg80211_bss</a> *<code class="sig-name descname">cfg80211_inform_bss_data</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em>, <em class="property">struct</em> <a class="reference internal" href="#c.cfg80211_inform_bss" title="cfg80211_inform_bss">cfg80211_inform_bss</a> *<em>data</em>, <em class="property">enum</em> cfg80211_bss_frame_type <em>ftype</em>, <em class="property">const</em> u8 *<em>bssid</em>, u64 <em>tsf</em>, u16 <em>capability</em>, u16 <em>beacon_interval</em>, <em class="property">const</em> u8 *<em>ie</em>, size_t <em>ielen</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cfg80211_inform_bss_data" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.cfg80211_bss" title="cfg80211_bss">cfg80211_bss</a> *<code class="sig-name descname">cfg80211_inform_bss_data</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.cfg80211_inform_bss_data" title="wiphy">wiphy</a> *<em>wiphy</em>, <em class="property">struct</em> <a class="reference internal" href="#c.cfg80211_inform_bss" title="cfg80211_inform_bss">cfg80211_inform_bss</a> *<em>data</em>, <em class="property">enum</em> cfg80211_bss_frame_type <em>ftype</em>, <em class="property">const</em> u8 *<em>bssid</em>, u64 <em>tsf</em>, u16 <em>capability</em>, u16 <em>beacon_interval</em>, <em class="property">const</em> u8 *<em>ie</em>, size_t <em>ielen</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cfg80211_inform_bss_data" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>inform cfg80211 of a new BSS</p>
 </dd></dl>
 
@@ -4532,7 +4538,7 @@ the BSS should be updated/added.</p>
 Or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> on error.</p>
 <dl class="c function">
 <dt id="c.cfg80211_unlink_bss">
-void <code class="sig-name descname">cfg80211_unlink_bss</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em>, <em class="property">struct</em> <a class="reference internal" href="#c.cfg80211_bss" title="cfg80211_bss">cfg80211_bss</a> *<em>bss</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cfg80211_unlink_bss" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">cfg80211_unlink_bss</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.cfg80211_unlink_bss" title="wiphy">wiphy</a> *<em>wiphy</em>, <em class="property">struct</em> <a class="reference internal" href="#c.cfg80211_bss" title="cfg80211_bss">cfg80211_bss</a> *<em>bss</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cfg80211_unlink_bss" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unlink BSS from internal data structures</p>
 </dd></dl>
 
@@ -4582,7 +4588,7 @@ int <code class="sig-name descname">ieee80211_frequency_to_channel</code><span c
 <p>The corresponding channel, or 0 if the conversion failed.</p>
 <dl class="c function">
 <dt id="c.ieee80211_get_channel">
-<em class="property">struct</em> <a class="reference internal" href="#c.ieee80211_channel" title="ieee80211_channel">ieee80211_channel</a> *<code class="sig-name descname">ieee80211_get_channel</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em>, int <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ieee80211_get_channel" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.ieee80211_channel" title="ieee80211_channel">ieee80211_channel</a> *<code class="sig-name descname">ieee80211_get_channel</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ieee80211_get_channel" title="wiphy">wiphy</a> *<em>wiphy</em>, int <em>freq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ieee80211_get_channel" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get channel struct from wiphy for specified frequency</p>
 </dd></dl>
 
@@ -4783,7 +4789,7 @@ unsigned int <code class="sig-name descname">cfg80211_classify8021d</code><span 
 <p>TODO</p>
 <dl class="c function">
 <dt id="c.regulatory_hint">
-int <code class="sig-name descname">regulatory_hint</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em>, <em class="property">const</em> char *<em>alpha2</em><span class="sig-paren">)</span><a class="headerlink" href="#c.regulatory_hint" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">regulatory_hint</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.regulatory_hint" title="wiphy">wiphy</a> *<em>wiphy</em>, <em class="property">const</em> char *<em>alpha2</em><span class="sig-paren">)</span><a class="headerlink" href="#c.regulatory_hint" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>driver hint to the wireless core a regulatory domain</p>
 </dd></dl>
 
@@ -4814,7 +4820,7 @@ an -ENOMEM.</p>
 <p>0 on success. -ENOMEM.</p>
 <dl class="c function">
 <dt id="c.wiphy_apply_custom_regulatory">
-void <code class="sig-name descname">wiphy_apply_custom_regulatory</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em>, <em class="property">const</em> <em class="property">struct</em> ieee80211_regdomain *<em>regd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_apply_custom_regulatory" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">wiphy_apply_custom_regulatory</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy_apply_custom_regulatory" title="wiphy">wiphy</a> *<em>wiphy</em>, <em class="property">const</em> <em class="property">struct</em> ieee80211_regdomain *<em>regd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_apply_custom_regulatory" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>apply a custom driver regulatory domain</p>
 </dd></dl>
 
@@ -4837,7 +4843,7 @@ REGULATORY_CUSTOM_REG or cfg80211 will set it for the wiphy
 that called this helper.</p>
 <dl class="c function">
 <dt id="c.freq_reg_info">
-<em class="property">const</em> <em class="property">struct</em> ieee80211_reg_rule *<code class="sig-name descname">freq_reg_info</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em>, u32 <em>center_freq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.freq_reg_info" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">const</em> <em class="property">struct</em> ieee80211_reg_rule *<code class="sig-name descname">freq_reg_info</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.freq_reg_info" title="wiphy">wiphy</a> *<em>wiphy</em>, u32 <em>center_freq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.freq_reg_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get regulatory information for the given frequency</p>
 </dd></dl>
 
@@ -4874,7 +4880,7 @@ also need to interact with the rfkill subsystem, via cfg80211.
 They can do this with a few helper functions documented here.</p>
 <dl class="c function">
 <dt id="c.wiphy_rfkill_set_hw_state">
-void <code class="sig-name descname">wiphy_rfkill_set_hw_state</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em>, bool <em>blocked</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_rfkill_set_hw_state" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">wiphy_rfkill_set_hw_state</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy_rfkill_set_hw_state" title="wiphy">wiphy</a> *<em>wiphy</em>, bool <em>blocked</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_rfkill_set_hw_state" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>notify cfg80211 about hw block state</p>
 </dd></dl>
 
@@ -4887,7 +4893,7 @@ void <code class="sig-name descname">wiphy_rfkill_set_hw_state</code><span class
 </dl>
 <dl class="c function">
 <dt id="c.wiphy_rfkill_start_polling">
-void <code class="sig-name descname">wiphy_rfkill_start_polling</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_rfkill_start_polling" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">wiphy_rfkill_start_polling</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy_rfkill_start_polling" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_rfkill_start_polling" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>start polling rfkill</p>
 </dd></dl>
 
@@ -4898,7 +4904,7 @@ void <code class="sig-name descname">wiphy_rfkill_start_polling</code><span clas
 </dl>
 <dl class="c function">
 <dt id="c.wiphy_rfkill_stop_polling">
-void <code class="sig-name descname">wiphy_rfkill_stop_polling</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_rfkill_stop_polling" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">wiphy_rfkill_stop_polling</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy_rfkill_stop_polling" title="wiphy">wiphy</a> *<em>wiphy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wiphy_rfkill_stop_polling" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>stop polling rfkill</p>
 </dd></dl>
 
@@ -4917,7 +4923,7 @@ factory programming.</p>
 information see the nl80211 book’s chapter on it.</p>
 <dl class="c function">
 <dt id="c.cfg80211_testmode_alloc_reply_skb">
-<em class="property">struct</em> <a class="reference internal" href="../../networking/kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<code class="sig-name descname">cfg80211_testmode_alloc_reply_skb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em>, int <em>approxlen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cfg80211_testmode_alloc_reply_skb" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="../../networking/kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<code class="sig-name descname">cfg80211_testmode_alloc_reply_skb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.cfg80211_testmode_alloc_reply_skb" title="wiphy">wiphy</a> *<em>wiphy</em>, int <em>approxlen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cfg80211_testmode_alloc_reply_skb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate testmode reply</p>
 </dd></dl>
 
@@ -4965,7 +4971,7 @@ regardless of the return value.</p>
 <p>An error code or 0 on success.</p>
 <dl class="c function">
 <dt id="c.cfg80211_testmode_alloc_event_skb">
-<em class="property">struct</em> <a class="reference internal" href="../../networking/kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<code class="sig-name descname">cfg80211_testmode_alloc_event_skb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wiphy" title="wiphy">wiphy</a> *<em>wiphy</em>, int <em>approxlen</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cfg80211_testmode_alloc_event_skb" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="../../networking/kapi.html#c.sk_buff" title="sk_buff">sk_buff</a> *<code class="sig-name descname">cfg80211_testmode_alloc_event_skb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.cfg80211_testmode_alloc_event_skb" title="wiphy">wiphy</a> *<em>wiphy</em>, int <em>approxlen</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cfg80211_testmode_alloc_event_skb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate testmode event</p>
 </dd></dl>
 
@@ -5017,37 +5023,29 @@ consumes it.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="mac80211.html" class="btn btn-neutral float-right" title="mac80211 subsystem (basics)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="mac80211.html" class="btn btn-neutral float-right" title="mac80211 subsystem (basics)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

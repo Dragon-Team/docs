@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>drm/komeda Arm display driver &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -257,6 +259,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -272,7 +276,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/gpu/komeda-kms.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -986,13 +990,13 @@ Layers to fit the requirement of one KMS-plane.</p>
 <div class="section" id="make-component-pipeline-to-be-drm-private-obj">
 <h3>Make component/pipeline to be drm_private_obj<a class="headerlink" href="#make-component-pipeline-to-be-drm-private-obj" title="Permalink to this headline">¶</a></h3>
 <p>Add <a class="reference internal" href="drm-kms.html#c.drm_private_obj" title="drm_private_obj"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_private_obj</span></code></a> to <a class="reference internal" href="#c.komeda_component" title="komeda_component"><code class="xref c c-type docutils literal notranslate"><span class="pre">komeda_component</span></code></a>, <a class="reference internal" href="#c.komeda_pipeline" title="komeda_pipeline"><code class="xref c c-type docutils literal notranslate"><span class="pre">komeda_pipeline</span></code></a></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">komeda_component</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">drm_private_obj</span> <span class="n">obj</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">komeda_component</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="nc">drm_private_obj</span> <span class="n">obj</span><span class="p">;</span>
     <span class="p">...</span>
 <span class="p">}</span>
 
-<span class="k">struct</span> <span class="n">komeda_pipeline</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">drm_private_obj</span> <span class="n">obj</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">komeda_pipeline</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="nc">drm_private_obj</span> <span class="n">obj</span><span class="p">;</span>
     <span class="p">...</span>
 <span class="p">}</span>
 </pre></div>
@@ -1002,15 +1006,15 @@ Layers to fit the requirement of one KMS-plane.</p>
 <h3>Tracking component_state/pipeline_state by drm_atomic_state<a class="headerlink" href="#tracking-component-state-pipeline-state-by-drm-atomic-state" title="Permalink to this headline">¶</a></h3>
 <p>Add <a class="reference internal" href="drm-kms.html#c.drm_private_state" title="drm_private_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_private_state</span></code></a> and user to <a class="reference internal" href="#c.komeda_component_state" title="komeda_component_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">komeda_component_state</span></code></a>,
 <a class="reference internal" href="#c.komeda_pipeline_state" title="komeda_pipeline_state"><code class="xref c c-type docutils literal notranslate"><span class="pre">komeda_pipeline_state</span></code></a></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">komeda_component_state</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">drm_private_state</span> <span class="n">obj</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">komeda_component_state</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="nc">drm_private_state</span> <span class="n">obj</span><span class="p">;</span>
     <span class="kt">void</span> <span class="o">*</span><span class="n">binding_user</span><span class="p">;</span>
     <span class="p">...</span>
 <span class="p">}</span>
 
-<span class="k">struct</span> <span class="n">komeda_pipeline_state</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">drm_private_state</span> <span class="n">obj</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">drm_crtc</span> <span class="o">*</span><span class="n">crtc</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">komeda_pipeline_state</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="nc">drm_private_state</span> <span class="n">obj</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">drm_crtc</span> <span class="o">*</span><span class="n">crtc</span><span class="p">;</span>
     <span class="p">...</span>
 <span class="p">}</span>
 </pre></div>
@@ -1020,10 +1024,10 @@ Layers to fit the requirement of one KMS-plane.</p>
 <h3>komeda component validation<a class="headerlink" href="#komeda-component-validation" title="Permalink to this headline">¶</a></h3>
 <p>Komeda has multiple types of components, but the process of validation are
 similar, usually including the following steps:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">komeda_xxxx_validate</span><span class="p">(</span><span class="k">struct</span> <span class="n">komeda_component_xxx</span> <span class="n">xxx_comp</span><span class="p">,</span>
-            <span class="k">struct</span> <span class="n">komeda_component_output</span> <span class="o">*</span><span class="n">input_dflow</span><span class="p">,</span>
-            <span class="k">struct</span> <span class="n">drm_plane</span><span class="o">/</span><span class="n">crtc</span><span class="o">/</span><span class="n">connector</span> <span class="o">*</span><span class="n">user</span><span class="p">,</span>
-            <span class="k">struct</span> <span class="n">drm_plane</span><span class="o">/</span><span class="n">crtc</span><span class="o">/</span><span class="n">connector_state</span><span class="p">,</span> <span class="o">*</span><span class="n">user_state</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">komeda_xxxx_validate</span><span class="p">(</span><span class="k">struct</span> <span class="nc">komeda_component_xxx</span> <span class="n">xxx_comp</span><span class="p">,</span>
+            <span class="k">struct</span> <span class="nc">komeda_component_output</span> <span class="o">*</span><span class="n">input_dflow</span><span class="p">,</span>
+            <span class="k">struct</span> <span class="nc">drm_plane</span><span class="o">/</span><span class="n">crtc</span><span class="o">/</span><span class="n">connector</span> <span class="o">*</span><span class="n">user</span><span class="p">,</span>
+            <span class="k">struct</span> <span class="nc">drm_plane</span><span class="o">/</span><span class="n">crtc</span><span class="o">/</span><span class="n">connector_state</span><span class="p">,</span> <span class="o">*</span><span class="n">user_state</span><span class="p">)</span>
 <span class="p">{</span>
      <span class="n">setup</span> <span class="mi">1</span><span class="o">:</span> <span class="n">check</span> <span class="k">if</span> <span class="n">component</span> <span class="n">is</span> <span class="n">needed</span><span class="p">,</span> <span class="n">like</span> <span class="n">the</span> <span class="n">scaler</span> <span class="n">is</span> <span class="n">optional</span> <span class="n">depending</span>
               <span class="n">on</span> <span class="n">the</span> <span class="n">user_state</span><span class="p">;</span> <span class="k">if</span> <span class="n">unneeded</span><span class="p">,</span> <span class="n">just</span> <span class="k">return</span><span class="p">,</span> <span class="n">and</span> <span class="n">the</span> <span class="n">caller</span> <span class="n">will</span>
@@ -1227,37 +1231,29 @@ the module driver is only a simple wrapper to pass the Linux command
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="backlight.html" class="btn btn-neutral float-right" title="Backlight support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="afbc.html" class="btn btn-neutral float-left" title="Arm Framebuffer Compression (AFBC)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="backlight.html" class="btn btn-neutral float-right" title="Backlight support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="afbc.html" class="btn btn-neutral float-left" title="Arm Framebuffer Compression (AFBC)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

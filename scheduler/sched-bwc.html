@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>CFS Bandwidth Control &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -239,6 +241,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -252,7 +256,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/scheduler/sched-bwc.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -268,10 +272,11 @@
             
   <div class="section" id="cfs-bandwidth-control">
 <h1>CFS Bandwidth Control<a class="headerlink" href="#cfs-bandwidth-control" title="Permalink to this headline">¶</a></h1>
-<dl class="simple">
-<dt>[ This document only discusses CPU bandwidth control for SCHED_NORMAL.</dt><dd><p>The SCHED_RT case is covered in <a class="reference internal" href="sched-rt-group.html"><span class="doc">Real-Time group scheduling</span></a> ]</p>
-</dd>
-</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This document only discusses CPU bandwidth control for SCHED_NORMAL.
+The SCHED_RT case is covered in <a class="reference internal" href="sched-rt-group.html"><span class="doc">Real-Time group scheduling</span></a></p>
+</div>
 <p>CFS bandwidth control is a CONFIG_FAIR_GROUP_SCHED extension which allows the
 specification of the maximum CPU bandwidth available to a group or hierarchy.</p>
 <p>The bandwidth allowed for a group is specified using a quota and period. Within
@@ -281,17 +286,43 @@ slices as threads in the cgroup become runnable. Once all quota has been
 assigned any additional requests for quota will result in those threads being
 throttled. Throttled threads will not be able to run again until the next
 period when the quota is replenished.</p>
-<p>With “burst”, unused quota from previous periods might be accumulated and
-assigned when a task group requests more CPU than quota during a specific
-period, thus allowing CPU time requests as long as the average request is below
-quota on the long run. The maximum accumulation is capped by burst.</p>
 <p>A group’s unassigned quota is globally tracked, being refreshed back to
 cfs_quota units at each period boundary. As threads consume this bandwidth it
 is transferred to cpu-local “silos” on a demand basis. The amount transferred
 within each of these updates is tunable and described as the “slice”.</p>
+<p>By default, CPU bandwidth consumption is strictly limited to quota within each
+given period. For the sequence of CPU usage u_i served under CFS bandwidth
+control, if for any j &lt;= k N(j,k) is the number of periods from u_j to u_k:</p>
+<blockquote>
+<div><p>u_j+…+u_k &lt;= quota * N(j,k)</p>
+</div></blockquote>
+<p>For a bursty sequence among which interval u_j…u_k are at the peak, CPU
+requests might have to wait for more periods to replenish enough quota.
+Otherwise, larger quota is required.</p>
+<p>With “burst” buffer, CPU requests might be served as long as:</p>
+<blockquote>
+<div><p>u_j+…+u_k &lt;= B_j + quota * N(j,k)</p>
+</div></blockquote>
+<p>if for any j &lt;= k N(j,k) is the number of periods from u_j to u_k and B_j is
+the accumulated quota from previous periods in burst buffer serving u_j.
+Burst buffer helps in that serving whole bursty CPU requests without throttling
+them can be done with moderate quota setting and accumulated quota in burst
+buffer, if:</p>
+<blockquote>
+<div><p>u_0+…+u_n &lt;= B_0 + quota * N(0,n)</p>
+</div></blockquote>
+<p>where B_0 is the initial state of burst buffer. The maximum accumulated quota in
+the burst buffer is capped by burst. With proper burst setting, the available
+bandwidth is still determined by quota and period on the long run.</p>
 <div class="section" id="management">
 <h2>Management<a class="headerlink" href="#management" title="Permalink to this headline">¶</a></h2>
 <p>Quota, period and burst are managed within the cpu subsystem via cgroupfs.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The cgroupfs files described in this section are only applicable
+to cgroup v1. For cgroup v2, see
+<a class="reference internal" href="../admin-guide/cgroup-v2.html#cgroup-v2-cpu"><span class="std std-ref">Documentation/admin-guide/cgroupv2.rst</span></a>.</p>
+</div>
 <p>cpu.cfs_quota_us: run-time replenished within a period (in microseconds)
 cpu.cfs_period_us: the length of a period (in microseconds)
 cpu.cfs_burst_us: the maximum accumulated run-time (in microseconds)
@@ -336,7 +367,7 @@ for more fine-grained consumption.</p>
 <dt>There is also a global switch to turn off burst for all groups::</dt><dd><p>/proc/sys/kernel/sched_cfs_bw_burst_enabled (default=1)</p>
 </dd>
 </dl>
-<p>By default it is enabled. Write 0 values means no accumulated CPU time can be
+<p>By default it is enabled. Writing a 0 value means no accumulated CPU time can be
 used for any group, even if cpu.cfs_burst_us is configured.</p>
 <p>Sometimes users might want a group to burst without accumulation. This is
 tunable via:</p>
@@ -356,7 +387,7 @@ tunable via:</p>
 of the group have been throttled.</p></li>
 <li><p>current_bw: Current runtime in global pool.</p></li>
 <li><p>nr_burst: Number of periods burst occurs.</p></li>
-<li><p>burst_time: Cumulative wall-time that any cpus has used above quota in
+<li><p>burst_time: Cumulative wall-time that any CPUs has used above quota in
 respective periods</p></li>
 </ul>
 <p>This interface is read-only.</p>
@@ -454,7 +485,7 @@ The larger period here allows for increased burst capacity.
 response at the expense of burst capacity.</p>
 </li>
 <li><p>Limit a group to 20% of 1 CPU, and allow accumulate up to 60% of 1 CPU
-addtionally, in case accumulation has been done.</p>
+additionally, in case accumulation has been done.</p>
 <p>With 50ms period, 10ms quota will be equivalent to 20% of 1 CPU.
 And 30ms burst will be equivalent to 60% of 1 CPU.</p>
 <blockquote>
@@ -473,37 +504,29 @@ And 30ms burst will be equivalent to 60% of 1 CPU.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="sched-deadline.html" class="btn btn-neutral float-right" title="Deadline Task Scheduling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="sched-arch.html" class="btn btn-neutral float-left" title="CPU Scheduler implementation hints for architecture specific code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="sched-deadline.html" class="btn btn-neutral float-right" title="Deadline Task Scheduling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="sched-arch.html" class="btn btn-neutral float-left" title="CPU Scheduler implementation hints for architecture specific code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

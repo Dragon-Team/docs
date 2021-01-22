@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Ramoops oops/panic logger &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -306,6 +308,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -319,7 +323,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/admin-guide/ramoops.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -415,7 +419,7 @@ be set through that platform data. An example of doing that is:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;linux/pstore_ram.h&gt;</span><span class="cp"></span>
 <span class="p">[...]</span>
 
-<span class="k">static</span> <span class="k">struct</span> <span class="n">ramoops_platform_data</span> <span class="n">ramoops_data</span> <span class="o">=</span> <span class="p">{</span>
+<span class="k">static</span> <span class="k">struct</span> <span class="nc">ramoops_platform_data</span> <span class="n">ramoops_data</span> <span class="o">=</span> <span class="p">{</span>
       <span class="p">.</span><span class="n">mem_size</span>               <span class="o">=</span> <span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
       <span class="p">.</span><span class="n">mem_address</span>            <span class="o">=</span> <span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
       <span class="p">.</span><span class="n">mem_type</span>               <span class="o">=</span> <span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
@@ -424,7 +428,7 @@ be set through that platform data. An example of doing that is:</p>
       <span class="p">.</span><span class="n">ecc</span>                    <span class="o">=</span> <span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="p">};</span>
 
-<span class="k">static</span> <span class="k">struct</span> <span class="n">platform_device</span> <span class="n">ramoops_dev</span> <span class="o">=</span> <span class="p">{</span>
+<span class="k">static</span> <span class="k">struct</span> <span class="nc">platform_device</span> <span class="n">ramoops_dev</span> <span class="o">=</span> <span class="p">{</span>
       <span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;ramoops&quot;</span><span class="p">,</span>
       <span class="p">.</span><span class="n">dev</span> <span class="o">=</span> <span class="p">{</span>
               <span class="p">.</span><span class="n">platform_data</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ramoops_data</span><span class="p">,</span>
@@ -493,37 +497,29 @@ file. Here is an example of usage:</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="dynamic-debug-howto.html" class="btn btn-neutral float-right" title="Dynamic debug" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="tainted-kernels.html" class="btn btn-neutral float-left" title="Tainted kernels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="dynamic-debug-howto.html" class="btn btn-neutral float-right" title="Dynamic debug" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tainted-kernels.html" class="btn btn-neutral float-left" title="Tainted kernels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Linux Socket Filtering aka Berkeley Packet Filter (BPF) &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -359,6 +361,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -372,7 +376,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/networking/filter.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -1636,28 +1640,30 @@ memory location addresed by <code class="docutils literal notranslate"><span cla
 immediate, then these operations also overwrite <code class="docutils literal notranslate"><span class="pre">src_reg</span></code> with the
 value that was in memory before it was modified.</p>
 <p>The more special operations are:</p>
-<blockquote>
-<div><p>BPF_XCHG</p>
-</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BPF_XCHG
+</pre></div>
+</div>
 <p>This atomically exchanges <code class="docutils literal notranslate"><span class="pre">src_reg</span></code> with the value addressed by <code class="docutils literal notranslate"><span class="pre">dst_reg</span> <span class="pre">+</span>
 <span class="pre">off</span></code>.</p>
-<blockquote>
-<div><p>BPF_CMPXCHG</p>
-</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BPF_CMPXCHG
+</pre></div>
+</div>
 <p>This atomically compares the value addressed by <code class="docutils literal notranslate"><span class="pre">dst_reg</span> <span class="pre">+</span> <span class="pre">off</span></code> with
 <code class="docutils literal notranslate"><span class="pre">R0</span></code>. If they match it is replaced with <code class="docutils literal notranslate"><span class="pre">src_reg</span></code>, The value that was there
 before is loaded back to <code class="docutils literal notranslate"><span class="pre">R0</span></code>.</p>
 <p>Note that 1 and 2 byte atomic operations are not supported.</p>
-<p>Except <code class="docutils literal notranslate"><span class="pre">BPF_ADD</span></code> _without_ <code class="docutils literal notranslate"><span class="pre">BPF_FETCH</span></code> (for legacy reasons), all 4 byte
-atomic operations require alu32 mode. Clang enables this mode by default in
-architecture v3 (<code class="docutils literal notranslate"><span class="pre">-mcpu=v3</span></code>). For older versions it can be enabled with
+<p>Clang can generate atomic instructions by default when <code class="docutils literal notranslate"><span class="pre">-mcpu=v3</span></code> is
+enabled. If a lower version for <code class="docutils literal notranslate"><span class="pre">-mcpu</span></code> is set, the only atomic instruction
+Clang can generate is <code class="docutils literal notranslate"><span class="pre">BPF_ADD</span></code> <em>without</em> <code class="docutils literal notranslate"><span class="pre">BPF_FETCH</span></code>. If you need to enable
+the atomics features, while keeping a lower <code class="docutils literal notranslate"><span class="pre">-mcpu</span></code> version, you can use
 <code class="docutils literal notranslate"><span class="pre">-Xclang</span> <span class="pre">-target-feature</span> <span class="pre">-Xclang</span> <span class="pre">+alu32</span></code>.</p>
-<p>You may encounter BPF_XADD - this is a legacy name for BPF_ATOMIC, referring to
-the exclusive-add operation encoded when the immediate field is zero.</p>
-<p>eBPF has one 16-byte instruction: BPF_LD | BPF_DW | BPF_IMM which consists
+<p>You may encounter <code class="docutils literal notranslate"><span class="pre">BPF_XADD</span></code> - this is a legacy name for <code class="docutils literal notranslate"><span class="pre">BPF_ATOMIC</span></code>,
+referring to the exclusive-add operation encoded when the immediate field is
+zero.</p>
+<p>eBPF has one 16-byte instruction: <code class="docutils literal notranslate"><span class="pre">BPF_LD</span> <span class="pre">|</span> <span class="pre">BPF_DW</span> <span class="pre">|</span> <span class="pre">BPF_IMM</span></code> which consists
 of two consecutive <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">bpf_insn</span></code> 8-byte blocks and interpreted as single
 instruction that loads 64-bit immediate value into a dst_reg.
-Classic BPF has similar instruction: BPF_LD | BPF_W | BPF_IMM which loads
+Classic BPF has similar instruction: <code class="docutils literal notranslate"><span class="pre">BPF_LD</span> <span class="pre">|</span> <span class="pre">BPF_W</span> <span class="pre">|</span> <span class="pre">BPF_IMM</span></code> which loads
 32-bit immediate value into a register.</p>
 </div>
 <div class="section" id="ebpf-verifier">
@@ -2229,37 +2235,29 @@ the underlying architecture.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="generic-hdlc.html" class="btn btn-neutral float-right" title="Generic HDLC layer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="fib_trie.html" class="btn btn-neutral float-left" title="LC-trie implementation notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="generic-hdlc.html" class="btn btn-neutral float-right" title="Generic HDLC layer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fib_trie.html" class="btn btn-neutral float-left" title="LC-trie implementation notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

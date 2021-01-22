@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>The Linux-Next Dragon Kernel Tracepoint API &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -238,6 +240,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -251,7 +255,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/core-api/tracepoint.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -541,7 +545,7 @@ void <code class="sig-name descname">trace_block_rq_merge</code><span class="sig
 request queued in the elevator.</p>
 <dl class="c function">
 <dt id="c.trace_block_bio_complete">
-void <code class="sig-name descname">trace_block_bio_complete</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_complete" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_bio_complete</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> <a class="reference internal" href="#c.trace_block_bio_complete" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_complete" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>completed all work on the block operation</p>
 </dd></dl>
 
@@ -557,7 +561,7 @@ void <code class="sig-name descname">trace_block_bio_complete</code><span class=
 block IO operation <strong>bio</strong>.</p>
 <dl class="c function">
 <dt id="c.trace_block_bio_bounce">
-void <code class="sig-name descname">trace_block_bio_bounce</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_bounce" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_bio_bounce</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.trace_block_bio_bounce" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_bounce" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>used bounce buffer when processing block operation</p>
 </dd></dl>
 
@@ -574,7 +578,7 @@ bounce buffer requires extra copying of data and decreases
 performance.</p>
 <dl class="c function">
 <dt id="c.trace_block_bio_backmerge">
-void <code class="sig-name descname">trace_block_bio_backmerge</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_backmerge" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_bio_backmerge</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.trace_block_bio_backmerge" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_backmerge" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>merging block operation to the end of an existing operation</p>
 </dd></dl>
 
@@ -587,7 +591,7 @@ void <code class="sig-name descname">trace_block_bio_backmerge</code><span class
 <p>Merging block request <strong>bio</strong> to the end of an existing block request.</p>
 <dl class="c function">
 <dt id="c.trace_block_bio_frontmerge">
-void <code class="sig-name descname">trace_block_bio_frontmerge</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_frontmerge" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_bio_frontmerge</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.trace_block_bio_frontmerge" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_frontmerge" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>merging block operation to the beginning of an existing operation</p>
 </dd></dl>
 
@@ -600,7 +604,7 @@ void <code class="sig-name descname">trace_block_bio_frontmerge</code><span clas
 <p>Merging block IO operation <strong>bio</strong> to the beginning of an existing block request.</p>
 <dl class="c function">
 <dt id="c.trace_block_bio_queue">
-void <code class="sig-name descname">trace_block_bio_queue</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_queue" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_bio_queue</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.trace_block_bio_queue" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_queue" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>putting new block IO operation in queue</p>
 </dd></dl>
 
@@ -613,7 +617,7 @@ void <code class="sig-name descname">trace_block_bio_queue</code><span class="si
 <p>About to place the block IO operation <strong>bio</strong> into queue <strong>q</strong>.</p>
 <dl class="c function">
 <dt id="c.trace_block_getrq">
-void <code class="sig-name descname">trace_block_getrq</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_getrq" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_getrq</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.trace_block_getrq" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_getrq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get a free request entry in queue for block IO operations</p>
 </dd></dl>
 
@@ -659,7 +663,7 @@ void <code class="sig-name descname">trace_block_unplug</code><span class="sig-p
 on elements in the request queue.</p>
 <dl class="c function">
 <dt id="c.trace_block_split">
-void <code class="sig-name descname">trace_block_split</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em>, unsigned int <em>new_sector</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_split" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_split</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.trace_block_split" title="bio">bio</a> *<em>bio</em>, unsigned int <em>new_sector</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_split" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>split a single bio struct into two bio structs</p>
 </dd></dl>
 
@@ -677,7 +681,7 @@ hardware limitations such as operation crossing device boundaries in a RAID
 system.</p>
 <dl class="c function">
 <dt id="c.trace_block_bio_remap">
-void <code class="sig-name descname">trace_block_bio_remap</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em>, dev_t <em>dev</em>, sector_t <em>from</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_remap" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">trace_block_bio_remap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.trace_block_bio_remap" title="bio">bio</a> *<em>bio</em>, dev_t <em>dev</em>, sector_t <em>from</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_remap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>map request for a logical device to the raw device</p>
 </dd></dl>
 
@@ -785,37 +789,29 @@ void <code class="sig-name descname">trace_workqueue_execute_end</code><span cla
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="debugging-via-ohci1394.html" class="btn btn-neutral float-right" title="Using physical DMA provided by OHCI-1394 FireWire controllers for debugging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="debug-objects.html" class="btn btn-neutral float-left" title="The object-lifetime debugging infrastructure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="debugging-via-ohci1394.html" class="btn btn-neutral float-right" title="Using physical DMA provided by OHCI-1394 FireWire controllers for debugging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="debug-objects.html" class="btn btn-neutral float-left" title="The object-lifetime debugging infrastructure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

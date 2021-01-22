@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Control Group v2 &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -360,6 +362,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -373,7 +377,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/admin-guide/cgroup-v2.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -388,7 +392,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="control-group-v2">
-<h1>Control Group v2<a class="headerlink" href="#control-group-v2" title="Permalink to this headline">¶</a></h1>
+<span id="cgroup-v2"></span><h1>Control Group v2<a class="headerlink" href="#control-group-v2" title="Permalink to this headline">¶</a></h1>
 <dl class="field-list simple">
 <dt class="field-odd">Date</dt>
 <dd class="field-odd"><p>October, 2015</p>
@@ -475,26 +479,21 @@ and experimenting easier, the kernel parameter cgroup_no_v1= allows
 disabling controllers in v1 and make them always available in v2.</p>
 <p>cgroup v2 currently supports the following mount options.</p>
 <blockquote>
-<div><p>nsdelegate</p>
-<blockquote>
-<div><p>Consider cgroup namespaces as delegation boundaries.  This
+<div><dl class="simple">
+<dt>nsdelegate</dt><dd><p>Consider cgroup namespaces as delegation boundaries.  This
 option is system wide and can only be set on mount or modified
 through remount from the init namespace.  The mount option is
 ignored on non-init namespace mounts.  Please refer to the
 Delegation section for details.</p>
-</div></blockquote>
-<p>memory_localevents</p>
-<blockquote>
-<div><p>Only populate memory.events with data for the current cgroup,
+</dd>
+<dt>memory_localevents</dt><dd><p>Only populate memory.events with data for the current cgroup,
 and not any subtrees. This is legacy behaviour, the default
 behaviour without this option is to include subtree counts.
 This option is system wide and can only be set on mount or
 modified through remount from the init namespace. The mount
 option is ignored on non-init namespace mounts.</p>
-</div></blockquote>
-<p>memory_recursiveprot</p>
-<blockquote>
-<div><p>Recursively apply memory.min and memory.low protection to
+</dd>
+<dt>memory_recursiveprot</dt><dd><p>Recursively apply memory.min and memory.low protection to
 entire subtrees, without requiring explicit downward
 propagation into leaf cgroups.  This allows protecting entire
 subtrees from one another, while retaining free competition
@@ -502,7 +501,8 @@ within those subtrees.  This should have been the default
 behavior but is a mount-option to avoid regressing setups
 relying on the original semantics (e.g. specifying bogusly
 high ‘bypass’ protection values at higher tree levels).</p>
-</div></blockquote>
+</dd>
+</dl>
 </div></blockquote>
 </div>
 <div class="section" id="organizing-processes-and-threads">
@@ -1007,9 +1007,8 @@ generated on the file.</p></li>
 <h3>Core Interface Files<a class="headerlink" href="#core-interface-files" title="Permalink to this headline">¶</a></h3>
 <p>All cgroup core files are prefixed with “cgroup.”</p>
 <blockquote>
-<div><p>cgroup.type</p>
-<blockquote>
-<div><p>A read-write single value file which exists on non-root
+<div><dl>
+<dt>cgroup.type</dt><dd><p>A read-write single value file which exists on non-root
 cgroups.</p>
 <p>When read, it indicates the current type of the cgroup, which
 can be one of the following values.</p>
@@ -1025,8 +1024,7 @@ threaded subtree.</p></li>
 </ul>
 <p>A cgroup can be turned into a threaded cgroup by writing
 “threaded” to this file.</p>
-</div></blockquote>
-<dl>
+</dd>
 <dt>cgroup.procs</dt><dd><p>A read-write new-line separated values file which exists on
 all cgroups.</p>
 <p>When read, it lists the PIDs of all processes which belong to
@@ -1154,7 +1152,7 @@ create new sub-cgroups.</p>
 <div class="section" id="controllers">
 <h2>Controllers<a class="headerlink" href="#controllers" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="cpu">
-<h3>CPU<a class="headerlink" href="#cpu" title="Permalink to this headline">¶</a></h3>
+<span id="cgroup-v2-cpu"></span><h3>CPU<a class="headerlink" href="#cpu" title="Permalink to this headline">¶</a></h3>
 <p>The “cpu” controllers regulates distribution of CPU cycles.  This
 controller implements weight and absolute bandwidth limit models for
 normal scheduling policy and absolute bandwidth allocation model for
@@ -1399,9 +1397,9 @@ on the state and past events of the memory management system.</p>
 <p>The entries are ordered to be human readable, and new entries
 can show up in the middle. Don’t rely on items remaining in a
 fixed position; use the keys to look up specific values!</p>
-<p>If the entry has no per-node counter(or not show in the
-mempry.numa_stat). We use ‘npn’(non-per-node) as the tag
-to indicate that it will not show in the mempry.numa_stat.</p>
+<p>If the entry has no per-node counter (or not show in the
+memory.numa_stat). We use ‘npn’ (non-per-node) as the tag
+to indicate that it will not show in the memory.numa_stat.</p>
 <blockquote>
 <div><dl>
 <dt>anon</dt><dd><p>Amount of memory used in anonymous mappings such as
@@ -1414,10 +1412,10 @@ including tmpfs and shared memory.</p>
 </dd>
 <dt>pagetables</dt><dd><p>Amount of memory allocated for page tables.</p>
 </dd>
-<dt>percpu(npn)</dt><dd><p>Amount of memory used for storing per-cpu kernel
+<dt>percpu (npn)</dt><dd><p>Amount of memory used for storing per-cpu kernel
 data structures.</p>
 </dd>
-<dt>sock(npn)</dt><dd><p>Amount of memory used in network transmission buffers</p>
+<dt>sock (npn)</dt><dd><p>Amount of memory used in network transmission buffers</p>
 </dd>
 <dt>shmem</dt><dd><p>Amount of cached filesystem data that is swap-backed,
 such as tmpfs, shm segments, shared anonymous mmap()s</p>
@@ -1456,7 +1454,7 @@ dentries and inodes.</p>
 <dt>slab_unreclaimable</dt><dd><p>Part of “slab” that cannot be reclaimed on memory
 pressure.</p>
 </dd>
-<dt>slab(npn)</dt><dd><p>Amount of memory used for storing in-kernel data
+<dt>slab (npn)</dt><dd><p>Amount of memory used for storing in-kernel data
 structures.</p>
 </dd>
 <dt>workingset_refault_anon</dt><dd><p>Number of refaults of previously evicted anonymous pages.</p>
@@ -1476,29 +1474,29 @@ active workingset before they got reclaimed.</p>
 </dd>
 <dt>workingset_nodereclaim</dt><dd><p>Number of times a shadow node has been reclaimed</p>
 </dd>
-<dt>pgfault(npn)</dt><dd><p>Total number of page faults incurred</p>
+<dt>pgfault (npn)</dt><dd><p>Total number of page faults incurred</p>
 </dd>
-<dt>pgmajfault(npn)</dt><dd><p>Number of major page faults incurred</p>
+<dt>pgmajfault (npn)</dt><dd><p>Number of major page faults incurred</p>
 </dd>
-<dt>pgrefill(npn)</dt><dd><p>Amount of scanned pages (in an active LRU list)</p>
+<dt>pgrefill (npn)</dt><dd><p>Amount of scanned pages (in an active LRU list)</p>
 </dd>
-<dt>pgscan(npn)</dt><dd><p>Amount of scanned pages (in an inactive LRU list)</p>
+<dt>pgscan (npn)</dt><dd><p>Amount of scanned pages (in an inactive LRU list)</p>
 </dd>
-<dt>pgsteal(npn)</dt><dd><p>Amount of reclaimed pages</p>
+<dt>pgsteal (npn)</dt><dd><p>Amount of reclaimed pages</p>
 </dd>
-<dt>pgactivate(npn)</dt><dd><p>Amount of pages moved to the active LRU list</p>
+<dt>pgactivate (npn)</dt><dd><p>Amount of pages moved to the active LRU list</p>
 </dd>
-<dt>pgdeactivate(npn)</dt><dd><p>Amount of pages moved to the inactive LRU list</p>
+<dt>pgdeactivate (npn)</dt><dd><p>Amount of pages moved to the inactive LRU list</p>
 </dd>
-<dt>pglazyfree(npn)</dt><dd><p>Amount of pages postponed to be freed under memory pressure</p>
+<dt>pglazyfree (npn)</dt><dd><p>Amount of pages postponed to be freed under memory pressure</p>
 </dd>
-<dt>pglazyfreed(npn)</dt><dd><p>Amount of reclaimed lazyfree pages</p>
+<dt>pglazyfreed (npn)</dt><dd><p>Amount of reclaimed lazyfree pages</p>
 </dd>
-<dt>thp_fault_alloc(npn)</dt><dd><p>Number of transparent hugepages which were allocated to satisfy
+<dt>thp_fault_alloc (npn)</dt><dd><p>Number of transparent hugepages which were allocated to satisfy
 a page fault. This counter is not present when CONFIG_TRANSPARENT_HUGEPAGE
 is not set.</p>
 </dd>
-<dt>thp_collapse_alloc(npn)</dt><dd><p>Number of transparent hugepages which were allocated to allow
+<dt>thp_collapse_alloc (npn)</dt><dd><p>Number of transparent hugepages which were allocated to allow
 collapsing an existing range of pages. This counter is not
 present when CONFIG_TRANSPARENT_HUGEPAGE is not set.</p>
 </dd>
@@ -2114,8 +2112,22 @@ case, it will be treated just like an empty “cpuset.mems”.</p>
 cpuset-enabled cgroups.  This flag is owned by the parent cgroup
 and is not delegatable.</p>
 <p>It accepts only the following input values when written to.</p>
-<p>“root”   - a partition root
-“member” - a non-root member of a partition</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>“root”</p></td>
+<td><p>a partition root</p></td>
+</tr>
+<tr class="row-even"><td><p>“member”</p></td>
+<td><p>a non-root member of a partition</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 <p>When set to be a partition root, the current cgroup is the
 root of a new partition or scheduling domain that comprises
 itself and all its descendants except those that are separate
@@ -2150,9 +2162,25 @@ children’s “cpuset.cpus” values.</p>
 “cpuset.cpus” or cpu hotplug can cause the state of the partition
 root to change.  On read, the “cpuset.sched.partition” file
 can show the following values.</p>
-<p>“member”       Non-root member of a partition
-“root”         Partition root
-“root invalid” Invalid partition root</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 68%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>“member”</p></td>
+<td><p>Non-root member of a partition</p></td>
+</tr>
+<tr class="row-even"><td><p>“root”</p></td>
+<td><p>Partition root</p></td>
+</tr>
+<tr class="row-odd"><td><p>“root invalid”</p></td>
+<td><p>Invalid partition root</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 <p>It is a partition root if the first 2 partition root conditions
 above are true and at least one CPU from “cpuset.cpus” is
 granted by the parent cgroup.</p>
@@ -2321,7 +2349,7 @@ the cgroup namespace.</p>
 complete path of the cgroup of a process.  In a container setup where
 a set of cgroups and namespaces are intended to isolate processes the
 “/proc/$PID/cgroup” file may leak potential system level information
-to the isolated processes.  For Example:</p>
+to the isolated processes.  For example:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># cat /proc/self/cgroup
 0::/batchjobs/container_id1
 </pre></div>
@@ -2707,37 +2735,29 @@ and that’s why unified hierarchy allows distributing it separately.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="cifs/index.html" class="btn btn-neutral float-right" title="CIFS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="cgroup-v1/rdma.html" class="btn btn-neutral float-left" title="RDMA Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="cifs/index.html" class="btn btn-neutral float-right" title="CIFS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cgroup-v1/rdma.html" class="btn btn-neutral float-left" title="RDMA Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

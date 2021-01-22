@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>drm/i915 Intel GFX Driver &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -257,6 +259,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -272,7 +276,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/gpu/i915.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -1109,7 +1113,7 @@ reporting on all pipes.</p>
 <p>The code also supports underrun detection on the PCH transcoder.</p>
 <dl class="c function">
 <dt id="c.intel_set_cpu_fifo_underrun_reporting">
-bool <code class="sig-name descname">intel_set_cpu_fifo_underrun_reporting</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em>, <em class="property">enum</em> pipe <em>pipe</em>, bool <em>enable</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_set_cpu_fifo_underrun_reporting" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">intel_set_cpu_fifo_underrun_reporting</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em>, <em class="property">enum</em> <a class="reference internal" href="#c.intel_set_cpu_fifo_underrun_reporting" title="pipe">pipe</a> <em>pipe</em>, bool <em>enable</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_set_cpu_fifo_underrun_reporting" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set cpu fifo underrrun reporting state</p>
 </dd></dl>
 
@@ -1154,7 +1158,7 @@ one interrupt mask/enable bit for all the transcoders.</p>
 <p>Returns the previous state of underrun reporting.</p>
 <dl class="c function">
 <dt id="c.intel_cpu_fifo_underrun_irq_handler">
-void <code class="sig-name descname">intel_cpu_fifo_underrun_irq_handler</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em>, <em class="property">enum</em> pipe <em>pipe</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_cpu_fifo_underrun_irq_handler" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">intel_cpu_fifo_underrun_irq_handler</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em>, <em class="property">enum</em> <a class="reference internal" href="#c.intel_cpu_fifo_underrun_irq_handler" title="pipe">pipe</a> <em>pipe</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_cpu_fifo_underrun_irq_handler" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>handle CPU fifo underrun interrupt</p>
 </dd></dl>
 
@@ -1274,7 +1278,7 @@ Correspondingly, support is currently added for primary plane only.</p>
 <p>Async flip can only change the plane surface address, so anything else
 changing is rejected from the intel_atomic_check_async() function.
 Once this check is cleared, flip done interrupt is enabled using
-the skl_enable_flip_done() function.</p>
+the intel_crtc_enable_flip_done() function.</p>
 <p>As soon as the surface address register is written, flip done interrupt is
 generated and the requested events are sent to the usersapce in the interrupt
 handler itself. The timestamp and sequence sent during the flip done event
@@ -1326,7 +1330,7 @@ such as HDMI or DVI enabled on the same port will have proper logic since
 it will use i915_hotplug_work_func where this logic is handled.</p>
 <dl class="c function">
 <dt id="c.intel_hpd_pin_default">
-<em class="property">enum</em> hpd_pin <code class="sig-name descname">intel_hpd_pin_default</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em>, <em class="property">enum</em> port <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_hpd_pin_default" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">enum</em> hpd_pin <code class="sig-name descname">intel_hpd_pin_default</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em>, <em class="property">enum</em> <a class="reference internal" href="#c.intel_hpd_pin_default" title="port">port</a> <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_hpd_pin_default" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return default pin associated with certain port.</p>
 </dd></dl>
 
@@ -1692,7 +1696,7 @@ void <code class="sig-name descname">intel_lpe_audio_teardown</code><span class=
 <p>release all the resources for LPE audio &lt;-&gt; i915 bridge.</p>
 <dl class="c function">
 <dt id="c.intel_lpe_audio_notify">
-void <code class="sig-name descname">intel_lpe_audio_notify</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em>, <em class="property">enum</em> pipe <em>pipe</em>, <em class="property">enum</em> port <em>port</em>, <em class="property">const</em> void *<em>eld</em>, int <em>ls_clock</em>, bool <em>dp_output</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_lpe_audio_notify" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">intel_lpe_audio_notify</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em>, <em class="property">enum</em> <a class="reference internal" href="#c.intel_lpe_audio_notify" title="pipe">pipe</a> <em>pipe</em>, <em class="property">enum</em> <a class="reference internal" href="#c.intel_lpe_audio_notify" title="port">port</a> <em>port</em>, <em class="property">const</em> void *<em>eld</em>, int <em>ls_clock</em>, bool <em>dp_output</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_lpe_audio_notify" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>notify lpe audio event audio driver and i915</p>
 </dd></dl>
 
@@ -1754,7 +1758,7 @@ would bring a lot of complexity and most of the moderns systems will only
 use page flips.</p>
 <dl class="c function">
 <dt id="c.intel_psr_enable">
-void <code class="sig-name descname">intel_psr_enable</code><span class="sig-paren">(</span><em class="property">struct</em> intel_dp *<em>intel_dp</em>, <em class="property">const</em> <em class="property">struct</em> intel_crtc_state *<em>crtc_state</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_connector_state" title="drm_connector_state">drm_connector_state</a> *<em>conn_state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_psr_enable" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">intel_psr_enable</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.intel_psr_enable" title="intel_dp">intel_dp</a> *<em>intel_dp</em>, <em class="property">const</em> <em class="property">struct</em> intel_crtc_state *<em>crtc_state</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_connector_state" title="drm_connector_state">drm_connector_state</a> *<em>conn_state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_psr_enable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Enable PSR</p>
 </dd></dl>
 
@@ -1771,7 +1775,7 @@ void <code class="sig-name descname">intel_psr_enable</code><span class="sig-par
 <p>This function can only be called after the pipe is fully trained and enabled.</p>
 <dl class="c function">
 <dt id="c.intel_psr_disable">
-void <code class="sig-name descname">intel_psr_disable</code><span class="sig-paren">(</span><em class="property">struct</em> intel_dp *<em>intel_dp</em>, <em class="property">const</em> <em class="property">struct</em> intel_crtc_state *<em>old_crtc_state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_psr_disable" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">intel_psr_disable</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.intel_psr_disable" title="intel_dp">intel_dp</a> *<em>intel_dp</em>, <em class="property">const</em> <em class="property">struct</em> intel_crtc_state *<em>old_crtc_state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_psr_disable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Disable PSR</p>
 </dd></dl>
 
@@ -1786,7 +1790,7 @@ void <code class="sig-name descname">intel_psr_disable</code><span class="sig-pa
 <p>This function needs to be called before disabling pipe.</p>
 <dl class="c function">
 <dt id="c.intel_psr_update">
-void <code class="sig-name descname">intel_psr_update</code><span class="sig-paren">(</span><em class="property">struct</em> intel_dp *<em>intel_dp</em>, <em class="property">const</em> <em class="property">struct</em> intel_crtc_state *<em>crtc_state</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_connector_state" title="drm_connector_state">drm_connector_state</a> *<em>conn_state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_psr_update" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">intel_psr_update</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.intel_psr_update" title="intel_dp">intel_dp</a> *<em>intel_dp</em>, <em class="property">const</em> <em class="property">struct</em> intel_crtc_state *<em>crtc_state</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_connector_state" title="drm_connector_state">drm_connector_state</a> *<em>conn_state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_psr_update" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Update PSR state</p>
 </dd></dl>
 
@@ -2066,7 +2070,7 @@ this case, RR value needs to be passed from user space).</p>
 <p>The caller of this function needs to take a lock on dev_priv-&gt;drrs.</p>
 <dl class="c function">
 <dt id="c.intel_edp_drrs_enable">
-void <code class="sig-name descname">intel_edp_drrs_enable</code><span class="sig-paren">(</span><em class="property">struct</em> intel_dp *<em>intel_dp</em>, <em class="property">const</em> <em class="property">struct</em> intel_crtc_state *<em>crtc_state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_edp_drrs_enable" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">intel_edp_drrs_enable</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.intel_edp_drrs_enable" title="intel_dp">intel_dp</a> *<em>intel_dp</em>, <em class="property">const</em> <em class="property">struct</em> intel_crtc_state *<em>crtc_state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_edp_drrs_enable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>init drrs struct if supported</p>
 </dd></dl>
 
@@ -2081,7 +2085,7 @@ void <code class="sig-name descname">intel_edp_drrs_enable</code><span class="si
 <p>Initializes frontbuffer_bits and drrs.dp</p>
 <dl class="c function">
 <dt id="c.intel_edp_drrs_disable">
-void <code class="sig-name descname">intel_edp_drrs_disable</code><span class="sig-paren">(</span><em class="property">struct</em> intel_dp *<em>intel_dp</em>, <em class="property">const</em> <em class="property">struct</em> intel_crtc_state *<em>old_crtc_state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_edp_drrs_disable" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">intel_edp_drrs_disable</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.intel_edp_drrs_disable" title="intel_dp">intel_dp</a> *<em>intel_dp</em>, <em class="property">const</em> <em class="property">struct</em> intel_crtc_state *<em>old_crtc_state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_edp_drrs_disable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Disable DRRS</p>
 </dd></dl>
 
@@ -2395,7 +2399,7 @@ bool <code class="sig-name descname">intel_bios_is_lvds_present</code><span clas
 assume LVDS is present.</p>
 <dl class="c function">
 <dt id="c.intel_bios_is_port_present">
-bool <code class="sig-name descname">intel_bios_is_port_present</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em>, <em class="property">enum</em> port <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_bios_is_port_present" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">intel_bios_is_port_present</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em>, <em class="property">enum</em> <a class="reference internal" href="#c.intel_bios_is_port_present" title="port">port</a> <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_bios_is_port_present" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>is the specified digital port present</p>
 </dd></dl>
 
@@ -2410,7 +2414,7 @@ bool <code class="sig-name descname">intel_bios_is_port_present</code><span clas
 <p>Return true if the device in <code class="docutils literal notranslate"><span class="pre">port</span></code> is present.</p>
 <dl class="c function">
 <dt id="c.intel_bios_is_port_edp">
-bool <code class="sig-name descname">intel_bios_is_port_edp</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em>, <em class="property">enum</em> port <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_bios_is_port_edp" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">intel_bios_is_port_edp</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em>, <em class="property">enum</em> <a class="reference internal" href="#c.intel_bios_is_port_edp" title="port">port</a> <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_bios_is_port_edp" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>is the device in given port eDP</p>
 </dd></dl>
 
@@ -2425,7 +2429,7 @@ bool <code class="sig-name descname">intel_bios_is_port_edp</code><span class="s
 <p>Return true if the device in <code class="docutils literal notranslate"><span class="pre">port</span></code> is eDP.</p>
 <dl class="c function">
 <dt id="c.intel_bios_is_dsi_present">
-bool <code class="sig-name descname">intel_bios_is_dsi_present</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em>, <em class="property">enum</em> port *<em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_bios_is_dsi_present" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">intel_bios_is_dsi_present</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em>, <em class="property">enum</em> <a class="reference internal" href="#c.intel_bios_is_dsi_present" title="port">port</a> *<em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_bios_is_dsi_present" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>is DSI present in VBT</p>
 </dd></dl>
 
@@ -2440,7 +2444,7 @@ bool <code class="sig-name descname">intel_bios_is_dsi_present</code><span class
 <p>Return true if DSI is present, and return the port in <code class="docutils literal notranslate"><span class="pre">port</span></code>.</p>
 <dl class="c function">
 <dt id="c.intel_bios_is_port_hpd_inverted">
-bool <code class="sig-name descname">intel_bios_is_port_hpd_inverted</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> drm_i915_private *<em>i915</em>, <em class="property">enum</em> port <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_bios_is_port_hpd_inverted" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">intel_bios_is_port_hpd_inverted</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> drm_i915_private *<em>i915</em>, <em class="property">enum</em> <a class="reference internal" href="#c.intel_bios_is_port_hpd_inverted" title="port">port</a> <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_bios_is_port_hpd_inverted" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>is HPD inverted for <code class="docutils literal notranslate"><span class="pre">port</span></code></p>
 </dd></dl>
 
@@ -2455,7 +2459,7 @@ bool <code class="sig-name descname">intel_bios_is_port_hpd_inverted</code><span
 <p>Return true if HPD should be inverted for <code class="docutils literal notranslate"><span class="pre">port</span></code>.</p>
 <dl class="c function">
 <dt id="c.intel_bios_is_lspcon_present">
-bool <code class="sig-name descname">intel_bios_is_lspcon_present</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> drm_i915_private *<em>i915</em>, <em class="property">enum</em> port <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_bios_is_lspcon_present" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">intel_bios_is_lspcon_present</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> drm_i915_private *<em>i915</em>, <em class="property">enum</em> <a class="reference internal" href="#c.intel_bios_is_lspcon_present" title="port">port</a> <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_bios_is_lspcon_present" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>if LSPCON is attached on <code class="docutils literal notranslate"><span class="pre">port</span></code></p>
 </dd></dl>
 
@@ -2635,7 +2639,7 @@ bool <code class="sig-name descname">intel_cdclk_changed</code><span class="sig-
 <p>True if the CDCLK configurations don’t match, false if they do.</p>
 <dl class="c function">
 <dt id="c.intel_set_cdclk">
-void <code class="sig-name descname">intel_set_cdclk</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em>, <em class="property">const</em> <em class="property">struct</em> intel_cdclk_config *<em>cdclk_config</em>, <em class="property">enum</em> pipe <em>pipe</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_set_cdclk" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">intel_set_cdclk</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em>, <em class="property">const</em> <em class="property">struct</em> intel_cdclk_config *<em>cdclk_config</em>, <em class="property">enum</em> <a class="reference internal" href="#c.intel_set_cdclk" title="pipe">pipe</a> <em>pipe</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_set_cdclk" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Push the CDCLK configuration to the hardware</p>
 </dd></dl>
 
@@ -4807,7 +4811,7 @@ mutex for serializing with any non-file-operation driver hooks.</p>
 error code on failure.</p>
 <dl class="c function">
 <dt id="c.i915_perf_release">
-int <code class="sig-name descname">i915_perf_release</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> file *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i915_perf_release" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">i915_perf_release</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.i915_perf_release" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> <a class="reference internal" href="#c.i915_perf_release" title="file">file</a> *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i915_perf_release" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>handles userspace close() of a stream file</p>
 </dd></dl>
 
@@ -5106,7 +5110,7 @@ any associated data capture in the process.</p>
 with any non-file-operation driver hooks.</p>
 <dl class="c function">
 <dt id="c.i915_perf_read">
-ssize_t <code class="sig-name descname">i915_perf_read</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, char __user *<em>buf</em>, size_t <em>count</em>, loff_t *<em>ppos</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i915_perf_read" title="Permalink to this definition">¶</a><br /></dt>
+ssize_t <code class="sig-name descname">i915_perf_read</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.i915_perf_read" title="file">file</a> *<em>file</em>, char __user *<em>buf</em>, size_t <em>count</em>, loff_t *<em>ppos</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i915_perf_read" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>handles read() FOP for i915 perf stream FDs</p>
 </dd></dl>
 
@@ -5133,7 +5137,7 @@ while reading.</p>
 <p>The number of bytes copied or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.i915_perf_ioctl">
-long <code class="sig-name descname">i915_perf_ioctl</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, unsigned int <em>cmd</em>, unsigned long <em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i915_perf_ioctl" title="Permalink to this definition">¶</a><br /></dt>
+long <code class="sig-name descname">i915_perf_ioctl</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.i915_perf_ioctl" title="file">file</a> *<em>file</em>, unsigned int <em>cmd</em>, unsigned long <em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i915_perf_ioctl" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>support ioctl() usage with i915 perf stream FDs</p>
 </dd></dl>
 
@@ -5189,7 +5193,7 @@ must be retained between disabling and re-enabling a stream.</p>
 to attempt to read from the stream (-EIO).</p>
 <dl class="c function">
 <dt id="c.i915_perf_poll">
-__poll_t <code class="sig-name descname">i915_perf_poll</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, poll_table *<em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i915_perf_poll" title="Permalink to this definition">¶</a><br /></dt>
+__poll_t <code class="sig-name descname">i915_perf_poll</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.i915_perf_poll" title="file">file</a> *<em>file</em>, poll_table *<em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i915_perf_poll" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>call poll_wait() with a suitable wait queue for stream</p>
 </dd></dl>
 
@@ -5210,7 +5214,7 @@ data.</p>
 <p>any poll events that are ready without sleeping</p>
 <dl class="c function">
 <dt id="c.i915_perf_poll_locked">
-__poll_t <code class="sig-name descname">i915_perf_poll_locked</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.i915_perf_stream" title="i915_perf_stream">i915_perf_stream</a> *<em>stream</em>, <em class="property">struct</em> file *<em>file</em>, poll_table *<em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i915_perf_poll_locked" title="Permalink to this definition">¶</a><br /></dt>
+__poll_t <code class="sig-name descname">i915_perf_poll_locked</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.i915_perf_stream" title="i915_perf_stream">i915_perf_stream</a> *<em>stream</em>, <em class="property">struct</em> <a class="reference internal" href="#c.i915_perf_poll_locked" title="file">file</a> *<em>file</em>, poll_table *<em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i915_perf_poll_locked" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>poll_wait() with a suitable wait queue for stream</p>
 </dd></dl>
 
@@ -5388,7 +5392,7 @@ really data ready for userspace yet.</p>
 <p>zero on success or a negative error code</p>
 <dl class="c function">
 <dt id="c.i915_oa_poll_wait">
-void <code class="sig-name descname">i915_oa_poll_wait</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.i915_perf_stream" title="i915_perf_stream">i915_perf_stream</a> *<em>stream</em>, <em class="property">struct</em> file *<em>file</em>, poll_table *<em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i915_oa_poll_wait" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">i915_oa_poll_wait</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.i915_perf_stream" title="i915_perf_stream">i915_perf_stream</a> *<em>stream</em>, <em class="property">struct</em> <a class="reference internal" href="#c.i915_oa_poll_wait" title="file">file</a> *<em>file</em>, poll_table *<em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i915_oa_poll_wait" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>call poll_wait() for an OA stream poll()</p>
 </dd></dl>
 
@@ -5814,37 +5818,29 @@ definitions.):</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="mcde.html" class="btn btn-neutral float-right" title="drm/mcde ST-Ericsson MCDE Multi-channel display engine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="amdgpu-dc.html" class="btn btn-neutral float-left" title="drm/amd/display - Display Core (DC)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="mcde.html" class="btn btn-neutral float-right" title="drm/mcde ST-Ericsson MCDE Multi-channel display engine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="amdgpu-dc.html" class="btn btn-neutral float-left" title="drm/amd/display - Display Core (DC)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>The ALSA Driver API &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -239,6 +241,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -254,7 +258,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../../_sources/sound/kernel-api/alsa-driver-api.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -289,7 +293,7 @@ void <code class="sig-name descname">snd_device_initialize</code><span class="si
 </dl>
 <dl class="c function">
 <dt id="c.snd_card_new">
-int <code class="sig-name descname">snd_card_new</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../../driver-api/infrastructure.html#c.device" title="device">device</a> *<em>parent</em>, int <em>idx</em>, <em class="property">const</em> char *<em>xid</em>, <em class="property">struct</em> module *<em>module</em>, int <em>extra_size</em>, <em class="property">struct</em> snd_card **<em>card_ret</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_card_new" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">snd_card_new</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../../driver-api/infrastructure.html#c.device" title="device">device</a> *<em>parent</em>, int <em>idx</em>, <em class="property">const</em> char *<em>xid</em>, <em class="property">struct</em> <a class="reference internal" href="#c.snd_card_new" title="module">module</a> *<em>module</em>, int <em>extra_size</em>, <em class="property">struct</em> snd_card **<em>card_ret</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_card_new" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create and initialize a soundcard structure</p>
 </dd></dl>
 
@@ -461,7 +465,7 @@ The component can be referred from the alsa-lib.</p>
 <p>Zero otherwise a negative error code.</p>
 <dl class="c function">
 <dt id="c.snd_card_file_add">
-int <code class="sig-name descname">snd_card_file_add</code><span class="sig-paren">(</span><em class="property">struct</em> snd_card *<em>card</em>, <em class="property">struct</em> file *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_card_file_add" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">snd_card_file_add</code><span class="sig-paren">(</span><em class="property">struct</em> snd_card *<em>card</em>, <em class="property">struct</em> <a class="reference internal" href="#c.snd_card_file_add" title="file">file</a> *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_card_file_add" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add the file to the file list of the card</p>
 </dd></dl>
 
@@ -479,7 +483,7 @@ and to avoid the release of busy resources by hotplug.</p>
 <p>zero or a negative error code.</p>
 <dl class="c function">
 <dt id="c.snd_card_file_remove">
-int <code class="sig-name descname">snd_card_file_remove</code><span class="sig-paren">(</span><em class="property">struct</em> snd_card *<em>card</em>, <em class="property">struct</em> file *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_card_file_remove" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">snd_card_file_remove</code><span class="sig-paren">(</span><em class="property">struct</em> snd_card *<em>card</em>, <em class="property">struct</em> <a class="reference internal" href="#c.snd_card_file_remove" title="file">file</a> *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_card_file_remove" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove the file from the file list</p>
 </dd></dl>
 
@@ -658,7 +662,7 @@ The caller must call <a class="reference internal" href="#c.snd_card_unref" titl
 otherwise.</p>
 <dl class="c function">
 <dt id="c.snd_register_device">
-int <code class="sig-name descname">snd_register_device</code><span class="sig-paren">(</span>int <em>type</em>, <em class="property">struct</em> snd_card *<em>card</em>, int <em>dev</em>, <em class="property">const</em> <em class="property">struct</em> file_operations *<em>f_ops</em>, void *<em>private_data</em>, <em class="property">struct</em> <a class="reference internal" href="../../driver-api/infrastructure.html#c.device" title="device">device</a> *<em>device</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_register_device" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">snd_register_device</code><span class="sig-paren">(</span>int <em>type</em>, <em class="property">struct</em> snd_card *<em>card</em>, int <em>dev</em>, <em class="property">const</em> <em class="property">struct</em> file_operations *<em>f_ops</em>, void *<em>private_data</em>, <em class="property">struct</em> <a class="reference internal" href="#c.snd_register_device" title="device">device</a> *<em>device</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_register_device" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Register the ALSA device file for the card</p>
 </dd></dl>
 
@@ -767,7 +771,7 @@ void <code class="sig-name descname">snd_free_dev_iram</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.snd_dma_alloc_pages">
-int <code class="sig-name descname">snd_dma_alloc_pages</code><span class="sig-paren">(</span>int <em>type</em>, <em class="property">struct</em> <a class="reference internal" href="../../driver-api/infrastructure.html#c.device" title="device">device</a> *<em>device</em>, size_t <em>size</em>, <em class="property">struct</em> snd_dma_buffer *<em>dmab</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_dma_alloc_pages" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">snd_dma_alloc_pages</code><span class="sig-paren">(</span>int <em>type</em>, <em class="property">struct</em> <a class="reference internal" href="#c.snd_dma_alloc_pages" title="device">device</a> *<em>device</em>, size_t <em>size</em>, <em class="property">struct</em> snd_dma_buffer *<em>dmab</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_dma_alloc_pages" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate the buffer area according to the given type</p>
 </dd></dl>
 
@@ -790,7 +794,7 @@ buffer type.</p>
 otherwise a negative value on error.</p>
 <dl class="c function">
 <dt id="c.snd_dma_alloc_pages_fallback">
-int <code class="sig-name descname">snd_dma_alloc_pages_fallback</code><span class="sig-paren">(</span>int <em>type</em>, <em class="property">struct</em> <a class="reference internal" href="../../driver-api/infrastructure.html#c.device" title="device">device</a> *<em>device</em>, size_t <em>size</em>, <em class="property">struct</em> snd_dma_buffer *<em>dmab</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_dma_alloc_pages_fallback" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">snd_dma_alloc_pages_fallback</code><span class="sig-paren">(</span>int <em>type</em>, <em class="property">struct</em> <a class="reference internal" href="#c.snd_dma_alloc_pages_fallback" title="device">device</a> *<em>device</em>, size_t <em>size</em>, <em class="property">struct</em> snd_dma_buffer *<em>dmab</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_dma_alloc_pages_fallback" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate the buffer area according to the given type with fallback</p>
 </dd></dl>
 
@@ -1693,7 +1697,7 @@ int <code class="sig-name descname">snd_pcm_suspend_all</code><span class="sig-p
 <p>Zero if successful (or <strong>pcm</strong> is <code class="docutils literal notranslate"><span class="pre">NULL</span></code>), or a negative error code.</p>
 <dl class="c function">
 <dt id="c.snd_pcm_prepare">
-int <code class="sig-name descname">snd_pcm_prepare</code><span class="sig-paren">(</span><em class="property">struct</em> snd_pcm_substream *<em>substream</em>, <em class="property">struct</em> file *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_pcm_prepare" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">snd_pcm_prepare</code><span class="sig-paren">(</span><em class="property">struct</em> snd_pcm_substream *<em>substream</em>, <em class="property">struct</em> <a class="reference internal" href="#c.snd_pcm_prepare" title="file">file</a> *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_pcm_prepare" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>prepare the PCM substream to be triggerable</p>
 </dd></dl>
 
@@ -4197,7 +4201,7 @@ string buffer.</p>
 it can be used for the next call.</p>
 <dl class="c function">
 <dt id="c.snd_info_create_module_entry">
-<em class="property">struct</em> snd_info_entry *<code class="sig-name descname">snd_info_create_module_entry</code><span class="sig-paren">(</span><em class="property">struct</em> module *<em>module</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">struct</em> snd_info_entry *<em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_info_create_module_entry" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> snd_info_entry *<code class="sig-name descname">snd_info_create_module_entry</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.snd_info_create_module_entry" title="module">module</a> *<em>module</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">struct</em> snd_info_entry *<em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_info_create_module_entry" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create an info entry for the given module</p>
 </dd></dl>
 
@@ -5225,7 +5229,7 @@ int <code class="sig-name descname">snd_soc_component_set_jack</code><span class
 <p>Configures and enables jack detection function.</p>
 <dl class="c function">
 <dt id="c.snd_soc_component_init_regmap">
-void <code class="sig-name descname">snd_soc_component_init_regmap</code><span class="sig-paren">(</span><em class="property">struct</em> snd_soc_component *<em>component</em>, <em class="property">struct</em> regmap *<em>regmap</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_soc_component_init_regmap" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">snd_soc_component_init_regmap</code><span class="sig-paren">(</span><em class="property">struct</em> snd_soc_component *<em>component</em>, <em class="property">struct</em> <a class="reference internal" href="#c.snd_soc_component_init_regmap" title="regmap">regmap</a> *<em>regmap</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_soc_component_init_regmap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialize regmap instance for the component</p>
 </dd></dl>
 
@@ -7037,37 +7041,29 @@ The unit passed is the return value from the register function.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="writing-an-alsa-driver.html" class="btn btn-neutral float-right" title="Writing an ALSA Driver" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="index.html" class="btn btn-neutral float-left" title="ALSA Kernel API Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="writing-an-alsa-driver.html" class="btn btn-neutral float-right" title="Writing an ALSA Driver" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="ALSA Kernel API Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

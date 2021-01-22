@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Mode Setting Helper Functions &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -281,6 +283,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -294,7 +298,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/gpu/drm-kms-helpers.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -1241,9 +1245,9 @@ the tradeoffs and variants of plane commit helpers.</p>
 <p>This callback is used by the atomic modeset helpers and by the
 transitional plane helpers, but it is optional.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">atomic_async_check</span></code></dt><dd><p>Drivers should set this function pointer to check if the atomic state
-can be updated in a async fashion. Here async means “not vblank
-synchronized”.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">atomic_async_check</span></code></dt><dd><p>Drivers should set this function pointer to check if the plane’s
+atomic state can be updated in a async fashion. Here async means
+“not vblank synchronized”.</p>
 <p>This hook is called by drm_atomic_async_check() to establish if a
 given update can be committed asynchronously, that is, if it can
 jump ahead of the state currently queued for update.</p>
@@ -6709,12 +6713,6 @@ The driver should ignore SINK_COUNT during detection. Note that
 <dt><code class="docutils literal notranslate"><span class="pre">DP_DPCD_QUIRK_DSC_WITHOUT_VIRTUAL_DPCD</span></code></dt><dd><p>The device supports MST DSC despite not supporting Virtual DPCD.
 The DSC caps can be read from the physical aux instead.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">DP_QUIRK_FORCE_DPCD_BACKLIGHT</span></code></dt><dd><p>The device is telling the truth when it says that it uses DPCD
-backlight controls, even if the system’s firmware disagrees. This
-quirk should be checked against both the ident and panel EDID.
-When present, the driver should honor the DPCD backlight
-capabilities advertised.</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">DP_DPCD_QUIRK_CAN_DO_MAX_LINK_RATE_3_24_GBPS</span></code></dt><dd><p>The device supports a link rate of 3.24 Gbps (multiplier 0xc) despite
 the DP_MAX_LINK_RATE register reporting a lower max multiplier.</p>
 </dd>
@@ -6722,20 +6720,16 @@ the DP_MAX_LINK_RATE register reporting a lower max multiplier.</p>
 <p><strong>Description</strong></p>
 <p>Display Port sink and branch devices in the wild have a variety of bugs, try
 to collect them here. The quirks are shared, but it’s up to the drivers to
-implement workarounds for them. Note that because some devices have
-unreliable OUIDs, the EDID of sinks should also be checked for quirks using
-<a class="reference internal" href="#c.drm_dp_get_edid_quirks" title="drm_dp_get_edid_quirks"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_dp_get_edid_quirks()</span></code></a>.</p>
+implement workarounds for them.</p>
 <dl class="c function">
 <dt id="c.drm_dp_has_quirk">
-bool <code class="sig-name descname">drm_dp_has_quirk</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_desc" title="drm_dp_desc">drm_dp_desc</a> *<em>desc</em>, u32 <em>edid_quirks</em>, <em class="property">enum</em> <a class="reference internal" href="#c.drm_dp_quirk" title="drm_dp_quirk">drm_dp_quirk</a> <em>quirk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_has_quirk" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">drm_dp_has_quirk</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_desc" title="drm_dp_desc">drm_dp_desc</a> *<em>desc</em>, <em class="property">enum</em> <a class="reference internal" href="#c.drm_dp_quirk" title="drm_dp_quirk">drm_dp_quirk</a> <em>quirk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_has_quirk" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>does the DP device have a specific quirk</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">drm_dp_desc</span> <span class="pre">*desc</span></code></dt><dd><p>Device descriptor filled by <a class="reference internal" href="#c.drm_dp_read_desc" title="drm_dp_read_desc"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_dp_read_desc()</span></code></a></p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">edid_quirks</span></code></dt><dd><p>Optional quirk bitmask filled by <a class="reference internal" href="#c.drm_dp_get_edid_quirks" title="drm_dp_get_edid_quirks"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_dp_get_edid_quirks()</span></code></a></p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">drm_dp_quirk</span> <span class="pre">quirk</span></code></dt><dd><p>Quirk to query for</p>
 </dd>
@@ -6883,7 +6877,7 @@ bool <code class="sig-name descname">drm_dp_downstream_is_type</code><span class
 <p>whether the downstream facing port matches the type.</p>
 <dl class="c function">
 <dt id="c.drm_dp_downstream_is_tmds">
-bool <code class="sig-name descname">drm_dp_downstream_is_tmds</code><span class="sig-paren">(</span><em class="property">const</em> u8 <em>dpcd</em>[<em>DP_RECEIVER_CAP_SIZE</em>], <em class="property">const</em> u8 <em>port_cap</em>[4], <em class="property">const</em> <em class="property">struct</em> edid *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_downstream_is_tmds" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">drm_dp_downstream_is_tmds</code><span class="sig-paren">(</span><em class="property">const</em> u8 <em>dpcd</em>[<em>DP_RECEIVER_CAP_SIZE</em>], <em class="property">const</em> u8 <em>port_cap</em>[4], <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_downstream_is_tmds" title="edid">edid</a> *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_downstream_is_tmds" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>is the downstream facing port TMDS?</p>
 </dd></dl>
 
@@ -6973,7 +6967,7 @@ int <code class="sig-name descname">drm_dp_downstream_max_dotclock</code><span c
 or 0 if max clock not defined</p>
 <dl class="c function">
 <dt id="c.drm_dp_downstream_max_tmds_clock">
-int <code class="sig-name descname">drm_dp_downstream_max_tmds_clock</code><span class="sig-paren">(</span><em class="property">const</em> u8 <em>dpcd</em>[<em>DP_RECEIVER_CAP_SIZE</em>], <em class="property">const</em> u8 <em>port_cap</em>[4], <em class="property">const</em> <em class="property">struct</em> edid *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_downstream_max_tmds_clock" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">drm_dp_downstream_max_tmds_clock</code><span class="sig-paren">(</span><em class="property">const</em> u8 <em>dpcd</em>[<em>DP_RECEIVER_CAP_SIZE</em>], <em class="property">const</em> u8 <em>port_cap</em>[4], <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_downstream_max_tmds_clock" title="edid">edid</a> *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_downstream_max_tmds_clock" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>extract downstream facing port max TMDS clock</p>
 </dd></dl>
 
@@ -6991,7 +6985,7 @@ int <code class="sig-name descname">drm_dp_downstream_max_tmds_clock</code><span
 or 0 if max TMDS clock not defined</p>
 <dl class="c function">
 <dt id="c.drm_dp_downstream_min_tmds_clock">
-int <code class="sig-name descname">drm_dp_downstream_min_tmds_clock</code><span class="sig-paren">(</span><em class="property">const</em> u8 <em>dpcd</em>[<em>DP_RECEIVER_CAP_SIZE</em>], <em class="property">const</em> u8 <em>port_cap</em>[4], <em class="property">const</em> <em class="property">struct</em> edid *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_downstream_min_tmds_clock" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">drm_dp_downstream_min_tmds_clock</code><span class="sig-paren">(</span><em class="property">const</em> u8 <em>dpcd</em>[<em>DP_RECEIVER_CAP_SIZE</em>], <em class="property">const</em> u8 <em>port_cap</em>[4], <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_downstream_min_tmds_clock" title="edid">edid</a> *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_downstream_min_tmds_clock" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>extract downstream facing port min TMDS clock</p>
 </dd></dl>
 
@@ -7009,7 +7003,7 @@ int <code class="sig-name descname">drm_dp_downstream_min_tmds_clock</code><span
 or 0 if max TMDS clock not defined</p>
 <dl class="c function">
 <dt id="c.drm_dp_downstream_max_bpc">
-int <code class="sig-name descname">drm_dp_downstream_max_bpc</code><span class="sig-paren">(</span><em class="property">const</em> u8 <em>dpcd</em>[<em>DP_RECEIVER_CAP_SIZE</em>], <em class="property">const</em> u8 <em>port_cap</em>[4], <em class="property">const</em> <em class="property">struct</em> edid *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_downstream_max_bpc" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">drm_dp_downstream_max_bpc</code><span class="sig-paren">(</span><em class="property">const</em> u8 <em>dpcd</em>[<em>DP_RECEIVER_CAP_SIZE</em>], <em class="property">const</em> u8 <em>port_cap</em>[4], <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_downstream_max_bpc" title="edid">edid</a> *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_downstream_max_bpc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>extract downstream facing port max bits per component</p>
 </dd></dl>
 
@@ -7108,7 +7102,7 @@ int <code class="sig-name descname">drm_dp_downstream_id</code><span class="sig-
 <p>Returns branch device id on success or NULL on failure</p>
 <dl class="c function">
 <dt id="c.drm_dp_downstream_debug">
-void <code class="sig-name descname">drm_dp_downstream_debug</code><span class="sig-paren">(</span><em class="property">struct</em> seq_file *<em>m</em>, <em class="property">const</em> u8 <em>dpcd</em>[<em>DP_RECEIVER_CAP_SIZE</em>], <em class="property">const</em> u8 <em>port_cap</em>[4], <em class="property">const</em> <em class="property">struct</em> edid *<em>edid</em>, <em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_aux" title="drm_dp_aux">drm_dp_aux</a> *<em>aux</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_downstream_debug" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">drm_dp_downstream_debug</code><span class="sig-paren">(</span><em class="property">struct</em> seq_file *<em>m</em>, <em class="property">const</em> u8 <em>dpcd</em>[<em>DP_RECEIVER_CAP_SIZE</em>], <em class="property">const</em> u8 <em>port_cap</em>[4], <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_downstream_debug" title="edid">edid</a> *<em>edid</em>, <em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_aux" title="drm_dp_aux">drm_dp_aux</a> *<em>aux</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_downstream_debug" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>debug DP branch devices</p>
 </dd></dl>
 
@@ -7297,27 +7291,6 @@ int <code class="sig-name descname">drm_dp_stop_crc</code><span class="sig-paren
 </dl>
 <p><strong>Description</strong></p>
 <p>Returns 0 on success or a negative error code on failure.</p>
-<dl class="c function">
-<dt id="c.drm_dp_get_edid_quirks">
-u32 <code class="sig-name descname">drm_dp_get_edid_quirks</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> edid *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_get_edid_quirks" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Check the EDID of a DP device to find additional DP-specific quirks</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">edid</span> <span class="pre">*edid</span></code></dt><dd><p>The EDID to check</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>While OUIDs are meant to be used to recognize a DisplayPort device, a lot
-of manufacturers don’t seem to like following standards and neglect to fill
-the dev-ID in, making it impossible to only use OUIDs for determining
-quirks in some cases. This function can be used to check the EDID and look
-up any additional DP quirks. The bits returned by this function correspond
-to the quirk bits in <a class="reference internal" href="#c.drm_dp_quirk" title="drm_dp_quirk"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_dp_quirk</span></code></a>.</p>
-<p><strong>Return</strong></p>
-<p>a bitmask of quirks, if any. The driver can check this using
-<a class="reference internal" href="#c.drm_dp_has_quirk" title="drm_dp_has_quirk"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_dp_has_quirk()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.drm_dp_read_desc">
 int <code class="sig-name descname">drm_dp_read_desc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_aux" title="drm_dp_aux">drm_dp_aux</a> *<em>aux</em>, <em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_desc" title="drm_dp_desc">drm_dp_desc</a> *<em>desc</em>, bool <em>is_branch</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_read_desc" title="Permalink to this definition">¶</a><br /></dt>
@@ -11436,7 +11409,7 @@ the console.</p>
 <p>True if the block is valid, false otherwise.</p>
 <dl class="c function">
 <dt id="c.drm_edid_is_valid">
-bool <code class="sig-name descname">drm_edid_is_valid</code><span class="sig-paren">(</span><em class="property">struct</em> edid *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_edid_is_valid" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">drm_edid_is_valid</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_edid_is_valid" title="edid">edid</a> *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_edid_is_valid" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>sanity check EDID data</p>
 </dd></dl>
 
@@ -11546,7 +11519,7 @@ switch DDC to the GPU which is retrieving EDID.</p>
 <p>Pointer to valid EDID or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> if we couldn’t find any.</p>
 <dl class="c function">
 <dt id="c.drm_edid_duplicate">
-<em class="property">struct</em> edid *<code class="sig-name descname">drm_edid_duplicate</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> edid *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_edid_duplicate" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.drm_edid_duplicate" title="edid">edid</a> *<code class="sig-name descname">drm_edid_duplicate</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_edid_duplicate" title="edid">edid</a> *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_edid_duplicate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>duplicate an EDID and the extensions</p>
 </dd></dl>
 
@@ -11590,7 +11563,7 @@ mode.</p>
 <p>A new drm_display_mode on success or NULL on failure</p>
 <dl class="c function">
 <dt id="c.drm_edid_get_monitor_name">
-void <code class="sig-name descname">drm_edid_get_monitor_name</code><span class="sig-paren">(</span><em class="property">struct</em> edid *<em>edid</em>, char *<em>name</em>, int <em>bufsize</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_edid_get_monitor_name" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">drm_edid_get_monitor_name</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_edid_get_monitor_name" title="edid">edid</a> *<em>edid</em>, char *<em>name</em>, int <em>bufsize</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_edid_get_monitor_name" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>fetch the monitor name from the edid</p>
 </dd></dl>
 
@@ -11605,7 +11578,7 @@ void <code class="sig-name descname">drm_edid_get_monitor_name</code><span class
 </dl>
 <dl class="c function">
 <dt id="c.drm_edid_to_sad">
-int <code class="sig-name descname">drm_edid_to_sad</code><span class="sig-paren">(</span><em class="property">struct</em> edid *<em>edid</em>, <em class="property">struct</em> cea_sad **<em>sads</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_edid_to_sad" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">drm_edid_to_sad</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_edid_to_sad" title="edid">edid</a> *<em>edid</em>, <em class="property">struct</em> cea_sad **<em>sads</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_edid_to_sad" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>extracts SADs from EDID</p>
 </dd></dl>
 
@@ -11624,7 +11597,7 @@ int <code class="sig-name descname">drm_edid_to_sad</code><span class="sig-paren
 <p>The number of found SADs or negative number on error.</p>
 <dl class="c function">
 <dt id="c.drm_edid_to_speaker_allocation">
-int <code class="sig-name descname">drm_edid_to_speaker_allocation</code><span class="sig-paren">(</span><em class="property">struct</em> edid *<em>edid</em>, u8 **<em>sadb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_edid_to_speaker_allocation" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">drm_edid_to_speaker_allocation</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_edid_to_speaker_allocation" title="edid">edid</a> *<em>edid</em>, u8 **<em>sadb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_edid_to_speaker_allocation" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>extracts Speaker Allocation Data Blocks from EDID</p>
 </dd></dl>
 
@@ -11660,7 +11633,7 @@ int <code class="sig-name descname">drm_av_sync_delay</code><span class="sig-par
 the sink doesn’t support audio or video.</p>
 <dl class="c function">
 <dt id="c.drm_detect_hdmi_monitor">
-bool <code class="sig-name descname">drm_detect_hdmi_monitor</code><span class="sig-paren">(</span><em class="property">struct</em> edid *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_detect_hdmi_monitor" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">drm_detect_hdmi_monitor</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_detect_hdmi_monitor" title="edid">edid</a> *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_detect_hdmi_monitor" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>detect whether monitor is HDMI</p>
 </dd></dl>
 
@@ -11677,7 +11650,7 @@ should use <a class="reference internal" href="drm-kms.html#c.drm_display_info" 
 <p>True if the monitor is HDMI, false if not or unknown.</p>
 <dl class="c function">
 <dt id="c.drm_detect_monitor_audio">
-bool <code class="sig-name descname">drm_detect_monitor_audio</code><span class="sig-paren">(</span><em class="property">struct</em> edid *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_detect_monitor_audio" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">drm_detect_monitor_audio</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_detect_monitor_audio" title="edid">edid</a> *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_detect_monitor_audio" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check monitor audio capability</p>
 </dd></dl>
 
@@ -11712,7 +11685,7 @@ as specified in CEA-861.</p>
 <p>The default RGB quantization range for the mode</p>
 <dl class="c function">
 <dt id="c.drm_add_edid_modes">
-int <code class="sig-name descname">drm_add_edid_modes</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_connector" title="drm_connector">drm_connector</a> *<em>connector</em>, <em class="property">struct</em> edid *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_add_edid_modes" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">drm_add_edid_modes</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_connector" title="drm_connector">drm_connector</a> *<em>connector</em>, <em class="property">struct</em> <a class="reference internal" href="#c.drm_add_edid_modes" title="edid">edid</a> *<em>edid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_add_edid_modes" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add modes from EDID data, if available</p>
 </dd></dl>
 
@@ -13650,37 +13623,29 @@ version look at <a class="reference internal" href="#c.drm_atomic_helper_shutdow
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="drm-uapi.html" class="btn btn-neutral float-right" title="Userland interfaces" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="drm-kms.html" class="btn btn-neutral float-left" title="Kernel Mode Setting (KMS)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="drm-uapi.html" class="btn btn-neutral float-right" title="Userland interfaces" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="drm-kms.html" class="btn btn-neutral float-left" title="Kernel Mode Setting (KMS)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

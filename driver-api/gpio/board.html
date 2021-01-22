@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>GPIO Mappings &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -336,6 +338,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -351,7 +355,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../../_sources/driver-api/gpio/board.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -522,7 +526,7 @@ match found will be used.</p></li>
 end. The ‘dev_id’ field of the table is the identifier of the device that will
 make use of these GPIOs. It can be NULL, in which case it will be matched for
 calls to <a class="reference internal" href="index.html#c.gpiod_get" title="gpiod_get"><code class="xref c c-func docutils literal notranslate"><span class="pre">gpiod_get()</span></code></a> with a NULL device.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">gpiod_lookup_table</span> <span class="n">gpios_table</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">gpiod_lookup_table</span> <span class="n">gpios_table</span> <span class="o">=</span> <span class="p">{</span>
         <span class="p">.</span><span class="n">dev_id</span> <span class="o">=</span> <span class="s">&quot;foo.0&quot;</span><span class="p">,</span>
         <span class="p">.</span><span class="n">table</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="n">GPIO_LOOKUP_IDX</span><span class="p">(</span><span class="s">&quot;gpio.0&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="s">&quot;led&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">GPIO_ACTIVE_HIGH</span><span class="p">),</span>
@@ -556,7 +560,7 @@ mapping and is thus transparent to GPIO consumers.</p>
 <p>A set of functions such as <a class="reference internal" href="index.html#c.gpiod_set_value" title="gpiod_set_value"><code class="xref c c-func docutils literal notranslate"><span class="pre">gpiod_set_value()</span></code></a> is available to work with
 the new descriptor-oriented interface.</p>
 <p>Boards using platform data can also hog GPIO lines by defining GPIO hog tables.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">gpiod_hog</span> <span class="n">gpio_hog_table</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">gpiod_hog</span> <span class="n">gpio_hog_table</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
         <span class="n">GPIO_HOG</span><span class="p">(</span><span class="s">&quot;gpio.0&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="n">GPIO_ACTIVE_LOW</span><span class="p">,</span> <span class="n">GPIOD_OUT_HIGH</span><span class="p">),</span>
         <span class="p">{</span> <span class="p">}</span>
 <span class="p">};</span>
@@ -599,37 +603,29 @@ output processing.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="drivers-on-gpio.html" class="btn btn-neutral float-right" title="Subsystem drivers using GPIO" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="consumer.html" class="btn btn-neutral float-left" title="GPIO Descriptor Consumer Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="drivers-on-gpio.html" class="btn btn-neutral float-right" title="Subsystem drivers using GPIO" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="consumer.html" class="btn btn-neutral float-left" title="GPIO Descriptor Consumer Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

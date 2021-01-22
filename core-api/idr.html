@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>ID Allocation &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -247,6 +249,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -260,7 +264,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/core-api/idr.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -393,7 +397,7 @@ limitation, it should be quite straightforward to raise the maximum.</p>
 initialisation required.  It contains no IDs.</p>
 <dl class="c function">
 <dt id="c.idr_get_cursor">
-unsigned int <code class="sig-name descname">idr_get_cursor</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> idr *<em>idr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_get_cursor" title="Permalink to this definition">¶</a><br /></dt>
+unsigned int <code class="sig-name descname">idr_get_cursor</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.idr_get_cursor" title="idr">idr</a> *<em>idr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_get_cursor" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return the current position of the cyclic allocator</p>
 </dd></dl>
 
@@ -408,7 +412,7 @@ unsigned int <code class="sig-name descname">idr_get_cursor</code><span class="s
 this position).</p>
 <dl class="c function">
 <dt id="c.idr_set_cursor">
-void <code class="sig-name descname">idr_set_cursor</code><span class="sig-paren">(</span><em class="property">struct</em> idr *<em>idr</em>, unsigned int <em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_set_cursor" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">idr_set_cursor</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.idr_set_cursor" title="idr">idr</a> *<em>idr</em>, unsigned int <em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_set_cursor" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set the current position of the cyclic allocator</p>
 </dd></dl>
 
@@ -424,7 +428,7 @@ void <code class="sig-name descname">idr_set_cursor</code><span class="sig-paren
 (otherwise the search will start from this position).</p>
 <dl class="c function">
 <dt id="c.idr_init_base">
-void <code class="sig-name descname">idr_init_base</code><span class="sig-paren">(</span><em class="property">struct</em> idr *<em>idr</em>, int <em>base</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_init_base" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">idr_init_base</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.idr_init_base" title="idr">idr</a> *<em>idr</em>, int <em>base</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_init_base" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialise an IDR.</p>
 </dd></dl>
 
@@ -440,7 +444,7 @@ void <code class="sig-name descname">idr_init_base</code><span class="sig-paren"
 starting at <code class="docutils literal notranslate"><span class="pre">base</span></code>.</p>
 <dl class="c function">
 <dt id="c.idr_init">
-void <code class="sig-name descname">idr_init</code><span class="sig-paren">(</span><em class="property">struct</em> idr *<em>idr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_init" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">idr_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.idr_init" title="idr">idr</a> *<em>idr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialise an IDR.</p>
 </dd></dl>
 
@@ -454,7 +458,7 @@ void <code class="sig-name descname">idr_init</code><span class="sig-paren">(</s
 statically allocated IDR, use <a class="reference internal" href="#c.DEFINE_IDR" title="DEFINE_IDR"><code class="xref c c-func docutils literal notranslate"><span class="pre">DEFINE_IDR()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.idr_is_empty">
-bool <code class="sig-name descname">idr_is_empty</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> idr *<em>idr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_is_empty" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">idr_is_empty</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.idr_is_empty" title="idr">idr</a> *<em>idr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_is_empty" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Are there any IDs allocated?</p>
 </dd></dl>
 
@@ -569,7 +573,7 @@ is convenient for a “not found” value.</p>
 <p>Continue to iterate over entries, continuing after the current position.</p>
 <dl class="c function">
 <dt id="c.ida_alloc">
-int <code class="sig-name descname">ida_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> ida *<em>ida</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_alloc" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">ida_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ida_alloc" title="ida">ida</a> *<em>ida</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an unused ID.</p>
 </dd></dl>
 
@@ -590,7 +594,7 @@ locking in your code.</p>
 or <code class="docutils literal notranslate"><span class="pre">-ENOSPC</span></code> if there are no free IDs.</p>
 <dl class="c function">
 <dt id="c.ida_alloc_min">
-int <code class="sig-name descname">ida_alloc_min</code><span class="sig-paren">(</span><em class="property">struct</em> ida *<em>ida</em>, unsigned int <em>min</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_alloc_min" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">ida_alloc_min</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ida_alloc_min" title="ida">ida</a> *<em>ida</em>, unsigned int <em>min</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_alloc_min" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an unused ID.</p>
 </dd></dl>
 
@@ -613,7 +617,7 @@ locking in your code.</p>
 or <code class="docutils literal notranslate"><span class="pre">-ENOSPC</span></code> if there are no free IDs.</p>
 <dl class="c function">
 <dt id="c.ida_alloc_max">
-int <code class="sig-name descname">ida_alloc_max</code><span class="sig-paren">(</span><em class="property">struct</em> ida *<em>ida</em>, unsigned int <em>max</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_alloc_max" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">ida_alloc_max</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ida_alloc_max" title="ida">ida</a> *<em>ida</em>, unsigned int <em>max</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_alloc_max" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an unused ID.</p>
 </dd></dl>
 
@@ -636,7 +640,7 @@ locking in your code.</p>
 or <code class="docutils literal notranslate"><span class="pre">-ENOSPC</span></code> if there are no free IDs.</p>
 <dl class="c function">
 <dt id="c.idr_alloc_u32">
-int <code class="sig-name descname">idr_alloc_u32</code><span class="sig-paren">(</span><em class="property">struct</em> idr *<em>idr</em>, void *<em>ptr</em>, u32 *<em>nextid</em>, unsigned long <em>max</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_alloc_u32" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">idr_alloc_u32</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.idr_alloc_u32" title="idr">idr</a> *<em>idr</em>, void *<em>ptr</em>, u32 *<em>nextid</em>, unsigned long <em>max</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_alloc_u32" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an ID.</p>
 </dd></dl>
 
@@ -669,7 +673,7 @@ or -ENOSPC if no free IDs could be found.  If an error occurred,
 <strong>nextid</strong> is unchanged.</p>
 <dl class="c function">
 <dt id="c.idr_alloc">
-int <code class="sig-name descname">idr_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> idr *<em>idr</em>, void *<em>ptr</em>, int <em>start</em>, int <em>end</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_alloc" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">idr_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.idr_alloc" title="idr">idr</a> *<em>idr</em>, void *<em>ptr</em>, int <em>start</em>, int <em>end</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an ID.</p>
 </dd></dl>
 
@@ -699,7 +703,7 @@ exclude simultaneous writers.</p>
 or -ENOSPC if no free IDs could be found.</p>
 <dl class="c function">
 <dt id="c.idr_alloc_cyclic">
-int <code class="sig-name descname">idr_alloc_cyclic</code><span class="sig-paren">(</span><em class="property">struct</em> idr *<em>idr</em>, void *<em>ptr</em>, int <em>start</em>, int <em>end</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_alloc_cyclic" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">idr_alloc_cyclic</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.idr_alloc_cyclic" title="idr">idr</a> *<em>idr</em>, void *<em>ptr</em>, int <em>start</em>, int <em>end</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_alloc_cyclic" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an ID cyclically.</p>
 </dd></dl>
 
@@ -731,7 +735,7 @@ exclude simultaneous writers.</p>
 or -ENOSPC if no free IDs could be found.</p>
 <dl class="c function">
 <dt id="c.idr_remove">
-void *<code class="sig-name descname">idr_remove</code><span class="sig-paren">(</span><em class="property">struct</em> idr *<em>idr</em>, unsigned long <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_remove" title="Permalink to this definition">¶</a><br /></dt>
+void *<code class="sig-name descname">idr_remove</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.idr_remove" title="idr">idr</a> *<em>idr</em>, unsigned long <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_remove" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Remove an ID from the IDR.</p>
 </dd></dl>
 
@@ -752,7 +756,7 @@ not possible.</p>
 <p>The pointer formerly associated with this ID.</p>
 <dl class="c function">
 <dt id="c.idr_find">
-void *<code class="sig-name descname">idr_find</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> idr *<em>idr</em>, unsigned long <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_find" title="Permalink to this definition">¶</a><br /></dt>
+void *<code class="sig-name descname">idr_find</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.idr_find" title="idr">idr</a> *<em>idr</em>, unsigned long <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_find" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return pointer for given ID.</p>
 </dd></dl>
 
@@ -773,7 +777,7 @@ pointers lifetimes are correctly managed.</p>
 <p>The pointer associated with this ID.</p>
 <dl class="c function">
 <dt id="c.idr_for_each">
-int <code class="sig-name descname">idr_for_each</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> idr *<em>idr</em>, int (*<em>fn</em>)<span class="sig-paren">(</span>int id, void *p, void *data<span class="sig-paren">)</span>, void *<em>data</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.idr_for_each" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">idr_for_each</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.idr_for_each" title="idr">idr</a> *<em>idr</em>, int (*<em>fn</em>)<span class="sig-paren">(</span>int id, void *p, void *data<span class="sig-paren">)</span>, void *<em>data</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.idr_for_each" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Iterate through all stored pointers.</p>
 </dd></dl>
 
@@ -797,7 +801,7 @@ seen and deleted entries may be seen, but adding and removing entries
 will not cause other entries to be skipped, nor spurious ones to be seen.</p>
 <dl class="c function">
 <dt id="c.idr_get_next_ul">
-void *<code class="sig-name descname">idr_get_next_ul</code><span class="sig-paren">(</span><em class="property">struct</em> idr *<em>idr</em>, unsigned long *<em>nextid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_get_next_ul" title="Permalink to this definition">¶</a><br /></dt>
+void *<code class="sig-name descname">idr_get_next_ul</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.idr_get_next_ul" title="idr">idr</a> *<em>idr</em>, unsigned long *<em>nextid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_get_next_ul" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find next populated entry.</p>
 </dd></dl>
 
@@ -815,7 +819,7 @@ to the ID of the found value.  To use in a loop, the value pointed to by
 nextid must be incremented by the user.</p>
 <dl class="c function">
 <dt id="c.idr_get_next">
-void *<code class="sig-name descname">idr_get_next</code><span class="sig-paren">(</span><em class="property">struct</em> idr *<em>idr</em>, int *<em>nextid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_get_next" title="Permalink to this definition">¶</a><br /></dt>
+void *<code class="sig-name descname">idr_get_next</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.idr_get_next" title="idr">idr</a> *<em>idr</em>, int *<em>nextid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_get_next" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find next populated entry.</p>
 </dd></dl>
 
@@ -833,7 +837,7 @@ to the ID of the found value.  To use in a loop, the value pointed to by
 nextid must be incremented by the user.</p>
 <dl class="c function">
 <dt id="c.idr_replace">
-void *<code class="sig-name descname">idr_replace</code><span class="sig-paren">(</span><em class="property">struct</em> idr *<em>idr</em>, void *<em>ptr</em>, unsigned long <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_replace" title="Permalink to this definition">¶</a><br /></dt>
+void *<code class="sig-name descname">idr_replace</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.idr_replace" title="idr">idr</a> *<em>idr</em>, void *<em>ptr</em>, unsigned long <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_replace" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>replace pointer for given ID.</p>
 </dd></dl>
 
@@ -856,7 +860,7 @@ the one being replaced!).</p>
 found.  <code class="docutils literal notranslate"><span class="pre">-EINVAL</span></code> indicates that <strong>ptr</strong> was not valid.</p>
 <dl class="c function">
 <dt id="c.ida_alloc_range">
-int <code class="sig-name descname">ida_alloc_range</code><span class="sig-paren">(</span><em class="property">struct</em> ida *<em>ida</em>, unsigned int <em>min</em>, unsigned int <em>max</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_alloc_range" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">ida_alloc_range</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ida_alloc_range" title="ida">ida</a> *<em>ida</em>, unsigned int <em>min</em>, unsigned int <em>max</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_alloc_range" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an unused ID.</p>
 </dd></dl>
 
@@ -882,7 +886,7 @@ locking in your code.</p>
 or <code class="docutils literal notranslate"><span class="pre">-ENOSPC</span></code> if there are no free IDs.</p>
 <dl class="c function">
 <dt id="c.ida_free">
-void <code class="sig-name descname">ida_free</code><span class="sig-paren">(</span><em class="property">struct</em> ida *<em>ida</em>, unsigned int <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_free" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">ida_free</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ida_free" title="ida">ida</a> *<em>ida</em>, unsigned int <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_free" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Release an allocated ID.</p>
 </dd></dl>
 
@@ -898,7 +902,7 @@ void <code class="sig-name descname">ida_free</code><span class="sig-paren">(</s
 locking in your code.</p>
 <dl class="c function">
 <dt id="c.ida_destroy">
-void <code class="sig-name descname">ida_destroy</code><span class="sig-paren">(</span><em class="property">struct</em> ida *<em>ida</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_destroy" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">ida_destroy</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ida_destroy" title="ida">ida</a> *<em>ida</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_destroy" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Free all IDs.</p>
 </dd></dl>
 
@@ -923,37 +927,29 @@ locking in your code.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="circular-buffers.html" class="btn btn-neutral float-right" title="Circular Buffers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="xarray.html" class="btn btn-neutral float-left" title="XArray" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="circular-buffers.html" class="btn btn-neutral float-right" title="Circular Buffers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="xarray.html" class="btn btn-neutral float-left" title="XArray" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

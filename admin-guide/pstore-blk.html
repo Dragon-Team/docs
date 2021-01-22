@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>pstore block oops/panic logger &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -316,6 +318,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -329,7 +333,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/admin-guide/pstore-blk.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -560,6 +564,33 @@ device number, sector count and start sector of the whole disk.</p>
 <h2>pstore block internals<a class="headerlink" href="#pstore-block-internals" title="Permalink to this headline">¶</a></h2>
 <p>For developer reference, here are all the important structures and APIs:</p>
 <dl class="c struct">
+<dt id="c.psz_buffer">
+<em class="property">struct </em><code class="sig-name descname">psz_buffer</code><a class="headerlink" href="#c.psz_buffer" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>header of zone to flush to storage</p>
+</dd></dl>
+
+<p><strong>Definition</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct psz_buffer {
+#define PSZ_SIG (0x43474244) ;
+  uint32_t sig;
+  atomic_t datalen;
+  atomic_t start;
+  uint8_t data[];
+};
+</pre></div>
+</div>
+<p><strong>Members</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">sig</span></code></dt><dd><p>signature to indicate header (PSZ_SIG xor PSZONE-type value)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">datalen</span></code></dt><dd><p>length of data in <strong>data</strong></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">start</span></code></dt><dd><p>offset into <strong>data</strong> where the beginning of the stored bytes begin</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">data</span></code></dt><dd><p>zone data.</p>
+</dd>
+</dl>
+<dl class="c struct">
 <dt id="c.psz_kmsg_header">
 <em class="property">struct </em><code class="sig-name descname">psz_kmsg_header</code><a class="headerlink" href="#c.psz_kmsg_header" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>kmsg dump-specific header to flush to storage</p>
@@ -593,7 +624,7 @@ device number, sector count and start sector of the whole disk.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>This is a sub-header for a kmsg dump, trailing after <code class="xref c c-type docutils literal notranslate"><span class="pre">psz_buffer</span></code>.</p>
+<p>This is a sub-header for a kmsg dump, trailing after <a class="reference internal" href="#c.psz_buffer" title="psz_buffer"><code class="xref c c-type docutils literal notranslate"><span class="pre">psz_buffer</span></code></a>.</p>
 <dl class="c struct">
 <dt id="c.pstore_zone">
 <em class="property">struct </em><code class="sig-name descname">pstore_zone</code><a class="headerlink" href="#c.pstore_zone" title="Permalink to this definition">¶</a><br /></dt>
@@ -916,37 +947,29 @@ int <code class="sig-name descname">pstore_blk_get_config</code><span class="sig
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="sysfs-rules.html" class="btn btn-neutral float-right" title="Rules on how to access information in sysfs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="perf/thunderx2-pmu.html" class="btn btn-neutral float-left" title="Cavium ThunderX2 SoC Performance Monitoring Unit (PMU UNCORE)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="sysfs-rules.html" class="btn btn-neutral float-right" title="Rules on how to access information in sysfs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="perf/thunderx2-pmu.html" class="btn btn-neutral float-left" title="Cavium ThunderX2 SoC Performance Monitoring Unit (PMU UNCORE)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

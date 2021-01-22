@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>1.9. User Controls &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../../../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -255,6 +257,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -274,7 +278,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../../../_sources/userspace-api/media/v4l/control.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -577,10 +581,10 @@ more menu type controls.</p>
 </div>
 <div class="section" id="example-enumerating-all-controls">
 <span id="enum-all-controls"></span><h2><span class="section-number">1.9.2. </span>Example: Enumerating all controls<a class="headerlink" href="#example-enumerating-all-controls" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">v4l2_queryctrl</span> <span class="n">queryctrl</span><span class="p">;</span>
-<span class="k">struct</span> <span class="n">v4l2_querymenu</span> <span class="n">querymenu</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">v4l2_queryctrl</span> <span class="n">queryctrl</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">v4l2_querymenu</span> <span class="n">querymenu</span><span class="p">;</span>
 
-<span class="k">static</span> <span class="kt">void</span> <span class="nf">enumerate_menu</span><span class="p">(</span><span class="n">__u32</span> <span class="n">id</span><span class="p">)</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="n">enumerate_menu</span><span class="p">(</span><span class="n">__u32</span> <span class="n">id</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;  Menu items:</span><span class="se">\\</span><span class="s">n&quot;</span><span class="p">);</span>
 
@@ -618,7 +622,7 @@ more menu type controls.</p>
 </div>
 <div class="section" id="example-enumerating-all-controls-including-compound-controls">
 <h2><span class="section-number">1.9.3. </span>Example: Enumerating all controls including compound controls<a class="headerlink" href="#example-enumerating-all-controls-including-compound-controls" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">v4l2_query_ext_ctrl</span> <span class="n">query_ext_ctrl</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">v4l2_query_ext_ctrl</span> <span class="n">query_ext_ctrl</span><span class="p">;</span>
 
 <span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">query_ext_ctrl</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">query_ext_ctrl</span><span class="p">));</span>
 
@@ -687,13 +691,13 @@ more menu type controls.</p>
 </div>
 <div class="section" id="example-changing-controls">
 <h2><span class="section-number">1.9.5. </span>Example: Changing controls<a class="headerlink" href="#example-changing-controls" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">v4l2_queryctrl</span> <span class="n">queryctrl</span><span class="p">;</span>
-<span class="k">struct</span> <span class="n">v4l2_control</span> <span class="n">control</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">v4l2_queryctrl</span> <span class="n">queryctrl</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">v4l2_control</span> <span class="n">control</span><span class="p">;</span>
 
 <span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">queryctrl</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">queryctrl</span><span class="p">));</span>
 <span class="n">queryctrl</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">V4L2_CID_BRIGHTNESS</span><span class="p">;</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">==</span> <span class="n">ioctl</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">VIDIOC_QUERYCTRL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">queryctrl</span><span class="p">))</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="mi">-1</span> <span class="o">==</span> <span class="n">ioctl</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">VIDIOC_QUERYCTRL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">queryctrl</span><span class="p">))</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">errno</span> <span class="o">!=</span> <span class="n">EINVAL</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">perror</span><span class="p">(</span><span class="s">&quot;VIDIOC_QUERYCTRL&quot;</span><span class="p">);</span>
         <span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
@@ -707,7 +711,7 @@ more menu type controls.</p>
     <span class="n">control</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">V4L2_CID_BRIGHTNESS</span><span class="p">;</span>
     <span class="n">control</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">queryctrl</span><span class="p">.</span><span class="n">default_value</span><span class="p">;</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">==</span> <span class="n">ioctl</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">VIDIOC_S_CTRL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">control</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="mi">-1</span> <span class="o">==</span> <span class="n">ioctl</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">VIDIOC_S_CTRL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">control</span><span class="p">))</span> <span class="p">{</span>
         <span class="n">perror</span><span class="p">(</span><span class="s">&quot;VIDIOC_S_CTRL&quot;</span><span class="p">);</span>
         <span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
     <span class="p">}</span>
@@ -721,7 +725,7 @@ more menu type controls.</p>
 
     <span class="cm">/* The driver may clamp the value or return ERANGE, ignored here */</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">==</span> <span class="n">ioctl</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">VIDIOC_S_CTRL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">control</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="mi">-1</span> <span class="o">==</span> <span class="n">ioctl</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">VIDIOC_S_CTRL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">control</span><span class="p">)</span>
         <span class="o">&amp;&amp;</span> <span class="n">errno</span> <span class="o">!=</span> <span class="n">ERANGE</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">perror</span><span class="p">(</span><span class="s">&quot;VIDIOC_S_CTRL&quot;</span><span class="p">);</span>
         <span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
@@ -763,37 +767,29 @@ support for <code class="docutils literal notranslate"><span class="pre">V4L2_CI
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="extended-controls.html" class="btn btn-neutral float-right" title="1.10. Extended Controls API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="dv-timings.html" class="btn btn-neutral float-left" title="1.8. Digital Video (DV) Timings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="extended-controls.html" class="btn btn-neutral float-right" title="1.10. Extended Controls API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dv-timings.html" class="btn btn-neutral float-left" title="1.8. Digital Video (DV) Timings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

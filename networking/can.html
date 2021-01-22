@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>SocketCAN - Controller Area Network &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -376,6 +378,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -389,7 +393,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/networking/can.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -604,7 +608,7 @@ on the socket as usual. There are also CAN specific socket options
 described below.</p>
 <p>The Classical CAN frame structure (aka CAN 2.0B), the CAN FD frame structure
 and the sockaddr structure are defined in include/linux/can.h:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">can_frame</span> <span class="p">{</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">can_frame</span> <span class="p">{</span>
         <span class="n">canid_t</span> <span class="n">can_id</span><span class="p">;</span>  <span class="cm">/* 32 bit CAN_ID + EFF/RTR/ERR flags */</span>
         <span class="k">union</span> <span class="p">{</span>
                 <span class="cm">/* CAN frame payload length in byte (0 .. CAN_MAX_DLEN)</span>
@@ -635,7 +639,7 @@ default. A read(2) system call on a CAN_RAW socket transfers a
 struct can_frame to the user space.</p>
 <p>The sockaddr_can structure has an interface index like the
 PF_PACKET socket, that also binds to a specific interface:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">sockaddr_can</span> <span class="p">{</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">sockaddr_can</span> <span class="p">{</span>
         <span class="n">sa_family_t</span> <span class="n">can_family</span><span class="p">;</span>
         <span class="kt">int</span>         <span class="n">can_ifindex</span><span class="p">;</span>
         <span class="k">union</span> <span class="p">{</span>
@@ -667,8 +671,8 @@ PF_PACKET socket, that also binds to a specific interface:</p>
 <p>To determine the interface index an appropriate ioctl() has to
 be used (example for CAN_RAW sockets without error checking):</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">s</span><span class="p">;</span>
-<span class="k">struct</span> <span class="n">sockaddr_can</span> <span class="n">addr</span><span class="p">;</span>
-<span class="k">struct</span> <span class="n">ifreq</span> <span class="n">ifr</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">sockaddr_can</span> <span class="n">addr</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">ifreq</span> <span class="n">ifr</span><span class="p">;</span>
 
 <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">PF_CAN</span><span class="p">,</span> <span class="n">SOCK_RAW</span><span class="p">,</span> <span class="n">CAN_RAW</span><span class="p">);</span>
 
@@ -678,7 +682,7 @@ be used (example for CAN_RAW sockets without error checking):</p>
 <span class="n">addr</span><span class="p">.</span><span class="n">can_family</span> <span class="o">=</span> <span class="n">AF_CAN</span><span class="p">;</span>
 <span class="n">addr</span><span class="p">.</span><span class="n">can_ifindex</span> <span class="o">=</span> <span class="n">ifr</span><span class="p">.</span><span class="n">ifr_ifindex</span><span class="p">;</span>
 
-<span class="n">bind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">addr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">addr</span><span class="p">));</span>
+<span class="n">bind</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="nc">sockaddr</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">addr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">addr</span><span class="p">));</span>
 
 <span class="p">(..)</span>
 </pre></div>
@@ -691,9 +695,9 @@ on a socket that is bound to ‘any’ interface sendto(2) is needed to
 specify the outgoing interface.</p>
 <p>Reading CAN frames from a bound CAN_RAW socket (see above) consists
 of reading a struct can_frame:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">can_frame</span> <span class="n">frame</span><span class="p">;</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">can_frame</span> <span class="n">frame</span><span class="p">;</span>
 
-<span class="n">nbytes</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">frame</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">can_frame</span><span class="p">));</span>
+<span class="n">nbytes</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">frame</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="nc">can_frame</span><span class="p">));</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="n">nbytes</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">perror</span><span class="p">(</span><span class="s">&quot;can raw socket read&quot;</span><span class="p">);</span>
@@ -701,7 +705,7 @@ of reading a struct can_frame:</p>
 <span class="p">}</span>
 
 <span class="cm">/* paranoid check ... */</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">nbytes</span> <span class="o">&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">can_frame</span><span class="p">))</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">nbytes</span> <span class="o">&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="nc">can_frame</span><span class="p">))</span> <span class="p">{</span>
         <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;read: incomplete CAN frame</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
         <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
@@ -716,13 +720,13 @@ of reading a struct can_frame:</p>
 <p>When the CAN interface is bound to ‘any’ existing CAN interface
 (addr.can_ifindex = 0) it is recommended to use recvfrom(2) if the
 information about the originating CAN interface is needed:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">sockaddr_can</span> <span class="n">addr</span><span class="p">;</span>
-<span class="k">struct</span> <span class="n">ifreq</span> <span class="n">ifr</span><span class="p">;</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">sockaddr_can</span> <span class="n">addr</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">ifreq</span> <span class="n">ifr</span><span class="p">;</span>
 <span class="kt">socklen_t</span> <span class="n">len</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">addr</span><span class="p">);</span>
-<span class="k">struct</span> <span class="n">can_frame</span> <span class="n">frame</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">can_frame</span> <span class="n">frame</span><span class="p">;</span>
 
-<span class="n">nbytes</span> <span class="o">=</span> <span class="n">recvfrom</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">frame</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">can_frame</span><span class="p">),</span>
-                  <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">addr</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">len</span><span class="p">);</span>
+<span class="n">nbytes</span> <span class="o">=</span> <span class="n">recvfrom</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">frame</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="nc">can_frame</span><span class="p">),</span>
+                  <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="nc">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">addr</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">len</span><span class="p">);</span>
 
 <span class="cm">/* get interface name of the received CAN frame */</span>
 <span class="n">ifr</span><span class="p">.</span><span class="n">ifr_ifindex</span> <span class="o">=</span> <span class="n">addr</span><span class="p">.</span><span class="n">can_ifindex</span><span class="p">;</span>
@@ -737,13 +741,13 @@ outgoing interface has to be defined certainly:</p>
 <span class="n">addr</span><span class="p">.</span><span class="n">can_ifindex</span> <span class="o">=</span> <span class="n">ifr</span><span class="p">.</span><span class="n">ifr_ifindex</span><span class="p">;</span>
 <span class="n">addr</span><span class="p">.</span><span class="n">can_family</span>  <span class="o">=</span> <span class="n">AF_CAN</span><span class="p">;</span>
 
-<span class="n">nbytes</span> <span class="o">=</span> <span class="n">sendto</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">frame</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">can_frame</span><span class="p">),</span>
-                <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">addr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">addr</span><span class="p">));</span>
+<span class="n">nbytes</span> <span class="o">=</span> <span class="n">sendto</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">frame</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="nc">can_frame</span><span class="p">),</span>
+                <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="nc">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">addr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">addr</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>An accurate timestamp can be obtained with an ioctl(2) call after reading
 a message from the socket:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">timeval</span> <span class="n">tv</span><span class="p">;</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">timeval</span> <span class="n">tv</span><span class="p">;</span>
 <span class="n">ioctl</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">SIOCGSTAMP</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">tv</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -760,7 +764,7 @@ the CAN_RAW socket supports a new socket option CAN_RAW_FD_FRAMES that
 switches the socket into a mode that allows the handling of CAN FD frames
 and Classical CAN frames simultaneously (see <a class="reference internal" href="#socketcan-rawfd"><span class="std std-ref">RAW Socket Option CAN_RAW_FD_FRAMES</span></a>).</p>
 <p>The struct canfd_frame is defined in include/linux/can.h:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">canfd_frame</span> <span class="p">{</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">canfd_frame</span> <span class="p">{</span>
         <span class="n">canid_t</span> <span class="n">can_id</span><span class="p">;</span>  <span class="cm">/* 32 bit CAN_ID + EFF/RTR/ERR flags */</span>
         <span class="n">__u8</span>    <span class="n">len</span><span class="p">;</span>     <span class="cm">/* frame payload length in byte (0 .. 64) */</span>
         <span class="n">__u8</span>    <span class="n">flags</span><span class="p">;</span>   <span class="cm">/* additional flags for CAN FD */</span>
@@ -810,7 +814,7 @@ sockets, include &lt;linux/can/raw.h&gt;.</p>
 <p>The reception of CAN frames using CAN_RAW sockets can be controlled
 by defining 0 .. n filters with the CAN_RAW_FILTER socket option.</p>
 <p>The CAN filter structure is defined in include/linux/can.h:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">can_filter</span> <span class="p">{</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">can_filter</span> <span class="p">{</span>
         <span class="n">canid_t</span> <span class="n">can_id</span><span class="p">;</span>
         <span class="n">canid_t</span> <span class="n">can_mask</span><span class="p">;</span>
 <span class="p">};</span>
@@ -825,7 +829,7 @@ The filter can be inverted in this semantic, when the CAN_INV_FILTER
 bit is set in can_id element of the can_filter structure. In
 contrast to CAN controller hardware filters the user may set 0 .. n
 receive filters for each open socket separately:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">can_filter</span> <span class="n">rfilter</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">can_filter</span> <span class="n">rfilter</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
 
 <span class="n">rfilter</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">can_id</span>   <span class="o">=</span> <span class="mh">0x123</span><span class="p">;</span>
 <span class="n">rfilter</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">can_mask</span> <span class="o">=</span> <span class="n">CAN_SFF_MASK</span><span class="p">;</span>
@@ -865,7 +869,7 @@ subscribed. E.g. in the example from above:</p>
 <p>both SFF frames with CAN ID 0x123 and EFF frames with 0xXXXXX123 can pass.</p>
 <p>To filter for only 0x123 (SFF) and 0x12345678 (EFF) CAN identifiers the
 filter has to be defined in this way to benefit from the optimized filters:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">can_filter</span> <span class="n">rfilter</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">can_filter</span> <span class="n">rfilter</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
 
 <span class="n">rfilter</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">can_id</span>   <span class="o">=</span> <span class="mh">0x123</span><span class="p">;</span>
 <span class="n">rfilter</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">can_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">CAN_EFF_FLAG</span> <span class="o">|</span> <span class="n">CAN_RTR_FLAG</span> <span class="o">|</span> <span class="n">CAN_SFF_MASK</span><span class="p">);</span>
@@ -935,9 +939,9 @@ when reading from the socket:</p>
 </pre></div>
 </div>
 <p>Example:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="nl">remember</span><span class="p">:</span> <span class="n">CANFD_MTU</span> <span class="o">==</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">canfd_frame</span><span class="p">)</span> <span class="p">]</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="nl">remember</span><span class="p">:</span> <span class="n">CANFD_MTU</span> <span class="o">==</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="nc">canfd_frame</span><span class="p">)</span> <span class="p">]</span>
 
-<span class="k">struct</span> <span class="n">canfd_frame</span> <span class="n">cfd</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">canfd_frame</span> <span class="n">cfd</span><span class="p">;</span>
 
 <span class="n">nbytes</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cfd</span><span class="p">,</span> <span class="n">CANFD_MTU</span><span class="p">);</span>
 
@@ -1019,14 +1023,14 @@ to communicate with the broadcast manager and the available operations are
 defined in the linux/can/bcm.h include. The BCM message consists of a
 message header with a command (‘opcode’) followed by zero or more CAN frames.
 The broadcast manager sends responses to user space in the same form:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">bcm_msg_head</span> <span class="p">{</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">bcm_msg_head</span> <span class="p">{</span>
         <span class="n">__u32</span> <span class="n">opcode</span><span class="p">;</span>                   <span class="cm">/* command */</span>
         <span class="n">__u32</span> <span class="n">flags</span><span class="p">;</span>                    <span class="cm">/* special flags */</span>
         <span class="n">__u32</span> <span class="n">count</span><span class="p">;</span>                    <span class="cm">/* run &#39;count&#39; times with ival1 */</span>
-        <span class="k">struct</span> <span class="n">timeval</span> <span class="n">ival1</span><span class="p">,</span> <span class="n">ival2</span><span class="p">;</span>    <span class="cm">/* count and subsequent interval */</span>
+        <span class="k">struct</span> <span class="nc">timeval</span> <span class="n">ival1</span><span class="p">,</span> <span class="n">ival2</span><span class="p">;</span>    <span class="cm">/* count and subsequent interval */</span>
         <span class="n">canid_t</span> <span class="n">can_id</span><span class="p">;</span>                 <span class="cm">/* unique can_id for task */</span>
         <span class="n">__u32</span> <span class="n">nframes</span><span class="p">;</span>                  <span class="cm">/* number of can_frames following */</span>
-        <span class="k">struct</span> <span class="n">can_frame</span> <span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="k">struct</span> <span class="nc">can_frame</span> <span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
 <span class="p">};</span>
 </pre></div>
 </div>
@@ -1036,8 +1040,8 @@ messages to the broadcast manager from user space have this structure.</p>
 <p>Note a CAN_BCM socket must be connected instead of bound after socket
 creation (example without error checking):</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">s</span><span class="p">;</span>
-<span class="k">struct</span> <span class="n">sockaddr_can</span> <span class="n">addr</span><span class="p">;</span>
-<span class="k">struct</span> <span class="n">ifreq</span> <span class="n">ifr</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">sockaddr_can</span> <span class="n">addr</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">ifreq</span> <span class="n">ifr</span><span class="p">;</span>
 
 <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">PF_CAN</span><span class="p">,</span> <span class="n">SOCK_DGRAM</span><span class="p">,</span> <span class="n">CAN_BCM</span><span class="p">);</span>
 
@@ -1047,7 +1051,7 @@ creation (example without error checking):</p>
 <span class="n">addr</span><span class="p">.</span><span class="n">can_family</span> <span class="o">=</span> <span class="n">AF_CAN</span><span class="p">;</span>
 <span class="n">addr</span><span class="p">.</span><span class="n">can_ifindex</span> <span class="o">=</span> <span class="n">ifr</span><span class="p">.</span><span class="n">ifr_ifindex</span><span class="p">;</span>
 
-<span class="n">connect</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">addr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">addr</span><span class="p">));</span>
+<span class="n">connect</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="nc">sockaddr</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">addr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">addr</span><span class="p">));</span>
 
 <span class="p">(..)</span>
 </pre></div>
@@ -1158,8 +1162,8 @@ element of the BCM message head. The defined number of CAN frames are added
 as array to the TX_SETUP BCM configuration message:</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/* create a struct to set up a sequence of four CAN frames */</span>
 <span class="k">struct</span> <span class="p">{</span>
-        <span class="k">struct</span> <span class="n">bcm_msg_head</span> <span class="n">msg_head</span><span class="p">;</span>
-        <span class="k">struct</span> <span class="n">can_frame</span> <span class="n">frame</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+        <span class="k">struct</span> <span class="nc">bcm_msg_head</span> <span class="n">msg_head</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="nc">can_frame</span> <span class="n">frame</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
 <span class="p">}</span> <span class="n">mytxmsg</span><span class="p">;</span>
 
 <span class="p">(..)</span>
@@ -1202,8 +1206,8 @@ filters) can be added as array to the TX_SETUP BCM configuration message:</p>
 <span class="cp">#define U64_DATA(p) (*(unsigned long long*)(p)-&gt;data)</span>
 
 <span class="k">struct</span> <span class="p">{</span>
-        <span class="k">struct</span> <span class="n">bcm_msg_head</span> <span class="n">msg_head</span><span class="p">;</span>
-        <span class="k">struct</span> <span class="n">can_frame</span> <span class="n">frame</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+        <span class="k">struct</span> <span class="nc">bcm_msg_head</span> <span class="n">msg_head</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="nc">can_frame</span> <span class="n">frame</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
 <span class="p">}</span> <span class="n">msg</span><span class="p">;</span>
 
 <span class="n">msg</span><span class="p">.</span><span class="n">msg_head</span><span class="p">.</span><span class="n">opcode</span>  <span class="o">=</span> <span class="n">RX_SETUP</span><span class="p">;</span>
@@ -1228,8 +1232,8 @@ schema for the CAN FD frames a new flag ‘CAN_FD_FRAME’ in the bcm_msg_head
 flags indicates that the concatenated CAN frame structures behind the
 bcm_msg_head are defined as struct canfd_frame:</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="p">{</span>
-        <span class="k">struct</span> <span class="n">bcm_msg_head</span> <span class="n">msg_head</span><span class="p">;</span>
-        <span class="k">struct</span> <span class="n">canfd_frame</span> <span class="n">frame</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+        <span class="k">struct</span> <span class="nc">bcm_msg_head</span> <span class="n">msg_head</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="nc">canfd_frame</span> <span class="n">frame</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
 <span class="p">}</span> <span class="n">msg</span><span class="p">;</span>
 
 <span class="n">msg</span><span class="p">.</span><span class="n">msg_head</span><span class="p">.</span><span class="n">opcode</span>  <span class="o">=</span> <span class="n">RX_SETUP</span><span class="p">;</span>
@@ -1681,37 +1685,29 @@ Search for CAN NETWORK [LAYERS|DRIVERS].</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="can_ucan_protocol.html" class="btn btn-neutral float-right" title="The UCAN Protocol" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="batman-adv.html" class="btn btn-neutral float-left" title="batman-adv" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="can_ucan_protocol.html" class="btn btn-neutral float-right" title="The UCAN Protocol" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="batman-adv.html" class="btn btn-neutral float-left" title="batman-adv" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

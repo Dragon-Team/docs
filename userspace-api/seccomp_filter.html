@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Seccomp BPF (SECure COMPuting with filters) &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -239,6 +241,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -252,7 +256,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/userspace-api/seccomp_filter.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -445,20 +449,20 @@ notifications from both tasks will appear on the same filter fd. Reads and
 writes to/from a filter fd are also synchronized, so a filter fd can safely
 have many readers.</p>
 <p>The interface for a seccomp notification fd consists of two structures:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">seccomp_notif_sizes</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">seccomp_notif_sizes</span> <span class="p">{</span>
     <span class="n">__u16</span> <span class="n">seccomp_notif</span><span class="p">;</span>
     <span class="n">__u16</span> <span class="n">seccomp_notif_resp</span><span class="p">;</span>
     <span class="n">__u16</span> <span class="n">seccomp_data</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="k">struct</span> <span class="n">seccomp_notif</span> <span class="p">{</span>
+<span class="k">struct</span> <span class="nc">seccomp_notif</span> <span class="p">{</span>
     <span class="n">__u64</span> <span class="n">id</span><span class="p">;</span>
     <span class="n">__u32</span> <span class="n">pid</span><span class="p">;</span>
     <span class="n">__u32</span> <span class="n">flags</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">seccomp_data</span> <span class="n">data</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">seccomp_data</span> <span class="n">data</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="k">struct</span> <span class="n">seccomp_notif_resp</span> <span class="p">{</span>
+<span class="k">struct</span> <span class="nc">seccomp_notif_resp</span> <span class="p">{</span>
     <span class="n">__u64</span> <span class="n">id</span><span class="p">;</span>
     <span class="n">__s64</span> <span class="n">val</span><span class="p">;</span>
     <span class="n">__s32</span> <span class="n">error</span><span class="p">;</span>
@@ -469,7 +473,7 @@ have many readers.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">seccomp_notif_sizes</span></code> structure can be used to determine the size
 of the various structures used in seccomp notifications. The size of <code class="docutils literal notranslate"><span class="pre">struct</span>
 <span class="pre">seccomp_data</span></code> may change in the future, so code should use:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">seccomp_notif_sizes</span> <span class="n">sizes</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">seccomp_notif_sizes</span> <span class="n">sizes</span><span class="p">;</span>
 <span class="n">seccomp</span><span class="p">(</span><span class="n">SECCOMP_GET_NOTIF_SIZES</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sizes</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -578,37 +582,29 @@ are indistinguishable from normal system calls.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="unshare.html" class="btn btn-neutral float-right" title="unshare system call" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="no_new_privs.html" class="btn btn-neutral float-left" title="No New Privileges Flag" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="unshare.html" class="btn btn-neutral float-right" title="unshare system call" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="no_new_privs.html" class="btn btn-neutral float-left" title="No New Privileges Flag" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

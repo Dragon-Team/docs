@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>The Linux Journalling API &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -233,6 +235,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -246,7 +250,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/filesystems/journalling.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -896,7 +900,7 @@ range of blocks on an arbitrary block device.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.jbd2_journal_init_inode">
-<a class="reference internal" href="#c.journal_t" title="journal_t">journal_t</a> *<code class="sig-name descname">jbd2_journal_init_inode</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.jbd2_journal_init_inode" title="Permalink to this definition">¶</a><br /></dt>
+<a class="reference internal" href="#c.journal_t" title="journal_t">journal_t</a> *<code class="sig-name descname">jbd2_journal_init_inode</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.jbd2_journal_init_inode" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.jbd2_journal_init_inode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>creates a journal which maps to a inode.</p>
 </dd></dl>
 
@@ -1457,7 +1461,7 @@ return -EIO if a jbd2_journal_abort has been executed since the
 transaction began.</p>
 <dl class="c function">
 <dt id="c.jbd2_journal_try_to_free_buffers">
-int <code class="sig-name descname">jbd2_journal_try_to_free_buffers</code><span class="sig-paren">(</span><a class="reference internal" href="#c.journal_t" title="journal_t">journal_t</a> *<em>journal</em>, <em class="property">struct</em> page *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.jbd2_journal_try_to_free_buffers" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">jbd2_journal_try_to_free_buffers</code><span class="sig-paren">(</span><a class="reference internal" href="#c.journal_t" title="journal_t">journal_t</a> *<em>journal</em>, <em class="property">struct</em> <a class="reference internal" href="#c.jbd2_journal_try_to_free_buffers" title="page">page</a> *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.jbd2_journal_try_to_free_buffers" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>try to free page buffers.</p>
 </dd></dl>
 
@@ -1493,7 +1497,7 @@ while the data is part of a transaction.  Yes?</p>
 <p>Return 0 on failure, 1 on success</p>
 <dl class="c function">
 <dt id="c.jbd2_journal_invalidatepage">
-int <code class="sig-name descname">jbd2_journal_invalidatepage</code><span class="sig-paren">(</span><a class="reference internal" href="#c.journal_t" title="journal_t">journal_t</a> *<em>journal</em>, <em class="property">struct</em> page *<em>page</em>, unsigned int <em>offset</em>, unsigned int <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#c.jbd2_journal_invalidatepage" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">jbd2_journal_invalidatepage</code><span class="sig-paren">(</span><a class="reference internal" href="#c.journal_t" title="journal_t">journal_t</a> *<em>journal</em>, <em class="property">struct</em> <a class="reference internal" href="#c.jbd2_journal_invalidatepage" title="page">page</a> *<em>page</em>, unsigned int <em>offset</em>, unsigned int <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#c.jbd2_journal_invalidatepage" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -1528,37 +1532,29 @@ Tweedie</a></p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="fscrypt.html" class="btn btn-neutral float-right" title="Filesystem-level encryption (fscrypt)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="porting.html" class="btn btn-neutral float-left" title="Changes since 2.5.0:" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="fscrypt.html" class="btn btn-neutral float-right" title="Filesystem-level encryption (fscrypt)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="porting.html" class="btn btn-neutral float-left" title="Changes since 2.5.0:" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

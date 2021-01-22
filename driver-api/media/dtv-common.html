@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>2.1. Digital TV Common functions &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -332,6 +334,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -349,7 +353,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../../_sources/driver-api/media/dtv-common.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -600,7 +604,7 @@ order to create the device nodes. Usually, driver should not initialize
 this struct diretly.</p>
 <dl class="c function">
 <dt id="c.dvb_register_adapter">
-int <code class="sig-name descname">dvb_register_adapter</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dvb_adapter" title="dvb_adapter">dvb_adapter</a> *<em>adap</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">struct</em> module *<em>module</em>, <em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<em>device</em>, short *<em>adapter_nums</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_register_adapter" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">dvb_register_adapter</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dvb_adapter" title="dvb_adapter">dvb_adapter</a> *<em>adap</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">struct</em> <a class="reference internal" href="#c.dvb_register_adapter" title="module">module</a> *<em>module</em>, <em class="property">struct</em> <a class="reference internal" href="#c.dvb_register_adapter" title="device">device</a> *<em>device</em>, short *<em>adapter_nums</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_register_adapter" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Registers a new DVB adapter</p>
 </dd></dl>
 
@@ -741,7 +745,7 @@ void <code class="sig-name descname">dvb_register_media_controller</code><span c
 </dl>
 <dl class="c function">
 <dt id="c.dvb_generic_open">
-int <code class="sig-name descname">dvb_generic_open</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> file *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_generic_open" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">dvb_generic_open</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dvb_generic_open" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> <a class="reference internal" href="#c.dvb_generic_open" title="file">file</a> *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_generic_open" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Digital TV open function, used by DVB devices</p>
 </dd></dl>
 
@@ -757,7 +761,7 @@ int <code class="sig-name descname">dvb_generic_open</code><span class="sig-pare
 OK and increment negative use count.</p>
 <dl class="c function">
 <dt id="c.dvb_generic_release">
-int <code class="sig-name descname">dvb_generic_release</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> file *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_generic_release" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">dvb_generic_release</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dvb_generic_release" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> <a class="reference internal" href="#c.dvb_generic_release" title="file">file</a> *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_generic_release" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Digital TV close function, used by DVB devices</p>
 </dd></dl>
 
@@ -773,7 +777,7 @@ int <code class="sig-name descname">dvb_generic_release</code><span class="sig-p
 OK and decrement negative use count.</p>
 <dl class="c function">
 <dt id="c.dvb_generic_ioctl">
-long <code class="sig-name descname">dvb_generic_ioctl</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, unsigned int <em>cmd</em>, unsigned long <em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_generic_ioctl" title="Permalink to this definition">¶</a><br /></dt>
+long <code class="sig-name descname">dvb_generic_ioctl</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dvb_generic_ioctl" title="file">file</a> *<em>file</em>, unsigned int <em>cmd</em>, unsigned long <em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_generic_ioctl" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Digital TV close function, used by DVB devices</p>
 </dd></dl>
 
@@ -791,7 +795,7 @@ long <code class="sig-name descname">dvb_generic_ioctl</code><span class="sig-pa
 If so, calls <a class="reference internal" href="#c.dvb_usercopy" title="dvb_usercopy"><code class="xref c c-func docutils literal notranslate"><span class="pre">dvb_usercopy()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.dvb_usercopy">
-int <code class="sig-name descname">dvb_usercopy</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, unsigned int <em>cmd</em>, unsigned long <em>arg</em>, int (*<em>func</em>)<span class="sig-paren">(</span><em class="property">struct</em> file *file, unsigned int cmd, void *arg<span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_usercopy" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">dvb_usercopy</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dvb_usercopy" title="file">file</a> *<em>file</em>, unsigned int <em>cmd</em>, unsigned long <em>arg</em>, int (*<em>func</em>)<span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dvb_usercopy" title="file">file</a> *file, unsigned int cmd, void *arg<span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_usercopy" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>copies data from/to userspace memory when an ioctl is issued.</p>
 </dd></dl>
 
@@ -1470,7 +1474,7 @@ can be NULL.</p>
 </dl>
 <dl class="c function">
 <dt id="c.dvb_vb2_poll">
-__poll_t <code class="sig-name descname">dvb_vb2_poll</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dvb_vb2_ctx" title="dvb_vb2_ctx">dvb_vb2_ctx</a> *<em>ctx</em>, <em class="property">struct</em> file *<em>file</em>, poll_table *<em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_vb2_poll" title="Permalink to this definition">¶</a><br /></dt>
+__poll_t <code class="sig-name descname">dvb_vb2_poll</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dvb_vb2_ctx" title="dvb_vb2_ctx">dvb_vb2_ctx</a> *<em>ctx</em>, <em class="property">struct</em> <a class="reference internal" href="#c.dvb_vb2_poll" title="file">file</a> *<em>file</em>, poll_table *<em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_vb2_poll" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Wrapper to <a class="reference internal" href="v4l2-videobuf2.html#c.vb2_core_streamon" title="vb2_core_streamon"><code class="xref c c-func docutils literal notranslate"><span class="pre">vb2_core_streamon()</span></code></a> for Digital TV buffer handling.</p>
 </dd></dl>
 
@@ -1616,37 +1620,29 @@ to the mmap file operation handler in the driver.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="dtv-frontend.html" class="btn btn-neutral float-right" title="2.2. Digital TV Frontend kABI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="dtv-core.html" class="btn btn-neutral float-left" title="2. Digital TV (DVB) devices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="dtv-frontend.html" class="btn btn-neutral float-right" title="2.2. Digital TV Frontend kABI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dtv-core.html" class="btn btn-neutral float-left" title="2. Digital TV (DVB) devices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>LSM BPF Programs &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -239,6 +241,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -252,7 +256,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/bpf/bpf_lsm.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -286,14 +290,14 @@ int <code class="sig-name descname">file_mprotect</code><span class="sig-paren">
 for accessing information from the attached eBPF program’s context. They can
 simply declare the structures in the eBPF program and only specify the fields
 that need to be accessed.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">mm_struct</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">mm_struct</span> <span class="p">{</span>
         <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">start_brk</span><span class="p">,</span> <span class="n">brk</span><span class="p">,</span> <span class="n">start_stack</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">preserve_access_index</span><span class="p">));</span>
 
-<span class="k">struct</span> <span class="n">vm_area_struct</span> <span class="p">{</span>
+<span class="k">struct</span> <span class="nc">vm_area_struct</span> <span class="p">{</span>
         <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">start_brk</span><span class="p">,</span> <span class="n">brk</span><span class="p">,</span> <span class="n">start_stack</span><span class="p">;</span>
         <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">vm_start</span><span class="p">,</span> <span class="n">vm_end</span><span class="p">;</span>
-        <span class="k">struct</span> <span class="n">mm_struct</span> <span class="o">*</span><span class="n">vm_mm</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="nc">mm_struct</span> <span class="o">*</span><span class="n">vm_mm</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">preserve_access_index</span><span class="p">));</span>
 </pre></div>
 </div>
@@ -325,7 +329,7 @@ be attached to</p></li>
 </ul>
 </div></blockquote>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">SEC</span><span class="p">(</span><span class="s">&quot;lsm/file_mprotect&quot;</span><span class="p">)</span>
-<span class="kt">int</span> <span class="n">BPF_PROG</span><span class="p">(</span><span class="n">mprotect_audit</span><span class="p">,</span> <span class="k">struct</span> <span class="n">vm_area_struct</span> <span class="o">*</span><span class="n">vma</span><span class="p">,</span>
+<span class="kt">int</span> <span class="n">BPF_PROG</span><span class="p">(</span><span class="n">mprotect_audit</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">vm_area_struct</span> <span class="o">*</span><span class="n">vma</span><span class="p">,</span>
              <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">reqprot</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">prot</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ret</span><span class="p">)</span>
 <span class="p">{</span>
         <span class="cm">/* ret is the return value from the previous BPF program</span>
@@ -356,7 +360,7 @@ also validates all the accesses made to the various types in the eBPF program.</
 <h2>Loading<a class="headerlink" href="#loading" title="Permalink to this headline">¶</a></h2>
 <p>eBPF programs can be loaded with the <em class="manpage">bpf(2)</em> syscall’s
 <code class="docutils literal notranslate"><span class="pre">BPF_PROG_LOAD</span></code> operation:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">bpf_object</span> <span class="o">*</span><span class="n">obj</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">bpf_object</span> <span class="o">*</span><span class="n">obj</span><span class="p">;</span>
 
 <span class="n">obj</span> <span class="o">=</span> <span class="n">bpf_object__open</span><span class="p">(</span><span class="s">&quot;./my_prog.o&quot;</span><span class="p">);</span>
 <span class="n">bpf_object__load</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
@@ -392,37 +396,29 @@ userspace code in <a class="reference external" href="https://git.kernel.org/pub
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="prog_sk_lookup.html" class="btn btn-neutral float-right" title="BPF sk_lookup program" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="prog_flow_dissector.html" class="btn btn-neutral float-left" title="BPF_PROG_TYPE_FLOW_DISSECTOR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="prog_sk_lookup.html" class="btn btn-neutral float-right" title="BPF sk_lookup program" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="prog_flow_dissector.html" class="btn btn-neutral float-left" title="BPF_PROG_TYPE_FLOW_DISSECTOR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

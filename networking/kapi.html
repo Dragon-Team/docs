@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Linux Networking and Network Devices APIs &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -358,6 +360,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -371,7 +375,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/networking/kapi.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -1549,7 +1553,7 @@ returned or <code class="docutils literal notranslate"><span class="pre">NULL</s
 </dl>
 <dl class="c function">
 <dt id="c.__skb_fill_page_desc">
-void <code class="sig-name descname">__skb_fill_page_desc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, int <em>i</em>, <em class="property">struct</em> page *<em>page</em>, int <em>off</em>, int <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__skb_fill_page_desc" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">__skb_fill_page_desc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, int <em>i</em>, <em class="property">struct</em> <a class="reference internal" href="#c.__skb_fill_page_desc" title="page">page</a> *<em>page</em>, int <em>off</em>, int <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__skb_fill_page_desc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>initialise a paged fragment in an skb</p>
 </dd></dl>
 
@@ -1572,7 +1576,7 @@ offset <strong>off</strong> within <strong>page</strong>.</p>
 <p>Does not take any additional reference on the fragment.</p>
 <dl class="c function">
 <dt id="c.skb_fill_page_desc">
-void <code class="sig-name descname">skb_fill_page_desc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, int <em>i</em>, <em class="property">struct</em> page *<em>page</em>, int <em>off</em>, int <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_fill_page_desc" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">skb_fill_page_desc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, int <em>i</em>, <em class="property">struct</em> <a class="reference internal" href="#c.skb_fill_page_desc" title="page">page</a> *<em>page</em>, int <em>off</em>, int <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_fill_page_desc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>initialise a paged fragment in an skb</p>
 </dd></dl>
 
@@ -1777,7 +1781,7 @@ allocates memory it can be called from an interrupt.</p>
 <p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> is returned if there is no free memory.</p>
 <dl class="c function">
 <dt id="c.skb_propagate_pfmemalloc">
-void <code class="sig-name descname">skb_propagate_pfmemalloc</code><span class="sig-paren">(</span><em class="property">struct</em> page *<em>page</em>, <em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_propagate_pfmemalloc" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">skb_propagate_pfmemalloc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.skb_propagate_pfmemalloc" title="page">page</a> *<em>page</em>, <em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_propagate_pfmemalloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Propagate pfmemalloc if skb is allocated after RX page</p>
 </dd></dl>
 
@@ -1950,7 +1954,7 @@ void <code class="sig-name descname">skb_frag_page_copy</code><span class="sig-p
 </dl>
 <dl class="c function">
 <dt id="c.__skb_frag_set_page">
-void <code class="sig-name descname">__skb_frag_set_page</code><span class="sig-paren">(</span>skb_frag_t *<em>frag</em>, <em class="property">struct</em> page *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__skb_frag_set_page" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">__skb_frag_set_page</code><span class="sig-paren">(</span>skb_frag_t *<em>frag</em>, <em class="property">struct</em> <a class="reference internal" href="#c.__skb_frag_set_page" title="page">page</a> *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__skb_frag_set_page" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>sets the page contained in a paged fragment</p>
 </dd></dl>
 
@@ -1965,7 +1969,7 @@ void <code class="sig-name descname">__skb_frag_set_page</code><span class="sig-
 <p>Sets the fragment <strong>frag</strong> to contain <strong>page</strong>.</p>
 <dl class="c function">
 <dt id="c.skb_frag_set_page">
-void <code class="sig-name descname">skb_frag_set_page</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, int <em>f</em>, <em class="property">struct</em> page *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_frag_set_page" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">skb_frag_set_page</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, int <em>f</em>, <em class="property">struct</em> <a class="reference internal" href="#c.skb_frag_set_page" title="page">page</a> *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_frag_set_page" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>sets the page contained in a paged fragment of an skb</p>
 </dd></dl>
 
@@ -3129,7 +3133,7 @@ This function uses GFP_KERNEL internally.</p>
 </dl>
 <dl class="c function">
 <dt id="c.sock_from_file">
-<em class="property">struct</em> <a class="reference internal" href="#c.socket" title="socket">socket</a> *<code class="sig-name descname">sock_from_file</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sock_from_file" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.socket" title="socket">socket</a> *<code class="sig-name descname">sock_from_file</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.sock_from_file" title="file">file</a> *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sock_from_file" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return the <a class="reference internal" href="#c.socket" title="socket"><code class="xref c c-type docutils literal notranslate"><span class="pre">socket</span></code></a> bounded to <strong>file</strong>.</p>
 </dd></dl>
 
@@ -3323,7 +3327,7 @@ This function internally uses GFP_KERNEL.</p>
 </dl>
 <dl class="c function">
 <dt id="c.__sock_create">
-int <code class="sig-name descname">__sock_create</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, int <em>family</em>, int <em>type</em>, int <em>protocol</em>, <em class="property">struct</em> <a class="reference internal" href="#c.socket" title="socket">socket</a> **<em>res</em>, int <em>kern</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__sock_create" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">__sock_create</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.__sock_create" title="net">net</a> *<em>net</em>, int <em>family</em>, int <em>type</em>, int <em>protocol</em>, <em class="property">struct</em> <a class="reference internal" href="#c.socket" title="socket">socket</a> **<em>res</em>, int <em>kern</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__sock_create" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>creates a socket</p>
 </dd></dl>
 
@@ -3367,7 +3371,7 @@ Returns 0 or an error. This function internally uses GFP_KERNEL.</p>
 </dl>
 <dl class="c function">
 <dt id="c.sock_create_kern">
-int <code class="sig-name descname">sock_create_kern</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, int <em>family</em>, int <em>type</em>, int <em>protocol</em>, <em class="property">struct</em> <a class="reference internal" href="#c.socket" title="socket">socket</a> **<em>res</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sock_create_kern" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">sock_create_kern</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.sock_create_kern" title="net">net</a> *<em>net</em>, int <em>family</em>, int <em>type</em>, int <em>protocol</em>, <em class="property">struct</em> <a class="reference internal" href="#c.socket" title="socket">socket</a> **<em>res</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sock_create_kern" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>creates a socket (kernel space)</p>
 </dd></dl>
 
@@ -3520,8 +3524,8 @@ Returns 0 or an error code.</p>
 </dl>
 <dl class="c function">
 <dt id="c.kernel_sendpage">
-int <code class="sig-name descname">kernel_sendpage</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.socket" title="socket">socket</a> *<em>sock</em>, <em class="property">struct</em> page *<em>page</em>, int <em>offset</em>, size_t <em>size</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.kernel_sendpage" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>send a <a class="reference internal" href="#c.kernel_sendpage.page" title="page"><code class="xref c c-type docutils literal notranslate"><span class="pre">page</span></code></a> through a socket (kernel space)</p>
+int <code class="sig-name descname">kernel_sendpage</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.socket" title="socket">socket</a> *<em>sock</em>, <em class="property">struct</em> <a class="reference internal" href="#c.kernel_sendpage" title="page">page</a> *<em>page</em>, int <em>offset</em>, size_t <em>size</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.kernel_sendpage" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>send a <a class="reference internal" href="#c.kernel_sendpage" title="page"><code class="xref c c-type docutils literal notranslate"><span class="pre">page</span></code></a> through a socket (kernel space)</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -3540,8 +3544,8 @@ int <code class="sig-name descname">kernel_sendpage</code><span class="sig-paren
 </dl>
 <dl class="c function">
 <dt id="c.kernel_sendpage_locked">
-int <code class="sig-name descname">kernel_sendpage_locked</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.sock" title="sock">sock</a> *<em>sk</em>, <em class="property">struct</em> page *<em>page</em>, int <em>offset</em>, size_t <em>size</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.kernel_sendpage_locked" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>send a <a class="reference internal" href="#c.kernel_sendpage_locked.page" title="page"><code class="xref c c-type docutils literal notranslate"><span class="pre">page</span></code></a> through the locked sock (kernel space)</p>
+int <code class="sig-name descname">kernel_sendpage_locked</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.sock" title="sock">sock</a> *<em>sk</em>, <em class="property">struct</em> <a class="reference internal" href="#c.kernel_sendpage_locked" title="page">page</a> *<em>page</em>, int <em>offset</em>, size_t <em>size</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.kernel_sendpage_locked" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>send a <a class="reference internal" href="#c.kernel_sendpage_locked" title="page"><code class="xref c c-type docutils literal notranslate"><span class="pre">page</span></code></a> through the locked sock (kernel space)</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -4748,7 +4752,7 @@ It’s the responsibility of the admin to adjust min_free_kbytes
 to meet the requirements</p>
 <dl class="c function">
 <dt id="c.sk_alloc">
-<em class="property">struct</em> <a class="reference internal" href="#c.sock" title="sock">sock</a> *<code class="sig-name descname">sk_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, int <em>family</em>, gfp_t <em>priority</em>, <em class="property">struct</em> proto *<em>prot</em>, int <em>kern</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sk_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.sock" title="sock">sock</a> *<code class="sig-name descname">sk_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.sk_alloc" title="net">net</a> *<em>net</em>, int <em>family</em>, gfp_t <em>priority</em>, <em class="property">struct</em> proto *<em>prot</em>, int <em>kern</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sk_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>All socket objects are allocated here</p>
 </dd></dl>
 
@@ -5071,7 +5075,7 @@ int <code class="sig-name descname">skb_copy_and_csum_datagram_msg</code><span c
 </dl>
 <dl class="c function">
 <dt id="c.datagram_poll">
-__poll_t <code class="sig-name descname">datagram_poll</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, <em class="property">struct</em> <a class="reference internal" href="#c.socket" title="socket">socket</a> *<em>sock</em>, poll_table *<em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.datagram_poll" title="Permalink to this definition">¶</a><br /></dt>
+__poll_t <code class="sig-name descname">datagram_poll</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.datagram_poll" title="file">file</a> *<em>file</em>, <em class="property">struct</em> <a class="reference internal" href="#c.socket" title="socket">socket</a> *<em>sock</em>, poll_table *<em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.datagram_poll" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>generic datagram poll</p>
 </dd></dl>
 
@@ -6111,7 +6115,7 @@ to make sure the reply fits.  This function reduces that reserved
 space to be the amount of space used already, plus <strong>space</strong>.</p>
 <dl class="c function">
 <dt id="c.svc_find_xprt">
-<em class="property">struct</em> svc_xprt *<code class="sig-name descname">svc_find_xprt</code><span class="sig-paren">(</span><em class="property">struct</em> svc_serv *<em>serv</em>, <em class="property">const</em> char *<em>xcl_name</em>, <em class="property">struct</em> net *<em>net</em>, <em class="property">const</em> sa_family_t <em>af</em>, <em class="property">const</em> unsigned short <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.svc_find_xprt" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> svc_xprt *<code class="sig-name descname">svc_find_xprt</code><span class="sig-paren">(</span><em class="property">struct</em> svc_serv *<em>serv</em>, <em class="property">const</em> char *<em>xcl_name</em>, <em class="property">struct</em> <a class="reference internal" href="#c.svc_find_xprt" title="net">net</a> *<em>net</em>, <em class="property">const</em> sa_family_t <em>af</em>, <em class="property">const</em> unsigned short <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.svc_find_xprt" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find an RPC transport instance</p>
 </dd></dl>
 
@@ -6687,7 +6691,7 @@ responses to upcalls.  They will result in calls to <strong>msg-&gt;downcall</st
 from the file pointer, via RPC_I(file_inode(file))-&gt;private.</p>
 <dl class="c function">
 <dt id="c.rpc_unlink">
-int <code class="sig-name descname">rpc_unlink</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.rpc_unlink" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">rpc_unlink</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.rpc_unlink" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.rpc_unlink" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove a pipe</p>
 </dd></dl>
 
@@ -6728,7 +6732,7 @@ void <code class="sig-name descname">rpc_init_pipe_dir_object</code><span class=
 </dl>
 <dl class="c function">
 <dt id="c.rpc_add_pipe_dir_object">
-int <code class="sig-name descname">rpc_add_pipe_dir_object</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> rpc_pipe_dir_head *<em>pdh</em>, <em class="property">struct</em> rpc_pipe_dir_object *<em>pdo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.rpc_add_pipe_dir_object" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">rpc_add_pipe_dir_object</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.rpc_add_pipe_dir_object" title="net">net</a> *<em>net</em>, <em class="property">struct</em> rpc_pipe_dir_head *<em>pdh</em>, <em class="property">struct</em> rpc_pipe_dir_object *<em>pdo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.rpc_add_pipe_dir_object" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>associate a rpc_pipe_dir_object to a directory</p>
 </dd></dl>
 
@@ -6743,7 +6747,7 @@ int <code class="sig-name descname">rpc_add_pipe_dir_object</code><span class="s
 </dl>
 <dl class="c function">
 <dt id="c.rpc_remove_pipe_dir_object">
-void <code class="sig-name descname">rpc_remove_pipe_dir_object</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> rpc_pipe_dir_head *<em>pdh</em>, <em class="property">struct</em> rpc_pipe_dir_object *<em>pdo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.rpc_remove_pipe_dir_object" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">rpc_remove_pipe_dir_object</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.rpc_remove_pipe_dir_object" title="net">net</a> *<em>net</em>, <em class="property">struct</em> rpc_pipe_dir_head *<em>pdh</em>, <em class="property">struct</em> rpc_pipe_dir_object *<em>pdo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.rpc_remove_pipe_dir_object" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove a rpc_pipe_dir_object from a directory</p>
 </dd></dl>
 
@@ -6758,7 +6762,7 @@ void <code class="sig-name descname">rpc_remove_pipe_dir_object</code><span clas
 </dl>
 <dl class="c function">
 <dt id="c.rpc_find_or_alloc_pipe_dir_object">
-<em class="property">struct</em> rpc_pipe_dir_object *<code class="sig-name descname">rpc_find_or_alloc_pipe_dir_object</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> rpc_pipe_dir_head *<em>pdh</em>, int (*<em>match</em>)<span class="sig-paren">(</span><em class="property">struct</em> rpc_pipe_dir_object*, void*<span class="sig-paren">)</span>, <em class="property">struct</em> rpc_pipe_dir_object *(*<em>alloc</em>)<span class="sig-paren">(</span>void*<span class="sig-paren">)</span>, void *<em>data</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.rpc_find_or_alloc_pipe_dir_object" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> rpc_pipe_dir_object *<code class="sig-name descname">rpc_find_or_alloc_pipe_dir_object</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.rpc_find_or_alloc_pipe_dir_object" title="net">net</a> *<em>net</em>, <em class="property">struct</em> rpc_pipe_dir_head *<em>pdh</em>, int (*<em>match</em>)<span class="sig-paren">(</span><em class="property">struct</em> rpc_pipe_dir_object*, void*<span class="sig-paren">)</span>, <em class="property">struct</em> rpc_pipe_dir_object *(*<em>alloc</em>)<span class="sig-paren">(</span>void*<span class="sig-paren">)</span>, void *<em>data</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.rpc_find_or_alloc_pipe_dir_object" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -7268,7 +7272,7 @@ user to get this info.</p>
 </dl>
 <dl class="c function">
 <dt id="c.__dev_get_by_name">
-<em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<code class="sig-name descname">__dev_get_by_name</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__dev_get_by_name" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<code class="sig-name descname">__dev_get_by_name</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.__dev_get_by_name" title="net">net</a> *<em>net</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__dev_get_by_name" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find a device by its name</p>
 </dd></dl>
 
@@ -7286,7 +7290,7 @@ careful with locks.</p>
 </dl>
 <dl class="c function">
 <dt id="c.dev_get_by_name_rcu">
-<em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<code class="sig-name descname">dev_get_by_name_rcu</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_get_by_name_rcu" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<code class="sig-name descname">dev_get_by_name_rcu</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dev_get_by_name_rcu" title="net">net</a> *<em>net</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_get_by_name_rcu" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find a device by its name</p>
 </dd></dl>
 
@@ -7305,7 +7309,7 @@ The reference counters are not incremented so the caller must be
 careful with locks. The caller must hold RCU lock.</p>
 <dl class="c function">
 <dt id="c.dev_get_by_name">
-<em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<code class="sig-name descname">dev_get_by_name</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_get_by_name" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<code class="sig-name descname">dev_get_by_name</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dev_get_by_name" title="net">net</a> *<em>net</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_get_by_name" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find a device by its name</p>
 </dd></dl>
 
@@ -7323,7 +7327,7 @@ matching device is found.</p>
 </dl>
 <dl class="c function">
 <dt id="c.__dev_get_by_index">
-<em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<code class="sig-name descname">__dev_get_by_index</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, int <em>ifindex</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__dev_get_by_index" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<code class="sig-name descname">__dev_get_by_index</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.__dev_get_by_index" title="net">net</a> *<em>net</em>, int <em>ifindex</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__dev_get_by_index" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find a device by its ifindex</p>
 </dd></dl>
 
@@ -7341,7 +7345,7 @@ or <strong>dev_base_lock</strong>.</p>
 </dl>
 <dl class="c function">
 <dt id="c.dev_get_by_index_rcu">
-<em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<code class="sig-name descname">dev_get_by_index_rcu</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, int <em>ifindex</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_get_by_index_rcu" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<code class="sig-name descname">dev_get_by_index_rcu</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dev_get_by_index_rcu" title="net">net</a> *<em>net</em>, int <em>ifindex</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_get_by_index_rcu" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find a device by its ifindex</p>
 </dd></dl>
 
@@ -7358,7 +7362,7 @@ about locking. The caller must hold RCU lock.</p>
 </dl>
 <dl class="c function">
 <dt id="c.dev_get_by_index">
-<em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<code class="sig-name descname">dev_get_by_index</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, int <em>ifindex</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_get_by_index" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<code class="sig-name descname">dev_get_by_index</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dev_get_by_index" title="net">net</a> *<em>net</em>, int <em>ifindex</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_get_by_index" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find a device by its ifindex</p>
 </dd></dl>
 
@@ -7390,7 +7394,7 @@ about locking. The caller must hold RCU lock.</p>
 </dl>
 <dl class="c function">
 <dt id="c.dev_getbyhwaddr_rcu">
-<em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<code class="sig-name descname">dev_getbyhwaddr_rcu</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, unsigned short <em>type</em>, <em class="property">const</em> char *<em>ha</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_getbyhwaddr_rcu" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<code class="sig-name descname">dev_getbyhwaddr_rcu</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dev_getbyhwaddr_rcu" title="net">net</a> *<em>net</em>, unsigned short <em>type</em>, <em class="property">const</em> char *<em>ha</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_getbyhwaddr_rcu" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find a device by its hardware address</p>
 </dd></dl>
 
@@ -7410,7 +7414,7 @@ and the caller must therefore be careful about locking</p>
 </dl>
 <dl class="c function">
 <dt id="c.__dev_get_by_flags">
-<em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<code class="sig-name descname">__dev_get_by_flags</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, unsigned short <em>if_flags</em>, unsigned short <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__dev_get_by_flags" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<code class="sig-name descname">__dev_get_by_flags</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.__dev_get_by_flags" title="net">net</a> *<em>net</em>, unsigned short <em>if_flags</em>, unsigned short <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__dev_get_by_flags" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find any device with given flags</p>
 </dd></dl>
 
@@ -7624,7 +7628,7 @@ for all devices on the device list to the removed notifier to remove
 the need for special case cleanup code.</p>
 <dl class="c function">
 <dt id="c.register_netdevice_notifier_net">
-int <code class="sig-name descname">register_netdevice_notifier_net</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> notifier_block *<em>nb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.register_netdevice_notifier_net" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">register_netdevice_notifier_net</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.register_netdevice_notifier_net" title="net">net</a> *<em>net</em>, <em class="property">struct</em> notifier_block *<em>nb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.register_netdevice_notifier_net" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a per-netns network notifier block</p>
 </dd></dl>
 
@@ -7645,7 +7649,7 @@ to the new notifier to allow device to have a race free
 view of the network device list.</p>
 <dl class="c function">
 <dt id="c.unregister_netdevice_notifier_net">
-int <code class="sig-name descname">unregister_netdevice_notifier_net</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> notifier_block *<em>nb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.unregister_netdevice_notifier_net" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">unregister_netdevice_notifier_net</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.unregister_netdevice_notifier_net" title="net">net</a> *<em>net</em>, <em class="property">struct</em> notifier_block *<em>nb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.unregister_netdevice_notifier_net" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unregister a per-netns network notifier block</p>
 </dd></dl>
 
@@ -7806,7 +7810,7 @@ only possible when GSO is used for verifying header integrity.</p>
 </dl>
 <dl class="c function">
 <dt id="c.dev_loopback_xmit">
-int <code class="sig-name descname">dev_loopback_xmit</code><span class="sig-paren">(</span><em class="property">struct</em> net *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.sock" title="sock">sock</a> *<em>sk</em>, <em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_loopback_xmit" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">dev_loopback_xmit</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dev_loopback_xmit" title="net">net</a> *<em>net</em>, <em class="property">struct</em> <a class="reference internal" href="#c.sock" title="sock">sock</a> *<em>sk</em>, <em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_loopback_xmit" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>loop back <strong>skb</strong></p>
 </dd></dl>
 
@@ -8767,7 +8771,7 @@ unregister_netdevice.</p>
 </dl>
 <dl class="c function">
 <dt id="c.dev_change_net_namespace">
-int <code class="sig-name descname">dev_change_net_namespace</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<em>dev</em>, <em class="property">struct</em> net *<em>net</em>, <em class="property">const</em> char *<em>pat</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_change_net_namespace" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">dev_change_net_namespace</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.dev_change_net_namespace" title="net">net</a> *<em>net</em>, <em class="property">const</em> char *<em>pat</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_change_net_namespace" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>move device to different nethost namespace</p>
 </dd></dl>
 
@@ -15810,37 +15814,29 @@ module. <strong>bus</strong> should have been added by <a class="reference inter
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="msg_zerocopy.html" class="btn btn-neutral float-right" title="MSG_ZEROCOPY" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="j1939.html" class="btn btn-neutral float-left" title="J1939 Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="msg_zerocopy.html" class="btn btn-neutral float-right" title="MSG_ZEROCOPY" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="j1939.html" class="btn btn-neutral float-left" title="J1939 Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

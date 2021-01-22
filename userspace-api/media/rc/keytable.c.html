@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>5.1. file: uapi/v4l/keytable.c &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../../../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -249,6 +251,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -268,7 +272,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../../../_sources/userspace-api/media/rc/keytable.c.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -311,7 +315,7 @@
 
 <span class="kt">void</span> <span class="nf">prtcode</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">codes</span><span class="p">)</span>
 <span class="p">{</span>
-        <span class="k">struct</span> <span class="n">parse_key</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="nc">parse_key</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
 
         <span class="k">for</span> <span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">keynames</span><span class="p">;</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">name</span><span class="o">!=</span><span class="nb">NULL</span><span class="p">;</span><span class="n">p</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">==</span> <span class="p">(</span><span class="kt">unsigned</span><span class="p">)</span><span class="n">codes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
@@ -328,14 +332,14 @@
 
 <span class="kt">int</span> <span class="nf">parse_code</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">string</span><span class="p">)</span>
 <span class="p">{</span>
-        <span class="k">struct</span> <span class="n">parse_key</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="nc">parse_key</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
 
         <span class="k">for</span> <span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">keynames</span><span class="p">;</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">name</span><span class="o">!=</span><span class="nb">NULL</span><span class="p">;</span><span class="n">p</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">strcasecmp</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span> <span class="n">string</span><span class="p">))</span> <span class="p">{</span>
                         <span class="k">return</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">;</span>
                 <span class="p">}</span>
         <span class="p">}</span>
-        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
@@ -348,12 +352,12 @@
                 <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;usage: %s &lt;device&gt; to get table; or</span><span class="se">\\</span><span class="s">n&quot;</span>
                         <span class="s">&quot;       %s &lt;device&gt; &lt;scancode&gt; &lt;keycode&gt;</span><span class="se">\\</span><span class="s">n&quot;</span>
                         <span class="s">&quot;       %s &lt;device&gt; &lt;keycode_file&gt;n&quot;</span><span class="p">,</span><span class="o">*</span><span class="n">argv</span><span class="p">,</span><span class="o">*</span><span class="n">argv</span><span class="p">,</span><span class="o">*</span><span class="n">argv</span><span class="p">);</span>
-                <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+                <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
         <span class="p">}</span>
 
         <span class="k">if</span> <span class="p">((</span><span class="n">fd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">O_RDONLY</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
                 <span class="n">perror</span><span class="p">(</span><span class="s">&quot;Couldn&#39;t open input device&quot;</span><span class="p">);</span>
-                <span class="k">return</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+                <span class="k">return</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
         <span class="p">}</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="n">argc</span><span class="o">==</span><span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
@@ -361,7 +365,7 @@
 
                 <span class="n">value</span><span class="o">=</span><span class="n">parse_code</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
 
-                <span class="k">if</span> <span class="p">(</span><span class="n">value</span><span class="o">==-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">value</span><span class="o">==</span><span class="mi">-1</span><span class="p">)</span> <span class="p">{</span>
                         <span class="n">value</span> <span class="o">=</span> <span class="n">strtol</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
                         <span class="k">if</span> <span class="p">(</span><span class="n">errno</span><span class="p">)</span>
                                 <span class="n">perror</span><span class="p">(</span><span class="s">&quot;value&quot;</span><span class="p">);</span>
@@ -386,7 +390,7 @@
                 <span class="n">fin</span><span class="o">=</span><span class="n">fopen</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="s">&quot;r&quot;</span><span class="p">);</span>
                 <span class="k">if</span> <span class="p">(</span><span class="n">fin</span><span class="o">==</span><span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
                         <span class="n">perror</span> <span class="p">(</span><span class="s">&quot;opening keycode file&quot;</span><span class="p">);</span>
-                        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+                        <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
                 <span class="p">}</span>
 
                 <span class="cm">/* Clears old table */</span>
@@ -402,27 +406,27 @@
                         <span class="n">scancode</span><span class="o">=</span><span class="n">strtok</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="s">&quot;</span><span class="se">\\</span><span class="s">n</span><span class="se">\\</span><span class="s">t =:&quot;</span><span class="p">);</span>
                         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">scancode</span><span class="p">)</span> <span class="p">{</span>
                                 <span class="n">perror</span> <span class="p">(</span><span class="s">&quot;parsing input file scancode&quot;</span><span class="p">);</span>
-                                <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+                                <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
                         <span class="p">}</span>
                         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">strcasecmp</span><span class="p">(</span><span class="n">scancode</span><span class="p">,</span> <span class="s">&quot;scancode&quot;</span><span class="p">))</span> <span class="p">{</span>
                                 <span class="n">scancode</span> <span class="o">=</span> <span class="n">strtok</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="s">&quot;</span><span class="se">\\</span><span class="s">n</span><span class="se">\\</span><span class="s">t =:&quot;</span><span class="p">);</span>
                                 <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">scancode</span><span class="p">)</span> <span class="p">{</span>
                                         <span class="n">perror</span> <span class="p">(</span><span class="s">&quot;parsing input file scancode&quot;</span><span class="p">);</span>
-                                        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+                                        <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
                                 <span class="p">}</span>
                         <span class="p">}</span>
 
                         <span class="n">keycode</span><span class="o">=</span><span class="n">strtok</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="s">&quot;</span><span class="se">\\</span><span class="s">n</span><span class="se">\\</span><span class="s">t =:(&quot;</span><span class="p">);</span>
                         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">keycode</span><span class="p">)</span> <span class="p">{</span>
                                 <span class="n">perror</span> <span class="p">(</span><span class="s">&quot;parsing input file keycode&quot;</span><span class="p">);</span>
-                                <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+                                <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
                         <span class="p">}</span>
 
                         <span class="c1">// printf (&quot;parsing %s=%s:&quot;, scancode, keycode);</span>
                         <span class="n">value</span><span class="o">=</span><span class="n">parse_code</span><span class="p">(</span><span class="n">keycode</span><span class="p">);</span>
                         <span class="c1">// printf (&quot;\\tvalue=%d\\n&quot;,value);</span>
 
-                        <span class="k">if</span> <span class="p">(</span><span class="n">value</span><span class="o">==-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">value</span><span class="o">==</span><span class="mi">-1</span><span class="p">)</span> <span class="p">{</span>
                                 <span class="n">value</span> <span class="o">=</span> <span class="n">strtol</span><span class="p">(</span><span class="n">keycode</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
                                 <span class="k">if</span> <span class="p">(</span><span class="n">errno</span><span class="p">)</span>
                                         <span class="n">perror</span><span class="p">(</span><span class="s">&quot;value&quot;</span><span class="p">);</span>
@@ -462,37 +466,29 @@
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="lirc-dev.html" class="btn btn-neutral float-right" title="6. LIRC Device Interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="rc-table-change.html" class="btn btn-neutral float-left" title="5. Changing default Remote Controller mappings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="lirc-dev.html" class="btn btn-neutral float-right" title="6. LIRC Device Interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="rc-table-change.html" class="btn btn-neutral float-left" title="5. Changing default Remote Controller mappings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

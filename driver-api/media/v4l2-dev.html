@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>1.4. Video device’ s internal representation &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -354,6 +356,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -371,7 +375,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../../_sources/driver-api/media/v4l2-dev.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -391,7 +395,7 @@
 <a class="reference internal" href="#c.video_device" title="video_device"><code class="xref c c-type docutils literal notranslate"><span class="pre">video_device</span></code></a> struct (<code class="docutils literal notranslate"><span class="pre">v4l2-dev.h</span></code>). This struct can either be
 allocated dynamically or embedded in a larger struct.</p>
 <p>To allocate it dynamically use <a class="reference internal" href="#c.video_device_alloc" title="video_device_alloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">video_device_alloc()</span></code></a>:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">video_device</span> <span class="o">*</span><span class="n">vdev</span> <span class="o">=</span> <span class="n">video_device_alloc</span><span class="p">();</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">video_device</span> <span class="o">*</span><span class="n">vdev</span> <span class="o">=</span> <span class="n">video_device_alloc</span><span class="p">();</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="n">vdev</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
         <span class="k">return</span> <span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
@@ -401,7 +405,7 @@ allocated dynamically or embedded in a larger struct.</p>
 </div>
 <p>If you embed it in a larger struct, then you must set the <code class="docutils literal notranslate"><span class="pre">release()</span></code>
 callback to your own function:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">video_device</span> <span class="o">*</span><span class="n">vdev</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">my_vdev</span><span class="o">-&gt;</span><span class="n">vdev</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">video_device</span> <span class="o">*</span><span class="n">vdev</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">my_vdev</span><span class="o">-&gt;</span><span class="n">vdev</span><span class="p">;</span>
 
 <span class="n">vdev</span><span class="o">-&gt;</span><span class="n">release</span> <span class="o">=</span> <span class="n">my_vdev_release</span><span class="p">;</span>
 </pre></div>
@@ -485,7 +489,7 @@ used.</p>
 <p>If integration with the media framework is needed, you must initialize the
 <a class="reference internal" href="mc-core.html#c.media_entity" title="media_entity"><code class="xref c c-type docutils literal notranslate"><span class="pre">media_entity</span></code></a> struct embedded in the <a class="reference internal" href="#c.video_device" title="video_device"><code class="xref c c-type docutils literal notranslate"><span class="pre">video_device</span></code></a> struct
 (entity field) by calling <a class="reference internal" href="mc-core.html#c.media_entity_pads_init" title="media_entity_pads_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">media_entity_pads_init()</span></code></a>:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">media_pad</span> <span class="o">*</span><span class="n">pad</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">my_vdev</span><span class="o">-&gt;</span><span class="n">pad</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">media_pad</span> <span class="o">*</span><span class="n">pad</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">my_vdev</span><span class="o">-&gt;</span><span class="n">pad</span><span class="p">;</span>
 <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>
 
 <span class="n">err</span> <span class="o">=</span> <span class="n">media_entity_pads_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">vdev</span><span class="o">-&gt;</span><span class="n">entity</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">pad</span><span class="p">);</span>
@@ -535,7 +539,7 @@ That way you can be sure no ioctl is running when you call
 <h2><span class="section-number">1.4.2. </span>Video device registration<a class="headerlink" href="#video-device-registration" title="Permalink to this headline">¶</a></h2>
 <p>Next you register the video device with <a class="reference internal" href="#c.video_register_device" title="video_register_device"><code class="xref c c-func docutils literal notranslate"><span class="pre">video_register_device()</span></code></a>.
 This will create the character device for you.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">err</span> <span class="o">=</span> <span class="n">video_register_device</span><span class="p">(</span><span class="n">vdev</span><span class="p">,</span> <span class="n">VFL_TYPE_VIDEO</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">err</span> <span class="o">=</span> <span class="n">video_register_device</span><span class="p">(</span><span class="n">vdev</span><span class="p">,</span> <span class="n">VFL_TYPE_VIDEO</span><span class="p">,</span> <span class="mi">-1</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">video_device_release</span><span class="p">(</span><span class="n">vdev</span><span class="p">);</span> <span class="cm">/* or kfree(my_vdev); */</span>
         <span class="k">return</span> <span class="n">err</span><span class="p">;</span>
@@ -731,7 +735,7 @@ with <a class="reference internal" href="#c.video_devdata" title="video_devdata"
 (struct file *file);</p>
 </div></blockquote>
 <p>You can go from a <a class="reference internal" href="#c.video_device" title="video_device"><code class="xref c c-type docutils literal notranslate"><span class="pre">video_device</span></code></a> struct to the v4l2_device struct using:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">v4l2_device</span> <span class="o">*</span><span class="n">v4l2_dev</span> <span class="o">=</span> <span class="n">vdev</span><span class="o">-&gt;</span><span class="n">v4l2_dev</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">v4l2_device</span> <span class="o">*</span><span class="n">v4l2_dev</span> <span class="o">=</span> <span class="n">vdev</span><span class="o">-&gt;</span><span class="n">v4l2_dev</span><span class="p">;</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -1327,7 +1331,7 @@ void <code class="sig-name descname">video_set_drvdata</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.video_devdata">
-<em class="property">struct</em> <a class="reference internal" href="#c.video_device" title="video_device">video_device</a> *<code class="sig-name descname">video_devdata</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.video_devdata" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.video_device" title="video_device">video_device</a> *<code class="sig-name descname">video_devdata</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.video_devdata" title="file">file</a> *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.video_devdata" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>gets <a class="reference internal" href="#c.video_device" title="video_device"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">video_device</span></code></a> from struct file.</p>
 </dd></dl>
 
@@ -1338,7 +1342,7 @@ void <code class="sig-name descname">video_set_drvdata</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.video_drvdata">
-void *<code class="sig-name descname">video_drvdata</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.video_drvdata" title="Permalink to this definition">¶</a><br /></dt>
+void *<code class="sig-name descname">video_drvdata</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.video_drvdata" title="file">file</a> *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.video_drvdata" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>gets private data from <a class="reference internal" href="#c.video_device" title="video_device"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">video_device</span></code></a> using the struct file.</p>
 </dd></dl>
 
@@ -1383,37 +1387,29 @@ int <code class="sig-name descname">video_is_registered</code><span class="sig-p
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="v4l2-device.html" class="btn btn-neutral float-right" title="1.5. V4L2 device instance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="v4l2-intro.html" class="btn btn-neutral float-left" title="1.1. Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="v4l2-device.html" class="btn btn-neutral float-right" title="1.5. V4L2 device instance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="v4l2-intro.html" class="btn btn-neutral float-left" title="1.1. Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Writing s390 channel device drivers &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -333,6 +335,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -346,7 +350,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/driver-api/s390-drivers.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -1480,7 +1484,7 @@ void <code class="sig-name descname">ccw_device_get_id</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.ccw_device_tm_start_timeout_key">
-int <code class="sig-name descname">ccw_device_tm_start_timeout_key</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ccw_device" title="ccw_device">ccw_device</a> *<em>cdev</em>, <em class="property">struct</em> tcw *<em>tcw</em>, unsigned long <em>intparm</em>, u8 <em>lpm</em>, u8 <em>key</em>, int <em>expires</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ccw_device_tm_start_timeout_key" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">ccw_device_tm_start_timeout_key</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ccw_device" title="ccw_device">ccw_device</a> *<em>cdev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.ccw_device_tm_start_timeout_key" title="tcw">tcw</a> *<em>tcw</em>, unsigned long <em>intparm</em>, u8 <em>lpm</em>, u8 <em>key</em>, int <em>expires</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ccw_device_tm_start_timeout_key" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>perform start function</p>
 </dd></dl>
 
@@ -1504,7 +1508,7 @@ int <code class="sig-name descname">ccw_device_tm_start_timeout_key</code><span 
 otherwise.</p>
 <dl class="c function">
 <dt id="c.ccw_device_tm_start_key">
-int <code class="sig-name descname">ccw_device_tm_start_key</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ccw_device" title="ccw_device">ccw_device</a> *<em>cdev</em>, <em class="property">struct</em> tcw *<em>tcw</em>, unsigned long <em>intparm</em>, u8 <em>lpm</em>, u8 <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ccw_device_tm_start_key" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">ccw_device_tm_start_key</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ccw_device" title="ccw_device">ccw_device</a> *<em>cdev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.ccw_device_tm_start_key" title="tcw">tcw</a> *<em>tcw</em>, unsigned long <em>intparm</em>, u8 <em>lpm</em>, u8 <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ccw_device_tm_start_key" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>perform start function</p>
 </dd></dl>
 
@@ -1526,7 +1530,7 @@ int <code class="sig-name descname">ccw_device_tm_start_key</code><span class="s
 otherwise.</p>
 <dl class="c function">
 <dt id="c.ccw_device_tm_start">
-int <code class="sig-name descname">ccw_device_tm_start</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ccw_device" title="ccw_device">ccw_device</a> *<em>cdev</em>, <em class="property">struct</em> tcw *<em>tcw</em>, unsigned long <em>intparm</em>, u8 <em>lpm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ccw_device_tm_start" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">ccw_device_tm_start</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ccw_device" title="ccw_device">ccw_device</a> *<em>cdev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.ccw_device_tm_start" title="tcw">tcw</a> *<em>tcw</em>, unsigned long <em>intparm</em>, u8 <em>lpm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ccw_device_tm_start" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>perform start function</p>
 </dd></dl>
 
@@ -1546,7 +1550,7 @@ int <code class="sig-name descname">ccw_device_tm_start</code><span class="sig-p
 otherwise.</p>
 <dl class="c function">
 <dt id="c.ccw_device_tm_start_timeout">
-int <code class="sig-name descname">ccw_device_tm_start_timeout</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ccw_device" title="ccw_device">ccw_device</a> *<em>cdev</em>, <em class="property">struct</em> tcw *<em>tcw</em>, unsigned long <em>intparm</em>, u8 <em>lpm</em>, int <em>expires</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ccw_device_tm_start_timeout" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">ccw_device_tm_start_timeout</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ccw_device" title="ccw_device">ccw_device</a> *<em>cdev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.ccw_device_tm_start_timeout" title="tcw">tcw</a> *<em>tcw</em>, unsigned long <em>intparm</em>, u8 <em>lpm</em>, int <em>expires</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ccw_device_tm_start_timeout" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>perform start function</p>
 </dd></dl>
 
@@ -2156,37 +2160,29 @@ unsigned long <code class="sig-name descname">airq_iv_scan</code><span class="si
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="vme.html" class="btn btn-neutral float-right" title="VME Device Drivers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="rapidio/rio_cm.html" class="btn btn-neutral float-left" title="RapidIO subsystem Channelized Messaging character device driver (rio_cm.c)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="vme.html" class="btn btn-neutral float-right" title="VME Device Drivers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="rapidio/rio_cm.html" class="btn btn-neutral float-left" title="RapidIO subsystem Channelized Messaging character device driver (rio_cm.c)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>6.2.1. Video Data Types &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../../../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -251,6 +253,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -272,7 +276,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../../../_sources/userspace-api/media/dvb/video_types.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -358,7 +362,7 @@ representing the state of video playback.</p>
 <h2><span class="section-number">6.2.1.5. </span>struct video_command<a class="headerlink" href="#struct-video-command" title="Permalink to this headline">¶</a></h2>
 <p>The structure must be zeroed before use by the application This ensures
 it can be extended safely in the future.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">video_command</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">video_command</span> <span class="p">{</span>
     <span class="n">__u32</span> <span class="n">cmd</span><span class="p">;</span>
     <span class="n">__u32</span> <span class="n">flags</span><span class="p">;</span>
     <span class="k">union</span> <span class="p">{</span>
@@ -403,7 +407,7 @@ it can be extended safely in the future.</p>
 <h2><span class="section-number">6.2.1.7. </span>struct video_event<a class="headerlink" href="#struct-video-event" title="Permalink to this headline">¶</a></h2>
 <p>The following is the structure of a video event as it is returned by the
 VIDEO_GET_EVENT call.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">video_event</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">video_event</span> <span class="p">{</span>
     <span class="n">__s32</span> <span class="n">type</span><span class="p">;</span>
 <span class="cp">#define VIDEO_EVENT_SIZE_CHANGED    1</span>
 <span class="cp">#define VIDEO_EVENT_FRAME_RATE_CHANGED  2</span>
@@ -428,7 +432,7 @@ VIDEO_GET_EVENT call.</p>
 <h2><span class="section-number">6.2.1.8. </span>struct video_status<a class="headerlink" href="#struct-video-status" title="Permalink to this headline">¶</a></h2>
 <p>The VIDEO_GET_STATUS call returns the following structure informing
 about various states of the playback operation.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">video_status</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">video_status</span> <span class="p">{</span>
     <span class="kt">int</span>                   <span class="n">video_blank</span><span class="p">;</span>   <span class="cm">/* blank video on freeze? */</span>
     <span class="n">video_play_state_t</span>    <span class="n">play_state</span><span class="p">;</span>    <span class="cm">/* current state of playback */</span>
     <span class="n">video_stream_source_t</span> <span class="n">stream_source</span><span class="p">;</span> <span class="cm">/* current source (demux/memory) */</span>
@@ -458,7 +462,7 @@ device.</p>
 <p>An I-frame displayed via the VIDEO_STILLPICTURE call is passed on
 within the following structure.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* pointer to and size of a single iframe in memory */</span>
-<span class="k">struct</span> <span class="n">video_still_picture</span> <span class="p">{</span>
+<span class="k">struct</span> <span class="nc">video_still_picture</span> <span class="p">{</span>
     <span class="kt">char</span> <span class="o">*</span><span class="n">iFrame</span><span class="p">;</span>        <span class="cm">/* pointer to a single iframe in memory */</span>
     <span class="kt">int32_t</span> <span class="n">size</span><span class="p">;</span>
 <span class="p">};</span>
@@ -493,37 +497,29 @@ following bits set according to the hardwares capabilities.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="video_function_calls.html" class="btn btn-neutral float-right" title="6.2.2. Video Function Calls" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="video.html" class="btn btn-neutral float-left" title="6.2. Digital TV Video Device" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="video_function_calls.html" class="btn btn-neutral float-right" title="6.2.2. Video Function Calls" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="video.html" class="btn btn-neutral float-left" title="6.2. Digital TV Video Device" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

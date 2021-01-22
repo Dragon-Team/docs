@@ -2,8 +2,9 @@
 CFS Bandwidth Control
 =====================
 
-[ This document only discusses CPU bandwidth control for SCHED_NORMAL.
-  The SCHED_RT case is covered in Documentation/scheduler/sched-rt-group.rst ]
+.. note::
+   This document only discusses CPU bandwidth control for SCHED_NORMAL.
+   The SCHED_RT case is covered in Documentation/scheduler/sched-rt-group.rst
 
 CFS bandwidth control is a CONFIG_FAIR_GROUP_SCHED extension which allows the
 specification of the maximum CPU bandwidth available to a group or hierarchy.
@@ -16,19 +17,45 @@ assigned any additional requests for quota will result in those threads being
 throttled. Throttled threads will not be able to run again until the next
 period when the quota is replenished.
 
-With "burst", unused quota from previous periods might be accumulated and
-assigned when a task group requests more CPU than quota during a specific
-period, thus allowing CPU time requests as long as the average request is below
-quota on the long run. The maximum accumulation is capped by burst.
-
 A group's unassigned quota is globally tracked, being refreshed back to
 cfs_quota units at each period boundary. As threads consume this bandwidth it
 is transferred to cpu-local "silos" on a demand basis. The amount transferred
 within each of these updates is tunable and described as the "slice".
 
+By default, CPU bandwidth consumption is strictly limited to quota within each
+given period. For the sequence of CPU usage u_i served under CFS bandwidth
+control, if for any j <= k N(j,k) is the number of periods from u_j to u_k:
+
+        u_j+...+u_k <= quota * N(j,k)
+
+For a bursty sequence among which interval u_j...u_k are at the peak, CPU
+requests might have to wait for more periods to replenish enough quota.
+Otherwise, larger quota is required.
+
+With "burst" buffer, CPU requests might be served as long as:
+
+        u_j+...+u_k <= B_j + quota * N(j,k)
+
+if for any j <= k N(j,k) is the number of periods from u_j to u_k and B_j is
+the accumulated quota from previous periods in burst buffer serving u_j.
+Burst buffer helps in that serving whole bursty CPU requests without throttling
+them can be done with moderate quota setting and accumulated quota in burst
+buffer, if:
+
+        u_0+...+u_n <= B_0 + quota * N(0,n)
+
+where B_0 is the initial state of burst buffer. The maximum accumulated quota in
+the burst buffer is capped by burst. With proper burst setting, the available
+bandwidth is still determined by quota and period on the long run.
+
 Management
 ----------
 Quota, period and burst are managed within the cpu subsystem via cgroupfs.
+
+.. note::
+   The cgroupfs files described in this section are only applicable
+   to cgroup v1. For cgroup v2, see
+   :ref:`Documentation/admin-guide/cgroupv2.rst <cgroup-v2-cpu>`.
 
 cpu.cfs_quota_us: run-time replenished within a period (in microseconds)
 cpu.cfs_period_us: the length of a period (in microseconds)
@@ -80,7 +107,7 @@ for more fine-grained consumption.
 There is also a global switch to turn off burst for all groups::
        /proc/sys/kernel/sched_cfs_bw_burst_enabled (default=1)
 
-By default it is enabled. Write 0 values means no accumulated CPU time can be
+By default it is enabled. Writing a 0 value means no accumulated CPU time can be
 used for any group, even if cpu.cfs_burst_us is configured.
 
 Sometimes users might want a group to burst without accumulation. This is
@@ -101,7 +128,7 @@ cpu.stat:
   of the group have been throttled.
 - current_bw: Current runtime in global pool.
 - nr_burst: Number of periods burst occurs.
-- burst_time: Cumulative wall-time that any cpus has used above quota in
+- burst_time: Cumulative wall-time that any CPUs has used above quota in
   respective periods
 
 
@@ -203,7 +230,7 @@ Examples
    response at the expense of burst capacity.
 
 4. Limit a group to 20% of 1 CPU, and allow accumulate up to 60% of 1 CPU
-   addtionally, in case accumulation has been done.
+   additionally, in case accumulation has been done.
 
    With 50ms period, 10ms quota will be equivalent to 20% of 1 CPU.
    And 30ms burst will be equivalent to 60% of 1 CPU.

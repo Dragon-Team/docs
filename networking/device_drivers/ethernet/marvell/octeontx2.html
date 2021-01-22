@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Marvell OcteonTx2 RVU Kernel Drivers &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/doctools.js"></script>
-        <script src="../../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../../../../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -395,6 +397,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -412,7 +416,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../../../../_sources/networking/device_drivers/ethernet/marvell/octeontx2.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -658,6 +662,83 @@ pci/0002:01:00.0:
 </pre></div>
 </div>
 </div>
+<div class="section" id="nix-reporters">
+<h3>NIX Reporters<a class="headerlink" href="#nix-reporters" title="Permalink to this headline">¶</a></h3>
+<p>The NIX reporters are responsible for reporting and recovering the following group of errors:</p>
+<ol class="arabic simple">
+<li><p>GENERAL events</p>
+<ul class="simple">
+<li><p>Receive mirror/multicast packet drop due to insufficient buffer.</p></li>
+<li><p>SMQ Flush operation.</p></li>
+</ul>
+</li>
+<li><p>ERROR events</p>
+<ul class="simple">
+<li><p>Memory Fault due to WQE read/write from multicast/mirror buffer.</p></li>
+<li><p>Receive multicast/mirror replication list error.</p></li>
+<li><p>Receive packet on an unmapped PF.</p></li>
+<li><p>Fault due to NIX_AQ_INST_S read or NIX_AQ_RES_S write.</p></li>
+<li><p>AQ Doorbell Error.</p></li>
+</ul>
+</li>
+<li><p>RAS events</p>
+<ul class="simple">
+<li><p>RAS Error Reporting for NIX Receive Multicast/Mirror Entry Structure.</p></li>
+<li><p>RAS Error Reporting for WQE/Packet Data read from Multicast/Mirror Buffer..</p></li>
+<li><p>RAS Error Reporting for NIX_AQ_INST_S/NIX_AQ_RES_S.</p></li>
+</ul>
+</li>
+<li><p>RVU events</p>
+<ul class="simple">
+<li><p>Error due to unmapped slot.</p></li>
+</ul>
+</li>
+</ol>
+<p>Sample Output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>~# ./devlink health
+pci/0002:01:00.0:
+  reporter hw_npa_intr
+    state healthy error 0 recover 0 grace_period 0 auto_recover true auto_dump true
+  reporter hw_npa_gen
+    state healthy error 0 recover 0 grace_period 0 auto_recover true auto_dump true
+  reporter hw_npa_err
+    state healthy error 0 recover 0 grace_period 0 auto_recover true auto_dump true
+  reporter hw_npa_ras
+    state healthy error 0 recover 0 grace_period 0 auto_recover true auto_dump true
+  reporter hw_nix_intr
+    state healthy error 1121 recover 1121 last_dump_date 2021-01-19 last_dump_time 05:42:26 grace_period 0 auto_recover true auto_dump true
+  reporter hw_nix_gen
+    state healthy error 949 recover 949 last_dump_date 2021-01-19 last_dump_time 05:42:43 grace_period 0 auto_recover true auto_dump true
+  reporter hw_nix_err
+    state healthy error 1147 recover 1147 last_dump_date 2021-01-19 last_dump_time 05:42:59 grace_period 0 auto_recover true auto_dump true
+  reporter hw_nix_ras
+    state healthy error 409 recover 409 last_dump_date 2021-01-19 last_dump_time 05:43:16 grace_period 0 auto_recover true auto_dump true
+</pre></div>
+</div>
+<p>Each reporter dumps the</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Error Type</p></li>
+<li><p>Error Register value</p></li>
+<li><p>Reason in words</p></li>
+</ul>
+</div></blockquote>
+<p>For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>~# devlink health dump show pci/0002:01:00.0 reporter hw_nix_intr
+ NIX_AF_RVU:
+        NIX RVU Interrupt Reg : 1
+        Unmap Slot Error
+~# devlink health dump show pci/0002:01:00.0 reporter hw_nix_gen
+ NIX_AF_GENERAL:
+        NIX General Interrupt Reg : 1
+        Rx multicast pkt drop
+~# devlink health dump show pci/0002:01:00.0 reporter hw_nix_err
+ NIX_AF_ERR:
+        NIX Error Interrupt Reg : 64
+        Rx on unmapped PF_FUNC
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -666,37 +747,29 @@ pci/0002:01:00.0:
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../mellanox/mlx5.html" class="btn btn-neutral float-right" title="Mellanox ConnectX(R) mlx5 core VPI Network Driver" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../intel/ice.html" class="btn btn-neutral float-left" title="Linux Base Driver for the Intel(R) Ethernet Connection E800 Series" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="../mellanox/mlx5.html" class="btn btn-neutral float-right" title="Mellanox ConnectX(R) mlx5 core VPI Network Driver" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../intel/ice.html" class="btn btn-neutral float-left" title="Linux Base Driver for the Intel(R) Ethernet Connection E800 Series" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

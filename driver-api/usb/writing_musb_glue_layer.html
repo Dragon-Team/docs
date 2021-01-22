@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Writing a MUSB Glue Layer &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -344,6 +346,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -359,7 +363,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../../_sources/driver-api/usb/writing_musb_glue_layer.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -483,11 +487,11 @@ layer to register itself to the controller driver.</p>
 <p>For the sake of readability each function will be split in logical
 parts, each part being shown as if it was independent from the others.</p>
 </div>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span> <span class="nf">jz4740_probe</span><span class="p">(</span><span class="k">struct</span> <span class="n">platform_device</span> <span class="o">*</span><span class="n">pdev</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span> <span class="n">jz4740_probe</span><span class="p">(</span><span class="k">struct</span> <span class="nc">platform_device</span> <span class="o">*</span><span class="n">pdev</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">platform_device</span>      <span class="o">*</span><span class="n">musb</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">jz4740_glue</span>      <span class="o">*</span><span class="n">glue</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">clk</span>                      <span class="o">*</span><span class="n">clk</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">platform_device</span>      <span class="o">*</span><span class="n">musb</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">jz4740_glue</span>      <span class="o">*</span><span class="n">glue</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">clk</span>                      <span class="o">*</span><span class="n">clk</span><span class="p">;</span>
     <span class="kt">int</span>             <span class="n">ret</span><span class="p">;</span>
 
 <span class="hll">    <span class="n">glue</span> <span class="o">=</span> <span class="n">devm_kzalloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pdev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">glue</span><span class="p">),</span> <span class="n">GFP_KERNEL</span><span class="p">);</span>
@@ -538,9 +542,9 @@ indicates that <a class="reference internal" href="../../core-api/kernel-api.htm
 allocated clock resource data when the device is released – and enable
 it.</p>
 <p>Then comes the registration steps:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span> <span class="nf">jz4740_probe</span><span class="p">(</span><span class="k">struct</span> <span class="n">platform_device</span> <span class="o">*</span><span class="n">pdev</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span> <span class="n">jz4740_probe</span><span class="p">(</span><span class="k">struct</span> <span class="nc">platform_device</span> <span class="o">*</span><span class="n">pdev</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="hll">    <span class="k">struct</span> <span class="n">musb_hdrc_platform_data</span>  <span class="o">*</span><span class="n">pdata</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">jz4740_musb_platform_data</span><span class="p">;</span>
+<span class="hll">    <span class="k">struct</span> <span class="nc">musb_hdrc_platform_data</span>  <span class="o">*</span><span class="n">pdata</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">jz4740_musb_platform_data</span><span class="p">;</span>
 </span>
 <span class="hll">    <span class="n">pdata</span><span class="o">-&gt;</span><span class="n">platform_ops</span>     <span class="o">=</span> <span class="o">&amp;</span><span class="n">jz4740_musb_ops</span><span class="p">;</span>
 </span>
@@ -594,7 +598,7 @@ between OTG and non-OTG modes, for instance.</p>
 <p>At that point of the registration process, the controller driver
 actually calls the init function:</p>
 <blockquote>
-<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span> <span class="nf">jz4740_musb_init</span><span class="p">(</span><span class="k">struct</span> <span class="n">musb</span> <span class="o">*</span><span class="n">musb</span><span class="p">)</span>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span> <span class="n">jz4740_musb_init</span><span class="p">(</span><span class="k">struct</span> <span class="nc">musb</span> <span class="o">*</span><span class="n">musb</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">musb</span><span class="o">-&gt;</span><span class="n">xceiv</span> <span class="o">=</span> <span class="n">usb_get_phy</span><span class="p">(</span><span class="n">USB_PHY_TYPE_USB2</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">musb</span><span class="o">-&gt;</span><span class="n">xceiv</span><span class="p">)</span> <span class="p">{</span>
@@ -665,9 +669,9 @@ layer adds the controller hardware device to Linux kernel device
 hierarchy: at this stage, all known information about the device is
 passed on to the Linux USB core stack:</p>
 <blockquote>
-<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span> <span class="nf">jz4740_remove</span><span class="p">(</span><span class="k">struct</span> <span class="n">platform_device</span> <span class="o">*</span><span class="n">pdev</span><span class="p">)</span>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span> <span class="n">jz4740_remove</span><span class="p">(</span><span class="k">struct</span> <span class="nc">platform_device</span> <span class="o">*</span><span class="n">pdev</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">jz4740_glue</span>  <span class="o">*</span><span class="n">glue</span> <span class="o">=</span> <span class="n">platform_get_drvdata</span><span class="p">(</span><span class="n">pdev</span><span class="p">);</span>
+    <span class="k">struct</span> <span class="nc">jz4740_glue</span>  <span class="o">*</span><span class="n">glue</span> <span class="o">=</span> <span class="n">platform_get_drvdata</span><span class="p">(</span><span class="n">pdev</span><span class="p">);</span>
 
 <span class="hll">    <span class="n">platform_device_unregister</span><span class="p">(</span><span class="n">glue</span><span class="o">-&gt;</span><span class="n">musb</span><span class="p">);</span>
 </span><span class="hll">    <span class="n">clk_disable_unprepare</span><span class="p">(</span><span class="n">glue</span><span class="o">-&gt;</span><span class="n">clk</span><span class="p">);</span>
@@ -686,11 +690,11 @@ allowing it to be gated.</p>
 <p>Additionally to the MUSB controller hardware basic setup and
 registration, the glue layer is also responsible for handling the IRQs:</p>
 <blockquote>
-<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">irqreturn_t</span> <span class="nf">jz4740_musb_interrupt</span><span class="p">(</span><span class="kt">int</span> <span class="n">irq</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">__hci</span><span class="p">)</span>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">irqreturn_t</span> <span class="n">jz4740_musb_interrupt</span><span class="p">(</span><span class="kt">int</span> <span class="n">irq</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">__hci</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">unsigned</span> <span class="kt">long</span>   <span class="n">flags</span><span class="p">;</span>
     <span class="n">irqreturn_t</span>     <span class="n">retval</span> <span class="o">=</span> <span class="n">IRQ_NONE</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">musb</span>     <span class="o">*</span><span class="n">musb</span> <span class="o">=</span> <span class="n">__hci</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">musb</span>     <span class="o">*</span><span class="n">musb</span> <span class="o">=</span> <span class="n">__hci</span><span class="p">;</span>
 
 <span class="hll">    <span class="n">spin_lock_irqsave</span><span class="p">(</span><span class="o">&amp;</span><span class="n">musb</span><span class="o">-&gt;</span><span class="n">lock</span><span class="p">,</span> <span class="n">flags</span><span class="p">);</span>
 </span>
@@ -767,12 +771,12 @@ JZ4740 SoC is described through a set of structures.</p>
 Device Controller (UDC):</p>
 <blockquote>
 <div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* USB Device Controller */</span>
-<span class="hll"><span class="k">struct</span> <span class="n">platform_device</span> <span class="n">jz4740_udc_xceiv_device</span> <span class="o">=</span> <span class="p">{</span>
+<span class="hll"><span class="k">struct</span> <span class="nc">platform_device</span> <span class="n">jz4740_udc_xceiv_device</span> <span class="o">=</span> <span class="p">{</span>
 </span>    <span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;usb_phy_gen_xceiv&quot;</span><span class="p">,</span>
     <span class="p">.</span><span class="n">id</span>   <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
 <span class="p">};</span>
 
-<span class="hll"><span class="k">static</span> <span class="k">struct</span> <span class="n">resource</span> <span class="n">jz4740_udc_resources</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="hll"><span class="k">static</span> <span class="k">struct</span> <span class="nc">resource</span> <span class="n">jz4740_udc_resources</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
 </span>    <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
         <span class="p">.</span><span class="n">start</span> <span class="o">=</span> <span class="n">JZ4740_UDC_BASE_ADDR</span><span class="p">,</span>
         <span class="p">.</span><span class="n">end</span>   <span class="o">=</span> <span class="n">JZ4740_UDC_BASE_ADDR</span> <span class="o">+</span> <span class="mh">0x10000</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
@@ -786,9 +790,9 @@ Device Controller (UDC):</p>
 </span>    <span class="p">},</span>
 <span class="p">};</span>
 
-<span class="hll"><span class="k">struct</span> <span class="n">platform_device</span> <span class="n">jz4740_udc_device</span> <span class="o">=</span> <span class="p">{</span>
+<span class="hll"><span class="k">struct</span> <span class="nc">platform_device</span> <span class="n">jz4740_udc_device</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="hll">    <span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;musb-jz4740&quot;</span><span class="p">,</span>
-</span>    <span class="p">.</span><span class="n">id</span>   <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+</span>    <span class="p">.</span><span class="n">id</span>   <span class="o">=</span> <span class="mi">-1</span><span class="p">,</span>
     <span class="p">.</span><span class="n">dev</span>  <span class="o">=</span> <span class="p">{</span>
 <span class="hll">        <span class="p">.</span><span class="n">dma_mask</span>          <span class="o">=</span> <span class="o">&amp;</span><span class="n">jz4740_udc_device</span><span class="p">.</span><span class="n">dev</span><span class="p">.</span><span class="n">coherent_dma_mask</span><span class="p">,</span>
 </span><span class="hll">        <span class="p">.</span><span class="n">coherent_dma_mask</span> <span class="o">=</span> <span class="n">DMA_BIT_MASK</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span>
@@ -843,7 +847,7 @@ case there were two resource arrays defined before).</p>
 done, let’s get back to the MUSB glue layer specific platform data in
 <code class="docutils literal notranslate"><span class="pre">drivers/usb/musb/jz4740.c</span></code>:</p>
 <blockquote>
-<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="k">struct</span> <span class="n">musb_hdrc_config</span> <span class="n">jz4740_musb_config</span> <span class="o">=</span> <span class="p">{</span>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="k">struct</span> <span class="nc">musb_hdrc_config</span> <span class="n">jz4740_musb_config</span> <span class="o">=</span> <span class="p">{</span>
     <span class="cm">/* Silicon does not implement USB OTG. */</span>
 <span class="hll">    <span class="p">.</span><span class="n">multipoint</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
 </span>    <span class="cm">/* Max EPs scanned, driver will decide which EP can be used. */</span>
@@ -854,7 +858,7 @@ done, let’s get back to the MUSB glue layer specific platform data in
 </span><span class="hll">    <span class="p">.</span><span class="n">fifo_cfg_size</span> <span class="o">=</span> <span class="n">ARRAY_SIZE</span><span class="p">(</span><span class="n">jz4740_musb_fifo_cfg</span><span class="p">),</span>
 </span><span class="p">};</span>
 <span class="hll">
-</span><span class="k">static</span> <span class="k">struct</span> <span class="n">musb_hdrc_platform_data</span> <span class="n">jz4740_musb_platform_data</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="k">static</span> <span class="k">struct</span> <span class="nc">musb_hdrc_platform_data</span> <span class="n">jz4740_musb_platform_data</span> <span class="o">=</span> <span class="p">{</span>
     <span class="p">.</span><span class="n">mode</span>   <span class="o">=</span> <span class="n">MUSB_PERIPHERAL</span><span class="p">,</span>
     <span class="p">.</span><span class="n">config</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">jz4740_musb_config</span><span class="p">,</span>
 <span class="p">};</span>
@@ -899,7 +903,7 @@ for the sake of insight even though these might not be found in the
 controller hardware you are working on.</p>
 <p>Let’s get back to the init function first:</p>
 <blockquote>
-<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span> <span class="nf">jz4740_musb_init</span><span class="p">(</span><span class="k">struct</span> <span class="n">musb</span> <span class="o">*</span><span class="n">musb</span><span class="p">)</span>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span> <span class="n">jz4740_musb_init</span><span class="p">(</span><span class="k">struct</span> <span class="nc">musb</span> <span class="o">*</span><span class="n">musb</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">musb</span><span class="o">-&gt;</span><span class="n">xceiv</span> <span class="o">=</span> <span class="n">usb_get_phy</span><span class="p">(</span><span class="n">USB_PHY_TYPE_USB2</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">musb</span><span class="o">-&gt;</span><span class="n">xceiv</span><span class="p">)</span> <span class="p">{</span>
@@ -949,11 +953,11 @@ configuration according to the USB specification. For more examples of
 endpoint configuration tables, see <code class="docutils literal notranslate"><span class="pre">musb_core.c</span></code>.</p>
 <p>Let’s now get back to the interrupt handler function:</p>
 <blockquote>
-<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">irqreturn_t</span> <span class="nf">jz4740_musb_interrupt</span><span class="p">(</span><span class="kt">int</span> <span class="n">irq</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">__hci</span><span class="p">)</span>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">irqreturn_t</span> <span class="n">jz4740_musb_interrupt</span><span class="p">(</span><span class="kt">int</span> <span class="n">irq</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">__hci</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">unsigned</span> <span class="kt">long</span>   <span class="n">flags</span><span class="p">;</span>
     <span class="n">irqreturn_t</span>     <span class="n">retval</span> <span class="o">=</span> <span class="n">IRQ_NONE</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">musb</span>     <span class="o">*</span><span class="n">musb</span> <span class="o">=</span> <span class="n">__hci</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">musb</span>     <span class="o">*</span><span class="n">musb</span> <span class="o">=</span> <span class="n">__hci</span><span class="p">;</span>
 
     <span class="n">spin_lock_irqsave</span><span class="p">(</span><span class="o">&amp;</span><span class="n">musb</span><span class="o">-&gt;</span><span class="n">lock</span><span class="p">,</span> <span class="n">flags</span><span class="p">);</span>
 
@@ -1027,37 +1031,29 @@ cheerful guidance and support.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="typec.html" class="btn btn-neutral float-right" title="USB Type-C connector class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="dwc3.html" class="btn btn-neutral float-left" title="Synopsys DesignWare Core SuperSpeed USB 3.0 Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="typec.html" class="btn btn-neutral float-right" title="USB Type-C connector class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dwc3.html" class="btn btn-neutral float-left" title="Synopsys DesignWare Core SuperSpeed USB 3.0 Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

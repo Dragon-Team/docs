@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Virtual TPM Proxy Driver for Linux Containers &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -242,6 +244,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -257,7 +261,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../../_sources/security/tpm/tpm_vtpm_proxy.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -352,7 +356,7 @@ returned by the ioctl. The commands should be responded to immediately.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vtpmx_ioc_new_dev">
-long <code class="sig-name descname">vtpmx_ioc_new_dev</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, unsigned int <em>ioctl</em>, unsigned long <em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vtpmx_ioc_new_dev" title="Permalink to this definition">¶</a><br /></dt>
+long <code class="sig-name descname">vtpmx_ioc_new_dev</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vtpmx_ioc_new_dev" title="file">file</a> *<em>file</em>, unsigned int <em>ioctl</em>, unsigned long <em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vtpmx_ioc_new_dev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>handler for the <code class="docutils literal notranslate"><span class="pre">VTPM_PROXY_IOC_NEW_DEV</span></code> ioctl</p>
 </dd></dl>
 
@@ -379,37 +383,29 @@ major and minor numbers for the TPM device.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="xen-tpmfront.html" class="btn btn-neutral float-right" title="Virtual TPM interface for Xen" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="tpm_event_log.html" class="btn btn-neutral float-left" title="TPM Event Log" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="xen-tpmfront.html" class="btn btn-neutral float-right" title="Virtual TPM interface for Xen" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tpm_event_log.html" class="btn btn-neutral float-left" title="TPM Event Log" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

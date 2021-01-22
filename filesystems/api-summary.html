@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Linux Filesystems API summary &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -250,6 +252,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -263,7 +267,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/filesystems/api-summary.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -528,7 +532,7 @@ errseq_t <code class="sig-name descname">filemap_sample_wb_err</code><span class
 in the past. This function provides those sample points.</p>
 <dl class="c function">
 <dt id="c.file_sample_sb_err">
-errseq_t <code class="sig-name descname">file_sample_sb_err</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.file_sample_sb_err" title="Permalink to this definition">¶</a><br /></dt>
+errseq_t <code class="sig-name descname">file_sample_sb_err</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.file_sample_sb_err" title="file">file</a> *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.file_sample_sb_err" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>sample the current errseq_t to test for later errors</p>
 </dd></dl>
 
@@ -544,8 +548,30 @@ struct file.</p>
 <div class="section" id="the-directory-cache">
 <h3>The Directory Cache<a class="headerlink" href="#the-directory-cache" title="Permalink to this headline">¶</a></h3>
 <dl class="c function">
+<dt id="c.d_drop">
+void <code class="sig-name descname">d_drop</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.d_drop" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_drop" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>drop a dentry</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*dentry</span></code></dt><dd><p>dentry to drop</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p><a class="reference internal" href="#c.d_drop" title="d_drop"><code class="xref c c-func docutils literal notranslate"><span class="pre">d_drop()</span></code></a> unhashes the entry from the parent dentry hashes, so that it won’t
+be found through a VFS lookup any more. Note that this is different from
+deleting the dentry - d_delete will try to mark the dentry negative if
+possible, giving a successful _negative_ lookup, while d_drop will
+just make the cache lookup fail.</p>
+<p><a class="reference internal" href="#c.d_drop" title="d_drop"><code class="xref c c-func docutils literal notranslate"><span class="pre">d_drop()</span></code></a> is used mainly for stuff that wants to invalidate a dentry for some
+reason (NFS timeouts or autofs deletes).</p>
+<p>__d_drop requires dentry-&gt;d_lock</p>
+<p>___d_drop doesn’t mark dentry as “unhashed”
+(dentry-&gt;d_hash.pprev will be LIST_POISON2, not NULL).</p>
+<dl class="c function">
 <dt id="c.d_find_any_alias">
-<em class="property">struct</em> dentry *<code class="sig-name descname">d_find_any_alias</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_find_any_alias" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> dentry *<code class="sig-name descname">d_find_any_alias</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.d_find_any_alias" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_find_any_alias" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find any alias for a given inode</p>
 </dd></dl>
 
@@ -557,6 +583,26 @@ struct file.</p>
 <p><strong>Description</strong></p>
 <p>If any aliases exist for the given inode, take and return a
 reference for one of them.  If no aliases exist, return <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<dl class="c function">
+<dt id="c.d_find_alias">
+<em class="property">struct</em> dentry *<code class="sig-name descname">d_find_alias</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.d_find_alias" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_find_alias" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>grab a hashed alias of inode</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*inode</span></code></dt><dd><p>inode in question</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>If inode has a hashed alias, or is a directory and has any alias,
+acquire the reference to alias and return it. Otherwise return NULL.
+Notice that if inode is a directory there can be only one alias and
+it can be unhashed only if it has no children, or if it is the root
+of a filesystem, or if the directory was renamed and d_revalidate
+was the first vfs operation to notice.</p>
+<p>If the inode has an IS_ROOT, DCACHE_DISCONNECTED alias, then prefer
+any other hashed alias over that one.</p>
 <dl class="c function">
 <dt id="c.shrink_dcache_sb">
 void <code class="sig-name descname">shrink_dcache_sb</code><span class="sig-paren">(</span><em class="property">struct</em> super_block *<em>sb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.shrink_dcache_sb" title="Permalink to this definition">¶</a><br /></dt>
@@ -600,7 +646,7 @@ void <code class="sig-name descname">shrink_dcache_parent</code><span class="sig
 <p>Prune the dcache to remove unused children of the parent dentry.</p>
 <dl class="c function">
 <dt id="c.d_invalidate">
-void <code class="sig-name descname">d_invalidate</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_invalidate" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">d_invalidate</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.d_invalidate" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_invalidate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>detach submounts, prune dcache, and drop</p>
 </dd></dl>
 
@@ -628,7 +674,7 @@ available. On a success the dentry is returned. The name passed in is
 copied and the copy passed in may be reused after this call.</p>
 <dl class="c function">
 <dt id="c.d_instantiate">
-void <code class="sig-name descname">d_instantiate</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>entry</em>, <em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_instantiate" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">d_instantiate</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>entry</em>, <em class="property">struct</em> <a class="reference internal" href="#c.d_instantiate" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_instantiate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>fill in inode information for a dentry</p>
 </dd></dl>
 
@@ -648,7 +694,7 @@ of society.</p>
 in use by the dcache.</p>
 <dl class="c function">
 <dt id="c.d_obtain_alias">
-<em class="property">struct</em> dentry *<code class="sig-name descname">d_obtain_alias</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_obtain_alias" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> dentry *<code class="sig-name descname">d_obtain_alias</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.d_obtain_alias" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_obtain_alias" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find or allocate a DISCONNECTED dentry for a given inode</p>
 </dd></dl>
 
@@ -671,7 +717,7 @@ be passed in and the error will be propagated to the return value,
 with a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> <strong>inode</strong> replaced by ERR_PTR(-ESTALE).</p>
 <dl class="c function">
 <dt id="c.d_obtain_root">
-<em class="property">struct</em> dentry *<code class="sig-name descname">d_obtain_root</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_obtain_root" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> dentry *<code class="sig-name descname">d_obtain_root</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.d_obtain_root" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_obtain_root" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find or allocate a dentry for a given inode</p>
 </dd></dl>
 
@@ -691,7 +737,7 @@ error will be propagate to the return value, with a <code class="docutils litera
 replaced by ERR_PTR(-ESTALE).</p>
 <dl class="c function">
 <dt id="c.d_add_ci">
-<em class="property">struct</em> dentry *<code class="sig-name descname">d_add_ci</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em>, <em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> qstr *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_add_ci" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.d_add_ci" title="dentry">dentry</a> *<code class="sig-name descname">d_add_ci</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.d_add_ci" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">struct</em> <a class="reference internal" href="#c.d_add_ci" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> qstr *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_add_ci" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>lookup or allocate new dentry with case-exact name</p>
 </dd></dl>
 
@@ -749,7 +795,7 @@ finished using it. <code class="docutils literal notranslate"><span class="pre">
 <p>On lookup failure NULL is returned; on bad name - ERR_PTR(-error)</p>
 <dl class="c function">
 <dt id="c.d_delete">
-void <code class="sig-name descname">d_delete</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_delete" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">d_delete</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.d_delete" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_delete" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>delete a dentry</p>
 </dd></dl>
 
@@ -776,7 +822,7 @@ void <code class="sig-name descname">d_rehash</code><span class="sig-paren">(</s
 <p>Adds a dentry to the hash according to its name.</p>
 <dl class="c function">
 <dt id="c.d_add">
-void <code class="sig-name descname">d_add</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>entry</em>, <em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_add" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">d_add</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>entry</em>, <em class="property">struct</em> <a class="reference internal" href="#c.d_add" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_add" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add dentry to hash queues</p>
 </dd></dl>
 
@@ -792,7 +838,7 @@ void <code class="sig-name descname">d_add</code><span class="sig-paren">(</span
 The entry was actually filled in earlier during <a class="reference internal" href="#c.d_alloc" title="d_alloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">d_alloc()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.d_exact_alias">
-<em class="property">struct</em> dentry *<code class="sig-name descname">d_exact_alias</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>entry</em>, <em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_exact_alias" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> dentry *<code class="sig-name descname">d_exact_alias</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>entry</em>, <em class="property">struct</em> <a class="reference internal" href="#c.d_exact_alias" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_exact_alias" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find and hash an exact unhashed alias</p>
 </dd></dl>
 
@@ -810,7 +856,7 @@ NULL.</p>
 <p>Parent directory should be locked.</p>
 <dl class="c function">
 <dt id="c.d_splice_alias">
-<em class="property">struct</em> dentry *<code class="sig-name descname">d_splice_alias</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_splice_alias" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.d_splice_alias" title="dentry">dentry</a> *<code class="sig-name descname">d_splice_alias</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.d_splice_alias" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> <a class="reference internal" href="#c.d_splice_alias" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_splice_alias" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>splice a disconnected dentry into the tree if one exists</p>
 </dd></dl>
 
@@ -854,7 +900,7 @@ Returns false otherwise.
 Caller must ensure that “new_dentry” is pinned before calling <a class="reference internal" href="#c.is_subdir" title="is_subdir"><code class="xref c c-func docutils literal notranslate"><span class="pre">is_subdir()</span></code></a></p>
 <dl class="c function">
 <dt id="c.dget_dlock">
-<em class="property">struct</em> dentry *<code class="sig-name descname">dget_dlock</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dget_dlock" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.dget_dlock" title="dentry">dentry</a> *<code class="sig-name descname">dget_dlock</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dget_dlock" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dget_dlock" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get a reference to a dentry</p>
 </dd></dl>
 
@@ -868,7 +914,7 @@ destroyed when it has references.</p>
 </dl>
 <dl class="c function">
 <dt id="c.d_unhashed">
-int <code class="sig-name descname">d_unhashed</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_unhashed" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">d_unhashed</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.d_unhashed" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_unhashed" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>is dentry hashed</p>
 </dd></dl>
 
@@ -880,7 +926,7 @@ int <code class="sig-name descname">d_unhashed</code><span class="sig-paren">(</
 </dl>
 <dl class="c function">
 <dt id="c.d_really_is_negative">
-bool <code class="sig-name descname">d_really_is_negative</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_really_is_negative" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">d_really_is_negative</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.d_really_is_negative" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_really_is_negative" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Determine if a dentry is really negative (ignoring fallthroughs)</p>
 </dd></dl>
 
@@ -901,7 +947,7 @@ the inode.  (3) The dentry may have something attached to -&gt;d_lower and the
 type field of the flags may be set to something other than miss or whiteout.</p>
 <dl class="c function">
 <dt id="c.d_really_is_positive">
-bool <code class="sig-name descname">d_really_is_positive</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_really_is_positive" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">d_really_is_positive</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.d_really_is_positive" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_really_is_positive" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Determine if a dentry is really positive (ignoring fallthroughs)</p>
 </dd></dl>
 
@@ -920,7 +966,7 @@ dentries.  (2) It should also be used in combination with <a class="reference in
 the inode.</p>
 <dl class="c function">
 <dt id="c.d_inode">
-<em class="property">struct</em> inode *<code class="sig-name descname">d_inode</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_inode" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> inode *<code class="sig-name descname">d_inode</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.d_inode" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_inode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get the actual inode of this dentry</p>
 </dd></dl>
 
@@ -934,7 +980,7 @@ the inode.</p>
 in their own dentries and ignore the layering superimposed upon them.</p>
 <dl class="c function">
 <dt id="c.d_inode_rcu">
-<em class="property">struct</em> inode *<code class="sig-name descname">d_inode_rcu</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_inode_rcu" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> inode *<code class="sig-name descname">d_inode_rcu</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.d_inode_rcu" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_inode_rcu" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get the actual inode of this dentry with READ_ONCE()</p>
 </dd></dl>
 
@@ -980,7 +1026,7 @@ dentry or it may be a lower dentry pinned by the upper.</p>
 <p>Normal filesystems should not use this to access their own dentries.</p>
 <dl class="c function">
 <dt id="c.d_real">
-<em class="property">struct</em> dentry *<code class="sig-name descname">d_real</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em>, <em class="property">const</em> <em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_real" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.d_real" title="dentry">dentry</a> *<code class="sig-name descname">d_real</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.d_real" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.d_real" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_real" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return the real dentry</p>
 </dd></dl>
 
@@ -997,7 +1043,7 @@ Otherwise return the dentry itself.</p>
 <p>See also: <a class="reference internal" href="vfs.html"><span class="doc">Overview of the Linux Virtual File System</span></a></p>
 <dl class="c function">
 <dt id="c.d_real_inode">
-<em class="property">struct</em> inode *<code class="sig-name descname">d_real_inode</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_real_inode" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> inode *<code class="sig-name descname">d_real_inode</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.d_real_inode" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_real_inode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return the real inode</p>
 </dd></dl>
 
@@ -1014,7 +1060,7 @@ Otherwise return <a class="reference internal" href="#c.d_inode" title="d_inode"
 <h3>Inode Handling<a class="headerlink" href="#inode-handling" title="Permalink to this headline">¶</a></h3>
 <dl class="c function">
 <dt id="c.inode_init_always">
-int <code class="sig-name descname">inode_init_always</code><span class="sig-paren">(</span><em class="property">struct</em> super_block *<em>sb</em>, <em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_init_always" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">inode_init_always</code><span class="sig-paren">(</span><em class="property">struct</em> super_block *<em>sb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.inode_init_always" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_init_always" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>perform inode structure initialisation</p>
 </dd></dl>
 
@@ -1030,7 +1076,7 @@ int <code class="sig-name descname">inode_init_always</code><span class="sig-par
 allocation as the fields are not initialised by slab allocation.</p>
 <dl class="c function">
 <dt id="c.drop_nlink">
-void <code class="sig-name descname">drop_nlink</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drop_nlink" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">drop_nlink</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drop_nlink" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drop_nlink" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>directly drop an inode’s link count</p>
 </dd></dl>
 
@@ -1048,7 +1094,7 @@ write when the file is truncated and actually unlinked
 on the filesystem.</p>
 <dl class="c function">
 <dt id="c.clear_nlink">
-void <code class="sig-name descname">clear_nlink</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clear_nlink" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">clear_nlink</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clear_nlink" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clear_nlink" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>directly zero an inode’s link count</p>
 </dd></dl>
 
@@ -1063,7 +1109,7 @@ direct filesystem manipulation of i_nlink.  See
 <a class="reference internal" href="#c.drop_nlink" title="drop_nlink"><code class="xref c c-func docutils literal notranslate"><span class="pre">drop_nlink()</span></code></a> for why we care about i_nlink hitting zero.</p>
 <dl class="c function">
 <dt id="c.set_nlink">
-void <code class="sig-name descname">set_nlink</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, unsigned int <em>nlink</em><span class="sig-paren">)</span><a class="headerlink" href="#c.set_nlink" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">set_nlink</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.set_nlink" title="inode">inode</a> *<em>inode</em>, unsigned int <em>nlink</em><span class="sig-paren">)</span><a class="headerlink" href="#c.set_nlink" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>directly set an inode’s link count</p>
 </dd></dl>
 
@@ -1079,7 +1125,7 @@ void <code class="sig-name descname">set_nlink</code><span class="sig-paren">(</
 direct filesystem manipulation of i_nlink.</p>
 <dl class="c function">
 <dt id="c.inc_nlink">
-void <code class="sig-name descname">inc_nlink</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inc_nlink" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">inc_nlink</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.inc_nlink" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inc_nlink" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>directly increment an inode’s link count</p>
 </dd></dl>
 
@@ -1094,7 +1140,7 @@ direct filesystem manipulation of i_nlink.  Currently,
 it is only here for parity with dec_nlink().</p>
 <dl class="c function">
 <dt id="c.inode_sb_list_add">
-void <code class="sig-name descname">inode_sb_list_add</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_sb_list_add" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">inode_sb_list_add</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.inode_sb_list_add" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_sb_list_add" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add inode to the superblock list of inodes</p>
 </dd></dl>
 
@@ -1105,7 +1151,7 @@ void <code class="sig-name descname">inode_sb_list_add</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.__insert_inode_hash">
-void <code class="sig-name descname">__insert_inode_hash</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, unsigned long <em>hashval</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__insert_inode_hash" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">__insert_inode_hash</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.__insert_inode_hash" title="inode">inode</a> *<em>inode</em>, unsigned long <em>hashval</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__insert_inode_hash" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>hash an inode</p>
 </dd></dl>
 
@@ -1122,7 +1168,7 @@ inode_hashtable.</p>
 </dl>
 <dl class="c function">
 <dt id="c.__remove_inode_hash">
-void <code class="sig-name descname">__remove_inode_hash</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__remove_inode_hash" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">__remove_inode_hash</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.__remove_inode_hash" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__remove_inode_hash" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove an inode from the hash</p>
 </dd></dl>
 
@@ -1167,7 +1213,7 @@ newly created inode’s mapping</p>
 </dl>
 <dl class="c function">
 <dt id="c.unlock_new_inode">
-void <code class="sig-name descname">unlock_new_inode</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.unlock_new_inode" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">unlock_new_inode</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.unlock_new_inode" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.unlock_new_inode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>clear the I_NEW state and wake up any waiters</p>
 </dd></dl>
 
@@ -1210,7 +1256,7 @@ void <code class="sig-name descname">unlock_two_nondirectories</code><span class
 </dl>
 <dl class="c function">
 <dt id="c.inode_insert5">
-<em class="property">struct</em> inode *<code class="sig-name descname">inode_insert5</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, unsigned long <em>hashval</em>, int (*<em>test</em>)<span class="sig-paren">(</span><em class="property">struct</em> inode*, void*<span class="sig-paren">)</span>, int (*<em>set</em>)<span class="sig-paren">(</span><em class="property">struct</em> inode*, void*<span class="sig-paren">)</span>, void *<em>data</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.inode_insert5" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.inode_insert5" title="inode">inode</a> *<code class="sig-name descname">inode_insert5</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.inode_insert5" title="inode">inode</a> *<em>inode</em>, unsigned long <em>hashval</em>, int (*<em>test</em>)<span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.inode_insert5" title="inode">inode</a>*, void*<span class="sig-paren">)</span>, int (*<em>set</em>)<span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.inode_insert5" title="inode">inode</a>*, void*<span class="sig-paren">)</span>, void *<em>data</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.inode_insert5" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>obtain an inode from a mounted file system</p>
 </dd></dl>
 
@@ -1434,8 +1480,32 @@ returned 1 and NULL otherwise.</p>
 It is also not permitted to sleep.</p>
 <p>The caller must hold the RCU read lock.</p>
 <dl class="c function">
+<dt id="c.find_inode_by_ino_rcu">
+<em class="property">struct</em> inode *<code class="sig-name descname">find_inode_by_ino_rcu</code><span class="sig-paren">(</span><em class="property">struct</em> super_block *<em>sb</em>, unsigned long <em>ino</em><span class="sig-paren">)</span><a class="headerlink" href="#c.find_inode_by_ino_rcu" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Find an inode in the inode cache</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">super_block</span> <span class="pre">*sb</span></code></dt><dd><p>Super block of file system to search</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">ino</span></code></dt><dd><p>The inode number to match</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Search for the inode specified by <strong>hashval</strong> and <strong>data</strong> in the inode cache,
+where the helper function <strong>test</strong> will return 0 if the inode does not match
+and 1 if it does.  The <strong>test</strong> function must be responsible for taking the
+i_lock spin_lock and checking i_state for an inode being freed or being
+initialized.</p>
+<p>If successful, this will return the inode for which the <strong>test</strong> function
+returned 1 and NULL otherwise.</p>
+<p>The <strong>test</strong> function is not permitted to take a ref on any inode presented.
+It is also not permitted to sleep.</p>
+<p>The caller must hold the RCU read lock.</p>
+<dl class="c function">
 <dt id="c.iput">
-void <code class="sig-name descname">iput</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iput" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">iput</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.iput" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iput" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>put an inode</p>
 </dd></dl>
 
@@ -1449,7 +1519,7 @@ zero, the inode is then freed and may also be destroyed.</p>
 </dl>
 <dl class="c function">
 <dt id="c.bmap">
-int <code class="sig-name descname">bmap</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, sector_t *<em>block</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bmap" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">bmap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.bmap" title="inode">inode</a> *<em>inode</em>, sector_t *<em>block</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bmap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find a block number in a file</p>
 </dd></dl>
 
@@ -1469,7 +1539,7 @@ hole, returns 0 and <code class="docutils literal notranslate"><span class="pre"
 </dl>
 <dl class="c function">
 <dt id="c.file_update_time">
-int <code class="sig-name descname">file_update_time</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.file_update_time" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">file_update_time</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.file_update_time" title="file">file</a> *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.file_update_time" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update mtime and ctime time</p>
 </dd></dl>
 
@@ -1487,7 +1557,7 @@ file systems who need to allocate space in order to update an inode.</p>
 </dl>
 <dl class="c function">
 <dt id="c.inode_init_owner">
-void <code class="sig-name descname">inode_init_owner</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">const</em> <em class="property">struct</em> inode *<em>dir</em>, umode_t <em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_init_owner" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">inode_init_owner</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.inode_init_owner" title="inode">inode</a> *<em>inode</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.inode_init_owner" title="inode">inode</a> *<em>dir</em>, umode_t <em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_init_owner" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Init uid,gid,mode for new inode according to posix standards</p>
 </dd></dl>
 
@@ -1502,7 +1572,7 @@ void <code class="sig-name descname">inode_init_owner</code><span class="sig-par
 </dl>
 <dl class="c function">
 <dt id="c.inode_owner_or_capable">
-bool <code class="sig-name descname">inode_owner_or_capable</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_owner_or_capable" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">inode_owner_or_capable</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.inode_owner_or_capable" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_owner_or_capable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check current task permissions to inode</p>
 </dd></dl>
 
@@ -1516,7 +1586,7 @@ bool <code class="sig-name descname">inode_owner_or_capable</code><span class="s
 inode owner uid mapped, or owns the file.</p>
 <dl class="c function">
 <dt id="c.inode_dio_wait">
-void <code class="sig-name descname">inode_dio_wait</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_dio_wait" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">inode_dio_wait</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.inode_dio_wait" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_dio_wait" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>wait for outstanding DIO requests to finish</p>
 </dd></dl>
 
@@ -1532,7 +1602,7 @@ proceed with a truncate or equivalent operation.</p>
 to i_dio_count, usually by inode-&gt;i_mutex.</p>
 <dl class="c function">
 <dt id="c.timestamp_truncate">
-<em class="property">struct</em> timespec64 <code class="sig-name descname">timestamp_truncate</code><span class="sig-paren">(</span><em class="property">struct</em> timespec64 <em>t</em>, <em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.timestamp_truncate" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> timespec64 <code class="sig-name descname">timestamp_truncate</code><span class="sig-paren">(</span><em class="property">struct</em> timespec64 <em>t</em>, <em class="property">struct</em> <a class="reference internal" href="#c.timestamp_truncate" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.timestamp_truncate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Truncate timespec to a granularity</p>
 </dd></dl>
 
@@ -1549,7 +1619,7 @@ containing the inode. Always rounds down. gran must
 not be 0 nor greater than a second (NSEC_PER_SEC, or 10^9 ns).</p>
 <dl class="c function">
 <dt id="c.current_time">
-<em class="property">struct</em> timespec64 <code class="sig-name descname">current_time</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.current_time" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> timespec64 <code class="sig-name descname">current_time</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.current_time" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.current_time" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return FS time</p>
 </dd></dl>
 
@@ -1565,7 +1635,7 @@ the fs.</p>
 Otherwise, the function warns and returns time without truncation.</p>
 <dl class="c function">
 <dt id="c.make_bad_inode">
-void <code class="sig-name descname">make_bad_inode</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.make_bad_inode" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">make_bad_inode</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.make_bad_inode" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.make_bad_inode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>mark an inode bad due to an I/O error</p>
 </dd></dl>
 
@@ -1579,7 +1649,7 @@ on it to fail from this point on.</p>
 </dl>
 <dl class="c function">
 <dt id="c.is_bad_inode">
-bool <code class="sig-name descname">is_bad_inode</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.is_bad_inode" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">is_bad_inode</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.is_bad_inode" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.is_bad_inode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>is an inode errored</p>
 </dd></dl>
 
@@ -1591,7 +1661,7 @@ bool <code class="sig-name descname">is_bad_inode</code><span class="sig-paren">
 </dl>
 <dl class="c function">
 <dt id="c.iget_failed">
-void <code class="sig-name descname">iget_failed</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iget_failed" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">iget_failed</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.iget_failed" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iget_failed" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Mark an under-construction inode as dead and release it</p>
 </dd></dl>
 
@@ -1827,6 +1897,21 @@ internal writers are finished we call -&gt;freeze_fs() to finish filesystem
 freezing. Then we transition to SB_FREEZE_COMPLETE state. This state is
 mostly auxiliary for filesystems to verify they do not modify frozen fs.</p>
 <p>sb-&gt;s_writers.frozen is protected by sb-&gt;s_umount.</p>
+<dl class="c function">
+<dt id="c.thaw_super">
+int <code class="sig-name descname">thaw_super</code><span class="sig-paren">(</span><em class="property">struct</em> super_block *<em>sb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.thaw_super" title="Permalink to this definition">¶</a><br /></dt>
+<dd><ul class="simple">
+<li><p>unlock filesystem</p></li>
+</ul>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">super_block</span> <span class="pre">*sb</span></code></dt><dd><p>the super to thaw</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Unlocks the filesystem and marks it writeable again after <a class="reference internal" href="#c.freeze_super" title="freeze_super"><code class="xref c c-func docutils literal notranslate"><span class="pre">freeze_super()</span></code></a>.</p>
 </div>
 <div class="section" id="file-locks">
 <h3>File Locks<a class="headerlink" href="#file-locks" title="Permalink to this headline">¶</a></h3>
@@ -1866,7 +1951,7 @@ whether or not a lock was successfully freed by testing the return
 value for -ENOENT.</p>
 <dl class="c function">
 <dt id="c.locks_mandatory_area">
-int <code class="sig-name descname">locks_mandatory_area</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> file *<em>filp</em>, loff_t <em>start</em>, loff_t <em>end</em>, unsigned char <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#c.locks_mandatory_area" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">locks_mandatory_area</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.locks_mandatory_area" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> file *<em>filp</em>, loff_t <em>start</em>, loff_t <em>end</em>, unsigned char <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#c.locks_mandatory_area" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Check for a conflicting lock</p>
 </dd></dl>
 
@@ -1887,7 +1972,7 @@ int <code class="sig-name descname">locks_mandatory_area</code><span class="sig-
 <p>Searches the inode’s list of locks to find any POSIX locks which conflict.</p>
 <dl class="c function">
 <dt id="c.__break_lease">
-int <code class="sig-name descname">__break_lease</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, unsigned int <em>mode</em>, unsigned int <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__break_lease" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">__break_lease</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.__break_lease" title="inode">inode</a> *<em>inode</em>, unsigned int <em>mode</em>, unsigned int <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__break_lease" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>revoke all outstanding leases on file</p>
 </dd></dl>
 
@@ -1910,7 +1995,7 @@ specified <code class="docutils literal notranslate"><span class="pre">O_NONBLOC
 </dl>
 <dl class="c function">
 <dt id="c.lease_get_mtime">
-void <code class="sig-name descname">lease_get_mtime</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> timespec64 *<em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#c.lease_get_mtime" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">lease_get_mtime</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.lease_get_mtime" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> timespec64 *<em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#c.lease_get_mtime" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update modified time of an inode with exclusive lease</p>
 </dd></dl>
 
@@ -1975,7 +2060,7 @@ stack trace).</p>
 may be NULL if the lm_setup operation doesn’t require it.</p>
 <dl class="c function">
 <dt id="c.locks_lock_inode_wait">
-int <code class="sig-name descname">locks_lock_inode_wait</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> file_lock *<em>fl</em><span class="sig-paren">)</span><a class="headerlink" href="#c.locks_lock_inode_wait" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">locks_lock_inode_wait</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.locks_lock_inode_wait" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> file_lock *<em>fl</em><span class="sig-paren">)</span><a class="headerlink" href="#c.locks_lock_inode_wait" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Apply a lock to an inode</p>
 </dd></dl>
 
@@ -2062,7 +2147,7 @@ int <code class="sig-name descname">vfs_cancel_lock</code><span class="sig-paren
 <p>Used by lock managers to cancel blocked requests</p>
 <dl class="c function">
 <dt id="c.posix_lock_inode_wait">
-int <code class="sig-name descname">posix_lock_inode_wait</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> file_lock *<em>fl</em><span class="sig-paren">)</span><a class="headerlink" href="#c.posix_lock_inode_wait" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">posix_lock_inode_wait</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.posix_lock_inode_wait" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> file_lock *<em>fl</em><span class="sig-paren">)</span><a class="headerlink" href="#c.posix_lock_inode_wait" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Apply a POSIX-style lock to a file</p>
 </dd></dl>
 
@@ -2077,7 +2162,7 @@ int <code class="sig-name descname">posix_lock_inode_wait</code><span class="sig
 <p>Apply a POSIX style lock request to an inode.</p>
 <dl class="c function">
 <dt id="c.locks_mandatory_locked">
-int <code class="sig-name descname">locks_mandatory_locked</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.locks_mandatory_locked" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">locks_mandatory_locked</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.locks_mandatory_locked" title="file">file</a> *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.locks_mandatory_locked" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Check for an active lock</p>
 </dd></dl>
 
@@ -2151,7 +2236,7 @@ receive a signal when the lease is broken.</p>
 </dl>
 <dl class="c function">
 <dt id="c.flock_lock_inode_wait">
-int <code class="sig-name descname">flock_lock_inode_wait</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> file_lock *<em>fl</em><span class="sig-paren">)</span><a class="headerlink" href="#c.flock_lock_inode_wait" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">flock_lock_inode_wait</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.flock_lock_inode_wait" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> file_lock *<em>fl</em><span class="sig-paren">)</span><a class="headerlink" href="#c.flock_lock_inode_wait" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Apply a FLOCK-style lock to a file</p>
 </dd></dl>
 
@@ -2278,7 +2363,7 @@ WB_SYNC_ALL then we were called for data integrity and we must wait for
 existing IO to complete.</p>
 <dl class="c function">
 <dt id="c.generic_permission">
-int <code class="sig-name descname">generic_permission</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, int <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_permission" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">generic_permission</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.generic_permission" title="inode">inode</a> *<em>inode</em>, int <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_permission" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check for access rights on a Posix-like filesystem</p>
 </dd></dl>
 
@@ -2300,7 +2385,7 @@ request cannot be satisfied (eg. requires blocking or too much complexity).
 It would then be called again in ref-walk mode.</p>
 <dl class="c function">
 <dt id="c.inode_permission">
-int <code class="sig-name descname">inode_permission</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, int <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_permission" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">inode_permission</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.inode_permission" title="inode">inode</a> *<em>inode</em>, int <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_permission" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Check for access rights to a given inode</p>
 </dd></dl>
 
@@ -2318,7 +2403,7 @@ changing the “normal” UIDs which are used for other things.</p>
 <p>When checking for MAY_APPEND, MAY_WRITE must also be set in <strong>mask</strong>.</p>
 <dl class="c function">
 <dt id="c.path_get">
-void <code class="sig-name descname">path_get</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> path *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#c.path_get" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">path_get</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.path_get" title="path">path</a> *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#c.path_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get a reference to a path</p>
 </dd></dl>
 
@@ -2331,7 +2416,7 @@ void <code class="sig-name descname">path_get</code><span class="sig-paren">(</s
 <p>Given a path increment the reference count to the dentry and the vfsmount.</p>
 <dl class="c function">
 <dt id="c.path_put">
-void <code class="sig-name descname">path_put</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> path *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#c.path_put" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">path_put</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.path_put" title="path">path</a> *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#c.path_put" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>put a reference to a path</p>
 </dd></dl>
 
@@ -2344,7 +2429,7 @@ void <code class="sig-name descname">path_put</code><span class="sig-paren">(</s
 <p>Given a path decrement the reference count to the dentry and the vfsmount.</p>
 <dl class="c function">
 <dt id="c.vfs_path_lookup">
-int <code class="sig-name descname">vfs_path_lookup</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em>, <em class="property">struct</em> vfsmount *<em>mnt</em>, <em class="property">const</em> char *<em>name</em>, unsigned int <em>flags</em>, <em class="property">struct</em> path *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_path_lookup" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">vfs_path_lookup</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vfs_path_lookup" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">struct</em> vfsmount *<em>mnt</em>, <em class="property">const</em> char *<em>name</em>, unsigned int <em>flags</em>, <em class="property">struct</em> <a class="reference internal" href="#c.vfs_path_lookup" title="path">path</a> *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_path_lookup" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>lookup a file path relative to a dentry-vfsmount pair</p>
 </dd></dl>
 
@@ -2423,7 +2508,7 @@ not be called by generic code.</p>
 i_mutex held, and will take the i_mutex itself if necessary.</p>
 <dl class="c function">
 <dt id="c.vfs_unlink">
-int <code class="sig-name descname">vfs_unlink</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>dir</em>, <em class="property">struct</em> dentry *<em>dentry</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_unlink" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">vfs_unlink</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>dir</em>, <em class="property">struct</em> <a class="reference internal" href="#c.vfs_unlink" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_unlink" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unlink a filesystem object</p>
 </dd></dl>
 
@@ -2537,7 +2622,7 @@ locking].</p></li>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.vfs_readlink">
-int <code class="sig-name descname">vfs_readlink</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em>, char __user *<em>buffer</em>, int <em>buflen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_readlink" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">vfs_readlink</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vfs_readlink" title="dentry">dentry</a> *<em>dentry</em>, char __user *<em>buffer</em>, int <em>buflen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_readlink" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>copy symlink body into userspace buffer</p>
 </dd></dl>
 
@@ -2555,7 +2640,7 @@ int <code class="sig-name descname">vfs_readlink</code><span class="sig-paren">(
 <p>Does not call security hook.</p>
 <dl class="c function">
 <dt id="c.vfs_get_link">
-<em class="property">const</em> char *<code class="sig-name descname">vfs_get_link</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em>, <em class="property">struct</em> delayed_call *<em>done</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_get_link" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">const</em> char *<code class="sig-name descname">vfs_get_link</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vfs_get_link" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">struct</em> delayed_call *<em>done</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_get_link" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get symlink body</p>
 </dd></dl>
 
@@ -2628,7 +2713,7 @@ It returns NULL if the block was unreadable.</p>
 </dl>
 <dl class="c function">
 <dt id="c.block_invalidatepage">
-void <code class="sig-name descname">block_invalidatepage</code><span class="sig-paren">(</span><em class="property">struct</em> page *<em>page</em>, unsigned int <em>offset</em>, unsigned int <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#c.block_invalidatepage" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">block_invalidatepage</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.block_invalidatepage" title="page">page</a> *<em>page</em>, unsigned int <em>offset</em>, unsigned int <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#c.block_invalidatepage" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>invalidate part or all of a buffer-backed page</p>
 </dd></dl>
 
@@ -2739,7 +2824,7 @@ int <code class="sig-name descname">bh_submit_read</code><span class="sig-paren"
 <p>Returns zero on success and -EIO on error.</p>
 <dl class="c function">
 <dt id="c.bio_reset">
-void <code class="sig-name descname">bio_reset</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_reset" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">bio_reset</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.bio_reset" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_reset" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>reinitialize a bio</p>
 </dd></dl>
 
@@ -2757,7 +2842,7 @@ comment in struct bio.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.bio_chain">
-void <code class="sig-name descname">bio_chain</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em>, <em class="property">struct</em> bio *<em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_chain" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">bio_chain</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.bio_chain" title="bio">bio</a> *<em>bio</em>, <em class="property">struct</em> <a class="reference internal" href="#c.bio_chain" title="bio">bio</a> *<em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_chain" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>chain bio completions</p>
 </dd></dl>
 
@@ -2817,7 +2902,7 @@ for per bio allocations.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.bio_put">
-void <code class="sig-name descname">bio_put</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_put" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">bio_put</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.bio_put" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_put" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>release a reference to a bio</p>
 </dd></dl>
 
@@ -2833,7 +2918,7 @@ bio_alloc, bio_get or bio_clone_*. The last put of a bio will free it.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.__bio_clone_fast">
-void <code class="sig-name descname">__bio_clone_fast</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em>, <em class="property">struct</em> bio *<em>bio_src</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__bio_clone_fast" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">__bio_clone_fast</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.__bio_clone_fast" title="bio">bio</a> *<em>bio</em>, <em class="property">struct</em> <a class="reference internal" href="#c.__bio_clone_fast" title="bio">bio</a> *<em>bio_src</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__bio_clone_fast" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>clone a bio that shares the original bio’s biovec</p>
 </dd></dl>
 
@@ -2850,7 +2935,7 @@ bio will be one.</p>
 </dl>
 <dl class="c function">
 <dt id="c.bio_clone_fast">
-<em class="property">struct</em> bio *<code class="sig-name descname">bio_clone_fast</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em>, gfp_t <em>gfp_mask</em>, <em class="property">struct</em> bio_set *<em>bs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_clone_fast" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.bio_clone_fast" title="bio">bio</a> *<code class="sig-name descname">bio_clone_fast</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.bio_clone_fast" title="bio">bio</a> *<em>bio</em>, gfp_t <em>gfp_mask</em>, <em class="property">struct</em> bio_set *<em>bs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_clone_fast" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>clone a bio that shares the original bio’s biovec</p>
 </dd></dl>
 
@@ -2866,7 +2951,7 @@ bio will be one.</p>
 </dl>
 <dl class="c function">
 <dt id="c.bio_add_pc_page">
-int <code class="sig-name descname">bio_add_pc_page</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> bio *<em>bio</em>, <em class="property">struct</em> page *<em>page</em>, unsigned int <em>len</em>, unsigned int <em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_add_pc_page" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">bio_add_pc_page</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> <a class="reference internal" href="#c.bio_add_pc_page" title="bio">bio</a> *<em>bio</em>, <em class="property">struct</em> <a class="reference internal" href="#c.bio_add_pc_page" title="page">page</a> *<em>page</em>, unsigned int <em>len</em>, unsigned int <em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_add_pc_page" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>attempt to add page to passthrough bio</p>
 </dd></dl>
 
@@ -2891,7 +2976,7 @@ so it is always possible to add a single page to an empty bio.</p>
 <p>This should only be used by passthrough bios.</p>
 <dl class="c function">
 <dt id="c.__bio_try_merge_page">
-bool <code class="sig-name descname">__bio_try_merge_page</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em>, <em class="property">struct</em> page *<em>page</em>, unsigned int <em>len</em>, unsigned int <em>off</em>, bool *<em>same_page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__bio_try_merge_page" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">__bio_try_merge_page</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.__bio_try_merge_page" title="bio">bio</a> *<em>bio</em>, <em class="property">struct</em> <a class="reference internal" href="#c.__bio_try_merge_page" title="page">page</a> *<em>page</em>, unsigned int <em>len</em>, unsigned int <em>off</em>, bool *<em>same_page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__bio_try_merge_page" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>try appending data to an existing bvec.</p>
 </dd></dl>
 
@@ -2916,7 +3001,7 @@ page size.</p>
 <p>Return <code class="docutils literal notranslate"><span class="pre">true</span></code> on success or <code class="docutils literal notranslate"><span class="pre">false</span></code> on failure.</p>
 <dl class="c function">
 <dt id="c.__bio_add_page">
-void <code class="sig-name descname">__bio_add_page</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em>, <em class="property">struct</em> page *<em>page</em>, unsigned int <em>len</em>, unsigned int <em>off</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__bio_add_page" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">__bio_add_page</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.__bio_add_page" title="bio">bio</a> *<em>bio</em>, <em class="property">struct</em> <a class="reference internal" href="#c.__bio_add_page" title="page">page</a> *<em>page</em>, unsigned int <em>len</em>, unsigned int <em>off</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__bio_add_page" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add page(s) to a bio in a new segment</p>
 </dd></dl>
 
@@ -2936,7 +3021,7 @@ void <code class="sig-name descname">__bio_add_page</code><span class="sig-paren
 that <strong>bio</strong> has space for another bvec.</p>
 <dl class="c function">
 <dt id="c.bio_add_page">
-int <code class="sig-name descname">bio_add_page</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em>, <em class="property">struct</em> page *<em>page</em>, unsigned int <em>len</em>, unsigned int <em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_add_page" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">bio_add_page</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.bio_add_page" title="bio">bio</a> *<em>bio</em>, <em class="property">struct</em> <a class="reference internal" href="#c.bio_add_page" title="page">page</a> *<em>page</em>, unsigned int <em>len</em>, unsigned int <em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_add_page" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>attempt to add page(s) to bio</p>
 </dd></dl>
 
@@ -2955,7 +3040,7 @@ if either bio-&gt;bi_vcnt == bio-&gt;bi_max_vecs or it’s a cloned bio.</p>
 </dl>
 <dl class="c function">
 <dt id="c.bio_iov_iter_get_pages">
-int <code class="sig-name descname">bio_iov_iter_get_pages</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em>, <em class="property">struct</em> iov_iter *<em>iter</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_iov_iter_get_pages" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">bio_iov_iter_get_pages</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.bio_iov_iter_get_pages" title="bio">bio</a> *<em>bio</em>, <em class="property">struct</em> iov_iter *<em>iter</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_iov_iter_get_pages" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add user or kernel pages to a bio</p>
 </dd></dl>
 
@@ -2984,7 +3069,7 @@ is returned only if 0 pages could be pinned.</p>
 responsible for setting BIO_WORKINGSET if necessary.</p>
 <dl class="c function">
 <dt id="c.submit_bio_wait">
-int <code class="sig-name descname">submit_bio_wait</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.submit_bio_wait" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">submit_bio_wait</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.submit_bio_wait" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.submit_bio_wait" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>submit a bio, and wait until it completes</p>
 </dd></dl>
 
@@ -3001,7 +3086,7 @@ result in bio reference to be consumed. The caller must drop the reference
 on his own.</p>
 <dl class="c function">
 <dt id="c.bio_advance">
-void <code class="sig-name descname">bio_advance</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em>, unsigned <em>bytes</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_advance" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">bio_advance</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.bio_advance" title="bio">bio</a> *<em>bio</em>, unsigned <em>bytes</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_advance" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>increment/complete a bio by some number of bytes</p>
 </dd></dl>
 
@@ -3052,7 +3137,7 @@ copies min(src-&gt;bi_size, dst-&gt;bi_size) bytes (or the equivalent for lists 
 bios).</p>
 <dl class="c function">
 <dt id="c.bio_endio">
-void <code class="sig-name descname">bio_endio</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_endio" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">bio_endio</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.bio_endio" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_endio" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>end I/O on a bio</p>
 </dd></dl>
 
@@ -3073,7 +3158,7 @@ generated if BIO_TRACE_COMPLETION is set.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.bio_split">
-<em class="property">struct</em> bio *<code class="sig-name descname">bio_split</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em>, int <em>sectors</em>, gfp_t <em>gfp</em>, <em class="property">struct</em> bio_set *<em>bs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_split" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.bio_split" title="bio">bio</a> *<code class="sig-name descname">bio_split</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.bio_split" title="bio">bio</a> *<em>bio</em>, int <em>sectors</em>, gfp_t <em>gfp</em>, <em class="property">struct</em> bio_set *<em>bs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_split" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>split a bio</p>
 </dd></dl>
 
@@ -3096,7 +3181,7 @@ to <strong>bio</strong>’s bi_io_vec. It is the caller’s responsibility to en
 neither <strong>bio</strong> nor <strong>bs</strong> are freed before the split bio.</p>
 <dl class="c function">
 <dt id="c.bio_trim">
-void <code class="sig-name descname">bio_trim</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em>, int <em>offset</em>, int <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_trim" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">bio_trim</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.bio_trim" title="bio">bio</a> *<em>bio</em>, int <em>offset</em>, int <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_trim" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>trim a bio</p>
 </dd></dl>
 
@@ -3142,7 +3227,7 @@ dispatch queued requests when the mempool runs out of space.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.seq_open">
-int <code class="sig-name descname">seq_open</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, <em class="property">const</em> <em class="property">struct</em> seq_operations *<em>op</em><span class="sig-paren">)</span><a class="headerlink" href="#c.seq_open" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">seq_open</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.seq_open" title="file">file</a> *<em>file</em>, <em class="property">const</em> <em class="property">struct</em> seq_operations *<em>op</em><span class="sig-paren">)</span><a class="headerlink" href="#c.seq_open" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>initialize sequential file</p>
 </dd></dl>
 
@@ -3168,7 +3253,7 @@ Returning SEQ_SKIP means “discard this element and move on”.</p>
 </dl>
 <dl class="c function">
 <dt id="c.seq_read">
-ssize_t <code class="sig-name descname">seq_read</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, char __user *<em>buf</em>, size_t <em>size</em>, loff_t *<em>ppos</em><span class="sig-paren">)</span><a class="headerlink" href="#c.seq_read" title="Permalink to this definition">¶</a><br /></dt>
+ssize_t <code class="sig-name descname">seq_read</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.seq_read" title="file">file</a> *<em>file</em>, char __user *<em>buf</em>, size_t <em>size</em>, loff_t *<em>ppos</em><span class="sig-paren">)</span><a class="headerlink" href="#c.seq_read" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>-&gt;read() method for sequential files.</p>
 </dd></dl>
 
@@ -3186,7 +3271,7 @@ ssize_t <code class="sig-name descname">seq_read</code><span class="sig-paren">(
 </dl>
 <dl class="c function">
 <dt id="c.seq_lseek">
-loff_t <code class="sig-name descname">seq_lseek</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, loff_t <em>offset</em>, int <em>whence</em><span class="sig-paren">)</span><a class="headerlink" href="#c.seq_lseek" title="Permalink to this definition">¶</a><br /></dt>
+loff_t <code class="sig-name descname">seq_lseek</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.seq_lseek" title="file">file</a> *<em>file</em>, loff_t <em>offset</em>, int <em>whence</em><span class="sig-paren">)</span><a class="headerlink" href="#c.seq_lseek" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>-&gt;llseek() method for sequential files.</p>
 </dd></dl>
 
@@ -3202,7 +3287,7 @@ loff_t <code class="sig-name descname">seq_lseek</code><span class="sig-paren">(
 </dl>
 <dl class="c function">
 <dt id="c.seq_release">
-int <code class="sig-name descname">seq_release</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> file *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.seq_release" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">seq_release</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.seq_release" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> <a class="reference internal" href="#c.seq_release" title="file">file</a> *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.seq_release" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>free the structures associated with sequential file.</p>
 </dd></dl>
 
@@ -3254,7 +3339,7 @@ failure.</p>
 </dl>
 <dl class="c function">
 <dt id="c.seq_path">
-int <code class="sig-name descname">seq_path</code><span class="sig-paren">(</span><em class="property">struct</em> seq_file *<em>m</em>, <em class="property">const</em> <em class="property">struct</em> path *<em>path</em>, <em class="property">const</em> char *<em>esc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.seq_path" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">seq_path</code><span class="sig-paren">(</span><em class="property">struct</em> seq_file *<em>m</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.seq_path" title="path">path</a> *<em>path</em>, <em class="property">const</em> char *<em>esc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.seq_path" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>seq_file interface to print a pathname</p>
 </dd></dl>
 
@@ -3272,7 +3357,7 @@ int <code class="sig-name descname">seq_path</code><span class="sig-paren">(</sp
 dentry / mnt pair in the path parameter.</p>
 <dl class="c function">
 <dt id="c.seq_file_path">
-int <code class="sig-name descname">seq_file_path</code><span class="sig-paren">(</span><em class="property">struct</em> seq_file *<em>m</em>, <em class="property">struct</em> file *<em>file</em>, <em class="property">const</em> char *<em>esc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.seq_file_path" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">seq_file_path</code><span class="sig-paren">(</span><em class="property">struct</em> seq_file *<em>m</em>, <em class="property">struct</em> <a class="reference internal" href="#c.seq_file_path" title="file">file</a> *<em>file</em>, <em class="property">const</em> char *<em>esc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.seq_file_path" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>seq_file interface to print a pathname of a file</p>
 </dd></dl>
 
@@ -3423,6 +3508,23 @@ as long as the traversal is guarded by <a class="reference internal" href="../co
 the _rcu list-mutation primitives such as <a class="reference internal" href="../core-api/kernel-api.html#c.hlist_add_head_rcu" title="hlist_add_head_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">hlist_add_head_rcu()</span></code></a>
 as long as the traversal is guarded by <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_read_lock" title="rcu_read_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_read_lock()</span></code></a>.</p>
 <dl class="c function">
+<dt id="c.seq_hlist_start_percpu">
+<em class="property">struct</em> hlist_node *<code class="sig-name descname">seq_hlist_start_percpu</code><span class="sig-paren">(</span><em class="property">struct</em> hlist_head __percpu *<em>head</em>, int *<em>cpu</em>, loff_t <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#c.seq_hlist_start_percpu" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>start an iteration of a percpu hlist array</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">hlist_head</span> <span class="pre">__percpu</span> <span class="pre">*head</span></code></dt><dd><p>pointer to percpu array of struct hlist_heads</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*cpu</span></code></dt><dd><p>pointer to cpu “cursor”</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">loff_t</span> <span class="pre">pos</span></code></dt><dd><p>start position of sequence</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Called at seq_file-&gt;op-&gt;<a class="reference internal" href="../networking/ieee802154.html#c.start" title="start"><code class="xref c c-func docutils literal notranslate"><span class="pre">start()</span></code></a>.</p>
+<dl class="c function">
 <dt id="c.seq_hlist_next_percpu">
 <em class="property">struct</em> hlist_node *<code class="sig-name descname">seq_hlist_next_percpu</code><span class="sig-paren">(</span>void *<em>v</em>, <em class="property">struct</em> hlist_head __percpu *<em>head</em>, int *<em>cpu</em>, loff_t *<em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#c.seq_hlist_next_percpu" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>move to the next position of the percpu hlist array</p>
@@ -3476,7 +3578,7 @@ may be freed or reused.</p>
 </dl>
 <dl class="c function">
 <dt id="c.wbc_attach_and_unlock_inode">
-void <code class="sig-name descname">wbc_attach_and_unlock_inode</code><span class="sig-paren">(</span><em class="property">struct</em> writeback_control *<em>wbc</em>, <em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wbc_attach_and_unlock_inode" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">wbc_attach_and_unlock_inode</code><span class="sig-paren">(</span><em class="property">struct</em> writeback_control *<em>wbc</em>, <em class="property">struct</em> <a class="reference internal" href="#c.wbc_attach_and_unlock_inode" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wbc_attach_and_unlock_inode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>associate wbc with target inode and unlock it</p>
 </dd></dl>
 
@@ -3534,7 +3636,7 @@ inode-&gt;i_wb_frn_history.  If the amount of recorded foreign IO time is
 over a certain threshold, the switch verdict is given.</p>
 <dl class="c function">
 <dt id="c.wbc_account_cgroup_owner">
-void <code class="sig-name descname">wbc_account_cgroup_owner</code><span class="sig-paren">(</span><em class="property">struct</em> writeback_control *<em>wbc</em>, <em class="property">struct</em> page *<em>page</em>, size_t <em>bytes</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wbc_account_cgroup_owner" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">wbc_account_cgroup_owner</code><span class="sig-paren">(</span><em class="property">struct</em> writeback_control *<em>wbc</em>, <em class="property">struct</em> <a class="reference internal" href="#c.wbc_account_cgroup_owner" title="page">page</a> *<em>page</em>, size_t <em>bytes</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wbc_account_cgroup_owner" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>account writeback to update inode cgroup ownership</p>
 </dd></dl>
 
@@ -3553,7 +3655,7 @@ controlled by <strong>wbc</strong>.  Keep the book for foreign inode detection. 
 <a class="reference internal" href="#c.wbc_detach_inode" title="wbc_detach_inode"><code class="xref c c-func docutils literal notranslate"><span class="pre">wbc_detach_inode()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.inode_congested">
-int <code class="sig-name descname">inode_congested</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, int <em>cong_bits</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_congested" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">inode_congested</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.inode_congested" title="inode">inode</a> *<em>inode</em>, int <em>cong_bits</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_congested" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>test whether an inode is congested</p>
 </dd></dl>
 
@@ -3575,7 +3677,7 @@ state is used.</p>
 mapping-&gt;host which is NULL for the swapper space.</p>
 <dl class="c function">
 <dt id="c.__mark_inode_dirty">
-void <code class="sig-name descname">__mark_inode_dirty</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__mark_inode_dirty" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">__mark_inode_dirty</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.__mark_inode_dirty" title="inode">inode</a> *<em>inode</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__mark_inode_dirty" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>internal function to mark an inode dirty</p>
 </dd></dl>
 
@@ -3670,7 +3772,7 @@ void <code class="sig-name descname">sync_inodes_sb</code><span class="sig-paren
 super_block.</p>
 <dl class="c function">
 <dt id="c.write_inode_now">
-int <code class="sig-name descname">write_inode_now</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, int <em>sync</em><span class="sig-paren">)</span><a class="headerlink" href="#c.write_inode_now" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">write_inode_now</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.write_inode_now" title="inode">inode</a> *<em>inode</em>, int <em>sync</em><span class="sig-paren">)</span><a class="headerlink" href="#c.write_inode_now" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>write an inode to disk</p>
 </dd></dl>
 
@@ -3687,7 +3789,7 @@ primarily needed by knfsd.</p>
 <p>The caller must either have a ref on the inode or must have set I_WILL_FREE.</p>
 <dl class="c function">
 <dt id="c.sync_inode">
-int <code class="sig-name descname">sync_inode</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> writeback_control *<em>wbc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sync_inode" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">sync_inode</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.sync_inode" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> writeback_control *<em>wbc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sync_inode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>write an inode and its pages to disk.</p>
 </dd></dl>
 
@@ -3705,7 +3807,7 @@ update inode-&gt;i_state.</p>
 <p>The caller must have a ref on the inode.</p>
 <dl class="c function">
 <dt id="c.sync_inode_metadata">
-int <code class="sig-name descname">sync_inode_metadata</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, int <em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sync_inode_metadata" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">sync_inode_metadata</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.sync_inode_metadata" title="inode">inode</a> *<em>inode</em>, int <em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sync_inode_metadata" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>write an inode to disk</p>
 </dd></dl>
 
@@ -3997,7 +4099,7 @@ int <code class="sig-name descname">anon_inode_getfd_secure</code><span class="s
 reference to it is not held.</p>
 <dl class="c function">
 <dt id="c.setattr_prepare">
-int <code class="sig-name descname">setattr_prepare</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em>, <em class="property">struct</em> iattr *<em>attr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.setattr_prepare" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">setattr_prepare</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.setattr_prepare" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">struct</em> iattr *<em>attr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.setattr_prepare" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check if attribute changes to a dentry are allowed</p>
 </dd></dl>
 
@@ -4018,7 +4120,7 @@ and IMA extended attributes are cleared if ATTR_KILL_PRIV is set.</p>
 possibly after taking additional locks.</p>
 <dl class="c function">
 <dt id="c.inode_newsize_ok">
-int <code class="sig-name descname">inode_newsize_ok</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> inode *<em>inode</em>, loff_t <em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_newsize_ok" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">inode_newsize_ok</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.inode_newsize_ok" title="inode">inode</a> *<em>inode</em>, loff_t <em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_newsize_ok" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>may this inode be truncated to a given size</p>
 </dd></dl>
 
@@ -4041,7 +4143,7 @@ conditions).</p>
 <p>0 on success, -ve errno on failure</p>
 <dl class="c function">
 <dt id="c.setattr_copy">
-void <code class="sig-name descname">setattr_copy</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">const</em> <em class="property">struct</em> iattr *<em>attr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.setattr_copy" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">setattr_copy</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.setattr_copy" title="inode">inode</a> *<em>inode</em>, <em class="property">const</em> <em class="property">struct</em> iattr *<em>attr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.setattr_copy" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>copy simple metadata updates into the generic inode</p>
 </dd></dl>
 
@@ -4062,7 +4164,7 @@ that for “simple” filesystems, the struct inode is the inode storage.
 The caller is free to mark the inode dirty afterwards if needed.</p>
 <dl class="c function">
 <dt id="c.notify_change">
-int <code class="sig-name descname">notify_change</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em>, <em class="property">struct</em> iattr *<em>attr</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.notify_change" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">notify_change</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.notify_change" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">struct</em> iattr *<em>attr</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.notify_change" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>modify attributes of a filesytem object</p>
 </dd></dl>
 
@@ -4089,7 +4191,7 @@ the file open for write, as there can be no conflicting delegation in
 that case.</p>
 <dl class="c function">
 <dt id="c.d_path">
-char *<code class="sig-name descname">d_path</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> path *<em>path</em>, char *<em>buf</em>, int <em>buflen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_path" title="Permalink to this definition">¶</a><br /></dt>
+char *<code class="sig-name descname">d_path</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.d_path" title="path">path</a> *<em>path</em>, char *<em>buf</em>, int <em>buflen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_path" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return the path of a dentry</p>
 </dd></dl>
 
@@ -4200,7 +4302,7 @@ stored persistently on the media and handles inserting of appropriate page
 table entry.</p>
 <dl class="c function">
 <dt id="c.simple_setattr">
-int <code class="sig-name descname">simple_setattr</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em>, <em class="property">struct</em> iattr *<em>iattr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.simple_setattr" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">simple_setattr</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.simple_setattr" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">struct</em> <a class="reference internal" href="#c.simple_setattr" title="iattr">iattr</a> *<em>iattr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.simple_setattr" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>setattr for simple filesystem</p>
 </dd></dl>
 
@@ -4220,7 +4322,7 @@ on simple regular filesystems.  Anything that needs to change on-disk
 or wire state on size changes needs its own setattr method.</p>
 <dl class="c function">
 <dt id="c.simple_write_end">
-int <code class="sig-name descname">simple_write_end</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, <em class="property">struct</em> <a class="reference internal" href="#c.address_space" title="address_space">address_space</a> *<em>mapping</em>, loff_t <em>pos</em>, unsigned <em>len</em>, unsigned <em>copied</em>, <em class="property">struct</em> page *<em>page</em>, void *<em>fsdata</em><span class="sig-paren">)</span><a class="headerlink" href="#c.simple_write_end" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">simple_write_end</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.simple_write_end" title="file">file</a> *<em>file</em>, <em class="property">struct</em> <a class="reference internal" href="#c.address_space" title="address_space">address_space</a> *<em>mapping</em>, loff_t <em>pos</em>, unsigned <em>len</em>, unsigned <em>copied</em>, <em class="property">struct</em> <a class="reference internal" href="#c.simple_write_end" title="page">page</a> *<em>page</em>, void *<em>fsdata</em><span class="sig-paren">)</span><a class="headerlink" href="#c.simple_write_end" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>.write_end helper for non-block-device FSes</p>
 </dd></dl>
 
@@ -4327,7 +4429,7 @@ buffer <strong>from</strong> at offset <strong>ppos</strong> into the kernel spa
 advanced by this number, or negative value is returned on error.</p>
 <dl class="c function">
 <dt id="c.generic_fh_to_dentry">
-<em class="property">struct</em> dentry *<code class="sig-name descname">generic_fh_to_dentry</code><span class="sig-paren">(</span><em class="property">struct</em> super_block *<em>sb</em>, <em class="property">struct</em> fid *<em>fid</em>, int <em>fh_len</em>, int <em>fh_type</em>, <em class="property">struct</em> inode *(*<em>get_inode</em>)<span class="sig-paren">(</span><em class="property">struct</em> super_block *sb, u64 ino, u32 gen<span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_fh_to_dentry" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> dentry *<code class="sig-name descname">generic_fh_to_dentry</code><span class="sig-paren">(</span><em class="property">struct</em> super_block *<em>sb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.generic_fh_to_dentry" title="fid">fid</a> *<em>fid</em>, int <em>fh_len</em>, int <em>fh_type</em>, <em class="property">struct</em> inode *(*<em>get_inode</em>)<span class="sig-paren">(</span><em class="property">struct</em> super_block *sb, u64 ino, u32 gen<span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_fh_to_dentry" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>generic helper for the fh_to_dentry export operation</p>
 </dd></dl>
 
@@ -4350,7 +4452,7 @@ Linux filehandle types and calls <strong>get_inode</strong> on it to retrieve th
 inode for the object specified in the file handle.</p>
 <dl class="c function">
 <dt id="c.generic_fh_to_parent">
-<em class="property">struct</em> dentry *<code class="sig-name descname">generic_fh_to_parent</code><span class="sig-paren">(</span><em class="property">struct</em> super_block *<em>sb</em>, <em class="property">struct</em> fid *<em>fid</em>, int <em>fh_len</em>, int <em>fh_type</em>, <em class="property">struct</em> inode *(*<em>get_inode</em>)<span class="sig-paren">(</span><em class="property">struct</em> super_block *sb, u64 ino, u32 gen<span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_fh_to_parent" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> dentry *<code class="sig-name descname">generic_fh_to_parent</code><span class="sig-paren">(</span><em class="property">struct</em> super_block *<em>sb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.generic_fh_to_parent" title="fid">fid</a> *<em>fid</em>, int <em>fh_len</em>, int <em>fh_type</em>, <em class="property">struct</em> inode *(*<em>get_inode</em>)<span class="sig-paren">(</span><em class="property">struct</em> super_block *sb, u64 ino, u32 gen<span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_fh_to_parent" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>generic helper for the fh_to_parent export operation</p>
 </dd></dl>
 
@@ -4374,7 +4476,7 @@ inode for the _parent_ object specified in the file handle if it
 is specified in the file handle, or NULL otherwise.</p>
 <dl class="c function">
 <dt id="c.__generic_file_fsync">
-int <code class="sig-name descname">__generic_file_fsync</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, loff_t <em>start</em>, loff_t <em>end</em>, int <em>datasync</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__generic_file_fsync" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">__generic_file_fsync</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.__generic_file_fsync" title="file">file</a> *<em>file</em>, loff_t <em>start</em>, loff_t <em>end</em>, int <em>datasync</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__generic_file_fsync" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>generic fsync implementation for simple filesystems</p>
 </dd></dl>
 
@@ -4395,7 +4497,7 @@ filesystems which track all non-inode metadata in the buffers list
 hanging off the address_space structure.</p>
 <dl class="c function">
 <dt id="c.generic_file_fsync">
-int <code class="sig-name descname">generic_file_fsync</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, loff_t <em>start</em>, loff_t <em>end</em>, int <em>datasync</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_file_fsync" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">generic_file_fsync</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.generic_file_fsync" title="file">file</a> *<em>file</em>, loff_t <em>start</em>, loff_t <em>end</em>, int <em>datasync</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_file_fsync" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>generic fsync implementation for simple filesystems with flush</p>
 </dd></dl>
 
@@ -4449,7 +4551,7 @@ int <code class="sig-name descname">simple_nosetlease</code><span class="sig-par
 All arguments are ignored and it just returns -EINVAL.</p>
 <dl class="c function">
 <dt id="c.simple_get_link">
-<em class="property">const</em> char *<code class="sig-name descname">simple_get_link</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em>, <em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> delayed_call *<em>done</em><span class="sig-paren">)</span><a class="headerlink" href="#c.simple_get_link" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">const</em> char *<code class="sig-name descname">simple_get_link</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.simple_get_link" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">struct</em> <a class="reference internal" href="#c.simple_get_link" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> delayed_call *<em>done</em><span class="sig-paren">)</span><a class="headerlink" href="#c.simple_get_link" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>generic helper to get the target of “fast” symlinks</p>
 </dd></dl>
 
@@ -4472,7 +4574,7 @@ to mark the inode_operations as being for a symlink.</p>
 <p>the symlink target</p>
 <dl class="c function">
 <dt id="c.generic_set_encrypted_ci_d_ops">
-void <code class="sig-name descname">generic_set_encrypted_ci_d_ops</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_set_encrypted_ci_d_ops" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">generic_set_encrypted_ci_d_ops</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.generic_set_encrypted_ci_d_ops" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_set_encrypted_ci_d_ops" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>helper for setting d_ops for given dentry</p>
 </dd></dl>
 
@@ -4499,7 +4601,7 @@ performance hit, we use custom dentry_operations for each possible
 combination rather than always installing all operations.</p>
 <dl class="c function">
 <dt id="c.posix_acl_update_mode">
-int <code class="sig-name descname">posix_acl_update_mode</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, umode_t *<em>mode_p</em>, <em class="property">struct</em> posix_acl **<em>acl</em><span class="sig-paren">)</span><a class="headerlink" href="#c.posix_acl_update_mode" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">posix_acl_update_mode</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.posix_acl_update_mode" title="inode">inode</a> *<em>inode</em>, umode_t *<em>mode_p</em>, <em class="property">struct</em> posix_acl **<em>acl</em><span class="sig-paren">)</span><a class="headerlink" href="#c.posix_acl_update_mode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update mode in set_acl</p>
 </dd></dl>
 
@@ -4521,7 +4623,7 @@ or capable of CAP_FSETID (see inode_change_ok).</p>
 <p>Called from set_acl inode operations.</p>
 <dl class="c function">
 <dt id="c.generic_fillattr">
-void <code class="sig-name descname">generic_fillattr</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> kstat *<em>stat</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_fillattr" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">generic_fillattr</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.generic_fillattr" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> kstat *<em>stat</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_fillattr" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Fill in the basic attributes from the inode struct</p>
 </dd></dl>
 
@@ -4538,7 +4640,7 @@ found on the VFS inode structure.  This is the default if no getattr inode
 operation is supplied.</p>
 <dl class="c function">
 <dt id="c.vfs_getattr_nosec">
-int <code class="sig-name descname">vfs_getattr_nosec</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> path *<em>path</em>, <em class="property">struct</em> kstat *<em>stat</em>, u32 <em>request_mask</em>, unsigned int <em>query_flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_getattr_nosec" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">vfs_getattr_nosec</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.vfs_getattr_nosec" title="path">path</a> *<em>path</em>, <em class="property">struct</em> kstat *<em>stat</em>, u32 <em>request_mask</em>, unsigned int <em>query_flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_getattr_nosec" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>getattr without security checks</p>
 </dd></dl>
 
@@ -4560,7 +4662,7 @@ filehandle lookup code, which uses only the inode number and returns no
 attributes to any user.  Any other code probably wants vfs_getattr.</p>
 <dl class="c function">
 <dt id="c.vfs_fsync_range">
-int <code class="sig-name descname">vfs_fsync_range</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, loff_t <em>start</em>, loff_t <em>end</em>, int <em>datasync</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_fsync_range" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">vfs_fsync_range</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vfs_fsync_range" title="file">file</a> *<em>file</em>, loff_t <em>start</em>, loff_t <em>end</em>, int <em>datasync</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_fsync_range" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>helper to sync a range of data &amp; metadata to disk</p>
 </dd></dl>
 
@@ -4581,7 +4683,7 @@ int <code class="sig-name descname">vfs_fsync_range</code><span class="sig-paren
 written.</p>
 <dl class="c function">
 <dt id="c.vfs_fsync">
-int <code class="sig-name descname">vfs_fsync</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em>, int <em>datasync</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_fsync" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">vfs_fsync</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vfs_fsync" title="file">file</a> *<em>file</em>, int <em>datasync</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_fsync" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>perform a fsync or fdatasync on a file</p>
 </dd></dl>
 
@@ -4597,7 +4699,7 @@ int <code class="sig-name descname">vfs_fsync</code><span class="sig-paren">(</s
 set only metadata needed to access modified file data is written.</p>
 <dl class="c function">
 <dt id="c.__vfs_setxattr_locked">
-int <code class="sig-name descname">__vfs_setxattr_locked</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> void *<em>value</em>, size_t <em>size</em>, int <em>flags</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__vfs_setxattr_locked" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">__vfs_setxattr_locked</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.__vfs_setxattr_locked" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> void *<em>value</em>, size_t <em>size</em>, int <em>flags</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__vfs_setxattr_locked" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set an extended attribute while holding the inode lock</p>
 </dd></dl>
 
@@ -4619,7 +4721,7 @@ a delegation was broken on, NULL if none.</p>
 </dl>
 <dl class="c function">
 <dt id="c.__vfs_removexattr_locked">
-int <code class="sig-name descname">__vfs_removexattr_locked</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__vfs_removexattr_locked" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">__vfs_removexattr_locked</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.__vfs_removexattr_locked" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__vfs_removexattr_locked" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set an extended attribute while holding the inode lock</p>
 </dd></dl>
 
@@ -4944,7 +5046,7 @@ the file will clear the bitmap then update it with the given input.</p>
 <h3>proc filesystem interface<a class="headerlink" href="#proc-filesystem-interface" title="Permalink to this headline">¶</a></h3>
 <dl class="c function">
 <dt id="c.proc_flush_pid">
-void <code class="sig-name descname">proc_flush_pid</code><span class="sig-paren">(</span><em class="property">struct</em> pid *<em>pid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.proc_flush_pid" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">proc_flush_pid</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.proc_flush_pid" title="pid">pid</a> *<em>pid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.proc_flush_pid" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Remove dcache entries for <strong>pid</strong> from the /proc dcache.</p>
 </dd></dl>
 
@@ -5070,7 +5172,7 @@ pointers returned by the following functions:</p>
 <p>eventfd_fget</p>
 <dl class="c function">
 <dt id="c.eventfd_ctx_fileget">
-<em class="property">struct</em> eventfd_ctx *<code class="sig-name descname">eventfd_ctx_fileget</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.eventfd_ctx_fileget" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> eventfd_ctx *<code class="sig-name descname">eventfd_ctx_fileget</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.eventfd_ctx_fileget" title="file">file</a> *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.eventfd_ctx_fileget" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Acquires a reference to the internal eventfd context.</p>
 </dd></dl>
 
@@ -5598,7 +5700,7 @@ will be returned.</p>
 returned.</p>
 <dl class="c function">
 <dt id="c.debugfs_remove">
-void <code class="sig-name descname">debugfs_remove</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.debugfs_remove" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">debugfs_remove</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.debugfs_remove" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.debugfs_remove" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>recursively removes a directory</p>
 </dd></dl>
 
@@ -5655,7 +5757,7 @@ bool <code class="sig-name descname">debugfs_initialized</code><span class="sig-
 </dl>
 <dl class="c function">
 <dt id="c.debugfs_file_get">
-int <code class="sig-name descname">debugfs_file_get</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.debugfs_file_get" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">debugfs_file_get</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.debugfs_file_get" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.debugfs_file_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>mark the beginning of file data access</p>
 </dd></dl>
 
@@ -5676,7 +5778,7 @@ it is not safe to access any of its data. If, on the other hand,
 it is allowed to access the file data, zero is returned.</p>
 <dl class="c function">
 <dt id="c.debugfs_file_put">
-void <code class="sig-name descname">debugfs_file_put</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.debugfs_file_put" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">debugfs_file_put</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.debugfs_file_put" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.debugfs_file_put" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>mark the end of file data access</p>
 </dd></dl>
 
@@ -6102,37 +6204,29 @@ file will be created in the root of the debugfs filesystem.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="splice.html" class="btn btn-neutral float-right" title="splice and pipes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="path-lookup.html" class="btn btn-neutral float-left" title="Pathname lookup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="splice.html" class="btn btn-neutral float-right" title="splice and pipes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="path-lookup.html" class="btn btn-neutral float-left" title="Pathname lookup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

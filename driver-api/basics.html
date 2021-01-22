@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Driver Basics &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -328,6 +330,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -341,7 +345,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/driver-api/basics.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -1074,7 +1078,7 @@ void <code class="sig-name descname">cpupri_cleanup</code><span class="sig-paren
 </dl>
 <dl class="c function">
 <dt id="c.update_tg_load_avg">
-void <code class="sig-name descname">update_tg_load_avg</code><span class="sig-paren">(</span><em class="property">struct</em> cfs_rq *<em>cfs_rq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.update_tg_load_avg" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">update_tg_load_avg</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.update_tg_load_avg" title="cfs_rq">cfs_rq</a> *<em>cfs_rq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.update_tg_load_avg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update the tg’s load avg</p>
 </dd></dl>
 
@@ -1093,7 +1097,7 @@ turn allows skipping updates if the differential is ‘small’.</p>
 <p>Updating tg’s load_avg is necessary before update_cfs_share().</p>
 <dl class="c function">
 <dt id="c.update_cfs_rq_load_avg">
-int <code class="sig-name descname">update_cfs_rq_load_avg</code><span class="sig-paren">(</span>u64 <em>now</em>, <em class="property">struct</em> cfs_rq *<em>cfs_rq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.update_cfs_rq_load_avg" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">update_cfs_rq_load_avg</code><span class="sig-paren">(</span>u64 <em>now</em>, <em class="property">struct</em> <a class="reference internal" href="#c.update_cfs_rq_load_avg" title="cfs_rq">cfs_rq</a> *<em>cfs_rq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.update_cfs_rq_load_avg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update the cfs_rq’s load/util averages</p>
 </dd></dl>
 
@@ -1114,7 +1118,7 @@ post_init_entity_util_avg().</p>
 call <a class="reference internal" href="#c.update_tg_load_avg" title="update_tg_load_avg"><code class="xref c c-func docutils literal notranslate"><span class="pre">update_tg_load_avg()</span></code></a> when this function returns true.</p>
 <dl class="c function">
 <dt id="c.attach_entity_load_avg">
-void <code class="sig-name descname">attach_entity_load_avg</code><span class="sig-paren">(</span><em class="property">struct</em> cfs_rq *<em>cfs_rq</em>, <em class="property">struct</em> sched_entity *<em>se</em><span class="sig-paren">)</span><a class="headerlink" href="#c.attach_entity_load_avg" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">attach_entity_load_avg</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.attach_entity_load_avg" title="cfs_rq">cfs_rq</a> *<em>cfs_rq</em>, <em class="property">struct</em> sched_entity *<em>se</em><span class="sig-paren">)</span><a class="headerlink" href="#c.attach_entity_load_avg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>attach this entity to its cfs_rq load avg</p>
 </dd></dl>
 
@@ -1130,7 +1134,7 @@ void <code class="sig-name descname">attach_entity_load_avg</code><span class="s
 cfs_rq-&gt;avg.last_update_time being current.</p>
 <dl class="c function">
 <dt id="c.detach_entity_load_avg">
-void <code class="sig-name descname">detach_entity_load_avg</code><span class="sig-paren">(</span><em class="property">struct</em> cfs_rq *<em>cfs_rq</em>, <em class="property">struct</em> sched_entity *<em>se</em><span class="sig-paren">)</span><a class="headerlink" href="#c.detach_entity_load_avg" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">detach_entity_load_avg</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.detach_entity_load_avg" title="cfs_rq">cfs_rq</a> *<em>cfs_rq</em>, <em class="property">struct</em> sched_entity *<em>se</em><span class="sig-paren">)</span><a class="headerlink" href="#c.detach_entity_load_avg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>detach this entity from its cfs_rq load avg</p>
 </dd></dl>
 
@@ -4835,7 +4839,7 @@ void <code class="sig-name descname">kset_unregister</code><span class="sig-pare
 </dl>
 <dl class="c function">
 <dt id="c.kset_find_obj">
-<em class="property">struct</em> kobject *<code class="sig-name descname">kset_find_obj</code><span class="sig-paren">(</span><em class="property">struct</em> kset *<em>kset</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.kset_find_obj" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> kobject *<code class="sig-name descname">kset_find_obj</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.kset_find_obj" title="kset">kset</a> *<em>kset</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.kset_find_obj" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Search for object in kset.</p>
 </dd></dl>
 
@@ -5319,7 +5323,7 @@ void <code class="sig-name descname">panic</code><span class="sig-paren">(</span
 </dl>
 <dl class="c function">
 <dt id="c.add_taint">
-void <code class="sig-name descname">add_taint</code><span class="sig-paren">(</span>unsigned <em>flag</em>, <em class="property">enum</em> lockdep_ok <em>lockdep_ok</em><span class="sig-paren">)</span><a class="headerlink" href="#c.add_taint" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">add_taint</code><span class="sig-paren">(</span>unsigned <em>flag</em>, <em class="property">enum</em> <a class="reference internal" href="#c.add_taint" title="lockdep_ok">lockdep_ok</a> <em>lockdep_ok</em><span class="sig-paren">)</span><a class="headerlink" href="#c.add_taint" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add a taint flag if not already set.</p>
 </dd></dl>
 
@@ -5988,37 +5992,29 @@ void <code class="sig-name descname">devm_free_percpu</code><span class="sig-par
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="infrastructure.html" class="btn btn-neutral float-right" title="Device drivers infrastructure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="driver-model/porting.html" class="btn btn-neutral float-left" title="Porting Drivers to the New Driver Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="infrastructure.html" class="btn btn-neutral float-right" title="Device drivers infrastructure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="driver-model/porting.html" class="btn btn-neutral float-left" title="Porting Drivers to the New Driver Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

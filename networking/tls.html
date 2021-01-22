@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Kernel TLS &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -354,6 +356,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -367,7 +371,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/networking/tls.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -403,13 +407,13 @@ handshake is complete, we have all the parameters required to move the
 data-path to the kernel. There is a separate socket option for moving
 the transmit and the receive into the kernel.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* From linux/tls.h */</span>
-<span class="k">struct</span> <span class="n">tls_crypto_info</span> <span class="p">{</span>
+<span class="k">struct</span> <span class="nc">tls_crypto_info</span> <span class="p">{</span>
         <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">version</span><span class="p">;</span>
         <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">cipher_type</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="k">struct</span> <span class="n">tls12_crypto_info_aes_gcm_128</span> <span class="p">{</span>
-        <span class="k">struct</span> <span class="n">tls_crypto_info</span> <span class="n">info</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">tls12_crypto_info_aes_gcm_128</span> <span class="p">{</span>
+        <span class="k">struct</span> <span class="nc">tls_crypto_info</span> <span class="n">info</span><span class="p">;</span>
         <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">iv</span><span class="p">[</span><span class="n">TLS_CIPHER_AES_GCM_128_IV_SIZE</span><span class="p">];</span>
         <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">key</span><span class="p">[</span><span class="n">TLS_CIPHER_AES_GCM_128_KEY_SIZE</span><span class="p">];</span>
         <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">salt</span><span class="p">[</span><span class="n">TLS_CIPHER_AES_GCM_128_SALT_SIZE</span><span class="p">];</span>
@@ -417,7 +421,7 @@ the transmit and the receive into the kernel.</p>
 <span class="p">};</span>
 
 
-<span class="k">struct</span> <span class="n">tls12_crypto_info_aes_gcm_128</span> <span class="n">crypto_info</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">tls12_crypto_info_aes_gcm_128</span> <span class="n">crypto_info</span><span class="p">;</span>
 
 <span class="n">crypto_info</span><span class="p">.</span><span class="n">info</span><span class="p">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">TLS_1_2_VERSION</span><span class="p">;</span>
 <span class="n">crypto_info</span><span class="p">.</span><span class="n">info</span><span class="p">.</span><span class="n">cipher_type</span> <span class="o">=</span> <span class="n">TLS_CIPHER_AES_GCM_128</span><span class="p">;</span>
@@ -487,14 +491,14 @@ These messages can be sent over the socket by providing the TLS record type
 via a CMSG. For example the following function sends &#64;data of &#64;length bytes
 using a record of type &#64;record_type.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* send TLS control message using record_type */</span>
-<span class="k">static</span> <span class="kt">int</span> <span class="nf">klts_send_ctrl_message</span><span class="p">(</span><span class="kt">int</span> <span class="n">sock</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">record_type</span><span class="p">,</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">klts_send_ctrl_message</span><span class="p">(</span><span class="kt">int</span> <span class="n">sock</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">record_type</span><span class="p">,</span>
                                   <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">length</span><span class="p">)</span>
 <span class="p">{</span>
-      <span class="k">struct</span> <span class="n">msghdr</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+      <span class="k">struct</span> <span class="nc">msghdr</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
       <span class="kt">int</span> <span class="n">cmsg_len</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">record_type</span><span class="p">);</span>
-      <span class="k">struct</span> <span class="n">cmsghdr</span> <span class="o">*</span><span class="n">cmsg</span><span class="p">;</span>
+      <span class="k">struct</span> <span class="nc">cmsghdr</span> <span class="o">*</span><span class="n">cmsg</span><span class="p">;</span>
       <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="n">CMSG_SPACE</span><span class="p">(</span><span class="n">cmsg_len</span><span class="p">)];</span>
-      <span class="k">struct</span> <span class="n">iovec</span> <span class="n">msg_iov</span><span class="p">;</span>   <span class="cm">/* Vector of data to send/receive into.  */</span>
+      <span class="k">struct</span> <span class="nc">iovec</span> <span class="n">msg_iov</span><span class="p">;</span>   <span class="cm">/* Vector of data to send/receive into.  */</span>
 
       <span class="n">msg</span><span class="p">.</span><span class="n">msg_control</span> <span class="o">=</span> <span class="n">buf</span><span class="p">;</span>
       <span class="n">msg</span><span class="p">.</span><span class="n">msg_controllen</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span>
@@ -510,7 +514,7 @@ using a record of type &#64;record_type.</p>
       <span class="n">msg</span><span class="p">.</span><span class="n">msg_iov</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">msg_iov</span><span class="p">;</span>
       <span class="n">msg</span><span class="p">.</span><span class="n">msg_iovlen</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 
-      <span class="k">return</span> <span class="n">sendmsg</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nf">sendmsg</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -525,11 +529,11 @@ returned if a control message is received.  Data messages may be
 received without a cmsg buffer set.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">16384</span><span class="p">];</span>
 <span class="kt">char</span> <span class="n">cmsg</span><span class="p">[</span><span class="n">CMSG_SPACE</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">))];</span>
-<span class="k">struct</span> <span class="n">msghdr</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="k">struct</span> <span class="nc">msghdr</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
 <span class="n">msg</span><span class="p">.</span><span class="n">msg_control</span> <span class="o">=</span> <span class="n">cmsg</span><span class="p">;</span>
 <span class="n">msg</span><span class="p">.</span><span class="n">msg_controllen</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">cmsg</span><span class="p">);</span>
 
-<span class="k">struct</span> <span class="n">iovec</span> <span class="n">msg_iov</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">iovec</span> <span class="n">msg_iov</span><span class="p">;</span>
 <span class="n">msg_iov</span><span class="p">.</span><span class="n">iov_base</span> <span class="o">=</span> <span class="n">buffer</span><span class="p">;</span>
 <span class="n">msg_iov</span><span class="p">.</span><span class="n">iov_len</span> <span class="o">=</span> <span class="mi">16384</span><span class="p">;</span>
 
@@ -538,7 +542,7 @@ received without a cmsg buffer set.</p>
 
 <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">recvmsg</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">,</span> <span class="mi">0</span> <span class="cm">/* flags */</span><span class="p">);</span>
 
-<span class="k">struct</span> <span class="n">cmsghdr</span> <span class="o">*</span><span class="n">cmsg</span> <span class="o">=</span> <span class="n">CMSG_FIRSTHDR</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">);</span>
+<span class="k">struct</span> <span class="nc">cmsghdr</span> <span class="o">*</span><span class="n">cmsg</span> <span class="o">=</span> <span class="n">CMSG_FIRSTHDR</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">cmsg</span><span class="o">-&gt;</span><span class="n">cmsg_level</span> <span class="o">==</span> <span class="n">SOL_TLS</span> <span class="o">&amp;&amp;</span>
     <span class="n">cmsg</span><span class="o">-&gt;</span><span class="n">cmsg_type</span> <span class="o">==</span> <span class="n">TLS_GET_RECORD_TYPE</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">record_type</span> <span class="o">=</span> <span class="o">*</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">CMSG_DATA</span><span class="p">(</span><span class="n">cmsg</span><span class="p">));</span>
@@ -593,37 +597,29 @@ number of RX resyncs sent to NICs handling cryptography</p></li>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="tls-offload.html" class="btn btn-neutral float-right" title="Kernel TLS offload" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="scaling.html" class="btn btn-neutral float-left" title="Scaling in the Linux Networking Stack" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="tls-offload.html" class="btn btn-neutral float-right" title="Kernel TLS offload" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="scaling.html" class="btn btn-neutral float-left" title="Scaling in the Linux Networking Stack" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

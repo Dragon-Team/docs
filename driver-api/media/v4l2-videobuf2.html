@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>1.15. V4L2 videobuf2 functions and data structures &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -354,6 +356,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -371,7 +375,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../../_sources/driver-api/media/v4l2-videobuf2.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -1434,7 +1438,7 @@ for a given buffer. It’s intended to be used as a handler for the
 to get a proposed address for the mapping, when <code class="docutils literal notranslate"><span class="pre">!CONFIG_MMU</span></code>.</p>
 <dl class="c function">
 <dt id="c.vb2_core_poll">
-__poll_t <code class="sig-name descname">vb2_core_poll</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vb2_queue" title="vb2_queue">vb2_queue</a> *<em>q</em>, <em class="property">struct</em> file *<em>file</em>, poll_table *<em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vb2_core_poll" title="Permalink to this definition">¶</a><br /></dt>
+__poll_t <code class="sig-name descname">vb2_core_poll</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vb2_queue" title="vb2_queue">vb2_queue</a> *<em>q</em>, <em class="property">struct</em> <a class="reference internal" href="#c.vb2_core_poll" title="file">file</a> *<em>file</em>, poll_table *<em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vb2_core_poll" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>implements poll syscall() logic.</p>
 </dd></dl>
 
@@ -2044,7 +2048,7 @@ freeing video buffer memory. The driver is responsible for freeing
 the vb2_queue structure itself.</p>
 <dl class="c function">
 <dt id="c.vb2_poll">
-__poll_t <code class="sig-name descname">vb2_poll</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vb2_queue" title="vb2_queue">vb2_queue</a> *<em>q</em>, <em class="property">struct</em> file *<em>file</em>, poll_table *<em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vb2_poll" title="Permalink to this definition">¶</a><br /></dt>
+__poll_t <code class="sig-name descname">vb2_poll</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vb2_queue" title="vb2_queue">vb2_queue</a> *<em>q</em>, <em class="property">struct</em> <a class="reference internal" href="#c.vb2_poll" title="file">file</a> *<em>file</em>, poll_table *<em>wait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vb2_poll" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>implements poll userspace operation</p>
 </dd></dl>
 
@@ -2142,37 +2146,29 @@ void <code class="sig-name descname">vb2_ops_wait_finish</code><span class="sig-
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="v4l2-clocks.html" class="btn btn-neutral float-right" title="1.16. V4L2 clocks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="v4l2-videobuf.html" class="btn btn-neutral float-left" title="1.14. Videobuf Framework" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="v4l2-clocks.html" class="btn btn-neutral float-right" title="1.16. V4L2 clocks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="v4l2-videobuf.html" class="btn btn-neutral float-left" title="1.14. Videobuf Framework" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

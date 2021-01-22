@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>InfiniBand and Remote DMA (RDMA) Interfaces &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -327,6 +329,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -340,7 +344,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/driver-api/infiniband.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -382,7 +386,7 @@
 otherwise returns NULL</p>
 <dl class="c function">
 <dt id="c.iwpm_free_nlmsg_request">
-void <code class="sig-name descname">iwpm_free_nlmsg_request</code><span class="sig-paren">(</span><em class="property">struct</em> kref *<em>kref</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iwpm_free_nlmsg_request" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">iwpm_free_nlmsg_request</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.iwpm_free_nlmsg_request" title="kref">kref</a> *<em>kref</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iwpm_free_nlmsg_request" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Deallocate netlink message request</p>
 </dd></dl>
 
@@ -984,7 +988,7 @@ compute max_rdma_ctxts and the size of the transport’s Send and
 Send Completion Queues.</p>
 <dl class="c function">
 <dt id="c.rdma_dev_access_netns">
-bool <code class="sig-name descname">rdma_dev_access_netns</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> ib_device *<em>dev</em>, <em class="property">const</em> <em class="property">struct</em> net *<em>net</em><span class="sig-paren">)</span><a class="headerlink" href="#c.rdma_dev_access_netns" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">rdma_dev_access_netns</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> ib_device *<em>dev</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.rdma_dev_access_netns" title="net">net</a> *<em>net</em><span class="sig-paren">)</span><a class="headerlink" href="#c.rdma_dev_access_netns" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return whether an rdma device can be accessed from a specified net namespace or not.</p>
 </dd></dl>
 
@@ -1061,7 +1065,7 @@ void <code class="sig-name descname">ib_dealloc_device</code><span class="sig-pa
 <p>Free a structure allocated with ib_alloc_device().</p>
 <dl class="c function">
 <dt id="c.ib_register_device">
-int <code class="sig-name descname">ib_register_device</code><span class="sig-paren">(</span><em class="property">struct</em> ib_device *<em>device</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">struct</em> <a class="reference internal" href="infrastructure.html#c.device" title="device">device</a> *<em>dma_device</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ib_register_device" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">ib_register_device</code><span class="sig-paren">(</span><em class="property">struct</em> ib_device *<em>device</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">struct</em> <a class="reference internal" href="#c.ib_register_device" title="device">device</a> *<em>dma_device</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ib_register_device" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Register an IB device with IB core</p>
 </dd></dl>
 
@@ -1629,7 +1633,7 @@ the actual capabilities of the created QP.</p>
 <p>for user qp use ib_create_qp_user with valid udata!</p>
 <dl class="c function">
 <dt id="c.ib_modify_qp_with_udata">
-int <code class="sig-name descname">ib_modify_qp_with_udata</code><span class="sig-paren">(</span><em class="property">struct</em> ib_qp *<em>ib_qp</em>, <em class="property">struct</em> ib_qp_attr *<em>attr</em>, int <em>attr_mask</em>, <em class="property">struct</em> ib_udata *<em>udata</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ib_modify_qp_with_udata" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">ib_modify_qp_with_udata</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ib_modify_qp_with_udata" title="ib_qp">ib_qp</a> *<em>ib_qp</em>, <em class="property">struct</em> ib_qp_attr *<em>attr</em>, int <em>attr_mask</em>, <em class="property">struct</em> ib_udata *<em>udata</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ib_modify_qp_with_udata" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Modifies the attributes for the specified QP.</p>
 </dd></dl>
 
@@ -1688,7 +1692,7 @@ registration</p>
 also the integrity page/sg lists must not exceed max_num_meta_sg.</p>
 <dl class="c function">
 <dt id="c.ib_alloc_xrcd_user">
-<em class="property">struct</em> ib_xrcd *<code class="sig-name descname">ib_alloc_xrcd_user</code><span class="sig-paren">(</span><em class="property">struct</em> ib_device *<em>device</em>, <em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> ib_udata *<em>udata</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ib_alloc_xrcd_user" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> ib_xrcd *<code class="sig-name descname">ib_alloc_xrcd_user</code><span class="sig-paren">(</span><em class="property">struct</em> ib_device *<em>device</em>, <em class="property">struct</em> <a class="reference internal" href="#c.ib_alloc_xrcd_user" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> ib_udata *<em>udata</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ib_alloc_xrcd_user" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocates an XRC domain.</p>
 </dd></dl>
 
@@ -3562,7 +3566,7 @@ int <code class="sig-name descname">iser_send_data_out</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.iser_alloc_fastreg_pool">
-int <code class="sig-name descname">iser_alloc_fastreg_pool</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ib_conn" title="ib_conn">ib_conn</a> *<em>ib_conn</em>, unsigned <em>cmds_max</em>, unsigned int <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iser_alloc_fastreg_pool" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">iser_alloc_fastreg_pool</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.iser_alloc_fastreg_pool" title="ib_conn">ib_conn</a> *<em>ib_conn</em>, unsigned <em>cmds_max</em>, unsigned int <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iser_alloc_fastreg_pool" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Creates pool of fast_reg descriptors for fast registration work requests.</p>
 </dd></dl>
 
@@ -3579,7 +3583,7 @@ int <code class="sig-name descname">iser_alloc_fastreg_pool</code><span class="s
 <p>0 on success, or errno code on failure</p>
 <dl class="c function">
 <dt id="c.iser_free_fastreg_pool">
-void <code class="sig-name descname">iser_free_fastreg_pool</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ib_conn" title="ib_conn">ib_conn</a> *<em>ib_conn</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iser_free_fastreg_pool" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">iser_free_fastreg_pool</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.iser_free_fastreg_pool" title="ib_conn">ib_conn</a> *<em>ib_conn</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iser_free_fastreg_pool" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>releases the pool of fast_reg descriptors</p>
 </dd></dl>
 
@@ -3590,7 +3594,7 @@ void <code class="sig-name descname">iser_free_fastreg_pool</code><span class="s
 </dl>
 <dl class="c function">
 <dt id="c.iser_free_ib_conn_res">
-void <code class="sig-name descname">iser_free_ib_conn_res</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.iser_conn" title="iser_conn">iser_conn</a> *<em>iser_conn</em>, bool <em>destroy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iser_free_ib_conn_res" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">iser_free_ib_conn_res</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.iser_free_ib_conn_res" title="iser_conn">iser_conn</a> *<em>iser_conn</em>, bool <em>destroy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iser_free_ib_conn_res" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>release IB related resources</p>
 </dd></dl>
 
@@ -3609,7 +3613,7 @@ so the cm_id removal is out of here. It is Safe to
 be invoked multiple times.</p>
 <dl class="c function">
 <dt id="c.iser_conn_release">
-void <code class="sig-name descname">iser_conn_release</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.iser_conn" title="iser_conn">iser_conn</a> *<em>iser_conn</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iser_conn_release" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">iser_conn_release</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.iser_conn_release" title="iser_conn">iser_conn</a> *<em>iser_conn</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iser_conn_release" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Frees all conn objects and deallocs conn descriptor</p>
 </dd></dl>
 
@@ -3620,7 +3624,7 @@ void <code class="sig-name descname">iser_conn_release</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.iser_conn_terminate">
-int <code class="sig-name descname">iser_conn_terminate</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.iser_conn" title="iser_conn">iser_conn</a> *<em>iser_conn</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iser_conn_terminate" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">iser_conn_terminate</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.iser_conn_terminate" title="iser_conn">iser_conn</a> *<em>iser_conn</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iser_conn_terminate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>triggers start of the disconnect procedures and waits for them to be done</p>
 </dd></dl>
 
@@ -3633,7 +3637,7 @@ int <code class="sig-name descname">iser_conn_terminate</code><span class="sig-p
 <p>Called with state mutex held</p>
 <dl class="c function">
 <dt id="c.iser_post_send">
-int <code class="sig-name descname">iser_post_send</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.ib_conn" title="ib_conn">ib_conn</a> *<em>ib_conn</em>, <em class="property">struct</em> <a class="reference internal" href="#c.iser_tx_desc" title="iser_tx_desc">iser_tx_desc</a> *<em>tx_desc</em>, bool <em>signal</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iser_post_send" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">iser_post_send</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.iser_post_send" title="ib_conn">ib_conn</a> *<em>ib_conn</em>, <em class="property">struct</em> <a class="reference internal" href="#c.iser_tx_desc" title="iser_tx_desc">iser_tx_desc</a> *<em>tx_desc</em>, bool <em>signal</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iser_post_send" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initiate a Send DTO operation</p>
 </dd></dl>
 
@@ -5890,7 +5894,7 @@ request, the R_Key shall not be validated, even if the request includes
 Immediate data.</p>
 <dl class="c function">
 <dt id="c.srpt_get_desc_tbl">
-int <code class="sig-name descname">srpt_get_desc_tbl</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.srpt_recv_ioctx" title="srpt_recv_ioctx">srpt_recv_ioctx</a> *<em>recv_ioctx</em>, <em class="property">struct</em> <a class="reference internal" href="#c.srpt_send_ioctx" title="srpt_send_ioctx">srpt_send_ioctx</a> *<em>ioctx</em>, <em class="property">struct</em> srp_cmd *<em>srp_cmd</em>, <em class="property">enum</em> dma_data_direction *<em>dir</em>, <em class="property">struct</em> scatterlist **<em>sg</em>, unsigned int *<em>sg_cnt</em>, u64 *<em>data_len</em>, u16 <em>imm_data_offset</em><span class="sig-paren">)</span><a class="headerlink" href="#c.srpt_get_desc_tbl" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">srpt_get_desc_tbl</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.srpt_recv_ioctx" title="srpt_recv_ioctx">srpt_recv_ioctx</a> *<em>recv_ioctx</em>, <em class="property">struct</em> <a class="reference internal" href="#c.srpt_send_ioctx" title="srpt_send_ioctx">srpt_send_ioctx</a> *<em>ioctx</em>, <em class="property">struct</em> <a class="reference internal" href="#c.srpt_get_desc_tbl" title="srp_cmd">srp_cmd</a> *<em>srp_cmd</em>, <em class="property">enum</em> dma_data_direction *<em>dir</em>, <em class="property">struct</em> scatterlist **<em>sg</em>, unsigned int *<em>sg_cnt</em>, u64 *<em>data_len</em>, u16 <em>imm_data_offset</em><span class="sig-paren">)</span><a class="headerlink" href="#c.srpt_get_desc_tbl" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>parse the data descriptors of a SRP_CMD request</p>
 </dd></dl>
 
@@ -6172,7 +6176,7 @@ an appropriate time.</p>
 CH_DRAINING.</p>
 <dl class="c function">
 <dt id="c.srpt_cm_req_recv">
-int <code class="sig-name descname">srpt_cm_req_recv</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.srpt_device" title="srpt_device">srpt_device</a> *<em class="property">const</em> <em>sdev</em>, <em class="property">struct</em> ib_cm_id *<em>ib_cm_id</em>, <em class="property">struct</em> rdma_cm_id *<em>rdma_cm_id</em>, u8 <em>port_num</em>, __be16 <em>pkey</em>, <em class="property">const</em> <em class="property">struct</em> srp_login_req *<em>req</em>, <em class="property">const</em> char *<em>src_addr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.srpt_cm_req_recv" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">srpt_cm_req_recv</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.srpt_device" title="srpt_device">srpt_device</a> *<em class="property">const</em> <em>sdev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.srpt_cm_req_recv" title="ib_cm_id">ib_cm_id</a> *<em>ib_cm_id</em>, <em class="property">struct</em> <a class="reference internal" href="#c.srpt_cm_req_recv" title="rdma_cm_id">rdma_cm_id</a> *<em>rdma_cm_id</em>, u8 <em>port_num</em>, __be16 <em>pkey</em>, <em class="property">const</em> <em class="property">struct</em> srp_login_req *<em>req</em>, <em class="property">const</em> char *<em>src_addr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.srpt_cm_req_recv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>process the event IB_CM_REQ_RECEIVED</p>
 </dd></dl>
 
@@ -6395,7 +6399,7 @@ functions, this driver must be registered with the target core before
 <h3>iSCSI Extensions for RDMA (iSER) target support<a class="headerlink" href="#iscsi-extensions-for-rdma-iser-target-support" title="Permalink to this headline">¶</a></h3>
 <dl class="c function">
 <dt id="c.isert_conn_terminate">
-void <code class="sig-name descname">isert_conn_terminate</code><span class="sig-paren">(</span><em class="property">struct</em> isert_conn *<em>isert_conn</em><span class="sig-paren">)</span><a class="headerlink" href="#c.isert_conn_terminate" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">isert_conn_terminate</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.isert_conn_terminate" title="isert_conn">isert_conn</a> *<em>isert_conn</em><span class="sig-paren">)</span><a class="headerlink" href="#c.isert_conn_terminate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initiate connection termination</p>
 </dd></dl>
 
@@ -6435,37 +6439,29 @@ before blocking on the target_wait_for_session_cmds</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="frame-buffer.html" class="btn btn-neutral float-right" title="Frame Buffer Library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="message-based.html" class="btn btn-neutral float-left" title="Message-based devices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="frame-buffer.html" class="btn btn-neutral float-right" title="Frame Buffer Library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="message-based.html" class="btn btn-neutral float-left" title="Message-based devices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

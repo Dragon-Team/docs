@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>The Linux-Next Dragon Kernel API &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -27,7 +30,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> The Linux-Next Dragon Kernel
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                5.11.15-dragon
+                5.11.16-dragon
               </div>
             
           
@@ -251,6 +253,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -264,7 +268,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/core-api/kernel-api.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -4569,6 +4573,27 @@ uint8_t <code class="sig-name descname">crc4</code><span class="sig-paren">(</sp
 <p>The <strong>x</strong> value is treated as left-aligned, and bits above <strong>bits</strong> are ignored
 in the crc calculations.</p>
 <dl class="c function">
+<dt id="c.crc7_be">
+u8 <code class="sig-name descname">crc7_be</code><span class="sig-paren">(</span>u8 <em>crc</em>, <em class="property">const</em> u8 *<em>buffer</em>, size_t <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crc7_be" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>update the CRC7 for the data buffer</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">u8</span> <span class="pre">crc</span></code></dt><dd><p>previous CRC7 value</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">u8</span> <span class="pre">*buffer</span></code></dt><dd><p>data pointer</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">len</span></code></dt><dd><p>number of bytes in the buffer</p>
+</dd>
+</dl>
+<p><strong>Context</strong></p>
+<p>any</p>
+<p><strong>Description</strong></p>
+<p>Returns the updated CRC7 value.
+The CRC7 is left-aligned in the byte (the lsbit is always 0), as that
+makes the computation easier, and all callers want it in that form.</p>
+<dl class="c function">
 <dt id="c.crc8_populate_msb">
 void <code class="sig-name descname">crc8_populate_msb</code><span class="sig-paren">(</span>u8 <em>table</em>[<em>CRC8_TABLE_SIZE</em>], u8 <em>polynomial</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crc8_populate_msb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>fill crc table for given polynomial in reverse bit order.</p>
@@ -6438,7 +6463,7 @@ passed in size will get page aligned, if it isn’t already.</p>
 </dl>
 <dl class="c function">
 <dt id="c.relay_destroy_channel">
-void <code class="sig-name descname">relay_destroy_channel</code><span class="sig-paren">(</span><em class="property">struct</em> kref *<em>kref</em><span class="sig-paren">)</span><a class="headerlink" href="#c.relay_destroy_channel" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">relay_destroy_channel</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.relay_destroy_channel" title="kref">kref</a> *<em>kref</em><span class="sig-paren">)</span><a class="headerlink" href="#c.relay_destroy_channel" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>free the channel struct</p>
 </dd></dl>
 
@@ -6461,7 +6486,7 @@ void <code class="sig-name descname">relay_destroy_buf</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.relay_remove_buf">
-void <code class="sig-name descname">relay_remove_buf</code><span class="sig-paren">(</span><em class="property">struct</em> kref *<em>kref</em><span class="sig-paren">)</span><a class="headerlink" href="#c.relay_remove_buf" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">relay_remove_buf</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.relay_remove_buf" title="kref">kref</a> *<em>kref</em><span class="sig-paren">)</span><a class="headerlink" href="#c.relay_remove_buf" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove a channel buffer</p>
 </dd></dl>
 
@@ -6527,7 +6552,7 @@ automatically when the last reference is given up.</p>
 </dl>
 <dl class="c function">
 <dt id="c.relay_file_open">
-int <code class="sig-name descname">relay_file_open</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> file *<em>filp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.relay_file_open" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">relay_file_open</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.relay_file_open" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> file *<em>filp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.relay_file_open" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>open file op for relay files</p>
 </dd></dl>
 
@@ -6569,7 +6594,7 @@ __poll_t <code class="sig-name descname">relay_file_poll</code><span class="sig-
 </dl>
 <dl class="c function">
 <dt id="c.relay_file_release">
-int <code class="sig-name descname">relay_file_release</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em>, <em class="property">struct</em> file *<em>filp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.relay_file_release" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">relay_file_release</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.relay_file_release" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> file *<em>filp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.relay_file_release" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>release file op for relay files</p>
 </dd></dl>
 
@@ -7190,7 +7215,7 @@ void <code class="sig-name descname">security_add_hooks</code><span class="sig-p
 <p>Each LSM has to register its hooks with the infrastructure.</p>
 <dl class="c function">
 <dt id="c.lsm_cred_alloc">
-int <code class="sig-name descname">lsm_cred_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> cred *<em>cred</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.lsm_cred_alloc" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">lsm_cred_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.lsm_cred_alloc" title="cred">cred</a> *<em>cred</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.lsm_cred_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate a composite cred blob</p>
 </dd></dl>
 
@@ -7206,7 +7231,7 @@ int <code class="sig-name descname">lsm_cred_alloc</code><span class="sig-paren"
 <p>Returns 0, or -ENOMEM if memory can’t be allocated.</p>
 <dl class="c function">
 <dt id="c.lsm_early_cred">
-void <code class="sig-name descname">lsm_early_cred</code><span class="sig-paren">(</span><em class="property">struct</em> cred *<em>cred</em><span class="sig-paren">)</span><a class="headerlink" href="#c.lsm_early_cred" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">lsm_early_cred</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.lsm_early_cred" title="cred">cred</a> *<em>cred</em><span class="sig-paren">)</span><a class="headerlink" href="#c.lsm_early_cred" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>during initialization allocate a composite cred blob</p>
 </dd></dl>
 
@@ -7219,7 +7244,7 @@ void <code class="sig-name descname">lsm_early_cred</code><span class="sig-paren
 <p>Allocate the cred blob for all the modules</p>
 <dl class="c function">
 <dt id="c.lsm_file_alloc">
-int <code class="sig-name descname">lsm_file_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.lsm_file_alloc" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">lsm_file_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.lsm_file_alloc" title="file">file</a> *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.lsm_file_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate a composite file blob</p>
 </dd></dl>
 
@@ -7233,7 +7258,7 @@ int <code class="sig-name descname">lsm_file_alloc</code><span class="sig-paren"
 <p>Returns 0, or -ENOMEM if memory can’t be allocated.</p>
 <dl class="c function">
 <dt id="c.lsm_inode_alloc">
-int <code class="sig-name descname">lsm_inode_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.lsm_inode_alloc" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">lsm_inode_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.lsm_inode_alloc" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.lsm_inode_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate a composite inode blob</p>
 </dd></dl>
 
@@ -7393,7 +7418,7 @@ the error value (via ERR_PTR).</p>
 returned.</p>
 <dl class="c function">
 <dt id="c.securityfs_remove">
-void <code class="sig-name descname">securityfs_remove</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.securityfs_remove" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">securityfs_remove</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.securityfs_remove" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.securityfs_remove" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>removes a file or directory from the securityfs filesystem</p>
 </dd></dl>
 
@@ -7597,7 +7622,7 @@ void <code class="sig-name descname">__audit_getname</code><span class="sig-pare
 Called from fs/namei.c:getname().</p>
 <dl class="c function">
 <dt id="c.__audit_inode">
-void <code class="sig-name descname">__audit_inode</code><span class="sig-paren">(</span><em class="property">struct</em> filename *<em>name</em>, <em class="property">const</em> <em class="property">struct</em> dentry *<em>dentry</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__audit_inode" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">__audit_inode</code><span class="sig-paren">(</span><em class="property">struct</em> filename *<em>name</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.__audit_inode" title="dentry">dentry</a> *<em>dentry</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__audit_inode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>store the inode and device from a lookup</p>
 </dd></dl>
 
@@ -8102,7 +8127,7 @@ bool <code class="sig-name descname">blk_get_queue</code><span class="sig-paren"
 </dl>
 <dl class="c function">
 <dt id="c.submit_bio_noacct">
-blk_qc_t <code class="sig-name descname">submit_bio_noacct</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.submit_bio_noacct" title="Permalink to this definition">¶</a><br /></dt>
+blk_qc_t <code class="sig-name descname">submit_bio_noacct</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.submit_bio_noacct" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.submit_bio_noacct" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>re-submit a bio to the block device layer for I/O</p>
 </dd></dl>
 
@@ -8118,7 +8143,7 @@ systems and other upper level users of the block layer should use
 <a class="reference internal" href="#c.submit_bio" title="submit_bio"><code class="xref c c-func docutils literal notranslate"><span class="pre">submit_bio()</span></code></a> instead.</p>
 <dl class="c function">
 <dt id="c.submit_bio">
-blk_qc_t <code class="sig-name descname">submit_bio</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.submit_bio" title="Permalink to this definition">¶</a><br /></dt>
+blk_qc_t <code class="sig-name descname">submit_bio</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.submit_bio" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.submit_bio" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>submit a bio to the block device layer for I/O</p>
 </dd></dl>
 
@@ -8412,7 +8437,7 @@ unmapping.</p>
 </dl>
 <dl class="c function">
 <dt id="c.blk_rq_unmap_user">
-int <code class="sig-name descname">blk_rq_unmap_user</code><span class="sig-paren">(</span><em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_rq_unmap_user" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">blk_rq_unmap_user</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.blk_rq_unmap_user" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_rq_unmap_user" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unmap a request with user data</p>
 </dd></dl>
 
@@ -9146,7 +9171,7 @@ int <code class="sig-name descname">blkdev_issue_discard</code><span class="sig-
 </div></blockquote>
 <dl class="c function">
 <dt id="c.blkdev_issue_write_same">
-int <code class="sig-name descname">blkdev_issue_write_same</code><span class="sig-paren">(</span><em class="property">struct</em> block_device *<em>bdev</em>, sector_t <em>sector</em>, sector_t <em>nr_sects</em>, gfp_t <em>gfp_mask</em>, <em class="property">struct</em> page *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blkdev_issue_write_same" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">blkdev_issue_write_same</code><span class="sig-paren">(</span><em class="property">struct</em> block_device *<em>bdev</em>, sector_t <em>sector</em>, sector_t <em>nr_sects</em>, gfp_t <em>gfp_mask</em>, <em class="property">struct</em> <a class="reference internal" href="#c.blkdev_issue_write_same" title="page">page</a> *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blkdev_issue_write_same" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>queue a write same operation</p>
 </dd></dl>
 
@@ -9224,7 +9249,7 @@ valid values for <code class="docutils literal notranslate"><span class="pre">fl
 </div></blockquote>
 <dl class="c function">
 <dt id="c.blk_rq_count_integrity_sg">
-int <code class="sig-name descname">blk_rq_count_integrity_sg</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> bio *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_rq_count_integrity_sg" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">blk_rq_count_integrity_sg</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> <a class="reference internal" href="#c.blk_rq_count_integrity_sg" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_rq_count_integrity_sg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Count number of integrity scatterlist elements</p>
 </dd></dl>
 
@@ -9240,7 +9265,7 @@ int <code class="sig-name descname">blk_rq_count_integrity_sg</code><span class=
 scatterlist corresponding to the integrity metadata in a bio.</p>
 <dl class="c function">
 <dt id="c.blk_rq_map_integrity_sg">
-int <code class="sig-name descname">blk_rq_map_integrity_sg</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> bio *<em>bio</em>, <em class="property">struct</em> scatterlist *<em>sglist</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_rq_map_integrity_sg" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">blk_rq_map_integrity_sg</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> <a class="reference internal" href="#c.blk_rq_map_integrity_sg" title="bio">bio</a> *<em>bio</em>, <em class="property">struct</em> scatterlist *<em>sglist</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_rq_map_integrity_sg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Map integrity metadata into a scatterlist</p>
 </dd></dl>
 
@@ -9364,7 +9389,7 @@ void <code class="sig-name descname">blk_add_trace_rq</code><span class="sig-par
 </div></blockquote>
 <dl class="c function">
 <dt id="c.blk_add_trace_bio">
-void <code class="sig-name descname">blk_add_trace_bio</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> bio *<em>bio</em>, u32 <em>what</em>, int <em>error</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_add_trace_bio" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">blk_add_trace_bio</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> <a class="reference internal" href="#c.blk_add_trace_bio" title="bio">bio</a> *<em>bio</em>, u32 <em>what</em>, int <em>error</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_add_trace_bio" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Add a trace for a bio oriented action</p>
 </dd></dl>
 
@@ -9385,7 +9410,7 @@ void <code class="sig-name descname">blk_add_trace_bio</code><span class="sig-pa
 </div></blockquote>
 <dl class="c function">
 <dt id="c.blk_add_trace_bio_remap">
-void <code class="sig-name descname">blk_add_trace_bio_remap</code><span class="sig-paren">(</span>void *<em>ignore</em>, <em class="property">struct</em> bio *<em>bio</em>, dev_t <em>dev</em>, sector_t <em>from</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_add_trace_bio_remap" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">blk_add_trace_bio_remap</code><span class="sig-paren">(</span>void *<em>ignore</em>, <em class="property">struct</em> <a class="reference internal" href="#c.blk_add_trace_bio_remap" title="bio">bio</a> *<em>bio</em>, dev_t <em>dev</em>, sector_t <em>from</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_add_trace_bio_remap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Add a trace for a bio-remap operation</p>
 </dd></dl>
 
@@ -9970,7 +9995,7 @@ appropriately so the parent is not freed before the cdev. This
 should be called before cdev_add.</p>
 <dl class="c function">
 <dt id="c.cdev_device_add">
-int <code class="sig-name descname">cdev_device_add</code><span class="sig-paren">(</span><em class="property">struct</em> cdev *<em>cdev</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/infrastructure.html#c.device" title="device">device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cdev_device_add" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">cdev_device_add</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.cdev_device_add" title="cdev">cdev</a> *<em>cdev</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/infrastructure.html#c.device" title="device">device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cdev_device_add" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add a char device and it’s corresponding <a class="reference internal" href="../driver-api/infrastructure.html#c.device" title="device"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">device</span></code></a>, linkink</p>
 </dd></dl>
 
@@ -9998,7 +10023,7 @@ managed by the <a class="reference internal" href="../driver-api/infrastructure.
 can call cdev fops callbacks at any time, even if this function fails.</p>
 <dl class="c function">
 <dt id="c.cdev_device_del">
-void <code class="sig-name descname">cdev_device_del</code><span class="sig-paren">(</span><em class="property">struct</em> cdev *<em>cdev</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/infrastructure.html#c.device" title="device">device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cdev_device_del" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">cdev_device_del</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.cdev_device_del" title="cdev">cdev</a> *<em>cdev</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/infrastructure.html#c.device" title="device">device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cdev_device_del" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>inverse of cdev_device_add</p>
 </dd></dl>
 
@@ -10051,7 +10076,7 @@ still be callable even after cdev_del returns.</p>
 <p>Allocates and returns a cdev structure, or NULL on failure.</p>
 <dl class="c function">
 <dt id="c.cdev_init">
-void <code class="sig-name descname">cdev_init</code><span class="sig-paren">(</span><em class="property">struct</em> cdev *<em>cdev</em>, <em class="property">const</em> <em class="property">struct</em> file_operations *<em>fops</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cdev_init" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">cdev_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.cdev_init" title="cdev">cdev</a> *<em>cdev</em>, <em class="property">const</em> <em class="property">struct</em> file_operations *<em>fops</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cdev_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>initialize a cdev structure</p>
 </dd></dl>
 
@@ -10179,7 +10204,7 @@ a convenience to consumers which require multiple clks.  This
 structure is used to manage data for these calls.</p>
 <dl class="c function">
 <dt id="c.clk_notifier_register">
-int <code class="sig-name descname">clk_notifier_register</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em>, <em class="property">struct</em> notifier_block *<em>nb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_notifier_register" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">clk_notifier_register</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_notifier_register" title="clk">clk</a> *<em>clk</em>, <em class="property">struct</em> notifier_block *<em>nb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_notifier_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a clock rate-change notifier callback</p>
 </dd></dl>
 
@@ -10196,7 +10221,7 @@ your notifier callback function prints a nice big warning in case of
 failure.</p>
 <dl class="c function">
 <dt id="c.clk_notifier_unregister">
-int <code class="sig-name descname">clk_notifier_unregister</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em>, <em class="property">struct</em> notifier_block *<em>nb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_notifier_unregister" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">clk_notifier_unregister</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_notifier_unregister" title="clk">clk</a> *<em>clk</em>, <em class="property">struct</em> notifier_block *<em>nb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_notifier_unregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unregister a clock rate-change notifier callback</p>
 </dd></dl>
 
@@ -10209,7 +10234,7 @@ int <code class="sig-name descname">clk_notifier_unregister</code><span class="s
 </dl>
 <dl class="c function">
 <dt id="c.devm_clk_notifier_register">
-int <code class="sig-name descname">devm_clk_notifier_register</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../driver-api/infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">struct</em> clk *<em>clk</em>, <em class="property">struct</em> notifier_block *<em>nb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_clk_notifier_register" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">devm_clk_notifier_register</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../driver-api/infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.devm_clk_notifier_register" title="clk">clk</a> *<em>clk</em>, <em class="property">struct</em> notifier_block *<em>nb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_clk_notifier_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a managed rate-change notifier callback</p>
 </dd></dl>
 
@@ -10226,7 +10251,7 @@ int <code class="sig-name descname">devm_clk_notifier_register</code><span class
 <p>Returns 0 on success, -EERROR otherwise</p>
 <dl class="c function">
 <dt id="c.clk_get_accuracy">
-long <code class="sig-name descname">clk_get_accuracy</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_get_accuracy" title="Permalink to this definition">¶</a><br /></dt>
+long <code class="sig-name descname">clk_get_accuracy</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_get_accuracy" title="clk">clk</a> *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_get_accuracy" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>obtain the clock accuracy in ppb (parts per billion) for a clock source.</p>
 </dd></dl>
 
@@ -10240,7 +10265,7 @@ long <code class="sig-name descname">clk_get_accuracy</code><span class="sig-par
 A perfect clock returns 0.</p>
 <dl class="c function">
 <dt id="c.clk_set_phase">
-int <code class="sig-name descname">clk_set_phase</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em>, int <em>degrees</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_set_phase" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">clk_set_phase</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_set_phase" title="clk">clk</a> *<em>clk</em>, int <em>degrees</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_set_phase" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>adjust the phase shift of a clock signal</p>
 </dd></dl>
 
@@ -10256,7 +10281,7 @@ int <code class="sig-name descname">clk_set_phase</code><span class="sig-paren">
 success, -EERROR otherwise.</p>
 <dl class="c function">
 <dt id="c.clk_get_phase">
-int <code class="sig-name descname">clk_get_phase</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_get_phase" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">clk_get_phase</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_get_phase" title="clk">clk</a> *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_get_phase" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return the phase shift of a clock signal</p>
 </dd></dl>
 
@@ -10270,7 +10295,7 @@ int <code class="sig-name descname">clk_get_phase</code><span class="sig-paren">
 -EERROR.</p>
 <dl class="c function">
 <dt id="c.clk_set_duty_cycle">
-int <code class="sig-name descname">clk_set_duty_cycle</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em>, unsigned int <em>num</em>, unsigned int <em>den</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_set_duty_cycle" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">clk_set_duty_cycle</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_set_duty_cycle" title="clk">clk</a> *<em>clk</em>, unsigned int <em>num</em>, unsigned int <em>den</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_set_duty_cycle" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>adjust the duty cycle ratio of a clock signal</p>
 </dd></dl>
 
@@ -10288,7 +10313,7 @@ int <code class="sig-name descname">clk_set_duty_cycle</code><span class="sig-pa
 success, -EERROR otherwise.</p>
 <dl class="c function">
 <dt id="c.clk_get_scaled_duty_cycle">
-int <code class="sig-name descname">clk_get_scaled_duty_cycle</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em>, unsigned int <em>scale</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_get_scaled_duty_cycle" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">clk_get_scaled_duty_cycle</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_get_scaled_duty_cycle" title="clk">clk</a> *<em>clk</em>, unsigned int <em>scale</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_get_scaled_duty_cycle" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return the duty cycle ratio of a clock signal</p>
 </dd></dl>
 
@@ -10322,7 +10347,7 @@ share the same <code class="xref c c-type docutils literal notranslate"><span cl
 <p>Returns false otherwise. Note that two NULL clks are treated as matching.</p>
 <dl class="c function">
 <dt id="c.clk_prepare">
-int <code class="sig-name descname">clk_prepare</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_prepare" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">clk_prepare</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_prepare" title="clk">clk</a> *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_prepare" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>prepare a clock source</p>
 </dd></dl>
 
@@ -10335,8 +10360,28 @@ int <code class="sig-name descname">clk_prepare</code><span class="sig-paren">(<
 <p>This prepares the clock source for use.</p>
 <p>Must not be called from within atomic context.</p>
 <dl class="c function">
+<dt id="c.clk_is_enabled_when_prepared">
+bool <code class="sig-name descname">clk_is_enabled_when_prepared</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_is_enabled_when_prepared" title="clk">clk</a> *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_is_enabled_when_prepared" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>indicate if preparing a clock also enables it.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">clk</span> <span class="pre">*clk</span></code></dt><dd><p>clock source</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Returns true if <a class="reference internal" href="#c.clk_prepare" title="clk_prepare"><code class="xref c c-func docutils literal notranslate"><span class="pre">clk_prepare()</span></code></a> implicitly enables the clock, effectively
+making <a class="reference internal" href="#c.clk_enable" title="clk_enable"><code class="xref c c-func docutils literal notranslate"><span class="pre">clk_enable()</span></code></a>/<a class="reference internal" href="#c.clk_disable" title="clk_disable"><code class="xref c c-func docutils literal notranslate"><span class="pre">clk_disable()</span></code></a> no-ops, false otherwise.</p>
+<p>This is of interest mainly to the power management code where actually
+disabling the clock also requires unpreparing it to have any material
+effect.</p>
+<p>Regardless of the value returned here, the caller must always invoke
+<a class="reference internal" href="#c.clk_enable" title="clk_enable"><code class="xref c c-func docutils literal notranslate"><span class="pre">clk_enable()</span></code></a> or clk_prepare_enable()  and counterparts for usage counts
+to be right.</p>
+<dl class="c function">
 <dt id="c.clk_unprepare">
-void <code class="sig-name descname">clk_unprepare</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_unprepare" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">clk_unprepare</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_unprepare" title="clk">clk</a> *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_unprepare" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>undo preparation of a clock source</p>
 </dd></dl>
 
@@ -10566,7 +10611,7 @@ struct clk from the registered list of clock providers by using
 from the bus.</p>
 <dl class="c function">
 <dt id="c.clk_rate_exclusive_get">
-int <code class="sig-name descname">clk_rate_exclusive_get</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_rate_exclusive_get" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">clk_rate_exclusive_get</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_rate_exclusive_get" title="clk">clk</a> *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_rate_exclusive_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get exclusivity over the rate control of a producer</p>
 </dd></dl>
 
@@ -10585,7 +10630,7 @@ the rate effectively gets locked as exclusivity can’t be preempted.</p>
 <p>Returns success (0) or negative errno.</p>
 <dl class="c function">
 <dt id="c.clk_rate_exclusive_put">
-void <code class="sig-name descname">clk_rate_exclusive_put</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_rate_exclusive_put" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">clk_rate_exclusive_put</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_rate_exclusive_put" title="clk">clk</a> *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_rate_exclusive_put" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>release exclusivity over the rate control of a producer</p>
 </dd></dl>
 
@@ -10602,7 +10647,7 @@ from <a class="reference internal" href="#c.clk_rate_exclusive_get" title="clk_r
 <p>Must not be called from within atomic context.</p>
 <dl class="c function">
 <dt id="c.clk_enable">
-int <code class="sig-name descname">clk_enable</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_enable" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">clk_enable</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_enable" title="clk">clk</a> *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_enable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>inform the system when the clock source should be running.</p>
 </dd></dl>
 
@@ -10633,7 +10678,7 @@ int <code class="sig-name descname">clk_bulk_enable</code><span class="sig-paren
 <p>Returns success (0) or negative errno.</p>
 <dl class="c function">
 <dt id="c.clk_disable">
-void <code class="sig-name descname">clk_disable</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_disable" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">clk_disable</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_disable" title="clk">clk</a> *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_disable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>inform the system when the clock source is no longer required.</p>
 </dd></dl>
 
@@ -10673,7 +10718,7 @@ same number of <a class="reference internal" href="#c.clk_bulk_disable" title="c
 disabled.</p>
 <dl class="c function">
 <dt id="c.clk_get_rate">
-unsigned long <code class="sig-name descname">clk_get_rate</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_get_rate" title="Permalink to this definition">¶</a><br /></dt>
+unsigned long <code class="sig-name descname">clk_get_rate</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_get_rate" title="clk">clk</a> *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_get_rate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>obtain the current clock rate (in Hz) for a clock source. This is only valid once the clock source has been enabled.</p>
 </dd></dl>
 
@@ -10684,7 +10729,7 @@ unsigned long <code class="sig-name descname">clk_get_rate</code><span class="si
 </dl>
 <dl class="c function">
 <dt id="c.clk_put">
-void <code class="sig-name descname">clk_put</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_put" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">clk_put</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_put" title="clk">clk</a> *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_put" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>“free” the clock source</p>
 </dd></dl>
 
@@ -10739,7 +10784,7 @@ this function.</p>
 <p>clk_bulk_put_all should not be called from within interrupt context.</p>
 <dl class="c function">
 <dt id="c.devm_clk_put">
-void <code class="sig-name descname">devm_clk_put</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../driver-api/infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">struct</em> clk *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_clk_put" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">devm_clk_put</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../driver-api/infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.devm_clk_put" title="clk">clk</a> *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_clk_put" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>“free” a managed clock source</p>
 </dd></dl>
 
@@ -10758,7 +10803,7 @@ this function.</p>
 <p>clk_put should not be called from within interrupt context.</p>
 <dl class="c function">
 <dt id="c.clk_round_rate">
-long <code class="sig-name descname">clk_round_rate</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em>, unsigned long <em>rate</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_round_rate" title="Permalink to this definition">¶</a><br /></dt>
+long <code class="sig-name descname">clk_round_rate</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_round_rate" title="clk">clk</a> *<em>clk</em>, unsigned long <em>rate</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_round_rate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>adjust a rate to the exact rate a clock can provide</p>
 </dd></dl>
 
@@ -10786,7 +10831,7 @@ in any way.</p>
 <p>Returns rounded clock rate in Hz, or negative errno.</p>
 <dl class="c function">
 <dt id="c.clk_set_rate">
-int <code class="sig-name descname">clk_set_rate</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em>, unsigned long <em>rate</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_set_rate" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">clk_set_rate</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_set_rate" title="clk">clk</a> *<em>clk</em>, unsigned long <em>rate</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_set_rate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set the clock rate for a clock source</p>
 </dd></dl>
 
@@ -10803,7 +10848,7 @@ walks the tree down to the bottom-most clock that needs updating.</p>
 <p>Returns success (0) or negative errno.</p>
 <dl class="c function">
 <dt id="c.clk_set_rate_exclusive">
-int <code class="sig-name descname">clk_set_rate_exclusive</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em>, unsigned long <em>rate</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_set_rate_exclusive" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">clk_set_rate_exclusive</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_set_rate_exclusive" title="clk">clk</a> *<em>clk</em>, unsigned long <em>rate</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_set_rate_exclusive" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set the clock rate and claim exclusivity over clock source</p>
 </dd></dl>
 
@@ -10823,7 +10868,7 @@ clk_rate_exclusite_get(). Caller must balance this call with a call to
 <p>Returns success (0) or negative errno.</p>
 <dl class="c function">
 <dt id="c.clk_has_parent">
-bool <code class="sig-name descname">clk_has_parent</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em>, <em class="property">struct</em> clk *<em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_has_parent" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">clk_has_parent</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_has_parent" title="clk">clk</a> *<em>clk</em>, <em class="property">struct</em> <a class="reference internal" href="#c.clk_has_parent" title="clk">clk</a> *<em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_has_parent" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check if a clock is a possible parent for another</p>
 </dd></dl>
 
@@ -10840,7 +10885,7 @@ the parent of another without actually changing the parent.</p>
 <p>Returns true if <strong>parent</strong> is a possible parent for <strong>clk</strong>, false otherwise.</p>
 <dl class="c function">
 <dt id="c.clk_set_rate_range">
-int <code class="sig-name descname">clk_set_rate_range</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em>, unsigned long <em>min</em>, unsigned long <em>max</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_set_rate_range" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">clk_set_rate_range</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_set_rate_range" title="clk">clk</a> *<em>clk</em>, unsigned long <em>min</em>, unsigned long <em>max</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_set_rate_range" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set a rate range for a clock source</p>
 </dd></dl>
 
@@ -10857,7 +10902,7 @@ int <code class="sig-name descname">clk_set_rate_range</code><span class="sig-pa
 <p>Returns success (0) or negative errno.</p>
 <dl class="c function">
 <dt id="c.clk_set_min_rate">
-int <code class="sig-name descname">clk_set_min_rate</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em>, unsigned long <em>rate</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_set_min_rate" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">clk_set_min_rate</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_set_min_rate" title="clk">clk</a> *<em>clk</em>, unsigned long <em>rate</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_set_min_rate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set a minimum clock rate for a clock source</p>
 </dd></dl>
 
@@ -10872,7 +10917,7 @@ int <code class="sig-name descname">clk_set_min_rate</code><span class="sig-pare
 <p>Returns success (0) or negative errno.</p>
 <dl class="c function">
 <dt id="c.clk_set_max_rate">
-int <code class="sig-name descname">clk_set_max_rate</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em>, unsigned long <em>rate</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_set_max_rate" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">clk_set_max_rate</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_set_max_rate" title="clk">clk</a> *<em>clk</em>, unsigned long <em>rate</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_set_max_rate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set a maximum clock rate for a clock source</p>
 </dd></dl>
 
@@ -10887,7 +10932,7 @@ int <code class="sig-name descname">clk_set_max_rate</code><span class="sig-pare
 <p>Returns success (0) or negative errno.</p>
 <dl class="c function">
 <dt id="c.clk_set_parent">
-int <code class="sig-name descname">clk_set_parent</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em>, <em class="property">struct</em> clk *<em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_set_parent" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">clk_set_parent</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_set_parent" title="clk">clk</a> *<em>clk</em>, <em class="property">struct</em> <a class="reference internal" href="#c.clk_set_parent" title="clk">clk</a> *<em>parent</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_set_parent" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set the parent clock source for this clock</p>
 </dd></dl>
 
@@ -10902,7 +10947,7 @@ int <code class="sig-name descname">clk_set_parent</code><span class="sig-paren"
 <p>Returns success (0) or negative errno.</p>
 <dl class="c function">
 <dt id="c.clk_get_parent">
-<em class="property">struct</em> clk *<code class="sig-name descname">clk_get_parent</code><span class="sig-paren">(</span><em class="property">struct</em> clk *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_get_parent" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> <a class="reference internal" href="#c.clk_get_parent" title="clk">clk</a> *<code class="sig-name descname">clk_get_parent</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_get_parent" title="clk">clk</a> *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_get_parent" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get the parent clock source for this clock</p>
 </dd></dl>
 
@@ -13619,7 +13664,7 @@ list-traversal primitive must be guarded by <a class="reference internal" href="
 <p><strong>Description</strong></p>
 <p>The barrier() is needed to make sure compiler doesn’t cache first element [1],
 as this loop can be restarted [2]
-[1] Documentation/core-api/atomic_ops.rst around line 114
+[1] Documentation/memory-barriers.txt around line 1533
 [2] <a class="reference internal" href="../RCU/rculist_nulls.html"><span class="doc">Using RCU hlist_nulls to protect list and objects</span></a> around line 146</p>
 <dl class="c macro">
 <dt id="c.hlist_nulls_for_each_entry_safe">
@@ -13766,37 +13811,29 @@ void <code class="sig-name descname">rcu_sync_dtor</code><span class="sig-paren"
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="workqueue.html" class="btn btn-neutral float-right" title="Concurrency Managed Workqueue (cmwq)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="index.html" class="btn btn-neutral float-left" title="Core API Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="workqueue.html" class="btn btn-neutral float-right" title="Concurrency Managed Workqueue (cmwq)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Core API Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright The kernel development community
+        &#169; Copyright The kernel development community.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
