@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.16-dragon
+                5.11.17-dragon
               </div>
             
           
@@ -2168,6 +2168,52 @@ void <code class="sig-name descname">dma_fence_end_signalling</code><span class=
 <p><strong>Description</strong></p>
 <p>Closes a critical section annotation opened by <a class="reference internal" href="#c.dma_fence_begin_signalling" title="dma_fence_begin_signalling"><code class="xref c c-func docutils literal notranslate"><span class="pre">dma_fence_begin_signalling()</span></code></a>.</p>
 <dl class="c function">
+<dt id="c.dma_fence_signal_timestamp_locked">
+int <code class="sig-name descname">dma_fence_signal_timestamp_locked</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dma_fence" title="dma_fence">dma_fence</a> *<em>fence</em>, ktime_t <em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dma_fence_signal_timestamp_locked" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>signal completion of a fence</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_fence</span> <span class="pre">*fence</span></code></dt><dd><p>the fence to signal</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ktime_t</span> <span class="pre">timestamp</span></code></dt><dd><p>fence signal timestamp in kernel’s CLOCK_MONOTONIC time domain</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Signal completion for software callbacks on a fence, this will unblock
+<a class="reference internal" href="#c.dma_fence_wait" title="dma_fence_wait"><code class="xref c c-func docutils literal notranslate"><span class="pre">dma_fence_wait()</span></code></a> calls and run all the callbacks added with
+<a class="reference internal" href="#c.dma_fence_add_callback" title="dma_fence_add_callback"><code class="xref c c-func docutils literal notranslate"><span class="pre">dma_fence_add_callback()</span></code></a>. Can be called multiple times, but since a fence
+can only go from the unsignaled to the signaled state and not back, it will
+only be effective the first time. Set the timestamp provided as the fence
+signal timestamp.</p>
+<p>Unlike <a class="reference internal" href="#c.dma_fence_signal_timestamp" title="dma_fence_signal_timestamp"><code class="xref c c-func docutils literal notranslate"><span class="pre">dma_fence_signal_timestamp()</span></code></a>, this function must be called with
+<a class="reference internal" href="#c.dma_fence" title="dma_fence"><code class="xref c c-type docutils literal notranslate"><span class="pre">dma_fence.lock</span></code></a> held.</p>
+<p>Returns 0 on success and a negative error value when <strong>fence</strong> has been
+signalled already.</p>
+<dl class="c function">
+<dt id="c.dma_fence_signal_timestamp">
+int <code class="sig-name descname">dma_fence_signal_timestamp</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dma_fence" title="dma_fence">dma_fence</a> *<em>fence</em>, ktime_t <em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dma_fence_signal_timestamp" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>signal completion of a fence</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_fence</span> <span class="pre">*fence</span></code></dt><dd><p>the fence to signal</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ktime_t</span> <span class="pre">timestamp</span></code></dt><dd><p>fence signal timestamp in kernel’s CLOCK_MONOTONIC time domain</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Signal completion for software callbacks on a fence, this will unblock
+<a class="reference internal" href="#c.dma_fence_wait" title="dma_fence_wait"><code class="xref c c-func docutils literal notranslate"><span class="pre">dma_fence_wait()</span></code></a> calls and run all the callbacks added with
+<a class="reference internal" href="#c.dma_fence_add_callback" title="dma_fence_add_callback"><code class="xref c c-func docutils literal notranslate"><span class="pre">dma_fence_add_callback()</span></code></a>. Can be called multiple times, but since a fence
+can only go from the unsignaled to the signaled state and not back, it will
+only be effective the first time. Set the timestamp provided as the fence
+signal timestamp.</p>
+<p>Returns 0 on success and a negative error value when <strong>fence</strong> has been
+signalled already.</p>
+<dl class="c function">
 <dt id="c.dma_fence_signal_locked">
 int <code class="sig-name descname">dma_fence_signal_locked</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dma_fence" title="dma_fence">dma_fence</a> *<em>fence</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dma_fence_signal_locked" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>signal completion of a fence</p>
@@ -2431,11 +2477,11 @@ to check which fence is later by simply using <a class="reference internal" href
   const struct dma_fence_ops *ops;
   union {
     struct list_head cb_list;
+    ktime_t timestamp;
     struct rcu_head rcu;
   };
   u64 context;
   u64 seqno;
-  ktime_t timestamp;
   unsigned long flags;
   struct kref refcount;
   int error;
@@ -2452,6 +2498,8 @@ to check which fence is later by simply using <a class="reference internal" href
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">cb_list</span></code></dt><dd><p>list of all callbacks to call</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">timestamp</span></code></dt><dd><p>Timestamp when the fence was signaled.</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">rcu</span></code></dt><dd><p>used for releasing fence with kfree_rcu</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">context</span></code></dt><dd><p>execution context this fence belongs to, returned by
@@ -2459,8 +2507,6 @@ to check which fence is later by simply using <a class="reference internal" href
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">seqno</span></code></dt><dd><p>the sequence number of this fence inside the execution context,
 can be compared to decide which fence would be signaled later.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">timestamp</span></code></dt><dd><p>Timestamp when the fence was signaled.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">flags</span></code></dt><dd><p>A mask of DMA_FENCE_FLAG_* defined below</p>
 </dd>

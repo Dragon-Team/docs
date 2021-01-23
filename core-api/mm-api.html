@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.16-dragon
+                5.11.17-dragon
               </div>
             
           
@@ -1975,30 +1975,27 @@ page we return, ready for the next iteration.</p>
 <p><strong>Return</strong></p>
 <p>the number of pages which were found.</p>
 <dl class="c function">
-<dt id="c.generic_file_buffered_read">
-ssize_t <code class="sig-name descname">generic_file_buffered_read</code><span class="sig-paren">(</span><em class="property">struct</em> kiocb *<em>iocb</em>, <em class="property">struct</em> iov_iter *<em>iter</em>, ssize_t <em>written</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_file_buffered_read" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>generic file read routine</p>
+<dt id="c.filemap_read">
+ssize_t <code class="sig-name descname">filemap_read</code><span class="sig-paren">(</span><em class="property">struct</em> kiocb *<em>iocb</em>, <em class="property">struct</em> iov_iter *<em>iter</em>, ssize_t <em>already_read</em><span class="sig-paren">)</span><a class="headerlink" href="#c.filemap_read" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Read data from the page cache.</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">kiocb</span> <span class="pre">*iocb</span></code></dt><dd><p>the iocb to read</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">kiocb</span> <span class="pre">*iocb</span></code></dt><dd><p>The iocb to read.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">iov_iter</span> <span class="pre">*iter</span></code></dt><dd><p>data destination</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">iov_iter</span> <span class="pre">*iter</span></code></dt><dd><p>Destination for the data.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">ssize_t</span> <span class="pre">written</span></code></dt><dd><p>already copied</p>
+<dt><code class="docutils literal notranslate"><span class="pre">ssize_t</span> <span class="pre">already_read</span></code></dt><dd><p>Number of bytes already read by the caller.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>This is a generic file read routine, and uses the
-mapping-&gt;a_ops-&gt;readpage() function for the actual low-level stuff.</p>
-<p>This is really ugly. But the goto’s actually try to clarify some
-of the logic when it comes to error handling etc.</p>
+<p>Copies data from the page cache.  If the data is not currently present,
+uses the readahead and readpage address_space operations to fetch it.</p>
 <p><strong>Return</strong></p>
-<ul class="simple">
-<li><p>total number of bytes copied, including those the were already <strong>written</strong></p></li>
-<li><p>negative error code if nothing was copied</p></li>
-</ul>
+<p>Total number of bytes copied, including those already read by
+the caller.  If an error happens before any bytes are copied, returns
+a negative error number.</p>
 <dl class="c function">
 <dt id="c.generic_file_read_iter">
 ssize_t <code class="sig-name descname">generic_file_read_iter</code><span class="sig-paren">(</span><em class="property">struct</em> kiocb *<em>iocb</em>, <em class="property">struct</em> iov_iter *<em>iter</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_file_read_iter" title="Permalink to this definition">¶</a><br /></dt>

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.16-dragon
+                5.11.17-dragon
               </div>
             
           
@@ -1426,7 +1426,7 @@ void <code class="sig-name descname">wiphy_free</code><span class="sig-paren">(<
   spinlock_t mgmt_registrations_lock;
   u8 mgmt_registrations_need_update:1;
   struct mutex mtx;
-  bool use_4addr, is_running;
+  bool use_4addr, is_running, registered;
   u8 address[ETH_ALEN] ;
   u8 ssid[IEEE80211_MAX_SSID_LEN];
   u8 ssid_len, mesh_id_len, mesh_id_up_len;
@@ -1504,6 +1504,8 @@ by cfg80211 on change_interface</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">is_running</span></code></dt><dd><p>true if this is a non-netdev device that has been started, e.g.
 the P2P Device.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">registered</span></code></dt><dd><p>is this wdev already registered with cfg80211</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">address</span></code></dt><dd><p>The address for this device, valid only if <strong>netdev</strong> is <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p>
 </dd>
