@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.18-dragon
+                5.11.19-dragon
               </div>
             
           
@@ -3546,7 +3546,10 @@ should be set. The range will divided to groups of specific size.
 From each group will be used only defined amount of bits.
 Syntax: range:used_size/group_size</p>
 <p><strong>Example</strong></p>
-<p>0-1023:2/256 ==&gt; 0,1,256,257,512,513,768,769</p>
+<p>0-1023:2/256 ==&gt; 0,1,256,257,512,513,768,769
+Optionally the self-descriptive “all” or “none” can be used.
+The value ‘N’ can be used as the end of a range to indicate the maximum
+allowed value; i.e (nmaskbits - 1).</p>
 <p><strong>Return</strong></p>
 <p>0 on success, -errno on invalid input strings. Error values:</p>
 <blockquote>
@@ -4165,17 +4168,24 @@ char *<code class="sig-name descname">get_options</code><span class="sig-paren">
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">nints</span></code></dt><dd><p>size of integer array</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*ints</span></code></dt><dd><p>integer array</p>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*ints</span></code></dt><dd><p>integer array (must have room for at least one element)</p>
 <p>This function parses a string containing a comma-separated
 list of integers, a hyphen-separated range of _positive_ integers,
 or a combination of both.  The parse halts when the array is
 full, or when no more numbers can be retrieved from the
 string.</p>
+<p>When <strong>nints</strong> is 0, the function just validates the given <strong>str</strong> and
+returns the amount of parseable integers as described below.</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<blockquote>
+<div><p>The first element is filled by the number of collected integers
+in the range. The rest is what was parsed from the <strong>str</strong>.</p>
 <p>Return value is the character in the string which caused
 the parse to end (typically a null terminator, if <strong>str</strong> is
 completely parseable).</p>
-</dd>
-</dl>
+</div></blockquote>
 <dl class="c function">
 <dt id="c.memparse">
 unsigned long long <code class="sig-name descname">memparse</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>ptr</em>, char **<em>retptr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.memparse" title="Permalink to this definition">¶</a><br /></dt>

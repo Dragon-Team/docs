@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.18-dragon
+                5.11.19-dragon
               </div>
             
           
@@ -406,6 +406,26 @@ rules for a given device.</p>
 current size and related sub resources. To access a sub resource, you
 specify the path of the resource. For example <code class="docutils literal notranslate"><span class="pre">/IPv4/fib</span></code> is the id for
 the <code class="docutils literal notranslate"><span class="pre">fib</span></code> sub-resource under the <code class="docutils literal notranslate"><span class="pre">IPv4</span></code> resource.</p>
+</div>
+<div class="section" id="generic-resources">
+<h2>Generic Resources<a class="headerlink" href="#generic-resources" title="Permalink to this headline">¶</a></h2>
+<p>Generic resources are used to describe resources that can be shared by multiple
+device drivers and their description must be added to the following table:</p>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">List of Generic Resources</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Name</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">physical_ports</span></code></p></td>
+<td><p>A limited capacity of physical ports that the switch ASIC can support</p></td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="example-usage">
 <h3>example usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h3>
 <p>The resources exposed by the driver can be observed, for example:</p>

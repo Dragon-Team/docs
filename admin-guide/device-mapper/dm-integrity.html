@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.18-dragon
+                5.11.19-dragon
               </div>
             
           
@@ -522,12 +522,10 @@ Discards are only allowed to devices using internal hash.</p>
 space-efficient. If this option is not present, large padding is
 used - that is for compatibility with older kernels.</p>
 </dd>
-<dt>fix_hmac</dt><dd><p>Improve security of internal_hash and journal_mac:
-- the section number is mixed to the mac, so that an attacker can’t</p>
-<blockquote>
-<div><p>copy sectors from one journal section to another journal section</p>
-</div></blockquote>
+<dt>fix_hmac</dt><dd><p>Improve security of internal_hash and journal_mac:</p>
 <ul class="simple">
+<li><p>the section number is mixed to the mac, so that an attacker can’t
+copy sectors from one journal section to another journal section</p></li>
 <li><p>the superblock is protected by journal_mac</p></li>
 <li><p>a 16-byte salt stored in the superblock is mixed to the mac, so
 that the attacker can’t detect that two disks have the same hmac

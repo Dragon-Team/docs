@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.18-dragon
+                5.11.19-dragon
               </div>
             
           
@@ -1971,9 +1971,18 @@ IPv6 header in case of SR T.encaps</p>
 <p>Default is 0.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">conf/default/*</span></code>:</dt><dd><p>Change the interface-specific default settings.</p>
+<p>These settings would be used during creating new interfaces.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">conf/all/*</span></code>:</dt><dd><p>Change all the interface-specific settings.</p>
 <p>[XXX:  Other special features than forwarding?]</p>
+</dd>
+<dt>conf/all/disable_ipv6 - BOOLEAN</dt><dd><p>Changing this value is same as changing <code class="docutils literal notranslate"><span class="pre">conf/default/disable_ipv6</span></code>
+setting and also all per-interface <code class="docutils literal notranslate"><span class="pre">disable_ipv6</span></code> settings to the same
+value.</p>
+<p>Reading this value does not have any particular meaning. It does not say
+whether IPv6 support is enabled or disabled. Returned value can be 1
+also in the case when some interface has <code class="docutils literal notranslate"><span class="pre">disable_ipv6</span></code> set to 0 and
+has configured IPv6 addresses.</p>
 </dd>
 <dt>conf/all/forwarding - BOOLEAN</dt><dd><p>Enable global IPv6 forwarding between all interfaces.</p>
 <p>IPv4 and IPv6 work differently here; e.g. netfilter must be used

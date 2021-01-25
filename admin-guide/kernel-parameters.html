@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.18-dragon
+                5.11.19-dragon
               </div>
             
           
@@ -393,6 +393,20 @@ group:</p>
 <div><p>isolcpus=1,2,10-20,100-2000:2/25</p>
 </div></blockquote>
 <p>where the final item represents CPUs 100,101,125,126,150,151,…</p>
+<p>The value “N” can be used as the end of a range, to represent the numerically
+last CPU on the system, i.e “foo_cpus=16-N” would be equivalent to “16-31” on
+a 32 core system.</p>
+<p>The following convenience aliases are also accepted and used:</p>
+<blockquote>
+<div><p>foo_cpus=all</p>
+</div></blockquote>
+<p>will provide an full/all-set cpu mask for the associated boot argument.</p>
+<blockquote>
+<div><p>foo_cpus=none</p>
+</div></blockquote>
+<p>will provide an empty/cleared cpu mask for the associated boot argument.</p>
+<p>Note that “all” and “none” are not necessarily valid/sensible input values
+for each available boot parameter expecting a CPU list.</p>
 <p>This document may not be entirely up to date and comprehensive. The command
 “modinfo -p ${modulename}” shows a current list of all parameters of a loadable
 module. Loadable modules, after being loaded into the running kernel, also
@@ -2316,7 +2330,7 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
         ima_policy=     [IMA]
                         The builtin policies to load during IMA setup.
                         Format: &quot;tcb | appraise_tcb | secure_boot |
-                                 fail_securely&quot;
+                                 fail_securely | critical_data&quot;
 
                         The &quot;tcb&quot; policy measures all programs exec'd, files
                         mmap'd for exec, and all files opened with the read
@@ -2334,6 +2348,9 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         verification failure also on privileged mounted
                         filesystems with the SB_I_UNVERIFIABLE_SIGNATURE
                         flag.
+
+                        The &quot;critical_data&quot; policy measures kernel integrity
+                        critical data.
 
         ima_tcb         [IMA] Deprecated.  Use ima_policy= instead.
                         Load a policy which meets the needs of the Trusted
@@ -3812,6 +3829,8 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
 
         nohugeiomap     [KNL,X86,PPC,ARM64] Disable kernel huge I/O mappings.
 
+        nohugevmalloc   [PPC] Disable kernel huge vmalloc mappings.
+
         nosmt           [KNL,S390] Disable symmetric multithreading (SMT).
                         Equivalent to smt=1.
 
@@ -4630,9 +4649,7 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                                 see CONFIG_RAS_CEC help text.
 
         rcu_nocbs=      [KNL]
-                        The argument is a cpu list, as described above,
-                        except that the string &quot;all&quot; can be used to
-                        specify every CPU on the system.
+                        The argument is a cpu list, as described above.
 
                         In kernels built with CONFIG_RCU_NOCB_CPU=y, set
                         the specified list of CPUs to be no-callback CPUs.
