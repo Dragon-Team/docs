@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -173,6 +173,7 @@
 <li class="toctree-l3"><a class="reference internal" href="soft-dirty.html">Soft-Dirty PTEs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="transhuge.html">Transparent Hugepage Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="userfaultfd.html">Userfaultfd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="direct_mapping_splits.html">Direct Mapping Splits</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../module-signing.html">Kernel module signing facility</a></li>
@@ -749,6 +750,16 @@ Size of memory for movable pages (for offline) is ZZZZ.</p></li>
 <p class="admonition-title">Note</p>
 <p>Unfortunately, there is no information to show which memory block belongs
 to ZONE_MOVABLE. This is TBD.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Techniques that rely on long-term pinnings of memory (especially, RDMA and
+vfio) are fundamentally problematic with ZONE_MOVABLE and, therefore, memory
+hot remove. Pinned pages cannot reside on ZONE_MOVABLE, to guarantee that
+memory can still get hot removed - be aware that pinning can fail even if
+there is plenty of free memory in ZONE_MOVABLE. In addition, using
+ZONE_MOVABLE might make page pinning more expensive, because pages have to be
+migrated off that zone first.</p>
 </div>
 </div>
 <div class="section" id="how-to-offline-memory">

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -1939,6 +1939,8 @@ int <code class="sig-name descname">atomic_dec_and_mutex_lock</code><span class=
   struct rt_mutex_waiter *rt_waiter;
   union futex_key *requeue_pi_key;
   u32 bitset;
+  u32 __user *uaddr;
+  u32 uval;
 };
 </pre></div>
 </div>
@@ -1959,6 +1961,10 @@ int <code class="sig-name descname">atomic_dec_and_mutex_lock</code><span class=
 <dt><code class="docutils literal notranslate"><span class="pre">requeue_pi_key</span></code></dt><dd><p>the requeue_pi target futex key</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">bitset</span></code></dt><dd><p>bitset for the optional bitmasked wakeup</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">uaddr</span></code></dt><dd><p>userspace address of futex</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">uval</span></code></dt><dd><p>expected futex’s value</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
@@ -2313,6 +2319,35 @@ be paired with exactly one earlier call to <a class="reference internal" href="#
 </ul>
 </div></blockquote>
 <dl class="c function">
+<dt id="c.it_IT.unqueue_multiple">
+int <code class="sig-name descname">unqueue_multiple</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.it_IT.futex_q" title="futex_q">futex_q</a> *<em>q</em>, int <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#c.it_IT.unqueue_multiple" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Remove several futexes from their futex_hash_bucket</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_q</span> <span class="pre">*q</span></code></dt><dd><p>The list of futexes to unqueue</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">count</span></code></dt><dd><p>Number of futexes in the list</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Helper to unqueue a list of futexes. This can’t fail.</p>
+<p><strong>Return</strong></p>
+<blockquote>
+<div><ul>
+<li><p>&gt;=0 - Index of the last futex that was awoken;</p></li>
+<li><dl class="option-list">
+<dt><kbd><span class="option">-1</span></kbd></dt>
+<dd><ul class="simple">
+<li><p>If no futex was awoken</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<dl class="c function">
 <dt id="c.it_IT.fixup_owner">
 int <code class="sig-name descname">fixup_owner</code><span class="sig-paren">(</span>u32 __user *<em>uaddr</em>, <em class="property">struct</em> <a class="reference internal" href="#c.it_IT.futex_q" title="futex_q">futex_q</a> *<em>q</em>, int <em>locked</em><span class="sig-paren">)</span><a class="headerlink" href="#c.it_IT.fixup_owner" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Post lock pi_state and corner case management</p>
@@ -2383,6 +2418,63 @@ with no q.key reference on failure.</p>
 <div><ul class="simple">
 <li><p>0 - uaddr contains val and hb has been locked;</p></li>
 <li><p>&lt;1 - -EFAULT or -EWOULDBLOCK (uaddr does not contain val) and hb is unlocked</p></li>
+</ul>
+</div></blockquote>
+<dl class="c function">
+<dt id="c.it_IT.futex_wait_multiple_setup">
+int <code class="sig-name descname">futex_wait_multiple_setup</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.it_IT.futex_q" title="futex_q">futex_q</a> *<em>qs</em>, int <em>count</em>, unsigned int <em>flags</em>, int *<em>awaken</em><span class="sig-paren">)</span><a class="headerlink" href="#c.it_IT.futex_wait_multiple_setup" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Prepare to wait and enqueue multiple futexes</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_q</span> <span class="pre">*qs</span></code></dt><dd><p>The corresponding futex list</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">count</span></code></dt><dd><p>The size of the lists</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">flags</span></code></dt><dd><p>Futex flags (FLAGS_SHARED, etc.)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*awaken</span></code></dt><dd><p>Index of the last awoken futex</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Prepare multiple futexes in a single step and enqueue them. This may fail if
+the futex list is invalid or if any futex was already awoken. On success the
+task is ready to interruptible sleep.</p>
+<p><strong>Return</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>1 - One of the futexes was awaken by another thread</p></li>
+<li><p>0 - Success</p></li>
+<li><p>&lt;0 - -EFAULT, -EWOULDBLOCK or -EINVAL</p></li>
+</ul>
+</div></blockquote>
+<dl class="c function">
+<dt id="c.it_IT.futex_wait_multiple">
+int <code class="sig-name descname">futex_wait_multiple</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.it_IT.futex_q" title="futex_q">futex_q</a> *<em>qs</em>, int <em>op</em>, u32 <em>count</em>, ktime_t *<em>abs_time</em><span class="sig-paren">)</span><a class="headerlink" href="#c.it_IT.futex_wait_multiple" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Prepare to wait on and enqueue several futexes</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_q</span> <span class="pre">*qs</span></code></dt><dd><p>The list of futexes to wait on</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">op</span></code></dt><dd><p>Operation code from futex’s syscall</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">count</span></code></dt><dd><p>The number of objects</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ktime_t</span> <span class="pre">*abs_time</span></code></dt><dd><p>Timeout before giving up and returning to userspace</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Entry point for the FUTEX_WAIT_MULTIPLE futex operation, this function
+sleeps on a group of futexes and returns on the first futex that
+triggered, or after the timeout has elapsed.</p>
+<p><strong>Return</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>&gt;=0 - Hint to the futex that was awoken</p></li>
+<li><p>&lt;0  - On error</p></li>
 </ul>
 </div></blockquote>
 <dl class="c function">
@@ -2514,6 +2606,63 @@ not. If the OWNER_DIED bit has been set on the futex then the waiter can
 take it over. If not, the problem is pushed back to user space. If the
 futex exit code did not run yet, then an already queued waiter might
 block forever, but there is nothing which can be done about that.</p>
+<dl class="c function">
+<dt id="c.it_IT.futex_read_wait_block">
+<em class="property">struct</em> <a class="reference internal" href="#c.it_IT.futex_q" title="futex_q">futex_q</a> *<code class="sig-name descname">futex_read_wait_block</code><span class="sig-paren">(</span>u32 __user *<em>uaddr</em>, u32 <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#c.it_IT.futex_read_wait_block" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Read an array of futex_wait_block from userspace</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">__user</span> <span class="pre">*uaddr</span></code></dt><dd><p>Userspace address of the block</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">count</span></code></dt><dd><p>Number of blocks to be read</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function creates and allocate an array of futex_q (we zero it to
+initialize the fields) and then, for each futex_wait_block element from
+userspace, fill a futex_q element with proper values.</p>
+<dl class="c struct">
+<dt id="c.it_IT.compat_futex_wait_block">
+<em class="property">struct </em><code class="sig-name descname">compat_futex_wait_block</code><a class="headerlink" href="#c.it_IT.compat_futex_wait_block" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Block of futexes to be waited for</p>
+</dd></dl>
+
+<p><strong>Definition</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct compat_futex_wait_block {
+  compat_uptr_t uaddr;
+  __u32 pad;
+  __u32 val;
+  __u32 bitset;
+};
+</pre></div>
+</div>
+<p><strong>Members</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">uaddr</span></code></dt><dd><p>User address of the futex (compatible pointer)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">val</span></code></dt><dd><p>Futex value expected by userspace</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bitset</span></code></dt><dd><p>Bitset for the optional bitmasked wakeup</p>
+</dd>
+</dl>
+<dl class="c function">
+<dt id="c.it_IT.compat_futex_read_wait_block">
+<em class="property">struct</em> <a class="reference internal" href="#c.it_IT.futex_q" title="futex_q">futex_q</a> *<code class="sig-name descname">compat_futex_read_wait_block</code><span class="sig-paren">(</span>u32 __user *<em>uaddr</em>, u32 <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#c.it_IT.compat_futex_read_wait_block" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Read an array of futex_wait_block from userspace</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">__user</span> <span class="pre">*uaddr</span></code></dt><dd><p>Userspace address of the block</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">count</span></code></dt><dd><p>Number of blocks to be read</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function does the same as <a class="reference internal" href="#c.it_IT.futex_read_wait_block" title="it_IT.futex_read_wait_block"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_read_wait_block()</span></code></a>, except that it
+converts the pointer to the futex from the compat version to the regular one.</p>
 </div>
 <div class="section" id="approfondimenti">
 <h2>Approfondimenti<a class="headerlink" href="#approfondimenti" title="Permalink to this headline">¶</a></h2>

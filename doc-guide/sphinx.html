@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -572,17 +572,26 @@ and <em>targets</em> (e.g. a ref to <code class="docutils literal notranslate"><
 </div>
 <div class="section" id="cross-referencing">
 <h2>Cross-referencing<a class="headerlink" href="#cross-referencing" title="Permalink to this headline">¶</a></h2>
-<p>Cross-referencing from one documentation page to another can be done by passing
-the path to the file starting from the Documentation folder.
-For example, to cross-reference to this page (the .rst extension is optional):</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>See Documentation/doc-guide/sphinx.rst.
+<p>Cross-referencing from one documentation page to another can be done simply by
+writing the path to the document file, no special syntax required. The path can
+be either absolute or relative. For absolute paths, start it with
+“Documentation/”. For example, to cross-reference to this page, all the
+following are valid options, depending on the current document’s directory (note
+that the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> extension is required):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>See Documentation/doc-guide/sphinx.rst. This always works.
+Take a look at sphinx.rst, which is at this same directory.
+Read ../sphinx.rst, which is one directory above.
 </pre></div>
 </div>
-<p>If you want to use a relative path, you need to use Sphinx’s <code class="docutils literal notranslate"><span class="pre">doc</span></code> directive.
-For example, referencing this page from the same directory would be done as:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>See :doc:`sphinx`.
+<p>If you want the link to have a different rendered text other than the document’s
+title, you need to use Sphinx’s <code class="docutils literal notranslate"><span class="pre">doc</span></code> role. For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>See :doc:`my custom link text for document sphinx &lt;sphinx&gt;`.
 </pre></div>
 </div>
+<p>For most use cases, the former is preferred, as it is cleaner and more suited
+for people reading the source files. If you come across a <code class="docutils literal notranslate"><span class="pre">:doc:</span></code> usage that
+isn’t adding any value, please feel free to convert it to just the document
+path.</p>
 <p>For information on cross-referencing to kernel-doc functions or types, see
 <a class="reference internal" href="kernel-doc.html"><span class="doc">Writing kernel-doc comments</span></a>.</p>
 </div>

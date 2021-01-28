@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -2045,6 +2045,15 @@ even if forwarding is enabled.</p></td>
 <li><p>disabled if accept_ra is disabled.</p></li>
 </ul>
 </div></blockquote>
+</dd>
+<dt>ra_defrtr_metric - UNSIGNED INTEGER</dt><dd><p>Route metric for default route learned in Router Advertisement. This value
+will be assigned as metric for the default route learned via IPv6 Router
+Advertisement. Takes affect only if accept_ra_defrtr is enabled.</p>
+<dl>
+<dt>Possible values:</dt><dd><p>1 to 0xFFFFFFFF</p>
+<p>Default: IP6_RT_PRIO_USER i.e. 1024.</p>
+</dd>
+</dl>
 </dd>
 <dt>accept_ra_from_local - BOOLEAN</dt><dd><p>Accept RA with source-address that is found on local machine
 if the RA is otherwise proper and able to be accepted.</p>

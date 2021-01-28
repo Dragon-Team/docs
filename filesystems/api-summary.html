@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -1557,12 +1557,14 @@ file systems who need to allocate space in order to update an inode.</p>
 </dl>
 <dl class="c function">
 <dt id="c.inode_init_owner">
-void <code class="sig-name descname">inode_init_owner</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.inode_init_owner" title="inode">inode</a> *<em>inode</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.inode_init_owner" title="inode">inode</a> *<em>dir</em>, umode_t <em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_init_owner" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">inode_init_owner</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> <a class="reference internal" href="#c.inode_init_owner" title="inode">inode</a> *<em>inode</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.inode_init_owner" title="inode">inode</a> *<em>dir</em>, umode_t <em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_init_owner" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Init uid,gid,mode for new inode according to posix standards</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>User namespace of the mount the inode was created from</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*inode</span></code></dt><dd><p>New inode</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*dir</span></code></dt><dd><p>Directory inode</p>
@@ -1570,20 +1572,33 @@ void <code class="sig-name descname">inode_init_owner</code><span class="sig-par
 <dt><code class="docutils literal notranslate"><span class="pre">umode_t</span> <span class="pre">mode</span></code></dt><dd><p>mode of the new inode</p>
 </dd>
 </dl>
+<p><strong>Description</strong></p>
+<p>If the inode has been created through an idmapped mount the user namespace of
+the vfsmount must be passed through <strong>mnt_userns</strong>. This function will then take
+care to map the inode according to <strong>mnt_userns</strong> before checking permissions
+and initializing i_uid and i_gid. On non-idmapped mounts or if permission
+checking is to be performed on the raw inode simply passs init_user_ns.</p>
 <dl class="c function">
 <dt id="c.inode_owner_or_capable">
-bool <code class="sig-name descname">inode_owner_or_capable</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.inode_owner_or_capable" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_owner_or_capable" title="Permalink to this definition">¶</a><br /></dt>
+bool <code class="sig-name descname">inode_owner_or_capable</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.inode_owner_or_capable" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_owner_or_capable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check current task permissions to inode</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>user namespace of the mount the inode was found from</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*inode</span></code></dt><dd><p>inode being checked</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
 <p>Return true if current either has CAP_FOWNER in a namespace with the
 inode owner uid mapped, or owns the file.</p>
+<p>If the inode has been found through an idmapped mount the user namespace of
+the vfsmount must be passed through <strong>mnt_userns</strong>. This function will then take
+care to map the inode according to <strong>mnt_userns</strong> before checking permissions.
+On non-idmapped mounts or if permission checking is to be performed on the
+raw inode simply passs init_user_ns.</p>
 <dl class="c function">
 <dt id="c.inode_dio_wait">
 void <code class="sig-name descname">inode_dio_wait</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.inode_dio_wait" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_dio_wait" title="Permalink to this definition">¶</a><br /></dt>
@@ -2363,12 +2378,14 @@ WB_SYNC_ALL then we were called for data integrity and we must wait for
 existing IO to complete.</p>
 <dl class="c function">
 <dt id="c.generic_permission">
-int <code class="sig-name descname">generic_permission</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.generic_permission" title="inode">inode</a> *<em>inode</em>, int <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_permission" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">generic_permission</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> <a class="reference internal" href="#c.generic_permission" title="inode">inode</a> *<em>inode</em>, int <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_permission" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check for access rights on a Posix-like filesystem</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>user namespace of the mount the inode was found from</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*inode</span></code></dt><dd><p>inode to check access rights for</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">mask</span></code></dt><dd><p>right to check for (<code class="docutils literal notranslate"><span class="pre">MAY_READ</span></code>, <code class="docutils literal notranslate"><span class="pre">MAY_WRITE</span></code>, <code class="docutils literal notranslate"><span class="pre">MAY_EXEC</span></code>,
@@ -2383,14 +2400,21 @@ are used for other things.</p>
 <p>generic_permission is rcu-walk aware. It returns -ECHILD in case an rcu-walk
 request cannot be satisfied (eg. requires blocking or too much complexity).
 It would then be called again in ref-walk mode.</p>
+<p>If the inode has been found through an idmapped mount the user namespace of
+the vfsmount must be passed through <strong>mnt_userns</strong>. This function will then take
+care to map the inode according to <strong>mnt_userns</strong> before checking permissions.
+On non-idmapped mounts or if permission checking is to be performed on the
+raw inode simply passs init_user_ns.</p>
 <dl class="c function">
 <dt id="c.inode_permission">
-int <code class="sig-name descname">inode_permission</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.inode_permission" title="inode">inode</a> *<em>inode</em>, int <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_permission" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">inode_permission</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> <a class="reference internal" href="#c.inode_permission" title="inode">inode</a> *<em>inode</em>, int <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.inode_permission" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Check for access rights to a given inode</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>User namespace of the mount the inode was found from</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*inode</span></code></dt><dd><p>Inode to check permission on</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">mask</span></code></dt><dd><p>Right to check for (<code class="docutils literal notranslate"><span class="pre">MAY_READ</span></code>, <code class="docutils literal notranslate"><span class="pre">MAY_WRITE</span></code>, <code class="docutils literal notranslate"><span class="pre">MAY_EXEC</span></code>)</p>
@@ -2507,13 +2531,137 @@ not be called by generic code.</p>
 <p>Unlike lookup_one_len, it should be called without the parent
 i_mutex held, and will take the i_mutex itself if necessary.</p>
 <dl class="c function">
+<dt id="c.vfs_create">
+int <code class="sig-name descname">vfs_create</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> inode *<em>dir</em>, <em class="property">struct</em> <a class="reference internal" href="#c.vfs_create" title="dentry">dentry</a> *<em>dentry</em>, umode_t <em>mode</em>, bool <em>want_excl</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_create" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>create new file</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>user namespace of the mount the inode was found from</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*dir</span></code></dt><dd><p>inode of <strong>dentry</strong></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*dentry</span></code></dt><dd><p>pointer to dentry of the base directory</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">umode_t</span> <span class="pre">mode</span></code></dt><dd><p>mode of the new file</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">want_excl</span></code></dt><dd><p>whether the file must not yet exist</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Create a new file.</p>
+<p>If the inode has been found through an idmapped mount the user namespace of
+the vfsmount must be passed through <strong>mnt_userns</strong>. This function will then take
+care to map the inode according to <strong>mnt_userns</strong> before checking permissions.
+On non-idmapped mounts or if permission checking is to be performed on the
+raw inode simply passs init_user_ns.</p>
+<dl class="c function">
+<dt id="c.vfs_tmpfile">
+<em class="property">struct</em> <a class="reference internal" href="#c.vfs_tmpfile" title="dentry">dentry</a> *<code class="sig-name descname">vfs_tmpfile</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> <a class="reference internal" href="#c.vfs_tmpfile" title="dentry">dentry</a> *<em>dentry</em>, umode_t <em>mode</em>, int <em>open_flag</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_tmpfile" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>create tmpfile</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>user namespace of the mount the inode was found from</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*dentry</span></code></dt><dd><p>pointer to dentry of the base directory</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">umode_t</span> <span class="pre">mode</span></code></dt><dd><p>mode of the new tmpfile</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">open_flag</span></code></dt><dd><p><em>undescribed</em></p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Create a temporary file.</p>
+<p>If the inode has been found through an idmapped mount the user namespace of
+the vfsmount must be passed through <strong>mnt_userns</strong>. This function will then take
+care to map the inode according to <strong>mnt_userns</strong> before checking permissions.
+On non-idmapped mounts or if permission checking is to be performed on the
+raw inode simply passs init_user_ns.</p>
+<dl class="c function">
+<dt id="c.vfs_mknod">
+int <code class="sig-name descname">vfs_mknod</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> inode *<em>dir</em>, <em class="property">struct</em> <a class="reference internal" href="#c.vfs_mknod" title="dentry">dentry</a> *<em>dentry</em>, umode_t <em>mode</em>, dev_t <em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_mknod" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>create device node or file</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>user namespace of the mount the inode was found from</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*dir</span></code></dt><dd><p>inode of <strong>dentry</strong></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*dentry</span></code></dt><dd><p>pointer to dentry of the base directory</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">umode_t</span> <span class="pre">mode</span></code></dt><dd><p>mode of the new device node or file</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">dev_t</span> <span class="pre">dev</span></code></dt><dd><p>device number of device to create</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Create a device node or file.</p>
+<p>If the inode has been found through an idmapped mount the user namespace of
+the vfsmount must be passed through <strong>mnt_userns</strong>. This function will then take
+care to map the inode according to <strong>mnt_userns</strong> before checking permissions.
+On non-idmapped mounts or if permission checking is to be performed on the
+raw inode simply passs init_user_ns.</p>
+<dl class="c function">
+<dt id="c.vfs_mkdir">
+int <code class="sig-name descname">vfs_mkdir</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> inode *<em>dir</em>, <em class="property">struct</em> <a class="reference internal" href="#c.vfs_mkdir" title="dentry">dentry</a> *<em>dentry</em>, umode_t <em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_mkdir" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>create directory</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>user namespace of the mount the inode was found from</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*dir</span></code></dt><dd><p>inode of <strong>dentry</strong></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*dentry</span></code></dt><dd><p>pointer to dentry of the base directory</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">umode_t</span> <span class="pre">mode</span></code></dt><dd><p>mode of the new directory</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Create a directory.</p>
+<p>If the inode has been found through an idmapped mount the user namespace of
+the vfsmount must be passed through <strong>mnt_userns</strong>. This function will then take
+care to map the inode according to <strong>mnt_userns</strong> before checking permissions.
+On non-idmapped mounts or if permission checking is to be performed on the
+raw inode simply passs init_user_ns.</p>
+<dl class="c function">
+<dt id="c.vfs_rmdir">
+int <code class="sig-name descname">vfs_rmdir</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> inode *<em>dir</em>, <em class="property">struct</em> <a class="reference internal" href="#c.vfs_rmdir" title="dentry">dentry</a> *<em>dentry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_rmdir" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>remove directory</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>user namespace of the mount the inode was found from</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*dir</span></code></dt><dd><p>inode of <strong>dentry</strong></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*dentry</span></code></dt><dd><p>pointer to dentry of the base directory</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Remove a directory.</p>
+<p>If the inode has been found through an idmapped mount the user namespace of
+the vfsmount must be passed through <strong>mnt_userns</strong>. This function will then take
+care to map the inode according to <strong>mnt_userns</strong> before checking permissions.
+On non-idmapped mounts or if permission checking is to be performed on the
+raw inode simply passs init_user_ns.</p>
+<dl class="c function">
 <dt id="c.vfs_unlink">
-int <code class="sig-name descname">vfs_unlink</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>dir</em>, <em class="property">struct</em> <a class="reference internal" href="#c.vfs_unlink" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_unlink" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">vfs_unlink</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> inode *<em>dir</em>, <em class="property">struct</em> <a class="reference internal" href="#c.vfs_unlink" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_unlink" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unlink a filesystem object</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>user namespace of the mount the inode was found from</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*dir</span></code></dt><dd><p>parent directory</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*dentry</span></code></dt><dd><p>victim</p>
@@ -2531,15 +2679,46 @@ dir-&gt;i_mutex before doing so.</p>
 <p>Alternatively, a caller may pass NULL for delegated_inode.  This may
 be appropriate for callers that expect the underlying filesystem not
 to be NFS exported.</p>
+<p>If the inode has been found through an idmapped mount the user namespace of
+the vfsmount must be passed through <strong>mnt_userns</strong>. This function will then take
+care to map the inode according to <strong>mnt_userns</strong> before checking permissions.
+On non-idmapped mounts or if permission checking is to be performed on the
+raw inode simply passs init_user_ns.</p>
+<dl class="c function">
+<dt id="c.vfs_symlink">
+int <code class="sig-name descname">vfs_symlink</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> inode *<em>dir</em>, <em class="property">struct</em> <a class="reference internal" href="#c.vfs_symlink" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">const</em> char *<em>oldname</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_symlink" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>create symlink</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>user namespace of the mount the inode was found from</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*dir</span></code></dt><dd><p>inode of <strong>dentry</strong></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*dentry</span></code></dt><dd><p>pointer to dentry of the base directory</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*oldname</span></code></dt><dd><p>name of the file to link to</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Create a symlink.</p>
+<p>If the inode has been found through an idmapped mount the user namespace of
+the vfsmount must be passed through <strong>mnt_userns</strong>. This function will then take
+care to map the inode according to <strong>mnt_userns</strong> before checking permissions.
+On non-idmapped mounts or if permission checking is to be performed on the
+raw inode simply passs init_user_ns.</p>
 <dl class="c function">
 <dt id="c.vfs_link">
-int <code class="sig-name descname">vfs_link</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>old_dentry</em>, <em class="property">struct</em> inode *<em>dir</em>, <em class="property">struct</em> dentry *<em>new_dentry</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_link" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">vfs_link</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>old_dentry</em>, <em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> inode *<em>dir</em>, <em class="property">struct</em> dentry *<em>new_dentry</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_link" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create a new link</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*old_dentry</span></code></dt><dd><p>object to be linked</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>the user namespace of the mount</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*dir</span></code></dt><dd><p>new parent</p>
 </dd>
@@ -2558,25 +2737,20 @@ caller should drop the i_mutex before doing so.</p>
 <p>Alternatively, a caller may pass NULL for delegated_inode.  This may
 be appropriate for callers that expect the underlying filesystem not
 to be NFS exported.</p>
+<p>If the inode has been found through an idmapped mount the user namespace of
+the vfsmount must be passed through <strong>mnt_userns</strong>. This function will then take
+care to map the inode according to <strong>mnt_userns</strong> before checking permissions.
+On non-idmapped mounts or if permission checking is to be performed on the
+raw inode simply passs init_user_ns.</p>
 <dl class="c function">
 <dt id="c.vfs_rename">
-int <code class="sig-name descname">vfs_rename</code><span class="sig-paren">(</span><em class="property">struct</em> inode *<em>old_dir</em>, <em class="property">struct</em> dentry *<em>old_dentry</em>, <em class="property">struct</em> inode *<em>new_dir</em>, <em class="property">struct</em> dentry *<em>new_dentry</em>, <em class="property">struct</em> inode **<em>delegated_inode</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_rename" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">vfs_rename</code><span class="sig-paren">(</span><em class="property">struct</em> renamedata *<em>rd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_rename" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>rename a filesystem object</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*old_dir</span></code></dt><dd><p>parent of source</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*old_dentry</span></code></dt><dd><p>source</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*new_dir</span></code></dt><dd><p>parent of destination</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*new_dentry</span></code></dt><dd><p>destination</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">**delegated_inode</span></code></dt><dd><p>returns an inode needing a delegation break</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">flags</span></code></dt><dd><p>rename flags</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">renamedata</span> <span class="pre">*rd</span></code></dt><dd><p><em>undescribed</em></p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
@@ -2874,32 +3048,44 @@ completed; the chained bio will also be freed when it completes.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<blockquote>
-<div><p>If <strong>bs</strong> is NULL, uses <a class="reference internal" href="../core-api/mm-api.html#c.kmalloc" title="kmalloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">kmalloc()</span></code></a> to allocate the bio; else the allocation is
-backed by the <strong>bs</strong>’s mempool.</p>
-<p>When <strong>bs</strong> is not NULL, if <code class="docutils literal notranslate"><span class="pre">__GFP_DIRECT_RECLAIM</span></code> is set then bio_alloc will
-always be able to allocate a bio. This is due to the mempool guarantees.
-To make this work, callers must never allocate more than 1 bio at a time
-from this pool. Callers that need to allocate more than 1 bio must always
-submit the previously allocated bio for IO before attempting to allocate
-a new one. Failure to do so can cause deadlocks under memory pressure.</p>
-<p>Note that when running under <a class="reference internal" href="../core-api/kernel-api.html#c.submit_bio_noacct" title="submit_bio_noacct"><code class="xref c c-func docutils literal notranslate"><span class="pre">submit_bio_noacct()</span></code></a> (i.e. any block
-driver), bios are not submitted until after you return - see the code in
+<p>Allocate a bio from the mempools in <strong>bs</strong>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">__GFP_DIRECT_RECLAIM</span></code> is set then bio_alloc will always be able to
+allocate a bio.  This is due to the mempool guarantees.  To make this work,
+callers must never allocate more than 1 bio at a time from the general pool.
+Callers that need to allocate more than 1 bio must always submit the
+previously allocated bio for IO before attempting to allocate a new one.
+Failure to do so can cause deadlocks under memory pressure.</p>
+<p>Note that when running under <a class="reference internal" href="../core-api/kernel-api.html#c.submit_bio_noacct" title="submit_bio_noacct"><code class="xref c c-func docutils literal notranslate"><span class="pre">submit_bio_noacct()</span></code></a> (i.e. any block driver),
+bios are not submitted until after you return - see the code in
 <a class="reference internal" href="../core-api/kernel-api.html#c.submit_bio_noacct" title="submit_bio_noacct"><code class="xref c c-func docutils literal notranslate"><span class="pre">submit_bio_noacct()</span></code></a> that converts recursion into iteration, to prevent
 stack overflows.</p>
-<p>This would normally mean allocating multiple bios under
-<a class="reference internal" href="../core-api/kernel-api.html#c.submit_bio_noacct" title="submit_bio_noacct"><code class="xref c c-func docutils literal notranslate"><span class="pre">submit_bio_noacct()</span></code></a> would be susceptible to deadlocks, but we have
+<p>This would normally mean allocating multiple bios under <a class="reference internal" href="../core-api/kernel-api.html#c.submit_bio_noacct" title="submit_bio_noacct"><code class="xref c c-func docutils literal notranslate"><span class="pre">submit_bio_noacct()</span></code></a>
+would be susceptible to deadlocks, but we have
 deadlock avoidance code that resubmits any blocked bios from a rescuer
 thread.</p>
 <p>However, we do not guarantee forward progress for allocations from other
 mempools. Doing multiple allocations from the same mempool under
 <a class="reference internal" href="../core-api/kernel-api.html#c.submit_bio_noacct" title="submit_bio_noacct"><code class="xref c c-func docutils literal notranslate"><span class="pre">submit_bio_noacct()</span></code></a> should be avoided - instead, use bio_set’s front_pad
 for per bio allocations.</p>
-</div></blockquote>
 <p><strong>Return</strong></p>
-<blockquote>
-<div><p>Pointer to new bio on success, NULL on failure.</p>
-</div></blockquote>
+<p>Pointer to new bio on success, NULL on failure.</p>
+<dl class="c function">
+<dt id="c.bio_kmalloc">
+<em class="property">struct</em> bio *<code class="sig-name descname">bio_kmalloc</code><span class="sig-paren">(</span>gfp_t <em>gfp_mask</em>, unsigned int <em>nr_iovecs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_kmalloc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>kmalloc a bio for I/O</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">gfp_t</span> <span class="pre">gfp_mask</span></code></dt><dd><p>the GFP_* mask given to the slab allocator</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">nr_iovecs</span></code></dt><dd><p>number of iovecs to pre-allocate</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Use kmalloc to allocate and initialize a bio.</p>
+<p><strong>Return</strong></p>
+<p>Pointer to new bio on success, NULL on failure.</p>
 <dl class="c function">
 <dt id="c.bio_put">
 void <code class="sig-name descname">bio_put</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.bio_put" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_put" title="Permalink to this definition">¶</a><br /></dt>
@@ -4099,12 +4285,14 @@ int <code class="sig-name descname">anon_inode_getfd_secure</code><span class="s
 reference to it is not held.</p>
 <dl class="c function">
 <dt id="c.setattr_prepare">
-int <code class="sig-name descname">setattr_prepare</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.setattr_prepare" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">struct</em> iattr *<em>attr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.setattr_prepare" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">setattr_prepare</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> <a class="reference internal" href="#c.setattr_prepare" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">struct</em> iattr *<em>attr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.setattr_prepare" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check if attribute changes to a dentry are allowed</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>user namespace of the mount the inode was found from</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*dentry</span></code></dt><dd><p>dentry to check</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">iattr</span> <span class="pre">*attr</span></code></dt><dd><p>attributes to change</p>
@@ -4116,6 +4304,11 @@ in the given dentry.  This includes the normal unix access permission
 checks, as well as checks for rlimits and others. The function also clears
 SGID bit from mode if user is not allowed to set it. Also file capabilities
 and IMA extended attributes are cleared if ATTR_KILL_PRIV is set.</p>
+<p>If the inode has been found through an idmapped mount the user namespace of
+the vfsmount must be passed through <strong>mnt_userns</strong>. This function will then
+take care to map the inode according to <strong>mnt_userns</strong> before checking
+permissions. On non-idmapped mounts or if permission checking is to be
+performed on the raw inode simply passs init_user_ns.</p>
 <p>Should be called as the first thing in -&gt;setattr implementations,
 possibly after taking additional locks.</p>
 <dl class="c function">
@@ -4143,12 +4336,14 @@ conditions).</p>
 <p>0 on success, -ve errno on failure</p>
 <dl class="c function">
 <dt id="c.setattr_copy">
-void <code class="sig-name descname">setattr_copy</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.setattr_copy" title="inode">inode</a> *<em>inode</em>, <em class="property">const</em> <em class="property">struct</em> iattr *<em>attr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.setattr_copy" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">setattr_copy</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> <a class="reference internal" href="#c.setattr_copy" title="inode">inode</a> *<em>inode</em>, <em class="property">const</em> <em class="property">struct</em> iattr *<em>attr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.setattr_copy" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>copy simple metadata updates into the generic inode</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>user namespace of the mount the inode was found from</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*inode</span></code></dt><dd><p>the inode to be updated</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">iattr</span> <span class="pre">*attr</span></code></dt><dd><p>the new attributes</p>
@@ -4157,19 +4352,31 @@ void <code class="sig-name descname">setattr_copy</code><span class="sig-paren">
 <p><strong>Description</strong></p>
 <p>setattr_copy must be called with i_mutex held.</p>
 <p>setattr_copy updates the inode’s metadata with that specified
-in attr. Noticeably missing is inode size update, which is more complex
+in attr on idmapped mounts. If file ownership is changed setattr_copy
+doesn’t map ia_uid and ia_gid. It will asssume the caller has already
+provided the intended values. Necessary permission checks to determine
+whether or not the S_ISGID property needs to be removed are performed with
+the correct idmapped mount permission helpers.
+Noticeably missing is inode size update, which is more complex
 as it requires pagecache updates.</p>
+<p>If the inode has been found through an idmapped mount the user namespace of
+the vfsmount must be passed through <strong>mnt_userns</strong>. This function will then
+take care to map the inode according to <strong>mnt_userns</strong> before checking
+permissions. On non-idmapped mounts or if permission checking is to be
+performed on the raw inode simply passs init_user_ns.</p>
 <p>The inode is not marked as dirty after this operation. The rationale is
 that for “simple” filesystems, the struct inode is the inode storage.
 The caller is free to mark the inode dirty afterwards if needed.</p>
 <dl class="c function">
 <dt id="c.notify_change">
-int <code class="sig-name descname">notify_change</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.notify_change" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">struct</em> iattr *<em>attr</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.notify_change" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">notify_change</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> <a class="reference internal" href="#c.notify_change" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">struct</em> iattr *<em>attr</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.notify_change" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>modify attributes of a filesytem object</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>user namespace of the mount the inode was found from</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*dentry</span></code></dt><dd><p>object affected</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">iattr</span> <span class="pre">*attr</span></code></dt><dd><p>new attributes</p>
@@ -4184,11 +4391,18 @@ it will return -EWOULDBLOCK and return a reference to the inode in
 delegated_inode.  The caller should then break the delegation and
 retry.  Because breaking a delegation may take a long time, the
 caller should drop the i_mutex before doing so.</p>
+<p>If file ownership is changed <a class="reference internal" href="#c.notify_change" title="notify_change"><code class="xref c c-func docutils literal notranslate"><span class="pre">notify_change()</span></code></a> doesn’t map ia_uid and
+ia_gid. It will asssume the caller has already provided the intended values.</p>
 <p>Alternatively, a caller may pass NULL for delegated_inode.  This may
 be appropriate for callers that expect the underlying filesystem not
 to be NFS exported.  Also, passing NULL is fine for callers holding
 the file open for write, as there can be no conflicting delegation in
 that case.</p>
+<p>If the inode has been found through an idmapped mount the user namespace of
+the vfsmount must be passed through <strong>mnt_userns</strong>. This function will then
+take care to map the inode according to <strong>mnt_userns</strong> before checking
+permissions. On non-idmapped mounts or if permission checking is to be
+performed on the raw inode simply passs init_user_ns.</p>
 <dl class="c function">
 <dt id="c.d_path">
 char *<code class="sig-name descname">d_path</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.d_path" title="path">path</a> *<em>path</em>, char *<em>buf</em>, int <em>buflen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.d_path" title="Permalink to this definition">¶</a><br /></dt>
@@ -4302,12 +4516,14 @@ stored persistently on the media and handles inserting of appropriate page
 table entry.</p>
 <dl class="c function">
 <dt id="c.simple_setattr">
-int <code class="sig-name descname">simple_setattr</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.simple_setattr" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">struct</em> <a class="reference internal" href="#c.simple_setattr" title="iattr">iattr</a> *<em>iattr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.simple_setattr" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">simple_setattr</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> <a class="reference internal" href="#c.simple_setattr" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">struct</em> <a class="reference internal" href="#c.simple_setattr" title="iattr">iattr</a> *<em>iattr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.simple_setattr" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>setattr for simple filesystem</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p><em>undescribed</em></p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*dentry</span></code></dt><dd><p>dentry</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">iattr</span> <span class="pre">*iattr</span></code></dt><dd><p>iattr structure</p>
@@ -4600,13 +4816,36 @@ with certain dentry operations) and to avoid taking an unnecessary
 performance hit, we use custom dentry_operations for each possible
 combination rather than always installing all operations.</p>
 <dl class="c function">
+<dt id="c.posix_acl_chmod">
+int <code class="sig-name descname">posix_acl_chmod</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> <a class="reference internal" href="#c.posix_acl_chmod" title="inode">inode</a> *<em>inode</em>, umode_t <em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.posix_acl_chmod" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>chmod a posix acl</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>user namespace of the mount <strong>inode</strong> was found from</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*inode</span></code></dt><dd><p>inode to check permissions on</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">umode_t</span> <span class="pre">mode</span></code></dt><dd><p>the new mode of <strong>inode</strong></p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>If the inode has been found through an idmapped mount the user namespace of
+the vfsmount must be passed through <strong>mnt_userns</strong>. This function will then
+take care to map the inode according to <strong>mnt_userns</strong> before checking
+permissions. On non-idmapped mounts or if permission checking is to be
+performed on the raw inode simply passs init_user_ns.</p>
+<dl class="c function">
 <dt id="c.posix_acl_update_mode">
-int <code class="sig-name descname">posix_acl_update_mode</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.posix_acl_update_mode" title="inode">inode</a> *<em>inode</em>, umode_t *<em>mode_p</em>, <em class="property">struct</em> posix_acl **<em>acl</em><span class="sig-paren">)</span><a class="headerlink" href="#c.posix_acl_update_mode" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">posix_acl_update_mode</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> <a class="reference internal" href="#c.posix_acl_update_mode" title="inode">inode</a> *<em>inode</em>, umode_t *<em>mode_p</em>, <em class="property">struct</em> posix_acl **<em>acl</em><span class="sig-paren">)</span><a class="headerlink" href="#c.posix_acl_update_mode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update mode in set_acl</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>user namespace of the mount <strong>inode</strong> was found from</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*inode</span></code></dt><dd><p>target inode</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">umode_t</span> <span class="pre">*mode_p</span></code></dt><dd><p>mode (pointer) for update</p>
@@ -4620,15 +4859,22 @@ bits based on the ACL.  In addition, if the ACL is equivalent to the new
 file mode, set <strong>*acl</strong> to NULL to indicate that no ACL should be set.</p>
 <p>As with chmod, clear the setgid bit if the caller is not in the owning group
 or capable of CAP_FSETID (see inode_change_ok).</p>
+<p>If the inode has been found through an idmapped mount the user namespace of
+the vfsmount must be passed through <strong>mnt_userns</strong>. This function will then
+take care to map the inode according to <strong>mnt_userns</strong> before checking
+permissions. On non-idmapped mounts or if permission checking is to be
+performed on the raw inode simply passs init_user_ns.</p>
 <p>Called from set_acl inode operations.</p>
 <dl class="c function">
 <dt id="c.generic_fillattr">
-void <code class="sig-name descname">generic_fillattr</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.generic_fillattr" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> kstat *<em>stat</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_fillattr" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">generic_fillattr</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> <a class="reference internal" href="#c.generic_fillattr" title="inode">inode</a> *<em>inode</em>, <em class="property">struct</em> kstat *<em>stat</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_fillattr" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Fill in the basic attributes from the inode struct</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p>user namespace of the mount the inode was found from</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*inode</span></code></dt><dd><p>Inode to use as the source</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">kstat</span> <span class="pre">*stat</span></code></dt><dd><p>Where to fill in the attributes</p>
@@ -4638,6 +4884,11 @@ void <code class="sig-name descname">generic_fillattr</code><span class="sig-par
 <p>Fill in the basic attributes in the kstat structure from data that’s to be
 found on the VFS inode structure.  This is the default if no getattr inode
 operation is supplied.</p>
+<p>If the inode has been found through an idmapped mount the user namespace of
+the vfsmount must be passed through <strong>mnt_userns</strong>. This function will then
+take care to map the inode according to <strong>mnt_userns</strong> before filling in the
+uid and gid filds. On non-idmapped mounts or if permission checking is to be
+performed on the raw inode simply passs init_user_ns.</p>
 <dl class="c function">
 <dt id="c.vfs_getattr_nosec">
 int <code class="sig-name descname">vfs_getattr_nosec</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.vfs_getattr_nosec" title="path">path</a> *<em>path</em>, <em class="property">struct</em> kstat *<em>stat</em>, u32 <em>request_mask</em>, unsigned int <em>query_flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vfs_getattr_nosec" title="Permalink to this definition">¶</a><br /></dt>
@@ -4699,12 +4950,14 @@ int <code class="sig-name descname">vfs_fsync</code><span class="sig-paren">(</s
 set only metadata needed to access modified file data is written.</p>
 <dl class="c function">
 <dt id="c.__vfs_setxattr_locked">
-int <code class="sig-name descname">__vfs_setxattr_locked</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.__vfs_setxattr_locked" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> void *<em>value</em>, size_t <em>size</em>, int <em>flags</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__vfs_setxattr_locked" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">__vfs_setxattr_locked</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> <a class="reference internal" href="#c.__vfs_setxattr_locked" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> void *<em>value</em>, size_t <em>size</em>, int <em>flags</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__vfs_setxattr_locked" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set an extended attribute while holding the inode lock</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p><em>undescribed</em></p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*dentry</span></code></dt><dd><p>object to perform setxattr on</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*name</span></code></dt><dd><p>xattr name to set</p>
@@ -4721,12 +4974,14 @@ a delegation was broken on, NULL if none.</p>
 </dl>
 <dl class="c function">
 <dt id="c.__vfs_removexattr_locked">
-int <code class="sig-name descname">__vfs_removexattr_locked</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.__vfs_removexattr_locked" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__vfs_removexattr_locked" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">__vfs_removexattr_locked</code><span class="sig-paren">(</span><em class="property">struct</em> user_namespace *<em>mnt_userns</em>, <em class="property">struct</em> <a class="reference internal" href="#c.__vfs_removexattr_locked" title="dentry">dentry</a> *<em>dentry</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">struct</em> inode **<em>delegated_inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__vfs_removexattr_locked" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set an extended attribute while holding the inode lock</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">user_namespace</span> <span class="pre">*mnt_userns</span></code></dt><dd><p><em>undescribed</em></p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*dentry</span></code></dt><dd><p>object to perform setxattr on</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*name</span></code></dt><dd><p>name of xattr to remove</p>

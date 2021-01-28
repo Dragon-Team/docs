@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -624,7 +624,7 @@ in the sources.</p>
 <p>CacheFiles makes use of the split security in the task_struct.  It allocates
 its own task_security structure, and redirects current-&gt;cred to point to it
 when it acts on behalf of another process, in that process’s context.</p>
-<p>The reason it does this is that it calls vfs_mkdir() and suchlike rather than
+<p>The reason it does this is that it calls <a class="reference internal" href="../api-summary.html#c.vfs_mkdir" title="vfs_mkdir"><code class="xref c c-func docutils literal notranslate"><span class="pre">vfs_mkdir()</span></code></a> and suchlike rather than
 bypassing security and calling inode ops directly.  Therefore the VFS and LSM
 may deny the CacheFiles access to the cache data because under some
 circumstances the caching code is running in the security context of whatever

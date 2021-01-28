@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -563,7 +563,7 @@ the callback.  It used to be necessary to clean it there, but not anymore
 <p><strong>recommended</strong></p>
 <p>vfs now tries to do path walking in “rcu-walk mode”, which avoids
 atomic operations and scalability hazards on dentries and inodes (see
-<a class="reference internal" href="path-lookup.html"><span class="doc">Pathname lookup</span></a>). d_hash and d_compare changes
+Documentation/filesystems/path-lookup.txt). d_hash and d_compare changes
 (above) are examples of the changes required to support this. For more complex
 filesystem callbacks, the vfs drops out of rcu-walk mode before the fs call, so
 no changes are required to the filesystem. However, this is costly and loses
@@ -789,6 +789,8 @@ be removed.  Switch while you still can; the old one won’t stay.</p>
 <p>—</p>
 <p><strong>mandatory</strong></p>
 <p>-&gt;setxattr() and xattr_handler.set() get dentry and inode passed separately.
+The xattr_handler.set() gets passed the user namespace of the mount the inode
+is seen from so filesystems can idmap the i_uid and i_gid accordingly.
 dentry might be yet to be attached to inode, so do _not_ use its -&gt;d_inode
 in the instances.  Rationale: !&#64;#!&#64;# security_d_instantiate() needs to be
 called before we attach dentry to inode and !&#64;#!&#64;##!&#64;$!$#!&#64;#$!&#64;$!&#64;$ smack
@@ -900,6 +902,10 @@ no matter what.  Everything is handled by the caller.</p>
 its result is kern_unmount() or kern_unmount_array().</p>
 <p>—</p>
 <p><strong>mandatory</strong></p>
+<p>mnt_want_write_file() can now only be paired with mnt_drop_write_file(),
+whereas previously it could be paired with mnt_drop_write() as well.</p>
+<p>—</p>
+<p><strong>mandatory</strong></p>
 <p>zero-length bvec segments are disallowed, they must be filtered out before
 passed on to an iterator.</p>
 <p>—</p>
@@ -908,10 +914,6 @@ passed on to an iterator.</p>
 uses the one provided. Anyone issuing kiocb-I/O should ensure that the bvec and
 page references stay until I/O has completed, i.e. until -&gt;ki_complete() has
 been called or returned with non -EIOCBQUEUED code.</p>
-<p>—</p>
-<p><strong>mandatory</strong></p>
-<p>mnt_want_write_file() can now only be paired with mnt_drop_write_file(),
-whereas previously it could be paired with mnt_drop_write() as well.</p>
 </div>
 
 

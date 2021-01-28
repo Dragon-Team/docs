@@ -6,15 +6,7 @@ This document outlines basic information about reliable stacktracing.
 
 .. Table of Contents:
 
-    1. Introduction
-    2. Requirements
-    3. Considerations
-       3.1 Identifying successful termination
-       3.2 Identifying unwindable code
-       3.3 Unwinding across interrupts and exceptions
-       3.4 Rewriting of return addresses
-       3.5 Obscuring of return addresses
-       3.6 Link register unreliability
+.. contents:: :local:
 
 1. Introduction
 ===============
@@ -34,8 +26,8 @@ functions from a trace.
 ===============
 
 Architectures must implement one of the reliable stacktrace functions.
-Architectures using CONFIG_ARCH_STACKWALK should implement
-'arch_stack_walk_reliable', and other architectures should implement
+Architectures using CONFIG_ARCH_STACKWALK must implement
+'arch_stack_walk_reliable', and other architectures must implement
 'save_stack_trace_tsk_reliable'.
 
 Principally, the reliable stacktrace function must ensure that either:
@@ -50,21 +42,37 @@ Principally, the reliable stacktrace function must ensure that either:
    but all other functions must be reported. These cases are described in
    futher detail below.
 
-Secondly, the reliable stacktrace function should be robust to cases where the
-stack or other unwind state is corrupt or otherwise unreliable. The function
-should attempt to detect such cases and return a non-zero error code, and
-should not get stuck in an infinite loop or access memory in an unsafe way.
-Specific cases are described in further detail below.
+Secondly, the reliable stacktrace function must be robust to cases where
+the stack or other unwind state is corrupt or otherwise unreliable. The
+function should attempt to detect such cases and return a non-zero error
+code, and should not get stuck in an infinite loop or access memory in
+an unsafe way.  Specific cases are described in further detail below.
 
 
-3. Considerations
+3. Compile-time analysis
+========================
+
+To ensure that kernel code can be correctly unwound in all cases,
+architectures may need to verify that code has been compiled in a manner
+expected by the unwinder. For example, an unwinder may expect that
+functions manipulate the stack pointer in a limited way, or that all
+functions use specific prologue and epilogue sequences. Architectures
+with such requirements should verify the kernel compilation using
+objtool.
+
+In some cases, an unwinder may require metadata to correctly unwind.
+Where necessary, this metadata should be generated at build time using
+objtool.
+
+
+4. Considerations
 =================
 
 The unwinding process varies across architectures, their respective procedure
 call standards, and kernel configurations. This section describes common
 details that architectures should consider.
 
-3.1 Identifying successful termination
+4.1 Identifying successful termination
 --------------------------------------
 
 Unwinding may terminate early for a number of reasons, including:
@@ -87,7 +95,7 @@ architectures verify that a stacktrace ends at an expected location, e.g.
 * On a specific stack expected for a kernel entry point (e.g. if the
   architecture has separate task and IRQ stacks).
 
-3.2 Identifying unwindable code
+4.2 Identifying unwindable code
 -------------------------------
 
 Unwinding typically relies on code following specific conventions (e.g.
@@ -116,15 +124,12 @@ corruption.
 There are several ways an architecture may identify kernel code which is deemed
 unreliable to unwind from, e.g.
 
-* Using metadata created by objtool, with such code annotated with
-  SYM_CODE_{START,END} or STACKFRAME_NON_STANDARD().
-
 * Placing such code into special linker sections, and rejecting unwinding from
   any code in these sections.
 
 * Identifying specific portions of code using bounds information.
 
-3.3 Unwinding across interrupts and exceptions
+4.3 Unwinding across interrupts and exceptions
 ----------------------------------------------
 
 At function call boundaries the stack and other unwind state is expected to be
@@ -141,16 +146,17 @@ and it may not be possible to identify whether such unwinding will be reliable.
 See below for examples.
 
 Architectures which cannot identify when it is reliable to unwind such cases
-(or where it is never reliable) should reject unwinding across exception
-boundaries. Note that it may be reliable to unwind across certain exceptions
-(e.g. IRQ) but unreliable to unwind across other exceptions (e.g. NMI).
+(or where it is never reliable) must reject unwinding across exception
+boundaries. Note that it may be reliable to unwind across certain
+exceptions (e.g. IRQ) but unreliable to unwind across other exceptions
+(e.g. NMI).
 
 Architectures which can identify when it is reliable to unwind such cases (or
 have no such cases) should attempt to unwind across exception boundaries, as
 doing so can prevent unnecessarily stalling livepatch consistency checks and
 permits livepatch transitions to complete more quickly.
 
-3.4 Rewriting of return addresses
+4.4 Rewriting of return addresses
 ---------------------------------
 
 Some trampolines temporarily modify the return address of a function in order
@@ -194,7 +200,7 @@ trampoline or return trampoline. For example, considering the x86_64
            JMP_NOSPEC rdi
    SYM_CODE_END(return_to_handler)
 
-While the traced function runs its return address points on the stack points to
+While the traced function runs its return address on the stack points to
 the start of return_to_handler, and the original return address is stored in
 the task's cur_ret_stack. During this time the unwinder can find the return
 address using ftrace_graph_ret_addr().
@@ -216,7 +222,7 @@ middle of return_to_handler and can report this as unreliable. Architectures
 are not required to unwind from other trampolines which modify the return
 address.
 
-3.5 Obscuring of return addresses
+4.5 Obscuring of return addresses
 ---------------------------------
 
 Some trampolines do not rewrite the return address in order to intercept
@@ -240,10 +246,10 @@ before the BL clobbers the link register and branches to the trampoline. At the
 start of the trampoline, the address of the traced function is in X9 rather
 than the link register as would usually be the case.
 
-Architectures should ensure that unwinders either reliably unwind such cases,
-or report the unwinding as unreliable.
+Architectures must either ensure that unwinders either reliably unwind
+such cases, or report the unwinding as unreliable.
 
-3.6 Link register unreliability
+4.6 Link register unreliability
 -------------------------------
 
 On some other architectures, 'call' instructions place the return address into a

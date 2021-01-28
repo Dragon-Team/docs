@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -1780,14 +1780,30 @@ allocates memory it can be called from an interrupt.</p>
 <p>Allocate a new page.</p>
 <p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> is returned if there is no free memory.</p>
 <dl class="c function">
+<dt id="c.dev_page_is_reserved">
+bool <code class="sig-name descname">dev_page_is_reserved</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.dev_page_is_reserved" title="page">page</a> *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_page_is_reserved" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>check whether a page can be reused for network Rx</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">page</span> <span class="pre">*page</span></code></dt><dd><p>the page to test</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>A page shouldn’t be considered for reusing/recycling if it was allocated
+under memory pressure or at a distant memory node.</p>
+<p>Returns true if this page should be returned to page allocator, false
+otherwise.</p>
+<dl class="c function">
 <dt id="c.skb_propagate_pfmemalloc">
-void <code class="sig-name descname">skb_propagate_pfmemalloc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.skb_propagate_pfmemalloc" title="page">page</a> *<em>page</em>, <em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_propagate_pfmemalloc" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">skb_propagate_pfmemalloc</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.skb_propagate_pfmemalloc" title="page">page</a> *<em>page</em>, <em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_propagate_pfmemalloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Propagate pfmemalloc if skb is allocated after RX page</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">page</span> <span class="pre">*page</span></code></dt><dd><p>The page that was allocated from skb_alloc_page</p>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">page</span> <span class="pre">*page</span></code></dt><dd><p>The page that was allocated from skb_alloc_page</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">sk_buff</span> <span class="pre">*skb</span></code></dt><dd><p>The skb that may need pfmemalloc set</p>
 </dd>

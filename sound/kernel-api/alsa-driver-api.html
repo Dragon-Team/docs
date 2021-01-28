@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -5340,6 +5340,42 @@ completed <a class="reference internal" href="#c.snd_soc_component_async_complet
 <p>1 if the operation was successful and the value of the register
 changed, 0 if the operation was successful, but the value did not change.
 Returns a negative error code otherwise.</p>
+<dl class="c function">
+<dt id="c.snd_soc_component_read_field">
+unsigned int <code class="sig-name descname">snd_soc_component_read_field</code><span class="sig-paren">(</span><em class="property">struct</em> snd_soc_component *<em>component</em>, unsigned int <em>reg</em>, unsigned int <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_soc_component_read_field" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Read register field value</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">snd_soc_component</span> <span class="pre">*component</span></code></dt><dd><p>Component to read from</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">reg</span></code></dt><dd><p>Register to read</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">mask</span></code></dt><dd><p>mask of the register field</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p>read value of register field.</p>
+<dl class="c function">
+<dt id="c.snd_soc_component_write_field">
+int <code class="sig-name descname">snd_soc_component_write_field</code><span class="sig-paren">(</span><em class="property">struct</em> snd_soc_component *<em>component</em>, unsigned int <em>reg</em>, unsigned int <em>mask</em>, unsigned int <em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_soc_component_write_field" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>write to register field</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">snd_soc_component</span> <span class="pre">*component</span></code></dt><dd><p>Component to write to</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">reg</span></code></dt><dd><p>Register to write</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">mask</span></code></dt><dd><p>mask of the register field to update</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">val</span></code></dt><dd><p>value of the field to write</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p>1 for change, otherwise 0.</p>
 <dl class="c function">
 <dt id="c.snd_soc_component_async_complete">
 void <code class="sig-name descname">snd_soc_component_async_complete</code><span class="sig-paren">(</span><em class="property">struct</em> snd_soc_component *<em>component</em><span class="sig-paren">)</span><a class="headerlink" href="#c.snd_soc_component_async_complete" title="Permalink to this definition">¶</a><br /></dt>

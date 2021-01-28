@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -433,8 +433,9 @@ inline encryption hardware that the key might have been programmed into (or the 
 <h2>API presented to device drivers<a class="headerlink" href="#api-presented-to-device-drivers" title="Permalink to this headline">¶</a></h2>
 <p>A :c:type:<code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">blk_keyslot_manager</span></code> should be set up by device drivers in
 the <code class="docutils literal notranslate"><span class="pre">request_queue</span></code> of the device. The device driver needs to call
-<code class="docutils literal notranslate"><span class="pre">blk_ksm_init</span></code> on the <code class="docutils literal notranslate"><span class="pre">blk_keyslot_manager</span></code>, which specifying the number of
-keyslots supported by the hardware.</p>
+<code class="docutils literal notranslate"><span class="pre">blk_ksm_init</span></code> (or its resource-managed variant <code class="docutils literal notranslate"><span class="pre">devm_blk_ksm_init</span></code>) on the
+<code class="docutils literal notranslate"><span class="pre">blk_keyslot_manager</span></code>, while specifying the number of keyslots supported by
+the hardware.</p>
 <p>The device driver also needs to tell the KSM how to actually manipulate the
 IE hardware in the device to do things like programming the crypto key into
 the IE hardware into a particular keyslot. All this is achieved through the
@@ -449,9 +450,9 @@ power management.</p>
 needs each and every of its keyslots to be reprogrammed with the key it
 “should have” at the point in time when the function is called. This is useful
 e.g. if a device loses all its keys on runtime power down/up.</p>
-<p><code class="docutils literal notranslate"><span class="pre">blk_ksm_destroy</span></code> should be called to free up all resources used by a keyslot
-manager upon <code class="docutils literal notranslate"><span class="pre">blk_ksm_init</span></code>, once the <code class="docutils literal notranslate"><span class="pre">blk_keyslot_manager</span></code> is no longer
-needed.</p>
+<p>If the driver used <code class="docutils literal notranslate"><span class="pre">blk_ksm_init</span></code> instead of <code class="docutils literal notranslate"><span class="pre">devm_blk_ksm_init</span></code>, then
+<code class="docutils literal notranslate"><span class="pre">blk_ksm_destroy</span></code> should be called to free up all resources used by a
+<code class="docutils literal notranslate"><span class="pre">blk_keyslot_manager</span></code> once it is no longer needed.</p>
 </div>
 <div class="section" id="layered-devices">
 <h2>Layered Devices<a class="headerlink" href="#layered-devices" title="Permalink to this headline">¶</a></h2>

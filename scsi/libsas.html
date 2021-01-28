@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -500,14 +500,10 @@ num_phys.</p></li>
 </dl>
 <p>The event interface:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/* LLDD calls these to notify the class of an event. */
-void (*notify_ha_event)(struct sas_ha_struct *, enum ha_event);
-void (*notify_port_event)(struct sas_phy *, enum port_event);
-void (*notify_phy_event)(struct sas_phy *, enum phy_event);
+void sas_notify_port_event(struct sas_phy *, enum port_event, gfp_t);
+void sas_notify_phy_event(struct sas_phy *, enum phy_event, gfp_t);
 </pre></div>
 </div>
-<p>When sas_register_ha() returns, those are set and can be
-called by the LLDD to notify the SAS layer of such events
-the SAS layer.</p>
 <p>The port notification:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/* The class calls these to notify the LLDD of an event. */
 void (*lldd_port_formed)(struct sas_phy *);

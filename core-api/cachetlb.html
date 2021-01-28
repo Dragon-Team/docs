@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -469,9 +469,9 @@ PKMAP_ADDR(LAST_PKMAP).</p>
 of (kernel) virtual addresses from the cache.  After running,
 there will be no entries in the cache for the kernel address
 space for virtual addresses in the range ‘start’ to ‘end-1’.</p>
-<p>The first of these two routines is invoked after map_kernel_range()
+<p>The first of these two routines is invoked after vmap_range()
 has installed the page table entries.  The second is invoked
-before unmap_kernel_range() deletes the page table entries.</p>
+before vunmap_range() deletes the page table entries.</p>
 </div></blockquote>
 </li>
 </ol>

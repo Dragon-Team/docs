@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -1081,6 +1081,14 @@ address space. Same restrictions as for vmap and friends apply.</p>
     wait_queue_head_t *poll;
     __poll_t active;
   } cb_excl, cb_shared;
+#ifdef CONFIG_DMABUF_SYSFS_STATS;
+  struct dma_buf_sysfs_entry {
+    struct kobject kobj;
+    struct dma_buf *dmabuf;
+    unsigned int attachment_uid;
+    struct kset *attach_stats_kset;
+  } *sysfs_entry;
+#endif;
 };
 </pre></div>
 </div>
@@ -1123,6 +1131,10 @@ kernel module.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">cb_excl</span></code></dt><dd><p>for userspace poll support</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">cb_shared</span></code></dt><dd><p>for userspace poll support</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sysfs_entry</span></code></dt><dd><p>for exposing information about this buffer in sysfs.
+The attachment_uid member of <strong>sysfs_entry</strong> is protected by dma_resv lock
+and is incremented on each attach.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
@@ -1183,6 +1195,12 @@ point to the new location of the DMA-buf.</p>
   const struct dma_buf_attach_ops *importer_ops;
   void *importer_priv;
   void *priv;
+#ifdef CONFIG_DMABUF_SYSFS_STATS;
+  struct dma_buf_attach_sysfs_entry {
+    struct kobject kobj;
+    unsigned int map_counter;
+  } *sysfs_entry;
+#endif;
 };
 </pre></div>
 </div>
@@ -1206,6 +1224,8 @@ dma_buf_map/unmap_attachment() must be called with the dma_resv lock held.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">importer_priv</span></code></dt><dd><p>importer specific attachment data.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">priv</span></code></dt><dd><p>exporter specific attachment data.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sysfs_entry</span></code></dt><dd><p>For exposing information about this attachment in sysfs.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>

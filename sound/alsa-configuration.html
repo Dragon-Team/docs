@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -1294,7 +1294,7 @@ value based on the controller chip.</p>
 <dt>patch</dt><dd><p>Specifies the early “patch” files to modify the HD-audio setup
 before initializing the codecs.
 This option is available only when <code class="docutils literal notranslate"><span class="pre">CONFIG_SND_HDA_PATCH_LOADER=y</span></code>
-is set.  See hd-audio/notes.rst for details.</p>
+is set.  See <a class="reference internal" href="hd-audio/notes.html"><span class="doc">More Notes on HD-Audio Driver</span></a> for details.</p>
 </dd>
 <dt>beep_mode</dt><dd><p>Selects the beep registration mode (0=off, 1=on);
 default value is set via <code class="docutils literal notranslate"><span class="pre">CONFIG_SND_HDA_INPUT_BEEP_MODE</span></code> kconfig.</p>
@@ -1320,13 +1320,13 @@ exact period/buffer sizes. (default = on)</p>
 </dd>
 </dl>
 <p>This module supports multiple cards and autoprobe.</p>
-<p>See hd-audio/notes.rst for more details about HD-audio driver.</p>
+<p>See <a class="reference internal" href="hd-audio/notes.html"><span class="doc">More Notes on HD-Audio Driver</span></a> for more details about HD-audio driver.</p>
 <p>Each codec may have a model table for different configurations.
 If your machine isn’t listed there, the default (usually minimal)
 configuration is set up.  You can pass <code class="docutils literal notranslate"><span class="pre">model=&lt;name&gt;</span></code> option to
 specify a certain model in such a case.  There are different
 models depending on the codec chip.  The list of available models
-is found in hd-audio/models.rst.</p>
+is found in <a class="reference internal" href="hd-audio/models.html"><span class="doc">HD-Audio Codec-Specific Models</span></a>.</p>
 <p>The model name <code class="docutils literal notranslate"><span class="pre">generic</span></code> is treated as a special case.  When this
 model is given, the driver uses the generic codec parser without
 “codec-patch”.  It’s sometimes good for testing and debugging.</p>

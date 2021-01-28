@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -2415,6 +2415,19 @@ attached, or -1 if the node is unknown.</p>
 <p>The 16 bit vendor ID of the device</p>
 <p>Users:
 	tools/hv/lsvmbus and user level RDMA libraries</p>
+<table class="docutils align-default" id="abi-sys-bus-vmbus-hibernation">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/bus/vmbus/hibernation</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-stable-sysfs-bus-vmbus"><span class="std std-ref">sysfs-bus-vmbus</span></a></p>
+<p>Whether the host supports hibernation for the VM.</p>
+<p>Users:
+	Daemon that sets up swap partition/file for hibernation.</p>
 <table class="docutils align-default" id="abi-sys-bus-w1-devices-eeprom">
 <colgroup>
 <col style="width: 100%" />
@@ -7055,6 +7068,7 @@ that it is correct for their architecture.</p>
 <span id="abi-file-stable-sysfs-bus-vmbus"></span><h2>File /stable/sysfs-bus-vmbus<a class="headerlink" href="#file-home--zfs-data-doc-stable-sysfs-bus-vmbus" title="Permalink to this headline">¶</a></h2>
 <p>Has the following ABI:</p>
 <ul class="simple">
+<li><p><a class="reference internal" href="#abi-sys-bus-vmbus-hibernation"><span class="std std-ref">/sys/bus/vmbus/hibernation</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-vmbus-devices-uuid-id"><span class="std std-ref">/sys/bus/vmbus/devices/&lt;UUID&gt;/id</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-vmbus-devices-uuid-class-id"><span class="std std-ref">/sys/bus/vmbus/devices/&lt;UUID&gt;/class_id</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-vmbus-devices-uuid-device-id"><span class="std std-ref">/sys/bus/vmbus/devices/&lt;UUID&gt;/device_id</span></a></p></li>

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -572,89 +572,86 @@ is shown below, it supports single or combined type.</p>
 <tr class="row-odd"><td><p>FAULT_PAGE_GET</p></td>
 <td><p>0x000000008</p></td>
 </tr>
-<tr class="row-even"><td><p>FAULT_ALLOC_BIO</p></td>
-<td><p>0x000000010</p></td>
-</tr>
-<tr class="row-odd"><td><p>FAULT_ALLOC_NID</p></td>
+<tr class="row-even"><td><p>FAULT_ALLOC_NID</p></td>
 <td><p>0x000000020</p></td>
 </tr>
-<tr class="row-even"><td><p>FAULT_ORPHAN</p></td>
+<tr class="row-odd"><td><p>FAULT_ORPHAN</p></td>
 <td><p>0x000000040</p></td>
 </tr>
-<tr class="row-odd"><td><p>FAULT_BLOCK</p></td>
+<tr class="row-even"><td><p>FAULT_BLOCK</p></td>
 <td><p>0x000000080</p></td>
 </tr>
-<tr class="row-even"><td><p>FAULT_DIR_DEPTH</p></td>
+<tr class="row-odd"><td><p>FAULT_DIR_DEPTH</p></td>
 <td><p>0x000000100</p></td>
 </tr>
-<tr class="row-odd"><td><p>FAULT_EVICT_INODE</p></td>
+<tr class="row-even"><td><p>FAULT_EVICT_INODE</p></td>
 <td><p>0x000000200</p></td>
 </tr>
-<tr class="row-even"><td><p>FAULT_TRUNCATE</p></td>
+<tr class="row-odd"><td><p>FAULT_TRUNCATE</p></td>
 <td><p>0x000000400</p></td>
 </tr>
-<tr class="row-odd"><td><p>FAULT_READ_IO</p></td>
+<tr class="row-even"><td><p>FAULT_READ_IO</p></td>
 <td><p>0x000000800</p></td>
 </tr>
-<tr class="row-even"><td><p>FAULT_CHECKPOINT</p></td>
+<tr class="row-odd"><td><p>FAULT_CHECKPOINT</p></td>
 <td><p>0x000001000</p></td>
 </tr>
-<tr class="row-odd"><td><p>FAULT_DISCARD</p></td>
+<tr class="row-even"><td><p>FAULT_DISCARD</p></td>
 <td><p>0x000002000</p></td>
 </tr>
-<tr class="row-even"><td><p>FAULT_WRITE_IO</p></td>
+<tr class="row-odd"><td><p>FAULT_WRITE_IO</p></td>
 <td><p>0x000004000</p></td>
 </tr>
 </tbody>
 </table>
 </td>
 </tr>
-<tr class="row-odd"><td><p>mode=%s</p></td>
+<tr class="row-even"><td><p>mode=%s</p></td>
 <td><p>Control block allocation mode which supports “adaptive”
 and “lfs”. In “lfs” mode, there should be no random
 writes towards main area.</p></td>
 </tr>
-<tr class="row-even"><td><p>io_bits=%u</p></td>
+<tr class="row-odd"><td><p>io_bits=%u</p></td>
 <td><p>Set the bit size of write IO requests. It should be set
 with “mode=lfs”.</p></td>
 </tr>
-<tr class="row-odd"><td><p>usrquota</p></td>
+<tr class="row-even"><td><p>usrquota</p></td>
 <td><p>Enable plain user disk quota accounting.</p></td>
 </tr>
-<tr class="row-even"><td><p>grpquota</p></td>
+<tr class="row-odd"><td><p>grpquota</p></td>
 <td><p>Enable plain group disk quota accounting.</p></td>
 </tr>
-<tr class="row-odd"><td><p>prjquota</p></td>
+<tr class="row-even"><td><p>prjquota</p></td>
 <td><p>Enable plain project quota accounting.</p></td>
 </tr>
-<tr class="row-even"><td><p>usrjquota=&lt;file&gt;</p></td>
+<tr class="row-odd"><td><p>usrjquota=&lt;file&gt;</p></td>
 <td><p>Appoint specified file and type during mount, so that quota</p></td>
 </tr>
-<tr class="row-odd"><td><p>grpjquota=&lt;file&gt;</p></td>
+<tr class="row-even"><td><p>grpjquota=&lt;file&gt;</p></td>
 <td><p>information can be properly updated during recovery flow,</p></td>
 </tr>
-<tr class="row-even"><td><p>prjjquota=&lt;file&gt;</p></td>
+<tr class="row-odd"><td><p>prjjquota=&lt;file&gt;</p></td>
 <td><p>&lt;quota file&gt;: must be in root directory;</p></td>
 </tr>
-<tr class="row-odd"><td><p>jqfmt=&lt;quota type&gt;</p></td>
+<tr class="row-even"><td><p>jqfmt=&lt;quota type&gt;</p></td>
 <td><p>&lt;quota type&gt;: [vfsold,vfsv0,vfsv1].</p></td>
 </tr>
-<tr class="row-even"><td><p>offusrjquota</p></td>
+<tr class="row-odd"><td><p>offusrjquota</p></td>
 <td><p>Turn off user journalled quota.</p></td>
 </tr>
-<tr class="row-odd"><td><p>offgrpjquota</p></td>
+<tr class="row-even"><td><p>offgrpjquota</p></td>
 <td><p>Turn off group journalled quota.</p></td>
 </tr>
-<tr class="row-even"><td><p>offprjjquota</p></td>
+<tr class="row-odd"><td><p>offprjjquota</p></td>
 <td><p>Turn off project journalled quota.</p></td>
 </tr>
-<tr class="row-odd"><td><p>quota</p></td>
+<tr class="row-even"><td><p>quota</p></td>
 <td><p>Enable plain user disk quota accounting.</p></td>
 </tr>
-<tr class="row-even"><td><p>noquota</p></td>
+<tr class="row-odd"><td><p>noquota</p></td>
 <td><p>Disable all plain disk quota option.</p></td>
 </tr>
-<tr class="row-odd"><td><p>whint_mode=%s</p></td>
+<tr class="row-even"><td><p>whint_mode=%s</p></td>
 <td><p>Control which write hints are passed down to block
 layer. This supports “off”, “user-based”, and
 “fs-based”.  In “off” mode (default), f2fs does not pass
@@ -662,11 +659,11 @@ down hints. In “user-based” mode, f2fs tries to pass
 down hints given by users. And in “fs-based” mode, f2fs
 passes down hints with its policy.</p></td>
 </tr>
-<tr class="row-even"><td><p>alloc_mode=%s</p></td>
+<tr class="row-odd"><td><p>alloc_mode=%s</p></td>
 <td><p>Adjust block allocation policy, which supports “reuse”
 and “default”.</p></td>
 </tr>
-<tr class="row-odd"><td><p>fsync_mode=%s</p></td>
+<tr class="row-even"><td><p>fsync_mode=%s</p></td>
 <td><p>Control the policy of fsync. Currently supports “posix”,
 “strict”, and “nobarrier”. In “posix” mode, which is
 default, fsync will follow POSIX semantics and does a
@@ -677,16 +674,16 @@ pass, but the performance will regress. “nobarrier” is
 based on “posix”, but doesn’t issue flush command for
 non-atomic files likewise “nobarrier” mount option.</p></td>
 </tr>
-<tr class="row-even"><td><p>test_dummy_encryption</p></td>
+<tr class="row-odd"><td><p>test_dummy_encryption</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>test_dummy_encryption=%s</p></td>
+<tr class="row-even"><td><p>test_dummy_encryption=%s</p></td>
 <td><p>Enable dummy encryption, which provides a fake fscrypt
 context. The fake fscrypt context is used by xfstests.
 The argument may be either “v1” or “v2”, in order to
 select the corresponding fscrypt policy version.</p></td>
 </tr>
-<tr class="row-even"><td><p>checkpoint=%s[:%u[%]]</p></td>
+<tr class="row-odd"><td><p>checkpoint=%s[:%u[%]]</p></td>
 <td><p>Set to “disable” to turn off checkpointing. Set to “enable”
 to reenable checkpointing. Is enabled by default. While
 disabled, any unmounting or unexpected shutdowns will cause
@@ -714,23 +711,23 @@ to “3”, to give one higher priority than other kernel threads.
 This is the same way to give a I/O priority to the jbd2
 journaling thread of ext4 filesystem.</p></td>
 </tr>
-<tr class="row-odd"><td><p>compress_algorithm=%s</p></td>
+<tr class="row-even"><td><p>compress_algorithm=%s</p></td>
 <td><p>Control compress algorithm, currently f2fs supports “lzo”,
 “lz4”, “zstd” and “lzo-rle” algorithm.</p></td>
 </tr>
-<tr class="row-even"><td><p>compress_algorithm=%s:%d</p></td>
+<tr class="row-odd"><td><p>compress_algorithm=%s:%d</p></td>
 <td><p>Control compress algorithm and its compress level, now, only
 “lz4” and “zstd” support compress level config.
 algorithm      level range
 lz4            3 - 16
 zstd           1 - 22</p></td>
 </tr>
-<tr class="row-odd"><td><p>compress_log_size=%u</p></td>
+<tr class="row-even"><td><p>compress_log_size=%u</p></td>
 <td><p>Support configuring compress cluster size, the size will
 be 4KB * (1 &lt;&lt; %u), 16KB is minimum size, also it’s
 default size.</p></td>
 </tr>
-<tr class="row-even"><td><p>compress_extension=%s</p></td>
+<tr class="row-odd"><td><p>compress_extension=%s</p></td>
 <td><p>Support adding specified extension, so that f2fs can enable
 compression on those corresponding files, e.g. if all files
 with ‘.ext’ has high compression rate, we can set the ‘.ext’
@@ -740,10 +737,10 @@ For other files, we can still enable compression via ioctl.
 Note that, there is one reserved special extension ‘*’, it
 can be set to enable compression for all files.</p></td>
 </tr>
-<tr class="row-odd"><td><p>compress_chksum</p></td>
+<tr class="row-even"><td><p>compress_chksum</p></td>
 <td><p>Support verifying chksum of raw data in compressed cluster.</p></td>
 </tr>
-<tr class="row-even"><td><p>compress_mode=%s</p></td>
+<tr class="row-odd"><td><p>compress_mode=%s</p></td>
 <td><p>Control file compression mode. This supports “fs” and “user”
 modes. In “fs” mode (default), f2fs does automatic compression
 on the compression enabled files. In “user” mode, f2fs disables
@@ -752,7 +749,7 @@ choosing the target file and the timing. The user can do manual
 compression/decompression on the compression enabled files using
 ioctls.</p></td>
 </tr>
-<tr class="row-odd"><td><p>inlinecrypt</p></td>
+<tr class="row-even"><td><p>inlinecrypt</p></td>
 <td><p>When possible, encrypt/decrypt the contents of encrypted
 files using the blk-crypto framework rather than
 filesystem-layer encryption. This allows the use of
@@ -760,7 +757,7 @@ inline encryption hardware. The on-disk format is
 unaffected. For more details, see
 <a class="reference internal" href="../block/inline-encryption.html"><span class="doc">Inline Encryption</span></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p>atgc</p></td>
+<tr class="row-odd"><td><p>atgc</p></td>
 <td><p>Enable age-threshold garbage collection, it provides high
 effectiveness and efficiency on background GC.</p></td>
 </tr>

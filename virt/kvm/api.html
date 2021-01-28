@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -707,10 +707,9 @@ struct kvm_dirty_log {
 since the last call to this ioctl.  Bit 0 is the first page in the
 memory slot.  Ensure the entire structure is cleared to avoid padding
 issues.</p>
-<p>If KVM_CAP_MULTI_ADDRESS_SPACE is available, bits 16-31 specifies
-the address space for which you want to return the dirty bitmap.
-They must be less than the value that KVM_CHECK_EXTENSION returns for
-the KVM_CAP_MULTI_ADDRESS_SPACE capability.</p>
+<p>If KVM_CAP_MULTI_ADDRESS_SPACE is available, bits 16-31 of slot field specifies
+the address space for which you want to return the dirty bitmap.  See
+KVM_SET_USER_MEMORY_REGION for details on the usage of slot field.</p>
 <p>The bits in the dirty bitmap are cleared before the ioctl returns, unless
 KVM_CAP_MANUAL_DIRTY_LOG_PROTECT2 is enabled.  For more information,
 see the description of the capability.</p>
@@ -1930,7 +1929,7 @@ documentation when it pops into existence).</p>
 <dd class="field-odd"><p>all</p>
 </dd>
 <dt class="field-even">Type</dt>
-<dd class="field-even"><p>vcpu ioctl</p>
+<dd class="field-even"><p>vm ioctl</p>
 </dd>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p>struct kvm_enable_cap (in)</p>
@@ -6405,7 +6404,7 @@ to I/O ports.</p>
 <dd class="field-odd"><p>vm ioctl</p>
 </dd>
 <dt class="field-even">Parameters</dt>
-<dd class="field-even"><p>struct kvm_dirty_log (in)</p>
+<dd class="field-even"><p>struct kvm_clear_dirty_log (in)</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>0 on success, -1 on error</p>
@@ -6433,10 +6432,9 @@ bit that is set in the input bitmap, the corresponding page is marked “clean�
 in KVM’s dirty bitmap, and dirty tracking is re-enabled for that page
 (for example via write-protection, or by clearing the dirty bit in
 a page table entry).</p>
-<p>If KVM_CAP_MULTI_ADDRESS_SPACE is available, bits 16-31 specifies
-the address space for which you want to return the dirty bitmap.
-They must be less than the value that KVM_CHECK_EXTENSION returns for
-the KVM_CAP_MULTI_ADDRESS_SPACE capability.</p>
+<p>If KVM_CAP_MULTI_ADDRESS_SPACE is available, bits 16-31 of slot field specifies
+the address space for which you want to clear the dirty status.  See
+KVM_SET_USER_MEMORY_REGION for details on the usage of slot field.</p>
 <p>This ioctl is mostly useful when KVM_CAP_MANUAL_DIRTY_LOG_PROTECT2
 is enabled; for more information, see the description of the capability.
 However, it can always be used as long as KVM_CHECK_EXTENSION confirms

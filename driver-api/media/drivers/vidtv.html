@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -808,6 +808,9 @@ continuity counter is updated but the packet is not passed on to the demux.</p><
   struct mutex feed_lock;
   bool streaming;
   struct vidtv_mux *mux;
+#ifdef CONFIG_MEDIA_CONTROLLER_DVB;
+  struct media_device mdev;
+#endif ;
 };
 </pre></div>
 </div>
@@ -838,6 +841,8 @@ continuity counter is updated but the packet is not passed on to the demux.</p><
 <dt><code class="docutils literal notranslate"><span class="pre">streaming</span></code></dt><dd><p>Whether we are streaming now.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">mux</span></code></dt><dd><p>The abstraction responsible for delivering MPEG TS packets to the bridge.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">mdev</span></code></dt><dd><p>The media_device struct for media controller support.</p>
 </dd>
 </dl>
 <dl class="c struct">

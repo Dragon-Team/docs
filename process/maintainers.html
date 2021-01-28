@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -525,6 +525,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-stb-nand-flash-driver">BROADCOM STB NAND FLASH DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-systemport-ethernet-driver">BROADCOM SYSTEMPORT ETHERNET DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-tg3-gigabit-ethernet-driver">BROADCOM TG3 GIGABIT ETHERNET DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#broadcom-vk-driver">BROADCOM VK DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#brocade-bfa-fc-scsi-driver">BROCADE BFA FC SCSI DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#brocade-bna-10-gigabit-ethernet-driver">BROCADE BNA 10 GIGABIT ETHERNET DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bsg-block-layer-generic-sg-v4-driver">BSG (block layer generic sg v4 driver)</a></li>
@@ -537,6 +538,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#c-media-cmi8788-driver">C-MEDIA CMI8788 DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#c-sky-architecture">C-SKY ARCHITECTURE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ca8210-ieee-802-15-4-radio-driver">CA8210 IEEE-802.15.4 RADIO DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#canaan-kendryte-k210-soc-fpioa-driver">CANAAN/KENDRYTE K210 SOC FPIOA DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#canaan-kendryte-k210-soc-reset-controller-driver">CANAAN/KENDRYTE K210 SOC RESET CONTROLLER DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#canaan-kendryte-k210-soc-system-controller-driver">CANAAN/KENDRYTE K210 SOC SYSTEM CONTROLLER DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cachefiles-fs-cache-backend-for-caching-on-mounted-filesystems">CACHEFILES: FS-CACHE BACKEND FOR CACHING ON MOUNTED FILESYSTEMS</a></li>
@@ -8475,9 +8477,11 @@ Dirk Opfer &lt;<a class="reference external" href="mailto:dirk&#37;&#52;&#48;opf
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/arm/toshiba.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/gpio/toshiba,gpio-visconti.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/pinctrl/toshiba,tmpv7700-pinctrl.yaml</span></code>
+<code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/watchdog/toshiba,visconti-wdt.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">arch/arm64/boot/dts/toshiba/</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/gpio/gpio-visconti.c</span></code>
-<code class="docutils literal notranslate"><span class="pre">drivers/pinctrl/visconti/</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">drivers/pinctrl/visconti/</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/watchdog/visconti_wdt.c</span></code></p>
 </dd>
 <dt class="field-even">Regex</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">visconti</span></code></p>
@@ -8941,9 +8945,7 @@ Will Deacon &lt;<a class="reference external" href="mailto:will&#37;&#52;&#48;ke
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><a class="reference internal" href="../crypto/async-tx-api.html"><span class="doc">crypto/async-tx-api</span></a>
 <code class="docutils literal notranslate"><span class="pre">crypto/async_tx/</span></code>
-<code class="docutils literal notranslate"><span class="pre">drivers/dma/</span></code>
-<code class="docutils literal notranslate"><span class="pre">include/linux/async_tx.h</span></code>
-<code class="docutils literal notranslate"><span class="pre">include/linux/dmaengine.h</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">include/linux/async_tx.h</span></code></p>
 </dd>
 </dl>
 </div>
@@ -10999,6 +11001,24 @@ Michael Chan &lt;<a class="reference external" href="mailto:mchan&#37;&#52;&#48;
 </dd>
 </dl>
 </div>
+<div class="section" id="broadcom-vk-driver">
+<h3>BROADCOM VK DRIVER<a class="headerlink" href="#broadcom-vk-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Scott Branden &lt;<a class="reference external" href="mailto:scott&#46;branden&#37;&#52;&#48;broadcom&#46;com">scott<span>&#46;</span>branden<span>&#64;</span>broadcom<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:bcm-kernel-feedback-list&#37;&#52;&#48;broadcom&#46;com">bcm-kernel-feedback-list<span>&#64;</span>broadcom<span>&#46;</span>com</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Supported</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/misc/bcm-vk/</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/uapi/linux/misc/bcm_vk.h</span></code></p>
+</dd>
+</dl>
+</div>
 <div class="section" id="brocade-bfa-fc-scsi-driver">
 <h3>BROCADE BFA FC SCSI DRIVER<a class="headerlink" href="#brocade-bfa-fc-scsi-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
@@ -11258,6 +11278,22 @@ David Sterba &lt;<a class="reference external" href="mailto:dsterba&#37;&#52;&#4
 <dt class="field-odd">Files</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/net/ieee802154/ca8210.txt</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/net/ieee802154/ca8210.c</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="canaan-kendryte-k210-soc-fpioa-driver">
+<h3>CANAAN/KENDRYTE K210 SOC FPIOA DRIVER<a class="headerlink" href="#canaan-kendryte-k210-soc-fpioa-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Damien Le Moal &lt;<a class="reference external" href="mailto:damien&#46;lemoal&#37;&#52;&#48;wdc&#46;com">damien<span>&#46;</span>lemoal<span>&#64;</span>wdc<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:linux-riscv&#37;&#52;&#48;lists&#46;infradead&#46;org">linux-riscv<span>&#64;</span>lists<span>&#46;</span>infradead<span>&#46;</span>org</a>,
+<a class="reference external" href="mailto:linux-gpio&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-gpio<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a> (pinctrl driver)</p>
+</dd>
+<dt class="field-odd">Files</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/pinctrl/canaan,k210-fpioa.yaml</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/pinctrl/pinctrl-k210.c</span></code></p>
 </dd>
 </dl>
 </div>
@@ -12362,7 +12398,7 @@ Nelson Escobar &lt;<a class="reference external" href="mailto:neescoba&#37;&#52;
 <h3>CLANG/LLVM BUILD SUPPORT<a class="headerlink" href="#clang-llvm-build-support" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Nathan Chancellor &lt;<a class="reference external" href="mailto:natechancellor&#37;&#52;&#48;gmail&#46;com">natechancellor<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;,
+<dd class="field-odd"><p>Nathan Chancellor &lt;<a class="reference external" href="mailto:nathan&#37;&#52;&#48;kernel&#46;org">nathan<span>&#64;</span>kernel<span>&#46;</span>org</a>&gt;,
 Nick Desaulniers &lt;<a class="reference external" href="mailto:ndesaulniers&#37;&#52;&#48;google&#46;com">ndesaulniers<span>&#64;</span>google<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
@@ -13913,7 +13949,7 @@ Jamie Lenehan &lt;<a class="reference external" href="mailto:lenehan&#37;&#52;&#
 <h3>DECSTATION PLATFORM SUPPORT<a class="headerlink" href="#decstation-platform-support" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>“Maciej W. Rozycki” &lt;<a class="reference external" href="mailto:macro&#37;&#52;&#48;linux-mips&#46;org">macro<span>&#64;</span>linux-mips<span>&#46;</span>org</a>&gt;</p>
+<dd class="field-odd"><p>“Maciej W. Rozycki” &lt;<a class="reference external" href="mailto:macro&#37;&#52;&#48;orcam&#46;me&#46;uk">macro<span>&#64;</span>orcam<span>&#46;</span>me<span>&#46;</span>uk</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:linux-mips&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-mips<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
@@ -13935,7 +13971,7 @@ Jamie Lenehan &lt;<a class="reference external" href="mailto:lenehan&#37;&#52;&#
 <h3>DEFXX FDDI NETWORK DRIVER<a class="headerlink" href="#defxx-fddi-network-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>“Maciej W. Rozycki” &lt;<a class="reference external" href="mailto:macro&#37;&#52;&#48;linux-mips&#46;org">macro<span>&#64;</span>linux-mips<span>&#46;</span>org</a>&gt;</p>
+<dd class="field-odd"><p>“Maciej W. Rozycki” &lt;<a class="reference external" href="mailto:macro&#37;&#52;&#48;orcam&#46;me&#46;uk">macro<span>&#64;</span>orcam<span>&#46;</span>me<span>&#46;</span>uk</a>&gt;</p>
 </dd>
 <dt class="field-even">Status</dt>
 <dd class="field-even"><p>Maintained</p>
@@ -13949,7 +13985,7 @@ Jamie Lenehan &lt;<a class="reference external" href="mailto:lenehan&#37;&#52;&#
 <h3>DEFZA FDDI NETWORK DRIVER<a class="headerlink" href="#defza-fddi-network-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>“Maciej W. Rozycki” &lt;<a class="reference external" href="mailto:macro&#37;&#52;&#48;linux-mips&#46;org">macro<span>&#64;</span>linux-mips<span>&#46;</span>org</a>&gt;</p>
+<dd class="field-odd"><p>“Maciej W. Rozycki” &lt;<a class="reference external" href="mailto:macro&#37;&#52;&#48;orcam&#46;me&#46;uk">macro<span>&#64;</span>orcam<span>&#46;</span>me<span>&#46;</span>uk</a>&gt;</p>
 </dd>
 <dt class="field-even">Status</dt>
 <dd class="field-even"><p>Maintained</p>
@@ -14706,6 +14742,7 @@ Christian König &lt;<a class="reference external" href="mailto:christian&#46;ko
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/dma/</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/driver-api/dmaengine/</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/dma/</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/linux/dma/</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/dmaengine.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/of_dma.h</span></code></p>
 </dd>
@@ -16980,7 +17017,7 @@ Huang Rui &lt;<a class="reference external" href="mailto:ray&#46;huang&#37;&#52;
 <h3>DZ DECSTATION DZ11 SERIAL DRIVER<a class="headerlink" href="#dz-decstation-dz11-serial-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>“Maciej W. Rozycki” &lt;<a class="reference external" href="mailto:macro&#37;&#52;&#48;linux-mips&#46;org">macro<span>&#64;</span>linux-mips<span>&#46;</span>org</a>&gt;</p>
+<dd class="field-odd"><p>“Maciej W. Rozycki” &lt;<a class="reference external" href="mailto:macro&#37;&#52;&#48;orcam&#46;me&#46;uk">macro<span>&#64;</span>orcam<span>&#46;</span>me<span>&#46;</span>uk</a>&gt;</p>
 </dd>
 <dt class="field-even">Status</dt>
 <dd class="field-even"><p>Maintained</p>
@@ -18580,6 +18617,11 @@ Jan Kara &lt;<a class="reference external" href="mailto:jack&#37;&#52;&#48;suse&
 <code class="docutils literal notranslate"><span class="pre">include/linux/fs_types.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/uapi/linux/fs.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/uapi/linux/openat2.h</span></code></p>
+</dd>
+<dt class="field-odd">Excluded</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">fs/io-wq.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">fs/io-wq.h</span></code>
+<code class="docutils literal notranslate"><span class="pre">fs/io_uring.c</span></code></p>
 </dd>
 </dl>
 </div>
@@ -21721,7 +21763,7 @@ Weihang Li &lt;<a class="reference external" href="mailto:liweihang&#37;&#52;&#4
 <dd class="field-even"><p>Maintained</p>
 </dd>
 <dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/display/ht16k33.txt</span></code>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/auxdisplay/holtek,ht16k33.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/auxdisplay/ht16k33.c</span></code></p>
 </dd>
 </dl>
@@ -23664,7 +23706,8 @@ Lu Baolu &lt;<a class="reference external" href="mailto:baolu&#46;lu&#37;&#52;&#
 <dt class="field-odd">Mail</dt>
 <dd class="field-odd"><p>Yong Zhi &lt;<a class="reference external" href="mailto:yong&#46;zhi&#37;&#52;&#48;intel&#46;com">yong<span>&#46;</span>zhi<span>&#64;</span>intel<span>&#46;</span>com</a>&gt;,
 Sakari Ailus &lt;<a class="reference external" href="mailto:sakari&#46;ailus&#37;&#52;&#48;linux&#46;intel&#46;com">sakari<span>&#46;</span>ailus<span>&#64;</span>linux<span>&#46;</span>intel<span>&#46;</span>com</a>&gt;,
-Bingbu Cao &lt;<a class="reference external" href="mailto:bingbu&#46;cao&#37;&#52;&#48;intel&#46;com">bingbu<span>&#46;</span>cao<span>&#64;</span>intel<span>&#46;</span>com</a>&gt;</p>
+Bingbu Cao &lt;<a class="reference external" href="mailto:bingbu&#46;cao&#37;&#52;&#48;intel&#46;com">bingbu<span>&#46;</span>cao<span>&#64;</span>intel<span>&#46;</span>com</a>&gt;,
+Dan Scally &lt;<a class="reference external" href="mailto:djrscally&#37;&#52;&#48;gmail&#46;com">djrscally<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Reviewer</dt>
 <dd class="field-even"><p>Tianshu Qiu &lt;<a class="reference external" href="mailto:tian&#46;shu&#46;qiu&#37;&#52;&#48;intel&#46;com">tian<span>&#46;</span>shu<span>&#46;</span>qiu<span>&#64;</span>intel<span>&#46;</span>com</a>&gt;</p>
@@ -23675,8 +23718,11 @@ Bingbu Cao &lt;<a class="reference external" href="mailto:bingbu&#46;cao&#37;&#5
 <dt class="field-even">Status</dt>
 <dd class="field-even"><p>Maintained</p>
 </dd>
-<dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><a class="reference internal" href="../userspace-api/media/v4l/pixfmt-srggb10-ipu3.html"><span class="doc">userspace-api/media/v4l/pixfmt-srggb10-ipu3</span></a>
+<dt class="field-odd">SCM</dt>
+<dd class="field-odd"><p>git git://linuxtv.org/media_tree.git</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><a class="reference internal" href="../userspace-api/media/v4l/pixfmt-srggb10-ipu3.html"><span class="doc">userspace-api/media/v4l/pixfmt-srggb10-ipu3</span></a>
 <code class="docutils literal notranslate"><span class="pre">drivers/media/pci/intel/ipu3/</span></code></p>
 </dd>
 </dl>
@@ -24366,20 +24412,24 @@ Will Deacon &lt;<a class="reference external" href="mailto:will&#37;&#52;&#48;ke
 <dt class="field-odd">Mail</dt>
 <dd class="field-odd"><p>Jens Axboe &lt;<a class="reference external" href="mailto:axboe&#37;&#52;&#48;kernel&#46;dk">axboe<span>&#64;</span>kernel<span>&#46;</span>dk</a>&gt;</p>
 </dd>
-<dt class="field-even">Mailing list</dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:io-uring&#37;&#52;&#48;vger&#46;kernel&#46;org">io-uring<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+<dt class="field-even">Reviewer</dt>
+<dd class="field-even"><p>Pavel Begunkov &lt;<a class="reference external" href="mailto:asml&#46;silence&#37;&#52;&#48;gmail&#46;com">asml<span>&#46;</span>silence<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
 </dd>
-<dt class="field-odd">Status</dt>
-<dd class="field-odd"><p>Maintained</p>
+<dt class="field-odd">Mailing list</dt>
+<dd class="field-odd"><p><a class="reference external" href="mailto:io-uring&#37;&#52;&#48;vger&#46;kernel&#46;org">io-uring<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
 </dd>
-<dt class="field-even">SCM</dt>
-<dd class="field-even"><p>git git://git.kernel.dk/linux-block
+<dt class="field-even">Status</dt>
+<dd class="field-even"><p>Maintained</p>
+</dd>
+<dt class="field-odd">SCM</dt>
+<dd class="field-odd"><p>git git://git.kernel.dk/linux-block
 git git://git.kernel.dk/liburing</p>
 </dd>
-<dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">fs/io-wq.c</span></code>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">fs/io-wq.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">fs/io-wq.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">fs/io_uring.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/linux/io_uring.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/uapi/linux/io_uring.h</span></code></p>
 </dd>
 </dl>
@@ -31750,7 +31800,8 @@ git git://git.kernel.org/pub/scm/linux/kernel/git/klassert/ipsec-next.git</p>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
 <dd class="field-odd"><p>“David S. Miller” &lt;<a class="reference external" href="mailto:davem&#37;&#52;&#48;davemloft&#46;net">davem<span>&#64;</span>davemloft<span>&#46;</span>net</a>&gt;,
-Hideaki YOSHIFUJI &lt;<a class="reference external" href="mailto:yoshfuji&#37;&#52;&#48;linux-ipv6&#46;org">yoshfuji<span>&#64;</span>linux-ipv6<span>&#46;</span>org</a>&gt;</p>
+Hideaki YOSHIFUJI &lt;<a class="reference external" href="mailto:yoshfuji&#37;&#52;&#48;linux-ipv6&#46;org">yoshfuji<span>&#64;</span>linux-ipv6<span>&#46;</span>org</a>&gt;,
+David Ahern &lt;<a class="reference external" href="mailto:dsahern&#37;&#52;&#48;kernel&#46;org">dsahern<span>&#64;</span>kernel<span>&#46;</span>org</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
 <dd class="field-even"><p><a class="reference external" href="mailto:netdev&#37;&#52;&#48;vger&#46;kernel&#46;org">netdev<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
@@ -32831,7 +32882,7 @@ Tony Lindgren &lt;<a class="reference external" href="mailto:tony&#37;&#52;&#48;
 <h3>OMAP GENERAL PURPOSE MEMORY CONTROLLER SUPPORT<a class="headerlink" href="#omap-general-purpose-memory-controller-support" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Roger Quadros &lt;<a class="reference external" href="mailto:rogerq&#37;&#52;&#48;ti&#46;com">rogerq<span>&#64;</span>ti<span>&#46;</span>com</a>&gt;,
+<dd class="field-odd"><p>Roger Quadros &lt;<a class="reference external" href="mailto:rogerq&#37;&#52;&#48;kernel&#46;org">rogerq<span>&#64;</span>kernel<span>&#46;</span>org</a>&gt;,
 Tony Lindgren &lt;<a class="reference external" href="mailto:tony&#37;&#52;&#48;atomide&#46;com">tony<span>&#64;</span>atomide<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
@@ -45391,7 +45442,7 @@ Jiri Slaby &lt;<a class="reference external" href="mailto:jirislaby&#37;&#52;&#4
 <h3>TURBOCHANNEL SUBSYSTEM<a class="headerlink" href="#turbochannel-subsystem" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>“Maciej W. Rozycki” &lt;<a class="reference external" href="mailto:macro&#37;&#52;&#48;linux-mips&#46;org">macro<span>&#64;</span>linux-mips<span>&#46;</span>org</a>&gt;,
+<dd class="field-odd"><p>“Maciej W. Rozycki” &lt;<a class="reference external" href="mailto:macro&#37;&#52;&#48;orcam&#46;me&#46;uk">macro<span>&#64;</span>orcam<span>&#46;</span>me<span>&#46;</span>uk</a>&gt;,
 Ralf Baechle &lt;<a class="reference external" href="mailto:ralf&#37;&#52;&#48;linux-mips&#46;org">ralf<span>&#64;</span>linux-mips<span>&#46;</span>org</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
@@ -49334,7 +49385,7 @@ Nitin Gupta &lt;<a class="reference external" href="mailto:ngupta&#37;&#52;&#48;
 <h3>ZS DECSTATION Z85C30 SERIAL DRIVER<a class="headerlink" href="#zs-decstation-z85c30-serial-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>“Maciej W. Rozycki” &lt;<a class="reference external" href="mailto:macro&#37;&#52;&#48;linux-mips&#46;org">macro<span>&#64;</span>linux-mips<span>&#46;</span>org</a>&gt;</p>
+<dd class="field-odd"><p>“Maciej W. Rozycki” &lt;<a class="reference external" href="mailto:macro&#37;&#52;&#48;orcam&#46;me&#46;uk">macro<span>&#64;</span>orcam<span>&#46;</span>me<span>&#46;</span>uk</a>&gt;</p>
 </dd>
 <dt class="field-even">Status</dt>
 <dd class="field-even"><p>Maintained</p>

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -100,7 +100,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#goal-definitions">3.1 Goal definitions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#built-in-object-goals-obj-y">3.2 Built-in object goals - obj-y</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#loadable-module-goals-obj-m">3.3 Loadable module goals - obj-m</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#objects-which-export-symbols">3.4 Objects which export symbols</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#library-file-goals-lib-y">3.5 Library file goals - lib-y</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#descending-down-in-directories">3.6 Descending down in directories</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#non-builtin-vmlinux-targets-extra-y">3.7 Non-builtin vmlinux targets - extra-y</a></li>
@@ -480,13 +479,6 @@ kbuild will build an ext2.o file for you out of the individual
 parts and then link this into built-in.a, as you would expect.</p>
 </div></blockquote>
 </div>
-<div class="section" id="objects-which-export-symbols">
-<h3>3.4 Objects which export symbols<a class="headerlink" href="#objects-which-export-symbols" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>No special notation is required in the makefiles for
-modules exporting symbols.</p>
-</div></blockquote>
-</div>
 <div class="section" id="library-file-goals-lib-y">
 <h3>3.5 Library file goals - lib-y<a class="headerlink" href="#library-file-goals-lib-y" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -677,11 +669,9 @@ can re-add compiler flags that were removed by ccflags-remove-y.</p>
 <p>Example:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># drivers/scsi/Makefile
 CFLAGS_aha152x.o =   -DAHA152X_STAT -DAUTOCONF
-CFLAGS_gdth.o    = # -DDEBUG_GDTH=2 -D__SERIAL__ -D__COM2__ \
-                     -DGDTH_STATISTICS
 </pre></div>
 </div>
-<p>These two lines specify compilation flags for aha152x.o and gdth.o.</p>
+<p>This line specify compilation flags for aha152x.o.</p>
 <p>$(AFLAGS_$&#64;) is a similar feature for source files in assembly
 languages.</p>
 <p>AFLAGS_$&#64; has the higher priority than asflags-remove-y; AFLAGS_$&#64;
@@ -1390,7 +1380,7 @@ resident kernel code.</p>
 <dt>KBUILD_AFLAGS_MODULE</dt><dd><p>Assembler options specific for modules</p>
 <p>$(KBUILD_AFLAGS_MODULE) is used to add arch-specific options that
 are used for assembler.</p>
-<p>From commandline AFLAGS_MODULE shall be used (see kbuild.rst).</p>
+<p>From commandline AFLAGS_MODULE shall be used (see <a class="reference internal" href="kbuild.html"><span class="doc">Kbuild</span></a>).</p>
 </dd>
 <dt>KBUILD_CFLAGS_KERNEL</dt><dd><p>$(CC) options specific for built-in</p>
 <p>$(KBUILD_CFLAGS_KERNEL) contains extra C compiler flags used to compile
@@ -1399,12 +1389,12 @@ resident kernel code.</p>
 <dt>KBUILD_CFLAGS_MODULE</dt><dd><p>Options for $(CC) when building modules</p>
 <p>$(KBUILD_CFLAGS_MODULE) is used to add arch-specific options that
 are used for $(CC).
-From commandline CFLAGS_MODULE shall be used (see kbuild.rst).</p>
+From commandline CFLAGS_MODULE shall be used (see <a class="reference internal" href="kbuild.html"><span class="doc">Kbuild</span></a>).</p>
 </dd>
 <dt>KBUILD_LDFLAGS_MODULE</dt><dd><p>Options for $(LD) when linking modules</p>
 <p>$(KBUILD_LDFLAGS_MODULE) is used to add arch-specific options
 used when linking modules. This is often a linker script.</p>
-<p>From commandline LDFLAGS_MODULE shall be used (see kbuild.rst).</p>
+<p>From commandline LDFLAGS_MODULE shall be used (see <a class="reference internal" href="kbuild.html"><span class="doc">Kbuild</span></a>).</p>
 </dd>
 </dl>
 <p>KBUILD_LDS</p>

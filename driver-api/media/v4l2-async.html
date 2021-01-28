@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -399,9 +399,6 @@
 
 <p><strong>Constants</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">V4L2_ASYNC_MATCH_CUSTOM</span></code></dt><dd><p>Match will use the logic provided by <a class="reference internal" href="#c.v4l2_async_subdev" title="v4l2_async_subdev"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span>
-<span class="pre">v4l2_async_subdev</span></code></a>.match ops</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">V4L2_ASYNC_MATCH_DEVNAME</span></code></dt><dd><p>Match will use the device name</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">V4L2_ASYNC_MATCH_I2C</span></code></dt><dd><p>Match will check for I2C adapter ID and address</p>
@@ -428,10 +425,6 @@ algorithm that will be used to match an asynchronous device.</p>
       int adapter_id;
       unsigned short address;
     } i2c;
-    struct {
-      bool (*match)(struct device *dev, struct v4l2_async_subdev *sd);
-      void *priv;
-    } custom;
   } match;
   struct list_head list;
   struct list_head asd_list;
@@ -460,15 +453,6 @@ Used if <strong>match_type</strong> is <code class="docutils literal notranslate
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">match.i2c.address</span></code></dt><dd><p>I2C address to be matched.
 Used if <strong>match_type</strong> is <code class="docutils literal notranslate"><span class="pre">V4L2_ASYNC_MATCH_I2C</span></code>.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">match.custom</span></code></dt><dd><p>Driver-specific match criteria.
-Used if <strong>match_type</strong> is <code class="docutils literal notranslate"><span class="pre">V4L2_ASYNC_MATCH_CUSTOM</span></code>.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">match.custom.match</span></code></dt><dd><p>Driver-specific match function to be used if
-<code class="docutils literal notranslate"><span class="pre">V4L2_ASYNC_MATCH_CUSTOM</span></code>.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">match.custom.priv</span></code></dt><dd><p>Driver-specific private struct with match parameters
-to be used if <code class="docutils literal notranslate"><span class="pre">V4L2_ASYNC_MATCH_CUSTOM</span></code>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">list</span></code></dt><dd><p>used to link <a class="reference internal" href="#c.v4l2_async_subdev" title="v4l2_async_subdev"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_async_subdev</span></code></a> objects, waiting to be
 probed, to a notifier-&gt;waiting list</p>
@@ -541,6 +525,17 @@ callback is only executed for the root notifier.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">done</span></code></dt><dd><p>list of <a class="reference internal" href="v4l2-subdev.html#c.v4l2_subdev" title="v4l2_subdev"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">v4l2_subdev</span></code></a>, already probed</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">list</span></code></dt><dd><p>member in a global list of notifiers</p>
+</dd>
+</dl>
+<dl class="c function">
+<dt id="c.v4l2_async_debug_init">
+void <code class="sig-name descname">v4l2_async_debug_init</code><span class="sig-paren">(</span><em class="property">struct</em> dentry *<em>debugfs_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_async_debug_init" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialize debugging tools.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span> <span class="pre">*debugfs_dir</span></code></dt><dd><p>pointer to the parent debugfs <code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dentry</span></code></p>
 </dd>
 </dl>
 <dl class="c function">

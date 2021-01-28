@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -1486,6 +1486,31 @@ or <a class="reference internal" href="#c.page_cache_sync_readahead" title="page
 <p>File is referenced by caller.  Mutexes may be held by caller.
 May sleep, but will not reenter filesystem to reclaim memory.</p>
 <dl class="c function">
+<dt id="c.readahead_expand">
+void <code class="sig-name descname">readahead_expand</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.readahead_control" title="readahead_control">readahead_control</a> *<em>ractl</em>, loff_t <em>new_start</em>, size_t <em>new_len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.readahead_expand" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Expand a readahead request</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">readahead_control</span> <span class="pre">*ractl</span></code></dt><dd><p>The request to be expanded</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">loff_t</span> <span class="pre">new_start</span></code></dt><dd><p>The revised start</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">new_len</span></code></dt><dd><p>The revised size of the request</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Attempt to expand a readahead request outwards from the current size to the
+specified size by inserting locked pages before and after the current window
+to increase the size to the new window.  This may involve the insertion of
+THPs, in which case the window may get expanded even beyond what was
+requested.</p>
+<p>The algorithm will stop if it encounters a conflicting page already in the
+pagecache and leave a smaller expansion than requested.</p>
+<p>The caller must check for this by examining the revised <strong>ractl</strong> object for a
+different expansion than was requested.</p>
+<dl class="c function">
 <dt id="c.delete_from_page_cache">
 void <code class="sig-name descname">delete_from_page_cache</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.delete_from_page_cache" title="page">page</a> *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.delete_from_page_cache" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>delete page from page cache</p>
@@ -1776,6 +1801,22 @@ that contains PG_locked - thus the BUILD_BUG_ON(). That allows us to
 clear the PG_locked bit and test PG_waiters at the same time fairly
 portably (architectures that do LL/SC can test any bit, while x86 can
 test the sign bit).</p>
+<dl class="c function">
+<dt id="c.unlock_page_fscache">
+void <code class="sig-name descname">unlock_page_fscache</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.unlock_page_fscache" title="page">page</a> *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.unlock_page_fscache" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Unlock a page pinned with PG_fscache</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">page</span> <span class="pre">*page</span></code></dt><dd><p>The page</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Unlocks the page and wakes up sleepers in <a class="reference internal" href="#c.wait_on_page_fscache" title="wait_on_page_fscache"><code class="xref c c-func docutils literal notranslate"><span class="pre">wait_on_page_fscache()</span></code></a>.  Also
+wakes those waiting for the lock and writeback bits because the wakeup
+mechanism is shared.  But that’s OK - those sleepers will just go back to
+sleep.</p>
 <dl class="c function">
 <dt id="c.end_page_writeback">
 void <code class="sig-name descname">end_page_writeback</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.end_page_writeback" title="page">page</a> *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.end_page_writeback" title="Permalink to this definition">¶</a><br /></dt>
@@ -2671,6 +2712,20 @@ be regenerated if the page couldn’t be grabbed.  This routine should
 be safe to call while holding the lock for another page.</p>
 <p>Clear __GFP_FS when allocating the page to avoid recursion into the fs
 and deadlock against the caller’s locked page.</p>
+<dl class="c function">
+<dt id="c.wait_on_page_fscache">
+void <code class="sig-name descname">wait_on_page_fscache</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wait_on_page_fscache" title="page">page</a> *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wait_on_page_fscache" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Wait for PG_fscache to be cleared on a page</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">page</span> <span class="pre">*page</span></code></dt><dd><p>The page</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Wait for the fscache mark to be removed from a page, usually signifying the
+completion of a write from that page to the cache.</p>
 <dl class="c struct">
 <dt id="c.readahead_control">
 <em class="property">struct </em><code class="sig-name descname">readahead_control</code><a class="headerlink" href="#c.readahead_control" title="Permalink to this definition">¶</a><br /></dt>

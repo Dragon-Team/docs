@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -648,8 +648,8 @@ for specialized uses, but are relatively uncommon.</p>
 <span id="id6"></span><h2>3.  WHAT ARE SOME EXAMPLE USES OF CORE RCU API?<a class="headerlink" href="#what-are-some-example-uses-of-core-rcu-api" title="Permalink to this headline">¶</a></h2>
 <p>This section shows a simple use of the core RCU API to protect a
 global pointer to a dynamically allocated structure.  More-typical
-uses of RCU may be found in <a class="reference internal" href="listRCU.html#list-rcu-doc"><span class="std std-ref">listRCU.rst</span></a>,
-<a class="reference internal" href="arrayRCU.html#array-rcu-doc"><span class="std std-ref">arrayRCU.rst</span></a>, and <a class="reference internal" href="NMI-RCU.html#nmi-rcu-doc"><span class="std std-ref">NMI-RCU.rst</span></a>.</p>
+uses of RCU may be found in <a class="reference internal" href="listRCU.html#list-rcu-doc"><span class="std std-ref"><a class="reference internal" href="listRCU.html"><span class="doc">Using RCU to Protect Read-Mostly Linked Lists</span></a></span></a>,
+<a class="reference internal" href="arrayRCU.html#array-rcu-doc"><span class="std std-ref"><a class="reference internal" href="arrayRCU.html"><span class="doc">Using RCU to Protect Read-Mostly Arrays</span></a></span></a>, and <a class="reference internal" href="NMI-RCU.html#nmi-rcu-doc"><span class="std std-ref"><a class="reference internal" href="NMI-RCU.html"><span class="doc">Using RCU to Protect Dynamic NMI Handlers</span></a></span></a>.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct foo {
         int a;
         char b;
@@ -727,7 +727,7 @@ RCU read-side critical sections that might be referencing that
 data item.</p></li>
 </ul>
 <p>See checklist.txt for additional rules to follow when using RCU.
-And again, more-typical uses of RCU may be found in <a class="reference internal" href="listRCU.html#list-rcu-doc"><span class="std std-ref">listRCU.rst</span></a>, <a class="reference internal" href="arrayRCU.html#array-rcu-doc"><span class="std std-ref">arrayRCU.rst</span></a>, and <a class="reference internal" href="NMI-RCU.html#nmi-rcu-doc"><span class="std std-ref">NMI-RCU.rst</span></a>.</p>
+And again, more-typical uses of RCU may be found in <a class="reference internal" href="listRCU.html#list-rcu-doc"><span class="std std-ref"><a class="reference internal" href="listRCU.html"><span class="doc">Using RCU to Protect Read-Mostly Linked Lists</span></a></span></a>, <a class="reference internal" href="arrayRCU.html#array-rcu-doc"><span class="std std-ref"><a class="reference internal" href="arrayRCU.html"><span class="doc">Using RCU to Protect Read-Mostly Arrays</span></a></span></a>, and <a class="reference internal" href="NMI-RCU.html#nmi-rcu-doc"><span class="std std-ref"><a class="reference internal" href="NMI-RCU.html"><span class="doc">Using RCU to Protect Dynamic NMI Handlers</span></a></span></a>.</p>
 </div>
 <div class="section" id="what-if-my-updating-thread-cannot-block">
 <span id="id7"></span><h2>4.  WHAT IF MY UPDATING THREAD CANNOT BLOCK?<a class="headerlink" href="#what-if-my-updating-thread-cannot-block" title="Permalink to this headline">¶</a></h2>

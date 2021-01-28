@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -2121,20 +2121,6 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         Documentation/admin-guide/mm/hugetlbpage.rst.
                         Format: size[KMG]
 
-        hugetlb_free_vmemmap=
-                        [KNL] When CONFIG_HUGETLB_PAGE_FREE_VMEMMAP is set,
-                        this controls freeing unused vmemmap pages associated
-                        with each HugeTLB page. When this option is enabled,
-                        we disable PMD/huge page mapping of vmemmap pages which
-                        increase page table pages. So if a user/sysadmin only
-                        uses a small number of HugeTLB pages (as a percentage
-                        of system memory), they could end up using more memory
-                        with hugetlb_free_vmemmap on as opposed to off.
-                        Format: { on | off (default) }
-
-                        on:  enable the feature
-                        off: disable the feature
-
         hung_task_panic=
                         [KNL] Should the hung task detector generate panics.
                         Format: 0 | 1
@@ -2256,6 +2242,12 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         idle=halt: Halt is forced to be used for CPU idle.
                         In such case C2/C3 won't be used again.
                         idle=nomwait: Disable mwait for CPU C-states
+
+        idxd.sva=       [HW]
+                        Format: &lt;bool&gt;
+                        Allow force disabling of Shared Virtual Memory (SVA)
+                        support for the idxd driver. By default it is set to
+                        true (1).
 
         ieee754=        [MIPS] Select IEEE Std 754 conformance mode
                         Format: { strict | legacy | 2008 | relaxed }
@@ -5483,14 +5475,6 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         last alloc / free. For more information see
                         Documentation/vm/slub.rst.
 
-        slub_memcg_sysfs=       [MM, SLUB]
-                        Determines whether to enable sysfs directories for
-                        memory cgroup sub-caches. 1 to enable, 0 to disable.
-                        The default is determined by CONFIG_SLUB_MEMCG_SYSFS_ON.
-                        Enabling this can lead to a very high number of debug
-                        directories and files being created under
-                        /sys/kernel/slub.
-
         slub_max_order= [MM, SLUB]
                         Determines the maximum allowed order for slabs.
                         A high setting may cause OOMs due to memory
@@ -5787,6 +5771,12 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         to (for stacks growing down) resp. after (for stacks
                         growing up) the main stack are reserved for no other
                         mapping. Default value is 256 pages.
+
+        stack_depot_disable= [KNL]
+                        Setting this to true through kernel command line will
+                        disable the stack depot thereby saving the static memory
+                        consumed by the stack hash table. By default this is set
+                        to false.
 
         stacktrace      [FTRACE]
                         Enabled the stack tracer on boot up.

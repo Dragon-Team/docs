@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -448,7 +448,7 @@ gave each of these applications half of a cpu-core and they both got scheduled
 on the same CPU it is theoretically possible that the non-cpu bound application
 will use up to 1ms additional quota in some periods, thereby preventing the
 cpu-bound application from fully using its quota by that same amount. In these
-instances it will be up to the CFS algorithm (see sched-design-CFS.rst) to
+instances it will be up to the CFS algorithm (see <a class="reference internal" href="sched-design-CFS.html"><span class="doc">CFS Scheduler</span></a>) to
 decide which application is chosen to run, as they will both be runnable and
 have remaining quota. This runtime discrepancy will be made up in the following
 periods when the interactive application idles.</p>

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -504,6 +504,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-ibft">File /testing/sysfs-ibft</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-kernel-boot-params">File /testing/sysfs-kernel-boot_params</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-kernel-btf">File /testing/sysfs-kernel-btf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-kernel-dmabuf-buffers">File /testing/sysfs-kernel-dmabuf-buffers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-kernel-fadump">File /testing/sysfs-kernel-fadump</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-kernel-fscaps">File /testing/sysfs-kernel-fscaps</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-kernel-iommu-groups">File /testing/sysfs-kernel-iommu_groups</a></li>
@@ -11968,7 +11969,7 @@ to the _raw output.</p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio"><span class="std std-ref">sysfs-bus-iio</span></a></p>
 <p>If a discrete set of scale values is available, they
 are listed in this attribute.</p>
-<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias">
+<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasx">
 <colgroup>
 <col style="width: 100%" />
 </colgroup>
@@ -11991,7 +11992,7 @@ are listed in this attribute.</p>
 <p>Hardware applied calibration offset (assumed to fix production
 inaccuracies). Values represent a real physical offset expressed
 in SI units (m/s^2 for accelerometer and rad/s for gyroscope).</p>
-<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiase">
+<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias">
 <colgroup>
 <col style="width: 100%" />
 </colgroup>
@@ -40515,6 +40516,61 @@ and the top edge of the image.</p></td>
 </tr>
 </tbody>
 </table>
+<table class="docutils align-default" id="abi-sys-firmware-acpi-fpdt">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/firmware/acpi/fpdt/</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-firmware-acpi"><span class="std std-ref">sysfs-firmware-acpi</span></a></p>
+<p>ACPI Firmware Performance Data Table (FPDT) provides
+information for firmware performance data for system boot,
+S3 suspend and S3 resume. This sysfs entry contains the
+performance data retrieved from the FPDT.</p>
+<dl class="simple">
+<dt>boot:</dt><dd><dl class="simple">
+<dt>firmware_start_ns: Timer value logged at the beginning</dt><dd><p>of firmware image execution. In nanoseconds.</p>
+</dd>
+<dt>bootloader_load_ns: Timer value logged just prior to</dt><dd><p>loading the OS boot loader into memory.
+In nanoseconds.</p>
+</dd>
+<dt>bootloader_launch_ns: Timer value logged just prior to</dt><dd><p>launching the currently loaded OS boot loader
+image. In nanoseconds.</p>
+</dd>
+<dt>exitbootservice_start_ns: Timer value logged at the</dt><dd><p>point when the OS loader calls the
+ExitBootServices function for UEFI compatible
+firmware. In nanoseconds.</p>
+</dd>
+<dt>exitbootservice_end_ns: Timer value logged at the point</dt><dd><p>just prior to the OS loader gaining control
+back from the ExitBootServices function for
+UEFI compatible firmware. In nanoseconds.</p>
+</dd>
+</dl>
+</dd>
+<dt>suspend:</dt><dd><dl class="simple">
+<dt>suspend_start_ns: Timer value recorded at the previous</dt><dd><p>OS write to SLP_TYP upon entry to S3. In
+nanoseconds.</p>
+</dd>
+<dt>suspend_end_ns: Timer value recorded at the previous</dt><dd><p>firmware write to SLP_TYP used to trigger
+hardware entry to S3. In nanoseconds.</p>
+</dd>
+</dl>
+</dd>
+<dt>resume:</dt><dd><dl class="simple">
+<dt>resume_count: A count of the number of S3 resume cycles</dt><dd><p>since the last full boot sequence.</p>
+</dd>
+<dt>resume_avg_ns: Average timer value of all resume cycles</dt><dd><p>logged since the last full boot sequence,
+including the most recent resume. In nanoseconds.</p>
+</dd>
+<dt>resume_prev_ns: Timer recorded at the end of the previous</dt><dd><p>platform runtime firmware S3 resume, just prior to
+handoff to the OS waking vector. In nanoseconds.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <table class="docutils align-default" id="abi-sys-firmware-acpi-hotplug">
 <colgroup>
 <col style="width: 100%" />
@@ -45903,6 +45959,95 @@ $ cat :ref:`\/sys\/kernel\/debug\/wilco_ec\/raw &lt;abi_sys_kernel_debug_wilco_e
 printed, even if some of the data is junk, and skipping bytes
 17 to 32. It is up to you to know how many of the first bytes of
 data are the actual response.</p>
+<table class="docutils align-default" id="abi-sys-kernel-dmabuf-buffers">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/kernel/dmabuf/buffers</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-kernel-dmabuf-buffers"><span class="std std-ref">sysfs-kernel-dmabuf-buffers</span></a></p>
+<p>The <a class="reference internal" href="#abi-sys-kernel-dmabuf-buffers"><span class="std std-ref">/sys/kernel/dmabuf/buffers</span></a> directory contains a
+snapshot of the internal state of every DMA-BUF.
+/sys/kernel/dmabuf/buffers/&lt;inode_number&gt; will contain the
+statistics for the DMA-BUF with the unique inode number
+&lt;inode_number&gt;</p>
+<p>Users:
+	kernel memory tuning/debugging tools</p>
+<table class="docutils align-default" id="abi-sys-kernel-dmabuf-buffers-inode-number-attachments">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/kernel/dmabuf/buffers/&lt;inode_number&gt;/attachments</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-kernel-dmabuf-buffers"><span class="std std-ref">sysfs-kernel-dmabuf-buffers</span></a></p>
+<p>This directory will contain subdirectories representing every
+attachment of the DMA-BUF.</p>
+<table class="docutils align-default" id="abi-sys-kernel-dmabuf-buffers-inode-number-attachments-attachment-uid">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/kernel/dmabuf/buffers/&lt;inode_number&gt;/attachments/&lt;attachment_uid&gt;</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-kernel-dmabuf-buffers"><span class="std std-ref">sysfs-kernel-dmabuf-buffers</span></a></p>
+<p>This directory will contain information on the attaching device
+and the number of current distinct device mappings.</p>
+<table class="docutils align-default" id="abi-sys-kernel-dmabuf-buffers-inode-number-attachments-attachment-uid-device">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/kernel/dmabuf/buffers/&lt;inode_number&gt;/attachments/&lt;attachment_uid&gt;/device</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-kernel-dmabuf-buffers"><span class="std std-ref">sysfs-kernel-dmabuf-buffers</span></a></p>
+<p>This file is read-only and is a symlink to the attaching devices’s
+sysfs entry.</p>
+<table class="docutils align-default" id="abi-sys-kernel-dmabuf-buffers-inode-number-attachments-attachment-uid-map-counter">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/kernel/dmabuf/buffers/&lt;inode_number&gt;/attachments/&lt;attachment_uid&gt;/map_counter</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-kernel-dmabuf-buffers"><span class="std std-ref">sysfs-kernel-dmabuf-buffers</span></a></p>
+<p>This file is read-only and contains a map_counter indicating the
+number of distinct device mappings of the attachment.</p>
+<table class="docutils align-default" id="abi-sys-kernel-dmabuf-buffers-inode-number-exporter-name">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/kernel/dmabuf/buffers/&lt;inode_number&gt;/exporter_name</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-kernel-dmabuf-buffers"><span class="std std-ref">sysfs-kernel-dmabuf-buffers</span></a></p>
+<p>This file is read-only and contains the name of the exporter of
+the DMA-BUF.</p>
+<table class="docutils align-default" id="abi-sys-kernel-dmabuf-buffers-inode-number-size">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/kernel/dmabuf/buffers/&lt;inode_number&gt;/size</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-kernel-dmabuf-buffers"><span class="std std-ref">sysfs-kernel-dmabuf-buffers</span></a></p>
+<p>This file is read-only and specifies the size of the DMA-BUF in
+bytes.</p>
 <table class="docutils align-default" id="abi-sys-kernel-fadump">
 <colgroup>
 <col style="width: 100%" />
@@ -46431,7 +46576,7 @@ command line.</p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-kernel-reboot"><span class="std std-ref">sysfs-kernel-reboot</span></a></p>
 <p>Interface to set the kernel reboot behavior, similarly to
 what can be done via the reboot= cmdline option.
-(see <a class="reference internal" href="kernel-parameters.html"><span class="doc">The kernel’s command-line parameters</span></a>)</p>
+(see Documentation/admin-guide/kernel-parameters.txt)</p>
 <table class="docutils align-default" id="abi-sys-kernel-reboot-cpu">
 <colgroup>
 <col style="width: 100%" />
@@ -49632,16 +49777,16 @@ modification.</p>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-scale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_x_scale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-scale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_y_scale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-scale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_z_scale</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_x_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_y_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_z_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiase"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_illuminance0_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiase"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_proximity0_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiase"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressureY_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiase"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressure_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasx"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_x_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasx"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_y_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasx"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_z_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasx"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasx"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasx"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_illuminance0_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_proximity0_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressureY_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressure_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-calibscale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_voltageY_calibscale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-calibscale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_voltageY_supply_calibscale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-calibscale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_voltageY_i_calibscale</span></a></p></li>
@@ -50422,12 +50567,12 @@ modification.</p>
 <span id="abi-file-testing-sysfs-bus-iio-icm42600"></span><h2>File /testing/sysfs-bus-iio-icm42600<a class="headerlink" href="#file-home--zfs-data-doc-testing-sysfs-bus-iio-icm42600" title="Permalink to this headline">¶</a></h2>
 <p>Has the following ABI:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_x_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_y_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_z_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasx"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_x_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasx"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_y_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasx"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_z_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasx"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasx"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasx"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-calibbias-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_calibbias_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-calibbias-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_calibbias_available</span></a></p></li>
 </ul>
@@ -51242,7 +51387,7 @@ level.</p>
 /sys/class/backlight/&lt;backlight&gt;/ambient_light_zone.</p>
 <p>Has the following ABI:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-l1-daylight-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l1_daylight_max</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-ambient-light-zone-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l1_daylight_max</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-l1-daylight-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l2_office_max</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-l1-daylight-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l3_dark_max</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-l1-daylight-dim"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l1_daylight_dim</span></a></p></li>
@@ -51257,7 +51402,7 @@ level.</p>
 <p>Has the following ABI:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-ambient-light-zone-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/&lt;ambient light zone&gt;_max</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-l1-daylight-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l1_daylight_max</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-ambient-light-zone-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l1_daylight_max</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-ambient-light-zone-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l2_bright_max</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-ambient-light-zone-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l3_office_max</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-backlight-backlight-ambient-light-zone-max"><span class="std std-ref">/sys/class/backlight/&lt;backlight&gt;/l4_indoor_max</span></a></p></li>
@@ -53365,6 +53510,7 @@ sysfs: (&lt;devid&gt; is in the format major:minor)</p>
 <span id="abi-file-testing-sysfs-firmware-acpi"></span><h2>File /testing/sysfs-firmware-acpi<a class="headerlink" href="#file-home--zfs-data-doc-testing-sysfs-firmware-acpi" title="Permalink to this headline">¶</a></h2>
 <p>Has the following ABI:</p>
 <ul class="simple">
+<li><p><a class="reference internal" href="#abi-sys-firmware-acpi-fpdt"><span class="std std-ref">/sys/firmware/acpi/fpdt/</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-firmware-acpi-bgrt"><span class="std std-ref">/sys/firmware/acpi/bgrt/</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-firmware-acpi-hotplug"><span class="std std-ref">/sys/firmware/acpi/hotplug/</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-firmware-acpi-interrupts"><span class="std std-ref">/sys/firmware/acpi/interrupts/</span></a></p></li>
@@ -53686,6 +53832,19 @@ sysfs: (&lt;devid&gt; is in the format major:minor)</p>
 <li><p><a class="reference internal" href="#abi-sys-kernel-btf"><span class="std std-ref">/sys/kernel/btf</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-kernel-btf-vmlinux"><span class="std std-ref">/sys/kernel/btf/vmlinux</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-kernel-btf-module-name"><span class="std std-ref">/sys/kernel/btf/&lt;module-name&gt;</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="file-home--zfs-data-doc-testing-sysfs-kernel-dmabuf-buffers">
+<span id="abi-file-testing-sysfs-kernel-dmabuf-buffers"></span><h2>File /testing/sysfs-kernel-dmabuf-buffers<a class="headerlink" href="#file-home--zfs-data-doc-testing-sysfs-kernel-dmabuf-buffers" title="Permalink to this headline">¶</a></h2>
+<p>Has the following ABI:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#abi-sys-kernel-dmabuf-buffers"><span class="std std-ref">/sys/kernel/dmabuf/buffers</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-kernel-dmabuf-buffers-inode-number-exporter-name"><span class="std std-ref">/sys/kernel/dmabuf/buffers/&lt;inode_number&gt;/exporter_name</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-kernel-dmabuf-buffers-inode-number-size"><span class="std std-ref">/sys/kernel/dmabuf/buffers/&lt;inode_number&gt;/size</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-kernel-dmabuf-buffers-inode-number-attachments"><span class="std std-ref">/sys/kernel/dmabuf/buffers/&lt;inode_number&gt;/attachments</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-kernel-dmabuf-buffers-inode-number-attachments-attachment-uid"><span class="std std-ref">/sys/kernel/dmabuf/buffers/&lt;inode_number&gt;/attachments/&lt;attachment_uid&gt;</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-kernel-dmabuf-buffers-inode-number-attachments-attachment-uid-device"><span class="std std-ref">/sys/kernel/dmabuf/buffers/&lt;inode_number&gt;/attachments/&lt;attachment_uid&gt;/device</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-kernel-dmabuf-buffers-inode-number-attachments-attachment-uid-map-counter"><span class="std std-ref">/sys/kernel/dmabuf/buffers/&lt;inode_number&gt;/attachments/&lt;attachment_uid&gt;/map_counter</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="file-home--zfs-data-doc-testing-sysfs-kernel-fadump">

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.19-dragon
+                5.11.20-dragon
               </div>
             
           
@@ -747,6 +747,24 @@ detach.</p>
 <p>Managed <a class="reference internal" href="#c.reset_control_get_exclusive_released" title="reset_control_get_exclusive_released"><code class="xref c c-func docutils literal notranslate"><span class="pre">reset_control_get_exclusive_released()</span></code></a>. For reset controllers
 returned from this function, <a class="reference internal" href="#c.reset_control_put" title="reset_control_put"><code class="xref c c-func docutils literal notranslate"><span class="pre">reset_control_put()</span></code></a> is called automatically on
 driver detach.</p>
+<p>See <a class="reference internal" href="#c.reset_control_get_exclusive_released" title="reset_control_get_exclusive_released"><code class="xref c c-func docutils literal notranslate"><span class="pre">reset_control_get_exclusive_released()</span></code></a> for more information.</p>
+<dl class="c function">
+<dt id="c.devm_reset_control_get_optional_exclusive_released">
+<em class="property">struct</em> reset_control *<code class="sig-name descname">devm_reset_control_get_optional_exclusive_released</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">const</em> char *<em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_reset_control_get_optional_exclusive_released" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>resource managed reset_control_get_optional_exclusive_released()</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">device</span> <span class="pre">*dev</span></code></dt><dd><p>device to be reset by the controller</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*id</span></code></dt><dd><p>reset line name</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Managed-and-optional variant of <a class="reference internal" href="#c.reset_control_get_exclusive_released" title="reset_control_get_exclusive_released"><code class="xref c c-func docutils literal notranslate"><span class="pre">reset_control_get_exclusive_released()</span></code></a>. For
+reset controllers returned from this function, <a class="reference internal" href="#c.reset_control_put" title="reset_control_put"><code class="xref c c-func docutils literal notranslate"><span class="pre">reset_control_put()</span></code></a> is called
+automatically on driver detach.</p>
 <p>See <a class="reference internal" href="#c.reset_control_get_exclusive_released" title="reset_control_get_exclusive_released"><code class="xref c c-func docutils literal notranslate"><span class="pre">reset_control_get_exclusive_released()</span></code></a> for more information.</p>
 <dl class="c function">
 <dt id="c.devm_reset_control_get_shared">
