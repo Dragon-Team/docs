@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.20-dragon
+                5.11.21-dragon
               </div>
             
           
@@ -955,6 +955,12 @@ truncated.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">drop</span></code></p></td>
 <td><p>Traps packets that the device decided to drop in case they hit a
 blackhole nexthop</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dmac_filter</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">drop</span></code></p></td>
+<td><p>Traps incoming packets that the device decided to drop because
+the destination MAC is not configured in the MAC table and
+the interface is not in promiscuous mode</p></td>
 </tr>
 </tbody>
 </table>

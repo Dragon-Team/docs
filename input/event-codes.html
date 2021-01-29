@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.20-dragon
+                5.11.21-dragon
               </div>
             
           
@@ -500,9 +500,9 @@ event.</p>
 <p>EV_ABS events describe absolute changes in a property. For example, a touchpad
 may emit coordinates for a touch location.</p>
 <p>A few EV_ABS codes have special meanings:</p>
-<ul class="simple">
-<li><p>ABS_DISTANCE:</p>
 <ul>
+<li><p>ABS_DISTANCE:</p>
+<ul class="simple">
 <li><p>Used to describe the distance of a tool from an interaction surface. This
 event should only be emitted while the tool is hovering, meaning in close
 proximity of the device and while the value of the BTN_TOUCH code is 0. If
@@ -515,10 +515,28 @@ hardware and is otherwise independent of ABS_DISTANCE and/or BTN_TOUCH.</p></li>
 </ul>
 </li>
 <li><p>ABS_MT_&lt;name&gt;:</p>
-<ul>
+<ul class="simple">
 <li><p>Used to describe multitouch input events. Please see
 multi-touch-protocol.txt for details.</p></li>
 </ul>
+</li>
+<li><p>ABS_PRESSURE/ABS_MT_PRESSURE:</p>
+<blockquote>
+<div><ul>
+<li><p>For touch devices, many devices converted contact size into pressure.
+A finger flattens with pressure, causing a larger contact area and thus
+pressure and contact size are directly related. This is not the case
+for other devices, for example digitizers and touchpads with a true
+pressure sensor (“pressure pads”).</p>
+<p>A device should set the resolution of the axis to indicate whether the
+pressure is in measurable units. If the resolution is zero, the
+pressure data is in arbitrary units. If the resolution is nonzero, the
+pressure data is in units/gram. For example, a value of 10 with a
+resolution of 1 represents 10 gram, a value of 10 with a resolution on
+1000 represents 10 microgram.</p>
+</li>
+</ul>
+</div></blockquote>
 </li>
 </ul>
 </div>

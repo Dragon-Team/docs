@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.20-dragon
+                5.11.21-dragon
               </div>
             
           
@@ -8634,6 +8634,24 @@ int <code class="sig-name descname">drm_dp_update_payload_part2</code><span clas
 allocate space in the link for them. For 0-&gt;slots transitions,
 this step writes the remote VC payload commands. For slots-&gt;0
 this just resets some internal state.</p>
+<dl class="c function">
+<dt id="c.drm_dp_get_vc_payload_bw">
+int <code class="sig-name descname">drm_dp_get_vc_payload_bw</code><span class="sig-paren">(</span>int <em>link_rate</em>, int <em>link_lane_count</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_get_vc_payload_bw" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>get the VC payload BW for an MST link</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">link_rate</span></code></dt><dd><p>link rate in 10kbits/s units</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">link_lane_count</span></code></dt><dd><p>lane count</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Calculate the total bandwidth of a MultiStream Transport link. The returned
+value is in units of PBNs/(timeslots/1 MTP). This value can be used to
+convert the number of PBNs required for a given stream to the number of
+timeslots this stream requires in each MTP.</p>
 <dl class="c function">
 <dt id="c.drm_dp_read_mst_cap">
 bool <code class="sig-name descname">drm_dp_read_mst_cap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_dp_aux" title="drm_dp_aux">drm_dp_aux</a> *<em>aux</em>, <em class="property">const</em> u8 <em>dpcd</em>[<em>DP_RECEIVER_CAP_SIZE</em>]<span class="sig-paren">)</span><a class="headerlink" href="#c.drm_dp_read_mst_cap" title="Permalink to this definition">¶</a><br /></dt>

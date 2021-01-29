@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.20-dragon
+                5.11.21-dragon
               </div>
             
           
@@ -1871,7 +1871,7 @@ In this case setup_data and setup_indirect will look like this:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct setup_data {
   __u64 next = 0 or &lt;addr_of_next_setup_data_struct&gt;;
   __u32 type = SETUP_INDIRECT;
-  __u32 len = sizeof(setup_data);
+  __u32 len = sizeof(setup_indirect);
   __u8 data[sizeof(setup_indirect)] = struct setup_indirect {
     __u32 type = SETUP_INDIRECT | SETUP_E820_EXT;
     __u32 reserved = 0;

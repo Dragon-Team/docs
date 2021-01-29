@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.20-dragon
+                5.11.21-dragon
               </div>
             
           
@@ -452,6 +452,11 @@
 <p>Supported chips:</p>
 <blockquote>
 <div><ul>
+<li><p>Maxim MAX16508</p>
+<p>Prefix: ‘max16508’</p>
+<p>Addresses scanned: -</p>
+<p>Datasheet: Not published</p>
+</li>
 <li><p>Maxim MAX16601</p>
 <p>Prefix: ‘max16601’</p>
 <p>Addresses scanned: -</p>
@@ -462,8 +467,8 @@
 <p>Author: Guenter Roeck &lt;<a class="reference external" href="mailto:linux&#37;&#52;&#48;roeck-us&#46;net">linux<span>&#64;</span>roeck-us<span>&#46;</span>net</a>&gt;</p>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>This driver supports the MAX16601 VR13.HC Dual-Output Voltage Regulator
-Chipset.</p>
+<p>This driver supports the MAX16508 VR13 Dual-Output Voltage Regulator
+as well as the MAX16601 VR13.HC Dual-Output Voltage Regulator chipsets.</p>
 <p>The driver is a client driver to the core PMBus driver.
 Please see <a class="reference internal" href="pmbus.html"><span class="doc">Kernel driver pmbus</span></a> for details on PMBus client drivers.</p>
 </div>
@@ -480,258 +485,6 @@ details.</p>
 <div class="section" id="sysfs-entries">
 <h2>Sysfs entries<a class="headerlink" href="#sysfs-entries" title="Permalink to this headline">¶</a></h2>
 <p>The following attributes are supported.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 29%" />
-<col style="width: 71%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>in1_label</p></td>
-<td><p>“vin1”</p></td>
-</tr>
-<tr class="row-even"><td><p>in1_input</p></td>
-<td><p>VCORE input voltage.</p></td>
-</tr>
-<tr class="row-odd"><td><p>in1_alarm</p></td>
-<td><p>Input voltage alarm.</p></td>
-</tr>
-<tr class="row-even"><td><p>in2_label</p></td>
-<td><p>“vout1”</p></td>
-</tr>
-<tr class="row-odd"><td><p>in2_input</p></td>
-<td><p>VCORE output voltage.</p></td>
-</tr>
-<tr class="row-even"><td><p>in2_alarm</p></td>
-<td><p>Output voltage alarm.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr1_label</p></td>
-<td><p>“iin1”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr1_input</p></td>
-<td><p>VCORE input current, derived from duty cycle and output
-current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr1_max</p></td>
-<td><p>Maximum input current.</p></td>
-</tr>
-<tr class="row-even"><td><p>curr1_max_alarm</p></td>
-<td><p>Current high alarm.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr2_label</p></td>
-<td><p>“iin1.0”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr2_input</p></td>
-<td><p>VCORE phase 0 input current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr3_label</p></td>
-<td><p>“iin1.1”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr3_input</p></td>
-<td><p>VCORE phase 1 input current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr4_label</p></td>
-<td><p>“iin1.2”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr4_input</p></td>
-<td><p>VCORE phase 2 input current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr5_label</p></td>
-<td><p>“iin1.3”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr5_input</p></td>
-<td><p>VCORE phase 3 input current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr6_label</p></td>
-<td><p>“iin1.4”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr6_input</p></td>
-<td><p>VCORE phase 4 input current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr7_label</p></td>
-<td><p>“iin1.5”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr7_input</p></td>
-<td><p>VCORE phase 5 input current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr8_label</p></td>
-<td><p>“iin1.6”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr8_input</p></td>
-<td><p>VCORE phase 6 input current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr9_label</p></td>
-<td><p>“iin1.7”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr9_input</p></td>
-<td><p>VCORE phase 7 input current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr10_label</p></td>
-<td><p>“iin2”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr10_input</p></td>
-<td><p>VCORE input current, derived from sensor element.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr11_label</p></td>
-<td><p>“iin3”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr11_input</p></td>
-<td><p>VSA input current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr12_label</p></td>
-<td><p>“iout1”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr12_input</p></td>
-<td><p>VCORE output current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr12_crit</p></td>
-<td><p>Critical output current.</p></td>
-</tr>
-<tr class="row-even"><td><p>curr12_crit_alarm</p></td>
-<td><p>Output current critical alarm.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr12_max</p></td>
-<td><p>Maximum output current.</p></td>
-</tr>
-<tr class="row-even"><td><p>curr12_max_alarm</p></td>
-<td><p>Output current high alarm.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr13_label</p></td>
-<td><p>“iout1.0”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr13_input</p></td>
-<td><p>VCORE phase 0 output current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr14_label</p></td>
-<td><p>“iout1.1”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr14_input</p></td>
-<td><p>VCORE phase 1 output current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr15_label</p></td>
-<td><p>“iout1.2”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr15_input</p></td>
-<td><p>VCORE phase 2 output current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr16_label</p></td>
-<td><p>“iout1.3”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr16_input</p></td>
-<td><p>VCORE phase 3 output current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr17_label</p></td>
-<td><p>“iout1.4”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr17_input</p></td>
-<td><p>VCORE phase 4 output current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr18_label</p></td>
-<td><p>“iout1.5”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr18_input</p></td>
-<td><p>VCORE phase 5 output current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr19_label</p></td>
-<td><p>“iout1.6”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr19_input</p></td>
-<td><p>VCORE phase 6 output current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr20_label</p></td>
-<td><p>“iout1.7”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr20_input</p></td>
-<td><p>VCORE phase 7 output current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr21_label</p></td>
-<td><p>“iout3”</p></td>
-</tr>
-<tr class="row-even"><td><p>curr21_input</p></td>
-<td><p>VSA output current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr21_highest</p></td>
-<td><p>Historical maximum VSA output current.</p></td>
-</tr>
-<tr class="row-even"><td><p>curr21_reset_history</p></td>
-<td><p>Write any value to reset curr21_highest.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr21_crit</p></td>
-<td><p>Critical output current.</p></td>
-</tr>
-<tr class="row-even"><td><p>curr21_crit_alarm</p></td>
-<td><p>Output current critical alarm.</p></td>
-</tr>
-<tr class="row-odd"><td><p>curr21_max</p></td>
-<td><p>Maximum output current.</p></td>
-</tr>
-<tr class="row-even"><td><p>curr21_max_alarm</p></td>
-<td><p>Output current high alarm.</p></td>
-</tr>
-<tr class="row-odd"><td><p>power1_label</p></td>
-<td><p>“pin1”</p></td>
-</tr>
-<tr class="row-even"><td><p>power1_input</p></td>
-<td><p>Input power, derived from duty cycle and output current.</p></td>
-</tr>
-<tr class="row-odd"><td><p>power1_alarm</p></td>
-<td><p>Input power alarm.</p></td>
-</tr>
-<tr class="row-even"><td><p>power2_label</p></td>
-<td><p>“pin2”</p></td>
-</tr>
-<tr class="row-odd"><td><p>power2_input</p></td>
-<td><p>Input power, derived from input current sensor.</p></td>
-</tr>
-<tr class="row-even"><td><p>power3_label</p></td>
-<td><p>“pout”</p></td>
-</tr>
-<tr class="row-odd"><td><p>power3_input</p></td>
-<td><p>Output power.</p></td>
-</tr>
-<tr class="row-even"><td><p>temp1_input</p></td>
-<td><p>VCORE temperature.</p></td>
-</tr>
-<tr class="row-odd"><td><p>temp1_crit</p></td>
-<td><p>Critical high temperature.</p></td>
-</tr>
-<tr class="row-even"><td><p>temp1_crit_alarm</p></td>
-<td><p>Chip temperature critical high alarm.</p></td>
-</tr>
-<tr class="row-odd"><td><p>temp1_max</p></td>
-<td><p>Maximum temperature.</p></td>
-</tr>
-<tr class="row-even"><td><p>temp1_max_alarm</p></td>
-<td><p>Chip temperature high alarm.</p></td>
-</tr>
-<tr class="row-odd"><td><p>temp2_input</p></td>
-<td><p>TSENSE_0 temperature</p></td>
-</tr>
-<tr class="row-even"><td><p>temp3_input</p></td>
-<td><p>TSENSE_1 temperature</p></td>
-</tr>
-<tr class="row-odd"><td><p>temp4_input</p></td>
-<td><p>TSENSE_2 temperature</p></td>
-</tr>
-<tr class="row-even"><td><p>temp5_input</p></td>
-<td><p>TSENSE_3 temperature</p></td>
-</tr>
-<tr class="row-odd"><td><p>temp6_input</p></td>
-<td><p>VSA temperature.</p></td>
-</tr>
-<tr class="row-even"><td><p>temp6_crit</p></td>
-<td><p>Critical high temperature.</p></td>
-</tr>
-<tr class="row-odd"><td><p>temp6_crit_alarm</p></td>
-<td><p>Chip temperature critical high alarm.</p></td>
-</tr>
-<tr class="row-even"><td><p>temp6_max</p></td>
-<td><p>Maximum temperature.</p></td>
-</tr>
-<tr class="row-odd"><td><p>temp6_max_alarm</p></td>
-<td><p>Chip temperature high alarm.</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 

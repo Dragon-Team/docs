@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.20-dragon
+                5.11.21-dragon
               </div>
             
           
@@ -112,6 +112,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-stable-syscalls">File /stable/syscalls</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-stable-sysfs-acpi-pmprofile">File /stable/sysfs-acpi-pmprofile</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-stable-sysfs-bus-firewire">File /stable/sysfs-bus-firewire</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-stable-sysfs-bus-fsl-mc">File /stable/sysfs-bus-fsl-mc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-stable-sysfs-bus-mhi">File /stable/sysfs-bus-mhi</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-stable-sysfs-bus-nvmem">File /stable/sysfs-bus-nvmem</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-stable-sysfs-bus-usb">File /stable/sysfs-bus-usb</a></li>
@@ -1730,6 +1731,38 @@ Colon-separated hexadecimal string representations of</p>
 a somewhat shorter format which was not as close to SAM.</p>
 <p>Users:
 	udev rules to create /dev/disk/by-id/ symlinks</p>
+<table class="docutils align-default" id="abi-sys-bus-fsl-mc-autorescan">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/bus/fsl-mc/autorescan</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-stable-sysfs-bus-fsl-mc"><span class="std std-ref">sysfs-bus-fsl-mc</span></a></p>
+<p>Writing a zero value to this attribute will
+disable the DPRC IRQs on which automatic rescan
+of the fsl-mc bus is performed. A non-zero value
+will enable the DPRC IRQs.</p>
+<p>Users:
+	Userspace drivers and management tools</p>
+<table class="docutils align-default" id="abi-sys-bus-fsl-mc-rescan">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/bus/fsl-mc/rescan</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-stable-sysfs-bus-fsl-mc"><span class="std std-ref">sysfs-bus-fsl-mc</span></a></p>
+<p>Writing a non-zero value to this attribute will
+force a rescan of fsl-mc bus in the system and
+synchronize the objects under fsl-mc bus and the
+Management Complex firmware.</p>
+<p>Users:
+	Userspace drivers and management tools</p>
 <table class="docutils align-default" id="abi-sys-bus-mhi-devices-oem-pk-hash">
 <colgroup>
 <col style="width: 100%" />
@@ -7030,6 +7063,14 @@ that it is correct for their architecture.</p>
 <li><p><a class="reference internal" href="#abi-sys-bus-firewire-devices-fw-0-9-0-9"><span class="std std-ref">/sys/bus/firewire/devices/fw[0-9]+[.][0-9]+/</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-firewire-devices"><span class="std std-ref">/sys/bus/firewire/devices/*/</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-firewire-drivers-sbp2-fw-host-target-ieee1394-id"><span class="std std-ref">/sys/bus/firewire/drivers/sbp2/fw*/host*/target*/*:*:*:*/ieee1394_id</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="file-home--zfs-data-doc-stable-sysfs-bus-fsl-mc">
+<span id="abi-file-stable-sysfs-bus-fsl-mc"></span><h2>File /stable/sysfs-bus-fsl-mc<a class="headerlink" href="#file-home--zfs-data-doc-stable-sysfs-bus-fsl-mc" title="Permalink to this headline">¶</a></h2>
+<p>Has the following ABI:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#abi-sys-bus-fsl-mc-rescan"><span class="std std-ref">/sys/bus/fsl-mc/rescan</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-fsl-mc-autorescan"><span class="std std-ref">/sys/bus/fsl-mc/autorescan</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="file-home--zfs-data-doc-stable-sysfs-bus-mhi">

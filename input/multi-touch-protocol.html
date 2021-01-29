@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.20-dragon
+                5.11.21-dragon
               </div>
             
           
@@ -505,6 +505,9 @@ different characteristic widths.</p>
 <dt>ABS_MT_PRESSURE</dt><dd><p>The pressure, in arbitrary units, on the contact area. May be used instead
 of TOUCH and WIDTH for pressure-based devices or any device with a spatial
 signal intensity distribution.</p>
+<p>If the resolution is zero, the pressure data is in arbitrary units.
+If the resolution is nonzero, the pressure data is in units/gram. See
+<a class="reference internal" href="event-codes.html#input-event-codes"><span class="std std-ref">Input event codes</span></a> for details.</p>
 </dd>
 <dt>ABS_MT_DISTANCE</dt><dd><p>The distance, in surface units, between the contact and the surface. Zero
 distance means the contact is touching the surface. A positive number means

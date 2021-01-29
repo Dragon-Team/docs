@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.20-dragon
+                5.11.21-dragon
               </div>
             
           
@@ -326,6 +326,23 @@ important tuning tools using software control loop.</p>
 </div>
 <div class="section" id="rkisp1-uapi-data-types">
 <h2><span class="section-number">2.13.3.3. </span>rkisp1 uAPI data types<a class="headerlink" href="#rkisp1-uapi-data-types" title="Permalink to this headline">¶</a></h2>
+<dl class="c enum">
+<dt id="c.rkisp1_cif_isp_version">
+<em class="property">enum </em><code class="sig-name descname">rkisp1_cif_isp_version</code><a class="headerlink" href="#c.rkisp1_cif_isp_version" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>ISP variants</p>
+</dd></dl>
+
+<p><strong>Constants</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">RKISP1_V10</span></code></dt><dd><p>used at least in rk3288 and rk3399</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">RKISP1_V11</span></code></dt><dd><p>declared in the original vendor code, but not used</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">RKISP1_V12</span></code></dt><dd><p>used at least in rk3326 and px30</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">RKISP1_V13</span></code></dt><dd><p>used at least in rk1808</p>
+</dd>
+</dl>
 <dl class="c enum">
 <dt id="c.rkisp1_cif_isp_exp_ctrl_autostop">
 <em class="property">enum </em><code class="sig-name descname">rkisp1_cif_isp_exp_ctrl_autostop</code><a class="headerlink" href="#c.rkisp1_cif_isp_exp_ctrl_autostop" title="Permalink to this definition">¶</a><br /></dt>
@@ -898,6 +915,14 @@ represented by 0x000 and a coefficient value of 1 as 0x080.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">gamma_y</span></code></dt><dd><p>gamma out curve y-axis for all color components</p>
 </dd>
 </dl>
+<p><strong>Description</strong></p>
+<p>The number of entries of <strong>gamma_y</strong> depends on the hardware revision
+as is reported by the hw_revision field of the struct media_device_info
+that is returned by ioctl MEDIA_IOC_DEVICE_INFO.</p>
+<p>Versions &lt;= V11 have RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V10
+entries, versions &gt;= V12 have RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V12
+entries. RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES is equal to the maximum
+of the two.</p>
 <dl class="c struct">
 <dt id="c.rkisp1_cif_isp_hst_config">
 <em class="property">struct </em><code class="sig-name descname">rkisp1_cif_isp_hst_config</code><a class="headerlink" href="#c.rkisp1_cif_isp_hst_config" title="Permalink to this definition">¶</a><br /></dt>
@@ -925,6 +950,14 @@ skipped</p>
 <dt><code class="docutils literal notranslate"><span class="pre">hist_weight</span></code></dt><dd><p>weighting factor for sub-windows</p>
 </dd>
 </dl>
+<p><strong>Description</strong></p>
+<p>The number of entries of <strong>hist_weight</strong> depends on the hardware revision
+as is reported by the hw_revision field of the struct media_device_info
+that is returned by ioctl MEDIA_IOC_DEVICE_INFO.</p>
+<p>Versions &lt;= V11 have RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V10
+entries, versions &gt;= V12 have RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V12
+entries. RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE is equal to the maximum
+of the two.</p>
 <dl class="c struct">
 <dt id="c.rkisp1_cif_isp_aec_config">
 <em class="property">struct </em><code class="sig-name descname">rkisp1_cif_isp_aec_config</code><a class="headerlink" href="#c.rkisp1_cif_isp_aec_config" title="Permalink to this definition">¶</a><br /></dt>
@@ -1381,7 +1414,13 @@ Red if RGB is selected.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Image is divided into 5x5 blocks.</p>
+<p>The number of entries of <strong>exp_mean</strong> depends on the hardware revision
+as is reported by the hw_revision field of the struct media_device_info
+that is returned by ioctl MEDIA_IOC_DEVICE_INFO.</p>
+<p>Versions &lt;= V11 have RKISP1_CIF_ISP_AE_MEAN_MAX_V10 entries,
+versions &gt;= V12 have RKISP1_CIF_ISP_AE_MEAN_MAX_V12 entries.
+RKISP1_CIF_ISP_AE_MEAN_MAX is equal to the maximum of the two.</p>
+<p>Image is divided into 5x5 blocks on V10 and 9x9 blocks on V12.</p>
 <dl class="c struct">
 <dt id="c.rkisp1_cif_isp_af_meas_val">
 <em class="property">struct </em><code class="sig-name descname">rkisp1_cif_isp_af_meas_val</code><a class="headerlink" href="#c.rkisp1_cif_isp_af_meas_val" title="Permalink to this definition">¶</a><br /></dt>
@@ -1430,18 +1469,31 @@ register settings(ISP_AFM_*_A/B/C)</p>
 
 <p><strong>Definition</strong></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct rkisp1_cif_isp_hist_stat {
-  __u16 hist_bins[RKISP1_CIF_ISP_HIST_BIN_N_MAX];
+  __u32 hist_bins[RKISP1_CIF_ISP_HIST_BIN_N_MAX];
 };
 </pre></div>
 </div>
 <p><strong>Members</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">hist_bins</span></code></dt><dd><p>measured bin counters</p>
+<dt><code class="docutils literal notranslate"><span class="pre">hist_bins</span></code></dt><dd><p>measured bin counters. Each bin is a 20 bits unsigned fixed point
+type. Bits 0-4 are the fractional part and bits 5-19 are the
+integer part.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Measurement window divided into 25 sub-windows, set
-with ISP_HIST_XXX</p>
+<p>The window of the measurements area is divided to 5x5 sub-windows for
+V10/V11 and to 9x9 sub-windows for V12. The histogram is then computed for
+each sub-window independently and the final result is a weighted average of
+the histogram measurements on all sub-windows. The window of the
+measurements area and the weight of each sub-window are configurable using
+struct <strong>rkisp1_cif_isp_hst_config</strong>.</p>
+<p>The histogram contains 16 bins in V10/V11 and 32 bins in V12/V13.</p>
+<p>The number of entries of <strong>hist_bins</strong> depends on the hardware revision
+as is reported by the hw_revision field of the struct media_device_info
+that is returned by ioctl MEDIA_IOC_DEVICE_INFO.</p>
+<p>Versions &lt;= V11 have RKISP1_CIF_ISP_HIST_BIN_N_MAX_V10 entries,
+versions &gt;= V12 have RKISP1_CIF_ISP_HIST_BIN_N_MAX_V12 entries.
+RKISP1_CIF_ISP_HIST_BIN_N_MAX is equal to the maximum of the two.</p>
 <dl class="c struct">
 <dt id="c.rkisp1_cif_isp_stat">
 <em class="property">struct </em><code class="sig-name descname">rkisp1_cif_isp_stat</code><a class="headerlink" href="#c.rkisp1_cif_isp_stat" title="Permalink to this definition">¶</a><br /></dt>

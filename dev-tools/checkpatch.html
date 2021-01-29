@@ -1,0 +1,542 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Checkpatch &mdash; The Linux-Next Dragon Kernel  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Coccinelle" href="coccinelle.html" />
+    <link rel="prev" title="Development tools for the kernel" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.11.21-dragon
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin-guide/index.html">The Linux kernel user’s and administrator’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kbuild/index.html">Kernel Build System</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../firmware-guide/index.html">The Linux kernel firmware guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devicetree/index.html">Open Firmware and Device Tree</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../userspace-api/index.html">The Linux kernel user-space API guide</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../process/index.html">Working with the kernel development community</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development tools for the kernel</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Checkpatch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">1 Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#options">2 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#message-levels">3 Message Levels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#type-descriptions">4 Type Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="coccinelle.html">Coccinelle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparse.html">Sparse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kcov.html">kcov: code coverage for fuzzing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gcov.html">Using gcov with the Linux kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kasan.html">The Kernel Address Sanitizer (KASAN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ubsan.html">The Undefined Behavior Sanitizer - UBSAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kmemleak.html">Kernel Memory Leak Detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kcsan.html">The Kernel Concurrency Sanitizer (KCSAN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kfence.html">Kernel Electric-Fence (KFENCE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gdb-kernel-debugging.html">Debugging kernel and modules via gdb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kgdb.html">Using kgdb, kdb and the kernel debugger internals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kselftest.html">Linux Kernel Selftests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kunit/index.html">KUnit - Unit Testing for the Linux Kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgo.html">Using PGO with the Linux kernel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../doc-guide/index.html">How to write kernel documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kernel-hacking/index.html">Kernel Hacking Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trace/index.html">Linux Tracing Technologies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintainer/index.html">Kernel Maintainer Handbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fault-injection/index.html">fault-injection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../livepatch/index.html">Kernel Livepatching</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../driver-api/index.html">The Linux driver implementer’s API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core-api/index.html">Core API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../locking/index.html">locking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../accounting/index.html">Accounting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../block/index.html">Block</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cdrom/index.html">cdrom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpu-freq/index.html">Linux CPUFreq - CPU frequency and voltage scaling code in the Linux(TM) kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ide/index.html">Integrated Drive Electronics (IDE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fb/index.html">Frame Buffer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fpga/index.html">fpga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hid/index.html">Human Interface Devices (HID)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../i2c/index.html">I2C/SMBus Subsystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iio/index.html">Industrial I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../isdn/index.html">ISDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../infiniband/index.html">InfiniBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../leds/index.html">LEDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../netlabel/index.html">NetLabel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networking/index.html">Linux Networking Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pcmcia/index.html">pcmcia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../power/index.html">Power Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../target/index.html">TCM Virtual Device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timers/index.html">timers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spi/index.html">Serial Peripheral Interface (SPI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../w1/index.html">1-Wire Subsystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../watchdog/index.html">Linux Watchdog Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virt/index.html">Linux Virtualization Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input/index.html">The Linux Input Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hwmon/index.html">Linux Hardware Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gpu/index.html">Linux GPU Driver Developer’s Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sound/index.html">Linux Sound Subsystem Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../crypto/index.html">Linux Kernel Crypto API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filesystems/index.html">Filesystems in the Linux kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vm/index.html">Linux Memory Management Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bpf/index.html">BPF Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usb/index.html">USB support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PCI/index.html">Linux PCI Bus Subsystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scsi/index.html">Linux SCSI Subsystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc-devices/index.html">Assorted Miscellaneous Devices Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scheduler/index.html">Linux Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mhi/index.html">MHI</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../asm-annotations.html">Assembler Annotations</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../arm/index.html">ARM Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arm64/index.html">ARM64 Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ia64/index.html">IA-64 Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m68k/index.html">m68k Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mips/index.html">MIPS-specific Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nios2/index.html">Nios II Specific Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openrisc/index.html">OpenRISC Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parisc/index.html">PA-RISC Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../powerpc/index.html">powerpc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../riscv/index.html">RISC-V architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../s390/index.html">s390 Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sh/index.html">SuperH Interfaces Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sparc/index.html">Sparc Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../x86/index.html">x86-specific Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xtensa/index.html">Xtensa Architecture</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../staging/index.html">Unsorted Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../staging/index.html#atomic-types">Atomic Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../staging/index.html#atomic-bitops">Atomic bitops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../staging/index.html#memory-barriers">Memory Barriers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../watch_queue.html">General notification mechanism</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../translations/index.html">Translations</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">The Linux-Next Dragon Kernel</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Development tools for the kernel</a> &raquo;</li>
+        
+      <li>Checkpatch</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/dev-tools/checkpatch.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="checkpatch">
+<h1>Checkpatch<a class="headerlink" href="#checkpatch" title="Permalink to this headline">¶</a></h1>
+<p>This document describes the kernel script checkpatch.pl.</p>
+<div class="section" id="introduction">
+<h2>1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Checkpatch (scripts/checkpatch.pl) is a perl script which checks for trivial style
+violations in patches and optionally corrects them.  Checkpatch can also be run on
+file contexts and without the kernel tree.</p>
+<p>It should be noted that checkpatch may not be always right.  At times the human
+judgement should take preference over what checkpatch has to say.  If your code looks
+better with the violations, then its probably best left alone.</p>
+</div>
+<div class="section" id="options">
+<h2>2 Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<p>This section will describe the options checkpatch can be run with.</p>
+<p>Usage:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./scripts/checkpatch.pl [OPTION]... [FILE]...
+</pre></div>
+</div>
+<p>Available options:</p>
+<blockquote>
+<div><ul>
+<li><p>-q,  –quiet</p>
+<p>Enable quiet mode.</p>
+</li>
+<li><p>-v,  –verbose
+Enable verbose mode.  Additional verbose test descriptions are output
+so as to provide information on why that particular message is shown.</p></li>
+<li><p>–no-tree</p>
+<p>Run checkpatch without the kernel tree.</p>
+</li>
+<li><p>–no-signoff</p>
+<p>Disable the ‘Signed-off-by’ line check.  The sign-off is a simple line at
+the end of the explanation for the patch, which certifies that you wrote it
+or otherwise have the right to pass it on as an open-source patch.</p>
+<p>Example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Signed-off-by: Random J Developer &lt;random@developer.example.org&gt;
+</pre></div>
+</div>
+<p>Setting this flag effectively stops a message for a missing signed-off-by line
+in a patch context.</p>
+</li>
+<li><p>–patch</p>
+<p>Treat FILE as a patch.  This is the default option and need not be
+explicitly specified.</p>
+</li>
+<li><p>–emacs</p>
+<p>Set output to emacs compile window format.  This allows emacs users to jump
+from the error in the compile window directly to the offending line in the patch.</p>
+</li>
+<li><p>–terse</p>
+<p>Output only one line per report.</p>
+</li>
+<li><p>–showfile</p>
+<p>Show the diffed file position instead of the input file position.</p>
+</li>
+<li><p>-g,  –git</p>
+<p>Treat FILE as a single commit or a git revision range.</p>
+<p>Single commit with:</p>
+<ul class="simple">
+<li><p>&lt;rev&gt;</p></li>
+<li><p>&lt;rev&gt;^</p></li>
+<li><p>&lt;rev&gt;~n</p></li>
+</ul>
+<p>Multiple commits with:</p>
+<ul class="simple">
+<li><p>&lt;rev1&gt;..&lt;rev2&gt;</p></li>
+<li><p>&lt;rev1&gt;…&lt;rev2&gt;</p></li>
+<li><p>&lt;rev&gt;-&lt;count&gt;</p></li>
+</ul>
+</li>
+<li><p>-f,  –file</p>
+<p>Treat FILE as a regular source file.  This option must be used when running
+checkpatch on source files in the kernel.</p>
+</li>
+<li><p>–subjective,  –strict</p>
+<p>Enable stricter tests in checkpatch.  By default the tests emitted as CHECK
+do not activate by default.  Use this flag to activate the CHECK tests.</p>
+</li>
+<li><p>–list-types</p>
+<p>Every message emitted by checkpatch has an associated TYPE.  Add this flag to
+display all the types in checkpatch.</p>
+<p>Note that when this flag is active, checkpatch does not read the input FILE, and
+no message is emitted.  Only a list of types in checkpatch is output.</p>
+</li>
+<li><p>–types TYPE(,TYPE2…)</p>
+<p>Only display messages with the given types.</p>
+<p>Example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./scripts/checkpatch.pl mypatch.patch --types EMAIL_SUBJECT,NO_AUTHOR_SIGN_OFF
+</pre></div>
+</div>
+</li>
+<li><p>–ignore TYPE(,TYPE2…)</p>
+<p>Strip off messages with the given types.</p>
+<p>Example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./scripts/checkpatch.pl mypatch.patch --ignore EMAIL_SUBJECT,NO_AUTHOR_SIGN_OFF
+</pre></div>
+</div>
+</li>
+<li><p>–show-types</p>
+<p>By default checkpatch doesn’t display the type associated with the messages.
+Set this flag to show the message type in the output.</p>
+</li>
+<li><p>–max-line-length=n</p>
+<p>Set the max line length (default 100).  On exceeding the given length, a message
+is emitted.</p>
+<p>The message level is different for patch and file contexts.  For patches, a WARNING is
+emitted.  While a milder CHECK is emitted for files.  So for file contexts, the –strict
+flag must also be enabled.</p>
+</li>
+<li><p>–min-conf-desc-length=n</p>
+<p>Set the min description length, if shorter, warn.</p>
+</li>
+<li><p>–tab-size=n</p>
+<p>Set the number of spaces for tab (default 8).</p>
+</li>
+<li><p>–root=PATH</p>
+<p>PATH to the kernel tree root.</p>
+<p>This option must be specified when invoking checkpatch from outside
+the kernel root.</p>
+</li>
+<li><p>–no-summary</p>
+<p>Suppress the per file summary.</p>
+</li>
+<li><p>–mailback</p>
+<p>Only produce a report in case of Warnings or Errors.  Milder Checks are
+excluded from this.</p>
+</li>
+<li><p>–summary-file</p>
+<p>Include the filename in summary.</p>
+</li>
+<li><p>–debug KEY=[0|1]</p>
+<p>Turn on/off debugging of KEY, where KEY is one of ‘values’, ‘possible’,
+‘type’, and ‘attr’ (default is all off).</p>
+</li>
+<li><p>–fix</p>
+<p>This is an EXPERIMENTAL feature.  If correctable errors exists, a file
+&lt;inputfile&gt;.EXPERIMENTAL-checkpatch-fixes is created which has the
+automatically fixable errors corrected.</p>
+</li>
+<li><p>–fix-inplace</p>
+<p>EXPERIMENTAL - Similar to –fix but the input file is overwritten with fixes.</p>
+<p>DO NOT USE this flag unless you are absolutely sure and you have a backup in place.</p>
+</li>
+<li><p>–ignore-perl-version</p>
+<p>Override checking of perl version.  Runtime errors maybe encountered after
+enabling this flag if the perl version does not meet the minimum specified.</p>
+</li>
+<li><p>–codespell</p>
+<p>Use the codespell dictionary for checking spelling errors.</p>
+</li>
+<li><p>–codespellfile</p>
+<p>Use the specified codespell file.  Default is ‘/usr/share/codespell/dictionary.txt’.</p>
+</li>
+<li><p>–typedefsfile</p>
+<p>Read additional types from this file.</p>
+</li>
+<li><p>–color[=WHEN]</p>
+<p>Use colors ‘always’, ‘never’, or only when output is a terminal (‘auto’).
+Default is ‘auto’.</p>
+</li>
+<li><p>–kconfig-prefix=WORD</p>
+<p>Use WORD as a prefix for Kconfig symbols (default is <cite>CONFIG_</cite>).</p>
+</li>
+<li><p>-h, –help, –version</p>
+<p>Display the help text.</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="message-levels">
+<h2>3 Message Levels<a class="headerlink" href="#message-levels" title="Permalink to this headline">¶</a></h2>
+<p>Messages in checkpatch are divided into three levels. The levels of messages in
+checkpatch denote the severity of the error. They are:</p>
+<blockquote>
+<div><ul>
+<li><p>ERROR</p>
+<p>This is the most strict level.  Messages of type ERROR must be taken
+seriously as they denote things that are very likely to be wrong.</p>
+</li>
+<li><p>WARNING</p>
+<p>This is the next stricter level.  Messages of type WARNING requires a
+more careful review.  But it is milder than an ERROR.</p>
+</li>
+<li><p>CHECK</p>
+<p>This is the mildest level.  These are things which may require some thought.</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="type-descriptions">
+<h2>4 Type Descriptions<a class="headerlink" href="#type-descriptions" title="Permalink to this headline">¶</a></h2>
+<p>This section contains a description of all the message types in checkpatch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">LINE_SPACING</dt>
+<dd class="field-odd"><p>Vertical space is wasted given the limited number of lines an
+editor window can display when multiple blank lines are used.</p>
+</dd>
+<dt class="field-even">MISSING_SIGN_OFF</dt>
+<dd class="field-even"><p>The patch is missing a Signed-off-by line.  A signed-off-by
+line should be added according to Developer’s certificate of
+Origin.
+ref: <cite><a class="reference internal" href="../process/submitting-patches.html"><span class="doc">Submitting patches: the essential guide to getting your code into the kernel</span></a></cite></p>
+</dd>
+<dt class="field-odd">NO_AUTHOR_SIGN_OFF</dt>
+<dd class="field-odd"><p>The author of the patch has not signed off the patch.  It is
+required that a simple sign off line should be present at the
+end of explanation of the patch to denote that the author has
+written it or otherwise has the rights to pass it on as an open
+source patch.</p>
+</dd>
+<dt class="field-even">TRAILING_WHITESPACE</dt>
+<dd class="field-even"><p>Trailing whitespace should always be removed.
+Some editors highlight the trailing whitespace and cause visual
+distractions when editing files.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="coccinelle.html" class="btn btn-neutral float-right" title="Coccinelle" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Development tools for the kernel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright The kernel development community.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

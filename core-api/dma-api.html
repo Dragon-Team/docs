@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.20-dragon
+                5.11.21-dragon
               </div>
             
           
@@ -735,38 +735,6 @@ by the passed in device, but which need explicit management of memory ownership
 for the kernel vs the device.</p>
 <p>If you don’t understand how cache line coherency works between a processor and
 an I/O device, you should not be using this part of the API.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>void *
-dma_alloc_noncoherent(struct device *dev, size_t size,
-                dma_addr_t *dma_handle, enum dma_data_direction dir,
-                gfp_t gfp)
-</pre></div>
-</div>
-<p>This routine allocates a region of &lt;size&gt; bytes of consistent memory.  It
-returns a pointer to the allocated region (in the processor’s virtual address
-space) or NULL if the allocation failed.  The returned memory may or may not
-be in the kernel direct mapping.  Drivers must not call virt_to_page on
-the returned memory region.</p>
-<p>It also returns a &lt;dma_handle&gt; which may be cast to an unsigned integer the
-same width as the bus and given to the device as the DMA address base of
-the region.</p>
-<p>The dir parameter specified if data is read and/or written by the device,
-see dma_map_single() for details.</p>
-<p>The gfp parameter allows the caller to specify the <code class="docutils literal notranslate"><span class="pre">GFP_</span></code> flags (see
-<a class="reference internal" href="mm-api.html#c.kmalloc" title="kmalloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">kmalloc()</span></code></a>) for the allocation, but rejects flags used to specify a memory
-zone such as GFP_DMA or GFP_HIGHMEM.</p>
-<p>Before giving the memory to the device, dma_sync_single_for_device() needs
-to be called, and before reading memory written by the device,
-dma_sync_single_for_cpu(), just like for streaming DMA mappings that are
-reused.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>void
-dma_free_noncoherent(struct device *dev, size_t size, void *cpu_addr,
-                dma_addr_t dma_handle, enum dma_data_direction dir)
-</pre></div>
-</div>
-<p>Free a region of memory previously allocated using dma_alloc_noncoherent().
-dev, size and dma_handle and dir must all be the same as those passed into
-dma_alloc_noncoherent().  cpu_addr must be the virtual address returned by
-dma_alloc_noncoherent().</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct page *
 dma_alloc_pages(struct device *dev, size_t size, dma_addr_t *dma_handle,
                 enum dma_data_direction dir, gfp_t gfp)
@@ -794,9 +762,90 @@ dma_free_pages(struct device *dev, size_t size, struct page *page,
 </pre></div>
 </div>
 <p>Free a region of memory previously allocated using dma_alloc_pages().
-dev, size and dma_handle and dir must all be the same as those passed into
-dma_alloc_noncoherent().  page must be the pointer returned by
-dma_alloc_pages().</p>
+dev, size, dma_handle and dir must all be the same as those passed into
+dma_alloc_pages().  page must be the pointer returned by dma_alloc_pages().</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int
+dma_mmap_pages(struct device *dev, struct vm_area_struct *vma,
+               size_t size, struct page *page)
+</pre></div>
+</div>
+<p>Map an allocation returned from dma_alloc_pages() into a user address space.
+dev and size must be the same as those passed into dma_alloc_pages().
+page must be the pointer returned by dma_alloc_pages().</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>void *
+dma_alloc_noncoherent(struct device *dev, size_t size,
+                dma_addr_t *dma_handle, enum dma_data_direction dir,
+                gfp_t gfp)
+</pre></div>
+</div>
+<p>This routine is a convenient wrapper around dma_alloc_pages that returns the
+kernel virtual address for the allocated memory instead of the page structure.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>void
+dma_free_noncoherent(struct device *dev, size_t size, void *cpu_addr,
+                dma_addr_t dma_handle, enum dma_data_direction dir)
+</pre></div>
+</div>
+<p>Free a region of memory previously allocated using dma_alloc_noncoherent().
+dev, size, dma_handle and dir must all be the same as those passed into
+dma_alloc_noncoherent().  cpu_addr must be the virtual address returned by
+dma_alloc_noncoherent().</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct sg_table *
+dma_alloc_noncontiguous(struct device *dev, size_t size,
+                        dma_addr_t *dma_handle,
+                        enum dma_data_direction dir, gfp_t gfp)
+</pre></div>
+</div>
+<p>This routine allocates  &lt;size&gt; bytes of non-coherent and possibly non-contiguous
+memory.  It returns a pointer to struct sg_table that describes the allocated
+memory , or NULL if the allocation failed. The resulting memory can be used for
+everything a struct page is suitable for.</p>
+<p>It also returns a &lt;dma_handle&gt; which may be cast to an unsigned integer the
+same width as the bus and given to the device as the DMA address base of
+the region.</p>
+<p>The dir parameter specified if data is read and/or written by the device,
+see dma_map_single() for details.</p>
+<p>The gfp parameter allows the caller to specify the <code class="docutils literal notranslate"><span class="pre">GFP_</span></code> flags (see
+<a class="reference internal" href="mm-api.html#c.kmalloc" title="kmalloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">kmalloc()</span></code></a>) for the allocation, but rejects flags used to specify a memory
+zone such as GFP_DMA or GFP_HIGHMEM.</p>
+<p>Before giving the memory to the device, dma_sync_sgtable_for_device() needs
+to be called, and before reading memory written by the device,
+dma_sync_sgtable_for_cpu(), just like for streaming DMA mappings that are
+reused.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>void
+dma_free_noncontiguous(struct device *dev, size_t size,
+                       struct sg_table *sgt, dma_addr_t dma_handle,
+                       enum dma_data_direction dir)
+</pre></div>
+</div>
+<p>Free memory previously allocated using dma_alloc_noncontiguous().  dev, size,
+dma_handle and dir must all be the same as those passed into
+dma_alloc_noncontiguous().  sgt must be the pointer returned by
+dma_alloc_noncontiguous().</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>void *
+dma_vmap_noncontiguous(struct device *dev, size_t size,
+        struct sg_table *sgt)
+</pre></div>
+</div>
+<p>Return a contiguous kernel mapping for an allocation returned from
+dma_alloc_noncontiguous().  dev and size must be the same as those passed into
+dma_alloc_noncontiguous().  sgt must be the pointer returned by
+dma_alloc_noncontiguous().</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>void
+dma_vunmap_noncontiguous(struct device *dev, void *vaddr)
+</pre></div>
+</div>
+<p>Unmap a kernel mapping returned by dma_vmap_noncontiguous().  dev must be the
+same the one passed into dma_alloc_noncontiguous().  vaddr must be the pointer
+returned by dma_vmap_noncontiguous().</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int
+dma_mmap_noncontiguous(struct device *dev, struct vm_area_struct *vma,
+                       size_t size, struct sg_table *sgt)
+</pre></div>
+</div>
+<p>Map an allocation returned from dma_alloc_noncontiguous() into a user address
+space.  dev and size must be the same as those passed into
+dma_alloc_noncontiguous().  sgt must be the pointer returned by
+dma_alloc_noncontiguous().</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int
 dma_get_cache_alignment(void)
 </pre></div>
