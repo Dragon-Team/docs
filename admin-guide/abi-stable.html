@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.22-dragon
+                5.11.23-dragon
               </div>
             
           
@@ -4719,25 +4719,6 @@ conforms to.</p>
 <p>The four timeout values are shown in usecs, with a trailing
 “[original]” or “[adjusted]” depending on whether the values
 were scaled by the driver to be reported in usec from msecs.</p>
-<table class="docutils align-default" id="abi-sys-class-tpm-tpmx-pcr-h-n">
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>/sys/class/tpm/tpmX/pcr-H/N</strong></p></td>
-</tr>
-</tbody>
-</table>
-<p>Defined on file <a class="reference internal" href="#abi-file-stable-sysfs-class-tpm"><span class="std std-ref">sysfs-class-tpm</span></a></p>
-<p>produces output in compact hex representation for PCR
-number N from hash bank H.  N is the numeric value of
-the PCR number and H is the crypto string
-representation of the hash</p>
-<p>Example output:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cat /sys/class/tpm/tpm0/pcr-sha256/7
-2ED93F199692DC6788EFA6A1FE74514AB9760B2A6CEEAEF6C808C13E4ABB0D42
-</pre></div>
-</div>
 <table class="docutils align-default" id="abi-sys-class-tpm-tpmx-tpm-version-major">
 <colgroup>
 <col style="width: 100%" />
@@ -7353,7 +7334,6 @@ that it is correct for their architecture.</p>
 <li><p><a class="reference internal" href="#abi-sys-class-tpm-tpmx-device-temp-deactivated"><span class="std std-ref">/sys/class/tpm/tpmX/device/temp_deactivated</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-tpm-tpmx-device-timeouts"><span class="std std-ref">/sys/class/tpm/tpmX/device/timeouts</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-tpm-tpmx-tpm-version-major"><span class="std std-ref">/sys/class/tpm/tpmX/tpm_version_major</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-class-tpm-tpmx-pcr-h-n"><span class="std std-ref">/sys/class/tpm/tpmX/pcr-H/N</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="file-home--zfs-data-doc-stable-sysfs-class-ubi">

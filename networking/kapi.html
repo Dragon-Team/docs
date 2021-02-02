@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.22-dragon
+                5.11.23-dragon
               </div>
             
           
@@ -9636,7 +9636,6 @@ during any kernel release.</p>
   unsigned long           mem_end;
   unsigned long           mem_start;
   unsigned long           base_addr;
-  int irq;
   unsigned long           state;
   struct list_head        dev_list;
   struct list_head        napi_list;
@@ -9648,6 +9647,15 @@ during any kernel release.</p>
     struct list_head upper;
     struct list_head lower;
   } adj_list;
+  unsigned int            flags;
+  unsigned int            priv_flags;
+  const struct net_device_ops *netdev_ops;
+  int ifindex;
+  unsigned short          gflags;
+  unsigned short          hard_header_len;
+  unsigned int            mtu;
+  unsigned short          needed_headroom;
+  unsigned short          needed_tailroom;
   netdev_features_t features;
   netdev_features_t hw_features;
   netdev_features_t wanted_features;
@@ -9655,7 +9663,11 @@ during any kernel release.</p>
   netdev_features_t hw_enc_features;
   netdev_features_t mpls_features;
   netdev_features_t gso_partial_features;
-  int ifindex;
+  unsigned int            min_mtu;
+  unsigned int            max_mtu;
+  unsigned short          type;
+  unsigned char           min_header_len;
+  unsigned char           name_assign_type;
   int group;
   struct net_device_stats stats;
   atomic_long_t rx_dropped;
@@ -9667,7 +9679,6 @@ during any kernel release.</p>
   const struct iw_handler_def *wireless_handlers;
   struct iw_public_data   *wireless_data;
 #endif;
-  const struct net_device_ops *netdev_ops;
   const struct ethtool_ops *ethtool_ops;
 #ifdef CONFIG_NET_L3_MASTER_DEV;
   const struct l3mdev_ops *l3mdev_ops;
@@ -9682,23 +9693,10 @@ during any kernel release.</p>
   const struct tlsdev_ops *tlsdev_ops;
 #endif;
   const struct header_ops *header_ops;
-  unsigned int            flags;
-  unsigned int            priv_flags;
-  unsigned short          gflags;
-  unsigned short          padded;
   unsigned char           operstate;
   unsigned char           link_mode;
   unsigned char           if_port;
   unsigned char           dma;
-  unsigned int            mtu;
-  unsigned int            min_mtu;
-  unsigned int            max_mtu;
-  unsigned short          type;
-  unsigned short          hard_header_len;
-  unsigned char           min_header_len;
-  unsigned char           name_assign_type;
-  unsigned short          needed_headroom;
-  unsigned short          needed_tailroom;
   unsigned char           perm_addr[MAX_ADDR_LEN];
   unsigned char           addr_assign_type;
   unsigned char           addr_len;
@@ -9707,7 +9705,9 @@ during any kernel release.</p>
   unsigned short          neigh_priv_len;
   unsigned short          dev_id;
   unsigned short          dev_port;
+  unsigned short          padded;
   spinlock_t addr_list_lock;
+  int irq;
   struct netdev_hw_addr_list      uc;
   struct netdev_hw_addr_list      mc;
   struct netdev_hw_addr_list      dev_addrs;
@@ -9875,8 +9875,6 @@ of the interface.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">base_addr</span></code></dt><dd><p>Device I/O address</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">irq</span></code></dt><dd><p>Device IRQ number</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">state</span></code></dt><dd><p>Generic network queuing layer state, see netdev_state_t</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">dev_list</span></code></dt><dd><p>The global list of network devices</p>
@@ -9893,6 +9891,32 @@ device; see the function unregister_netdev</p>
 <dt><code class="docutils literal notranslate"><span class="pre">ptype_specific</span></code></dt><dd><p>Device-specific, protocol-specific packet handlers</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">adj_list</span></code></dt><dd><p>Directly linked devices, like slaves for bonding</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">flags</span></code></dt><dd><p>Interface flags (a la BSD)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">priv_flags</span></code></dt><dd><p>Like ‘flags’ but invisible to userspace,
+see if.h for the definitions</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">netdev_ops</span></code></dt><dd><p>Includes several pointers to callbacks,
+if one wants to override the ndo_*() functions</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ifindex</span></code></dt><dd><p>interface index</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">gflags</span></code></dt><dd><p>Global flags ( kept as legacy )</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">hard_header_len</span></code></dt><dd><p>Maximum hardware header length.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">mtu</span></code></dt><dd><p>Interface MTU value</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">needed_headroom</span></code></dt><dd><p>Extra headroom the hardware may need, but not in all
+cases can this be guaranteed</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">needed_tailroom</span></code></dt><dd><p>Extra tailroom the hardware may need, but not in all
+cases can this be guaranteed. Some cases also use
+LL_MAX_HEADER instead to allocate the skb</p>
+<blockquote>
+<div><p>interface address info:</p>
+</div></blockquote>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">features</span></code></dt><dd><p>Currently active device features</p>
 </dd>
@@ -9911,7 +9935,15 @@ and drivers will need to set them appropriately.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">gso_partial_features</span></code></dt><dd><p>value(s) from NETIF_F_GSO*</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">ifindex</span></code></dt><dd><p>interface index</p>
+<dt><code class="docutils literal notranslate"><span class="pre">min_mtu</span></code></dt><dd><p>Interface Minimum MTU value</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">max_mtu</span></code></dt><dd><p>Interface Maximum MTU value</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">type</span></code></dt><dd><p>Interface hardware type</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">min_header_len</span></code></dt><dd><p>Minimum hardware header length</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">name_assign_type</span></code></dt><dd><p>network interface name assignment type</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">group</span></code></dt><dd><p>The group the device belongs to</p>
 </dd>
@@ -9937,9 +9969,6 @@ see &lt;net/iw_handler.h&gt; for details.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">wireless_data</span></code></dt><dd><p>Instance data managed by the core of wireless extensions</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">netdev_ops</span></code></dt><dd><p>Includes several pointers to callbacks,
-if one wants to override the ndo_*() functions</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">ethtool_ops</span></code></dt><dd><p>Management operations</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">l3mdev_ops</span></code></dt><dd><p>Layer 3 master device operations</p>
@@ -9954,15 +9983,6 @@ discovery handling. Necessary for e.g. 6LoWPAN.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">header_ops</span></code></dt><dd><p>Includes callbacks for creating,parsing,caching,etc
 of Layer 2 headers.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">flags</span></code></dt><dd><p>Interface flags (a la BSD)</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">priv_flags</span></code></dt><dd><p>Like ‘flags’ but invisible to userspace,
-see if.h for the definitions</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">gflags</span></code></dt><dd><p>Global flags ( kept as legacy )</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">padded</span></code></dt><dd><p>How much padding added by alloc_netdev()</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">operstate</span></code></dt><dd><p>RFC2863 operstate</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">link_mode</span></code></dt><dd><p>Mapping policy to operstate</p>
@@ -9970,30 +9990,6 @@ see if.h for the definitions</p>
 <dt><code class="docutils literal notranslate"><span class="pre">if_port</span></code></dt><dd><p>Selectable AUI, TP, …</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">dma</span></code></dt><dd><p>DMA channel</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">mtu</span></code></dt><dd><p>Interface MTU value</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">min_mtu</span></code></dt><dd><p>Interface Minimum MTU value</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">max_mtu</span></code></dt><dd><p>Interface Maximum MTU value</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">type</span></code></dt><dd><p>Interface hardware type</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">hard_header_len</span></code></dt><dd><p>Maximum hardware header length.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">min_header_len</span></code></dt><dd><p>Minimum hardware header length</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">name_assign_type</span></code></dt><dd><p>network interface name assignment type</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">needed_headroom</span></code></dt><dd><p>Extra headroom the hardware may need, but not in all
-cases can this be guaranteed</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">needed_tailroom</span></code></dt><dd><p>Extra tailroom the hardware may need, but not in all
-cases can this be guaranteed. Some cases also use
-LL_MAX_HEADER instead to allocate the skb</p>
-<blockquote>
-<div><p>interface address info:</p>
-</div></blockquote>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">perm_addr</span></code></dt><dd><p>Permanent hw address</p>
 </dd>
@@ -10013,7 +10009,11 @@ the same link layer address</p>
 <dt><code class="docutils literal notranslate"><span class="pre">dev_port</span></code></dt><dd><p>Used to differentiate devices that share
 the same function</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">padded</span></code></dt><dd><p>How much padding added by alloc_netdev()</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">addr_list_lock</span></code></dt><dd><p>XXX: need comments on this one</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">irq</span></code></dt><dd><p>Device IRQ number</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">uc</span></code></dt><dd><p>unicast mac addresses</p>
 </dd>

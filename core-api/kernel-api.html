@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.22-dragon
+                5.11.23-dragon
               </div>
             
           
@@ -9782,7 +9782,7 @@ void <code class="sig-name descname">set_disk_ro</code><span class="sig-paren">(
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">gendisk</span> <span class="pre">*disk</span></code></dt><dd><p>gendisk to operate on</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">read_only</span></code></dt><dd><p><em>undescribed</em></p>
+<dt><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">read_only</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">true</span></code> to set the disk read-only, <code class="docutils literal notranslate"><span class="pre">false</span></code> set the disk read/write</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
@@ -10316,6 +10316,26 @@ int <code class="sig-name descname">clk_prepare</code><span class="sig-paren">(<
 <p><strong>Description</strong></p>
 <p>This prepares the clock source for use.</p>
 <p>Must not be called from within atomic context.</p>
+<dl class="c function">
+<dt id="c.clk_is_enabled_when_prepared">
+bool <code class="sig-name descname">clk_is_enabled_when_prepared</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_is_enabled_when_prepared" title="clk">clk</a> *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_is_enabled_when_prepared" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>indicate if preparing a clock also enables it.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">clk</span> <span class="pre">*clk</span></code></dt><dd><p>clock source</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Returns true if <a class="reference internal" href="#c.clk_prepare" title="clk_prepare"><code class="xref c c-func docutils literal notranslate"><span class="pre">clk_prepare()</span></code></a> implicitly enables the clock, effectively
+making <a class="reference internal" href="#c.clk_enable" title="clk_enable"><code class="xref c c-func docutils literal notranslate"><span class="pre">clk_enable()</span></code></a>/<a class="reference internal" href="#c.clk_disable" title="clk_disable"><code class="xref c c-func docutils literal notranslate"><span class="pre">clk_disable()</span></code></a> no-ops, false otherwise.</p>
+<p>This is of interest mainly to the power management code where actually
+disabling the clock also requires unpreparing it to have any material
+effect.</p>
+<p>Regardless of the value returned here, the caller must always invoke
+<a class="reference internal" href="#c.clk_enable" title="clk_enable"><code class="xref c c-func docutils literal notranslate"><span class="pre">clk_enable()</span></code></a> or clk_prepare_enable()  and counterparts for usage counts
+to be right.</p>
 <dl class="c function">
 <dt id="c.clk_unprepare">
 void <code class="sig-name descname">clk_unprepare</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.clk_unprepare" title="clk">clk</a> *<em>clk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.clk_unprepare" title="Permalink to this definition">¶</a><br /></dt>

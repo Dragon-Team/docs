@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.22-dragon
+                5.11.23-dragon
               </div>
             
           
@@ -551,6 +551,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-platform-twl4030-usb">File /testing/sysfs-platform-twl4030-usb</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-platform-usbip-vudc">File /testing/sysfs-platform-usbip-vudc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-platform-wilco-ec">File /testing/sysfs-platform-wilco-ec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-platform-profile">File /testing/sysfs-platform_profile</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-power">File /testing/sysfs-power</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-pps">File /testing/sysfs-pps</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-testing-sysfs-profiling">File /testing/sysfs-profiling</a></li>
@@ -11993,7 +11994,7 @@ are listed in this attribute.</p>
 <p>Hardware applied calibration offset (assumed to fix production
 inaccuracies). Values represent a real physical offset expressed
 in SI units (m/s^2 for accelerometer and rad/s for gyroscope).</p>
-<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasd">
+<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasu">
 <colgroup>
 <col style="width: 100%" />
 </colgroup>
@@ -12423,17 +12424,17 @@ Up</p></td>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-timer-stm32"><span class="std std-ref">sysfs-bus-iio-timer-stm32</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-lptimer-stm32"><span class="std std-ref">sysfs-bus-iio-lptimer-stm32</span></a></p>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-timer-stm32"><span class="std std-ref">sysfs-bus-iio-timer-stm32</span></a></p>
+<p>Reading returns the current preset value. Writing sets the
+preset value. Encoder counts continuously from 0 to preset
+value, depending on direction (up/down).</p>
 <p>Reading returns the current preset value.
 Writing sets the preset value.
 When counting up the counter starts from 0 and fires an
 event when reach preset value.
 When counting down the counter start from preset value
 and fire event when reach 0.</p>
-<p>Reading returns the current preset value. Writing sets the
-preset value. Encoder counts continuously from 0 to preset
-value, depending on direction (up/down).</p>
 <table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-count0-quadrature-mode">
 <colgroup>
 <col style="width: 100%" />
@@ -14040,12 +14041,12 @@ ALS-mapper Y + 1.</p>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-light-lm3533-als"><span class="std std-ref">sysfs-bus-iio-light-lm3533-als</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-health-afe440x"><span class="std std-ref">sysfs-bus-iio-health-afe440x</span></a></p>
-<p>Get output current for channel Y (0..255), that is,
-out_currentY_currentZ_raw, where Z is the current zone.</p>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-light-lm3533-als"><span class="std std-ref">sysfs-bus-iio-light-lm3533-als</span></a></p>
 <p>Get and set the LED current for the specified LED active during
-this stage. Y is the specific stage number.</p>
+this stage. Y is the specific stage number.
+Get output current for channel Y (0..255), that is,
+out_currentY_currentZ_raw, where Z is the current zone.</p>
 <table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-out-current-heater-raw">
 <colgroup>
 <col style="width: 100%" />
@@ -14382,16 +14383,16 @@ in square brackets.</p>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-distance-srf08"><span class="std std-ref">sysfs-bus-iio-distance-srf08</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-proximity-as3935"><span class="std std-ref">sysfs-bus-iio-proximity-as3935</span></a></p>
-<p>Show or set the gain boost of the amp, from 0-31 range.
-default 31</p>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-distance-srf08"><span class="std std-ref">sysfs-bus-iio-distance-srf08</span></a></p>
 <p>Show or set the gain boost of the amp, from 0-31 range.
 18 = indoors (default)
 14 = outdoors</p>
 <p>What            /sys/bus/iio/devices/iio:deviceX/noise_level_tripped
 When 1 the noise level is over the trip level and not reporting
-valid data</p>
+valid data
+Show or set the gain boost of the amp, from 0-31 range.
+default 31</p>
 <table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-start-cleaning">
 <colgroup>
 <col style="width: 100%" />
@@ -27745,16 +27746,16 @@ Current state can be also read.</p>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-led-driver-el15203000"><span class="std std-ref">sysfs-class-led-driver-el15203000</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-led-trigger-pattern"><span class="std std-ref">sysfs-class-led-trigger-pattern</span></a></p>
-<p>EL15203000 supports only indefinitely patterns,
-so this file should always store -1.</p>
-<p>For more info, please see:
-<a class="reference internal" href="#abi-file-testing-sysfs-class-led-trigger-pattern"><span class="std std-ref">testing/sysfs-class-led-trigger-pattern</span></a>
-Specify a pattern repeat number. -1 means repeat indefinitely,
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-led-driver-el15203000"><span class="std std-ref">sysfs-class-led-driver-el15203000</span></a></p>
+<p>Specify a pattern repeat number. -1 means repeat indefinitely,
 other negative numbers and number 0 are invalid.</p>
 <p>This file will always return the originally written repeat
-number.</p>
+number.
+EL15203000 supports only indefinitely patterns,
+so this file should always store -1.</p>
+<p>For more info, please see:
+<a class="reference internal" href="#abi-file-testing-sysfs-class-led-trigger-pattern"><span class="std std-ref">testing/sysfs-class-led-trigger-pattern</span></a></p>
 <table class="docutils align-default" id="abi-sys-class-leds-led-rx">
 <colgroup>
 <col style="width: 100%" />
@@ -29231,8 +29232,15 @@ will also reflect the dormant state.</p>
 </tbody>
 </table>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-net-dsa"><span class="std std-ref">sysfs-class-net-dsa</span></a></p>
-<p>String indicating the type of tagging protocol used by the
-DSA slave network device.</p>
+<p>On read, this file returns a string indicating the type of
+tagging protocol used by the DSA network devices that are
+attached to this master interface.
+On write, this file changes the tagging protocol of the
+attached DSA switches, if this operation is supported by the
+driver. Changing the tagging protocol must be done with the DSA
+interfaces and the master interface all administratively down.
+See the “name” field of each registered struct dsa_device_ops
+for a list of valid values.</p>
 <table class="docutils align-default" id="abi-sys-class-net-iface-duplex">
 <colgroup>
 <col style="width: 100%" />
@@ -29662,6 +29670,19 @@ configured otherwise</p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-net"><span class="std std-ref">sysfs-class-net</span></a></p>
 <p>Indicates the interface protocol type as a decimal value. See
 include/uapi/linux/if_arp.h for all possible values.</p>
+<table class="docutils align-default" id="abi-sys-class-net-qmimux-iface-qmap-mux-id">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/class/net/&lt;qmimux iface&gt;/qmap/mux_id</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-net-qmi"><span class="std std-ref">sysfs-class-net-qmi</span></a></p>
+<p>Unsigned integer</p>
+<p>Indicates the mux id associated to the qmimux network interface
+during its creation.</p>
 <table class="docutils align-default" id="abi-sys-class-ocxl-afu-name-afu-version">
 <colgroup>
 <col style="width: 100%" />
@@ -40306,8 +40327,10 @@ Reading the file is not allowed.</p>
 </table>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-devices-memory"><span class="std std-ref">sysfs-devices-memory</span></a></p>
 <p>The file <a class="reference internal" href="#abi-sys-devices-system-memory-memoryx-phys-device"><span class="std std-ref">/sys/devices/system/memory/memoryX/phys_device</span></a>
-is read-only and is designed to show the name of physical
-memory device.  Implementation is currently incomplete.</p>
+is read-only;  it is a legacy interface only ever used on s390x
+to expose the covered storage increment.</p>
+<p>Users:
+	Legacy s390-tools lsmem/chmem</p>
 <table class="docutils align-default" id="abi-sys-devices-system-memory-memoryx-phys-index">
 <colgroup>
 <col style="width: 100%" />
@@ -40332,14 +40355,14 @@ memory section directory name.</p>
 </tbody>
 </table>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-devices-memory"><span class="std std-ref">sysfs-devices-memory</span></a></p>
-<p>The file <a class="reference internal" href="#abi-sys-devices-system-memory-memoryx-removable"><span class="std std-ref">/sys/devices/system/memory/memoryX/removable</span></a>
-indicates whether this memory block is removable or not.
-This is useful for a user-level agent to determine
-identify removable sections of the memory before attempting
-potentially expensive hot-remove memory operation</p>
+<p>The file <a class="reference internal" href="#abi-sys-devices-system-memory-memoryx-removable"><span class="std std-ref">/sys/devices/system/memory/memoryX/removable</span></a> is a
+legacy interface used to indicated whether a memory block is
+likely to be offlineable or not.  Newer kernel versions return
+“1” if and only if the kernel supports memory offlining.</p>
 <p>Users:
 	hotplug memory remove tools
-	<a class="reference external" href="http://www.ibm.com/developerworks/wikis/display/LinuxP/powerpc-utils">http://www.ibm.com/developerworks/wikis/display/LinuxP/powerpc-utils</a></p>
+	<a class="reference external" href="http://www.ibm.com/developerworks/wikis/display/LinuxP/powerpc-utils">http://www.ibm.com/developerworks/wikis/display/LinuxP/powerpc-utils</a>
+	lsmem/chmem part of util-linux</p>
 <table class="docutils align-default" id="abi-sys-devices-system-memory-memoryx-state">
 <colgroup>
 <col style="width: 100%" />
@@ -40351,23 +40374,24 @@ potentially expensive hot-remove memory operation</p>
 </table>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-devices-memory"><span class="std std-ref">sysfs-devices-memory</span></a></p>
 <p>The file <a class="reference internal" href="#abi-sys-devices-system-memory-memoryx-state"><span class="std std-ref">/sys/devices/system/memory/memoryX/state</span></a>
-is read-write.  When read, its contents show the
-online/offline state of the memory section.  When written,
-root can toggle the the online/offline state of a removable
-memory section (see removable file description above)
-using the following commands:</p>
+is read-write.  When read, it returns the online/offline
+state of the memory block.  When written, root can toggle
+the online/offline state of a memory block using the following
+commands:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># echo online &gt; :ref:`\/sys\/devices\/system\/memory\/memoryX\/state &lt;abi_sys_devices_system_memory_memoryx_state&gt;`
 # echo offline &gt; :ref:`\/sys\/devices\/system\/memory\/memoryX\/state &lt;abi_sys_devices_system_memory_memoryx_state&gt;`
 </pre></div>
 </div>
-<p>For example, if /sys/devices/system/memory/memory22/removable
-contains a value of 1 and
-/sys/devices/system/memory/memory22/state contains the
-string “online” the following command can be executed by
-by root to offline that section:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># echo offline &gt; /sys/devices/system/memory/memory22/state
-</pre></div>
-</div>
+<p>On newer kernel versions, advanced states can be specified
+when onlining to select a target zone: “online_movable”
+selects the movable zone.  “online_kernel” selects the
+applicable kernel zone (DMA, DMA32, or Normal).  However,
+after successfully setting one of the advanced states,
+reading the file will return “online”; the zone information
+can be obtained via “valid_zones” instead.</p>
+<p>While onlining is unlikely to fail, there are no guarantees
+that offlining will succeed.  Offlining is more likely to
+succeed if “valid_zones” indicates “Movable”.</p>
 <p>Users:
 	hotplug memory remove tools
 	<a class="reference external" href="http://www.ibm.com/developerworks/wikis/display/LinuxP/powerpc-utils">http://www.ibm.com/developerworks/wikis/display/LinuxP/powerpc-utils</a></p>
@@ -40382,8 +40406,17 @@ by root to offline that section:</p>
 </table>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-devices-memory"><span class="std std-ref">sysfs-devices-memory</span></a></p>
 <p>The file <a class="reference internal" href="#abi-sys-devices-system-memory-memoryx-valid-zones"><span class="std std-ref">/sys/devices/system/memory/memoryX/valid_zones</span></a> is
-read-only and is designed to show which zone this memory
-block can be onlined to.</p>
+read-only.</p>
+<p>For online memory blocks, it returns in which zone memory
+provided by a memory block is managed.  If multiple zones
+apply (not applicable for hotplugged memory), “None” is returned
+and the memory block cannot be offlined.</p>
+<p>For offline memory blocks, it returns by which zone memory
+provided by a memory block can be managed when onlining.
+The first returned zone (“default”) will be used when setting
+the state of an offline memory block to “online”.  Only one of
+the kernel zones (DMA, DMA32, Normal) is applicable for a single
+memory block.</p>
 <table class="docutils align-default" id="abi-sys-devices-system-memory-soft-offline-page">
 <colgroup>
 <col style="width: 100%" />
@@ -40817,6 +40850,56 @@ when pressing the power button:</p>
 </pre></div>
 </div>
 </div>
+<table class="docutils align-default" id="abi-sys-firmware-acpi-platform-profile">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/firmware/acpi/platform_profile</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-platform-profile"><span class="std std-ref">sysfs-platform_profile</span></a></p>
+<p>Reading this file gives the current selected profile for this
+device. Writing this file with one of the strings from
+platform_profile_choices changes the profile to the new value.</p>
+<table class="docutils align-default" id="abi-sys-firmware-acpi-platform-profile-choices">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/firmware/acpi/platform_profile_choices</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-platform-profile"><span class="std std-ref">sysfs-platform_profile</span></a></p>
+<p>This file contains a space-separated list of profiles supported for this device.</p>
+<p>Drivers must use the following standard profile-names:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 82%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>low-power</p></td>
+<td><p>Low power consumption</p></td>
+</tr>
+<tr class="row-even"><td><p>cool</p></td>
+<td><p>Cooler operation</p></td>
+</tr>
+<tr class="row-odd"><td><p>quiet</p></td>
+<td><p>Quieter operation</p></td>
+</tr>
+<tr class="row-even"><td><p>balanced</p></td>
+<td><p>Balance between low power consumption and performance</p></td>
+</tr>
+<tr class="row-odd"><td><p>performance</p></td>
+<td><p>High performance operation</p></td>
+</tr>
+</tbody>
+</table>
+<p>Userspace may expect drivers to offer more than one of these
+standard profile names.</p>
 <table class="docutils align-default" id="abi-sys-firmware-devicetree">
 <colgroup>
 <col style="width: 100%" />
@@ -49690,7 +49773,7 @@ modification.</p>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/sampling_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_sampling_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/buffer/sampling_frequency</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/triggerX/sampling_frequency</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-triggerx-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/triggerX/sampling_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/sampling_frequency_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_sampling_frequency_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_proximity_sampling_frequency_available</span></a></p></li>
@@ -49815,10 +49898,10 @@ modification.</p>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasd"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_illuminance0_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasd"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_proximity0_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasd"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressureY_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasd"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressure_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasu"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_illuminance0_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasu"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_proximity0_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasu"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressureY_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasu"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressure_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-calibscale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_voltageY_calibscale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-calibscale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_voltageY_supply_calibscale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-calibscale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_voltageY_i_calibscale</span></a></p></li>
@@ -50780,7 +50863,7 @@ modification.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-triggerx-master-mode-available"><span class="std std-ref">/sys/bus/iio/devices/triggerX/master_mode_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-triggerx-master-mode"><span class="std std-ref">/sys/bus/iio/devices/triggerX/master_mode</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/triggerX/sampling_frequency</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-triggerx-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/triggerX/sampling_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count0-preset"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count0_preset</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-enable-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count_enable_mode_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count0-enable-mode"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count0_enable_mode</span></a></p></li>
@@ -52021,6 +52104,7 @@ For example, the real path of the attribute /sys/class/cxl/afu0.0s/irqs_max is
 <li><p><a class="reference internal" href="#abi-sys-class-net-iface-qmi-raw-ip"><span class="std std-ref">/sys/class/net/&lt;iface&gt;/qmi/raw_ip</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-net-iface-qmi-add-mux"><span class="std std-ref">/sys/class/net/&lt;iface&gt;/qmi/add_mux</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-net-iface-qmi-del-mux"><span class="std std-ref">/sys/class/net/&lt;iface&gt;/qmi/del_mux</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-class-net-qmimux-iface-qmap-mux-id"><span class="std std-ref">/sys/class/net/&lt;qmimux iface&gt;/qmap/mux_id</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="file-home--zfs-data-doc-testing-sysfs-class-net-queues">
@@ -54411,6 +54495,14 @@ sysfs: (&lt;devid&gt; is in the format major:minor)</p>
 <li><p><a class="reference internal" href="#abi-sys-bus-platform-devices-goog000c-00-model-number"><span class="std std-ref">/sys/bus/platform/devices/GOOG000C\:00/model_number</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-platform-devices-goog000c-00-usb-charge"><span class="std std-ref">/sys/bus/platform/devices/GOOG000C\:00/usb_charge</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-platform-devices-goog000c-00-version"><span class="std std-ref">/sys/bus/platform/devices/GOOG000C\:00/version</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="file-home--zfs-data-doc-testing-sysfs-platform-profile">
+<span id="abi-file-testing-sysfs-platform-profile"></span><h2>File /testing/sysfs-platform_profile<a class="headerlink" href="#file-home--zfs-data-doc-testing-sysfs-platform-profile" title="Permalink to this headline">¶</a></h2>
+<p>Has the following ABI:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#abi-sys-firmware-acpi-platform-profile-choices"><span class="std std-ref">/sys/firmware/acpi/platform_profile_choices</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-firmware-acpi-platform-profile"><span class="std std-ref">/sys/firmware/acpi/platform_profile</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="file-home--zfs-data-doc-testing-sysfs-power">

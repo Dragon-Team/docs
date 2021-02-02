@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.22-dragon
+                5.11.23-dragon
               </div>
             
           
@@ -3160,6 +3160,32 @@ number of reasons, such as the bio being full or target block device
 limitations. The target block device must allow bio’s up to PAGE_SIZE,
 so it is always possible to add a single page to an empty bio.</p>
 <p>This should only be used by passthrough bios.</p>
+<dl class="c function">
+<dt id="c.bio_add_zone_append_page">
+int <code class="sig-name descname">bio_add_zone_append_page</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.bio_add_zone_append_page" title="bio">bio</a> *<em>bio</em>, <em class="property">struct</em> <a class="reference internal" href="#c.bio_add_zone_append_page" title="page">page</a> *<em>page</em>, unsigned int <em>len</em>, unsigned int <em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_add_zone_append_page" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>attempt to add page to zone-append bio</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">bio</span> <span class="pre">*bio</span></code></dt><dd><p>destination bio</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">page</span> <span class="pre">*page</span></code></dt><dd><p>page to add</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">len</span></code></dt><dd><p>vec entry length</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">offset</span></code></dt><dd><p>vec entry offset</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Attempt to add a page to the bio_vec maplist of a bio that will be submitted
+for a zone-append request. This can fail for a number of reasons, such as the
+bio being full or the target block device is not a zoned block device or
+other limitations of the target block device. The target block device must
+allow bio’s up to PAGE_SIZE, so it is always possible to add a single page
+to an empty bio.</p>
+<p><strong>Return</strong></p>
+<p>number of bytes added to the bio, or 0 in case of a failure.</p>
 <dl class="c function">
 <dt id="c.__bio_try_merge_page">
 bool <code class="sig-name descname">__bio_try_merge_page</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.__bio_try_merge_page" title="bio">bio</a> *<em>bio</em>, <em class="property">struct</em> <a class="reference internal" href="#c.__bio_try_merge_page" title="page">page</a> *<em>page</em>, unsigned int <em>len</em>, unsigned int <em>off</em>, bool *<em>same_page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__bio_try_merge_page" title="Permalink to this definition">¶</a><br /></dt>

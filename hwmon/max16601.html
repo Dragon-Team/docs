@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.22-dragon
+                5.11.23-dragon
               </div>
             
           
@@ -485,6 +485,177 @@ details.</p>
 <div class="section" id="sysfs-entries">
 <h2>Sysfs entries<a class="headerlink" href="#sysfs-entries" title="Permalink to this headline">¶</a></h2>
 <p>The following attributes are supported.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>in1_label</p></td>
+<td><p>“vin1”</p></td>
+</tr>
+<tr class="row-even"><td><p>in1_input</p></td>
+<td><p>VCORE input voltage.</p></td>
+</tr>
+<tr class="row-odd"><td><p>in1_alarm</p></td>
+<td><p>Input voltage alarm.</p></td>
+</tr>
+<tr class="row-even"><td><p>in2_label</p></td>
+<td><p>“vout1”</p></td>
+</tr>
+<tr class="row-odd"><td><p>in2_input</p></td>
+<td><p>VCORE output voltage.</p></td>
+</tr>
+<tr class="row-even"><td><p>in2_alarm</p></td>
+<td><p>Output voltage alarm.</p></td>
+</tr>
+<tr class="row-odd"><td><p>curr1_label</p></td>
+<td><p>“iin1”</p></td>
+</tr>
+<tr class="row-even"><td><p>curr1_input</p></td>
+<td><p>VCORE input current, derived from duty cycle
+and output current.</p></td>
+</tr>
+<tr class="row-odd"><td><p>curr1_max</p></td>
+<td><p>Maximum input current.</p></td>
+</tr>
+<tr class="row-even"><td><p>curr1_max_alarm</p></td>
+<td><p>Current high alarm.</p></td>
+</tr>
+<tr class="row-odd"><td><p>curr[P+2]_label</p></td>
+<td><p>“iin1.P”</p></td>
+</tr>
+<tr class="row-even"><td><p>curr[P+2]_input</p></td>
+<td><p>VCORE phase P input current.</p></td>
+</tr>
+<tr class="row-odd"><td><p>curr[N+2]_label</p></td>
+<td><p>“iin2”</p></td>
+</tr>
+<tr class="row-even"><td><p>curr[N+2]_input</p></td>
+<td><p>VCORE input current, derived from sensor
+element.
+‘N’ is the number of enabled/populated phases.</p></td>
+</tr>
+<tr class="row-odd"><td><p>curr[N+3]_label</p></td>
+<td><p>“iin3”</p></td>
+</tr>
+<tr class="row-even"><td><p>curr[N+3]_input</p></td>
+<td><p>VSA input current.</p></td>
+</tr>
+<tr class="row-odd"><td><p>curr[N+4]_label</p></td>
+<td><p>“iout1”</p></td>
+</tr>
+<tr class="row-even"><td><p>curr[N+4]_input</p></td>
+<td><p>VCORE output current.</p></td>
+</tr>
+<tr class="row-odd"><td><p>curr[N+4]_crit</p></td>
+<td><p>Critical output current.</p></td>
+</tr>
+<tr class="row-even"><td><p>curr[N+4]_crit_alarm</p></td>
+<td><p>Output current critical alarm.</p></td>
+</tr>
+<tr class="row-odd"><td><p>curr[N+4]_max</p></td>
+<td><p>Maximum output current.</p></td>
+</tr>
+<tr class="row-even"><td><p>curr[N+4]_max_alarm</p></td>
+<td><p>Output current high alarm.</p></td>
+</tr>
+<tr class="row-odd"><td><p>curr[N+P+5]_label</p></td>
+<td><p>“iout1.P”</p></td>
+</tr>
+<tr class="row-even"><td><p>curr[N+P+5]_input</p></td>
+<td><p>VCORE phase P output current.</p></td>
+</tr>
+<tr class="row-odd"><td><p>curr[2*N+5]_label</p></td>
+<td><p>“iout3”</p></td>
+</tr>
+<tr class="row-even"><td><p>curr[2*N+5]_input</p></td>
+<td><p>VSA output current.</p></td>
+</tr>
+<tr class="row-odd"><td><p>curr[2*N+5]_highest</p></td>
+<td><p>Historical maximum VSA output current.</p></td>
+</tr>
+<tr class="row-even"><td><p>curr[2*N+5]_reset_history</p></td>
+<td><p>Write any value to reset curr21_highest.</p></td>
+</tr>
+<tr class="row-odd"><td><p>curr[2*N+5]_crit</p></td>
+<td><p>Critical output current.</p></td>
+</tr>
+<tr class="row-even"><td><p>curr[2*N+5]_crit_alarm</p></td>
+<td><p>Output current critical alarm.</p></td>
+</tr>
+<tr class="row-odd"><td><p>curr[2*N+5]_max</p></td>
+<td><p>Maximum output current.</p></td>
+</tr>
+<tr class="row-even"><td><p>curr[2*N+5]_max_alarm</p></td>
+<td><p>Output current high alarm.</p></td>
+</tr>
+<tr class="row-odd"><td><p>power1_label</p></td>
+<td><p>“pin1”</p></td>
+</tr>
+<tr class="row-even"><td><p>power1_input</p></td>
+<td><p>Input power, derived from duty cycle and output
+current.</p></td>
+</tr>
+<tr class="row-odd"><td><p>power1_alarm</p></td>
+<td><p>Input power alarm.</p></td>
+</tr>
+<tr class="row-even"><td><p>power2_label</p></td>
+<td><p>“pin2”</p></td>
+</tr>
+<tr class="row-odd"><td><p>power2_input</p></td>
+<td><p>Input power, derived from input current sensor.</p></td>
+</tr>
+<tr class="row-even"><td><p>power3_label</p></td>
+<td><p>“pout”</p></td>
+</tr>
+<tr class="row-odd"><td><p>power3_input</p></td>
+<td><p>Output power.</p></td>
+</tr>
+<tr class="row-even"><td><p>temp1_input</p></td>
+<td><p>VCORE temperature.</p></td>
+</tr>
+<tr class="row-odd"><td><p>temp1_crit</p></td>
+<td><p>Critical high temperature.</p></td>
+</tr>
+<tr class="row-even"><td><p>temp1_crit_alarm</p></td>
+<td><p>Chip temperature critical high alarm.</p></td>
+</tr>
+<tr class="row-odd"><td><p>temp1_max</p></td>
+<td><p>Maximum temperature.</p></td>
+</tr>
+<tr class="row-even"><td><p>temp1_max_alarm</p></td>
+<td><p>Chip temperature high alarm.</p></td>
+</tr>
+<tr class="row-odd"><td><p>temp2_input</p></td>
+<td><p>TSENSE_0 temperature</p></td>
+</tr>
+<tr class="row-even"><td><p>temp3_input</p></td>
+<td><p>TSENSE_1 temperature</p></td>
+</tr>
+<tr class="row-odd"><td><p>temp4_input</p></td>
+<td><p>TSENSE_2 temperature</p></td>
+</tr>
+<tr class="row-even"><td><p>temp5_input</p></td>
+<td><p>TSENSE_3 temperature</p></td>
+</tr>
+<tr class="row-odd"><td><p>temp6_input</p></td>
+<td><p>VSA temperature.</p></td>
+</tr>
+<tr class="row-even"><td><p>temp6_crit</p></td>
+<td><p>Critical high temperature.</p></td>
+</tr>
+<tr class="row-odd"><td><p>temp6_crit_alarm</p></td>
+<td><p>Chip temperature critical high alarm.</p></td>
+</tr>
+<tr class="row-even"><td><p>temp6_max</p></td>
+<td><p>Maximum temperature.</p></td>
+</tr>
+<tr class="row-odd"><td><p>temp6_max_alarm</p></td>
+<td><p>Chip temperature high alarm.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 

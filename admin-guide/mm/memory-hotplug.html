@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.22-dragon
+                5.11.23-dragon
               </div>
             
           
@@ -569,20 +569,20 @@ which will be performed on all sections in the block.</p>
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">phys_device</span></code></p></td>
-<td><p>read-only: designed to show the name of physical memory
-device.  This is not well implemented now.</p></td>
+<td><p>read-only: legacy interface only ever used on s390x to
+expose the covered storage increment.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">removable</span></code></p></td>
-<td><p>read-only: contains an integer value indicating
-whether the memory block is removable or not
-removable.  A value of 1 indicates that the memory
-block is removable and a value of 0 indicates that
-it is not removable. A memory block is removable only if
-every section in the block is removable.</p></td>
+<td><p>read-only: legacy interface that indicated whether a memory
+block was likely to be offlineable or not.  Newer kernel
+versions return “1” if and only if the kernel supports
+memory offlining.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">valid_zones</span></code></p></td>
-<td><p>read-only: designed to show which zones this memory block
-can be onlined to.</p>
+<td><p>read-only: designed to show by which zone memory provided by
+a memory block is managed, and to show by which zone memory
+provided by an offline memory block could be managed when
+onlining.</p>
 <p>The first column shows it`s default zone.</p>
 <p>“memory6/valid_zones: Normal Movable” shows this memoryblock
 can be onlined to ZONE_NORMAL by default and to ZONE_MOVABLE

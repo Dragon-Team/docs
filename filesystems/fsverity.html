@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.22-dragon
+                5.11.23-dragon
               </div>
             
           
@@ -462,6 +462,75 @@ support, or the filesystem superblock has not had the ‘verity’
 feature enabled on it.  (See <a class="reference internal" href="#filesystem-support">Filesystem support</a>.)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">EOVERFLOW</span></code>: the digest is longer than the specified
 <code class="docutils literal notranslate"><span class="pre">digest_size</span></code> bytes.  Try providing a larger buffer.</p></li>
+</ul>
+</div>
+<div class="section" id="fs-ioc-read-verity-metadata">
+<h3>FS_IOC_READ_VERITY_METADATA<a class="headerlink" href="#fs-ioc-read-verity-metadata" title="Permalink to this headline">¶</a></h3>
+<p>The FS_IOC_READ_VERITY_METADATA ioctl reads verity metadata from a
+verity file.  This ioctl is available since Linux v5.12.</p>
+<p>This ioctl allows writing a server program that takes a verity file
+and serves it to a client program, such that the client can do its own
+fs-verity compatible verification of the file.  This only makes sense
+if the client doesn’t trust the server and if the server needs to
+provide the storage for the client.</p>
+<p>This is a fairly specialized use case, and most fs-verity users won’t
+need this ioctl.</p>
+<p>This ioctl takes in a pointer to the following structure:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#define FS_VERITY_METADATA_TYPE_MERKLE_TREE     1
+#define FS_VERITY_METADATA_TYPE_DESCRIPTOR      2
+#define FS_VERITY_METADATA_TYPE_SIGNATURE       3
+
+struct fsverity_read_metadata_arg {
+        __u64 metadata_type;
+        __u64 offset;
+        __u64 length;
+        __u64 buf_ptr;
+        __u64 __reserved;
+};
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">metadata_type</span></code> specifies the type of metadata to read:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FS_VERITY_METADATA_TYPE_MERKLE_TREE</span></code> reads the blocks of the
+Merkle tree.  The blocks are returned in order from the root level
+to the leaf level.  Within each level, the blocks are returned in
+the same order that their hashes are themselves hashed.
+See <a class="reference internal" href="#merkle-tree">Merkle tree</a> for more information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FS_VERITY_METADATA_TYPE_DESCRIPTOR</span></code> reads the fs-verity
+descriptor.  See <a class="reference internal" href="#fs-verity-descriptor">fs-verity descriptor</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FS_VERITY_METADATA_TYPE_SIGNATURE</span></code> reads the signature which was
+passed to FS_IOC_ENABLE_VERITY, if any.  See <a class="reference internal" href="#built-in-signature-verification">Built-in signature
+verification</a>.</p></li>
+</ul>
+<p>The semantics are similar to those of <code class="docutils literal notranslate"><span class="pre">pread()</span></code>.  <code class="docutils literal notranslate"><span class="pre">offset</span></code>
+specifies the offset in bytes into the metadata item to read from, and
+<code class="docutils literal notranslate"><span class="pre">length</span></code> specifies the maximum number of bytes to read from the
+metadata item.  <code class="docutils literal notranslate"><span class="pre">buf_ptr</span></code> is the pointer to the buffer to read into,
+cast to a 64-bit integer.  <code class="docutils literal notranslate"><span class="pre">__reserved</span></code> must be 0.  On success, the
+number of bytes read is returned.  0 is returned at the end of the
+metadata item.  The returned length may be less than <code class="docutils literal notranslate"><span class="pre">length</span></code>, for
+example if the ioctl is interrupted.</p>
+<p>The metadata returned by FS_IOC_READ_VERITY_METADATA isn’t guaranteed
+to be authenticated against the file digest that would be returned by
+<a class="reference internal" href="#fs-ioc-measure-verity">FS_IOC_MEASURE_VERITY</a>, as the metadata is expected to be used to
+implement fs-verity compatible verification anyway (though absent a
+malicious disk, the metadata will indeed match).  E.g. to implement
+this ioctl, the filesystem is allowed to just read the Merkle tree
+blocks from disk without actually verifying the path to the root node.</p>
+<p>FS_IOC_READ_VERITY_METADATA can fail with the following errors:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EFAULT</span></code>: the caller provided inaccessible memory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EINTR</span></code>: the ioctl was interrupted before any data was read</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>: reserved fields were set, or <code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">+</span> <span class="pre">length</span></code>
+overflowed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENODATA</span></code>: the file is not a verity file, or
+FS_VERITY_METADATA_TYPE_SIGNATURE was requested but the file doesn’t
+have a built-in signature</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENOTTY</span></code>: this type of filesystem does not implement fs-verity, or
+this ioctl is not yet implemented on it</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EOPNOTSUPP</span></code>: the kernel was not configured with fs-verity
+support, or the filesystem superblock has not had the ‘verity’
+feature enabled on it.  (See <a class="reference internal" href="#filesystem-support">Filesystem support</a>.)</p></li>
 </ul>
 </div>
 <div class="section" id="fs-ioc-getflags">
