@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.23-dragon
+                5.11.24-dragon
               </div>
             
           
@@ -11971,7 +11971,7 @@ to the _raw output.</p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio"><span class="std std-ref">sysfs-bus-iio</span></a></p>
 <p>If a discrete set of scale values is available, they
 are listed in this attribute.</p>
-<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias">
+<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasp">
 <colgroup>
 <col style="width: 100%" />
 </colgroup>
@@ -11994,7 +11994,7 @@ are listed in this attribute.</p>
 <p>Hardware applied calibration offset (assumed to fix production
 inaccuracies). Values represent a real physical offset expressed
 in SI units (m/s^2 for accelerometer and rad/s for gyroscope).</p>
-<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasu">
+<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias">
 <colgroup>
 <col style="width: 100%" />
 </colgroup>
@@ -12424,17 +12424,17 @@ Up</p></td>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-lptimer-stm32"><span class="std std-ref">sysfs-bus-iio-lptimer-stm32</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-timer-stm32"><span class="std std-ref">sysfs-bus-iio-timer-stm32</span></a></p>
-<p>Reading returns the current preset value. Writing sets the
-preset value. Encoder counts continuously from 0 to preset
-value, depending on direction (up/down).</p>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-lptimer-stm32"><span class="std std-ref">sysfs-bus-iio-lptimer-stm32</span></a></p>
 <p>Reading returns the current preset value.
 Writing sets the preset value.
 When counting up the counter starts from 0 and fires an
 event when reach preset value.
 When counting down the counter start from preset value
 and fire event when reach 0.</p>
+<p>Reading returns the current preset value. Writing sets the
+preset value. Encoder counts continuously from 0 to preset
+value, depending on direction (up/down).</p>
 <table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-count0-quadrature-mode">
 <colgroup>
 <col style="width: 100%" />
@@ -13850,11 +13850,8 @@ Typically a part number.</p>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio"><span class="std std-ref">sysfs-bus-iio</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-frequency-adf4371"><span class="std std-ref">sysfs-bus-iio-frequency-adf4371</span></a></p>
-<p>Output frequency for channel Y in Hz. The number must always be
-specified and unique if the output corresponds to a single
-channel.</p>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio"><span class="std std-ref">sysfs-bus-iio</span></a></p>
 <p>Stores the PLL frequency in Hz for channel Y.
 Reading returns the actual frequency in Hz.
 The ADF4371 has an integrated VCO with fundamendal output
@@ -13875,6 +13872,9 @@ frequencies from 62500000 Hz to 8000000000 Hz.</p>
 <p>Note: writes to one of the channels will affect the frequency of
 all the other channels, since it involves changing the VCO
 fundamental output frequency.</p>
+<p>Output frequency for channel Y in Hz. The number must always be
+specified and unique if the output corresponds to a single
+channel.</p>
 <table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-frequency-increment">
 <colgroup>
 <col style="width: 100%" />
@@ -14041,12 +14041,12 @@ ALS-mapper Y + 1.</p>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-health-afe440x"><span class="std std-ref">sysfs-bus-iio-health-afe440x</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-light-lm3533-als"><span class="std std-ref">sysfs-bus-iio-light-lm3533-als</span></a></p>
-<p>Get and set the LED current for the specified LED active during
-this stage. Y is the specific stage number.
-Get output current for channel Y (0..255), that is,
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-health-afe440x"><span class="std std-ref">sysfs-bus-iio-health-afe440x</span></a></p>
+<p>Get output current for channel Y (0..255), that is,
 out_currentY_currentZ_raw, where Z is the current zone.</p>
+<p>Get and set the LED current for the specified LED active during
+this stage. Y is the specific stage number.</p>
 <table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-out-current-heater-raw">
 <colgroup>
 <col style="width: 100%" />
@@ -34543,6 +34543,23 @@ available and a valid Product Type VDO is returned.</p>
 The value will show 0 until Discover Identity command result becomes
 available and a valid Product Type VDO is returned.</p>
 <p>USB Type-C port alternate mode devices.</p>
+<table class="docutils align-default" id="abi-sys-class-typec-port-partner-cable-usb-power-delivery-revision">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/class/typec/&lt;port&gt;-{partner|cable}/usb_power_delivery_revision</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-typec"><span class="std std-ref">sysfs-class-typec</span></a></p>
+<p>Revision number of the supported USB Power Delivery
+specification of the port partner or cable, or 0.0 when USB
+Power Delivery is not supported.</p>
+<p>Example values:
+- “2.0”: USB Power Delivery Release 2.0
+- “3.0”: USB Power Delivery Release 3.0
+- “3.1”: USB Power Delivery Release 3.1</p>
 <table class="docutils align-default" id="abi-sys-class-typec-port-alt-mode-supported-roles">
 <colgroup>
 <col style="width: 100%" />
@@ -34701,7 +34718,11 @@ Type-C specification, the port supports.</p>
 </table>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-typec"><span class="std std-ref">sysfs-class-typec</span></a></p>
 <p>Revision number of the supported USB Power Delivery
-specification, or 0 when USB Power Delivery is not supported.</p>
+specification, or 0.0 when USB Power Delivery is not supported.</p>
+<p>Example values:
+- “2.0”: USB Power Delivery Release 2.0
+- “3.0”: USB Power Delivery Release 3.0
+- “3.1”: USB Power Delivery Release 3.1</p>
 <table class="docutils align-default" id="abi-sys-class-typec-port-usb-typec-revision">
 <colgroup>
 <col style="width: 100%" />
@@ -42438,21 +42459,6 @@ Available when CONFIG_F2FS_STAT_FS=y.</p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-fs-f2fs"><span class="std std-ref">sysfs-fs-f2fs</span></a></p>
 <p>Controls the trimming rate in batch mode.
 &lt;deprecated&gt;</p>
-<table class="docutils align-default" id="abi-sys-fs-f2fs-disk-ckpt-thread-ioprio">
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>/sys/fs/f2fs/&lt;disk&gt;/ckpt_thread_ioprio</strong></p></td>
-</tr>
-</tbody>
-</table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-fs-f2fs"><span class="std std-ref">sysfs-fs-f2fs</span></a></p>
-<p>Give a way to change checkpoint merge daemon’s io priority.
-Its default value is “be,3”, which means “BE” I/O class and
-I/O priority “3”. We can select the class between “rt” and “be”,
-and set the I/O priority within valid range of it. “,” delimiter
-is necessary in between I/O class and priority number.</p>
 <table class="docutils align-default" id="abi-sys-fs-f2fs-disk-cp-background-calls">
 <colgroup>
 <col style="width: 100%" />
@@ -49773,7 +49779,7 @@ modification.</p>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/sampling_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_sampling_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/buffer/sampling_frequency</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-triggerx-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/triggerX/sampling_frequency</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/triggerX/sampling_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/sampling_frequency_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_sampling_frequency_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_proximity_sampling_frequency_available</span></a></p></li>
@@ -49898,10 +49904,10 @@ modification.</p>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasu"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_illuminance0_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasu"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_proximity0_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasu"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressureY_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasu"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressure_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_illuminance0_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_proximity0_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressureY_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressure_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-calibscale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_voltageY_calibscale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-calibscale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_voltageY_supply_calibscale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-calibscale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_voltageY_i_calibscale</span></a></p></li>
@@ -49973,7 +49979,7 @@ modification.</p>
 <li><p><a class="reference internal" href="#abi-sys-iio-devicex-out-voltagey-powerdown-mode-available"><span class="std std-ref">/sys/…/iio:deviceX/out_altvoltage_powerdown_mode_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-voltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_voltageY_powerdown</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-voltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_voltage_powerdown</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_powerdown</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-voltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_powerdown</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-voltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltage_powerdown</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-frequency"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-phase"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_phase</span></a></p></li>
@@ -50641,7 +50647,7 @@ modification.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-frequency"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-name"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_name</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_powerdown</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-voltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_powerdown</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="file-home--zfs-data-doc-testing-sysfs-bus-iio-gyro-bmg160">
@@ -50863,7 +50869,7 @@ modification.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-triggerx-master-mode-available"><span class="std std-ref">/sys/bus/iio/devices/triggerX/master_mode_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-triggerx-master-mode"><span class="std std-ref">/sys/bus/iio/devices/triggerX/master_mode</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-triggerx-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/triggerX/sampling_frequency</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/triggerX/sampling_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count0-preset"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count0_preset</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-enable-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count_enable_mode_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count0-enable-mode"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count0_enable_mode</span></a></p></li>
@@ -52559,6 +52565,7 @@ sysfs: (&lt;devid&gt; is in the format major:minor)</p>
 <li><p><a class="reference internal" href="#abi-sys-class-typec-port-preferred-role"><span class="std std-ref">/sys/class/typec/&lt;port&gt;/preferred_role</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-typec-port-supported-accessory-modes"><span class="std std-ref">/sys/class/typec/&lt;port&gt;/supported_accessory_modes</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-typec-port-usb-power-delivery-revision"><span class="std std-ref">/sys/class/typec/&lt;port&gt;/usb_power_delivery_revision</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-class-typec-port-partner-cable-usb-power-delivery-revision"><span class="std std-ref">/sys/class/typec/&lt;port&gt;-{partner|cable}/usb_power_delivery_revision</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-typec-port-usb-typec-revision"><span class="std std-ref">/sys/class/typec/&lt;port&gt;/usb_typec_revision</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-typec-port-orientation"><span class="std std-ref">/sys/class/typec/&lt;port&gt;/orientation</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-typec-port-partner-accessory-mode"><span class="std std-ref">/sys/class/typec/&lt;port&gt;-partner/accessory_mode</span></a></p></li>
@@ -53861,7 +53868,6 @@ sysfs: (&lt;devid&gt; is in the format major:minor)</p>
 <li><p><a class="reference internal" href="#abi-sys-fs-f2fs-disk-iostat-period-ms"><span class="std std-ref">/sys/fs/f2fs/&lt;disk&gt;/iostat_period_ms</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-fs-f2fs-disk-max-io-bytes"><span class="std std-ref">/sys/fs/f2fs/&lt;disk&gt;/max_io_bytes</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-fs-f2fs-disk-stat-sb-status"><span class="std std-ref">/sys/fs/f2fs/&lt;disk&gt;/stat/sb_status</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-fs-f2fs-disk-ckpt-thread-ioprio"><span class="std std-ref">/sys/fs/f2fs/&lt;disk&gt;/ckpt_thread_ioprio</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="file-home--zfs-data-doc-testing-sysfs-fs-nilfs2">
