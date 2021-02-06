@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -414,7 +414,7 @@ just that.  The <a class="reference internal" href="../core-api/kernel-api.html#
 prevents destructive compiler optimizations.  However,
 with a bit of devious creativity, it is possible to
 mishandle the return value from <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_dereference" title="rcu_dereference"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_dereference()</span></code></a>.
-Please see rcu_dereference.txt in this directory for
+Please see <a class="reference internal" href="rcu_dereference.html"><span class="doc">PROPER CARE AND FEEDING OF RETURN VALUES FROM rcu_dereference()</span></a> in this directory for
 more information.</p>
 <p>The <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_dereference" title="rcu_dereference"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_dereference()</span></code></a> primitive is used by the
 various “_rcu()” list-traversal primitives, such
@@ -424,7 +424,7 @@ use <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_derefe
 primitives.  This is particularly useful in code that
 is common to readers and updaters.  However, lockdep
 will complain if you access <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_dereference" title="rcu_dereference"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_dereference()</span></code></a> outside
-of an RCU read-side critical section.  See lockdep.txt
+of an RCU read-side critical section.  See <a class="reference internal" href="lockdep.html"><span class="doc">RCU and lockdep checking</span></a>
 to learn what to do about this.</p>
 <p>Of course, neither <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_dereference" title="rcu_dereference"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_dereference()</span></code></a> nor the “_rcu()”
 list-traversal primitives can substitute for a good
@@ -569,7 +569,7 @@ order to keep lockdep happy, in this case, <a class="reference internal" href=".
 primitives when the update-side lock is held is that doing so
 can be quite helpful in reducing code bloat when common code is
 shared between readers and updaters.  Additional primitives
-are provided for this case, as discussed in lockdep.txt.</p>
+are provided for this case, as discussed in <a class="reference internal" href="lockdep.html"><span class="doc">RCU and lockdep checking</span></a>.</p>
 <p>One exception to this rule is when data is only ever added to
 the linked data structure, and is never removed during any
 time that readers might be accessing that structure.  In such
@@ -711,7 +711,7 @@ its rights to return immediately.</p>
 all pre-existing <a class="reference internal" href="../core-api/kernel-api.html#c.call_rcu" title="call_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">call_rcu()</span></code></a> callbacks, you will need to execute
 both <a class="reference internal" href="../core-api/kernel-api.html#c.rcu_barrier" title="rcu_barrier"><code class="xref c c-func docutils literal notranslate"><span class="pre">rcu_barrier()</span></code></a> and <a class="reference internal" href="../core-api/kernel-api.html#c.synchronize_rcu" title="synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">synchronize_rcu()</span></code></a>, if necessary, using
 something like workqueues to to execute them concurrently.</p>
-<p>See rcubarrier.txt for more information.</p>
+<p>See <a class="reference internal" href="rcubarrier.html"><span class="doc">RCU and Unloadable Modules</span></a> for more information.</p>
 </li>
 </ol>
 </div>

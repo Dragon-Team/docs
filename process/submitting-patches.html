@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -123,7 +123,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#reviewer-s-statement-of-oversight">Reviewer’s statement of oversight</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#the-canonical-patch-format">The canonical patch format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-canonical-patch-format">The canonical patch format</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#backtraces-in-commit-mesages">Backtraces in commit mesages</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#explicit-in-reply-to-headers">Explicit In-Reply-To headers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#providing-base-tree-information">Providing base tree information</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
@@ -884,6 +887,25 @@ space (easily fit in 80 columns, maybe with some indentation).  (<code class="do
 generates appropriate diffstats by default.)</p>
 <p>See more details on the proper patch format in the following
 references.</p>
+<div class="section" id="backtraces-in-commit-mesages">
+<h3>Backtraces in commit mesages<a class="headerlink" href="#backtraces-in-commit-mesages" title="Permalink to this headline">¶</a></h3>
+<p>Backtraces help document the call chain leading to a problem. However,
+not all backtraces are helpful. For example, early boot call chains are
+unique and obvious. Copying the full dmesg output verbatim, however,
+adds distracting information like timestamps, module lists, register and
+stack dumps.</p>
+<p>Therefore, the most useful backtraces should distill the relevant
+information from the dump, which makes it easier to focus on the real
+issue. Here is an example of a well-trimmed backtrace:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>unchecked MSR access error: WRMSR to 0xd51 (tried to write 0x0000000000000064)
+at rIP: 0xffffffffae059994 (native_write_msr+0x4/0x20)
+Call Trace:
+mba_wrmsr
+update_domains
+rdtgroup_mkdir
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="explicit-in-reply-to-headers">
 <span id="explicit-in-reply-to"></span><h2>Explicit In-Reply-To headers<a class="headerlink" href="#explicit-in-reply-to-headers" title="Permalink to this headline">¶</a></h2>

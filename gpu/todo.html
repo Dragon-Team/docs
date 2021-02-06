@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -160,6 +160,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#convert-early-atomic-drivers-to-async-commit-helpers">Convert early atomic drivers to async commit helpers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fallout-from-atomic-kms">Fallout from atomic KMS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#get-rid-of-dev-struct-mutex-from-gem-drivers">Get rid of dev-&gt;struct_mutex from GEM drivers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#move-buffer-object-locking-to-dma-resv-lock">Move Buffer Object Locking to dma_resv_lock()</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#convert-logging-to-drm-functions-with-drm-device-paramater">Convert logging to drm_* functions with drm_device paramater</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#convert-drivers-to-use-simple-modeset-suspend-resume">Convert drivers to use simple modeset suspend/resume</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#convert-drivers-to-use-drm-fbdev-generic-setup">Convert drivers to use drm_fbdev_generic_setup()</a></li>
@@ -329,6 +330,8 @@ for testing.</p>
 <p>Advanced: Tricky tasks that need fairly good understanding of the DRM subsystem
 and graphics topics. Generally need the relevant hardware for development and
 testing.</p>
+<p>Expert: Only attempt these if you’ve successfully completed some tricky
+refactorings already and are an expert in the specific area</p>
 <div class="section" id="subsystem-wide-refactorings">
 <h3>Subsystem-wide refactorings<a class="headerlink" href="#subsystem-wide-refactorings" title="Permalink to this headline">¶</a></h3>
 </div>
@@ -446,6 +449,19 @@ fine-grained per-buffer object and per-context lockings scheme. Currently only
 the <code class="docutils literal notranslate"><span class="pre">msm</span></code> and <cite>i915</cite> drivers use <code class="docutils literal notranslate"><span class="pre">struct_mutex</span></code>.</p>
 <p>Contact: Daniel Vetter, respective driver maintainers</p>
 <p>Level: Advanced</p>
+</div>
+<div class="section" id="move-buffer-object-locking-to-dma-resv-lock">
+<h2>Move Buffer Object Locking to dma_resv_lock()<a class="headerlink" href="#move-buffer-object-locking-to-dma-resv-lock" title="Permalink to this headline">¶</a></h2>
+<p>Many drivers have their own per-object locking scheme, usually using
+<a class="reference internal" href="../kernel-hacking/locking.html#c.mutex_lock" title="mutex_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">mutex_lock()</span></code></a>. This causes all kinds of trouble for buffer sharing, since
+depending which driver is the exporter and importer, the locking hierarchy is
+reversed.</p>
+<p>To solve this we need one standard per-object locking mechanism, which is
+<a class="reference internal" href="../driver-api/dma-buf.html#c.dma_resv_lock" title="dma_resv_lock"><code class="xref c c-func docutils literal notranslate"><span class="pre">dma_resv_lock()</span></code></a>. This lock needs to be called as the outermost lock, with all
+other driver specific per-object locks removed. The problem is tha rolling out
+the actual change to the locking contract is a flag day, due to <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf" title="dma_buf"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_buf</span></code></a>
+buffer sharing.</p>
+<p>Level: Expert</p>
 </div>
 <div class="section" id="convert-logging-to-drm-functions-with-drm-device-paramater">
 <h2>Convert logging to drm_* functions with drm_device paramater<a class="headerlink" href="#convert-logging-to-drm-functions-with-drm-device-paramater" title="Permalink to this headline">¶</a></h2>

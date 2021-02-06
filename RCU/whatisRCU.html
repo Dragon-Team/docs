@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -483,7 +483,7 @@ of automatically limiting update rate should grace periods
 be delayed.  This property results in system resilience in face
 of denial-of-service attacks.  Code using <a class="reference internal" href="../core-api/kernel-api.html#c.call_rcu" title="call_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">call_rcu()</span></code></a> should limit
 update rate in order to gain this same sort of resilience.  See
-checklist.txt for some approaches to limiting the update rate.</p>
+<a class="reference internal" href="checklist.html"><span class="doc">Review Checklist for RCU Patches</span></a> for some approaches to limiting the update rate.</p>
 </div></blockquote>
 </div>
 <div class="section" id="rcu-assign-pointer">
@@ -726,7 +726,7 @@ the data element, in order to wait for the completion of all
 RCU read-side critical sections that might be referencing that
 data item.</p></li>
 </ul>
-<p>See checklist.txt for additional rules to follow when using RCU.
+<p>See <a class="reference internal" href="checklist.html"><span class="doc">Review Checklist for RCU Patches</span></a> for additional rules to follow when using RCU.
 And again, more-typical uses of RCU may be found in <a class="reference internal" href="listRCU.html#list-rcu-doc"><span class="std std-ref"><a class="reference internal" href="listRCU.html"><span class="doc">Using RCU to Protect Read-Mostly Linked Lists</span></a></span></a>, <a class="reference internal" href="arrayRCU.html#array-rcu-doc"><span class="std std-ref"><a class="reference internal" href="arrayRCU.html"><span class="doc">Using RCU to Protect Read-Mostly Arrays</span></a></span></a>, and <a class="reference internal" href="NMI-RCU.html#nmi-rcu-doc"><span class="std std-ref"><a class="reference internal" href="NMI-RCU.html"><span class="doc">Using RCU to Protect Dynamic NMI Handlers</span></a></span></a>.</p>
 </div>
 <div class="section" id="what-if-my-updating-thread-cannot-block">
@@ -815,7 +815,7 @@ to avoid having to write your own callback:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>kfree_rcu(old_fp, rcu);
 </pre></div>
 </div>
-<p>Again, see checklist.txt for additional rules governing the use of RCU.</p>
+<p>Again, see <a class="reference internal" href="checklist.html"><span class="doc">Review Checklist for RCU Patches</span></a> for additional rules governing the use of RCU.</p>
 </div>
 <div class="section" id="what-are-some-simple-implementations-of-rcu">
 <span id="id8"></span><h2>5.  WHAT ARE SOME SIMPLE IMPLEMENTATIONS OF RCU?<a class="headerlink" href="#what-are-some-simple-implementations-of-rcu" title="Permalink to this headline">¶</a></h2>

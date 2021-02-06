@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -479,6 +479,11 @@ iterator function. However, the seq_file code (by design) will not sleep
 between the calls to <a class="reference internal" href="../networking/ieee802154.html#c.start" title="start"><code class="xref c c-func docutils literal notranslate"><span class="pre">start()</span></code></a> and <a class="reference internal" href="../networking/ieee802154.html#c.stop" title="stop"><code class="xref c c-func docutils literal notranslate"><span class="pre">stop()</span></code></a>, so holding a lock during that time
 is a reasonable thing to do. The seq_file code will also avoid taking any
 other locks while the iterator is active.</p>
+<p>The iterater value returned by <a class="reference internal" href="../networking/ieee802154.html#c.start" title="start"><code class="xref c c-func docutils literal notranslate"><span class="pre">start()</span></code></a> or next() is guaranteed to be
+passed to a subsequenct next() or <a class="reference internal" href="../networking/ieee802154.html#c.stop" title="stop"><code class="xref c c-func docutils literal notranslate"><span class="pre">stop()</span></code></a> call.  This allows resources
+such as locks that were taken to be reliably released.  There is <em>no</em>
+guarantee that the iterator will be passed to show(), though in practice
+it often will be.</p>
 </div>
 <div class="section" id="formatted-output">
 <h2>Formatted output<a class="headerlink" href="#formatted-output" title="Permalink to this headline">¶</a></h2>

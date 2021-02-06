@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -456,17 +456,19 @@ operation has finished.</p>
 <p>By default, these wake up userfaults blocked on the range in question.
 They support a <code class="docutils literal notranslate"><span class="pre">UFFDIO_*_MODE_DONTWAKE</span></code> <code class="docutils literal notranslate"><span class="pre">mode</span></code> flag, which indicates
 that waking will be done separately at some later time.</p>
-<p>Which of these are used depends on the kind of fault:</p>
+<p>Which ioctl to choose depends on the kind of page fault, and what we’d
+like to do to resolve it:</p>
 <ul class="simple">
-<li><p>For <code class="docutils literal notranslate"><span class="pre">UFFDIO_REGISTER_MODE_MISSING</span></code> faults, a new page has to be
-provided. This can be done with either <code class="docutils literal notranslate"><span class="pre">UFFDIO_COPY</span></code> or
-<code class="docutils literal notranslate"><span class="pre">UFFDIO_ZEROPAGE</span></code>. The default (non-userfaultfd) behavior would be to
-provide a zero page, but in userfaultfd this is left up to userspace.</p></li>
-<li><p>For <code class="docutils literal notranslate"><span class="pre">UFFDIO_REGISTER_MODE_MINOR</span></code> faults, an existing page already
-exists. Userspace needs to ensure its contents are correct (if it needs
-to be modified, by writing directly to the non-userfaultfd-registered
-side of shared memory), and then issue <code class="docutils literal notranslate"><span class="pre">UFFDIO_CONTINUE</span></code> to resolve
-the fault.</p></li>
+<li><p>For <code class="docutils literal notranslate"><span class="pre">UFFDIO_REGISTER_MODE_MISSING</span></code> faults, the fault needs to be
+resolved by either providing a new page (<code class="docutils literal notranslate"><span class="pre">UFFDIO_COPY</span></code>), or mapping
+the zero page (<code class="docutils literal notranslate"><span class="pre">UFFDIO_ZEROPAGE</span></code>). By default, the kernel would map
+the zero page for a missing fault. With userfaultfd, userspace can
+decide what content to provide before the faulting thread continues.</p></li>
+<li><p>For <code class="docutils literal notranslate"><span class="pre">UFFDIO_REGISTER_MODE_MINOR</span></code> faults, there is an existing page (in
+the page cache). Userspace has the option of modifying the page’s
+contents before resolving the fault. Once the contents are correct
+(modified or not), userspace asks the kernel to map the page and let the
+faulting thread continue with <code class="docutils literal notranslate"><span class="pre">UFFDIO_CONTINUE</span></code>.</p></li>
 </ul>
 <p>Notes:</p>
 <ul class="simple">

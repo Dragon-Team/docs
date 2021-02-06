@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -493,6 +493,7 @@ and freq_table must be generated in ascending order.</p>
   struct device dev;
   struct devfreq_dev_profile *profile;
   const struct devfreq_governor *governor;
+  struct opp_table *opp_table;
   struct notifier_block nb;
   struct delayed_work work;
   unsigned long previous_freq;
@@ -526,6 +527,8 @@ using devfreq.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">profile</span></code></dt><dd><p>device-specific devfreq profile</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">governor</span></code></dt><dd><p>method how to choose frequency based on the usage.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">opp_table</span></code></dt><dd><p>Reference to OPP table of dev.parent, if one exists.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">nb</span></code></dt><dd><p>notifier block used to notify devfreq object that it should
 reevaluate operable frequencies. Devfreq users may use

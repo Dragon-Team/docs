@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -432,7 +432,7 @@ last report section shows the memory tags around the accessed address
 <div class="section" id="boot-parameters">
 <h3>Boot parameters<a class="headerlink" href="#boot-parameters" title="Permalink to this headline">¶</a></h3>
 <p>Hardware tag-based KASAN mode (see the section about various modes below) is
-intended for use in production as a security mitigation. Therefore it supports
+intended for use in production as a security mitigation. Therefore, it supports
 boot parameters that allow to disable KASAN competely or otherwise control
 particular KASAN features.</p>
 <ul class="simple">
@@ -441,7 +441,8 @@ particular KASAN features.</p>
 traces collection (default: <code class="docutils literal notranslate"><span class="pre">on</span></code> for <code class="docutils literal notranslate"><span class="pre">CONFIG_DEBUG_KERNEL=y</span></code>, otherwise
 <code class="docutils literal notranslate"><span class="pre">off</span></code>).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kasan.fault=report</span></code> or <code class="docutils literal notranslate"><span class="pre">=panic</span></code> controls whether to only print a KASAN
-report or also panic the kernel (default: <code class="docutils literal notranslate"><span class="pre">report</span></code>).</p></li>
+report or also panic the kernel (default: <code class="docutils literal notranslate"><span class="pre">report</span></code>). Note, that tag
+checking gets disabled after the first reported bug.</p></li>
 </ul>
 </div>
 <div class="section" id="for-developers">
@@ -551,6 +552,8 @@ won’t be enabled. In this case all boot parameters are ignored.</p>
 <p>Note, that enabling CONFIG_KASAN_HW_TAGS always results in in-kernel TBI being
 enabled. Even when kasan.mode=off is provided, or when the hardware doesn’t
 support MTE (but supports TBI).</p>
+<p>Hardware tag-based KASAN only reports the first found bug. After that MTE tag
+checking gets disabled.</p>
 </div>
 </div>
 <div class="section" id="what-memory-accesses-are-sanitised-by-kasan">

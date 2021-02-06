@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -4805,7 +4805,8 @@ these functions should be implemented in driver side.</p>
   struct list_head                pending_list;
   spinlock_t job_list_lock;
   int hang_limit;
-  atomic_t score;
+  atomic_t *score;
+  atomic_t _score;
   bool ready;
   bool free_guilty;
 };
@@ -5004,7 +5005,7 @@ void <code class="sig-name descname">drm_sched_job_cleanup</code><span class="si
 drm_gpu_schedulers are ready</p>
 <dl class="c function">
 <dt id="c.drm_sched_init">
-int <code class="sig-name descname">drm_sched_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gpu_scheduler" title="drm_gpu_scheduler">drm_gpu_scheduler</a> *<em>sched</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_sched_backend_ops" title="drm_sched_backend_ops">drm_sched_backend_ops</a> *<em>ops</em>, unsigned <em>hw_submission</em>, unsigned <em>hang_limit</em>, long <em>timeout</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_sched_init" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">drm_sched_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gpu_scheduler" title="drm_gpu_scheduler">drm_gpu_scheduler</a> *<em>sched</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_sched_backend_ops" title="drm_sched_backend_ops">drm_sched_backend_ops</a> *<em>ops</em>, unsigned <em>hw_submission</em>, unsigned <em>hang_limit</em>, long <em>timeout</em>, atomic_t *<em>score</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_sched_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Init a gpu scheduler instance</p>
 </dd></dl>
 
@@ -5019,6 +5020,8 @@ int <code class="sig-name descname">drm_sched_init</code><span class="sig-paren"
 <dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">hang_limit</span></code></dt><dd><p>number of times to allow a job to hang before dropping it</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">timeout</span></code></dt><dd><p>timeout value in jiffies for the scheduler</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">atomic_t</span> <span class="pre">*score</span></code></dt><dd><p>optional score atomic shared with other schedulers</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*name</span></code></dt><dd><p>name used for debugging</p>
 </dd>

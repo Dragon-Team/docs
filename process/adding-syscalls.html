@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -760,7 +760,7 @@ table, but not from elsewhere in the kernel.  If the syscall functionality is
 useful to be used within the kernel, needs to be shared between an old and a
 new syscall, or needs to be shared between a syscall and its compatibility
 variant, it should be implemented by means of a “helper” function (such as
-<code class="docutils literal notranslate"><span class="pre">kern_xyzzy()</span></code>).  This kernel function may then be called within the
+<code class="docutils literal notranslate"><span class="pre">ksys_xyzzy()</span></code>).  This kernel function may then be called within the
 syscall stub (<code class="docutils literal notranslate"><span class="pre">sys_xyzzy()</span></code>), the compatibility syscall stub
 (<code class="docutils literal notranslate"><span class="pre">compat_sys_xyzzy()</span></code>), and/or other kernel code.</p>
 <p>At least on 64-bit x86, it will be a hard requirement from v4.17 onwards to not

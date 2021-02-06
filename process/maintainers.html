@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -517,6 +517,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-kona-gpio-driver">BROADCOM KONA GPIO DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-netxtreme-e-roce-driver">BROADCOM NETXTREME-E ROCE DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-nvram-driver">BROADCOM NVRAM DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#broadcom-pmb-power-management-bus-driver">BROADCOM PMB (POWER MANAGEMENT BUS) DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-specific-amba-driver-bcma">BROADCOM SPECIFIC AMBA DRIVER (BCMA)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-spi-driver">BROADCOM SPI DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-stb-avs-cpufreq-driver">BROADCOM STB AVS CPUFREQ DRIVER</a></li>
@@ -1703,6 +1704,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#pcie-driver-for-hisilicon-kirin">PCIE DRIVER FOR HISILICON KIRIN</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pcie-driver-for-hisilicon-stb">PCIE DRIVER FOR HISILICON STB</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pcie-driver-for-mediatek">PCIE DRIVER FOR MEDIATEK</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pcie-driver-for-microchip">PCIE DRIVER FOR MICROCHIP</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pcie-driver-for-qualcomm-msm">PCIE DRIVER FOR QUALCOMM MSM</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pcie-driver-for-rockchip">PCIE DRIVER FOR ROCKCHIP</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pcie-driver-for-socionext-uniphier">PCIE DRIVER FOR SOCIONEXT UNIPHIER</a></li>
@@ -2074,7 +2076,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#staging-subsystem">STAGING SUBSYSTEM</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#starfire-duralan-network-driver">STARFIRE/DURALAN NETWORK DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#static-branch-call">STATIC BRANCH/CALL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#stec-s1220-skd-driver">STEC S1220 SKD DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sti-audio-asoc-drivers">STI AUDIO (ASoC) DRIVERS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sti-cec-driver">STI CEC DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#stk1160-usb-video-capture-driver">STK1160 USB VIDEO CAPTURE DRIVER</a></li>
@@ -10854,6 +10855,29 @@ Naresh Kumar PBS &lt;<a class="reference external" href="mailto:nareshkumar&#46;
 </dd>
 </dl>
 </div>
+<div class="section" id="broadcom-pmb-power-management-bus-driver">
+<h3>BROADCOM PMB (POWER MANAGEMENT BUS) DRIVER<a class="headerlink" href="#broadcom-pmb-power-management-bus-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Rafał Miłecki &lt;<a class="reference external" href="mailto:rafal&#37;&#52;&#48;milecki&#46;pl">rafal<span>&#64;</span>milecki<span>&#46;</span>pl</a>&gt;,
+Florian Fainelli &lt;<a class="reference external" href="mailto:f&#46;fainelli&#37;&#52;&#48;gmail&#46;com">f<span>&#46;</span>fainelli<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;,
+<a class="reference external" href="mailto:bcm-kernel-feedback-list&#37;&#52;&#48;broadcom&#46;com">bcm-kernel-feedback-list<span>&#64;</span>broadcom<span>&#46;</span>com</a></p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:linux-pm&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-pm<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Maintained</p>
+</dd>
+<dt class="field-even">SCM</dt>
+<dd class="field-even"><p>git git://github.com/broadcom/stblinux.git</p>
+</dd>
+<dt class="field-odd">Files</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/soc/bcm/bcm-pmb.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/dt-bindings/soc/bcm-pmb.h</span></code></p>
+</dd>
+</dl>
+</div>
 <div class="section" id="broadcom-specific-amba-driver-bcma">
 <h3>BROADCOM SPECIFIC AMBA DRIVER (BCMA)<a class="headerlink" href="#broadcom-specific-amba-driver-bcma" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
@@ -11980,8 +12004,10 @@ David Woodhouse &lt;<a class="reference external" href="mailto:dwmw2&#37;&#52;&#
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><a class="reference internal" href="../admin-guide/module-signing.html"><span class="doc">admin-guide/module-signing</span></a>
 <code class="docutils literal notranslate"><span class="pre">certs/</span></code>
+<code class="docutils literal notranslate"><span class="pre">scripts/check-blacklist-hashes.awk</span></code>
 <code class="docutils literal notranslate"><span class="pre">scripts/extract-cert.c</span></code>
-<code class="docutils literal notranslate"><span class="pre">scripts/sign-file.c</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">scripts/sign-file.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">tools/certs/</span></code></p>
 </dd>
 </dl>
 </div>
@@ -14033,7 +14059,7 @@ Pali Rohár &lt;<a class="reference external" href="mailto:pali&#37;&#52;&#48;ke
 <dd class="field-odd"><p>Maintained</p>
 </dd>
 <dt class="field-even">Files</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell-laptop.c</span></code></p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell/dell-laptop.c</span></code></p>
 </dd>
 </dl>
 </div>
@@ -14047,7 +14073,7 @@ Pali Rohár &lt;<a class="reference external" href="mailto:pali&#37;&#52;&#48;ke
 <dd class="field-even"><p>Maintained</p>
 </dd>
 <dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell-smo8800.c</span></code></p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell/dell-smo8800.c</span></code></p>
 </dd>
 </dl>
 </div>
@@ -14061,7 +14087,7 @@ Pali Rohár &lt;<a class="reference external" href="mailto:pali&#37;&#52;&#48;ke
 <dd class="field-even"><p>Maintained</p>
 </dd>
 <dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell-rbtn.*</span></code></p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell/dell-rbtn.*</span></code></p>
 </dd>
 </dl>
 </div>
@@ -14093,7 +14119,7 @@ Pali Rohár &lt;<a class="reference external" href="mailto:pali&#37;&#52;&#48;ke
 <dd class="field-odd"><p>Maintained</p>
 </dd>
 <dt class="field-even">Files</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell_rbu.c</span></code></p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell/dell_rbu.c</span></code></p>
 </dd>
 </dl>
 </div>
@@ -14111,7 +14137,7 @@ Mario Limonciello &lt;<a class="reference external" href="mailto:mario&#46;limon
 <dd class="field-odd"><p>Maintained</p>
 </dd>
 <dt class="field-even">Files</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell-smbios.*</span></code></p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell/dell-smbios.*</span></code></p>
 </dd>
 </dl>
 </div>
@@ -14128,7 +14154,7 @@ Mario Limonciello &lt;<a class="reference external" href="mailto:mario&#46;limon
 <dd class="field-odd"><p>Maintained</p>
 </dd>
 <dt class="field-even">Files</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell-smbios-smm.c</span></code></p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell/dell-smbios-smm.c</span></code></p>
 </dd>
 </dl>
 </div>
@@ -14145,7 +14171,7 @@ Mario Limonciello &lt;<a class="reference external" href="mailto:mario&#46;limon
 <dd class="field-odd"><p>Maintained</p>
 </dd>
 <dt class="field-even">Files</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell-smbios-wmi.c</span></code>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell/dell-smbios-wmi.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">tools/wmi/dell-smbios-example.c</span></code></p>
 </dd>
 </dl>
@@ -14164,7 +14190,7 @@ Mario Limonciello &lt;<a class="reference external" href="mailto:mario&#46;limon
 </dd>
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><a class="reference internal" href="../driver-api/dcdbas.html"><span class="doc">driver-api/dcdbas</span></a>
-<code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dcdbas.*</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell/dcdbas.*</span></code></p>
 </dd>
 </dl>
 </div>
@@ -14178,7 +14204,7 @@ Mario Limonciello &lt;<a class="reference external" href="mailto:mario&#46;limon
 <dd class="field-even"><p>Maintained</p>
 </dd>
 <dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell-wmi-descriptor.c</span></code></p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell/dell-wmi-descriptor.c</span></code></p>
 </dd>
 </dl>
 </div>
@@ -14198,7 +14224,7 @@ Prasanth Ksr &lt;<a class="reference external" href="mailto:prasanth&#46;ksr&#37
 </dd>
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/ABI/testing/sysfs-class-firmware-attributes</span></code>
-<code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell-wmi-sysman/</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell/dell-wmi-sysman/</span></code></p>
 </dd>
 </dl>
 </div>
@@ -14213,7 +14239,7 @@ Pali Rohár &lt;<a class="reference external" href="mailto:pali&#37;&#52;&#48;ke
 <dd class="field-even"><p>Maintained</p>
 </dd>
 <dt class="field-odd">Files</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell-wmi.c</span></code></p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">drivers/platform/x86/dell/dell-wmi.c</span></code></p>
 </dd>
 </dl>
 </div>
@@ -35123,6 +35149,24 @@ Binghui Wang &lt;<a class="reference external" href="mailto:wangbinghui&#37;&#52
 </dd>
 </dl>
 </div>
+<div class="section" id="pcie-driver-for-microchip">
+<h3>PCIE DRIVER FOR MICROCHIP<a class="headerlink" href="#pcie-driver-for-microchip" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Daire McNamara &lt;<a class="reference external" href="mailto:daire&#46;mcnamara&#37;&#52;&#48;microchip&#46;com">daire<span>&#46;</span>mcnamara<span>&#64;</span>microchip<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:linux-pci&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-pci<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Supported</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/pci/microchip*</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/pci/controller/*microchip*</span></code></p>
+</dd>
+</dl>
+</div>
 <div class="section" id="pcie-driver-for-qualcomm-msm">
 <h3>PCIE DRIVER FOR QUALCOMM MSM<a class="headerlink" href="#pcie-driver-for-qualcomm-msm" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
@@ -35745,7 +35789,6 @@ Haojian Zhuang &lt;<a class="reference external" href="mailto:haojian&#46;zhuang
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">arch/mips/boot/dts/img/pistachio*</span></code>
 <code class="docutils literal notranslate"><span class="pre">arch/mips/configs/pistachio*_defconfig</span></code>
-<code class="docutils literal notranslate"><span class="pre">arch/mips/include/asm/mach-pistachio/</span></code>
 <code class="docutils literal notranslate"><span class="pre">arch/mips/pistachio/</span></code></p>
 </dd>
 </dl>
@@ -42618,23 +42661,6 @@ Ard Biesheuvel &lt;<a class="reference external" href="mailto:ardb&#37;&#52;&#48
 <code class="docutils literal notranslate"><span class="pre">include/linux/static_call*.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">kernel/jump_label.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">kernel/static_call.c</span></code></p>
-</dd>
-</dl>
-</div>
-<div class="section" id="stec-s1220-skd-driver">
-<h3>STEC S1220 SKD DRIVER<a class="headerlink" href="#stec-s1220-skd-driver" title="Permalink to this headline">¶</a></h3>
-<dl class="field-list simple">
-<dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Damien Le Moal &lt;<a class="reference external" href="mailto:Damien&#46;LeMoal&#37;&#52;&#48;wdc&#46;com">Damien<span>&#46;</span>LeMoal<span>&#64;</span>wdc<span>&#46;</span>com</a>&gt;</p>
-</dd>
-<dt class="field-even">Mailing list</dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:linux-block&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-block<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
-</dd>
-<dt class="field-odd">Status</dt>
-<dd class="field-odd"><p>Maintained</p>
-</dd>
-<dt class="field-even">Files</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/block/skd*[ch]</span></code></p>
 </dd>
 </dl>
 </div>

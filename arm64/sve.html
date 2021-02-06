@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -327,8 +327,8 @@ HWCAP2_SVESM4</p>
 </div></blockquote>
 <p>This list may be extended over time as the SVE architecture evolves.</p>
 <p>These extensions are also reported via the CPU ID register ID_AA64ZFR0_EL1,
-which userspace can read using an MRS instruction.  See elf_hwcaps.txt and
-cpu-feature-registers.txt for details.</p>
+which userspace can read using an MRS instruction.  See <a class="reference internal" href="elf_hwcaps.html"><span class="doc">ARM64 ELF hwcaps</span></a> and
+<a class="reference internal" href="cpu-feature-registers.html"><span class="doc">ARM64 CPU Feature Registers</span></a> for details.</p>
 </li>
 <li><p>Debuggers should restrict themselves to interacting with the target via the
 NT_ARM_SVE regset.  The recommended way of detecting support for this regset

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -837,7 +837,7 @@ caches, RSS and Active pages/Inactive pages are shown.</p>
 </div>
 <div class="section" id="testing">
 <h2>4. Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
-<p>For testing features and implementation, see memcg_test.txt.</p>
+<p>For testing features and implementation, see <a class="reference internal" href="memcg_test.html"><span class="doc">Memory Resource Controller(Memcg) Implementation Memo</span></a>.</p>
 <p>Performance test is also important. To see pure memory controller’s overhead,
 testing on tmpfs will give you good numbers of small overheads.
 Example: do kernel make on tmpfs.</p>
@@ -1224,7 +1224,7 @@ behavior to hold the mutex too long, so we may need some trick.</p></li>
 <div class="section" id="memory-thresholds">
 <h2>9. Memory thresholds<a class="headerlink" href="#memory-thresholds" title="Permalink to this headline">¶</a></h2>
 <p>Memory cgroup implements memory thresholds using the cgroups notification
-API (see cgroups.txt). It allows to register multiple memory and memsw
+API (see <a class="reference internal" href="cgroups.html"><span class="doc">Control Groups</span></a>). It allows to register multiple memory and memsw
 thresholds and gets notifications when it crosses.</p>
 <p>To register a threshold, an application must:</p>
 <ul class="simple">
@@ -1241,7 +1241,7 @@ threshold in any direction.</p>
 <h2>10. OOM Control<a class="headerlink" href="#oom-control" title="Permalink to this headline">¶</a></h2>
 <p>memory.oom_control file is for OOM notification and other controls.</p>
 <p>Memory cgroup implements OOM notifier using the cgroup notification
-API (See cgroups.txt). It allows to register multiple OOM notification
+API (See <a class="reference internal" href="cgroups.html"><span class="doc">Control Groups</span></a>). It allows to register multiple OOM notification
 delivery and gets notification when OOM happens.</p>
 <p>To register a notifier, an application must:</p>
 <blockquote>

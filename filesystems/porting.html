@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -563,7 +563,7 @@ the callback.  It used to be necessary to clean it there, but not anymore
 <p><strong>recommended</strong></p>
 <p>vfs now tries to do path walking in “rcu-walk mode”, which avoids
 atomic operations and scalability hazards on dentries and inodes (see
-Documentation/filesystems/path-lookup.txt). d_hash and d_compare changes
+<a class="reference internal" href="path-lookup.html"><span class="doc">Pathname lookup</span></a>). d_hash and d_compare changes
 (above) are examples of the changes required to support this. For more complex
 filesystem callbacks, the vfs drops out of rcu-walk mode before the fs call, so
 no changes are required to the filesystem. However, this is costly and loses

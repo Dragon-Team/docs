@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -3493,6 +3493,33 @@ end of the file.</p>
 but 0 when invalidating pagecache, don’t throw away private data.</p>
 </dd>
 </dl>
+<dl class="c function">
+<dt id="c.follow_pte">
+int <code class="sig-name descname">follow_pte</code><span class="sig-paren">(</span><em class="property">struct</em> mm_struct *<em>mm</em>, unsigned long <em>address</em>, pte_t **<em>ptepp</em>, spinlock_t **<em>ptlp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.follow_pte" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>look up PTE at a user virtual address</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">mm_struct</span> <span class="pre">*mm</span></code></dt><dd><p><em>undescribed</em></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">address</span></code></dt><dd><p>user virtual address</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pte_t</span> <span class="pre">**ptepp</span></code></dt><dd><p>location to store found PTE</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">spinlock_t</span> <span class="pre">**ptlp</span></code></dt><dd><p>location to store the lock for the PTE</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>On a successful return, the pointer to the PTE is stored in <strong>ptepp</strong>;
+the corresponding lock is taken and its location is stored in <strong>ptlp</strong>.
+The contents of the PTE are only stable until <strong>ptlp</strong> is released;
+any further use, if any, must be protected against invalidation
+with MMU notifiers.</p>
+<p>Only IO mappings and raw PFN mappings are allowed.  The mmap semaphore
+should be taken for read.</p>
+<p><strong>Return</strong></p>
+<p>zero on success, -ve otherwise.</p>
 <dl class="c function">
 <dt id="c.follow_pfn">
 int <code class="sig-name descname">follow_pfn</code><span class="sig-paren">(</span><em class="property">struct</em> vm_area_struct *<em>vma</em>, unsigned long <em>address</em>, unsigned long *<em>pfn</em><span class="sig-paren">)</span><a class="headerlink" href="#c.follow_pfn" title="Permalink to this definition">¶</a><br /></dt>

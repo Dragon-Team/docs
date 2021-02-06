@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -526,6 +526,23 @@ packet.</p>
 </dd>
 <dt>min_adv_mss - INTEGER</dt><dd><p>The advertised MSS depends on the first hop route MTU, but will
 never be lower than this setting.</p>
+</dd>
+<dt>fib_notify_on_flag_change - INTEGER</dt><dd><p>Whether to emit RTM_NEWROUTE notifications whenever RTM_F_OFFLOAD/
+RTM_F_TRAP flags are changed.</p>
+<p>After installing a route to the kernel, user space receives an
+acknowledgment, which means the route was installed in the kernel,
+but not necessarily in hardware.
+It is also possible for a route already installed in hardware to change
+its action and therefore its flags. For example, a host route that is
+trapping packets can be “promoted” to perform decapsulation following
+the installation of an IPinIP/VXLAN tunnel.
+The notifications will indicate to user-space the state of the route.</p>
+<p>Default: 0 (Do not emit notifications.)</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><p>0 - Do not emit notifications.</p></li>
+<li><p>1 - Emit notifications.</p></li>
+</ul>
 </dd>
 </dl>
 <p>IP Fragmentation:</p>
@@ -1930,6 +1947,23 @@ understands the new API, this sysctl can be disabled to achieve full
 performance benefits of the new API by disabling the nexthop expansion
 and extraneous notifications.
 Default: true (backward compat mode)</p>
+</dd>
+<dt>fib_notify_on_flag_change - INTEGER</dt><dd><p>Whether to emit RTM_NEWROUTE notifications whenever RTM_F_OFFLOAD/
+RTM_F_TRAP flags are changed.</p>
+<p>After installing a route to the kernel, user space receives an
+acknowledgment, which means the route was installed in the kernel,
+but not necessarily in hardware.
+It is also possible for a route already installed in hardware to change
+its action and therefore its flags. For example, a host route that is
+trapping packets can be “promoted” to perform decapsulation following
+the installation of an IPinIP/VXLAN tunnel.
+The notifications will indicate to user-space the state of the route.</p>
+<p>Default: 0 (Do not emit notifications.)</p>
+<p>Possible values:</p>
+<ul class="simple">
+<li><p>0 - Do not emit notifications.</p></li>
+<li><p>1 - Emit notifications.</p></li>
+</ul>
 </dd>
 </dl>
 <p>IPv6 Fragmentation:</p>

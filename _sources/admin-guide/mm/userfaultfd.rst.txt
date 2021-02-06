@@ -120,18 +120,20 @@ By default, these wake up userfaults blocked on the range in question.
 They support a ``UFFDIO_*_MODE_DONTWAKE`` ``mode`` flag, which indicates
 that waking will be done separately at some later time.
 
-Which of these are used depends on the kind of fault:
+Which ioctl to choose depends on the kind of page fault, and what we'd
+like to do to resolve it:
 
-- For ``UFFDIO_REGISTER_MODE_MISSING`` faults, a new page has to be
-  provided. This can be done with either ``UFFDIO_COPY`` or
-  ``UFFDIO_ZEROPAGE``. The default (non-userfaultfd) behavior would be to
-  provide a zero page, but in userfaultfd this is left up to userspace.
+- For ``UFFDIO_REGISTER_MODE_MISSING`` faults, the fault needs to be
+  resolved by either providing a new page (``UFFDIO_COPY``), or mapping
+  the zero page (``UFFDIO_ZEROPAGE``). By default, the kernel would map
+  the zero page for a missing fault. With userfaultfd, userspace can
+  decide what content to provide before the faulting thread continues.
 
-- For ``UFFDIO_REGISTER_MODE_MINOR`` faults, an existing page already
-  exists. Userspace needs to ensure its contents are correct (if it needs
-  to be modified, by writing directly to the non-userfaultfd-registered
-  side of shared memory), and then issue ``UFFDIO_CONTINUE`` to resolve
-  the fault.
+- For ``UFFDIO_REGISTER_MODE_MINOR`` faults, there is an existing page (in
+  the page cache). Userspace has the option of modifying the page's
+  contents before resolving the fault. Once the contents are correct
+  (modified or not), userspace asks the kernel to map the page and let the
+  faulting thread continue with ``UFFDIO_CONTINUE``.
 
 Notes:
 

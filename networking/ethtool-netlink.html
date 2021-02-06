@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -1215,17 +1215,21 @@ devices supporting the request).</p>
 <td><p>u8</p></td>
 <td><p>Master/slave port mode</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ETHTOOL_A_LINKMODES_LANES</span></code></p></td>
+<td><p>u32</p></td>
+<td><p>lanes</p></td>
+</tr>
 </tbody>
 </table>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">ETHTOOL_A_LINKMODES_OURS</span></code> bit set allows setting advertised link modes. If
 autonegotiation is on (either set now or kept from before), advertised modes
 are not changed (no <code class="docutils literal notranslate"><span class="pre">ETHTOOL_A_LINKMODES_OURS</span></code> attribute) and at least one
-of speed and duplex is specified, kernel adjusts advertised modes to all
-supported modes matching speed, duplex or both (whatever is specified). This
-autoselection is done on ethtool side with ioctl interface, netlink interface
-is supposed to allow requesting changes without knowing what exactly kernel
-supports.</p>
+of speed, duplex and lanes is specified, kernel adjusts advertised modes to all
+supported modes matching speed, duplex, lanes or all (whatever is specified).
+This autoselection is done on ethtool side with ioctl interface, netlink
+interface is supposed to allow requesting changes without knowing what exactly
+kernel supports.</p>
 </div>
 <div class="section" id="linkstate-get">
 <h2>LINKSTATE_GET<a class="headerlink" href="#linkstate-get" title="Permalink to this headline">¶</a></h2>

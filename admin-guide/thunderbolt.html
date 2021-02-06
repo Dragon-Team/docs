@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -379,6 +379,8 @@ security levels available. Intel Titan Ridge added one more security level
 be DMA masters and thus read contents of the host memory without CPU and OS
 knowing about it. There are ways to prevent this by setting up an IOMMU but
 it is not always available for various reasons.</p>
+<p>Some USB4 systems have a BIOS setting to disable PCIe tunneling. This is
+treated as another security level (nopcie).</p>
 <p>The security levels are as follows:</p>
 <blockquote>
 <div><dl class="simple">
@@ -404,6 +406,9 @@ typically called <em>Display Port Only</em>.</p>
 <dt>usbonly</dt><dd><p>The firmware automatically creates tunnels for the USB controller and
 Display Port in a dock. All PCIe links downstream of the dock are
 removed.</p>
+</dd>
+<dt>nopcie</dt><dd><p>PCIe tunneling is disabled/forbidden from the BIOS. Available in some
+USB4 systems.</p>
 </dd>
 </dl>
 </div></blockquote>

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -360,6 +360,18 @@ instead of <code class="docutils literal notranslate"><span class="pre">double-i
 something to hide:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="n">do_this</span><span class="p">;</span>
   <span class="n">do_something_everytime</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Don’t use commas to avoid using braces:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+        <span class="n">do_this</span><span class="p">(),</span> <span class="n">do_that</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Always uses braces for multiple statements:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">do_this</span><span class="p">();</span>
+        <span class="n">do_that</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Don’t put multiple assignments on a single line either.  Kernel coding style

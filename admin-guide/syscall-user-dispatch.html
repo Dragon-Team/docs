@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -393,8 +393,8 @@ trampoline code on the vDSO, that trampoline is never intercepted.</p>
 <p>[selector] is a pointer to a char-sized region in the process memory
 region, that provides a quick way to enable disable syscall redirection
 thread-wide, without the need to invoke the kernel directly.  selector
-can be set to PR_SYS_DISPATCH_ON or PR_SYS_DISPATCH_OFF.  Any other
-value should terminate the program with a SIGSYS.</p>
+can be set to PR_SYS_DISPATCH_FILTER_ALLOW or PR_SYS_DISPATCH_FILTER_BLOCK.
+Any other value should terminate the program with a SIGSYS.</p>
 </div>
 <div class="section" id="security-notes">
 <h2>Security Notes<a class="headerlink" href="#security-notes" title="Permalink to this headline">¶</a></h2>

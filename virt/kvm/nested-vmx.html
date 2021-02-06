@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -314,8 +314,9 @@ call L2.</p>
 </div>
 <div class="section" id="running-nested-vmx">
 <h2>Running nested VMX<a class="headerlink" href="#running-nested-vmx" title="Permalink to this headline">¶</a></h2>
-<p>The nested VMX feature is disabled by default. It can be enabled by giving
-the “nested=1” option to the kvm-intel module.</p>
+<p>The nested VMX feature is enabled by default since Linux kernel v4.20. For
+older Linux kernel, it can be enabled by giving the “nested=1” option to the
+kvm-intel module.</p>
 <p>No modifications are required to user space (qemu). However, qemu’s default
 emulated CPU type (qemu64) does not list the “VMX” CPU feature, so it must be
 explicitly enabled, by giving qemu one of the following options:</p>

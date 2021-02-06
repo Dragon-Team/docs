@@ -6,7 +6,7 @@ PCI NTB Function
 
 :Author: Kishon Vijay Abraham I <kishon@ti.com>
 
-PCI Non Transparent Bridges (NTB) allow two host systems to communicate
+PCI Non-Transparent Bridges (NTB) allow two host systems to communicate
 with each other by exposing each host as a device to the other host.
 NTBs typically support the ability to generate interrupts on the remote
 machine, expose memory ranges as BARs and perform DMA.  They also support
@@ -15,11 +15,11 @@ from both machines.
 
 PCI NTB Function allows two different systems (or hosts) to communicate
 with each other by configurig the endpoint instances in such a way that
-transactions from one system is routed to the other system.
+transactions from one system are routed to the other system.
 
 In the below diagram, PCI NTB function configures the SoC with multiple
-PCIe Endpoint (EP) instances in such a way that transaction from one EP
-controller is routed to the other EP controller. Once PCI NTB function
+PCIe Endpoint (EP) instances in such a way that transactions from one EP
+controller are routed to the other EP controller. Once PCI NTB function
 configures the SoC with multiple EP instances, HOST1 and HOST2 can
 communicate with each other using SoC as a bridge.
 
@@ -51,8 +51,8 @@ Constructs used for Implementing NTB
 	1) Config Region
 	2) Self Scratchpad Registers
 	3) Peer Scratchpad Registers
-	4) Doorbell Registers
-	5) Memory Window
+	4) Doorbell (DB) Registers
+	5) Memory Window (MW)
 
 
 Config Region:
@@ -62,13 +62,12 @@ Config Region is a construct that is specific to NTB implemented using NTB
 Endpoint Function Driver. The host and endpoint side NTB function driver will
 exchange information with each other using this region. Config Region has
 Control/Status Registers for configuring the Endpoint Controller. Host can
-write into this region for configuring the outbound ATU and to indicate the
-link status. Endpoint can indicate the status of commands issued be host in
-this region. Endpoint can also indicate the scratchpad offset, number of
-memory windows to the host using this region.
+write into this region for configuring the outbound Address Translation Unit
+(ATU) and to indicate the link status. Endpoint can indicate the status of
+commands issued by host in this region. Endpoint can also indicate the
+scratchpad offset and number of memory windows to the host using this region.
 
-The format of Config Region is given below. Each of the fields here are 32
-bits.
+The format of Config Region is given below. All the fields here are 32 bits.
 
 .. code-block:: text
 
@@ -113,28 +112,27 @@ bits.
 
 	  CMD_CONFIGURE_DOORBELL (0x1): Command to configure doorbell. Before
 	invoking this command, the host should allocate and initialize
-	MSI/MSI-X vectors (i.e initialize the MSI/MSI-X capability in the
+	MSI/MSI-X vectors (i.e., initialize the MSI/MSI-X capability in the
 	Endpoint). The endpoint on receiving this command will configure
-	the outbound ATU such that transaction to DB BAR will be routed
+	the outbound ATU such that transactions to Doorbell BAR will be routed
 	to the MSI/MSI-X address programmed by the host. The ARGUMENT
 	register should be populated with number of DBs to configure (in the
 	lower 16 bits) and if MSI or MSI-X should be configured (BIT 16).
-	(TODO: Add support for MSI-X).
 
-	  CMD_CONFIGURE_MW (0x2): Command to configure memory window. The
+	  CMD_CONFIGURE_MW (0x2): Command to configure memory window (MW). The
 	host invokes this command after allocating a buffer that can be
 	accessed by remote host. The allocated address should be programmed
 	in the ADDRESS register (64 bit), the size should be programmed in
 	the SIZE register and the memory window index should be programmed
 	in the ARGUMENT register. The endpoint on receiving this command
-	will configure the outbound ATU such that trasaction to MW BAR
-	will be routed to the address provided by the host.
+	will configure the outbound ATU such that transactions to MW BAR
+	is routed to the address provided by the host.
 
 	  CMD_LINK_UP (0x3): Command to indicate an NTB application is
 	bound to the EP device on the host side. Once the endpoint
 	receives this command from both the hosts, the endpoint will
-	raise an LINK_UP event to both the hosts to indicate the hosts
-	can start communicating with each other.
+	raise an LINK_UP event to both the hosts to indicate the host
+	NTB applications can start communicating with each other.
 
   ARGUMENT:
 
@@ -203,9 +201,9 @@ bits.
 Scratchpad Registers:
 ---------------------
 
-  Each host has it's own register space allocated in the memory of NTB EPC.
-  They are both readable and writable from both sides of the bridge. They
-  are used by applications built over NTB and can be used to pass control
+  Each host has its own register space allocated in the memory of NTB endpoint
+  controller. They are both readable and writable from both sides of the bridge.
+  They are used by applications built over NTB and can be used to pass control
   and status information between both sides of a device.
 
   Scratchpad registers has 2 parts
@@ -215,7 +213,7 @@ Scratchpad Registers:
 Doorbell Registers:
 -------------------
 
-  Registers using which one host can interrupt the other host.
+  Doorbell Registers are used by the hosts to interrupt each other.
 
 Memory Window:
 --------------
@@ -228,7 +226,7 @@ Modeling Constructs:
 
 There are 5 or more distinct regions (config, self scratchpad, peer
 scratchpad, doorbell, one or more memory windows) to be modeled to achieve
-NTB functionality. Atleast one memory window is required while more than
+NTB functionality. At least one memory window is required while more than
 one is permitted. All these regions should be mapped to BAR for hosts to
 access these regions.
 
@@ -246,7 +244,7 @@ BAR4    Memory Window 1
 BAR5    Memory Window 2
 ======  ===============
 
-However if we allocate a separate BAR for each of the region, there would not
+However if we allocate a separate BAR for each of the regions, there would not
 be enough BARs for all the regions in a platform that supports only 64-bit
 BAR.
 
@@ -341,8 +339,7 @@ memory window 1 regions are allocated in EP controller 2 outbound (OB) address
 space. Allocating and configuring BARs for doorbell and memory window1
 is done during the initialization phase of NTB endpoint function driver.
 Mapping from EP controller 2 OB space to PCI address space is done when HOST2
-sends CMD_CONFIGURE_MW/CMD_CONFIGURE_DOORBELL. The commands are explained
-below.
+sends CMD_CONFIGURE_MW/CMD_CONFIGURE_DOORBELL.
 
 Modeling Optional Memory Windows:
 ---------------------------------

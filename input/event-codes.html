@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -385,7 +385,7 @@ motion will emit more REL_X and REL_Y values and send another SYN_REPORT.</p></l
 <li><p>SYN_MT_REPORT:</p>
 <ul>
 <li><p>Used to synchronize and separate touch events. See the
-multi-touch-protocol.txt document for more information.</p></li>
+<a class="reference internal" href="multi-touch-protocol.html"><span class="doc">Multi-touch (MT) Protocol</span></a> document for more information.</p></li>
 </ul>
 </li>
 <li><p>SYN_DROPPED:</p>
@@ -457,7 +457,7 @@ codes should have a value of 1 during any synchronization frame.</p></li>
 <p>Note: Historically some drivers emitted multiple of the finger count codes with
 a value of 1 in the same synchronization frame. This usage is deprecated.</p>
 <p>Note: In multitouch drivers, the <a class="reference internal" href="../driver-api/input.html#c.input_mt_report_finger_count" title="input_mt_report_finger_count"><code class="xref c c-func docutils literal notranslate"><span class="pre">input_mt_report_finger_count()</span></code></a> function should
-be used to emit these codes. Please see multi-touch-protocol.txt for details.</p>
+be used to emit these codes. Please see <a class="reference internal" href="multi-touch-protocol.html"><span class="doc">Multi-touch (MT) Protocol</span></a> for details.</p>
 </div>
 <div class="section" id="ev-rel">
 <h3><span class="section-number">2.2.3. </span>EV_REL<a class="headerlink" href="#ev-rel" title="Permalink to this headline">¶</a></h3>
@@ -517,7 +517,7 @@ hardware and is otherwise independent of ABS_DISTANCE and/or BTN_TOUCH.</p></li>
 <li><p>ABS_MT_&lt;name&gt;:</p>
 <ul class="simple">
 <li><p>Used to describe multitouch input events. Please see
-multi-touch-protocol.txt for details.</p></li>
+<a class="reference internal" href="multi-touch-protocol.html"><span class="doc">Multi-touch (MT) Protocol</span></a> for details.</p></li>
 </ul>
 </li>
 <li><p>ABS_PRESSURE/ABS_MT_PRESSURE:</p>
@@ -663,7 +663,7 @@ regular directional axes and accelerometer axes on the same event node.</p>
 <div class="section" id="guidelines">
 <h2><span class="section-number">2.4. </span>Guidelines<a class="headerlink" href="#guidelines" title="Permalink to this headline">¶</a></h2>
 <p>The guidelines below ensure proper single-touch and multi-finger functionality.
-For multi-touch functionality, see the multi-touch-protocol.txt document for
+For multi-touch functionality, see the <a class="reference internal" href="multi-touch-protocol.html"><span class="doc">Multi-touch (MT) Protocol</span></a> document for
 more information.</p>
 <div class="section" id="mice">
 <h3><span class="section-number">2.4.1. </span>Mice<a class="headerlink" href="#mice" title="Permalink to this headline">¶</a></h3>

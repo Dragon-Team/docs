@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -315,7 +315,7 @@ described in <a class="reference internal" href="driver-model.html"><span class=
 <p>The major changes are:</p>
 <ul class="simple">
 <li><p>The functions use a ccw_device instead of an irq (subchannel).</p></li>
-<li><p>All drivers must define a ccw_driver (see driver-model.txt) and the associated
+<li><p>All drivers must define a ccw_driver (see <a class="reference internal" href="driver-model.html"><span class="doc">S/390 driver model interfaces</span></a>) and the associated
 functions.</p></li>
 <li><p><a class="reference internal" href="../core-api/genericirq.html#c.request_irq" title="request_irq"><code class="xref c c-func docutils literal notranslate"><span class="pre">request_irq()</span></code></a> and <a class="reference internal" href="../core-api/genericirq.html#c.free_irq" title="free_irq"><code class="xref c c-func docutils literal notranslate"><span class="pre">free_irq()</span></code></a> are no longer done by the driver.</p></li>
 <li><p>The oper_handler is (kindof) replaced by the probe() and set_online() functions

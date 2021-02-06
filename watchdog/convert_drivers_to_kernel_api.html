@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -370,7 +370,7 @@ them. Includes can be removed, too. For example:</p>
 <div class="section" id="add-the-watchdog-operations">
 <h2>Add the watchdog operations<a class="headerlink" href="#add-the-watchdog-operations" title="Permalink to this headline">¶</a></h2>
 <p>All possible callbacks are defined in ‘struct watchdog_ops’. You can find it
-explained in ‘watchdog-kernel-api.txt’ in this directory. <a class="reference internal" href="../networking/ieee802154.html#c.start" title="start"><code class="xref c c-func docutils literal notranslate"><span class="pre">start()</span></code></a> and
+explained in ‘<a class="reference internal" href="watchdog-kernel-api.html"><span class="doc">The Linux WatchDog Timer Driver Core kernel API</span></a>’ in this directory. <a class="reference internal" href="../networking/ieee802154.html#c.start" title="start"><code class="xref c c-func docutils literal notranslate"><span class="pre">start()</span></code></a> and
 owner must be set, the rest are optional. You will easily find corresponding
 functions in the old driver. Note that you will now get a pointer to the
 watchdog_device as a parameter to these functions, so you probably have to
@@ -407,7 +407,7 @@ code left from the above steps, it should be refactored into these callbacks.</p
 <h2>Add the watchdog device<a class="headerlink" href="#add-the-watchdog-device" title="Permalink to this headline">¶</a></h2>
 <p>Now we need to create a ‘struct watchdog_device’ and populate it with the
 necessary information for the framework. The struct is also explained in detail
-in ‘watchdog-kernel-api.txt’ in this directory. We pass it the mandatory
+in ‘<a class="reference internal" href="watchdog-kernel-api.html"><span class="doc">The Linux WatchDog Timer Driver Core kernel API</span></a>’ in this directory. We pass it the mandatory
 watchdog_info struct and the newly created watchdog_ops. Often, old drivers
 have their own record-keeping for things like bootstatus and timeout using
 static variables. Those have to be converted to use the members in

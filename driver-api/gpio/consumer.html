@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -436,7 +436,7 @@ to be electrically used with open drain.</p></li>
 </ul>
 <p>The two last flags are used for use cases where open drain is mandatory, such
 as I2C: if the line is not already configured as open drain in the mappings
-(see board.txt), then open drain will be enforced anyway and a warning will be
+(see <a class="reference internal" href="board.html"><span class="doc">GPIO Mappings</span></a>), then open drain will be enforced anyway and a warning will be
 printed that the board configuration needs to be updated to match the use case.</p>
 <p>Both functions return either a valid GPIO descriptor, or an error code checkable
 with IS_ERR() (they will never return a NULL pointer). -ENOENT will be returned
@@ -611,7 +611,7 @@ driven.</p>
 <p>The same is applicable for open drain or open source output lines: those do not
 actively drive their output high (open drain) or low (open source), they just
 switch their output to a high impedance value. The consumer should not need to
-care. (For details read about open drain in driver.txt.)</p>
+care. (For details read about open drain in <a class="reference internal" href="driver.html"><span class="doc">GPIO Driver Interface</span></a>.)</p>
 <p>With this, all the gpiod_set_(array)_value_xxx() functions interpret the
 parameter “value” as “asserted” (“1”) or “de-asserted” (“0”). The physical line
 level will be driven accordingly.</p>

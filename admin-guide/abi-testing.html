@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.24-dragon
+                5.11.25-dragon
               </div>
             
           
@@ -11971,7 +11971,7 @@ to the _raw output.</p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio"><span class="std std-ref">sysfs-bus-iio</span></a></p>
 <p>If a discrete set of scale values is available, they
 are listed in this attribute.</p>
-<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasp">
+<table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi">
 <colgroup>
 <col style="width: 100%" />
 </colgroup>
@@ -12424,17 +12424,17 @@ Up</p></td>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-timer-stm32"><span class="std std-ref">sysfs-bus-iio-timer-stm32</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-lptimer-stm32"><span class="std std-ref">sysfs-bus-iio-lptimer-stm32</span></a></p>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-timer-stm32"><span class="std std-ref">sysfs-bus-iio-timer-stm32</span></a></p>
+<p>Reading returns the current preset value. Writing sets the
+preset value. Encoder counts continuously from 0 to preset
+value, depending on direction (up/down).</p>
 <p>Reading returns the current preset value.
 Writing sets the preset value.
 When counting up the counter starts from 0 and fires an
 event when reach preset value.
 When counting down the counter start from preset value
 and fire event when reach 0.</p>
-<p>Reading returns the current preset value. Writing sets the
-preset value. Encoder counts continuously from 0 to preset
-value, depending on direction (up/down).</p>
 <table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-in-count0-quadrature-mode">
 <colgroup>
 <col style="width: 100%" />
@@ -13850,8 +13850,11 @@ Typically a part number.</p>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-frequency-adf4371"><span class="std std-ref">sysfs-bus-iio-frequency-adf4371</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio"><span class="std std-ref">sysfs-bus-iio</span></a></p>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-frequency-adf4371"><span class="std std-ref">sysfs-bus-iio-frequency-adf4371</span></a></p>
+<p>Output frequency for channel Y in Hz. The number must always be
+specified and unique if the output corresponds to a single
+channel.</p>
 <p>Stores the PLL frequency in Hz for channel Y.
 Reading returns the actual frequency in Hz.
 The ADF4371 has an integrated VCO with fundamendal output
@@ -13872,9 +13875,6 @@ frequencies from 62500000 Hz to 8000000000 Hz.</p>
 <p>Note: writes to one of the channels will affect the frequency of
 all the other channels, since it involves changing the VCO
 fundamental output frequency.</p>
-<p>Output frequency for channel Y in Hz. The number must always be
-specified and unique if the output corresponds to a single
-channel.</p>
 <table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-frequency-increment">
 <colgroup>
 <col style="width: 100%" />
@@ -14041,12 +14041,12 @@ ALS-mapper Y + 1.</p>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-light-lm3533-als"><span class="std std-ref">sysfs-bus-iio-light-lm3533-als</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-health-afe440x"><span class="std std-ref">sysfs-bus-iio-health-afe440x</span></a></p>
-<p>Get output current for channel Y (0..255), that is,
-out_currentY_currentZ_raw, where Z is the current zone.</p>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-light-lm3533-als"><span class="std std-ref">sysfs-bus-iio-light-lm3533-als</span></a></p>
 <p>Get and set the LED current for the specified LED active during
-this stage. Y is the specific stage number.</p>
+this stage. Y is the specific stage number.
+Get output current for channel Y (0..255), that is,
+out_currentY_currentZ_raw, where Z is the current zone.</p>
 <table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-out-current-heater-raw">
 <colgroup>
 <col style="width: 100%" />
@@ -14383,16 +14383,16 @@ in square brackets.</p>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-proximity-as3935"><span class="std std-ref">sysfs-bus-iio-proximity-as3935</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-distance-srf08"><span class="std std-ref">sysfs-bus-iio-distance-srf08</span></a></p>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-bus-iio-proximity-as3935"><span class="std std-ref">sysfs-bus-iio-proximity-as3935</span></a></p>
+<p>Show or set the gain boost of the amp, from 0-31 range.
+default 31</p>
 <p>Show or set the gain boost of the amp, from 0-31 range.
 18 = indoors (default)
 14 = outdoors</p>
 <p>What            /sys/bus/iio/devices/iio:deviceX/noise_level_tripped
 When 1 the noise level is over the trip level and not reporting
-valid data
-Show or set the gain boost of the amp, from 0-31 range.
-default 31</p>
+valid data</p>
 <table class="docutils align-default" id="abi-sys-bus-iio-devices-iio-devicex-start-cleaning">
 <colgroup>
 <col style="width: 100%" />
@@ -16527,28 +16527,6 @@ PCI Specification 2.1 or 2.2, but users should consider
 that some devices may have malformatted data.  If the
 underlying VPD has a writable section then the
 corresponding section of this file will be writable.</p>
-<table class="docutils align-default" id="abi-sys-bus-pci-devices-bdf-device-vpc2004-00-fn-lock">
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>/sys/bus/pci/devices/&lt;bdf&gt;/&lt;device&gt;/VPC2004:00/fn_lock</strong></p></td>
-</tr>
-</tbody>
-</table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-platform-ideapad-laptop"><span class="std std-ref">sysfs-platform-ideapad-laptop</span></a></p>
-<p>Control fn-lock mode.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>1 -&gt; Switched On</p></li>
-<li><p>0 -&gt; Switched Off</p></li>
-</ul>
-</div></blockquote>
-<p>For example:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># echo &quot;0&quot; &gt;  \
-/sys/bus/pci/devices/0000:00:1f.0/PNP0C09:00/VPC2004:00/fn_lock
-</pre></div>
-</div>
 <table class="docutils align-default" id="abi-sys-bus-pci-devices-dev-aer-dev-correctable">
 <colgroup>
 <col style="width: 100%" />
@@ -17771,6 +17749,102 @@ reset.</p>
 </tr>
 </tbody>
 </table>
+<table class="docutils align-default" id="abi-sys-bus-platform-devices-vpc2004-camera-power">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/bus/platform/devices/VPC2004:*/camera_power</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-platform-ideapad-laptop"><span class="std std-ref">sysfs-platform-ideapad-laptop</span></a></p>
+<p>Control the power of camera module. 1 means on, 0 means off.</p>
+<table class="docutils align-default" id="abi-sys-bus-platform-devices-vpc2004-conservation-mode">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/bus/platform/devices/VPC2004:*/conservation_mode</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-platform-ideapad-laptop"><span class="std std-ref">sysfs-platform-ideapad-laptop</span></a></p>
+<p>Controls whether the conservation mode is enabled or not.
+This feature limits the maximum battery charge percentage to
+around 50-60% in order to prolong the lifetime of the battery.</p>
+<table class="docutils align-default" id="abi-sys-bus-platform-devices-vpc2004-fan-mode">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/bus/platform/devices/VPC2004:*/fan_mode</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-platform-ideapad-laptop"><span class="std std-ref">sysfs-platform-ideapad-laptop</span></a></p>
+<p>Change fan mode
+There are four available modes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>0 -&gt; Super Silent Mode</p></li>
+<li><p>1 -&gt; Standard Mode</p></li>
+<li><p>2 -&gt; Dust Cleaning</p></li>
+<li><p>4 -&gt; Efficient Thermal Dissipation Mode</p></li>
+</ul>
+</div></blockquote>
+<table class="docutils align-default" id="abi-sys-bus-platform-devices-vpc2004-fn-lock">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/bus/platform/devices/VPC2004:*/fn_lock</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-platform-ideapad-laptop"><span class="std std-ref">sysfs-platform-ideapad-laptop</span></a></p>
+<p>Control fn-lock mode.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>1 -&gt; Switched On</p></li>
+<li><p>0 -&gt; Switched Off</p></li>
+</ul>
+</div></blockquote>
+<p>For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># echo &quot;0&quot; &gt;  \
+/sys/bus/pci/devices/0000:00:1f.0/PNP0C09:00/VPC2004:00/fn_lock
+</pre></div>
+</div>
+<table class="docutils align-default" id="abi-sys-bus-platform-devices-vpc2004-touchpad">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/bus/platform/devices/VPC2004:*/touchpad</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-platform-ideapad-laptop"><span class="std std-ref">sysfs-platform-ideapad-laptop</span></a></p>
+<dl class="simple">
+<dt>Control touchpad mode.</dt><dd><ul class="simple">
+<li><p>1 -&gt; Switched On</p></li>
+<li><p>0 -&gt; Switched Off</p></li>
+</ul>
+</dd>
+</dl>
+<table class="docutils align-default" id="abi-sys-bus-platform-devices-vpc2004-usb-charging">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/bus/platform/devices/VPC2004:*/usb_charging</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-platform-ideapad-laptop"><span class="std std-ref">sysfs-platform-ideapad-laptop</span></a></p>
+<p>Controls whether the “always on USB charging” feature is
+enabled or not. This feature enables charging USB devices
+even if the computer is not turned on.</p>
 <table class="docutils align-default" id="abi-sys-bus-platform-devices-fsi-master-gpio-external-mode">
 <colgroup>
 <col style="width: 100%" />
@@ -21192,6 +21266,10 @@ PCIe tunnels are created.</p></td>
 <td><p>Automatically tunnel USB controller of the
 connected Thunderbolt dock (and Display Port). All
 PCIe links downstream of the dock are removed.</p></td>
+</tr>
+<tr class="row-even"><td><p>nopcie</p></td>
+<td><p>USB4 system where PCIe tunneling is disabled from
+the BIOS.</p></td>
 </tr>
 </tbody>
 </table>
@@ -27746,16 +27824,16 @@ Current state can be also read.</p>
 </tr>
 </tbody>
 </table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-led-trigger-pattern"><span class="std std-ref">sysfs-class-led-trigger-pattern</span></a></p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-led-driver-el15203000"><span class="std std-ref">sysfs-class-led-driver-el15203000</span></a></p>
-<p>Specify a pattern repeat number. -1 means repeat indefinitely,
-other negative numbers and number 0 are invalid.</p>
-<p>This file will always return the originally written repeat
-number.
-EL15203000 supports only indefinitely patterns,
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-class-led-trigger-pattern"><span class="std std-ref">sysfs-class-led-trigger-pattern</span></a></p>
+<p>EL15203000 supports only indefinitely patterns,
 so this file should always store -1.</p>
 <p>For more info, please see:
-<a class="reference internal" href="#abi-file-testing-sysfs-class-led-trigger-pattern"><span class="std std-ref">testing/sysfs-class-led-trigger-pattern</span></a></p>
+<a class="reference internal" href="#abi-file-testing-sysfs-class-led-trigger-pattern"><span class="std std-ref">testing/sysfs-class-led-trigger-pattern</span></a>
+Specify a pattern repeat number. -1 means repeat indefinitely,
+other negative numbers and number 0 are invalid.</p>
+<p>This file will always return the originally written repeat
+number.</p>
 <table class="docutils align-default" id="abi-sys-class-leds-led-rx">
 <colgroup>
 <col style="width: 100%" />
@@ -38022,54 +38100,6 @@ select (click) on z-axis on release.</p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-devices-platform-trackpoint"><span class="std std-ref">sysfs-devices-platform-trackpoint</span></a></p>
 <p>(RW) This attribute determines how sharp a press has to be in
 order to be recognized.</p>
-<table class="docutils align-default" id="abi-sys-devices-platform-ideapad-camera-power">
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>/sys/devices/platform/ideapad/camera_power</strong></p></td>
-</tr>
-</tbody>
-</table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-platform-ideapad-laptop"><span class="std std-ref">sysfs-platform-ideapad-laptop</span></a></p>
-<p>Control the power of camera module. 1 means on, 0 means off.</p>
-<table class="docutils align-default" id="abi-sys-devices-platform-ideapad-fan-mode">
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>/sys/devices/platform/ideapad/fan_mode</strong></p></td>
-</tr>
-</tbody>
-</table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-platform-ideapad-laptop"><span class="std std-ref">sysfs-platform-ideapad-laptop</span></a></p>
-<p>Change fan mode
-There are four available modes:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>0 -&gt; Super Silent Mode</p></li>
-<li><p>1 -&gt; Standard Mode</p></li>
-<li><p>2 -&gt; Dust Cleaning</p></li>
-<li><p>4 -&gt; Efficient Thermal Dissipation Mode</p></li>
-</ul>
-</div></blockquote>
-<table class="docutils align-default" id="abi-sys-devices-platform-ideapad-touchpad">
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>/sys/devices/platform/ideapad/touchpad</strong></p></td>
-</tr>
-</tbody>
-</table>
-<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-platform-ideapad-laptop"><span class="std std-ref">sysfs-platform-ideapad-laptop</span></a></p>
-<dl class="simple">
-<dt>Control touchpad mode.</dt><dd><ul class="simple">
-<li><p>1 -&gt; Switched On</p></li>
-<li><p>0 -&gt; Switched Off</p></li>
-</ul>
-</dd>
-</dl>
 <table class="docutils align-default" id="abi-sys-devices-platform-ipmi-bmc-additional-device-support">
 <colgroup>
 <col style="width: 100%" />
@@ -42459,6 +42489,21 @@ Available when CONFIG_F2FS_STAT_FS=y.</p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-fs-f2fs"><span class="std std-ref">sysfs-fs-f2fs</span></a></p>
 <p>Controls the trimming rate in batch mode.
 &lt;deprecated&gt;</p>
+<table class="docutils align-default" id="abi-sys-fs-f2fs-disk-ckpt-thread-ioprio">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>/sys/fs/f2fs/&lt;disk&gt;/ckpt_thread_ioprio</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-fs-f2fs"><span class="std std-ref">sysfs-fs-f2fs</span></a></p>
+<p>Give a way to change checkpoint merge daemon’s io priority.
+Its default value is “be,3”, which means “BE” I/O class and
+I/O priority “3”. We can select the class between “rt” and “be”,
+and set the I/O priority within valid range of it. “,” delimiter
+is necessary in between I/O class and priority number.</p>
 <table class="docutils align-default" id="abi-sys-fs-f2fs-disk-cp-background-calls">
 <colgroup>
 <col style="width: 100%" />
@@ -46697,7 +46742,7 @@ command line.</p>
 <p>Defined on file <a class="reference internal" href="#abi-file-testing-sysfs-kernel-reboot"><span class="std std-ref">sysfs-kernel-reboot</span></a></p>
 <p>Interface to set the kernel reboot behavior, similarly to
 what can be done via the reboot= cmdline option.
-(see Documentation/admin-guide/kernel-parameters.txt)</p>
+(see <a class="reference internal" href="kernel-parameters.html"><span class="doc">The kernel’s command-line parameters</span></a>)</p>
 <table class="docutils align-default" id="abi-sys-kernel-reboot-cpu">
 <colgroup>
 <col style="width: 100%" />
@@ -49779,7 +49824,7 @@ modification.</p>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/sampling_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_sampling_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/buffer/sampling_frequency</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/triggerX/sampling_frequency</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-triggerx-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/triggerX/sampling_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/sampling_frequency_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_sampling_frequency_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_proximity_sampling_frequency_available</span></a></p></li>
@@ -49898,12 +49943,12 @@ modification.</p>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-scale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_x_scale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-scale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_y_scale</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-voltagey-scale"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_intensity_z_scale</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_x_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_y_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_z_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_x_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_y_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_z_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_illuminance0_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_proximity0_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_pressureY_calibbias</span></a></p></li>
@@ -49979,7 +50024,7 @@ modification.</p>
 <li><p><a class="reference internal" href="#abi-sys-iio-devicex-out-voltagey-powerdown-mode-available"><span class="std std-ref">/sys/…/iio:deviceX/out_altvoltage_powerdown_mode_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-voltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_voltageY_powerdown</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-voltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_voltage_powerdown</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-voltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_powerdown</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_powerdown</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-voltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltage_powerdown</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-frequency"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-phase"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_phase</span></a></p></li>
@@ -50647,7 +50692,7 @@ modification.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-frequency"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-name"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_name</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-voltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_powerdown</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-out-altvoltagey-powerdown"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/out_altvoltageY_powerdown</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="file-home--zfs-data-doc-testing-sysfs-bus-iio-gyro-bmg160">
@@ -50688,12 +50733,12 @@ modification.</p>
 <span id="abi-file-testing-sysfs-bus-iio-icm42600"></span><h2>File /testing/sysfs-bus-iio-icm42600<a class="headerlink" href="#file-home--zfs-data-doc-testing-sysfs-bus-iio-icm42600" title="Permalink to this headline">¶</a></h2>
 <p>Has the following ABI:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_x_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_y_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_z_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbias"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_x_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_y_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_z_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_x_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_y_calibbias</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-x-calibbiasi"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_z_calibbias</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-calibbias-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_accel_calibbias_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-accel-calibbias-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_anglvel_calibbias_available</span></a></p></li>
 </ul>
@@ -50869,7 +50914,7 @@ modification.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-triggerx-master-mode-available"><span class="std std-ref">/sys/bus/iio/devices/triggerX/master_mode_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-triggerx-master-mode"><span class="std std-ref">/sys/bus/iio/devices/triggerX/master_mode</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/triggerX/sampling_frequency</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-triggerx-sampling-frequency"><span class="std std-ref">/sys/bus/iio/devices/triggerX/sampling_frequency</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count0-preset"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count0_preset</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count-enable-mode-available"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count_enable_mode_available</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-bus-iio-devices-iio-devicex-in-count0-enable-mode"><span class="std std-ref">/sys/bus/iio/devices/iio:deviceX/in_count0_enable_mode</span></a></p></li>
@@ -53868,6 +53913,7 @@ sysfs: (&lt;devid&gt; is in the format major:minor)</p>
 <li><p><a class="reference internal" href="#abi-sys-fs-f2fs-disk-iostat-period-ms"><span class="std std-ref">/sys/fs/f2fs/&lt;disk&gt;/iostat_period_ms</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-fs-f2fs-disk-max-io-bytes"><span class="std std-ref">/sys/fs/f2fs/&lt;disk&gt;/max_io_bytes</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-fs-f2fs-disk-stat-sb-status"><span class="std std-ref">/sys/fs/f2fs/&lt;disk&gt;/stat/sb_status</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-fs-f2fs-disk-ckpt-thread-ioprio"><span class="std std-ref">/sys/fs/f2fs/&lt;disk&gt;/ckpt_thread_ioprio</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="file-home--zfs-data-doc-testing-sysfs-fs-nilfs2">
@@ -54366,10 +54412,12 @@ sysfs: (&lt;devid&gt; is in the format major:minor)</p>
 <span id="abi-file-testing-sysfs-platform-ideapad-laptop"></span><h2>File /testing/sysfs-platform-ideapad-laptop<a class="headerlink" href="#file-home--zfs-data-doc-testing-sysfs-platform-ideapad-laptop" title="Permalink to this headline">¶</a></h2>
 <p>Has the following ABI:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#abi-sys-devices-platform-ideapad-camera-power"><span class="std std-ref">/sys/devices/platform/ideapad/camera_power</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-devices-platform-ideapad-fan-mode"><span class="std std-ref">/sys/devices/platform/ideapad/fan_mode</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-devices-platform-ideapad-touchpad"><span class="std std-ref">/sys/devices/platform/ideapad/touchpad</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-bus-pci-devices-bdf-device-vpc2004-00-fn-lock"><span class="std std-ref">/sys/bus/pci/devices/&lt;bdf&gt;/&lt;device&gt;/VPC2004:00/fn_lock</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-platform-devices-vpc2004-camera-power"><span class="std std-ref">/sys/bus/platform/devices/VPC2004:*/camera_power</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-platform-devices-vpc2004-fan-mode"><span class="std std-ref">/sys/bus/platform/devices/VPC2004:*/fan_mode</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-platform-devices-vpc2004-touchpad"><span class="std std-ref">/sys/bus/platform/devices/VPC2004:*/touchpad</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-platform-devices-vpc2004-conservation-mode"><span class="std std-ref">/sys/bus/platform/devices/VPC2004:*/conservation_mode</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-platform-devices-vpc2004-fn-lock"><span class="std std-ref">/sys/bus/platform/devices/VPC2004:*/fn_lock</span></a></p></li>
+<li><p><a class="reference internal" href="#abi-sys-bus-platform-devices-vpc2004-usb-charging"><span class="std std-ref">/sys/bus/platform/devices/VPC2004:*/usb_charging</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="file-home--zfs-data-doc-testing-sysfs-platform-intel-wmi-sbl-fw-update">
