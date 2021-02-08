@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.26-dragon
+                5.11.27-dragon
               </div>
             
           
@@ -1808,8 +1808,23 @@ void <code class="sig-name descname">intel_psr_update</code><span class="sig-par
 version when executing fastsets. For full modeset, <a class="reference internal" href="#c.intel_psr_disable" title="intel_psr_disable"><code class="xref c c-func docutils literal notranslate"><span class="pre">intel_psr_disable()</span></code></a> and
 <a class="reference internal" href="#c.intel_psr_enable" title="intel_psr_enable"><code class="xref c c-func docutils literal notranslate"><span class="pre">intel_psr_enable()</span></code></a> should be called instead.</p>
 <dl class="c function">
+<dt id="c.psr_wait_for_idle">
+int <code class="sig-name descname">psr_wait_for_idle</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.psr_wait_for_idle" title="intel_dp">intel_dp</a> *<em>intel_dp</em>, u32 *<em>out_value</em><span class="sig-paren">)</span><a class="headerlink" href="#c.psr_wait_for_idle" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>wait for PSR1 to idle</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">intel_dp</span> <span class="pre">*intel_dp</span></code></dt><dd><p>Intel DP</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">*out_value</span></code></dt><dd><p>PSR status in case of failure</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p>0 on success or -ETIMEOUT if PSR status does not idle.</p>
+<dl class="c function">
 <dt id="c.intel_psr_wait_for_idle">
-int <code class="sig-name descname">intel_psr_wait_for_idle</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> intel_crtc_state *<em>new_crtc_state</em>, u32 *<em>out_value</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_psr_wait_for_idle" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">intel_psr_wait_for_idle</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> intel_crtc_state *<em>new_crtc_state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_psr_wait_for_idle" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>wait for PSR1 to idle</p>
 </dd></dl>
 
@@ -1817,14 +1832,10 @@ int <code class="sig-name descname">intel_psr_wait_for_idle</code><span class="s
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">intel_crtc_state</span> <span class="pre">*new_crtc_state</span></code></dt><dd><p>new CRTC state</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">*out_value</span></code></dt><dd><p>PSR status in case of failure</p>
-</dd>
 </dl>
 <p><strong>Description</strong></p>
 <p>This function is expected to be called from pipe_update_start() where it is
 not expected to race with PSR enable or disable.</p>
-<p><strong>Return</strong></p>
-<p>0 on success or -ETIMEOUT if PSR status does not idle.</p>
 <dl class="c function">
 <dt id="c.intel_psr_invalidate">
 void <code class="sig-name descname">intel_psr_invalidate</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em>, unsigned <em>frontbuffer_bits</em>, <em class="property">enum</em> fb_op_origin <em>origin</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_psr_invalidate" title="Permalink to this definition">¶</a><br /></dt>
@@ -1869,18 +1880,19 @@ can be enabled again if no other frontbuffer relevant to PSR is dirty.</p>
 <p>Dirty frontbuffers relevant to PSR are tracked in busy_frontbuffer_bits.</p>
 <dl class="c function">
 <dt id="c.intel_psr_init">
-void <code class="sig-name descname">intel_psr_init</code><span class="sig-paren">(</span><em class="property">struct</em> drm_i915_private *<em>dev_priv</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_psr_init" title="Permalink to this definition">¶</a><br /></dt>
+void <code class="sig-name descname">intel_psr_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.intel_psr_init" title="intel_dp">intel_dp</a> *<em>intel_dp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_psr_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Init basic PSR work and mutex.</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_i915_private</span> <span class="pre">*dev_priv</span></code></dt><dd><p>i915 device private</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">intel_dp</span> <span class="pre">*intel_dp</span></code></dt><dd><p>Intel DP</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>This function is  called only once at driver load to initialize basic
-PSR stuff.</p>
+<p>This function is called after the initializing connector.
+(the initializing of connector treats the handling of connector capabilities)
+And it initializes basic PSR stuff for each DP Encoder.</p>
 </div>
 <div class="section" id="frame-buffer-compression-fbc">
 <h3>Frame Buffer Compression (FBC)<a class="headerlink" href="#frame-buffer-compression-fbc" title="Permalink to this headline">¶</a></h3>

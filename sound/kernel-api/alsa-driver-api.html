@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.26-dragon
+                5.11.27-dragon
               </div>
             
           
@@ -2996,6 +2996,8 @@ parameters.</p>
   const char *chan_name;
   unsigned int fifo_size;
   unsigned int flags;
+  void *peripheral_config;
+  size_t peripheral_size;
 };
 </pre></div>
 </div>
@@ -3019,6 +3021,11 @@ requesting the DMA channel.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">fifo_size</span></code></dt><dd><p>FIFO size of the DAI controller in bytes</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">flags</span></code></dt><dd><p>PCM_DAI flags, only SND_DMAENGINE_PCM_DAI_FLAG_PACK for now</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">peripheral_config</span></code></dt><dd><p>peripheral configuration for programming peripheral
+for dmaengine transfer</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">peripheral_size</span></code></dt><dd><p>peripheral configuration buffer size</p>
 </dd>
 </dl>
 <dl class="c struct">

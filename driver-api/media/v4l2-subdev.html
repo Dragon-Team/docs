@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.26-dragon
+                5.11.27-dragon
               </div>
             
           
@@ -178,18 +178,17 @@
 <li class="toctree-l4"><a class="reference internal" href="v4l2-controls.html">1.13. V4L2 Controls</a></li>
 <li class="toctree-l4"><a class="reference internal" href="v4l2-videobuf.html">1.14. Videobuf Framework</a></li>
 <li class="toctree-l4"><a class="reference internal" href="v4l2-videobuf2.html">1.15. V4L2 videobuf2 functions and data structures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="v4l2-clocks.html">1.16. V4L2 clocks</a></li>
-<li class="toctree-l4"><a class="reference internal" href="v4l2-dv-timings.html">1.17. V4L2 DV Timings functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="v4l2-flash-led-class.html">1.18. V4L2 flash functions and data structures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="v4l2-mc.html">1.19. V4L2 Media Controller functions and data structures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="v4l2-mediabus.html">1.20. V4L2 Media Bus functions and data structures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="v4l2-mem2mem.html">1.21. V4L2 Memory to Memory functions and data structures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="v4l2-async.html">1.22. V4L2 async kAPI</a></li>
-<li class="toctree-l4"><a class="reference internal" href="v4l2-fwnode.html">1.23. V4L2 fwnode kAPI</a></li>
-<li class="toctree-l4"><a class="reference internal" href="v4l2-rect.html">1.24. V4L2 rect helper functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="v4l2-tuner.html">1.25. Tuner functions and data structures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="v4l2-common.html">1.26. V4L2 common functions and data structures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="v4l2-tveeprom.html">1.27. Hauppauge TV EEPROM functions and data structures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="v4l2-dv-timings.html">1.16. V4L2 DV Timings functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="v4l2-flash-led-class.html">1.17. V4L2 flash functions and data structures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="v4l2-mc.html">1.18. V4L2 Media Controller functions and data structures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="v4l2-mediabus.html">1.19. V4L2 Media Bus functions and data structures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="v4l2-mem2mem.html">1.20. V4L2 Memory to Memory functions and data structures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="v4l2-async.html">1.21. V4L2 async kAPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="v4l2-fwnode.html">1.22. V4L2 fwnode kAPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="v4l2-rect.html">1.23. V4L2 rect helper functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="v4l2-tuner.html">1.24. Tuner functions and data structures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="v4l2-common.html">1.25. V4L2 common functions and data structures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="v4l2-tveeprom.html">1.26. Hauppauge TV EEPROM functions and data structures</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="dtv-core.html">2. Digital TV (DVB) devices</a></li>
@@ -552,15 +551,41 @@ unregister the notifier the driver has to call
 <a class="reference internal" href="v4l2-async.html#c.v4l2_async_notifier_unregister" title="v4l2_async_notifier_unregister"><code class="xref c c-func docutils literal notranslate"><span class="pre">v4l2_async_notifier_unregister()</span></code></a>. The former of the two functions
 takes two arguments: a pointer to struct <a class="reference internal" href="v4l2-device.html#c.v4l2_device" title="v4l2_device"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_device</span></code></a> and a
 pointer to struct <a class="reference internal" href="v4l2-async.html#c.v4l2_async_notifier" title="v4l2_async_notifier"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_async_notifier</span></code></a>.</p>
-<p>Before registering the notifier, bridge drivers must do two things:
-first, the notifier must be initialized using the
-<a class="reference internal" href="v4l2-async.html#c.v4l2_async_notifier_init" title="v4l2_async_notifier_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">v4l2_async_notifier_init()</span></code></a>. Second, bridge drivers can then
-begin to form a list of subdevice descriptors that the bridge device
-needs for its operation. Subdevice descriptors are added to the notifier
-using the <a class="reference internal" href="v4l2-async.html#c.v4l2_async_notifier_add_subdev" title="v4l2_async_notifier_add_subdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">v4l2_async_notifier_add_subdev()</span></code></a> call. This function
-takes two arguments: a pointer to struct <a class="reference internal" href="v4l2-async.html#c.v4l2_async_notifier" title="v4l2_async_notifier"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_async_notifier</span></code></a>,
-and a pointer to the subdevice descripter, which is of type struct
-<a class="reference internal" href="v4l2-async.html#c.v4l2_async_subdev" title="v4l2_async_subdev"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_async_subdev</span></code></a>.</p>
+<p>Before registering the notifier, bridge drivers must do two things: first, the
+notifier must be initialized using the <a class="reference internal" href="v4l2-async.html#c.v4l2_async_notifier_init" title="v4l2_async_notifier_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">v4l2_async_notifier_init()</span></code></a>.
+Second, bridge drivers can then begin to form a list of subdevice descriptors
+that the bridge device needs for its operation. Several functions are available
+to add subdevice descriptors to a notifier, depending on the type of device and
+the needs of the driver.</p>
+<p><code class="xref c c-func docutils literal notranslate"><span class="pre">v4l2_async_notifier_add_fwnode_remote_subdev()</span></code> and
+<code class="xref c c-func docutils literal notranslate"><span class="pre">v4l2_async_notifier_add_i2c_subdev()</span></code> are for bridge and ISP drivers for
+registering their async sub-devices with the notifier.</p>
+<p><a class="reference internal" href="v4l2-async.html#c.v4l2_async_register_subdev_sensor_common" title="v4l2_async_register_subdev_sensor_common"><code class="xref c c-func docutils literal notranslate"><span class="pre">v4l2_async_register_subdev_sensor_common()</span></code></a> is a helper function for
+sensor drivers registering their own async sub-device, but it also registers a
+notifier and further registers async sub-devices for lens and flash devices
+found in firmware. The notifier for the sub-device is unregistered with the
+async sub-device.</p>
+<p>These functions allocate an async sub-device descriptor which is of type struct
+<a class="reference internal" href="v4l2-async.html#c.v4l2_async_subdev" title="v4l2_async_subdev"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_async_subdev</span></code></a> embedded in a driver-specific struct. The &amp;struct
+<a class="reference internal" href="v4l2-async.html#c.v4l2_async_subdev" title="v4l2_async_subdev"><code class="xref c c-type docutils literal notranslate"><span class="pre">v4l2_async_subdev</span></code></a> shall be the first member of this struct:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">my_async_subdev</span> <span class="p">{</span>
+        <span class="k">struct</span> <span class="nc">v4l2_async_subdev</span> <span class="n">asd</span><span class="p">;</span>
+        <span class="p">...</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="nc">my_async_subdev</span> <span class="o">*</span><span class="n">my_asd</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">fwnode_handle</span> <span class="o">*</span><span class="n">ep</span><span class="p">;</span>
+
+<span class="p">...</span>
+
+<span class="n">my_asd</span> <span class="o">=</span> <span class="n">v4l2_async_notifier_add_fwnode_remote_subdev</span><span class="p">(</span><span class="o">&amp;</span><span class="n">notifier</span><span class="p">,</span> <span class="n">ep</span><span class="p">,</span>
+                                                      <span class="k">struct</span> <span class="nc">my_async_subdev</span><span class="p">);</span>
+<span class="n">fwnode_handle_put</span><span class="p">(</span><span class="n">ep</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">IS_ERR</span><span class="p">(</span><span class="n">asd</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">PTR_ERR</span><span class="p">(</span><span class="n">asd</span><span class="p">);</span>
+</pre></div>
+</div>
 <p>The V4L2 core will then use these descriptors to match asynchronously
 registered subdevices to them. If a match is detected the <code class="docutils literal notranslate"><span class="pre">.bound()</span></code>
 notifier callback is called. After all subdevices have been located the

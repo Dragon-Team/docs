@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.26-dragon
+                5.11.27-dragon
               </div>
             
           
@@ -1731,6 +1731,20 @@ list lock and the caller must hold the relevant locks to use it.</p>
 </dd>
 </dl>
 <dl class="c function">
+<dt id="c.netdev_alloc_frag">
+void *<code class="sig-name descname">netdev_alloc_frag</code><span class="sig-paren">(</span>unsigned int <em>fragsz</em><span class="sig-paren">)</span><a class="headerlink" href="#c.netdev_alloc_frag" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>allocate a page fragment</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">fragsz</span></code></dt><dd><p>fragment size</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Allocates a frag from a page for receive buffer.
+Uses GFP_ATOMIC allocations.</p>
+<dl class="c function">
 <dt id="c.netdev_alloc_skb">
 <em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<code class="sig-name descname">netdev_alloc_skb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<em>dev</em>, unsigned int <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#c.netdev_alloc_skb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate an skbuff for rx on a specific device</p>
@@ -1780,8 +1794,8 @@ allocates memory it can be called from an interrupt.</p>
 <p>Allocate a new page.</p>
 <p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> is returned if there is no free memory.</p>
 <dl class="c function">
-<dt id="c.dev_page_is_reserved">
-bool <code class="sig-name descname">dev_page_is_reserved</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.dev_page_is_reserved" title="page">page</a> *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_page_is_reserved" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="c.dev_page_is_reusable">
+bool <code class="sig-name descname">dev_page_is_reusable</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.dev_page_is_reusable" title="page">page</a> *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_page_is_reusable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check whether a page can be reused for network Rx</p>
 </dd></dl>
 
@@ -1793,7 +1807,7 @@ bool <code class="sig-name descname">dev_page_is_reserved</code><span class="sig
 <p><strong>Description</strong></p>
 <p>A page shouldn’t be considered for reusing/recycling if it was allocated
 under memory pressure or at a distant memory node.</p>
-<p>Returns true if this page should be returned to page allocator, false
+<p>Returns false if this page should be returned to page allocator, true
 otherwise.</p>
 <dl class="c function">
 <dt id="c.skb_propagate_pfmemalloc">
@@ -3648,20 +3662,6 @@ of one. The return is the buffer. On a failure the return is <code class="docuti
 <dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">frag_size</span></code></dt><dd><p>size of data, or 0 if head was kmalloced</p>
 </dd>
 </dl>
-<dl class="c function">
-<dt id="c.netdev_alloc_frag">
-void *<code class="sig-name descname">netdev_alloc_frag</code><span class="sig-paren">(</span>unsigned int <em>fragsz</em><span class="sig-paren">)</span><a class="headerlink" href="#c.netdev_alloc_frag" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>allocate a page fragment</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">fragsz</span></code></dt><dd><p>fragment size</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Allocates a frag from a page for receive buffer.
-Uses GFP_ATOMIC allocations.</p>
 <dl class="c function">
 <dt id="c.__netdev_alloc_skb">
 <em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<code class="sig-name descname">__netdev_alloc_skb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<em>dev</em>, unsigned int <em>len</em>, gfp_t <em>gfp_mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__netdev_alloc_skb" title="Permalink to this definition">¶</a><br /></dt>
