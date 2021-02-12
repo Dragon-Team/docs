@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -1090,16 +1090,21 @@ int <code class="sig-name descname">uart_add_one_port</code><span class="sig-par
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
-<dl>
+<dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">uart_driver</span> <span class="pre">*drv</span></code></dt><dd><p>pointer to the uart low level driver structure for this port</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">uart_port</span> <span class="pre">*uport</span></code></dt><dd><p>uart port structure to use for this port.</p>
-<p>This allows the driver to register its own uart_port structure
+</dd>
+</dl>
+<p><strong>Context</strong></p>
+<p>task context, might sleep</p>
+<p><strong>Description</strong></p>
+<blockquote>
+<div><p>This allows the driver to register its own uart_port structure
 with the core driver.  The main purpose is to allow the low
 level uart drivers to expand uart_port, rather than having yet
 more levels of structures.</p>
-</dd>
-</dl>
+</div></blockquote>
 <dl class="c function">
 <dt id="c.uart_remove_one_port">
 int <code class="sig-name descname">uart_remove_one_port</code><span class="sig-paren">(</span><em class="property">struct</em> uart_driver *<em>drv</em>, <em class="property">struct</em> uart_port *<em>uport</em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_remove_one_port" title="Permalink to this definition">¶</a><br /></dt>
@@ -1107,15 +1112,20 @@ int <code class="sig-name descname">uart_remove_one_port</code><span class="sig-
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
-<dl>
+<dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">uart_driver</span> <span class="pre">*drv</span></code></dt><dd><p>pointer to the uart low level driver structure for this port</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">uart_port</span> <span class="pre">*uport</span></code></dt><dd><p>uart port structure for this port</p>
-<p>This unhooks (and hangs up) the specified port structure from the
-core driver.  No further calls will be made to the low-level code
-for this port.</p>
 </dd>
 </dl>
+<p><strong>Context</strong></p>
+<p>task context, might sleep</p>
+<p><strong>Description</strong></p>
+<blockquote>
+<div><p>This unhooks (and hangs up) the specified port structure from the
+core driver.  No further calls will be made to the low-level code
+for this port.</p>
+</div></blockquote>
 <dl class="c function">
 <dt id="c.uart_handle_dcd_change">
 void <code class="sig-name descname">uart_handle_dcd_change</code><span class="sig-paren">(</span><em class="property">struct</em> uart_port *<em>uport</em>, unsigned int <em>status</em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_handle_dcd_change" title="Permalink to this definition">¶</a><br /></dt>

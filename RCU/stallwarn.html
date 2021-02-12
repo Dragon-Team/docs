@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -312,7 +312,7 @@ keep up with the boot-time console-message rate.  For example,
 a 115Kbaud serial console can be -way- too slow to keep up
 with boot-time message rates, and will frequently result in
 RCU CPU stall warning messages.  Especially if you have added
-debug <a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a>s.</p></li>
+debug printk()s.</p></li>
 <li><p>Anything that prevents RCU’s grace-period kthreads from running.
 This can result in the “All QSes seen” console-log message.
 This message will include information on when the kthread last

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -751,9 +751,7 @@ void <code class="sig-name descname">iscsi_requeue_task</code><span class="sig-p
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>LLDs that need to run a task from the session workqueue should call
-this. The session frwd_lock must be held. This should only be called
-by software drivers.</p>
+<p>Callers must have taken a ref to the task that is going to be requeued.</p>
 <dl class="c function">
 <dt id="c.iscsi_suspend_queue">
 void <code class="sig-name descname">iscsi_suspend_queue</code><span class="sig-paren">(</span><em class="property">struct</em> iscsi_conn *<em>conn</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iscsi_suspend_queue" title="Permalink to this definition">¶</a><br /></dt>

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -3895,7 +3895,7 @@ VT/fbdev subsystem that entire modeset sequence has to be done while holding
 console_lock. Until console_unlock is called no dmesg lines will be sent out
 to consoles, not even serial console. This means when your driver crashes,
 you will see absolutely nothing else but a system stuck in this function,
-with no further output. Any kind of <a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> you place within your own driver
+with no further output. Any kind of printk() you place within your own driver
 or in the drm core modeset code will also never show up.</p>
 <p>Standard debug practice is to run the fbcon setup without taking the
 console_lock as a hack, to be able to see backtraces and crashes on the

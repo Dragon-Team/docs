@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -285,7 +285,7 @@
 that runs torture tests on core kernel locking primitives. The kernel
 module, ‘locktorture’, may be built after the fact on the running
 kernel to be tested, if desired. The tests periodically output status
-messages via <a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a>, which can be examined via the dmesg (perhaps
+messages via printk(), which can be examined via the dmesg (perhaps
 grepping for “torture”).  The test is started when the module is loaded,
 and stops when the module is unloaded. This program is based on how RCU
 is tortured, via rcutorture.</p>
@@ -385,7 +385,7 @@ in order to avoid confusing boot-time code with CPUs
 coming and going. This parameter is only useful if
 CONFIG_HOTPLUG_CPU is enabled.</p>
 </dd>
-<dt>stat_interval</dt><dd><p>Number of seconds between statistics-related <a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a>s.
+<dt>stat_interval</dt><dd><p>Number of seconds between statistics-related printk()s.
 By default, locktorture will report stats every 60 seconds.
 Setting the interval to zero causes the statistics to
 be printed -only- when the module is unloaded.</p>
@@ -400,7 +400,7 @@ without pausing.</p>
 to a particular subset of the CPUs, defaults to 3 seconds.
 Used in conjunction with test_no_idle_hz.</p>
 </dd>
-<dt>verbose</dt><dd><p>Enable verbose debugging printing, via <a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a>. Enabled
+<dt>verbose</dt><dd><p>Enable verbose debugging printing, via printk(). Enabled
 by default. This extra information is mostly related to
 high-level errors and reports from the main ‘torture’
 framework.</p>
@@ -445,7 +445,7 @@ dmesg | grep torture:
 <p>The output can be manually inspected for the error flag of “!!!”.
 One could of course create a more elaborate script that automatically
 checked for such errors.  The “rmmod” command forces a “SUCCESS”,
-“FAILURE”, or “RCU_HOTPLUG” indication to be <a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a>ed.  The first
+“FAILURE”, or “RCU_HOTPLUG” indication to be printk()ed.  The first
 two are self-explanatory, while the last indicates that while there
 were no locking failures, CPU-hotplug problems were detected.</p>
 <p>Also see: <a class="reference internal" href="../RCU/torture.html"><span class="doc">RCU Torture Test Operation</span></a></p>

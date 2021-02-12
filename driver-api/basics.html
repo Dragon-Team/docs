@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -5126,6 +5126,34 @@ allocated when <a class="reference internal" href="#c.trace_puts" title="trace_p
 <p><strong>Description</strong></p>
 <p>If IS_ERR_OR_NULL(ptr), ptr is returned unchanged.</p>
 <dl class="c function">
+<dt id="c._printk">
+__visible int <code class="sig-name descname">_printk</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>fmt</em>, ...<span class="sig-paren">)</span><a class="headerlink" href="#c._printk" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>print a kernel message</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*fmt</span></code></dt><dd><p>format string</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">...</span></code></dt><dd><p>variable arguments</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This is <a class="reference internal" href="#c._printk" title="_printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">_printk()</span></code></a>. It can be called from any context. We want it to work.</p>
+<p>If printk enumeration is enabled, <a class="reference internal" href="#c._printk" title="_printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">_printk()</span></code></a> is called from printk_store_fmt.
+Otherwise, printk is simply #defined to _printk.</p>
+<p>We try to grab the console_lock. If we succeed, it’s easy - we log the
+output and call the console drivers.  If we fail to get the semaphore, we
+place the output into the log buffer and return. The current holder of
+the console_sem will notice the new output in <a class="reference internal" href="#c.console_unlock" title="console_unlock"><code class="xref c c-func docutils literal notranslate"><span class="pre">console_unlock()</span></code></a>; and will
+send it to the consoles before releasing the lock.</p>
+<p>One effect of this deferred printing is that code which calls printk() and
+then changes console_loglevel may break. This is because console_loglevel
+is inspected when the actual printing occurs.</p>
+<p>See also:
+printf(3)</p>
+<p>See the <a class="reference internal" href="../core-api/kernel-api.html#c.vsnprintf" title="vsnprintf"><code class="xref c c-func docutils literal notranslate"><span class="pre">vsnprintf()</span></code></a> documentation for format string extensions over C99.</p>
+<dl class="c function">
 <dt id="c.console_lock">
 void <code class="sig-name descname">console_lock</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.console_lock" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>lock the console system for exclusive use.</p>
@@ -5170,7 +5198,7 @@ void <code class="sig-name descname">console_unlock</code><span class="sig-paren
 <p>Releases the console_lock which the caller holds on the console system
 and the console driver list.</p>
 <p>While the console_lock was held, console output may have been buffered
-by <a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a>.  If this is the case, <a class="reference internal" href="#c.console_unlock" title="console_unlock"><code class="xref c c-func docutils literal notranslate"><span class="pre">console_unlock()</span></code></a>; emits
+by printk().  If this is the case, <a class="reference internal" href="#c.console_unlock" title="console_unlock"><code class="xref c c-func docutils literal notranslate"><span class="pre">console_unlock()</span></code></a>; emits
 the output prior to releasing the lock.</p>
 <p>If there is output waiting, we wake /dev/kmsg and syslog() users.</p>
 <p><a class="reference internal" href="#c.console_unlock" title="console_unlock"><code class="xref c c-func docutils literal notranslate"><span class="pre">console_unlock()</span></code></a>; may be called from any context.</p>

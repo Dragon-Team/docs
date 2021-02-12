@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -480,7 +480,7 @@ between the calls to <a class="reference internal" href="../networking/ieee80215
 is a reasonable thing to do. The seq_file code will also avoid taking any
 other locks while the iterator is active.</p>
 <p>The iterater value returned by <a class="reference internal" href="../networking/ieee802154.html#c.start" title="start"><code class="xref c c-func docutils literal notranslate"><span class="pre">start()</span></code></a> or next() is guaranteed to be
-passed to a subsequenct next() or <a class="reference internal" href="../networking/ieee802154.html#c.stop" title="stop"><code class="xref c c-func docutils literal notranslate"><span class="pre">stop()</span></code></a> call.  This allows resources
+passed to a subsequent next() or <a class="reference internal" href="../networking/ieee802154.html#c.stop" title="stop"><code class="xref c c-func docutils literal notranslate"><span class="pre">stop()</span></code></a> call.  This allows resources
 such as locks that were taken to be reliably released.  There is <em>no</em>
 guarantee that the iterator will be passed to show(), though in practice
 it often will be.</p>
@@ -492,7 +492,7 @@ iterator and getting it into the user’s buffer. But, for that to work, that
 output must be passed to the seq_file code. Some utility functions have
 been defined which make this task easy.</p>
 <p>Most code will simply use seq_printf(), which works pretty much like
-<a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a>, but which requires the seq_file pointer as an argument.</p>
+printk(), but which requires the seq_file pointer as an argument.</p>
 <p>For straight character output, the following functions may be used:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>seq_putc(struct seq_file *m, char c);
 seq_puts(struct seq_file *m, const char *s);

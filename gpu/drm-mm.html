@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -2066,7 +2066,7 @@ drm_gem_vram_kmap() and drm_gem_vram_kunmap(), as well as pairs of
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct drm_vram_mm {
   uint64_t vram_base;
   size_t vram_size;
-  struct ttm_device bdev;
+  struct ttm_bo_device bdev;
 };
 </pre></div>
 </div>
@@ -2086,13 +2086,13 @@ available for public read access. Use the field
 <a class="reference internal" href="#c.drm_vram_mm" title="drm_vram_mm"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_vram_mm</span></code></a>.bdev to access the TTM BO device.</p>
 <dl class="c function">
 <dt id="c.drm_vram_mm_of_bdev">
-<em class="property">struct</em> <a class="reference internal" href="#c.drm_vram_mm" title="drm_vram_mm">drm_vram_mm</a> *<code class="sig-name descname">drm_vram_mm_of_bdev</code><span class="sig-paren">(</span><em class="property">struct</em> ttm_device *<em>bdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_vram_mm_of_bdev" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns the container of type <code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">ttm_device</span></code> for field bdev.</p>
+<em class="property">struct</em> <a class="reference internal" href="#c.drm_vram_mm" title="drm_vram_mm">drm_vram_mm</a> *<code class="sig-name descname">drm_vram_mm_of_bdev</code><span class="sig-paren">(</span><em class="property">struct</em> ttm_bo_device *<em>bdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_vram_mm_of_bdev" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the container of type <code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">ttm_bo_device</span></code> for field bdev.</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">ttm_device</span> <span class="pre">*bdev</span></code></dt><dd><p>the TTM BO device</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">ttm_bo_device</span> <span class="pre">*bdev</span></code></dt><dd><p>the TTM BO device</p>
 </dd>
 </dl>
 <p><strong>Return</strong></p>
@@ -4754,13 +4754,13 @@ to schedule the job.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct drm_sched_backend_ops {
   struct dma_fence *(*dependency)(struct drm_sched_job *sched_job, struct drm_sched_entity *s_entity);
   struct dma_fence *(*run_job)(struct drm_sched_job *sched_job);
-  enum drm_gpu_sched_stat (*timedout_job)(struct drm_sched_job *sched_job);
+  void (*timedout_job)(struct drm_sched_job *sched_job);
   void (*free_job)(struct drm_sched_job *sched_job);
 };
 </pre></div>
 </div>
 <p><strong>Members</strong></p>
-<dl>
+<dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">dependency</span></code></dt><dd><p>Called when the scheduler is considering scheduling
 this job next, to get another <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_fence" title="dma_fence"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">dma_fence</span></code></a> for this job to
 block on.  Once it returns NULL, run_job() may be called.</p>
@@ -4772,10 +4772,6 @@ decides to try it again.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">timedout_job</span></code></dt><dd><p>Called when a job has taken too long to execute,
 to trigger GPU recovery.</p>
-<p>Return DRM_GPU_SCHED_STAT_NOMINAL, when all is normal,
-and the underlying driver has started or completed recovery.</p>
-<p>Return DRM_GPU_SCHED_STAT_ENODEV, if the device is no longer
-available, i.e. has been unplugged.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">free_job</span></code></dt><dd><p>Called once the job’s finished fence has been signaled
 and it’s time to clean it up.</p>
@@ -4805,8 +4801,7 @@ these functions should be implemented in driver side.</p>
   struct list_head                pending_list;
   spinlock_t job_list_lock;
   int hang_limit;
-  atomic_t *score;
-  atomic_t _score;
+  atomic_t score;
   bool ready;
   bool free_guilty;
 };
@@ -4949,7 +4944,7 @@ void <code class="sig-name descname">drm_sched_start</code><span class="sig-pare
 <dl class="c function">
 <dt id="c.drm_sched_resubmit_jobs">
 void <code class="sig-name descname">drm_sched_resubmit_jobs</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gpu_scheduler" title="drm_gpu_scheduler">drm_gpu_scheduler</a> *<em>sched</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_sched_resubmit_jobs" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>helper to relaunch jobs from the pending list</p>
+<dd><p>helper to relunch job from pending ring list</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -5005,7 +5000,7 @@ void <code class="sig-name descname">drm_sched_job_cleanup</code><span class="si
 drm_gpu_schedulers are ready</p>
 <dl class="c function">
 <dt id="c.drm_sched_init">
-int <code class="sig-name descname">drm_sched_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gpu_scheduler" title="drm_gpu_scheduler">drm_gpu_scheduler</a> *<em>sched</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_sched_backend_ops" title="drm_sched_backend_ops">drm_sched_backend_ops</a> *<em>ops</em>, unsigned <em>hw_submission</em>, unsigned <em>hang_limit</em>, long <em>timeout</em>, atomic_t *<em>score</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_sched_init" title="Permalink to this definition">¶</a><br /></dt>
+int <code class="sig-name descname">drm_sched_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_gpu_scheduler" title="drm_gpu_scheduler">drm_gpu_scheduler</a> *<em>sched</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_sched_backend_ops" title="drm_sched_backend_ops">drm_sched_backend_ops</a> *<em>ops</em>, unsigned <em>hw_submission</em>, unsigned <em>hang_limit</em>, long <em>timeout</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_sched_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Init a gpu scheduler instance</p>
 </dd></dl>
 
@@ -5020,8 +5015,6 @@ int <code class="sig-name descname">drm_sched_init</code><span class="sig-paren"
 <dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">hang_limit</span></code></dt><dd><p>number of times to allow a job to hang before dropping it</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">timeout</span></code></dt><dd><p>timeout value in jiffies for the scheduler</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">atomic_t</span> <span class="pre">*score</span></code></dt><dd><p>optional score atomic shared with other schedulers</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*name</span></code></dt><dd><p>name used for debugging</p>
 </dd>

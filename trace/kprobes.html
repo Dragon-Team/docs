@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -820,7 +820,7 @@ to install a bug fix or to inject faults for testing.  Kprobes, of
 course, has no way to distinguish the deliberately injected faults
 from the accidental ones.  Don’t drink and probe.</p>
 <p>Kprobes makes no attempt to prevent probe handlers from stepping on
-each other – e.g., probing <a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> and then calling <a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> from a
+each other – e.g., probing printk() and then calling printk() from a
 probe handler.  If a probe handler hits a probe, that second probe’s
 handlers won’t be run in that instance, and the kprobe.nmissed member
 of the second probe will be incremented.</p>

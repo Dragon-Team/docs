@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -294,7 +294,7 @@
 <p>The CONFIG_RCU_TORTURE_TEST config option is available for all RCU
 implementations.  It creates an rcutorture kernel module that can
 be loaded to run a torture test.  The test periodically outputs
-status messages via <a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a>, which can be examined via the dmesg
+status messages via printk(), which can be examined via the dmesg
 command (perhaps grepping for “torture”).  The test is started
 when the module is loaded, and stops when the module is unloaded.</p>
 <p>Module parameters are prefixed by “rcutorture.” in
@@ -313,8 +313,8 @@ rcu-torture:--- End of test: SUCCESS: nreaders=16 nfakewriters=4 stat_interval=3
 </div>
 <p>The command “dmesg | grep torture:” will extract this information on
 most systems.  On more esoteric configurations, it may be necessary to
-use other commands to access the output of the <a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a>s used by
-the RCU torture test.  The <a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a>s use KERN_ALERT, so they should
+use other commands to access the output of the printk()s used by
+the RCU torture test.  The printk()s use KERN_ALERT, so they should
 be evident.  ;-)</p>
 <p>The first and last lines show the rcutorture module parameters, and the
 last line shows either “SUCCESS” or “FAILURE”, based on rcutorture’s
@@ -411,7 +411,7 @@ dmesg | grep torture:
 <p>The output can be manually inspected for the error flag of “!!!”.
 One could of course create a more elaborate script that automatically
 checked for such errors.  The “rmmod” command forces a “SUCCESS”,
-“FAILURE”, or “RCU_HOTPLUG” indication to be <a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a>ed.  The first
+“FAILURE”, or “RCU_HOTPLUG” indication to be printk()ed.  The first
 two are self-explanatory, while the last indicates that while there
 were no RCU failures, CPU-hotplug problems were detected.</p>
 </div>

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -504,9 +504,9 @@ Se <strong>infrangete</strong> le regole, allora potreste bloccare il vostro sca
 <div class="section" id="alcune-delle-procedure-piu-comuni">
 <h2>Alcune delle procedure più comuni<a class="headerlink" href="#alcune-delle-procedure-piu-comuni" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="printk">
-<h3><a class="reference internal" href="../../../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a><a class="headerlink" href="#printk" title="Permalink to this headline">¶</a></h3>
+<h3><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code><a class="headerlink" href="#printk" title="Permalink to this headline">¶</a></h3>
 <p>Definita in <code class="docutils literal notranslate"><span class="pre">include/linux/printk.h</span></code></p>
-<p><a class="reference internal" href="../../../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> fornisce messaggi alla console, dmesg, e al demone syslog.
+<p><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code> fornisce messaggi alla console, dmesg, e al demone syslog.
 Essa è utile per il debugging o per la notifica di errori; può essere
 utilizzata anche all’interno del contesto d’interruzione, ma usatela con
 cautela: una macchina che ha la propria console inondata da messaggi diventa
@@ -523,7 +523,7 @@ per stampare un indirizzo IP usate:</p>
 printk(KERN_INFO &quot;my ip: %pI4\n&quot;, &amp;ipaddress);
 </pre></div>
 </div>
-<p><a class="reference internal" href="../../../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> utilizza un buffer interno di 1K e non s’accorge di
+<p><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code> utilizza un buffer interno di 1K e non s’accorge di
 eventuali sforamenti. Accertatevi che vi basti.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

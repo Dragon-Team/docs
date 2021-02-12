@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -507,9 +507,9 @@ rules, you will eventually lock up your box.</p>
 <div class="section" id="common-routines">
 <h2>Common Routines<a class="headerlink" href="#common-routines" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="printk">
-<h3><a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a><a class="headerlink" href="#printk" title="Permalink to this headline">¶</a></h3>
+<h3><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code><a class="headerlink" href="#printk" title="Permalink to this headline">¶</a></h3>
 <p>Defined in <code class="docutils literal notranslate"><span class="pre">include/linux/printk.h</span></code></p>
-<p><a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> feeds kernel messages to the console, dmesg, and
+<p><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code> feeds kernel messages to the console, dmesg, and
 the syslog daemon. It is useful for debugging and reporting errors, and
 can be used inside interrupt context, but use with caution: a machine
 which has its console flooded with printk messages is unusable. It uses
@@ -525,7 +525,7 @@ address use:</p>
 printk(KERN_INFO &quot;my ip: %pI4\n&quot;, &amp;ipaddress);
 </pre></div>
 </div>
-<p><a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> internally uses a 1K buffer and does not catch
+<p><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code> internally uses a 1K buffer and does not catch
 overruns. Make sure that will be enough.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

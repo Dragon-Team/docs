@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -165,6 +165,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../paravirt_ops.html">Paravirt_ops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guest-halt-polling.html">Guest halt polling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ne_overview.html">Nitro Enclaves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../acrn/index.html">ACRN Hypervisor</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../input/index.html">The Linux Input Documentation</a></li>
@@ -294,7 +295,14 @@
 <li><p>kvm-&gt;slots_lock is taken outside kvm-&gt;irq_lock, though acquiring
 them together is quite rare.</p></li>
 </ul>
-<p>On x86, vcpu-&gt;mutex is taken outside kvm-&gt;arch.hyperv.hv_lock.</p>
+<p>On x86:</p>
+<ul class="simple">
+<li><p>vcpu-&gt;mutex is taken outside kvm-&gt;arch.hyperv.hv_lock</p></li>
+<li><p>kvm-&gt;arch.mmu_lock is an rwlock.  kvm-&gt;arch.tdp_mmu_pages_lock is
+taken inside kvm-&gt;arch.mmu_lock, and cannot be taken without already
+holding kvm-&gt;arch.mmu_lock (typically with <code class="docutils literal notranslate"><span class="pre">read_lock</span></code>, otherwise
+there’s no need to take kvm-&gt;arch.tdp_mmu_pages_lock at all).</p></li>
+</ul>
 <p>Everything else is a leaf: no other lock is taken inside the critical
 sections.</p>
 </div>
@@ -538,7 +546,7 @@ migration.</p>
 <dd class="field-even"><p>‘raw’ because updating the tsc offsets must not be preempted.</p>
 </dd>
 <dt class="field-odd">Name</dt>
-<dd class="field-odd"><p>kvm_arch::mmu_lock</p>
+<dd class="field-odd"><p>kvm-&gt;mmu_lock</p>
 </dd>
 <dt class="field-even">Type</dt>
 <dd class="field-even"><p>spinlock_t</p>

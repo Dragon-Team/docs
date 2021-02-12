@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -655,7 +655,7 @@ callback function is declared as follows.</p>
   const char *name;
   int (*match)(struct vme_dev *);
   int (*probe)(struct vme_dev *);
-  int (*remove)(struct vme_dev *);
+  void (*remove)(struct vme_dev *);
   struct device_driver driver;
   struct list_head devices;
 };

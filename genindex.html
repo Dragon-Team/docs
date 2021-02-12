@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -518,10 +518,10 @@
 </li>
       <li><a href="core-api/boot-time-mm.html#c.__next_mem_pfn_range_in_zone">__next_mem_pfn_range_in_zone (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core-api/boot-time-mm.html#c.__next_mem_range">__next_mem_range (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core-api/boot-time-mm.html#c.__next_mem_range_rev">__next_mem_range_rev (C function)</a>
 </li>
       <li><a href="driver-api/miscellaneous.html#c.__parport_register_driver">__parport_register_driver (C function)</a>
@@ -759,6 +759,8 @@
       <li><a href="networking/kapi.html#c._copy_from_pages">_copy_from_pages (C function)</a>
 </li>
       <li><a href="driver-api/infiniband.html#c._ib_alloc_device">_ib_alloc_device (C function)</a>
+</li>
+      <li><a href="driver-api/basics.html#c._printk">_printk (C function)</a>
 </li>
       <li><a href="networking/kapi.html#c._sock_tx_timestamp">_sock_tx_timestamp (C function)</a>
 </li>
@@ -1944,10 +1946,10 @@
 </li>
       <li><a href="core-api/kernel-api.html#c.blk_lld_busy">blk_lld_busy (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core-api/kernel-api.html#c.blk_mangle_minor">blk_mangle_minor (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="block/blk-mq.html#c.blk_mq_complete_request">blk_mq_complete_request (C function)</a>
 </li>
       <li><a href="block/blk-mq.html#c.blk_mq_delay_run_hw_queue">blk_mq_delay_run_hw_queue (C function)</a>
@@ -2047,6 +2049,8 @@
       <li><a href="core-api/kernel-api.html#c.blk_queue_virt_boundary">blk_queue_virt_boundary (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.blk_queue_write_cache">blk_queue_write_cache (C function)</a>
+</li>
+      <li><a href="core-api/kernel-api.html#c.blk_queue_zone_write_granularity">blk_queue_zone_write_granularity (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.blk_release_queue">blk_release_queue (C function)</a>
 </li>
@@ -3942,10 +3946,6 @@
 </li>
       <li><a href="driver-api/dma-buf.html#c.dma_fence_signal_locked">dma_fence_signal_locked (C function)</a>
 </li>
-      <li><a href="driver-api/dma-buf.html#c.dma_fence_signal_timestamp">dma_fence_signal_timestamp (C function)</a>
-</li>
-      <li><a href="driver-api/dma-buf.html#c.dma_fence_signal_timestamp_locked">dma_fence_signal_timestamp_locked (C function)</a>
-</li>
       <li><a href="driver-api/dma-buf.html#c.dma_fence_wait">dma_fence_wait (C function)</a>
 </li>
       <li><a href="driver-api/dma-buf.html#c.dma_fence_wait_any_timeout">dma_fence_wait_any_timeout (C function)</a>
@@ -4628,8 +4628,6 @@
 </li>
       <li><a href="gpu/drm-kms.html#c.drm_crtc_commit_put">drm_crtc_commit_put (C function)</a>
 </li>
-      <li><a href="gpu/drm-kms.html#c.drm_crtc_commit_wait">drm_crtc_commit_wait (C function)</a>
-</li>
       <li><a href="gpu/drm-kms.html#c.drm_crtc_create_scaling_filter_property">drm_crtc_create_scaling_filter_property (C function)</a>
 </li>
       <li><a href="gpu/drm-kms.html#c.drm_crtc_enable_color_mgmt">drm_crtc_enable_color_mgmt (C function)</a>
@@ -4898,10 +4896,10 @@
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_topology_get_port">drm_dp_mst_topology_get_port (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_topology_mgr">drm_dp_mst_topology_mgr (C struct)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_topology_mgr_destroy">drm_dp_mst_topology_mgr_destroy (C function)</a>
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.drm_dp_mst_topology_mgr_init">drm_dp_mst_topology_mgr_init (C function)</a>
@@ -6137,8 +6135,6 @@
       <li><a href="gpu/drm-internals.html#c.drm_send_event">drm_send_event (C function)</a>
 </li>
       <li><a href="gpu/drm-internals.html#c.drm_send_event_locked">drm_send_event_locked (C function)</a>
-</li>
-      <li><a href="gpu/drm-internals.html#c.drm_send_event_timestamp_locked">drm_send_event_timestamp_locked (C function)</a>
 </li>
       <li><a href="gpu/drm-internals.html#c.drm_seq_file_printer">drm_seq_file_printer (C function)</a>
 </li>
@@ -8681,6 +8677,8 @@
       <li><a href="driver-api/infiniband.html#c.ib_modify_wq">ib_modify_wq (C function)</a>
 </li>
       <li><a href="driver-api/infiniband.html#c.ib_pack">ib_pack (C function)</a>
+</li>
+      <li><a href="driver-api/infiniband.html#c.ib_port_immutable_read">ib_port_immutable_read (C function)</a>
 </li>
       <li><a href="driver-api/infiniband.html#c.ib_process_cq_direct">ib_process_cq_direct (C function)</a>
 </li>
@@ -13192,10 +13190,10 @@
 </li>
       <li><a href="networking/kapi.html#c.phy_ethtool_get_strings">phy_ethtool_get_strings (C function)</a>
 </li>
-      <li><a href="networking/kapi.html#c.phy_ethtool_get_wol">phy_ethtool_get_wol (C function)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="networking/kapi.html#c.phy_ethtool_get_wol">phy_ethtool_get_wol (C function)</a>
+</li>
       <li><a href="networking/kapi.html#c.phy_ethtool_nway_reset">phy_ethtool_nway_reset (C function)</a>
 </li>
       <li><a href="networking/kapi.html#c.phy_ethtool_set_eee">phy_ethtool_set_eee (C function)</a>
@@ -13600,8 +13598,6 @@
 </li>
       <li><a href="core-api/workqueue.html#c.print_worker_info">print_worker_info (C function)</a>
 </li>
-      <li><a href="core-api/printk-basics.html#c.printk">printk (C function)</a>
-</li>
       <li><a href="driver-api/basics.html#c.printk_timed_ratelimit">printk_timed_ratelimit (C function)</a>
 </li>
       <li><a href="driver-api/80211/cfg80211.html#c.priv_to_wiphy">priv_to_wiphy (C function)</a>
@@ -13651,8 +13647,6 @@
       <li><a href="networking/kapi.html#c.pskb_trim_rcsum">pskb_trim_rcsum (C function)</a>
 </li>
       <li><a href="networking/kapi.html#c.pskb_trim_unique">pskb_trim_unique (C function)</a>
-</li>
-      <li><a href="gpu/i915.html#c.psr_wait_for_idle">psr_wait_for_idle (C function)</a>
 </li>
       <li><a href="admin-guide/pstore-blk.html#c.pstore_blk_config">pstore_blk_config (C struct)</a>
 </li>
@@ -18228,7 +18222,7 @@
 </li>
       <li><a href="core-api/mm-api.html#c.unlock_page">unlock_page (C function)</a>
 </li>
-      <li><a href="core-api/mm-api.html#c.unlock_page_fscache">unlock_page_fscache (C function)</a>
+      <li><a href="core-api/mm-api.html#c.unlock_page_private_2">unlock_page_private_2 (C function)</a>
 </li>
       <li><a href="networking/kapi.html#c.unlock_sock_fast">unlock_sock_fast (C function)</a>
 </li>
@@ -18396,10 +18390,10 @@
 </li>
       <li><a href="driver-api/usb/usb.html#c.usb_driver_release_interface">usb_driver_release_interface (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="driver-api/usb/usb.html#c.usb_driver_set_configuration">usb_driver_set_configuration (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="driver-api/usb/usb.html#c.usb_enable_autosuspend">usb_enable_autosuspend (C function)</a>
 </li>
       <li><a href="driver-api/usb/gadget.html#c.usb_ep">usb_ep (C struct)</a>
@@ -18467,6 +18461,8 @@
       <li><a href="driver-api/usb/usb.html#c.usb_get_intf">usb_get_intf (C function)</a>
 </li>
       <li><a href="driver-api/usb/usb.html#c.usb_get_maximum_speed">usb_get_maximum_speed (C function)</a>
+</li>
+      <li><a href="driver-api/usb/usb.html#c.usb_get_maximum_ssp_rate">usb_get_maximum_ssp_rate (C function)</a>
 </li>
       <li><a href="driver-api/usb/usb.html#c.usb_get_status">usb_get_status (C function)</a>
 </li>
@@ -20494,7 +20490,7 @@
 </li>
       <li><a href="core-api/mm-api.html#c.wait_for_stable_page">wait_for_stable_page (C function)</a>
 </li>
-      <li><a href="core-api/mm-api.html#c.wait_on_page_fscache">wait_on_page_fscache (C function)</a>
+      <li><a href="core-api/mm-api.html#c.wait_on_page_private_2">wait_on_page_private_2 (C function)</a>
 </li>
       <li><a href="driver-api/basics.html#c.wait_task_stopped">wait_task_stopped (C function)</a>
 </li>

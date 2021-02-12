@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -1352,6 +1352,8 @@ or unaligned OUT)</p>
   u32 u1u2;
   u32 maximum_speed;
   u32 gadget_max_speed;
+  enum usb_ssp_rate       max_ssp_rate;
+  enum usb_ssp_rate       gadget_ssp_rate;
   u32 ip;
 #define DWC3_IP                 0x5533;
 #define DWC31_IP                0x3331;
@@ -1564,6 +1566,11 @@ usb role is USB_ROLE_NONE.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">maximum_speed</span></code></dt><dd><p>maximum speed requested (mainly for testing purposes)</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">gadget_max_speed</span></code></dt><dd><p>maximum gadget speed requested</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">max_ssp_rate</span></code></dt><dd><p>SuperSpeed Plus maximum signaling rate and lane count</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">gadget_ssp_rate</span></code></dt><dd><p>Gadget driver’s maximum supported SuperSpeed Plus signaling
+rate and lane count.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">ip</span></code></dt><dd><p>controller’s ID</p>
 </dd>

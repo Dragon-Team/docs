@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -164,7 +164,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#wbt-lat-usec-rw">wbt_lat_usec (RW)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#throttle-sample-time-rw">throttle_sample_time (RW)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#write-zeroes-max-bytes-ro">write_zeroes_max_bytes (RO)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zone-append-max-bytes-ro">zone_append_max_bytes (RO)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#zoned-ro">zoned (RO)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zone-write-granularity-ro">zone_write_granularity (RO)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="request.html">struct request documentation</a></li>
@@ -563,6 +565,12 @@ CONFIG_BLK_DEV_THROTTLING_LOW is enabled.</p>
 bytes that can be zeroed at once. The value 0 means that REQ_OP_WRITE_ZEROES
 is not supported.</p>
 </div>
+<div class="section" id="zone-append-max-bytes-ro">
+<h2>zone_append_max_bytes (RO)<a class="headerlink" href="#zone-append-max-bytes-ro" title="Permalink to this headline">¶</a></h2>
+<p>This is the maximum number of bytes that can be written to a sequential
+zone of a zoned block device using a zone append write operation
+(REQ_OP_ZONE_APPEND). This value is always 0 for regular block devices.</p>
+</div>
 <div class="section" id="zoned-ro">
 <h2>zoned (RO)<a class="headerlink" href="#zoned-ro" title="Permalink to this headline">¶</a></h2>
 <p>This indicates if the device is a zoned block device and the zone model of the
@@ -574,6 +582,13 @@ devices are described in the ZBC (Zoned Block Commands) and ZAC
 “drive-managed” zone model. However, since drive-managed zoned block devices
 do not support zone commands, they will be treated as regular block devices
 and zoned will report “none”.</p>
+</div>
+<div class="section" id="zone-write-granularity-ro">
+<h2>zone_write_granularity (RO)<a class="headerlink" href="#zone-write-granularity-ro" title="Permalink to this headline">¶</a></h2>
+<p>This indicates the alignment constraint, in bytes, for write operations in
+sequential zones of zoned block devices (devices with a zoned attributed
+that reports “host-managed” or “host-aware”). This value is always 0 for
+regular block devices.</p>
 <p>Jens Axboe &lt;<a class="reference external" href="mailto:jens&#46;axboe&#37;&#52;&#48;oracle&#46;com">jens<span>&#46;</span>axboe<span>&#64;</span>oracle<span>&#46;</span>com</a>&gt;, February 2009</p>
 </div>
 </div>

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -354,7 +354,7 @@ Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.13.0-1 04/01/2014
 <p>The header of the report provides a short summary of the function involved in
 the access. It is followed by more detailed information about the access and
 its origin. Note that, real kernel addresses are only shown for
-<code class="docutils literal notranslate"><span class="pre">CONFIG_DEBUG_KERNEL=y</span></code> builds.</p>
+<code class="docutils literal notranslate"><span class="pre">CONFIG_KFENCE_REPORT_SENSITIVE=y</span></code> builds.</p>
 <p>Use-after-free accesses are reported as:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>==================================================================
 BUG: KFENCE: use-after-free read in test_use_after_free_read+0xb3/0x143
@@ -448,8 +448,8 @@ invalidly written bytes (offset from the address) are shown; in this
 representation, ‘.’ denote untouched bytes. In the example above <code class="docutils literal notranslate"><span class="pre">0xac</span></code> is
 the value written to the invalid address at offset 0, and the remaining ‘.’
 denote that no following bytes have been touched. Note that, real values are
-only shown for <code class="docutils literal notranslate"><span class="pre">CONFIG_DEBUG_KERNEL=y</span></code> builds; to avoid information
-disclosure for non-debug builds, ‘!’ is used instead to denote invalidly
+only shown for <code class="docutils literal notranslate"><span class="pre">CONFIG_KFENCE_REPORT_SENSITIVE=y</span></code> builds; to avoid
+information disclosure otherwise, ‘!’ is used instead to denote invalidly
 written bytes.</p>
 <p>And finally, KFENCE may also report on invalid accesses to any protected page
 where it was not possible to determine an associated object, e.g. if adjacent

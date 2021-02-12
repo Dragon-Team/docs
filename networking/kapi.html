@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -8022,6 +8022,20 @@ void <code class="sig-name descname">__napi_schedule_irqoff</code><span class="s
 <p><strong>Description</strong></p>
 <p>Variant of <a class="reference internal" href="#c.__napi_schedule" title="__napi_schedule"><code class="xref c c-func docutils literal notranslate"><span class="pre">__napi_schedule()</span></code></a> assuming hard irqs are masked</p>
 <dl class="c function">
+<dt id="c.napi_enable">
+void <code class="sig-name descname">napi_enable</code><span class="sig-paren">(</span><em class="property">struct</em> napi_struct *<em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#c.napi_enable" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>enable NAPI scheduling</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">napi_struct</span> <span class="pre">*n</span></code></dt><dd><p>NAPI context</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Resume NAPI from being scheduled on this context.
+Must be paired with napi_disable.</p>
+<dl class="c function">
 <dt id="c.netdev_has_upper_dev">
 bool <code class="sig-name descname">netdev_has_upper_dev</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.net_device" title="net_device">net_device</a> *<em>upper_dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.netdev_has_upper_dev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Check if device is linked to an upper device</p>
@@ -9499,20 +9513,6 @@ void <code class="sig-name descname">napi_disable</code><span class="sig-paren">
 <p>Stop NAPI from being scheduled on this context.
 Waits till any outstanding processing completes.</p>
 <dl class="c function">
-<dt id="c.napi_enable">
-void <code class="sig-name descname">napi_enable</code><span class="sig-paren">(</span><em class="property">struct</em> napi_struct *<em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#c.napi_enable" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>enable NAPI scheduling</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">napi_struct</span> <span class="pre">*n</span></code></dt><dd><p>NAPI context</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Resume NAPI from being scheduled on this context.
-Must be paired with napi_disable.</p>
-<dl class="c function">
 <dt id="c.napi_synchronize">
 void <code class="sig-name descname">napi_synchronize</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> napi_struct *<em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#c.napi_synchronize" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>wait until NAPI is not running</p>
@@ -9849,6 +9849,7 @@ during any kernel release.</p>
   struct lock_class_key   *qdisc_running_key;
   bool proto_down;
   unsigned wol_enabled:1;
+  unsigned threaded:1;
   struct list_head        net_notifier_list;
 #if IS_ENABLED(CONFIG_MACSEC);
   const struct macsec_ops *macsec_ops;
@@ -10209,6 +10210,8 @@ switch driver and used to set the phys state of the
 switch port.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">wol_enabled</span></code></dt><dd><p>Wake-on-LAN is enabled</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">threaded</span></code></dt><dd><p>napi threaded mode is enabled</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">net_notifier_list</span></code></dt><dd><p>List of per-net netdev notifier block
 that follow this device when it is moved

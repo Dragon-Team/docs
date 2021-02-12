@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -8779,6 +8779,24 @@ void <code class="sig-name descname">blk_queue_physical_block_size</code><span c
 <div><p>This should be set to the lowest possible sector size that the
 hardware can operate on without reverting to read-modify-write
 operations.</p>
+</div></blockquote>
+<dl class="c function">
+<dt id="c.blk_queue_zone_write_granularity">
+void <code class="sig-name descname">blk_queue_zone_write_granularity</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, unsigned int <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_queue_zone_write_granularity" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>set zone write granularity for the queue</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">request_queue</span> <span class="pre">*q</span></code></dt><dd><p>the request queue for the zoned device</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">size</span></code></dt><dd><p>the zone write granularity size, in bytes</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<blockquote>
+<div><p>This should be set to the lowest possible size allowing to write in
+sequential zones of a zoned block device.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.blk_queue_alignment_offset">

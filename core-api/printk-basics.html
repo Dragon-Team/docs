@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -269,23 +269,23 @@
             
   <div class="section" id="message-logging-with-printk">
 <h1>Message logging with printk<a class="headerlink" href="#message-logging-with-printk" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> is one of the most widely known functions in the Linux kernel. It’s the
+<p>printk() is one of the most widely known functions in the Linux kernel. It’s the
 standard tool we have for printing messages and usually the most basic way of
-tracing and debugging. If you’re familiar with printf(3) you can tell <a class="reference internal" href="#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a>
+tracing and debugging. If you’re familiar with printf(3) you can tell printk()
 is based on it, although it has some functional differences:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference internal" href="#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> messages can specify a log level.</p></li>
+<li><p>printk() messages can specify a log level.</p></li>
 <li><p>the format string, while largely compatible with C99, doesn’t follow the
 exact same specification. It has some extensions and a few limitations
 (no <code class="docutils literal notranslate"><span class="pre">%n</span></code> or floating point conversion specifiers). See <a class="reference internal" href="printk-formats.html#printk-specifiers"><span class="std std-ref">How to get
 printk format specifiers right</span></a>.</p></li>
 </ul>
 </div></blockquote>
-<p>All <a class="reference internal" href="#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> messages are printed to the kernel log buffer, which is a ring
+<p>All printk() messages are printed to the kernel log buffer, which is a ring
 buffer exported to userspace through /dev/kmsg. The usual way to read it is
 using <code class="docutils literal notranslate"><span class="pre">dmesg</span></code>.</p>
-<p><a class="reference internal" href="#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> is typically used like this:</p>
+<p>printk() is typically used like this:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>printk(KERN_INFO &quot;Message: %s\n&quot;, arg);
 </pre></div>
 </div>
@@ -371,14 +371,14 @@ levels.</p>
 </div>
 <p>sets the console_loglevel to print KERN_WARNING (4) or more severe messages to
 console. See <code class="docutils literal notranslate"><span class="pre">dmesg(1)</span></code> for more information.</p>
-<p>As an alternative to <a class="reference internal" href="#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> you can use the <code class="docutils literal notranslate"><span class="pre">pr_*()</span></code> aliases for
+<p>As an alternative to printk() you can use the <code class="docutils literal notranslate"><span class="pre">pr_*()</span></code> aliases for
 logging. This family of macros embed the log level in the macro names. For
 example:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pr_info(&quot;Info message no. %d\n&quot;, msg_num);
 </pre></div>
 </div>
 <p>prints a <code class="docutils literal notranslate"><span class="pre">KERN_INFO</span></code> message.</p>
-<p>Besides being more concise than the equivalent <a class="reference internal" href="#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> calls, they can use a
+<p>Besides being more concise than the equivalent printk() calls, they can use a
 common definition for the format string through the <a class="reference internal" href="#c.pr_fmt" title="pr_fmt"><code class="xref c c-func docutils literal notranslate"><span class="pre">pr_fmt()</span></code></a> macro. For
 instance, defining this at the top of a source file (before any <code class="docutils literal notranslate"><span class="pre">#include</span></code>
 directive):</p>
@@ -392,32 +392,6 @@ that originated the message.</p>
 also <code class="docutils literal notranslate"><span class="pre">CONFIG_DYNAMIC_DEBUG</span></code> in the case of <a class="reference internal" href="#c.pr_debug" title="pr_debug"><code class="xref c c-func docutils literal notranslate"><span class="pre">pr_debug()</span></code></a>) is defined.</p>
 <div class="section" id="function-reference">
 <h2>Function reference<a class="headerlink" href="#function-reference" title="Permalink to this headline">¶</a></h2>
-<dl class="c function">
-<dt id="c.printk">
-__visible int <code class="sig-name descname">printk</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>fmt</em>, ...<span class="sig-paren">)</span><a class="headerlink" href="#c.printk" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>print a kernel message</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*fmt</span></code></dt><dd><p>format string</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">...</span></code></dt><dd><p>variable arguments</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This is <a class="reference internal" href="#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a>. It can be called from any context. We want it to work.</p>
-<p>We try to grab the console_lock. If we succeed, it’s easy - we log the
-output and call the console drivers.  If we fail to get the semaphore, we
-place the output into the log buffer and return. The current holder of
-the console_sem will notice the new output in <a class="reference internal" href="../driver-api/basics.html#c.console_unlock" title="console_unlock"><code class="xref c c-func docutils literal notranslate"><span class="pre">console_unlock()</span></code></a>; and will
-send it to the consoles before releasing the lock.</p>
-<p>One effect of this deferred printing is that code which calls <a class="reference internal" href="#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> and
-then changes console_loglevel may break. This is because console_loglevel
-is inspected when the actual printing occurs.</p>
-<p>See also:
-printf(3)</p>
-<p>See the <a class="reference internal" href="kernel-api.html#c.vsnprintf" title="vsnprintf"><code class="xref c c-func docutils literal notranslate"><span class="pre">vsnprintf()</span></code></a> documentation for format string extensions over C99.</p>
 <dl class="c macro">
 <dt id="c.pr_fmt">
 <code class="sig-name descname">pr_fmt</code><a class="headerlink" href="#c.pr_fmt" title="Permalink to this definition">¶</a><br /></dt>

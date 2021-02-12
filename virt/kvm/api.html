@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -170,6 +170,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../paravirt_ops.html">Paravirt_ops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guest-halt-polling.html">Guest halt polling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ne_overview.html">Nitro Enclaves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../acrn/index.html">ACRN Hypervisor</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../input/index.html">The Linux Input Documentation</a></li>
@@ -1488,6 +1489,13 @@ memory.</p>
 };
 </pre></div>
 </div>
+<p>If the KVM_XEN_HVM_CONFIG_INTERCEPT_HCALL flag is returned from the
+KVM_CAP_XEN_HVM check, it may be set in the flags field of this ioctl.
+This requests KVM to generate the contents of the hypercall page
+automatically; hypercalls will be intercepted and passed to userspace
+through KVM_EXIT_XEN.  In this case, all of the blob size and address
+fields must be zero.</p>
+<p>No other flags are currently valid in the struct kvm_xen_hvm_config.</p>
 </div>
 <div class="section" id="kvm-get-clock">
 <h3>4.29 KVM_GET_CLOCK<a class="headerlink" href="#kvm-get-clock" title="Permalink to this headline">¶</a></h3>
@@ -3406,6 +3414,14 @@ registers, find a list below:</p>
 </tr>
 <tr class="row-even"><td><p>PPC</p></td>
 <td><p>KVM_REG_PPC_PTCR</p></td>
+<td><p>64</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPC</p></td>
+<td><p>KVM_REG_PPC_DAWR1</p></td>
+<td><p>64</p></td>
+</tr>
+<tr class="row-even"><td><p>PPC</p></td>
+<td><p>KVM_REG_PPC_DAWRX1</p></td>
 <td><p>64</p></td>
 </tr>
 <tr class="row-odd"><td><p>PPC</p></td>
@@ -6905,6 +6921,139 @@ into user space.</p>
 <p>If a vCPU is in running state while this ioctl is invoked, the vCPU may
 experience inconsistent filtering behavior on MSR accesses.</p>
 </div>
+<div class="section" id="kvm-xen-hvm-set-attr">
+<h3>4.127 KVM_XEN_HVM_SET_ATTR<a class="headerlink" href="#kvm-xen-hvm-set-attr" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Capability</dt>
+<dd class="field-odd"><p>KVM_CAP_XEN_HVM / KVM_XEN_HVM_CONFIG_SHARED_INFO</p>
+</dd>
+<dt class="field-even">Architectures</dt>
+<dd class="field-even"><p>x86</p>
+</dd>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>vm ioctl</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p>struct kvm_xen_hvm_attr</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>0 on success, &lt; 0 on error</p>
+</dd>
+</dl>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct kvm_xen_hvm_attr {
+      __u16 type;
+      __u16 pad[3];
+      union {
+              __u8 long_mode;
+              __u8 vector;
+              struct {
+                      __u64 gfn;
+              } shared_info;
+              __u64 pad[4];
+      } u;
+};
+</pre></div>
+</div>
+<p>type values:</p>
+<dl class="simple">
+<dt>KVM_XEN_ATTR_TYPE_LONG_MODE</dt><dd><p>Sets the ABI mode of the VM to 32-bit or 64-bit (long mode). This
+determines the layout of the shared info pages exposed to the VM.</p>
+</dd>
+<dt>KVM_XEN_ATTR_TYPE_SHARED_INFO</dt><dd><p>Sets the guest physical frame number at which the Xen “shared info”
+page resides. Note that although Xen places vcpu_info for the first
+32 vCPUs in the shared_info page, KVM does not automatically do so
+and instead requires that KVM_XEN_VCPU_ATTR_TYPE_VCPU_INFO be used
+explicitly even when the vcpu_info for a given vCPU resides at the
+“default” location in the shared_info page. This is because KVM is
+not aware of the Xen CPU id which is used as the index into the
+vcpu_info[] array, so cannot know the correct default location.</p>
+</dd>
+<dt>KVM_XEN_ATTR_TYPE_UPCALL_VECTOR</dt><dd><p>Sets the exception vector used to deliver Xen event channel upcalls.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="kvm-xen-hvm-get-attr">
+<h3>4.128 KVM_XEN_HVM_GET_ATTR<a class="headerlink" href="#kvm-xen-hvm-get-attr" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Capability</dt>
+<dd class="field-odd"><p>KVM_CAP_XEN_HVM / KVM_XEN_HVM_CONFIG_SHARED_INFO</p>
+</dd>
+<dt class="field-even">Architectures</dt>
+<dd class="field-even"><p>x86</p>
+</dd>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>vm ioctl</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p>struct kvm_xen_hvm_attr</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>0 on success, &lt; 0 on error</p>
+</dd>
+</dl>
+<p>Allows Xen VM attributes to be read. For the structure and types,
+see KVM_XEN_HVM_SET_ATTR above.</p>
+</div>
+<div class="section" id="kvm-xen-vcpu-set-attr">
+<h3>4.129 KVM_XEN_VCPU_SET_ATTR<a class="headerlink" href="#kvm-xen-vcpu-set-attr" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Capability</dt>
+<dd class="field-odd"><p>KVM_CAP_XEN_HVM / KVM_XEN_HVM_CONFIG_SHARED_INFO</p>
+</dd>
+<dt class="field-even">Architectures</dt>
+<dd class="field-even"><p>x86</p>
+</dd>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>vcpu ioctl</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p>struct kvm_xen_vcpu_attr</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>0 on success, &lt; 0 on error</p>
+</dd>
+</dl>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct kvm_xen_vcpu_attr {
+      __u16 type;
+      __u16 pad[3];
+      union {
+              __u64 gpa;
+              __u64 pad[4];
+      } u;
+};
+</pre></div>
+</div>
+<p>type values:</p>
+<dl class="simple">
+<dt>KVM_XEN_VCPU_ATTR_TYPE_VCPU_INFO</dt><dd><p>Sets the guest physical address of the vcpu_info for a given vCPU.</p>
+</dd>
+<dt>KVM_XEN_VCPU_ATTR_TYPE_VCPU_TIME_INFO</dt><dd><p>Sets the guest physical address of an additional pvclock structure
+for a given vCPU. This is typically used for guest vsyscall support.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="kvm-xen-vcpu-get-attr">
+<h3>4.130 KVM_XEN_VCPU_GET_ATTR<a class="headerlink" href="#kvm-xen-vcpu-get-attr" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Capability</dt>
+<dd class="field-odd"><p>KVM_CAP_XEN_HVM / KVM_XEN_HVM_CONFIG_SHARED_INFO</p>
+</dd>
+<dt class="field-even">Architectures</dt>
+<dd class="field-even"><p>x86</p>
+</dd>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>vcpu ioctl</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p>struct kvm_xen_vcpu_attr</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>0 on success, &lt; 0 on error</p>
+</dd>
+</dl>
+<p>Allows Xen vCPU attributes to be read. For the structure and types,
+see KVM_XEN_VCPU_SET_ATTR above.</p>
+</div>
 </div>
 <div class="section" id="the-kvm-run-structure">
 <h2>5. The kvm_run structure<a class="headerlink" href="#the-kvm-run-structure" title="Permalink to this headline">¶</a></h2>
@@ -6953,9 +7102,13 @@ local APIC is not used.</p>
 </pre></div>
 </div>
 <p>More architecture-specific flags detailing state of the VCPU that may
-affect the device’s behavior.  The only currently defined flag is
-KVM_RUN_X86_SMM, which is valid on x86 machines and is set if the
-VCPU is in system management mode.</p>
+affect the device’s behavior. Current defined flags:</p>
+<blockquote>
+<div><p>/* x86, set if the VCPU is in system management mode <em>/
+#define KVM_RUN_X86_SMM     (1 &lt;&lt; 0)
+/</em> x86, set if bus lock detected in VM <a href="#id12"><span class="problematic" id="id13">*</span></a>/
+#define KVM_RUN_BUS_LOCK    (1 &lt;&lt; 1)</p>
+</div></blockquote>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/* in (pre_kvm_run), out (post_kvm_run) */
 __u64 cr8;
 </pre></div>
@@ -7038,13 +7191,17 @@ appear if the VCPU performed a load or store of the appropriate width directly
 to the byte array.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For KVM_EXIT_IO, KVM_EXIT_MMIO, KVM_EXIT_OSI, KVM_EXIT_PAPR,
+<p>For KVM_EXIT_IO, KVM_EXIT_MMIO, KVM_EXIT_OSI, KVM_EXIT_PAPR, KVM_EXIT_XEN,
 KVM_EXIT_EPR, KVM_EXIT_X86_RDMSR and KVM_EXIT_X86_WRMSR the corresponding
 operations are complete (and guest state is consistent) only after userspace
 has re-entered the kernel with KVM_RUN.  The kernel side will first finish
-incomplete operations and then check for pending signals.  Userspace
-can re-enter the guest with an unmasked signal pending to complete
-pending operations.</p>
+incomplete operations and then check for pending signals.</p>
+<p>The pending state of the operation is not preserved in state which is
+visible to userspace, thus userspace should ensure that the operation is
+completed before performing a live migration.  Userspace can re-enter the
+guest with an unmasked signal pending or with the immediate_exit field set
+to complete pending operations without allowing any further instructions
+to be executed.</p>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/* KVM_EXIT_HYPERCALL */
 struct {
@@ -7337,6 +7494,33 @@ executed again.</p>
 wants to write. Once finished processing the event, user space must continue
 vCPU execution. If the MSR write was unsuccessful, user space also sets the
 “error” field to “1”.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>              struct kvm_xen_exit {
+#define KVM_EXIT_XEN_HCALL          1
+                      __u32 type;
+                      union {
+                              struct {
+                                      __u32 longmode;
+                                      __u32 cpl;
+                                      __u64 input;
+                                      __u64 result;
+                                      __u64 params[6];
+                              } hcall;
+                      } u;
+              };
+              /* KVM_EXIT_XEN */
+              struct kvm_hyperv_exit xen;
+</pre></div>
+</div>
+<p>Indicates that the VCPU exits into userspace to process some tasks
+related to Xen emulation.</p>
+<p>Valid values for ‘type’ are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>KVM_EXIT_XEN_HCALL – synchronously notify user-space about Xen hypercall.
+Userspace is expected to place the hypercall result into the appropriate
+field before invoking KVM_RUN again.</p></li>
+</ul>
+</div></blockquote>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        /* Fix the size of the union. */
         char padding[256];
 };
@@ -8067,12 +8251,12 @@ faulting address (or the new DR6 bits*) will be reported in the
 exception_payload field. Similarly, when userspace injects a #PF (or
 #DB) into L2 using KVM_SET_VCPU_EVENTS, it is expected to set
 exception.has_payload and to put the faulting address - or the new DR6
-bits<a class="footnote-reference brackets" href="#id13" id="id12">3</a> - in the exception_payload field.</p>
+bits<a class="footnote-reference brackets" href="#id15" id="id14">3</a> - in the exception_payload field.</p>
 <p>This capability also enables exception.pending in struct
 kvm_vcpu_events, which allows userspace to distinguish between pending
 and injected exceptions.</p>
 <dl class="footnote brackets">
-<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id12">3</a></span></dt>
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id14">3</a></span></dt>
 <dd><p>For the new DR6 bits, note that bit 16 is set iff the #DB exception
 will clear DR6.RTM.</p>
 </dd>
@@ -8188,6 +8372,63 @@ args[0] and trigger a #GP event inside the guest by KVM will instead trigger
 KVM_EXIT_X86_RDMSR and KVM_EXIT_X86_WRMSR exit notifications which user space
 can then handle to implement model specific MSR handling and/or user notifications
 to inform a user that an MSR was not handled.</p>
+</div>
+<div class="section" id="kvm-cap-x86-bus-lock-exit">
+<h3>7.22 KVM_CAP_X86_BUS_LOCK_EXIT<a class="headerlink" href="#kvm-cap-x86-bus-lock-exit" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Architectures</dt>
+<dd class="field-odd"><p>x86</p>
+</dd>
+<dt class="field-even">Target</dt>
+<dd class="field-even"><p>VM</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p>args[0] defines the policy used when bus locks detected in guest</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 on success, -EINVAL when args[0] contains invalid bits</p>
+</dd>
+</dl>
+<p>Valid bits in args[0] are:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#define KVM_BUS_LOCK_DETECTION_OFF      (1 &lt;&lt; 0)
+#define KVM_BUS_LOCK_DETECTION_EXIT     (1 &lt;&lt; 1)
+</pre></div>
+</div>
+<p>Enabling this capability on a VM provides userspace with a way to select
+a policy to handle the bus locks detected in guest. Userspace can obtain
+the supported modes from the result of KVM_CHECK_EXTENSION and define it
+through the KVM_ENABLE_CAP.</p>
+<p>KVM_BUS_LOCK_DETECTION_OFF and KVM_BUS_LOCK_DETECTION_EXIT are supported
+currently and mutually exclusive with each other. More bits can be added in
+the future.</p>
+<p>With KVM_BUS_LOCK_DETECTION_OFF set, bus locks in guest will not cause vm exits
+so that no additional actions are needed. This is the default mode.</p>
+<p>With KVM_BUS_LOCK_DETECTION_EXIT set, vm exits happen when bus lock detected
+in VM. KVM just exits to userspace when handling them. Userspace can enforce
+its own throttling or other policy based mitigations.</p>
+<p>This capability is aimed to address the thread that VM can exploit bus locks to
+degree the performance of the whole system. Once the userspace enable this
+capability and select the KVM_BUS_LOCK_DETECTION_EXIT mode, KVM will set the
+KVM_RUN_BUS_LOCK flag in vcpu-run-&gt;flags field and exit to userspace. Concerning
+the bus lock vm exit can be preempted by a higher priority VM exit, the exit
+notifications to userspace can be KVM_EXIT_BUS_LOCK or other reasons.
+KVM_RUN_BUS_LOCK flag is used to distinguish between them.</p>
+</div>
+<div class="section" id="kvm-cap-ppc-dawr1">
+<h3>7.22 KVM_CAP_PPC_DAWR1<a class="headerlink" href="#kvm-cap-ppc-dawr1" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Architectures</dt>
+<dd class="field-odd"><p>ppc</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p>none</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>0 on success, -EINVAL when CPU doesn’t support 2nd DAWR</p>
+</dd>
+</dl>
+<p>This capability can be used to check / enable 2nd DAWR feature provided
+by POWER10 processor.</p>
 </div>
 </div>
 <div class="section" id="other-capabilities">
@@ -8585,8 +8826,8 @@ distribution…)</p>
 <p>If this capability is available, then the CPNC and CPVC can be synchronized
 between KVM and userspace via the sync regs mechanism (KVM_SYNC_DIAG318).</p>
 </div>
-<div class="section" id="id14">
-<h3>8.26 KVM_CAP_X86_USER_SPACE_MSR<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id16">
+<h3>8.26 KVM_CAP_X86_USER_SPACE_MSR<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Architectures</dt>
 <dd class="field-odd"><p>x86</p>
@@ -8598,8 +8839,8 @@ accesses that would usually trigger a #GP by KVM into the guest will
 instead get bounced to user space through the KVM_EXIT_X86_RDMSR and
 KVM_EXIT_X86_WRMSR exit notifications.</p>
 </div>
-<div class="section" id="id15">
-<h3>8.27 KVM_X86_SET_MSR_FILTER<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h3>8.27 KVM_X86_SET_MSR_FILTER<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Architectures</dt>
 <dd class="field-odd"><p>x86</p>
@@ -8703,6 +8944,32 @@ KVM_GET_DIRTY_LOG and KVM_CLEAR_DIRTY_LOG.  After enabling
 KVM_CAP_DIRTY_LOG_RING with an acceptable dirty ring size, the virtual
 machine will switch to ring-buffer dirty page tracking and further
 KVM_GET_DIRTY_LOG or KVM_CLEAR_DIRTY_LOG ioctls will fail.</p>
+</div>
+<div class="section" id="kvm-cap-xen-hvm">
+<h3>8.30 KVM_CAP_XEN_HVM<a class="headerlink" href="#kvm-cap-xen-hvm" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Architectures</dt>
+<dd class="field-odd"><p>x86</p>
+</dd>
+</dl>
+<p>This capability indicates the features that Xen supports for hosting Xen
+PVHVM guests. Valid flags are:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#define KVM_XEN_HVM_CONFIG_HYPERCALL_MSR      (1 &lt;&lt; 0)
+#define KVM_XEN_HVM_CONFIG_INTERCEPT_HCALL    (1 &lt;&lt; 1)
+#define KVM_XEN_HVM_CONFIG_SHARED_INFO        (1 &lt;&lt; 2)
+</pre></div>
+</div>
+<p>The KVM_XEN_HVM_CONFIG_HYPERCALL_MSR flag indicates that the KVM_XEN_HVM_CONFIG
+ioctl is available, for the guest to set its hypercall page.</p>
+<p>If KVM_XEN_HVM_CONFIG_INTERCEPT_HCALL is also set, the same flag may also be
+provided in the flags to KVM_XEN_HVM_CONFIG, without providing hypercall page
+contents, to request that KVM generate hypercall page content automatically
+and also enable interception of guest hypercalls with KVM_EXIT_XEN.</p>
+<p>The KVM_XEN_HVM_CONFIG_SHARED_INFO flag indicates the availability of the
+KVM_XEN_HVM_SET_ATTR, KVM_XEN_HVM_GET_ATTR, KVM_XEN_VCPU_SET_ATTR and
+KVM_XEN_VCPU_GET_ATTR ioctls, as well as the delivery of exception vectors
+for event channel upcalls when the evtchn_upcall_pending field of a vcpu’s
+vcpu_info is set.</p>
 </div>
 </div>
 </div>

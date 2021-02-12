@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -875,17 +875,30 @@ write operations.</p></td>
 <p>For example, the knobs for the quotacheck workqueue for /dev/nvme0n1 would be
 found in /sys/bus/workqueue/devices/xfs_iwalk-1111!nvme0n1/.</p>
 <p>The interesting knobs for XFS workqueues are as follows:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>max_active     Maximum number of background threads that can be started to</dt><dd><p>run the work.</p>
-</dd>
-</dl>
-<p>cpumask        CPUs upon which the threads are allowed to run.
-nice           Relative priority of scheduling the threads.  These are the</p>
-<blockquote>
-<div><p>same nice levels that can be applied to userspace processes.</p>
-</div></blockquote>
-</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Knob</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>max_active</p></td>
+<td><p>Maximum number of background threads that can be started to
+run the work.</p></td>
+</tr>
+<tr class="row-odd"><td><p>cpumask</p></td>
+<td><p>CPUs upon which the threads are allowed to run.</p></td>
+</tr>
+<tr class="row-even"><td><p>nice</p></td>
+<td><p>Relative priority of scheduling the threads.  These are the
+same nice levels that can be applied to userspace processes.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 

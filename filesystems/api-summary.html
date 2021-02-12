@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -3034,7 +3034,7 @@ completed; the chained bio will also be freed when it completes.</p>
 <p>The caller must not set bi_private or bi_end_io in <strong>bio</strong>.</p>
 <dl class="c function">
 <dt id="c.bio_alloc_bioset">
-<em class="property">struct</em> bio *<code class="sig-name descname">bio_alloc_bioset</code><span class="sig-paren">(</span>gfp_t <em>gfp_mask</em>, unsigned int <em>nr_iovecs</em>, <em class="property">struct</em> bio_set *<em>bs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_alloc_bioset" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> bio *<code class="sig-name descname">bio_alloc_bioset</code><span class="sig-paren">(</span>gfp_t <em>gfp_mask</em>, unsigned short <em>nr_iovecs</em>, <em class="property">struct</em> bio_set *<em>bs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_alloc_bioset" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate a bio for I/O</p>
 </dd></dl>
 
@@ -3042,7 +3042,7 @@ completed; the chained bio will also be freed when it completes.</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">gfp_t</span> <span class="pre">gfp_mask</span></code></dt><dd><p>the GFP_* mask given to the slab allocator</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">nr_iovecs</span></code></dt><dd><p>number of iovecs to pre-allocate</p>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">nr_iovecs</span></code></dt><dd><p>number of iovecs to pre-allocate</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">bio_set</span> <span class="pre">*bs</span></code></dt><dd><p>the bio_set to allocate from.</p>
 </dd>
@@ -3071,7 +3071,7 @@ for per bio allocations.</p>
 <p>Pointer to new bio on success, NULL on failure.</p>
 <dl class="c function">
 <dt id="c.bio_kmalloc">
-<em class="property">struct</em> bio *<code class="sig-name descname">bio_kmalloc</code><span class="sig-paren">(</span>gfp_t <em>gfp_mask</em>, unsigned int <em>nr_iovecs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_kmalloc" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property">struct</em> bio *<code class="sig-name descname">bio_kmalloc</code><span class="sig-paren">(</span>gfp_t <em>gfp_mask</em>, unsigned short <em>nr_iovecs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_kmalloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>kmalloc a bio for I/O</p>
 </dd></dl>
 
@@ -3079,7 +3079,7 @@ for per bio allocations.</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">gfp_t</span> <span class="pre">gfp_mask</span></code></dt><dd><p>the GFP_* mask given to the slab allocator</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">nr_iovecs</span></code></dt><dd><p>number of iovecs to pre-allocate</p>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">short</span> <span class="pre">nr_iovecs</span></code></dt><dd><p>number of iovecs to pre-allocate</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>

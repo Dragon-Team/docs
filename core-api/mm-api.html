@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -1802,9 +1802,9 @@ clear the PG_locked bit and test PG_waiters at the same time fairly
 portably (architectures that do LL/SC can test any bit, while x86 can
 test the sign bit).</p>
 <dl class="c function">
-<dt id="c.unlock_page_fscache">
-void <code class="sig-name descname">unlock_page_fscache</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.unlock_page_fscache" title="page">page</a> *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.unlock_page_fscache" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Unlock a page pinned with PG_fscache</p>
+<dt id="c.unlock_page_private_2">
+void <code class="sig-name descname">unlock_page_private_2</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.unlock_page_private_2" title="page">page</a> *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.unlock_page_private_2" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Unlock a page that’s locked with PG_private_2</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -1813,10 +1813,11 @@ void <code class="sig-name descname">unlock_page_fscache</code><span class="sig-
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Unlocks the page and wakes up sleepers in <a class="reference internal" href="#c.wait_on_page_fscache" title="wait_on_page_fscache"><code class="xref c c-func docutils literal notranslate"><span class="pre">wait_on_page_fscache()</span></code></a>.  Also
-wakes those waiting for the lock and writeback bits because the wakeup
-mechanism is shared.  But that’s OK - those sleepers will just go back to
-sleep.</p>
+<p>Unlocks a page that’s locked with PG_private_2 and wakes up sleepers in
+<a class="reference internal" href="#c.wait_on_page_private_2" title="wait_on_page_private_2"><code class="xref c c-func docutils literal notranslate"><span class="pre">wait_on_page_private_2()</span></code></a>.</p>
+<p>This is, for example, used when a netfs page is being written to a local
+disk cache, thereby allowing writes to the cache for the same page to be
+serialised.</p>
 <dl class="c function">
 <dt id="c.end_page_writeback">
 void <code class="sig-name descname">end_page_writeback</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.end_page_writeback" title="page">page</a> *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.end_page_writeback" title="Permalink to this definition">¶</a><br /></dt>
@@ -2201,7 +2202,7 @@ int <code class="sig-name descname">try_to_release_page</code><span class="sig-p
 <p><strong>Description</strong></p>
 <p>The address_space is to try to release any data against the page
 (presumably at page-&gt;private).</p>
-<p>This may also be called if PG_fscache is set on a page, indicating that the
+<p>This may also be called if PG_private_2 is set on a page, indicating that the
 page is known to the local caching routines.</p>
 <p>The <strong>gfp_mask</strong> argument specifies whether I/O may be performed to release
 this page (__GFP_IO), and whether the call may block (__GFP_RECLAIM &amp; __GFP_FS).</p>
@@ -2713,9 +2714,9 @@ be safe to call while holding the lock for another page.</p>
 <p>Clear __GFP_FS when allocating the page to avoid recursion into the fs
 and deadlock against the caller’s locked page.</p>
 <dl class="c function">
-<dt id="c.wait_on_page_fscache">
-void <code class="sig-name descname">wait_on_page_fscache</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wait_on_page_fscache" title="page">page</a> *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wait_on_page_fscache" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Wait for PG_fscache to be cleared on a page</p>
+<dt id="c.wait_on_page_private_2">
+void <code class="sig-name descname">wait_on_page_private_2</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wait_on_page_private_2" title="page">page</a> *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wait_on_page_private_2" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Wait for PG_private_2 to be cleared on a page</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -2724,8 +2725,9 @@ void <code class="sig-name descname">wait_on_page_fscache</code><span class="sig
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Wait for the fscache mark to be removed from a page, usually signifying the
-completion of a write from that page to the cache.</p>
+<p>Wait for the PG_private_2 page bit to be removed from a page.  This is, for
+example, used to handle a netfs page being written to a local disk cache,
+thereby allowing writes to the cache for the same page to be serialised.</p>
 <dl class="c struct">
 <dt id="c.readahead_control">
 <em class="property">struct </em><code class="sig-name descname">readahead_control</code><a class="headerlink" href="#c.readahead_control" title="Permalink to this definition">¶</a><br /></dt>
@@ -3501,7 +3503,7 @@ int <code class="sig-name descname">follow_pte</code><span class="sig-paren">(</
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">mm_struct</span> <span class="pre">*mm</span></code></dt><dd><p><em>undescribed</em></p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">mm_struct</span> <span class="pre">*mm</span></code></dt><dd><p>the mm_struct of the target address space</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">address</span></code></dt><dd><p>user virtual address</p>
 </dd>
@@ -3518,6 +3520,8 @@ any further use, if any, must be protected against invalidation
 with MMU notifiers.</p>
 <p>Only IO mappings and raw PFN mappings are allowed.  The mmap semaphore
 should be taken for read.</p>
+<p>KVM uses this function.  While it is arguably less bad than <code class="docutils literal notranslate"><span class="pre">follow_pfn</span></code>,
+it is not a good general-purpose API.</p>
 <p><strong>Return</strong></p>
 <p>zero on success, -ve otherwise.</p>
 <dl class="c function">
@@ -3537,6 +3541,8 @@ int <code class="sig-name descname">follow_pfn</code><span class="sig-paren">(</
 </dl>
 <p><strong>Description</strong></p>
 <p>Only IO mappings and raw PFN mappings are allowed.</p>
+<p>This function does not allow the caller to read the permissions
+of the PTE.  Do not use it.</p>
 <p><strong>Return</strong></p>
 <p>zero and the pfn at <strong>pfn</strong> on success, -ve otherwise.</p>
 <dl class="c function">

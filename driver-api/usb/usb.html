@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -511,6 +511,21 @@ USB_SPEED_UNKNOWN will be returned.</p>
 <p><strong>Description</strong></p>
 <p>The function gets the maximum speed string from property “maximum-speed”,
 and returns the corresponding enum usb_device_speed.</p>
+<dl class="c function">
+<dt id="c.usb_get_maximum_ssp_rate">
+<em class="property">enum</em> usb_ssp_rate <code class="sig-name descname">usb_get_maximum_ssp_rate</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_maximum_ssp_rate" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the signaling rate generation and lane count of a SuperSpeed Plus capable device.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">device</span> <span class="pre">*dev</span></code></dt><dd><p>Pointer to the given USB controller device</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>If the string from “maximum-speed” property is super-speed-plus-genXxY where
+‘X’ is the generation number and ‘Y’ is the number of lanes, then this
+function returns the corresponding enum usb_ssp_rate.</p>
 <dl class="c function">
 <dt id="c.usb_state_string">
 <em class="property">const</em> char *<code class="sig-name descname">usb_state_string</code><span class="sig-paren">(</span><em class="property">enum</em> usb_device_state <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_state_string" title="Permalink to this definition">¶</a><br /></dt>

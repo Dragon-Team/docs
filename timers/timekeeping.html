@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -377,7 +377,7 @@ and will likely show up in system benchmarks.</p>
 <p>The clock driving sched_clock() may stop or reset to zero during system
 suspend/sleep. This does not matter to the function it serves of scheduling
 events on the system. However it may result in interesting timestamps in
-<a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a>.</p>
+printk().</p>
 <p>The sched_clock() function should be callable in any context, IRQ- and
 NMI-safe and return a sane value in any context.</p>
 <p>Some architectures may have a limited set of time sources and lack a nice

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -127,6 +127,7 @@
 <li class="toctree-l3"><a class="reference internal" href="api/index.html">API Reference</a></li>
 <li class="toctree-l3"><a class="reference internal" href="style.html">Test Style and Nomenclature</a></li>
 <li class="toctree-l3"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tips.html">Tips For Writing KUnit Tests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#what-is-kunit">What is KUnit?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#why-kunit">Why KUnit?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#how-do-i-use-it">How do I use it?</a></li>
@@ -448,8 +449,9 @@ TAP output.</p>
 </div>
 <p>Now add the following to <code class="docutils literal notranslate"><span class="pre">drivers/misc/Kconfig</span></code>:</p>
 <div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span><span class="k">config</span> MISC_EXAMPLE_TEST
-        <span class="nb">bool</span> <span class="s2">&quot;Test for my example&quot;</span>
+        <span class="nb">tristate</span> <span class="s2">&quot;Test for my example&quot;</span> <span class="k">if</span> <span class="o">!</span>KUNIT_ALL_TESTS
         <span class="k">depends on</span> MISC_EXAMPLE <span class="o">&amp;&amp;</span> KUNIT=y
+        <span class="k">default</span> KUNIT_ALL_TESTS
 </pre></div>
 </div>
 <p>and the following to <code class="docutils literal notranslate"><span class="pre">drivers/misc/Makefile</span></code>:</p>
@@ -479,7 +481,9 @@ CONFIG_MISC_EXAMPLE_TEST=y
 <div class="section" id="next-steps">
 <h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Check out the <a class="reference internal" href="usage.html"><span class="doc">Using KUnit</span></a> page for a more
+<li><p>Check out the <a class="reference internal" href="tips.html"><span class="doc">Tips For Writing KUnit Tests</span></a> page for tips on
+writing idiomatic KUnit tests.</p></li>
+<li><p>Optional: see the <a class="reference internal" href="usage.html"><span class="doc">Using KUnit</span></a> page for a more
 in-depth explanation of KUnit.</p></li>
 </ul>
 </div>

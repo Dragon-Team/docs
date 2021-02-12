@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -120,6 +120,7 @@
 <li class="toctree-l3"><a class="reference internal" href="api/index.html">API Reference</a></li>
 <li class="toctree-l3"><a class="reference internal" href="style.html">Test Style and Nomenclature</a></li>
 <li class="toctree-l3"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tips.html">Tips For Writing KUnit Tests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#what-is-kunit">What is KUnit?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#why-kunit">Why KUnit?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-do-i-use-it">How do I use it?</a></li>
@@ -319,6 +320,14 @@
 <li class="toctree-l2"><a class="reference internal" href="faq.html#kunit-isn-t-working-what-should-i-do">KUnit isn’t working, what should I do?</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="tips.html">Tips For Writing KUnit Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tips.html#exiting-early-on-failed-expectations">Exiting early on failed expectations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tips.html#allocating-memory">Allocating memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tips.html#testing-static-functions">Testing static functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tips.html#injecting-test-only-code">Injecting test-only code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tips.html#customizing-error-messages">Customizing error messages</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="what-is-kunit">
@@ -384,6 +393,7 @@ it takes to read their test log?</p>
 <h2>How do I use it?<a class="headerlink" href="#how-do-i-use-it" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="start.html"><span class="doc">Getting Started</span></a> - for new users of KUnit</p></li>
+<li><p><a class="reference internal" href="tips.html"><span class="doc">Tips For Writing KUnit Tests</span></a> - for short examples of best practices</p></li>
 <li><p><a class="reference internal" href="usage.html"><span class="doc">Using KUnit</span></a> - for a more detailed explanation of KUnit features</p></li>
 <li><p><a class="reference internal" href="api/index.html"><span class="doc">API Reference</span></a> - for the list of KUnit APIs used for testing</p></li>
 <li><p><a class="reference internal" href="kunit-tool.html"><span class="doc">kunit_tool How-To</span></a> - for more information on the kunit_tool helper script</p></li>

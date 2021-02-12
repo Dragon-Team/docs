@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -165,6 +165,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../paravirt_ops.html">Paravirt_ops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../guest-halt-polling.html">Guest halt polling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ne_overview.html">Nitro Enclaves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../acrn/index.html">ACRN Hypervisor</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../input/index.html">The Linux Input Documentation</a></li>
@@ -333,6 +334,14 @@ x4 = x2&#39;s value when entering the next payload (arm64)
 <p>Mask all exceptions, disable the MMU, clear I+D bits, move the arguments
 into place (arm64 only), and jump to the restart address while at HYP/EL2.
 This hypercall is not expected to return to its caller.</p>
+</li>
+<li><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>x0 = HVC_VHE_RESTART (arm64 only)
+</pre></div>
+</div>
+<p>Attempt to upgrade the kernel’s exception level from EL1 to EL2 by enabling
+the VHE mode. This is conditioned by the CPU supporting VHE, the EL2 MMU
+being off, and VHE not being disabled by any other means (command line
+option, for example).</p>
 </li>
 </ul>
 <p>Any other value of r0/x0 triggers a hypervisor-specific handling,

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -1062,6 +1062,19 @@ void <code class="sig-name descname">ib_dealloc_device</code><span class="sig-pa
 </dl>
 <p><strong>Description</strong></p>
 <p>Free a structure allocated with ib_alloc_device().</p>
+<dl class="c function">
+<dt id="c.ib_port_immutable_read">
+<em class="property">const</em> <em class="property">struct</em> ib_port_immutable *<code class="sig-name descname">ib_port_immutable_read</code><span class="sig-paren">(</span><em class="property">struct</em> ib_device *<em>dev</em>, unsigned int <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ib_port_immutable_read" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Read rdma port’s immutable data <strong>dev</strong> - IB device <strong>port</strong> - port number whose immutable data to read. It starts with index 1 and valid upto including rdma_end_port().</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">ib_device</span> <span class="pre">*dev</span></code></dt><dd><p><em>undescribed</em></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">port</span></code></dt><dd><p><em>undescribed</em></p>
+</dd>
+</dl>
 <dl class="c function">
 <dt id="c.ib_register_device">
 int <code class="sig-name descname">ib_register_device</code><span class="sig-paren">(</span><em class="property">struct</em> ib_device *<em>device</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">struct</em> <a class="reference internal" href="#c.ib_register_device" title="device">device</a> *<em>dma_device</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ib_register_device" title="Permalink to this definition">¶</a><br /></dt>

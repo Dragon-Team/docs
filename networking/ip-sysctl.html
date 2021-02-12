@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -528,7 +528,7 @@ packet.</p>
 never be lower than this setting.</p>
 </dd>
 <dt>fib_notify_on_flag_change - INTEGER</dt><dd><p>Whether to emit RTM_NEWROUTE notifications whenever RTM_F_OFFLOAD/
-RTM_F_TRAP flags are changed.</p>
+RTM_F_TRAP/RTM_F_OFFLOAD_FAILED flags are changed.</p>
 <p>After installing a route to the kernel, user space receives an
 acknowledgment, which means the route was installed in the kernel,
 but not necessarily in hardware.
@@ -542,6 +542,7 @@ The notifications will indicate to user-space the state of the route.</p>
 <ul class="simple">
 <li><p>0 - Do not emit notifications.</p></li>
 <li><p>1 - Emit notifications.</p></li>
+<li><p>2 - Emit notifications only for RTM_F_OFFLOAD_FAILED flag change.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1635,6 +1636,22 @@ when doing source validation on the {interface}.</p>
 <p>Default value is 0. Note that some distributions enable it
 in startup scripts.</p>
 </dd>
+<dt>src_valid_mark - BOOLEAN</dt><dd><ul class="simple">
+<li><p>0 - The fwmark of the packet is not included in reverse path
+route lookup.  This allows for asymmetric routing configurations
+utilizing the fwmark in only one direction, e.g., transparent
+proxying.</p></li>
+<li><p>1 - The fwmark of the packet is included in reverse path route
+lookup.  This permits rp_filter to function when the fwmark is
+used for routing traffic in both directions.</p></li>
+</ul>
+<p>This setting also affects the utilization of fmwark when
+performing source address selection for ICMP replies, or
+determining addresses stored for the IPOPT_TS_TSANDADDR and
+IPOPT_RR IP options.</p>
+<p>The max value from conf/{all,interface}/src_valid_mark is used.</p>
+<p>Default value is 0.</p>
+</dd>
 <dt>arp_filter - BOOLEAN</dt><dd><ul class="simple">
 <li><p>1 - Allows you to have multiple network interfaces on the same
 subnet, and have the ARPs for each interface be answered
@@ -1949,7 +1966,7 @@ and extraneous notifications.
 Default: true (backward compat mode)</p>
 </dd>
 <dt>fib_notify_on_flag_change - INTEGER</dt><dd><p>Whether to emit RTM_NEWROUTE notifications whenever RTM_F_OFFLOAD/
-RTM_F_TRAP flags are changed.</p>
+RTM_F_TRAP/RTM_F_OFFLOAD_FAILED flags are changed.</p>
 <p>After installing a route to the kernel, user space receives an
 acknowledgment, which means the route was installed in the kernel,
 but not necessarily in hardware.
@@ -1963,6 +1980,7 @@ The notifications will indicate to user-space the state of the route.</p>
 <ul class="simple">
 <li><p>0 - Do not emit notifications.</p></li>
 <li><p>1 - Emit notifications.</p></li>
+<li><p>2 - Emit notifications only for RTM_F_OFFLOAD_FAILED flag change.</p></li>
 </ul>
 </dd>
 </dl>

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -349,7 +349,7 @@ any locks or interrupts are disabled, since preemption is implicitly disabled
 in those cases.</p>
 <p>But keep in mind that ‘irqs disabled’ is a fundamentally unsafe way of
 disabling preemption - any cond_resched() or cond_resched_lock() might trigger
-a reschedule if the preempt count is 0. A simple <a class="reference internal" href="../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> might trigger a
+a reschedule if the preempt count is 0. A simple printk() might trigger a
 reschedule. So use this implicit preemption-disabling property only if you
 know that the affected codepath does not do any of this. Best policy is to use
 this only for small, atomic code that you wrote and which calls no complex

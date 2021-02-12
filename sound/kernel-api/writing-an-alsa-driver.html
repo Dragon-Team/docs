@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -3878,18 +3878,18 @@ obj-$(CONFIG_SND_XYZ) += snd-xyz.o
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This subsection describes a few helper functions for
-decorating a bit more on the standard <a class="reference internal" href="../../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> &amp; co.
+decorating a bit more on the standard <code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code> &amp; co.
 However, in general, the use of such helpers is no longer recommended.
 If possible, try to stick with the standard functions like
 <code class="xref c c-func docutils literal notranslate"><span class="pre">dev_err()</span></code> or <a class="reference internal" href="../../core-api/printk-basics.html#c.pr_err" title="pr_err"><code class="xref c c-func docutils literal notranslate"><span class="pre">pr_err()</span></code></a>.</p>
 </div>
-<p>ALSA provides a verbose version of the <a class="reference internal" href="../../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> function.
+<p>ALSA provides a verbose version of the <code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code> function.
 If a kernel config <code class="docutils literal notranslate"><span class="pre">CONFIG_SND_VERBOSE_PRINTK</span></code> is set, this function
 prints the given message together with the file name and the line of the
 caller. The <code class="docutils literal notranslate"><span class="pre">KERN_XXX</span></code> prefix is processed as well as the original
-<a class="reference internal" href="../../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a> does, so it’s recommended to add this prefix,
+<code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code> does, so it’s recommended to add this prefix,
 e.g. snd_printk(KERN_ERR “Oh my, sorry, it’s extremely bad!\n”);</p>
-<p>There are also <a class="reference internal" href="../../core-api/printk-basics.html#c.printk" title="printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code></a>’s for debugging.
+<p>There are also <code class="xref c c-func docutils literal notranslate"><span class="pre">printk()</span></code>’s for debugging.
 <a class="reference internal" href="alsa-driver-api.html#c.snd_printd" title="snd_printd"><code class="xref c c-func docutils literal notranslate"><span class="pre">snd_printd()</span></code></a> can be used for general debugging purposes.
 If <code class="docutils literal notranslate"><span class="pre">CONFIG_SND_DEBUG</span></code> is set, this function is compiled, and works
 just like <a class="reference internal" href="alsa-driver-api.html#c.snd_printk" title="snd_printk"><code class="xref c c-func docutils literal notranslate"><span class="pre">snd_printk()</span></code></a>. If the ALSA is compiled without

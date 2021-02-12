@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -1542,7 +1542,6 @@ ordering between <code class="xref c c-type docutils literal notranslate"><span 
 and modeset state change.</p>
 <p>For an implementation of how to use this look at
 <a class="reference internal" href="drm-kms-helpers.html#c.drm_atomic_helper_setup_commit" title="drm_atomic_helper_setup_commit"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_atomic_helper_setup_commit()</span></code></a> from the atomic helper library.</p>
-<p>See also <a class="reference internal" href="#c.drm_crtc_commit_wait" title="drm_crtc_commit_wait"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_crtc_commit_wait()</span></code></a>.</p>
 <dl class="c struct">
 <dt id="c.drm_private_state_funcs">
 <em class="property">struct </em><code class="sig-name descname">drm_private_state_funcs</code><a class="headerlink" href="#c.drm_private_state_funcs" title="Permalink to this definition">¶</a><br /></dt>
@@ -2419,22 +2418,6 @@ conversion, or modifying signals polarities.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">output_bus_cfg</span></code></dt><dd><p>input bus configuration</p>
 </dd>
 </dl>
-<dl class="c function">
-<dt id="c.drm_crtc_commit_wait">
-int <code class="sig-name descname">drm_crtc_commit_wait</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_crtc_commit" title="drm_crtc_commit">drm_crtc_commit</a> *<em>commit</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_crtc_commit_wait" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Waits for a commit to complete</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_crtc_commit</span> <span class="pre">*commit</span></code></dt><dd><p><a class="reference internal" href="#c.drm_crtc_commit" title="drm_crtc_commit"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc_commit</span></code></a> to wait for</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Waits for a given <a class="reference internal" href="#c.drm_crtc_commit" title="drm_crtc_commit"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc_commit</span></code></a> to be programmed into the
-hardware and flipped to.</p>
-<p>0 on success, a negative error code otherwise.</p>
-<p><strong>Return</strong></p>
 <dl class="c function">
 <dt id="c.drm_atomic_state_default_release">
 void <code class="sig-name descname">drm_atomic_state_default_release</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_atomic_state" title="drm_atomic_state">drm_atomic_state</a> *<em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_atomic_state_default_release" title="Permalink to this definition">¶</a><br /></dt>
@@ -5173,8 +5156,10 @@ rotation or Z-position. All these properties are stored in <a class="reference i
 <p>To create a plane, a KMS drivers allocates and zeroes an instances of
 <a class="reference internal" href="#c.drm_plane" title="drm_plane"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_plane</span></code></a> (possibly as part of a larger structure) and registers it
 with a call to <a class="reference internal" href="#c.drm_universal_plane_init" title="drm_universal_plane_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_universal_plane_init()</span></code></a>.</p>
-<p>Each plane has a type, see <a class="reference internal" href="#c.drm_plane_type" title="drm_plane_type"><code class="xref c c-enum docutils literal notranslate"><span class="pre">enum</span> <span class="pre">drm_plane_type</span></code></a>. A plane can be compatible
-with multiple CRTCs, see <a class="reference internal" href="#c.drm_plane" title="drm_plane"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane.possible_crtcs</span></code></a>.</p>
+<p>The type of a plane is exposed in the immutable “type” enumeration property,
+which has one of the following values: “Overlay”, “Primary”, “Cursor” (see
+<a class="reference internal" href="#c.drm_plane_type" title="drm_plane_type"><code class="xref c c-enum docutils literal notranslate"><span class="pre">enum</span> <span class="pre">drm_plane_type</span></code></a>). A plane can be compatible with multiple CRTCs, see
+<a class="reference internal" href="#c.drm_plane" title="drm_plane"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_plane.possible_crtcs</span></code></a>.</p>
 <p>Each CRTC must have a unique primary plane userspace can attach to enable
 the CRTC. In other words, userspace must be able to attach a different
 primary plane to each CRTC at the same time. Primary planes can still be
@@ -5503,15 +5488,14 @@ False otherwise.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">DRM_PLANE_TYPE_OVERLAY</span></code></dt><dd><p>Overlay planes represent all non-primary, non-cursor planes. Some
 drivers refer to these types of planes as “sprites” internally.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">DRM_PLANE_TYPE_PRIMARY</span></code></dt><dd><p>A primary plane attached to a CRTC is the most likely to be able to
-light up the CRTC when no scaling/cropping is used and the plane
-covers the whole CRTC.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">DRM_PLANE_TYPE_PRIMARY</span></code></dt><dd><p>Primary planes represent a “main” plane for a CRTC.  Primary planes
+are the planes operated upon by CRTC modesetting and flipping
+operations described in the <a class="reference internal" href="#c.drm_crtc_funcs" title="drm_crtc_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc_funcs.page_flip</span></code></a> and
+<a class="reference internal" href="#c.drm_crtc_funcs" title="drm_crtc_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc_funcs.set_config</span></code></a> hooks.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">DRM_PLANE_TYPE_CURSOR</span></code></dt><dd><p>A cursor plane attached to a CRTC is more likely to be able to be
-enabled when no scaling/cropping is used and the framebuffer has the
-size indicated by <a class="reference internal" href="#c.drm_mode_config" title="drm_mode_config"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_mode_config.cursor_width</span></code></a> and
-<a class="reference internal" href="#c.drm_mode_config" title="drm_mode_config"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_mode_config.cursor_height</span></code></a>. Additionally, if the driver doesn’t
-support modifiers, the framebuffer should have a linear layout.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">DRM_PLANE_TYPE_CURSOR</span></code></dt><dd><p>Cursor planes represent a “cursor” plane for a CRTC.  Cursor planes
+are the planes operated upon by the DRM_IOCTL_MODE_CURSOR and
+DRM_IOCTL_MODE_CURSOR2 IOCTLs.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
@@ -5522,12 +5506,9 @@ which is using that atomic IOCTL there’s no difference between these planes
 (beyong what the driver and hardware can support of course).</p>
 <p>For compatibility with legacy userspace, only overlay planes are made
 available to userspace by default. Userspace clients may set the
-<a class="reference internal" href="drm-uapi.html#c.DRM_CLIENT_CAP_UNIVERSAL_PLANES" title="DRM_CLIENT_CAP_UNIVERSAL_PLANES"><code class="xref c c-type docutils literal notranslate"><span class="pre">DRM_CLIENT_CAP_UNIVERSAL_PLANES</span></code></a> client capability bit to indicate that they
+DRM_CLIENT_CAP_UNIVERSAL_PLANES client capability bit to indicate that they
 wish to receive a universal plane list containing all plane types. See also
 <a class="reference internal" href="#c.drm_for_each_legacy_plane" title="drm_for_each_legacy_plane"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_for_each_legacy_plane()</span></code></a>.</p>
-<p>In addition to setting each plane’s type, drivers need to setup the
-<a class="reference internal" href="#c.drm_crtc" title="drm_crtc"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc.primary</span></code></a> and optionally <a class="reference internal" href="#c.drm_crtc" title="drm_crtc"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_crtc.cursor</span></code></a> pointers for legacy
-IOCTLs. See <a class="reference internal" href="#c.drm_crtc_init_with_planes" title="drm_crtc_init_with_planes"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_crtc_init_with_planes()</span></code></a>.</p>
 <p>WARNING: The values of this enum is UABI since they’re exposed in the “type”
 property.</p>
 <dl class="c struct">
@@ -11311,50 +11292,7 @@ user-space must set this property to 0.</p>
 <div class="section" id="standard-plane-properties">
 <h3>Standard Plane Properties<a class="headerlink" href="#standard-plane-properties" title="Permalink to this headline">¶</a></h3>
 <p>DRM planes have a few standardized properties:</p>
-<dl>
-<dt>type:</dt><dd><p>Immutable property describing the type of the plane.</p>
-<p>For user-space which has enabled the <a class="reference internal" href="drm-uapi.html#c.DRM_CLIENT_CAP_ATOMIC" title="DRM_CLIENT_CAP_ATOMIC"><code class="xref c c-type docutils literal notranslate"><span class="pre">DRM_CLIENT_CAP_ATOMIC</span></code></a> capability,
-the plane type is just a hint and is mostly superseded by atomic
-test-only commits. The type hint can still be used to come up more
-easily with a plane configuration accepted by the driver.</p>
-<p>The value of this property can be one of the following:</p>
-<dl>
-<dt>“Primary”:</dt><dd><p>To light up a CRTC, attaching a primary plane is the most likely to
-work if it covers the whole CRTC and doesn’t have scaling or
-cropping set up.</p>
-<p>Drivers may support more features for the primary plane, user-space
-can find out with test-only atomic commits.</p>
-<p>Some primary planes are implicitly used by the kernel in the legacy
-IOCTLs <code class="xref c c-type docutils literal notranslate"><span class="pre">DRM_IOCTL_MODE_SETCRTC</span></code> and <code class="xref c c-type docutils literal notranslate"><span class="pre">DRM_IOCTL_MODE_PAGE_FLIP</span></code>.
-Therefore user-space must not mix explicit usage of any primary
-plane (e.g. through an atomic commit) with these legacy IOCTLs.</p>
-</dd>
-<dt>“Cursor”:</dt><dd><p>To enable this plane, using a framebuffer configured without scaling
-or cropping and with the following properties is the most likely to
-work:</p>
-<ul class="simple">
-<li><p>If the driver provides the capabilities <code class="xref c c-type docutils literal notranslate"><span class="pre">DRM_CAP_CURSOR_WIDTH</span></code> and
-<code class="xref c c-type docutils literal notranslate"><span class="pre">DRM_CAP_CURSOR_HEIGHT</span></code>, create the framebuffer with this size.
-Otherwise, create a framebuffer with the size 64x64.</p></li>
-<li><p>If the driver doesn’t support modifiers, create a framebuffer with
-a linear layout. Otherwise, use the IN_FORMATS plane property.</p></li>
-</ul>
-<p>Drivers may support more features for the cursor plane, user-space
-can find out with test-only atomic commits.</p>
-<p>Some cursor planes are implicitly used by the kernel in the legacy
-IOCTLs <code class="xref c c-type docutils literal notranslate"><span class="pre">DRM_IOCTL_MODE_CURSOR</span></code> and <code class="xref c c-type docutils literal notranslate"><span class="pre">DRM_IOCTL_MODE_CURSOR2</span></code>.
-Therefore user-space must not mix explicit usage of any cursor
-plane (e.g. through an atomic commit) with these legacy IOCTLs.</p>
-<p>Some drivers may support cursors even if no cursor plane is exposed.
-In this case, the legacy cursor IOCTLs can be used to configure the
-cursor.</p>
-</dd>
-<dt>“Overlay”:</dt><dd><p>Neither primary nor cursor.</p>
-<p>Overlay planes are the only planes exposed when the
-<a class="reference internal" href="drm-uapi.html#c.DRM_CLIENT_CAP_UNIVERSAL_PLANES" title="DRM_CLIENT_CAP_UNIVERSAL_PLANES"><code class="xref c c-type docutils literal notranslate"><span class="pre">DRM_CLIENT_CAP_UNIVERSAL_PLANES</span></code></a> capability is disabled.</p>
-</dd>
-</dl>
-</dd>
+<dl class="simple">
 <dt>IN_FORMATS:</dt><dd><p>Blob property which contains the set of buffer format and modifier
 pairs supported by this plane. The blob is a struct
 drm_format_modifier_blob. Without this property the plane doesn’t

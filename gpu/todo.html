@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -183,7 +183,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#make-panic-handling-work">Make panic handling work</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#clean-up-the-debugfs-support">Clean up the debugfs support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#object-lifetime-fixes">Object lifetime fixes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#kms-cleanups">KMS cleanups</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#better-testing">Better Testing</a></li>
 </ul>
 </li>
@@ -750,21 +750,19 @@ debugfs_init.</p></li>
 <p>Contact: Daniel Vetter</p>
 <p>Level: Intermediate</p>
 </div>
-<div class="section" id="object-lifetime-fixes">
-<h2>Object lifetime fixes<a class="headerlink" href="#object-lifetime-fixes" title="Permalink to this headline">¶</a></h2>
-<p>There’s two related issues here</p>
+<div class="section" id="kms-cleanups">
+<h2>KMS cleanups<a class="headerlink" href="#kms-cleanups" title="Permalink to this headline">¶</a></h2>
+<p>Some of these date from the very introduction of KMS in 2008 …</p>
 <ul class="simple">
-<li><p>Cleanup up the various -&gt;destroy callbacks, which often are all the same
-simple code.</p></li>
-<li><p>Lots of drivers erroneously allocate DRM modeset objects using devm_kzalloc,
-which results in use-after free issues on driver unload. This can be serious
-trouble even for drivers for hardware integrated on the SoC due to
-EPROBE_DEFERRED backoff.</p></li>
+<li><p>Make -&gt;funcs and -&gt;helper_private vtables optional. There’s a bunch of empty
+function tables in drivers, but before we can remove them we need to make sure
+that all the users in helpers and drivers do correctly check for a NULL
+vtable.</p></li>
+<li><p>Cleanup up the various -&gt;destroy callbacks. A lot of them just wrapt the
+drm_*_cleanup implementations and can be removed. Some tack a <a class="reference internal" href="../core-api/mm-api.html#c.kfree" title="kfree"><code class="xref c c-func docutils literal notranslate"><span class="pre">kfree()</span></code></a> at the
+end, for which we could add drm_*_cleanup_kfree(). And then there’s the (for
+historical reasons) misnamed <a class="reference internal" href="drm-kms-helpers.html#c.drm_primary_helper_destroy" title="drm_primary_helper_destroy"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_primary_helper_destroy()</span></code></a> function.</p></li>
 </ul>
-<p>Both these problems can be solved by switching over to <a class="reference internal" href="drm-internals.html#c.drmm_kzalloc" title="drmm_kzalloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_kzalloc()</span></code></a>, and the
-various convenience wrappers provided, e.g. <a class="reference internal" href="drm-kms.html#c.drmm_crtc_alloc_with_planes" title="drmm_crtc_alloc_with_planes"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_crtc_alloc_with_planes()</span></code></a>,
-<a class="reference internal" href="drm-kms.html#c.drmm_universal_plane_alloc" title="drmm_universal_plane_alloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_universal_plane_alloc()</span></code></a>, … and so on.</p>
-<p>Contact: Daniel Vetter</p>
 <p>Level: Intermediate</p>
 <div class="section" id="better-testing">
 <h3>Better Testing<a class="headerlink" href="#better-testing" title="Permalink to this headline">¶</a></h3>
@@ -792,6 +790,7 @@ the non-i915 specific modeset tests.</p>
 <p>See the documentation of <a class="reference internal" href="vkms.html#vkms"><span class="std std-ref">VKMS</span></a> for more details. This is an ideal
 internship task, since it only requires a virtual machine and can be sized to
 fit the available time.</p>
+<p>Contact: Daniel Vetter</p>
 <p>Level: See details</p>
 </div>
 <div class="section" id="backlight-refactoring">

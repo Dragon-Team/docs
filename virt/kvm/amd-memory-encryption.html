@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -165,6 +165,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../paravirt_ops.html">Paravirt_ops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guest-halt-polling.html">Guest halt polling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ne_overview.html">Nitro Enclaves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../acrn/index.html">ACRN Hypervisor</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../input/index.html">The Linux Input Documentation</a></li>
@@ -492,6 +493,23 @@ data after the measurement has been validated by the guest owner.</p>
 
         __u64 trans_uaddr;      /* the hypervisor memory region which contains the secret */
         __u32 trans_len;
+};
+</pre></div>
+</div>
+</div>
+<div class="section" id="kvm-sev-get-attestation-report">
+<h3>10. KVM_SEV_GET_ATTESTATION_REPORT<a class="headerlink" href="#kvm-sev-get-attestation-report" title="Permalink to this headline">¶</a></h3>
+<p>The KVM_SEV_GET_ATTESTATION_REPORT command can be used by the hypervisor to query the attestation
+report containing the SHA-256 digest of the guest memory and VMSA passed through the KVM_SEV_LAUNCH
+commands and signed with the PEK. The digest returned by the command should match the digest
+used by the guest owner with the KVM_SEV_LAUNCH_MEASURE.</p>
+<p>Parameters (in): struct kvm_sev_attestation</p>
+<p>Returns: 0 on success, -negative on error</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct kvm_sev_attestation_report {
+        __u8 mnonce[16];        /* A random mnonce that will be placed in the report */
+
+        __u64 uaddr;            /* userspace address where the report should be copied */
+        __u32 len;
 };
 </pre></div>
 </div>

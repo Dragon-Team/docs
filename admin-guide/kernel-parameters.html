@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.11.27-dragon
+                5.11.29-dragon
               </div>
             
           
@@ -910,6 +910,12 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
 
         arcrimi=        [HW,NET] ARCnet - &quot;RIM I&quot; (entirely mem-mapped) cards
                         Format: &lt;io&gt;,&lt;irq&gt;,&lt;nodeID&gt;
+
+        arm64.nobti     [ARM64] Unconditionally disable Branch Target
+                        Identification support
+
+        arm64.nopauth   [ARM64] Unconditionally disable Pointer Authentication
+                        support
 
         ataflop=        [HW,M68k]
 
@@ -1997,6 +2003,11 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                                 to enforce probe and suspend/resume ordering.
                         rpm --  Like &quot;on&quot;, but also use to order runtime PM.
 
+        fw_devlink.strict=&lt;bool&gt;
+                        [KNL] Treat all inferred dependencies as mandatory
+                        dependencies. This only applies for fw_devlink=on|rpm.
+                        Format: &lt;bool&gt;
+
         gamecon.map[2|3]=
                         [HW,JOY] Multisystem joystick and NES/SNES/PSX pad
                         support via parallel port (up to 5 devices per port)
@@ -2843,6 +2854,9 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
 
         kvm-arm.mode=
                         [KVM,ARM] Select one of KVM/arm64's modes of operation.
+
+                        nvhe: Standard nVHE-based mode, without support for
+                              protected guests.
 
                         protected: nVHE-based mode with support for guests whose
                                    state is kept private from the host.
@@ -4527,6 +4541,13 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
         ppc_tm=         [PPC]
                         Format: {&quot;off&quot;}
                         Disable Hardware Transactional Memory
+
+        preempt=        [KNL]
+                        Select preemption mode if you have CONFIG_PREEMPT_DYNAMIC
+                        none - Limited to cond_resched() calls
+                        voluntary - Limited to cond_resched() and might_sleep() calls
+                        full - Any section that isn't explicitly preempt disabled
+                               can be preempted anytime.
 
         print-fatal-signals=
                         [KNL] debug: print fatal signals
