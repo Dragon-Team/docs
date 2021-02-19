@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.1-dragon
+                5.12.2-dragon
               </div>
             
           
@@ -894,17 +894,6 @@ triggered the out-of-memory condition.  This avoids the expensive
 tasklist scan.</p>
 <p>If panic_on_oom is selected, it takes precedence over whatever value
 is used in oom_kill_allocating_task.</p>
-<p>The default value is 0.</p>
-</div>
-<div class="section" id="oom-kill-disable">
-<h2>oom_kill_disable<a class="headerlink" href="#oom-kill-disable" title="Permalink to this headline">¶</a></h2>
-<p>This disables or enables OOM killing in out-of-memory situations.</p>
-<p>If this is set to one, the OOM killer is disabled so OOM kill never
-hapens in out-of-memory situation. It could cause system dangerous
-state due to memory allocation failure so user should be careful to
-use it.</p>
-<p>If this is set to zero, the OOM killer is enabled so OOM kill happens
-in out-of-memory situations.</p>
 <p>The default value is 0.</p>
 </div>
 <div class="section" id="overcommit-kbytes">

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.1-dragon
+                5.12.2-dragon
               </div>
             
           
@@ -1123,26 +1123,6 @@ modified concurrently (eg. the lock is dropped in the loop body). An
 exception to this is if the cursor element (pos) is pinned in the list,
 and list_safe_reset_next is called after re-taking the lock and before
 completing the current iteration of the loop body.</p>
-<dl class="c macro">
-<dt>
-<code class="sig-name descname">list_entry_is_head</code><br /></dt>
-<dd></dd></dl>
-
-<p><code class="docutils literal notranslate"><span class="pre">list_entry_is_head</span> <span class="pre">(pos,</span> <span class="pre">head,</span> <span class="pre">member)</span></code></p>
-<blockquote>
-<div><p>test if the entry points to the head of the list</p>
-</div></blockquote>
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">pos</span></code></dt><dd><p>the type * to cursor</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">head</span></code></dt><dd><p>the head for your list.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">member</span></code></dt><dd><p>the name of the list_head within the struct.</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This macro can be used to check if the loop over the list wasn’t stopped.</p>
 <dl class="c function">
 <dt id="c.hlist_unhashed">
 int <code class="sig-name descname">hlist_unhashed</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> hlist_node *<em>h</em><span class="sig-paren">)</span><a class="headerlink" href="#c.hlist_unhashed" title="Permalink to this definition">¶</a><br /></dt>
@@ -3546,10 +3526,7 @@ should be set. The range will divided to groups of specific size.
 From each group will be used only defined amount of bits.
 Syntax: range:used_size/group_size</p>
 <p><strong>Example</strong></p>
-<p>0-1023:2/256 ==&gt; 0,1,256,257,512,513,768,769
-Optionally the self-descriptive “all” or “none” can be used.
-The value ‘N’ can be used as the end of a range to indicate the maximum
-allowed value; i.e (nmaskbits - 1).</p>
+<p>0-1023:2/256 ==&gt; 0,1,256,257,512,513,768,769</p>
 <p><strong>Return</strong></p>
 <p>0 on success, -errno on invalid input strings. Error values:</p>
 <blockquote>
@@ -11569,18 +11546,11 @@ ordering guarantees for either the CPU or the compiler.</p>
 <code class="sig-name descname">kfree_rcu</code><a class="headerlink" href="#c.kfree_rcu" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
-<p><code class="docutils literal notranslate"><span class="pre">kfree_rcu</span> <span class="pre">(ptr,</span> <span class="pre">rhf...)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">kfree_rcu</span> <span class="pre">()</span></code></p>
 <blockquote>
 <div><p>kfree an object after a grace period.</p>
 </div></blockquote>
 <p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">ptr</span></code></dt><dd><p>pointer to kfree for both single- and double-argument invocations.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">rhf...</span></code></dt><dd><p>the name of the struct rcu_head within the type of <strong>ptr</strong>,
-but only for double-argument invocations.</p>
-</dd>
-</dl>
 <p><strong>Description</strong></p>
 <p>Many rcu callbacks functions just call <a class="reference internal" href="mm-api.html#c.kfree" title="kfree"><code class="xref c c-func docutils literal notranslate"><span class="pre">kfree()</span></code></a> on the base structure.
 These functions are trivial, but their size adds up, and furthermore
@@ -13639,7 +13609,7 @@ list-traversal primitive must be guarded by <a class="reference internal" href="
 <p><strong>Description</strong></p>
 <p>The barrier() is needed to make sure compiler doesn’t cache first element [1],
 as this loop can be restarted [2]
-[1] Documentation/memory-barriers.txt around line 1533
+[1] Documentation/core-api/atomic_ops.rst around line 114
 [2] <a class="reference internal" href="../RCU/rculist_nulls.html"><span class="doc">Using RCU hlist_nulls to protect list and objects</span></a> around line 146</p>
 <dl class="c macro">
 <dt id="c.hlist_nulls_for_each_entry_safe">

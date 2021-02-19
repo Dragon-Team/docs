@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.1-dragon
+                5.12.2-dragon
               </div>
             
           
@@ -132,6 +132,7 @@
 <li class="toctree-l2"><a class="reference internal" href="percpu-rw-semaphore.html">Percpu rw semaphores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="robust-futexes.html">A description of what robust futexes are</a></li>
 <li class="toctree-l2"><a class="reference internal" href="robust-futex-ABI.html">The robust futex ABI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futex2.html">futex2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../accounting/index.html">Accounting</a></li>
@@ -374,16 +375,16 @@ wake-up scenarios.</p>
 (pthread_cond_broadcast() and pthread_cond_signal()) to requeue and
 possibly wake the waiting tasks. Internally, this system call is
 still handled by futex_requeue (by passing requeue_pi=1).  Before
-requeueing, <a class="reference internal" href="../kernel-hacking/locking.html#c.futex_requeue" title="futex_requeue"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_requeue()</span></code></a> attempts to acquire the requeue target
+requeueing, <a class="reference internal" href="futex2.html#c.futex_requeue" title="futex_requeue"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_requeue()</span></code></a> attempts to acquire the requeue target
 PI futex on behalf of the top waiter.  If it can, this waiter is
-woken.  <a class="reference internal" href="../kernel-hacking/locking.html#c.futex_requeue" title="futex_requeue"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_requeue()</span></code></a> then proceeds to requeue the remaining
+woken.  <a class="reference internal" href="futex2.html#c.futex_requeue" title="futex_requeue"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_requeue()</span></code></a> then proceeds to requeue the remaining
 nr_wake+nr_requeue tasks to the PI futex, calling
 rt_mutex_start_proxy_lock() prior to each requeue to prepare the
 task as a waiter on the underlying rt_mutex.  It is possible that
 the lock can be acquired at this stage as well, if so, the next
 waiter is woken to finish the acquisition of the lock.</p>
 <p>FUTEX_CMP_REQUEUE_PI accepts nr_wake and nr_requeue as arguments, but
-their sum is all that really matters.  <a class="reference internal" href="../kernel-hacking/locking.html#c.futex_requeue" title="futex_requeue"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_requeue()</span></code></a> will wake or
+their sum is all that really matters.  <a class="reference internal" href="futex2.html#c.futex_requeue" title="futex_requeue"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_requeue()</span></code></a> will wake or
 requeue up to nr_wake + nr_requeue tasks.  It will wake only as many
 tasks as it can acquire the lock for, which in the majority of cases
 should be 0 as good programming practice dictates that the caller of

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>24.1. AMD64 Specific Boot Options &mdash; The Linux-Next Dragon Kernel  documentation</title>
+  <title>25.1. AMD64 Specific Boot Options &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
 
   
@@ -36,8 +36,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="24.2. General note on [U]EFI x86_64 support" href="uefi.html" />
-    <link rel="prev" title="24. x86_64 Support" href="index.html" /> 
+    <link rel="next" title="25.2. General note on [U]EFI x86_64 support" href="uefi.html" />
+    <link rel="prev" title="25. x86_64 Support" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.1-dragon
+                5.12.2-dragon
               </div>
             
           
@@ -181,43 +181,44 @@
 <li class="toctree-l2"><a class="reference internal" href="../tlb.html">11. The TLB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mtrr.html">12. MTRR (Memory Type Range Register) control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pat.html">13. PAT (Page Attribute Table)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intel-iommu.html">14. Linux IOMMU Support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intel_txt.html">15. Intel(R) TXT Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../amd-memory-encryption.html">16. AMD Memory Encryption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pti.html">17. Page Table Isolation (PTI)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mds.html">18. Microarchitectural Data Sampling (MDS) mitigation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../microcode.html">19. The Linux Microcode Loader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../resctrl.html">20. User Interface for Resource Control feature</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tsx_async_abort.html">21. TSX Async Abort (TAA) mitigation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../usb-legacy-support.html">22. USB Legacy support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../i386/index.html">23. i386 Support</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">24. x86_64 Support</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">24.1. AMD64 Specific Boot Options</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#machine-check">24.1.1. Machine check</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#apics">24.1.2. APICs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#timing">24.1.3. Timing</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#idle-loop">24.1.4. Idle loop</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rebooting">24.1.5. Rebooting</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#non-executable-mappings">24.1.6. Non Executable Mappings</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#numa">24.1.7. NUMA</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#acpi">24.1.8. ACPI</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pci">24.1.9. PCI</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#iommu-input-output-memory-management-unit">24.1.10. IOMMU (input/output memory management unit)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#miscellaneous">24.1.11. Miscellaneous</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intel_cet.html">14. Control-flow Enforcement Technology (CET)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intel-iommu.html">15. Linux IOMMU Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intel_txt.html">16. Intel(R) TXT Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../amd-memory-encryption.html">17. AMD Memory Encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pti.html">18. Page Table Isolation (PTI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mds.html">19. Microarchitectural Data Sampling (MDS) mitigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../microcode.html">20. The Linux Microcode Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resctrl.html">21. User Interface for Resource Control feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tsx_async_abort.html">22. TSX Async Abort (TAA) mitigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usb-legacy-support.html">23. USB Legacy support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../i386/index.html">24. i386 Support</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">25. x86_64 Support</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">25.1. AMD64 Specific Boot Options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#machine-check">25.1.1. Machine check</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apics">25.1.2. APICs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#timing">25.1.3. Timing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#idle-loop">25.1.4. Idle loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rebooting">25.1.5. Rebooting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#non-executable-mappings">25.1.6. Non Executable Mappings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numa">25.1.7. NUMA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#acpi">25.1.8. ACPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pci">25.1.9. PCI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#iommu-input-output-memory-management-unit">25.1.10. IOMMU (input/output memory management unit)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#miscellaneous">25.1.11. Miscellaneous</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="uefi.html">24.2. General note on [U]EFI x86_64 support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mm.html">24.3. Memory Management</a></li>
-<li class="toctree-l3"><a class="reference internal" href="5level-paging.html">24.4. 5-level paging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fake-numa-for-cpusets.html">24.5. Fake NUMA For CPUSets</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cpu-hotplug-spec.html">24.6. Firmware support for CPU hotplug under Linux/x86-64</a></li>
-<li class="toctree-l3"><a class="reference internal" href="machinecheck.html">24.7. Configurable sysfs parameters for the x86-64 machine check code</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fsgs.html">24.8. Using FS and GS segments in user space applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uefi.html">25.2. General note on [U]EFI x86_64 support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mm.html">25.3. Memory Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5level-paging.html">25.4. 5-level paging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fake-numa-for-cpusets.html">25.5. Fake NUMA For CPUSets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpu-hotplug-spec.html">25.6. Firmware support for CPU hotplug under Linux/x86-64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machinecheck.html">25.7. Configurable sysfs parameters for the x86-64 machine check code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsgs.html">25.8. Using FS and GS segments in user space applications</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../sva.html">25. Shared Virtual Addressing (SVA) with ENQCMD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sgx.html">26. Software Guard eXtensions (SGX)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../features.html">27. Feature status on x86 architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sva.html">26. Shared Virtual Addressing (SVA) with ENQCMD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sgx.html">27. Software Guard eXtensions (SGX)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../features.html">28. Feature status on x86 architecture</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../xtensa/index.html">Xtensa Architecture</a></li>
@@ -281,9 +282,9 @@
         
           <li><a href="../index.html">x86-specific Documentation</a> &raquo;</li>
         
-          <li><a href="index.html"><span class="section-number">24. </span>x86_64 Support</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">25. </span>x86_64 Support</a> &raquo;</li>
         
-      <li><span class="section-number">24.1. </span>AMD64 Specific Boot Options</li>
+      <li><span class="section-number">25.1. </span>AMD64 Specific Boot Options</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -303,11 +304,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="amd64-specific-boot-options">
-<h1><span class="section-number">24.1. </span>AMD64 Specific Boot Options<a class="headerlink" href="#amd64-specific-boot-options" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">25.1. </span>AMD64 Specific Boot Options<a class="headerlink" href="#amd64-specific-boot-options" title="Permalink to this headline">¶</a></h1>
 <p>There are many others (usually documented in driver documentation), but
 only the AMD64 specific ones are listed here.</p>
 <div class="section" id="machine-check">
-<h2><span class="section-number">24.1.1. </span>Machine check<a class="headerlink" href="#machine-check" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.1.1. </span>Machine check<a class="headerlink" href="#machine-check" title="Permalink to this headline">¶</a></h2>
 <p>Please see <a class="reference internal" href="machinecheck.html"><span class="doc">Configurable sysfs parameters for the x86-64 machine check code</span></a> for sysfs runtime tunables.</p>
 <blockquote>
 <div><dl class="simple">
@@ -374,7 +375,7 @@ errors since we will not see details for all errors.</p>
 </div></blockquote>
 </div>
 <div class="section" id="apics">
-<h2><span class="section-number">24.1.2. </span>APICs<a class="headerlink" href="#apics" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.1.2. </span>APICs<a class="headerlink" href="#apics" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><dl class="simple">
 <dt>apic</dt><dd><p>Use IO-APIC. Default</p>
@@ -399,7 +400,7 @@ apicmaintimer. Useful when your PIT timer is totally broken.</p>
 </div></blockquote>
 </div>
 <div class="section" id="timing">
-<h2><span class="section-number">24.1.3. </span>Timing<a class="headerlink" href="#timing" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.1.3. </span>Timing<a class="headerlink" href="#timing" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><dl class="simple">
 <dt>notsc</dt><dd><p>Deprecated, use tsc=unstable instead.</p>
@@ -410,7 +411,7 @@ apicmaintimer. Useful when your PIT timer is totally broken.</p>
 </div></blockquote>
 </div>
 <div class="section" id="idle-loop">
-<h2><span class="section-number">24.1.4. </span>Idle loop<a class="headerlink" href="#idle-loop" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.1.4. </span>Idle loop<a class="headerlink" href="#idle-loop" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><dl class="simple">
 <dt>idle=poll</dt><dd><p>Don’t do power saving in the idle loop using HLT, but poll for rescheduling
@@ -425,7 +426,7 @@ It may also interact badly with hyperthreading.</p>
 </div></blockquote>
 </div>
 <div class="section" id="rebooting">
-<h2><span class="section-number">24.1.5. </span>Rebooting<a class="headerlink" href="#rebooting" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.1.5. </span>Rebooting<a class="headerlink" href="#rebooting" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><dl class="simple">
 <dt>reboot=b[ios] | t[riple] | k[bd] | a[cpi] | e[fi] [, [w]arm | [c]old]</dt><dd><dl class="simple">
@@ -462,7 +463,7 @@ in some cases.</p>
 </div></blockquote>
 </div>
 <div class="section" id="non-executable-mappings">
-<h2><span class="section-number">24.1.6. </span>Non Executable Mappings<a class="headerlink" href="#non-executable-mappings" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.1.6. </span>Non Executable Mappings<a class="headerlink" href="#non-executable-mappings" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><dl class="simple">
 <dt>noexec=on|off</dt><dd><dl class="simple">
@@ -476,7 +477,7 @@ in some cases.</p>
 </div></blockquote>
 </div>
 <div class="section" id="numa">
-<h2><span class="section-number">24.1.7. </span>NUMA<a class="headerlink" href="#numa" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.1.7. </span>NUMA<a class="headerlink" href="#numa" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><dl class="simple">
 <dt>numa=off</dt><dd><p>Only set up a single NUMA node spanning all memory.</p>
@@ -499,7 +500,7 @@ physical node into N emulated nodes.</p>
 </div></blockquote>
 </div>
 <div class="section" id="acpi">
-<h2><span class="section-number">24.1.8. </span>ACPI<a class="headerlink" href="#acpi" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.1.8. </span>ACPI<a class="headerlink" href="#acpi" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><dl class="simple">
 <dt>acpi=off</dt><dd><p>Don’t enable ACPI</p>
@@ -523,7 +524,7 @@ duplicate corrected error reports.</p>
 </div></blockquote>
 </div>
 <div class="section" id="pci">
-<h2><span class="section-number">24.1.9. </span>PCI<a class="headerlink" href="#pci" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.1.9. </span>PCI<a class="headerlink" href="#pci" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><dl class="simple">
 <dt>pci=off</dt><dd><p>Don’t use PCI</p>
@@ -546,7 +547,7 @@ duplicate corrected error reports.</p>
 </div></blockquote>
 </div>
 <div class="section" id="iommu-input-output-memory-management-unit">
-<h2><span class="section-number">24.1.10. </span>IOMMU (input/output memory management unit)<a class="headerlink" href="#iommu-input-output-memory-management-unit" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.1.10. </span>IOMMU (input/output memory management unit)<a class="headerlink" href="#iommu-input-output-memory-management-unit" title="Permalink to this headline">¶</a></h2>
 <p>Multiple x86-64 PCI-DMA mapping implementations exist, for example:</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -654,7 +655,7 @@ are accessed from userspace directly on some PCI host bridge.</p>
 </div></blockquote>
 </div>
 <div class="section" id="miscellaneous">
-<h2><span class="section-number">24.1.11. </span>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.1.11. </span>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><dl class="simple">
 <dt>nogbpages</dt><dd><p>Do not use GB pages for kernel direct mappings.</p>
@@ -672,8 +673,8 @@ are accessed from userspace directly on some PCI host bridge.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="uefi.html" class="btn btn-neutral float-right" title="24.2. General note on [U]EFI x86_64 support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="24. x86_64 Support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="uefi.html" class="btn btn-neutral float-right" title="25.2. General note on [U]EFI x86_64 support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="25. x86_64 Support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

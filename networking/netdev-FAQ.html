@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.1-dragon
+                5.12.2-dragon
               </div>
             
           
@@ -146,6 +146,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#i-found-a-bug-that-might-have-possible-security-implications-or-similar-should-i-mail-the-main-netdev-maintainer-off-list">I found a bug that might have possible security implications or similar. Should I mail the main netdev maintainer off-list?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#what-level-of-testing-is-expected-before-i-submit-my-change">What level of testing is expected before I submit my change?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-do-i-post-corresponding-changes-to-user-space-components">How do I post corresponding changes to user space components?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#can-i-reproduce-the-checks-from-patchwork-on-my-local-machine">Can I reproduce the checks from patchwork on my local machine?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-all-the-builds-and-checks-locally-is-a-pain-can-i-post-my-patches-and-have-the-patchwork-bot-validate-them">Running all the builds and checks locally is a pain, can I post my patches and have the patchwork bot validate them?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#any-other-tips-to-help-ensure-my-net-net-next-patch-gets-ok-d">Any other tips to help ensure my net/net-next patch gets OK’d?</a></li>
 </ul>
 </li>
@@ -647,6 +649,19 @@ to the mailing list, e.g.:</p>
 </div>
 <p>Posting as one thread is discouraged because it confuses patchwork
 (as of patchwork 2.2.2).</p>
+</div>
+<div class="section" id="can-i-reproduce-the-checks-from-patchwork-on-my-local-machine">
+<h2>Can I reproduce the checks from patchwork on my local machine?<a class="headerlink" href="#can-i-reproduce-the-checks-from-patchwork-on-my-local-machine" title="Permalink to this headline">¶</a></h2>
+<p>Checks in patchwork are mostly simple wrappers around existing kernel
+scripts, the sources are available at:</p>
+<p><a class="reference external" href="https://github.com/kuba-moo/nipa/tree/master/tests">https://github.com/kuba-moo/nipa/tree/master/tests</a></p>
+</div>
+<div class="section" id="running-all-the-builds-and-checks-locally-is-a-pain-can-i-post-my-patches-and-have-the-patchwork-bot-validate-them">
+<h2>Running all the builds and checks locally is a pain, can I post my patches and have the patchwork bot validate them?<a class="headerlink" href="#running-all-the-builds-and-checks-locally-is-a-pain-can-i-post-my-patches-and-have-the-patchwork-bot-validate-them" title="Permalink to this headline">¶</a></h2>
+<p>No, you must ensure that your patches are ready by testing them locally
+before posting to the mailing list. The patchwork build bot instance
+gets overloaded very easily and <a class="reference external" href="mailto:netdev&#37;&#52;&#48;vger">netdev<span>&#64;</span>vger</a> really doesn’t need more
+traffic if we can help it.</p>
 </div>
 <div class="section" id="any-other-tips-to-help-ensure-my-net-net-next-patch-gets-ok-d">
 <h2>Any other tips to help ensure my net/net-next patch gets OK’d?<a class="headerlink" href="#any-other-tips-to-help-ensure-my-net-net-next-patch-gets-ok-d" title="Permalink to this headline">¶</a></h2>

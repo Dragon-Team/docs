@@ -38,34 +38,6 @@ arch/arm/boot/zImage should be copied to the system partition, and it
 may not need to be renamed. Similarly for arm64, arch/arm64/boot/Image
 should be copied but not necessarily renamed.
 
-Passing an initial RAM disk to the EFI Boot Stub
-------------------------------------------------
-
-The following means sorted by decreasing priority can be used to provide an
-initial RAM disk to the EFI Boot Stub:
-
-* The firmware may provide a UEFI Load File 2 Protocol. The stub will try to
-  load the RAM disk by calling the LoadFile() service of the protocol using
-  a vendor device path with the vendor GUID
-  5568e427-0x68fc-4f3d-ac74-ca555231cc68.
-* Next the EFI stub will try to load the file indicated by the "initrd=" command
-  line parameter if CONFIG_EFI_GENERIC_STUB_INITRD_CMDLINE_LOADER is enabled.
-* The prior boot stage may pass the location of the initial RAM disk via the
-  "linux,initrd-start" and "linux,initrd-end" properties of the "/chosen" node
-  of the device-tree.
-
-The first two items are inhibited by the "noinitrd" command line parameter.
-
-Passing a device-tree to the EFI Boot Stub
-------------------------------------------
-
-A device-tree can be passed to the EFI Boot Stub in decreasing priority using
-
-* command line option dtb=
-* a UEFI configuration table with GUID b1b621d5-f19c-41a5-830b-d9152c69aae0.
-
-The command line option is only available if CONFIG_EFI_ARMSTUB_DTB_LOADER=y
-and secure boot is disabled.
 
 Passing kernel parameters from the EFI shell
 --------------------------------------------
@@ -74,10 +46,6 @@ Arguments to the kernel can be passed after bzImage.efi, e.g.::
 
 	fs0:> bzImage.efi console=ttyS0 root=/dev/sda4
 
-The "noinitrd" option
----------------------
-
-The "noinitrd" option stops the EFI stub from loading an initial RAM disk.
 
 The "initrd=" option
 --------------------
@@ -130,18 +98,3 @@ CONFIGURATION TABLE.
 
 "dtb=" is processed in the same manner as the "initrd=" option that is
 described above.
-
-This option is only available if CONFIG_EFI_ARMSTUB_DTB_LOADER=y and secure
-boot is disabled.
-
-Handoff to main Linux kernel
-----------------------------
-
-Currently the EFI stub enters the main Linux kernel via the same entry points
-that are used when booting without UEFI. This might change in future versions.
-For a description of these entry points see:
-
-* for arm :doc:`/arm/booting`
-* for arm64 :doc:`/arm64/booting`
-* for riscv :doc:`/riscv/index`
-* for x86 :doc:`/x86/boot`

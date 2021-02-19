@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.1-dragon
+                5.12.2-dragon
               </div>
             
           
@@ -130,6 +130,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../usb/index.html">Linux USB API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../firewire.html">Firewire (IEEE 1394) driver Interface Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pci/index.html">The Linux PCI driver implementer’s API guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cxl/index.html">Compute Express Link</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spi.html">Serial Peripheral Interface (SPI)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../i2c.html">I<sup>2</sup>C and SMBus Subsystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ipmb.html">IPMB Driver for a Satellite MC</a></li>
@@ -557,8 +558,8 @@ Second, bridge drivers can then begin to form a list of subdevice descriptors
 that the bridge device needs for its operation. Several functions are available
 to add subdevice descriptors to a notifier, depending on the type of device and
 the needs of the driver.</p>
-<p><code class="xref c c-func docutils literal notranslate"><span class="pre">v4l2_async_notifier_add_fwnode_remote_subdev()</span></code> and
-<code class="xref c c-func docutils literal notranslate"><span class="pre">v4l2_async_notifier_add_i2c_subdev()</span></code> are for bridge and ISP drivers for
+<p><a class="reference internal" href="v4l2-async.html#c.v4l2_async_notifier_add_fwnode_remote_subdev" title="v4l2_async_notifier_add_fwnode_remote_subdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">v4l2_async_notifier_add_fwnode_remote_subdev()</span></code></a> and
+<a class="reference internal" href="v4l2-async.html#c.v4l2_async_notifier_add_i2c_subdev" title="v4l2_async_notifier_add_i2c_subdev"><code class="xref c c-func docutils literal notranslate"><span class="pre">v4l2_async_notifier_add_i2c_subdev()</span></code></a> are for bridge and ISP drivers for
 registering their async sub-devices with the notifier.</p>
 <p><a class="reference internal" href="v4l2-async.html#c.v4l2_async_register_subdev_sensor_common" title="v4l2_async_register_subdev_sensor_common"><code class="xref c c-func docutils literal notranslate"><span class="pre">v4l2_async_register_subdev_sensor_common()</span></code></a> is a helper function for
 sensor drivers registering their own async sub-device, but it also registers a

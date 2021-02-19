@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.1-dragon
+                5.12.2-dragon
               </div>
             
           
@@ -2484,7 +2484,7 @@ multiple references to the head.</p>
     struct hlist_nulls_node skc_nulls_node;
   };
   unsigned short          skc_tx_queue_mapping;
-#ifdef CONFIG_XPS;
+#ifdef CONFIG_SOCK_RX_QUEUE_MAPPING;
   unsigned short          skc_rx_queue_mapping;
 #endif;
   union {
@@ -2604,7 +2604,7 @@ for <a class="reference internal" href="#c.sock" title="sock"><code class="xref 
 #define sk_nulls_node           __sk_common.skc_nulls_node;
 #define sk_refcnt               __sk_common.skc_refcnt;
 #define sk_tx_queue_mapping     __sk_common.skc_tx_queue_mapping;
-#ifdef CONFIG_XPS;
+#ifdef CONFIG_SOCK_RX_QUEUE_MAPPING;
 #define sk_rx_queue_mapping     __sk_common.skc_rx_queue_mapping;
 #endif;
 #define sk_dontcopy_begin       __sk_common.skc_dontcopy_begin;
@@ -3623,6 +3623,38 @@ on at the socket. Assumes that the caller has a lock on the socket.</p>
 </dd>
 </dl>
 <dl class="c function">
+<dt id="c.build_skb_around">
+<em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<code class="sig-name descname">build_skb_around</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, void *<em>data</em>, unsigned int <em>frag_size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.build_skb_around" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>build a network buffer around provided skb</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">sk_buff</span> <span class="pre">*skb</span></code></dt><dd><p>sk_buff provide by caller, must be memset cleared</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*data</span></code></dt><dd><p>data buffer provided by caller</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">frag_size</span></code></dt><dd><p>size of data, or 0 if head was kmalloced</p>
+</dd>
+</dl>
+<dl class="c function">
+<dt id="c.napi_build_skb">
+<em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<code class="sig-name descname">napi_build_skb</code><span class="sig-paren">(</span>void *<em>data</em>, unsigned int <em>frag_size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.napi_build_skb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>build a network buffer</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*data</span></code></dt><dd><p>data buffer provided by caller</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">frag_size</span></code></dt><dd><p>size of data, or 0 if head was kmalloced</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Version of __napi_build_skb() that takes care of skb-&gt;head_frag
+and skb-&gt;pfmemalloc when the data is a page or page fragment.</p>
+<p>Returns a new <a class="reference internal" href="#c.sk_buff" title="sk_buff"><code class="xref c c-type docutils literal notranslate"><span class="pre">sk_buff</span></code></a> on success, <code class="docutils literal notranslate"><span class="pre">NULL</span></code> on allocation failure.</p>
+<dl class="c function">
 <dt id="c.__alloc_skb">
 <em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<code class="sig-name descname">__alloc_skb</code><span class="sig-paren">(</span>unsigned int <em>size</em>, gfp_t <em>gfp_mask</em>, int <em>flags</em>, int <em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__alloc_skb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate a network buffer</p>
@@ -3645,21 +3677,6 @@ tail room of at least size bytes. The object has a reference count
 of one. The return is the buffer. On a failure the return is <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 <p>Buffers may only be allocated from interrupts using a <strong>gfp_mask</strong> of
 <code class="docutils literal notranslate"><span class="pre">GFP_ATOMIC</span></code>.</p>
-</dd>
-</dl>
-<dl class="c function">
-<dt id="c.build_skb_around">
-<em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<code class="sig-name descname">build_skb_around</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.sk_buff" title="sk_buff">sk_buff</a> *<em>skb</em>, void *<em>data</em>, unsigned int <em>frag_size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.build_skb_around" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>build a network buffer around provided skb</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">sk_buff</span> <span class="pre">*skb</span></code></dt><dd><p>sk_buff provide by caller, must be memset cleared</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*data</span></code></dt><dd><p>data buffer provided by caller</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">frag_size</span></code></dt><dd><p>size of data, or 0 if head was kmalloced</p>
 </dd>
 </dl>
 <dl class="c function">
@@ -12189,6 +12206,8 @@ enabled, then we force a configuration.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">PHY_INTERFACE_MODE_2500BASEX</span></code></dt><dd><p>2500 BaseX</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PHY_INTERFACE_MODE_5GBASER</span></code></dt><dd><p>5G BaseR</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">PHY_INTERFACE_MODE_RXAUI</span></code></dt><dd><p>Reduced XAUI</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">PHY_INTERFACE_MODE_XAUI</span></code></dt><dd><p>10 Gigabit Attachment Unit Interface</p>
@@ -12477,6 +12496,7 @@ Once complete, move to UP to restart the PHY.
   unsigned sysfs_links:1;
   unsigned loopback_enabled:1;
   unsigned downshifted_rate:1;
+  unsigned is_on_sfp_module:1;
   unsigned autoneg:1;
   unsigned link:1;
   unsigned autoneg_complete:1;
@@ -12486,6 +12506,7 @@ Once complete, move to UP to restart the PHY.
   phy_interface_t interface;
   int speed;
   int duplex;
+  int port;
   int pause;
   int asym_pause;
   u8 master_slave_get;
@@ -12555,6 +12576,8 @@ Once complete, move to UP to restart the PHY.
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">downshifted_rate</span></code></dt><dd><p>Set true if link speed has been downshifted.</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">is_on_sfp_module</span></code></dt><dd><p>Set true if PHY is located on an SFP module.</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">autoneg</span></code></dt><dd><p>Flag autoneg being used</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">link</span></code></dt><dd><p>Current link state</p>
@@ -12572,6 +12595,8 @@ Once complete, move to UP to restart the PHY.
 <dt><code class="docutils literal notranslate"><span class="pre">speed</span></code></dt><dd><p>Current link speed</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">duplex</span></code></dt><dd><p>Current duplex</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">port</span></code></dt><dd><p>Current port</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">pause</span></code></dt><dd><p>Current pause</p>
 </dd>
@@ -13140,7 +13165,7 @@ bool <code class="sig-name descname">phy_interrupt_is_valid</code><span class="s
 </dl>
 <p><strong>NOTE</strong></p>
 <p>must be kept in sync with addition/removal of PHY_POLL and
-PHY_IGNORE_INTERRUPT</p>
+PHY_MAC_INTERRUPT</p>
 <dl class="c function">
 <dt id="c.phy_polling_mode">
 bool <code class="sig-name descname">phy_polling_mode</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.phy_device" title="phy_device">phy_device</a> *<em>phydev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.phy_polling_mode" title="Permalink to this definition">¶</a><br /></dt>
@@ -13200,6 +13225,17 @@ bool <code class="sig-name descname">phy_has_txtstamp</code><span class="sig-par
 <dt id="c.phy_is_internal">
 bool <code class="sig-name descname">phy_is_internal</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.phy_device" title="phy_device">phy_device</a> *<em>phydev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.phy_is_internal" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Convenience function for testing if a PHY is internal</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">phy_device</span> <span class="pre">*phydev</span></code></dt><dd><p>the phy_device struct</p>
+</dd>
+</dl>
+<dl class="c function">
+<dt id="c.phy_on_sfp">
+bool <code class="sig-name descname">phy_on_sfp</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.phy_device" title="phy_device">phy_device</a> *<em>phydev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.phy_on_sfp" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Convenience function for testing if a PHY is on an SFP module</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>

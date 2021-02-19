@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.1-dragon
+                5.12.2-dragon
               </div>
             
           
@@ -946,42 +946,6 @@ To help debugging, a zero exit status indicates all slabs were released.</p>
 <p><strong>Return</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">0</span></code> if all slabs were released, non-zero otherwise</p>
 <dl class="c function">
-<dt id="c.kmem_valid_obj">
-bool <code class="sig-name descname">kmem_valid_obj</code><span class="sig-paren">(</span>void *<em>object</em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmem_valid_obj" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>does the pointer reference a valid slab object?</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*object</span></code></dt><dd><p>pointer to query.</p>
-</dd>
-</dl>
-<p><strong>Return</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the pointer is to a not-yet-freed object from
-<a class="reference internal" href="#c.kmalloc" title="kmalloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">kmalloc()</span></code></a> or <a class="reference internal" href="#c.kmem_cache_alloc" title="kmem_cache_alloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">kmem_cache_alloc()</span></code></a>, either <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code> if the pointer
-is to an already-freed object, and <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
-<dl class="c function">
-<dt id="c.kmem_dump_obj">
-void <code class="sig-name descname">kmem_dump_obj</code><span class="sig-paren">(</span>void *<em>object</em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmem_dump_obj" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Print available slab provenance information</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*object</span></code></dt><dd><p>slab object for which to find provenance information.</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>This function uses <a class="reference internal" href="printk-basics.html#c.pr_cont" title="pr_cont"><code class="xref c c-func docutils literal notranslate"><span class="pre">pr_cont()</span></code></a>, so that the caller is expected to have
-printed out whatever preamble is appropriate.  The provenance information
-depends on the type of object and on how much debugging is enabled.
-For a slab-cache object, the fact that it is a slab object is printed,
-and, if available, the slab name, return address, and stack trace from
-the allocation of that object.</p>
-<p>This function will splat if passed a pointer to a non-slab object.
-If you are not sure what type of object you have, you should instead
-use mem_dump_obj().</p>
-<dl class="c function">
 <dt id="c.krealloc">
 void *<code class="sig-name descname">krealloc</code><span class="sig-paren">(</span><em class="property">const</em> void *<em>p</em>, size_t <em>new_size</em>, gfp_t <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.krealloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>reallocate memory. The contents will remain unchanged.</p>
@@ -1814,7 +1778,7 @@ void <code class="sig-name descname">unlock_page_private_2</code><span class="si
 </dl>
 <p><strong>Description</strong></p>
 <p>Unlocks a page that’s locked with PG_private_2 and wakes up sleepers in
-<a class="reference internal" href="#c.wait_on_page_private_2" title="wait_on_page_private_2"><code class="xref c c-func docutils literal notranslate"><span class="pre">wait_on_page_private_2()</span></code></a>.</p>
+wait_on_page_private_2().</p>
 <p>This is, for example, used when a netfs page is being written to a local
 disk cache, thereby allowing writes to the cache for the same page to be
 serialised.</p>
@@ -2202,7 +2166,7 @@ int <code class="sig-name descname">try_to_release_page</code><span class="sig-p
 <p><strong>Description</strong></p>
 <p>The address_space is to try to release any data against the page
 (presumably at page-&gt;private).</p>
-<p>This may also be called if PG_private_2 is set on a page, indicating that the
+<p>This may also be called if PG_fscache is set on a page, indicating that the
 page is known to the local caching routines.</p>
 <p>The <strong>gfp_mask</strong> argument specifies whether I/O may be performed to release
 this page (__GFP_IO), and whether the call may block (__GFP_RECLAIM &amp; __GFP_FS).</p>
@@ -2713,21 +2677,6 @@ be regenerated if the page couldn’t be grabbed.  This routine should
 be safe to call while holding the lock for another page.</p>
 <p>Clear __GFP_FS when allocating the page to avoid recursion into the fs
 and deadlock against the caller’s locked page.</p>
-<dl class="c function">
-<dt id="c.wait_on_page_private_2">
-void <code class="sig-name descname">wait_on_page_private_2</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.wait_on_page_private_2" title="page">page</a> *<em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wait_on_page_private_2" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Wait for PG_private_2 to be cleared on a page</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">page</span> <span class="pre">*page</span></code></dt><dd><p>The page</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Wait for the PG_private_2 page bit to be removed from a page.  This is, for
-example, used to handle a netfs page being written to a local disk cache,
-thereby allowing writes to the cache for the same page to be serialised.</p>
 <dl class="c struct">
 <dt id="c.readahead_control">
 <em class="property">struct </em><code class="sig-name descname">readahead_control</code><a class="headerlink" href="#c.readahead_control" title="Permalink to this definition">¶</a><br /></dt>

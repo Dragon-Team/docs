@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.1-dragon
+                5.12.2-dragon
               </div>
             
           
@@ -393,20 +393,6 @@ group:</p>
 <div><p>isolcpus=1,2,10-20,100-2000:2/25</p>
 </div></blockquote>
 <p>where the final item represents CPUs 100,101,125,126,150,151,…</p>
-<p>The value “N” can be used as the end of a range, to represent the numerically
-last CPU on the system, i.e “foo_cpus=16-N” would be equivalent to “16-31” on
-a 32 core system.</p>
-<p>The following convenience aliases are also accepted and used:</p>
-<blockquote>
-<div><p>foo_cpus=all</p>
-</div></blockquote>
-<p>will provide an full/all-set cpu mask for the associated boot argument.</p>
-<blockquote>
-<div><p>foo_cpus=none</p>
-</div></blockquote>
-<p>will provide an empty/cleared cpu mask for the associated boot argument.</p>
-<p>Note that “all” and “none” are not necessarily valid/sensible input values
-for each available boot parameter expecting a CPU list.</p>
 <p>This document may not be entirely up to date and comprehensive. The command
 “modinfo -p ${modulename}” shows a current list of all parameters of a loadable
 module. Loadable modules, after being loaded into the running kernel, also
@@ -1121,37 +1107,6 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         loops can be debugged more effectively on production
                         systems.
 
-        clocksource.inject_delay_freq= [KNL]
-                        Number of runs of calls to clocksource_watchdog()
-                        before delays are injected between reads from the
-                        two clocksources.  Values less than or equal to
-                        zero disable this delay injection.  These delays
-                        can cause clocks to be marked unstable, so use
-                        of this parameter should therefore be avoided on
-                        production systems.  Defaults to zero (disabled).
-
-        clocksource.inject_delay_run= [KNL]
-                        Run lengths of clocksource_watchdog() delay
-                        injections.  Specifying the value 8 will result
-                        in eight consecutive delays followed by eight
-                        times the value specified for inject_delay_freq
-                        of consecutive non-delays.
-
-        clocksource.inject_delay_shift_percpu= [KNL]
-                        Shift count to obtain bit from CPU number to
-                        determine whether to shift the time of the per-CPU
-                        clock under test ahead or behind.  For example,
-                        setting this to the value four will result in
-                        alternating groups of 16 CPUs shifting ahead and
-                        the rest of the CPUs shifting behind.  The default
-                        value of -1 disable this type of error injection.
-
-        clocksource.max_read_retries= [KNL]
-                        Number of clocksource_watchdog() retries due to
-                        external delays before the clock will be marked
-                        unstable.  Defaults to three retries, that is,
-                        four attempts to read the clock under test.
-
         clearcpuid=BITNUM[,BITNUM...] [X86]
                         Disable CPUID feature X for the kernel. See
                         arch/x86/include/asm/cpufeatures.h for the valid bit
@@ -1321,6 +1276,12 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         start-[end] where start and end are both
                         a memory unit (amount[KMG]). See also
                         Documentation/admin-guide/kdump/kdump.rst for an example.
+
+        crashkernel=auto
+                        [KNL] This parameter will set the reserved memory for
+                        the crash kernel based on the value of the CRASH_AUTO_STR
+                        that is the best effort estimation for each arch. See also
+                        arch/Kconfig for further details.
 
         crashkernel=size[KMG],high
                         [KNL, X86-64] range could be above 4G. Allow kernel
@@ -2125,20 +2086,6 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         architecture dependent.  See also
                         Documentation/admin-guide/mm/hugetlbpage.rst.
                         Format: size[KMG]
-
-        hugetlb_free_vmemmap=
-                        [KNL] When CONFIG_HUGETLB_PAGE_FREE_VMEMMAP is set,
-                        this controls freeing unused vmemmap pages associated
-                        with each HugeTLB page. When this option is enabled,
-                        we disable PMD/huge page mapping of vmemmap pages which
-                        increase page table pages. So if a user/sysadmin only
-                        uses a small number of HugeTLB pages (as a percentage
-                        of system memory), they could end up using more memory
-                        with hugetlb_free_vmemmap on as opposed to off.
-                        Format: { on | off (default) }
-
-                        on:  enable the feature
-                        off: disable the feature
 
         hung_task_panic=
                         [KNL] Should the hung task detector generate panics.
@@ -3820,6 +3767,12 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         noexec=on: enable non-executable mappings (default)
                         noexec=off: disable non-executable mappings
 
+        no_user_shstk   [X86-64] Disable Shadow Stack for user-mode
+                        applications
+
+        no_user_ibt     [X86-64] Disable Indirect Branch Tracking for user-mode
+                        applications
+
         nosmap          [X86,PPC]
                         Disable SMAP (Supervisor Mode Access Prevention)
                         even if it is supported by processor.
@@ -3842,8 +3795,6 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         legacy floating-point registers on task switch.
 
         nohugeiomap     [KNL,X86,PPC,ARM64] Disable kernel huge I/O mappings.
-
-        nohugevmalloc   [PPC] Disable kernel huge vmalloc mappings.
 
         nosmt           [KNL,S390] Disable symmetric multithreading (SMT).
                         Equivalent to smt=1.
@@ -3886,9 +3837,14 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         parameter, xsave area per process might occupy more
                         memory on xsaves enabled systems.
 
-        nohlt           [BUGS=ARM,SH] Tells the kernel that the sleep(SH) or
-                        wfi(ARM) instruction doesn't work correctly and not to
-                        use it. This is also useful when using JTAG debugger.
+        nohlt           [ARM,ARM64,MICROBLAZE,SH] Forces the kernel to busy wait
+                        in do_idle() and not use the arch_cpu_idle()
+                        implementation; requires CONFIG_GENERIC_IDLE_POLL_SETUP
+                        to be effective. This is useful on platforms where the
+                        sleep(SH) or wfi(ARM,ARM64) instructions do not work
+                        correctly or when doing power measurements to evalute
+                        the impact of the sleep instructions. This is also
+                        useful when using JTAG debugger.
 
         no_file_caps    Tells the kernel not to honor file capabilities.  The
                         only way then for a file to be executed with privilege
@@ -3900,6 +3856,21 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         interrupt wake-up latency, which may improve performance
                         in certain environments such as networked servers or
                         real-time systems.
+
+        no_hash_pointers
+                        Force pointers printed to the console or buffers to be
+                        unhashed.  By default, when a pointer is printed via %p
+                        format string, that pointer is &quot;hashed&quot;, i.e. obscured
+                        by hashing the pointer value.  This is a security feature
+                        that hides actual kernel addresses from unprivileged
+                        users, but it also makes debugging the kernel more
+                        difficult since unequal pointers can no longer be
+                        compared.  However, if this command-line option is
+                        specified, then all normal pointers will have their true
+                        value printed.  Pointers printed via %pK may still be
+                        hashed.  This option should only be specified when
+                        debugging the kernel.  Please do not use on production
+                        kernels.
 
         nohibernate     [HIBERNATION] Disable hibernation and resume.
 
@@ -4015,25 +3986,6 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
         nowb            [ARM]
 
         nox2apic        [X86-64,APIC] Do not enable x2APIC mode.
-
-        numa_spinlock=  [NUMA, PV_OPS] Select the NUMA-aware variant
-                        of spinlock. The options are:
-                        auto - Enable this variant if running on a multi-node
-                        machine in native environment.
-                        on  - Unconditionally enable this variant.
-                        off - Unconditionally disable this variant.
-
-                        Not specifying this option is equivalent to
-                        numa_spinlock=auto.
-
-        numa_spinlock_threshold=        [NUMA, PV_OPS]
-                        Set the time threshold in milliseconds for the
-                        number of intra-node lock hand-offs before the
-                        NUMA-aware spinlock is forced to be passed to
-                        a thread on another NUMA node.  Valid values
-                        are in the [1..100] range. Smaller values result
-                        in a more fair, but less performant spinlock,
-                        and vice versa. The default value is 10.
 
         cpu0_hotplug    [X86] Turn on CPU0 hotplug feature when
                         CONFIG_BOOTPARAM_HOTPLUG_CPU0 is off.
@@ -4670,7 +4622,9 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                                 see CONFIG_RAS_CEC help text.
 
         rcu_nocbs=      [KNL]
-                        The argument is a cpu list, as described above.
+                        The argument is a cpu list, as described above,
+                        except that the string &quot;all&quot; can be used to
+                        specify every CPU on the system.
 
                         In kernels built with CONFIG_RCU_NOCB_CPU=y, set
                         the specified list of CPUs to be no-callback CPUs.
@@ -6606,12 +6560,6 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
         x2apic_phys     [X86-64,APIC] Use x2apic physical mode instead of
                         default x2apic cluster mode on platforms
                         supporting x2apic.
-
-        x86_intel_mid_timer= [X86-32,APBT]
-                        Choose timer option for x86 Intel MID platform.
-                        Two valid options are apbt timer only and lapic timer
-                        plus one apbt timer for broadcast timer.
-                        x86_intel_mid_timer=apbt_only | lapic_and_apbt
 
         xen_512gb_limit         [KNL,X86-64,XEN]
                         Restricts the kernel running paravirtualized under Xen

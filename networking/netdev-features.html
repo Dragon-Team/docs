@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.1-dragon
+                5.12.2-dragon
               </div>
             
           
@@ -565,6 +565,27 @@ stricter than Hardware LRO.  A packet stream merged by Hardware GRO must
 be re-segmentable by GSO or TSO back to the exact original packet stream.
 Hardware GRO is dependent on RXCSUM since every packet successfully merged
 by hardware must also have the checksum verified by hardware.</p>
+<ul class="simple">
+<li><p>hsr-tag-ins-offload</p></li>
+</ul>
+<p>This should be set for devices which insert an HSR (High-availability Seamless
+Redundancy) or PRP (Parallel Redundancy Protocol) tag automatically.</p>
+<ul class="simple">
+<li><p>hsr-tag-rm-offload</p></li>
+</ul>
+<p>This should be set for devices which remove HSR (High-availability Seamless
+Redundancy) or PRP (Parallel Redundancy Protocol) tags automatically.</p>
+<ul class="simple">
+<li><p>hsr-fwd-offload</p></li>
+</ul>
+<p>This should be set for devices which forward HSR (High-availability Seamless
+Redundancy) frames from one port to another in hardware.</p>
+<ul class="simple">
+<li><p>hsr-dup-offload</p></li>
+</ul>
+<p>This should be set for devices which duplicate outgoing HSR (High-availability
+Seamless Redundancy) or PRP (Parallel Redundancy Protocol) tags automatically
+frames in hardware.</p>
 </div>
 </div>
 

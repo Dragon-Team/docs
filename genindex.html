@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.12.1-dragon
+                5.12.2-dragon
               </div>
             
           
@@ -348,6 +348,8 @@
 </li>
       <li><a href="core-api/mm-api.html#c.__clear_user">__clear_user (C function)</a>
 </li>
+      <li><a href="driver-api/cxl/memory-devices.html#c.__cxl_mem_mbox_send_cmd">__cxl_mem_mbox_send_cmd (C function)</a>
+</li>
       <li><a href="networking/kapi.html#c.__dev_alloc_page">__dev_alloc_page (C function)</a>
 </li>
       <li><a href="networking/kapi.html#c.__dev_alloc_pages">__dev_alloc_pages (C function)</a>
@@ -425,6 +427,8 @@
       <li><a href="core-api/boot-time-mm.html#c.__for_each_mem_range_rev">__for_each_mem_range_rev (C macro)</a>
 </li>
       <li><a href="core-api/mm-api.html#c.__free_pages">__free_pages (C function)</a>
+</li>
+      <li><a href="locking/futex2.html#c.__futex_wait">__futex_wait (C function)</a>
 </li>
       <li><a href="filesystems/api-summary.html#c.__generic_file_fsync">__generic_file_fsync (C function)</a>
 </li>
@@ -518,10 +522,10 @@
 </li>
       <li><a href="core-api/boot-time-mm.html#c.__next_mem_pfn_range_in_zone">__next_mem_pfn_range_in_zone (C function)</a>
 </li>
-      <li><a href="core-api/boot-time-mm.html#c.__next_mem_range">__next_mem_range (C function)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="core-api/boot-time-mm.html#c.__next_mem_range">__next_mem_range (C function)</a>
+</li>
       <li><a href="core-api/boot-time-mm.html#c.__next_mem_range_rev">__next_mem_range_rev (C function)</a>
 </li>
       <li><a href="driver-api/miscellaneous.html#c.__parport_register_driver">__parport_register_driver (C function)</a>
@@ -2568,8 +2572,6 @@
 </li>
       <li><a href="core-api/kernel-api.html#c.clk_get_optional">clk_get_optional (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core-api/kernel-api.html#c.clk_get_parent">clk_get_parent (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.clk_get_phase">clk_get_phase (C function)</a>
@@ -2582,6 +2584,8 @@
 </li>
       <li><a href="core-api/kernel-api.html#c.clk_has_parent">clk_has_parent (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core-api/kernel-api.html#c.clk_is_enabled_when_prepared">clk_is_enabled_when_prepared (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.clk_is_match">clk_is_match (C function)</a>
@@ -2642,9 +2646,7 @@
 </li>
       <li><a href="networking/kapi.html#c.compare_ether_header">compare_ether_header (C function)</a>
 </li>
-      <li><a href="kernel-hacking/locking.html#c.compat_futex_read_wait_block">compat_futex_read_wait_block (C function)</a>
-</li>
-      <li><a href="kernel-hacking/locking.html#c.compat_futex_wait_block">compat_futex_wait_block (C struct)</a>
+      <li><a href="locking/futex2.html#c.compat_futex_parse_waitv">compat_futex_parse_waitv (C function)</a>
 </li>
       <li><a href="driver-api/component.html#c.component_add">component_add (C function)</a>
 </li>
@@ -2991,6 +2993,32 @@
       <li><a href="driver-api/media/drivers/frontends.html#c.cxd2820r_config">cxd2820r_config (C struct)</a>
 </li>
       <li><a href="driver-api/media/drivers/frontends.html#c.cxd2820r_platform_data">cxd2820r_platform_data (C struct)</a>
+</li>
+      <li><a href="driver-api/cxl/memory-devices.html#c.cxl_command_info">cxl_command_info (C struct)</a>
+</li>
+      <li><a href="driver-api/cxl/memory-devices.html#c.cxl_mem_command">cxl_mem_command (C struct)</a>
+</li>
+      <li><a href="driver-api/cxl/memory-devices.html#c.cxl_mem_enumerate_cmds">cxl_mem_enumerate_cmds (C function)</a>
+</li>
+      <li><a href="driver-api/cxl/memory-devices.html#c.cxl_mem_identify">cxl_mem_identify (C function)</a>
+</li>
+      <li><a href="driver-api/cxl/memory-devices.html#c.cxl_mem_mbox_get">cxl_mem_mbox_get (C function)</a>
+</li>
+      <li><a href="driver-api/cxl/memory-devices.html#c.cxl_mem_mbox_put">cxl_mem_mbox_put (C function)</a>
+</li>
+      <li><a href="driver-api/cxl/memory-devices.html#c.cxl_mem_mbox_send_cmd">cxl_mem_mbox_send_cmd (C function)</a>
+</li>
+      <li><a href="driver-api/cxl/memory-devices.html#c.cxl_mem_query_commands">cxl_mem_query_commands (C struct)</a>
+</li>
+      <li><a href="driver-api/cxl/memory-devices.html#c.cxl_mem_setup_regs">cxl_mem_setup_regs (C function)</a>
+</li>
+      <li><a href="driver-api/cxl/memory-devices.html#c.cxl_memdev">cxl_memdev (C struct)</a>
+</li>
+      <li><a href="driver-api/cxl/memory-devices.html#c.cxl_send_command">cxl_send_command (C struct)</a>
+</li>
+      <li><a href="driver-api/cxl/memory-devices.html#c.cxl_validate_cmd_from_user">cxl_validate_cmd_from_user (C function)</a>
+</li>
+      <li><a href="driver-api/cxl/memory-devices.html#c.cxl_walk_cel">cxl_walk_cel (C function)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -7268,8 +7296,6 @@
 </li>
       <li><a href="core-api/boot-time-mm.html#c.for_each_mem_region">for_each_mem_region (C macro)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gpu/drm-kms.html#c.for_each_new_connector_in_state">for_each_new_connector_in_state (C macro)</a>
 </li>
       <li><a href="gpu/drm-kms.html#c.for_each_new_crtc_in_state">for_each_new_crtc_in_state (C macro)</a>
@@ -7286,6 +7312,8 @@
 </li>
       <li><a href="gpu/drm-kms-helpers.html#c.for_each_old_mst_mgr_in_state">for_each_old_mst_mgr_in_state (C macro)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gpu/drm-kms.html#c.for_each_old_plane_in_state">for_each_old_plane_in_state (C macro)</a>
 </li>
       <li><a href="gpu/drm-kms.html#c.for_each_old_private_obj_in_state">for_each_old_private_obj_in_state (C macro)</a>
@@ -7402,31 +7430,63 @@
 </li>
       <li><a href="admin-guide/rapidio.html#c.fsl_rio_setup">fsl_rio_setup (C function)</a>
 </li>
+      <li><a href="locking/futex2.html#c.futex_bucket">futex_bucket (C struct)</a>
+</li>
+      <li><a href="locking/futex2.html#c.futex_dequeue_multiple">futex_dequeue_multiple (C function)</a>
+</li>
+      <li><a href="locking/futex2.html#c.futex_enqueue">futex_enqueue (C function)</a>
+</li>
       <li><a href="kernel-hacking/locking.html#c.futex_exit_recursive">futex_exit_recursive (C function)</a>
 </li>
+      <li><a href="locking/futex2.html#c.futex_get_bucket">futex_get_bucket (C function)</a>
+</li>
+      <li><a href="locking/futex2.html#c.futex_get_inode_uuid">futex_get_inode_uuid (C function)</a>
+</li>
+      <li><a href="locking/futex2.html#c.futex_get_parent">futex_get_parent (C function)</a>
+</li>
+      <li><a href="locking/futex2.html#c.futex_get_shared_key">futex_get_shared_key (C function)</a>
+</li>
+      <li><a href="locking/futex2.html#c.futex_get_user">futex_get_user (C function)</a>
+</li>
+      <li><a href="locking/futex2.html#c.futex_key">futex_key (C struct)</a>
+</li>
       <li><a href="kernel-hacking/locking.html#c.futex_lock_pi_atomic">futex_lock_pi_atomic (C function)</a>
+</li>
+      <li><a href="locking/futex2.html#c.futex_mark_wake">futex_mark_wake (C function)</a>
+</li>
+      <li><a href="locking/futex2.html#c.futex_parse_requeue">futex_parse_requeue (C function)</a>
+</li>
+      <li><a href="locking/futex2.html#c.futex_parse_waitv">futex_parse_waitv (C function)</a>
 </li>
       <li><a href="kernel-hacking/locking.html#c.futex_proxy_trylock_atomic">futex_proxy_trylock_atomic (C function)</a>
 </li>
       <li><a href="kernel-hacking/locking.html#c.futex_q">futex_q (C struct)</a>
 </li>
-      <li><a href="kernel-hacking/locking.html#c.futex_read_wait_block">futex_read_wait_block (C function)</a>
-</li>
       <li><a href="kernel-hacking/locking.html#c.futex_requeue">futex_requeue (C function)</a>
+
+      <ul>
+        <li><a href="locking/futex2.html#c.futex_requeue">(C struct)</a>
+</li>
+      </ul></li>
+      <li><a href="locking/futex2.html#c.futex_setup_time">futex_setup_time (C function)</a>
 </li>
       <li><a href="kernel-hacking/locking.html#c.futex_setup_timer">futex_setup_timer (C function)</a>
 </li>
+      <li><a href="locking/futex2.html#c.futex_single_waiter">futex_single_waiter (C struct)</a>
+</li>
       <li><a href="kernel-hacking/locking.html#c.futex_top_waiter">futex_top_waiter (C function)</a>
-</li>
-      <li><a href="kernel-hacking/locking.html#c.futex_wait_multiple">futex_wait_multiple (C function)</a>
-</li>
-      <li><a href="kernel-hacking/locking.html#c.futex_wait_multiple_setup">futex_wait_multiple_setup (C function)</a>
 </li>
       <li><a href="kernel-hacking/locking.html#c.futex_wait_queue_me">futex_wait_queue_me (C function)</a>
 </li>
       <li><a href="kernel-hacking/locking.html#c.futex_wait_requeue_pi">futex_wait_requeue_pi (C function)</a>
 </li>
       <li><a href="kernel-hacking/locking.html#c.futex_wait_setup">futex_wait_setup (C function)</a>
+</li>
+      <li><a href="locking/futex2.html#c.futex_waiter">futex_waiter (C struct)</a>
+</li>
+      <li><a href="locking/futex2.html#c.futex_waitv">futex_waitv (C struct)</a>
+</li>
+      <li><a href="locking/futex2.html#c.futexv_head">futexv_head (C struct)</a>
 </li>
       <li><a href="driver-api/firewire.html#c.fw_cdev_add_descriptor">fw_cdev_add_descriptor (C struct)</a>
 </li>
@@ -7965,6 +8025,8 @@
       <li><a href="core-api/genericirq.html#c.handle_fasteoi_nmi">handle_fasteoi_nmi (C function)</a>
 </li>
       <li><a href="core-api/genericirq.html#c.handle_level_irq">handle_level_irq (C function)</a>
+</li>
+      <li><a href="driver-api/cxl/memory-devices.html#c.handle_mailbox_cmd_from_user">handle_mailbox_cmd_from_user (C function)</a>
 </li>
       <li><a href="core-api/genericirq.html#c.handle_percpu_devid_fasteoi_nmi">handle_percpu_devid_fasteoi_nmi (C function)</a>
 </li>
@@ -9294,6 +9356,8 @@
 </li>
       <li><a href="core-api/kernel-api.html#c.int_sqrt">int_sqrt (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core-api/kernel-api.html#c.int_sqrt64">int_sqrt64 (C function)</a>
 </li>
       <li><a href="driver-api/scsi.html#c.int_to_scsilun">int_to_scsilun (C function)</a>
@@ -9302,8 +9366,6 @@
 </li>
       <li><a href="gpu/i915.html#c.intel_audio_codec_enable">intel_audio_codec_enable (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gpu/i915.html#c.intel_audio_deinit">intel_audio_deinit (C function)</a>
 </li>
       <li><a href="gpu/i915.html#c.intel_audio_init">intel_audio_init (C function)</a>
@@ -10184,10 +10246,6 @@
 </li>
       <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.atomic_dec_and_mutex_lock">it_IT.atomic_dec_and_mutex_lock (C function)</a>
 </li>
-      <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.compat_futex_read_wait_block">it_IT.compat_futex_read_wait_block (C function)</a>
-</li>
-      <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.compat_futex_wait_block">it_IT.compat_futex_wait_block (C struct)</a>
-</li>
       <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.fault_in_user_writeable">it_IT.fault_in_user_writeable (C function)</a>
 </li>
       <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.fixup_owner">it_IT.fixup_owner (C function)</a>
@@ -10200,17 +10258,11 @@
 </li>
       <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.futex_q">it_IT.futex_q (C struct)</a>
 </li>
-      <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.futex_read_wait_block">it_IT.futex_read_wait_block (C function)</a>
-</li>
       <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.futex_requeue">it_IT.futex_requeue (C function)</a>
 </li>
       <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.futex_setup_timer">it_IT.futex_setup_timer (C function)</a>
 </li>
       <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.futex_top_waiter">it_IT.futex_top_waiter (C function)</a>
-</li>
-      <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.futex_wait_multiple">it_IT.futex_wait_multiple (C function)</a>
-</li>
-      <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.futex_wait_multiple_setup">it_IT.futex_wait_multiple_setup (C function)</a>
 </li>
       <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.futex_wait_queue_me">it_IT.futex_wait_queue_me (C function)</a>
 </li>
@@ -10240,8 +10292,6 @@
 </li>
       <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.mutex_trylock">it_IT.mutex_trylock (C function)</a>
 </li>
-      <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.mutex_trylock_recursive">it_IT.mutex_trylock_recursive (C function)</a>
-</li>
       <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.mutex_unlock">it_IT.mutex_unlock (C function)</a>
 </li>
       <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.queue_me">it_IT.queue_me (C function)</a>
@@ -10255,8 +10305,6 @@
       <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.sys_set_robust_list">it_IT.sys_set_robust_list (C function)</a>
 </li>
       <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.unqueue_me">it_IT.unqueue_me (C function)</a>
-</li>
-      <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.unqueue_multiple">it_IT.unqueue_multiple (C function)</a>
 </li>
       <li><a href="translations/it_IT/kernel-hacking/locking.html#c.it_IT.wait_for_owner_exiting">it_IT.wait_for_owner_exiting (C function)</a>
 </li>
@@ -10570,10 +10618,6 @@
 </li>
       <li><a href="core-api/mm-api.html#c.kmem_cache_shrink">kmem_cache_shrink (C function)</a>
 </li>
-      <li><a href="core-api/mm-api.html#c.kmem_dump_obj">kmem_dump_obj (C function)</a>
-</li>
-      <li><a href="core-api/mm-api.html#c.kmem_valid_obj">kmem_valid_obj (C function)</a>
-</li>
       <li><a href="core-api/kernel-api.html#c.kmemdup">kmemdup (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.kmemdup_nul">kmemdup_nul (C function)</a>
@@ -10680,10 +10724,10 @@
 </li>
       <li><a href="core-api/genericirq.html#c.kstat_irqs_usr">kstat_irqs_usr (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core-api/kernel-api.html#c.kstrdup">kstrdup (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core-api/kernel-api.html#c.kstrdup_const">kstrdup_const (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.kstrndup">kstrndup (C function)</a>
@@ -11010,7 +11054,7 @@
 </li>
       <li><a href="core-api/kernel-api.html#c.list_entry">list_entry (C macro)</a>
 </li>
-      <li><a href="core-api/kernel-api.html#c.list_entry_is_head">list_entry_is_head (C macro)</a>, <a href="core-api/kernel-api.html#c.list_entry_is_head">[1]</a>
+      <li><a href="core-api/kernel-api.html#c.list_entry_is_head">list_entry_is_head (C macro)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.list_entry_lockless">list_entry_lockless (C macro)</a>
 </li>
@@ -11237,6 +11281,8 @@
       <li><a href="driver-api/media/drivers/frontends.html#c.mb86a20s_attach">mb86a20s_attach (C function)</a>
 </li>
       <li><a href="driver-api/media/drivers/frontends.html#c.mb86a20s_config">mb86a20s_config (C struct)</a>
+</li>
+      <li><a href="driver-api/cxl/memory-devices.html#c.mbox_cmd">mbox_cmd (C struct)</a>
 </li>
       <li><a href="userspace-api/media/glossary.html#term-MC-API"><strong>MC API</strong></a>
 </li>
@@ -11584,10 +11630,10 @@
 </li>
       <li><a href="core-api/boot-time-mm.html#c.memblock_add_range">memblock_add_range (C function)</a>
 </li>
-      <li><a href="core-api/boot-time-mm.html#c.memblock_alloc_exact_nid_raw">memblock_alloc_exact_nid_raw (C function)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="core-api/boot-time-mm.html#c.memblock_alloc_exact_nid_raw">memblock_alloc_exact_nid_raw (C function)</a>
+</li>
       <li><a href="core-api/boot-time-mm.html#c.memblock_alloc_internal">memblock_alloc_internal (C function)</a>
 </li>
       <li><a href="core-api/boot-time-mm.html#c.memblock_alloc_range_nid">memblock_alloc_range_nid (C function)</a>
@@ -12010,8 +12056,6 @@
 </li>
       <li><a href="kernel-hacking/locking.html#c.mutex_trylock">mutex_trylock (C function)</a>
 </li>
-      <li><a href="kernel-hacking/locking.html#c.mutex_trylock_recursive">mutex_trylock_recursive (C function)</a>
-</li>
       <li><a href="kernel-hacking/locking.html#c.mutex_unlock">mutex_unlock (C function)</a>
 </li>
   </ul></td>
@@ -12264,10 +12308,10 @@
 </li>
       <li><a href="driver-api/mtdnand.html#c.nand_subop_get_data_start_off">nand_subop_get_data_start_off (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="driver-api/mtdnand.html#c.nand_subop_get_num_addr_cyc">nand_subop_get_num_addr_cyc (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="driver-api/mtdnand.html#c.nand_suspend">nand_suspend (C function)</a>
 </li>
       <li><a href="driver-api/mtdnand.html#c.nand_sync">nand_sync (C function)</a>
@@ -12301,6 +12345,8 @@
       <li><a href="driver-api/mtdnand.html#c.nand_write_page_syndrome">nand_write_page_syndrome (C function)</a>
 </li>
       <li><a href="driver-api/mtdnand.html#c.nand_write_subpage_hwecc">nand_write_subpage_hwecc (C function)</a>
+</li>
+      <li><a href="networking/kapi.html#c.napi_build_skb">napi_build_skb (C function)</a>
 </li>
       <li><a href="networking/kapi.html#c.napi_complete">napi_complete (C function)</a>
 </li>
@@ -13261,6 +13307,8 @@
       <li><a href="networking/kapi.html#c.phy_modify_paged_changed">phy_modify_paged_changed (C function)</a>
 </li>
       <li><a href="networking/kapi.html#c.phy_module_driver">phy_module_driver (C macro)</a>
+</li>
+      <li><a href="networking/kapi.html#c.phy_on_sfp">phy_on_sfp (C function)</a>
 </li>
       <li><a href="networking/kapi.html#c.phy_package_join">phy_package_join (C function)</a>
 </li>
@@ -16220,12 +16268,12 @@
 </li>
       <li><a href="sound/kernel-api/alsa-driver-api.html#c.snd_pcm_sgbuf_get_ptr">snd_pcm_sgbuf_get_ptr (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="sound/kernel-api/alsa-driver-api.html#c.snd_pcm_start">snd_pcm_start (C function)</a>
 </li>
       <li><a href="sound/kernel-api/alsa-driver-api.html#c.snd_pcm_stop">snd_pcm_stop (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="sound/kernel-api/alsa-driver-api.html#c.snd_pcm_stop_xrun">snd_pcm_stop_xrun (C function)</a>
 </li>
       <li><a href="sound/kernel-api/alsa-driver-api.html#c.snd_pcm_stream_linked">snd_pcm_stream_linked (C function)</a>
@@ -17480,6 +17528,14 @@
 </li>
       <li><a href="filesystems/api-summary.html#c.sys_flock">sys_flock (C function)</a>
 </li>
+      <li><a href="locking/futex2.html#c.sys_futex_requeue">sys_futex_requeue (C function)</a>
+</li>
+      <li><a href="locking/futex2.html#c.sys_futex_wait">sys_futex_wait (C function)</a>
+</li>
+      <li><a href="locking/futex2.html#c.sys_futex_waitv">sys_futex_waitv (C function)</a>
+</li>
+      <li><a href="locking/futex2.html#c.sys_futex_wake">sys_futex_wake (C function)</a>
+</li>
       <li><a href="kernel-hacking/locking.html#c.sys_get_robust_list">sys_get_robust_list (C function)</a>
 </li>
       <li><a href="driver-api/basics.html#c.sys_kill">sys_kill (C function)</a>
@@ -18231,8 +18287,6 @@
       <li><a href="core-api/mm-api.html#c.unmap_mapping_range">unmap_mapping_range (C function)</a>
 </li>
       <li><a href="kernel-hacking/locking.html#c.unqueue_me">unqueue_me (C function)</a>
-</li>
-      <li><a href="kernel-hacking/locking.html#c.unqueue_multiple">unqueue_multiple (C function)</a>
 </li>
       <li><a href="driver-api/s390-drivers.html#c.unregister_adapter_interrupt">unregister_adapter_interrupt (C function)</a>
 </li>
@@ -19048,6 +19102,12 @@
 </li>
       <li><a href="driver-api/media/v4l2-async.html#c.v4l2_async_notifier">v4l2_async_notifier (C struct)</a>
 </li>
+      <li><a href="driver-api/media/v4l2-async.html#c.v4l2_async_notifier_add_fwnode_remote_subdev">v4l2_async_notifier_add_fwnode_remote_subdev (C macro)</a>
+</li>
+      <li><a href="driver-api/media/v4l2-async.html#c.v4l2_async_notifier_add_fwnode_subdev">v4l2_async_notifier_add_fwnode_subdev (C macro)</a>
+</li>
+      <li><a href="driver-api/media/v4l2-async.html#c.v4l2_async_notifier_add_i2c_subdev">v4l2_async_notifier_add_i2c_subdev (C macro)</a>
+</li>
       <li><a href="driver-api/media/v4l2-async.html#c.v4l2_async_notifier_cleanup">v4l2_async_notifier_cleanup (C function)</a>
 </li>
       <li><a href="driver-api/media/v4l2-async.html#c.v4l2_async_notifier_init">v4l2_async_notifier_init (C function)</a>
@@ -19492,10 +19552,10 @@
 </li>
       <li><a href="driver-api/media/v4l2-mem2mem.html#c.v4l2_m2m_get_vq">v4l2_m2m_get_vq (C function)</a>
 </li>
-      <li><a href="driver-api/media/v4l2-mem2mem.html#c.v4l2_m2m_has_stopped">v4l2_m2m_has_stopped (C function)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="driver-api/media/v4l2-mem2mem.html#c.v4l2_m2m_has_stopped">v4l2_m2m_has_stopped (C function)</a>
+</li>
       <li><a href="driver-api/media/v4l2-mem2mem.html#c.v4l2_m2m_init">v4l2_m2m_init (C function)</a>
 </li>
       <li><a href="driver-api/media/v4l2-mem2mem.html#c.v4l2_m2m_is_last_draining_src_buf">v4l2_m2m_is_last_draining_src_buf (C function)</a>
@@ -20490,8 +20550,6 @@
 </li>
       <li><a href="core-api/mm-api.html#c.wait_for_stable_page">wait_for_stable_page (C function)</a>
 </li>
-      <li><a href="core-api/mm-api.html#c.wait_on_page_private_2">wait_on_page_private_2 (C function)</a>
-</li>
       <li><a href="driver-api/basics.html#c.wait_task_stopped">wait_task_stopped (C function)</a>
 </li>
       <li><a href="driver-api/basics.html#c.waitqueue_active">waitqueue_active (C function)</a>
@@ -20508,10 +20566,10 @@
 </li>
       <li><a href="filesystems/api-summary.html#c.wbc_account_cgroup_owner">wbc_account_cgroup_owner (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="filesystems/api-summary.html#c.wbc_attach_and_unlock_inode">wbc_attach_and_unlock_inode (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="filesystems/api-summary.html#c.wbc_detach_inode">wbc_detach_inode (C function)</a>
 </li>
       <li><a href="driver-api/80211/cfg80211.html#c.wdev_priv">wdev_priv (C function)</a>

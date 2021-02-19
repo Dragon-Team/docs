@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.1-dragon
+                5.12.2-dragon
               </div>
             
           
@@ -1406,6 +1406,11 @@ latency, as described in “Latency trace format”.</p>
 writing to the ring buffer (as if tracing_on was set to zero).
 This simulates the original behavior of the trace file.
 When the file is closed, tracing will be enabled again.</p>
+</dd>
+<dt>hash-ptr</dt><dd><p>When set, “%p” in the event printk format displays the
+hashed pointer value instead of real address.
+This will be useful if you want to find out which hashed
+value is corresponding to the real value in trace log.</p>
 </dd>
 <dt>record-cmd</dt><dd><p>When any event or tracer is enabled, a hook is enabled
 in the sched_switch trace point to fill comm cache

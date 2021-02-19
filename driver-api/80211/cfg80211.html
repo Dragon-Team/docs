@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.1-dragon
+                5.12.2-dragon
               </div>
             
           
@@ -130,6 +130,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../usb/index.html">Linux USB API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../firewire.html">Firewire (IEEE 1394) driver Interface Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pci/index.html">The Linux PCI driver implementer’s API guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cxl/index.html">Compute Express Link</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spi.html">Serial Peripheral Interface (SPI)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../i2c.html">I<sup>2</sup>C and SMBus Subsystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ipmb.html">IPMB Driver for a Satellite MC</a></li>
@@ -2003,6 +2004,8 @@ Token (measurement type 11)</p>
   u32 flags;
   struct ieee80211_he_obss_pd he_obss_pd;
   struct cfg80211_he_bss_color he_bss_color;
+  struct cfg80211_fils_discovery fils_discovery;
+  struct cfg80211_unsol_bcast_probe_resp unsol_bcast_probe_resp;
 };
 </pre></div>
 </div>
@@ -2068,6 +2071,10 @@ networks.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">he_obss_pd</span></code></dt><dd><p>OBSS Packet Detection settings</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">he_bss_color</span></code></dt><dd><p>BSS Color settings</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">fils_discovery</span></code></dt><dd><p>FILS discovery transmission parameters</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsol_bcast_probe_resp</span></code></dt><dd><p>Unsolicited broadcast probe response parameters</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
@@ -3203,8 +3210,6 @@ caching.</p>
   int (*set_tid_config)(struct wiphy *wiphy, struct net_device *dev, struct cfg80211_tid_config *tid_conf);
   int (*reset_tid_config)(struct wiphy *wiphy, struct net_device *dev, const u8 *peer, u8 tids);
   int (*set_sar_specs)(struct wiphy *wiphy, struct cfg80211_sar_specs *sar);
-  int (*set_fils_discovery)(struct wiphy *wiphy,struct net_device *dev, struct cfg80211_fils_discovery *params);
-  int (*set_unsol_bcast_probe_resp)(struct wiphy *wiphy,struct net_device *dev, struct cfg80211_unsol_bcast_probe_resp *params);
 };
 </pre></div>
 </div>
@@ -3606,11 +3611,6 @@ This callback may sleep.</p>
 given TIDs. This callback may sleep.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">set_sar_specs</span></code></dt><dd><p>Update the SAR (TX power) settings.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">set_fils_discovery</span></code></dt><dd><p>Set FILS discovery transmission parameters.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">set_unsol_bcast_probe_resp</span></code></dt><dd><p>Set unsolicited broadcast probe response
-transmission parameters.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>

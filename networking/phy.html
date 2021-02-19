@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.1-dragon
+                5.12.2-dragon
               </div>
             
           
@@ -582,7 +582,7 @@ put into an unsupported state.</p>
 <p>Lastly, once the controller is ready to handle network traffic, you call
 phy_start(phydev).  This tells the PAL that you are ready, and configures the
 PHY to connect to the network. If the MAC interrupt of your network driver
-also handles PHY status changes, just set phydev-&gt;irq to PHY_IGNORE_INTERRUPT
+also handles PHY status changes, just set phydev-&gt;irq to PHY_MAC_INTERRUPT
 before you call phy_start and use <a class="reference internal" href="kapi.html#c.phy_mac_interrupt" title="phy_mac_interrupt"><code class="xref c c-func docutils literal notranslate"><span class="pre">phy_mac_interrupt()</span></code></a> from the network
 driver. If you don’t want to use interrupts, set phydev-&gt;irq to PHY_POLL.
 <a class="reference internal" href="kapi.html#c.phy_start" title="phy_start"><code class="xref c c-func docutils literal notranslate"><span class="pre">phy_start()</span></code></a> enables the PHY interrupts (if applicable) and starts the
@@ -625,6 +625,11 @@ successfully pass data in some circumstances, but the 16-bit control
 word will not be correctly interpreted, which may cause mismatches in
 duplex, pause or other settings.  This is dependent on the MAC and/or
 PHY behaviour.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PHY_INTERFACE_MODE_5GBASER</span></code></dt><dd><p>This is the IEEE 802.3 Clause 129 defined 5GBASE-R protocol. It is
+identical to the 10GBASE-R protocol defined in Clause 49, with the
+exception that it operates at half the frequency. Please refer to the
+IEEE standard for the definition.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">PHY_INTERFACE_MODE_10GBASER</span></code></dt><dd><p>This is the IEEE 802.3 Clause 49 defined 10GBASE-R protocol used with
 various different mediums. Please refer to the IEEE standard for a

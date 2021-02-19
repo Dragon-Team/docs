@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.1-dragon
+                5.12.2-dragon
               </div>
             
           
@@ -129,13 +129,9 @@
 <li class="toctree-l2"><a class="reference internal" href="edid.html">EDID</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">The EFI Boot Stub</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#how-to-install-bzimage-efi">How to install bzImage.efi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#passing-an-initial-ram-disk-to-the-efi-boot-stub">Passing an initial RAM disk to the EFI Boot Stub</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#passing-a-device-tree-to-the-efi-boot-stub">Passing a device-tree to the EFI Boot Stub</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#passing-kernel-parameters-from-the-efi-shell">Passing kernel parameters from the EFI shell</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-noinitrd-option">The “noinitrd” option</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-initrd-option">The “initrd=” option</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-dtb-option">The “dtb=” option</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#handoff-to-main-linux-kernel">Handoff to main Linux kernel</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ext4.html">ext4 General Information</a></li>
@@ -371,43 +367,12 @@ arch/arm/boot/zImage should be copied to the system partition, and it
 may not need to be renamed. Similarly for arm64, arch/arm64/boot/Image
 should be copied but not necessarily renamed.</p>
 </div>
-<div class="section" id="passing-an-initial-ram-disk-to-the-efi-boot-stub">
-<h2>Passing an initial RAM disk to the EFI Boot Stub<a class="headerlink" href="#passing-an-initial-ram-disk-to-the-efi-boot-stub" title="Permalink to this headline">¶</a></h2>
-<p>The following means sorted by decreasing priority can be used to provide an
-initial RAM disk to the EFI Boot Stub:</p>
-<ul class="simple">
-<li><p>The firmware may provide a UEFI Load File 2 Protocol. The stub will try to
-load the RAM disk by calling the LoadFile() service of the protocol using
-a vendor device path with the vendor GUID
-5568e427-0x68fc-4f3d-ac74-ca555231cc68.</p></li>
-<li><p>Next the EFI stub will try to load the file indicated by the “initrd=” command
-line parameter if CONFIG_EFI_GENERIC_STUB_INITRD_CMDLINE_LOADER is enabled.</p></li>
-<li><p>The prior boot stage may pass the location of the initial RAM disk via the
-“linux,initrd-start” and “linux,initrd-end” properties of the “/chosen” node
-of the device-tree.</p></li>
-</ul>
-<p>The first two items are inhibited by the “noinitrd” command line parameter.</p>
-</div>
-<div class="section" id="passing-a-device-tree-to-the-efi-boot-stub">
-<h2>Passing a device-tree to the EFI Boot Stub<a class="headerlink" href="#passing-a-device-tree-to-the-efi-boot-stub" title="Permalink to this headline">¶</a></h2>
-<p>A device-tree can be passed to the EFI Boot Stub in decreasing priority using</p>
-<ul class="simple">
-<li><p>command line option dtb=</p></li>
-<li><p>a UEFI configuration table with GUID b1b621d5-f19c-41a5-830b-d9152c69aae0.</p></li>
-</ul>
-<p>The command line option is only available if CONFIG_EFI_ARMSTUB_DTB_LOADER=y
-and secure boot is disabled.</p>
-</div>
 <div class="section" id="passing-kernel-parameters-from-the-efi-shell">
 <h2>Passing kernel parameters from the EFI shell<a class="headerlink" href="#passing-kernel-parameters-from-the-efi-shell" title="Permalink to this headline">¶</a></h2>
 <p>Arguments to the kernel can be passed after bzImage.efi, e.g.:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>fs0:&gt; bzImage.efi console=ttyS0 root=/dev/sda4
 </pre></div>
 </div>
-</div>
-<div class="section" id="the-noinitrd-option">
-<h2>The “noinitrd” option<a class="headerlink" href="#the-noinitrd-option" title="Permalink to this headline">¶</a></h2>
-<p>The “noinitrd” option stops the EFI stub from loading an initial RAM disk.</p>
 </div>
 <div class="section" id="the-initrd-option">
 <h2>The “initrd=” option<a class="headerlink" href="#the-initrd-option" title="Permalink to this headline">¶</a></h2>
@@ -454,20 +419,6 @@ as a last resort when a device tree is not provided in the EFI
 CONFIGURATION TABLE.</p>
 <p>“dtb=” is processed in the same manner as the “initrd=” option that is
 described above.</p>
-<p>This option is only available if CONFIG_EFI_ARMSTUB_DTB_LOADER=y and secure
-boot is disabled.</p>
-</div>
-<div class="section" id="handoff-to-main-linux-kernel">
-<h2>Handoff to main Linux kernel<a class="headerlink" href="#handoff-to-main-linux-kernel" title="Permalink to this headline">¶</a></h2>
-<p>Currently the EFI stub enters the main Linux kernel via the same entry points
-that are used when booting without UEFI. This might change in future versions.
-For a description of these entry points see:</p>
-<ul class="simple">
-<li><p>for arm <a class="reference internal" href="../arm/booting.html"><span class="doc">Booting ARM Linux</span></a></p></li>
-<li><p>for arm64 <a class="reference internal" href="../arm64/booting.html"><span class="doc">Booting AArch64 Linux</span></a></p></li>
-<li><p>for riscv <a class="reference internal" href="../riscv/index.html"><span class="doc">RISC-V architecture</span></a></p></li>
-<li><p>for x86 <a class="reference internal" href="../x86/boot.html"><span class="doc">The Linux/x86 Boot Protocol</span></a></p></li>
-</ul>
 </div>
 </div>
 

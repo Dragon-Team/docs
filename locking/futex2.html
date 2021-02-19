@@ -1,0 +1,1042 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>futex2 &mdash; The Linux-Next Dragon Kernel  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Accounting" href="../accounting/index.html" />
+    <link rel="prev" title="The robust futex ABI" href="robust-futex-ABI.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.12.2-dragon
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin-guide/index.html">The Linux kernel user’s and administrator’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kbuild/index.html">Kernel Build System</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../firmware-guide/index.html">The Linux kernel firmware guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devicetree/index.html">Open Firmware and Device Tree</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../userspace-api/index.html">The Linux kernel user-space API guide</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../process/index.html">Working with the kernel development community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev-tools/index.html">Development tools for the kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc-guide/index.html">How to write kernel documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kernel-hacking/index.html">Kernel Hacking Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trace/index.html">Linux Tracing Technologies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintainer/index.html">Kernel Maintainer Handbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fault-injection/index.html">fault-injection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../livepatch/index.html">Kernel Livepatching</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../driver-api/index.html">The Linux driver implementer’s API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core-api/index.html">Core API Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">locking</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="locktypes.html">Lock types and their rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lockdep-design.html">Runtime locking correctness validator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lockstat.html">Lock Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="locktorture.html">Kernel Lock Torture Test Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mutex-design.html">Generic Mutex Subsystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rt-mutex-design.html">RT-mutex implementation design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rt-mutex.html">RT-mutex subsystem with PI support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="seqlock.html">Sequence counters and sequential locks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spinlocks.html">Locking lessons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ww-mutex-design.html">Wound/Wait Deadlock-Proof Mutex Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preempt-locking.html">Proper Locking Under a Preemptible Kernel: Keeping Kernel Code Preempt-Safe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pi-futex.html">Lightweight PI-futexes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futex-requeue-pi.html">Futex Requeue PI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hwspinlock.html">Hardware Spinlock Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="percpu-rw-semaphore.html">Percpu rw semaphores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robust-futexes.html">A description of what robust futexes are</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robust-futex-ABI.html">The robust futex ABI</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">futex2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-interface">The interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#uapi-functions">uAPI functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uapi-structures">uAPI structures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-flag-argument">The <code class="docutils literal notranslate"><span class="pre">flag</span></code> argument</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-timo-argument">The <code class="docutils literal notranslate"><span class="pre">timo</span></code> argument</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#implementation">Implementation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#waiting">Waiting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#waking">Waking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#requeuing">Requeuing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#futex-keys">Futex keys</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#source-code-documentation">Source code documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../accounting/index.html">Accounting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../block/index.html">Block</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cdrom/index.html">cdrom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpu-freq/index.html">Linux CPUFreq - CPU frequency and voltage scaling code in the Linux(TM) kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ide/index.html">Integrated Drive Electronics (IDE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fb/index.html">Frame Buffer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fpga/index.html">fpga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hid/index.html">Human Interface Devices (HID)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../i2c/index.html">I2C/SMBus Subsystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iio/index.html">Industrial I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../isdn/index.html">ISDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../infiniband/index.html">InfiniBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../leds/index.html">LEDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../netlabel/index.html">NetLabel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networking/index.html">Linux Networking Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pcmcia/index.html">pcmcia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../power/index.html">Power Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../target/index.html">TCM Virtual Device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timers/index.html">timers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spi/index.html">Serial Peripheral Interface (SPI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../w1/index.html">1-Wire Subsystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../watchdog/index.html">Linux Watchdog Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virt/index.html">Linux Virtualization Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input/index.html">The Linux Input Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hwmon/index.html">Linux Hardware Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gpu/index.html">Linux GPU Driver Developer’s Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sound/index.html">Linux Sound Subsystem Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../crypto/index.html">Linux Kernel Crypto API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filesystems/index.html">Filesystems in the Linux kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vm/index.html">Linux Memory Management Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bpf/index.html">BPF Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usb/index.html">USB support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PCI/index.html">Linux PCI Bus Subsystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scsi/index.html">Linux SCSI Subsystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc-devices/index.html">Assorted Miscellaneous Devices Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scheduler/index.html">Linux Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mhi/index.html">MHI</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../asm-annotations.html">Assembler Annotations</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../arm/index.html">ARM Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arm64/index.html">ARM64 Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ia64/index.html">IA-64 Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m68k/index.html">m68k Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mips/index.html">MIPS-specific Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nios2/index.html">Nios II Specific Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openrisc/index.html">OpenRISC Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parisc/index.html">PA-RISC Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../powerpc/index.html">powerpc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../riscv/index.html">RISC-V architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../s390/index.html">s390 Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sh/index.html">SuperH Interfaces Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sparc/index.html">Sparc Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../x86/index.html">x86-specific Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xtensa/index.html">Xtensa Architecture</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../staging/index.html">Unsorted Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../staging/index.html#atomic-types">Atomic Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../staging/index.html#atomic-bitops">Atomic bitops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../staging/index.html#memory-barriers">Memory Barriers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../watch_queue.html">General notification mechanism</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../translations/index.html">Translations</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">The Linux-Next Dragon Kernel</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">locking</a> &raquo;</li>
+        
+      <li>futex2</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/locking/futex2.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="futex2">
+<h1>futex2<a class="headerlink" href="#futex2" title="Permalink to this headline">¶</a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">Author</dt>
+<dd class="field-odd"><p>André Almeida &lt;<a class="reference external" href="mailto:andrealmeid&#37;&#52;&#48;collabora&#46;com">andrealmeid<span>&#64;</span>collabora<span>&#46;</span>com</a>&gt;</p>
+</dd>
+</dl>
+<p>futex, or fast user mutex, is a set of syscalls to allow the userspace to create
+performant synchronization mechanisms, such as mutexes, semaphores and
+conditional variables in userspace. C standard libraries, like glibc, uses it
+as means to implements more high level interfaces like pthreads.</p>
+<div class="section" id="the-interface">
+<h2>The interface<a class="headerlink" href="#the-interface" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="uapi-functions">
+<h3>uAPI functions<a class="headerlink" href="#uapi-functions" title="Permalink to this headline">¶</a></h3>
+<dl class="c function">
+<dt id="c.sys_futex_wait">
+long <code class="sig-name descname">sys_futex_wait</code><span class="sig-paren">(</span>void __user *<em>uaddr</em>, unsigned int <em>val</em>, unsigned int <em>flags</em>, <em class="property">struct</em> __kernel_timespec __user *<em>timo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sys_futex_wait" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Wait on a futex address if (<a href="#id1"><span class="problematic" id="id2">*</span></a>uaddr) == val</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">__user</span> <span class="pre">*</span> <span class="pre">uaddr</span></code></dt><dd><p>User address of futex</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">val</span></code></dt><dd><p>Expected value of futex</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">flags</span></code></dt><dd><p>Specify the size of futex and the clockid</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">__kernel_timespec</span> <span class="pre">__user</span> <span class="pre">*</span> <span class="pre">timo</span></code></dt><dd><p>Optional absolute timeout.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>The user thread is put to sleep, waiting for a futex_wake() at uaddr, if the
+value at <a href="#id3"><span class="problematic" id="id4">*</span></a>uaddr is the same as val (otherwise, the syscall returns
+immediately with -EAGAIN).</p>
+<p>Returns 0 on success, error code otherwise.</p>
+<dl class="c function">
+<dt id="c.sys_futex_waitv">
+long <code class="sig-name descname">sys_futex_waitv</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.futex_waitv" title="futex_waitv">futex_waitv</a> __user *<em>waiters</em>, unsigned int <em>nr_futexes</em>, unsigned int <em>flags</em>, <em class="property">struct</em> __kernel_timespec __user *<em>timo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sys_futex_waitv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Wait on a list of futexes</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_waitv</span> <span class="pre">__user</span> <span class="pre">*</span> <span class="pre">waiters</span></code></dt><dd><p>List of futexes to wait on</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">nr_futexes</span></code></dt><dd><p>Length of futexv</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">flags</span></code></dt><dd><p>Flag for timeout (monotonic/realtime)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">__kernel_timespec</span> <span class="pre">__user</span> <span class="pre">*</span> <span class="pre">timo</span></code></dt><dd><p>Optional absolute timeout.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Given an array of <cite><a class="reference internal" href="#c.futex_waitv" title="futex_waitv"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_waitv</span></code></a></cite>, wait on each uaddr. The thread wakes
+if a futex_wake() is performed at any uaddr. The syscall returns immediately
+if any waiter has <a href="#id5"><span class="problematic" id="id6">*</span></a>uaddr != val. <a href="#id7"><span class="problematic" id="id8">*</span></a>timo is an optional timeout value for the
+operation. Each waiter has individual flags. The <cite>flags</cite> argument for the
+syscall should be used solely for specifying the timeout as realtime, if
+needed. Flags for shared futexes, sizes, etc. should be used on the
+individual flags of each waiter.</p>
+<p>Returns the array index of one of the awaken futexes. There’s no given
+information of how many were awakened, or any particular attribute of it (if
+it’s the first awakened, if it is of the smaller index…).</p>
+<dl class="c function">
+<dt id="c.sys_futex_wake">
+long <code class="sig-name descname">sys_futex_wake</code><span class="sig-paren">(</span>void __user *<em>uaddr</em>, unsigned int <em>nr_wake</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sys_futex_wake" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Wake a number of futexes waiting on an address</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">__user</span> <span class="pre">*</span> <span class="pre">uaddr</span></code></dt><dd><p>Address of futex to be woken up</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">nr_wake</span></code></dt><dd><p>Number of futexes waiting in uaddr to be woken up</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">flags</span></code></dt><dd><p>Flags for size and shared</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Wake <cite>nr_wake</cite> threads waiting at uaddr.</p>
+<p>Returns the number of woken threads on success, error code otherwise.</p>
+<dl class="c function">
+<dt id="c.sys_futex_requeue">
+long <code class="sig-name descname">sys_futex_requeue</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.futex_requeue" title="futex_requeue">futex_requeue</a> __user *<em>uaddr1</em>, <em class="property">struct</em> <a class="reference internal" href="#c.futex_requeue" title="futex_requeue">futex_requeue</a> __user *<em>uaddr2</em>, unsigned int <em>nr_wake</em>, unsigned int <em>nr_requeue</em>, unsigned int <em>cmpval</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sys_futex_requeue" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Wake futexes at uaddr1 and requeue from uaddr1 to uaddr2</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_requeue</span> <span class="pre">__user</span> <span class="pre">*</span> <span class="pre">uaddr1</span></code></dt><dd><p>Address of futexes to be waken/dequeued</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_requeue</span> <span class="pre">__user</span> <span class="pre">*</span> <span class="pre">uaddr2</span></code></dt><dd><p>Address for the futexes to be enqueued</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">nr_wake</span></code></dt><dd><p>Number of futexes waiting in uaddr1 to be woken up</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">nr_requeue</span></code></dt><dd><p>Number of futexes to be requeued from uaddr1 to uaddr2</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">cmpval</span></code></dt><dd><p>Expected value at uaddr1</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">flags</span></code></dt><dd><p>Reserved flags arg for requeue operation expansion. Must be 0.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>If (uaddr1-&gt;uaddr == cmpval), wake at uaddr1-&gt;uaddr a nr_wake number of
+waiters and then, remove a number of nr_requeue waiters at uaddr1-&gt;uaddr
+and add then to uaddr2-&gt;uaddr list. Each uaddr has its own set of flags,
+that must be defined at <a class="reference internal" href="#c.futex_requeue" title="futex_requeue"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_requeue</span></code></a> (such as size, shared, NUMA).</p>
+<p>Return the number of the woken futexes + the number of requeued ones on
+success, error code otherwise.</p>
+</div>
+<div class="section" id="uapi-structures">
+<h3>uAPI structures<a class="headerlink" href="#uapi-structures" title="Permalink to this headline">¶</a></h3>
+<dl class="c struct">
+<dt id="c.futex_waitv">
+<em class="property">struct </em><code class="sig-name descname">futex_waitv</code><a class="headerlink" href="#c.futex_waitv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A waiter for vectorized wait</p>
+</dd></dl>
+
+<p><strong>Definition</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct futex_waitv {
+  void *uaddr;
+  unsigned int val;
+  unsigned int flags;
+};
+</pre></div>
+</div>
+<p><strong>Members</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">uaddr</span></code></dt><dd><p>User address to wait on</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">val</span></code></dt><dd><p>Expected value at uaddr</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">flags</span></code></dt><dd><p>Flags for this waiter</p>
+</dd>
+</dl>
+<dl class="c struct">
+<dt id="c.futex_requeue">
+<em class="property">struct </em><code class="sig-name descname">futex_requeue</code><a class="headerlink" href="#c.futex_requeue" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Define an address and its flags for requeue operation</p>
+</dd></dl>
+
+<p><strong>Definition</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct futex_requeue {
+  void *uaddr;
+  unsigned int flags;
+};
+</pre></div>
+</div>
+<p><strong>Members</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">uaddr</span></code></dt><dd><p>User address of one of the requeue arguments</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">flags</span></code></dt><dd><p>Flags for this address</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="the-flag-argument">
+<h3>The <code class="docutils literal notranslate"><span class="pre">flag</span></code> argument<a class="headerlink" href="#the-flag-argument" title="Permalink to this headline">¶</a></h3>
+<p>The flag is used to specify the size of the futex word
+(FUTEX_[8, 16, 32]). It’s mandatory to define one, since there’s no
+default size.</p>
+<p>By default, the timeout uses a monotonic clock, but can be used as a realtime
+one by using the FUTEX_REALTIME_CLOCK flag.</p>
+<p>By default, futexes are of the private type, that means that this user address
+will be accessed by threads that shares the same memory region. This allows for
+some internal optimizations, so they are faster. However, if the address needs
+to be shared with different processes (like using <code class="docutils literal notranslate"><span class="pre">mmap()</span></code> or <code class="docutils literal notranslate"><span class="pre">shm()</span></code>), they
+need to be defined as shared and the flag FUTEX_SHARED_FLAG is used to set that.</p>
+<p>By default, the operation has no NUMA-awareness, meaning that the user can’t
+choose the memory node where the kernel side futex data will be stored. The
+user can choose the node where it wants to operate by setting the
+FUTEX_NUMA_FLAG and using the following structure (where X can be 8, 16, or
+32):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct futexX_numa {
+        __uX value;
+        __sX hint;
+};
+</pre></div>
+</div>
+<p>This structure should be passed at the <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*uaddr</span></code> of futex functions. The
+address of the structure will be used to be waited on/waken on, and the
+<code class="docutils literal notranslate"><span class="pre">value</span></code> will be compared to <code class="docutils literal notranslate"><span class="pre">val</span></code> as usual. The <code class="docutils literal notranslate"><span class="pre">hint</span></code> member is used to
+defined which node the futex will use. When waiting, the futex will be
+registered on a kernel-side table stored on that node; when waking, the futex
+will be searched for on that given table. That means that there’s no redundancy
+between tables, and the wrong <code class="docutils literal notranslate"><span class="pre">hint</span></code> value will led to undesired behavior.
+Userspace is responsible for dealing with node migrations issues that may
+occur. <code class="docutils literal notranslate"><span class="pre">hint</span></code> can range from [0, MAX_NUMA_NODES], for specifying a node, or
+-1, to use the same node the current process is using.</p>
+<p>When not using FUTEX_NUMA_FLAG on a NUMA system, the futex will be stored on a
+global table on some node, defined at compilation time.</p>
+</div>
+<div class="section" id="the-timo-argument">
+<h3>The <code class="docutils literal notranslate"><span class="pre">timo</span></code> argument<a class="headerlink" href="#the-timo-argument" title="Permalink to this headline">¶</a></h3>
+<p>As per the Y2038 work done in the kernel, new interfaces shouldn’t add timeout
+options known to be buggy. Given that, <code class="docutils literal notranslate"><span class="pre">timo</span></code> should be a 64bit timeout at
+all platforms, using an absolute timeout value.</p>
+</div>
+</div>
+<div class="section" id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>The internal implementation follows a similar design to the original futex.
+Given that we want to replicate the same external behavior of current futex,
+this should be somewhat expected.</p>
+<div class="section" id="waiting">
+<h3>Waiting<a class="headerlink" href="#waiting" title="Permalink to this headline">¶</a></h3>
+<p>For the wait operations, they are all treated as if you want to wait on N
+futexes, so the path for futex_wait and futex_waitv is the basically the same.
+For both syscalls, the first step is to prepare an internal list for the list
+of futexes to wait for (using <a class="reference internal" href="#c.futexv_head" title="futexv_head"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futexv_head</span></code></a>). For futex_wait() calls, this
+list will have a single object.</p>
+<p>We have a hash table, were waiters register themselves before sleeping.  Then,
+the wake function checks this table looking for waiters at uaddr.  The hash
+bucket to be used is determined by a <a class="reference internal" href="#c.futex_key" title="futex_key"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_key</span></code></a>, that stores information
+to uniquely identify an address from a given process. Given the huge address
+space, there’ll be hash collisions, so we store information to be later used on
+collision treatment.</p>
+<p>First, for every futex we want to wait on, we check if (<code class="docutils literal notranslate"><span class="pre">*uaddr</span> <span class="pre">==</span> <span class="pre">val</span></code>).
+This check is done holding the bucket lock, so we are correctly serialized with
+any futex_wake() calls. If any waiter fails the check above, we dequeue all
+futexes. The check (<code class="docutils literal notranslate"><span class="pre">*uaddr</span> <span class="pre">==</span> <span class="pre">val</span></code>) can fail for two reasons:</p>
+<ul class="simple">
+<li><p>The values are different, and we return -EAGAIN. However, if while
+dequeueing we found that some futex were awakened, we prioritize this
+and return success.</p></li>
+<li><p>When trying to access the user address, we do so with page faults
+disabled because we are holding a bucket’s spin lock (and can’t sleep
+while holding a spin lock). If there’s an error, it might be a page
+fault, or an invalid address. We release the lock, dequeue everyone
+(because it’s illegal to sleep while there are futexes enqueued, we
+could lose wakeups) and try again with page fault enabled. If we
+succeeded, this means that the address is valid, but we need to do
+all the work again. For serialization reasons, we need to have the
+spin lock when getting the user value. Additionally, for shared
+futexes, we also need to recalculate the hash, since the underlying
+mapping mechanisms could have changed when dealing with page fault.
+If, even with page fault enabled, we can’t access the address, it
+means it’s an invalid user address, and we return -EFAULT. For this
+case, we prioritize the error, even if some futex were awaken.</p></li>
+</ul>
+<p>If the check is OK, they are enqueued on a linked list in our bucket, and
+proceed to the next one. If all waiters succeed, we put the thread to sleep
+until a futex_wake() call, timeout expires or we get a signal. After waking up,
+we dequeue everyone, and check if some futex was awaken. This dequeue is done by
+iteratively walking at each element of struct futex_head list.</p>
+<p>All enqueuing/dequeuing operations requires to hold the bucket lock, to avoid
+racing while modifying the list.</p>
+</div>
+<div class="section" id="waking">
+<h3>Waking<a class="headerlink" href="#waking" title="Permalink to this headline">¶</a></h3>
+<p>We get the bucket that’s storing the waiters at uaddr, and wake the required
+number of waiters, checking for hash collision.</p>
+<p>There’s an optimization that makes futex_wake() not taking the bucket lock if
+there’s no one to be wake on that bucket. It checks an atomic counter that each
+bucket has, if it says 0, than the syscall exits. In order to this work, the
+waiter thread increases it before taking the lock, so the wake thread will
+correctly see that there’s someone waiting and will continue the path to take
+the bucket lock. To get the correct serialization, the waiter issues a memory
+barrier after increasing the bucket counter and the waker issues a memory
+barrier before checking it.</p>
+</div>
+<div class="section" id="requeuing">
+<h3>Requeuing<a class="headerlink" href="#requeuing" title="Permalink to this headline">¶</a></h3>
+<p>The requeue path first checks for each <a class="reference internal" href="#c.futex_requeue" title="futex_requeue"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_requeue</span></code></a> and their flags.
+Then, it will compare the excepted value with the one at uaddr1::uaddr.
+Following the same serialization explained at <a class="reference internal" href="#waking">Waking</a>, we increase the atomic
+counter for the bucket of uaddr2 before taking the lock. We need to have both
+buckets locks at same time so we don’t race with others futexes operations. To
+ensure the locks are taken in the same order for all threads (and thus avoiding
+deadlocks), every requeue operation takes the “smaller” bucket first, when
+comparing both addresses.</p>
+<p>If the compare with user value succeeds, we proceed by waking <code class="docutils literal notranslate"><span class="pre">nr_wake</span></code>
+futexes, and then requeuing <code class="docutils literal notranslate"><span class="pre">nr_requeue</span></code> from bucket of uaddr1 to the uaddr2.
+This consists in a simple list deletion/addition and replacing the old futex key
+for the new one.</p>
+</div>
+<div class="section" id="futex-keys">
+<h3>Futex keys<a class="headerlink" href="#futex-keys" title="Permalink to this headline">¶</a></h3>
+<p>There are two types of futexes: private and shared ones. The private are futexes
+meant to be used by threads that shares the same memory space, are easier to be
+uniquely identified an thus can have some performance optimization. The elements
+for identifying one are: the start address of the page where the address is,
+the address offset within the page and the current-&gt;mm pointer.</p>
+<p>Now, for uniquely identifying shared futex:</p>
+<ul class="simple">
+<li><p>If the page containing the user address is an anonymous page, we can
+just use the same data used for private futexes (the start address of
+the page, the address offset within the page and the current-&gt;mm
+pointer) that will be enough for uniquely identifying such futex. We
+also set one bit at the key to differentiate if a private futex is
+used on the same address (mixing shared and private calls do not
+work).</p></li>
+<li><p>If the page is file-backed, current-&gt;mm maybe isn’t the same one for
+every user of this futex, so we need to use other data: the
+page-&gt;index, an UUID for the struct inode and the offset within the
+page.</p></li>
+</ul>
+<p>Note that members of futex_key doesn’t have any particular meaning after they
+are part of the struct - they are just bytes to identify a futex.  Given that,
+we don’t need to use a particular name or type that matches the original data,
+we only need to care about the bitsize of each component and make both private
+and shared fit in the same memory space.</p>
+</div>
+</div>
+<div class="section" id="source-code-documentation">
+<h2>Source code documentation<a class="headerlink" href="#source-code-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="c struct">
+<dt id="c.futex_key">
+<em class="property">struct </em><code class="sig-name descname">futex_key</code><a class="headerlink" href="#c.futex_key" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Components to build unique key for a futex</p>
+</dd></dl>
+
+<p><strong>Definition</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct futex_key {
+  u64 pointer;
+  unsigned long index;
+  unsigned long offset;
+};
+</pre></div>
+</div>
+<p><strong>Members</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">pointer</span></code></dt><dd><p>Pointer to current-&gt;mm or inode’s UUID for file backed futexes</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">index</span></code></dt><dd><p>Start address of the page containing futex or index of the page</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">offset</span></code></dt><dd><p>Address offset of uaddr in a page</p>
+</dd>
+</dl>
+<dl class="c struct">
+<dt id="c.futex_waiter">
+<em class="property">struct </em><code class="sig-name descname">futex_waiter</code><a class="headerlink" href="#c.futex_waiter" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>List entry for a waiter</p>
+</dd></dl>
+
+<p><strong>Definition</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct futex_waiter {
+  uintptr_t uaddr;
+  struct futex_key key;
+  struct list_head list;
+  unsigned int val;
+  unsigned int flags;
+  struct futex_bucket *bucket;
+  unsigned int index;
+};
+</pre></div>
+</div>
+<p><strong>Members</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">uaddr</span></code></dt><dd><p>Virtual address of userspace futex</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">key</span></code></dt><dd><p>Information that uniquely identify a futex</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">list</span></code></dt><dd><p>List node struct</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">val</span></code></dt><dd><p>Expected value for this waiter</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">flags</span></code></dt><dd><p>Flags</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bucket</span></code></dt><dd><p>Pointer to the bucket for this waiter</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">index</span></code></dt><dd><p>Index of waiter in futexv list</p>
+</dd>
+</dl>
+<dl class="c struct">
+<dt id="c.futexv_head">
+<em class="property">struct </em><code class="sig-name descname">futexv_head</code><a class="headerlink" href="#c.futexv_head" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>List of futexes to be waited</p>
+</dd></dl>
+
+<p><strong>Definition</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct futexv_head {
+  struct task_struct *task;
+  bool hint;
+  struct futex_waiter objects[0];
+};
+</pre></div>
+</div>
+<p><strong>Members</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">task</span></code></dt><dd><p>Task to be awaken</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">hint</span></code></dt><dd><p>Was someone on this list awakened?</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">objects</span></code></dt><dd><p>List of futexes</p>
+</dd>
+</dl>
+<dl class="c struct">
+<dt id="c.futex_bucket">
+<em class="property">struct </em><code class="sig-name descname">futex_bucket</code><a class="headerlink" href="#c.futex_bucket" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A bucket of futex’s hash table</p>
+</dd></dl>
+
+<p><strong>Definition</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct futex_bucket {
+  atomic_t waiters;
+  spinlock_t lock;
+  struct list_head list;
+};
+</pre></div>
+</div>
+<p><strong>Members</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">waiters</span></code></dt><dd><p>Number of waiters in the bucket</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">lock</span></code></dt><dd><p>Bucket lock</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">list</span></code></dt><dd><p>List of waiters on this bucket</p>
+</dd>
+</dl>
+<dl class="c struct">
+<dt id="c.futex_single_waiter">
+<em class="property">struct </em><code class="sig-name descname">futex_single_waiter</code><a class="headerlink" href="#c.futex_single_waiter" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Wrapper for a futexv_head of one element</p>
+</dd></dl>
+
+<p><strong>Definition</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct futex_single_waiter {
+  struct futexv_head futexv;
+  struct futex_waiter waiter;
+};
+</pre></div>
+</div>
+<p><strong>Members</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">futexv</span></code></dt><dd><p>Single futexv element</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">waiter</span></code></dt><dd><p>Single waiter element</p>
+</dd>
+</dl>
+<dl class="c function">
+<dt id="c.futex_get_inode_uuid">
+u64 <code class="sig-name descname">futex_get_inode_uuid</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.futex_get_inode_uuid" title="inode">inode</a> *<em>inode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_get_inode_uuid" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets an UUID for an inode</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">inode</span> <span class="pre">*inode</span></code></dt><dd><p>inode to get UUID</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Generate a machine wide unique identifier for this inode.</p>
+<p>This relies on u64 not wrapping in the life-time of the machine; which with
+1ns resolution means almost 585 years.</p>
+<p>This further relies on the fact that a well formed program will not unmap
+the file while it has a (shared) futex waiting on it. This mapping will have
+a file reference which pins the mount and inode.</p>
+<p>If for some reason an inode gets evicted and read back in again, it will get
+a new sequence number and will _NOT_ match, even though it is the exact same
+file.</p>
+<p>It is important that <a class="reference internal" href="../kernel-hacking/locking.html#c.match_futex" title="match_futex"><code class="xref c c-func docutils literal notranslate"><span class="pre">match_futex()</span></code></a> will never have a false-positive, esp.
+for PI futexes that can mess up the state. The above argues that false-negatives
+are only possible for malformed programs.</p>
+<p><strong>Return</strong></p>
+<p>UUID for the given inode</p>
+<dl class="c function">
+<dt id="c.futex_get_shared_key">
+int <code class="sig-name descname">futex_get_shared_key</code><span class="sig-paren">(</span>uintptr_t <em>address</em>, <em class="property">struct</em> mm_struct *<em>mm</em>, <em class="property">struct</em> <a class="reference internal" href="#c.futex_key" title="futex_key">futex_key</a> *<em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_get_shared_key" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get a key for a shared futex</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">uintptr_t</span> <span class="pre">address</span></code></dt><dd><p>Futex memory address</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">mm_struct</span> <span class="pre">*mm</span></code></dt><dd><p>Current process mm_struct pointer</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_key</span> <span class="pre">*key</span></code></dt><dd><p>Key struct to be filled</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p>0 on success, error code otherwise</p>
+<dl class="c function">
+<dt id="c.futex_get_bucket">
+<em class="property">struct</em> <a class="reference internal" href="#c.futex_bucket" title="futex_bucket">futex_bucket</a> *<code class="sig-name descname">futex_get_bucket</code><span class="sig-paren">(</span>void __user *<em>uaddr</em>, <em class="property">struct</em> <a class="reference internal" href="#c.futex_key" title="futex_key">futex_key</a> *<em>key</em>, bool <em>shared</em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_get_bucket" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Check if the user address is valid, prepare internal data and calculate the hash</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">__user</span> <span class="pre">*uaddr</span></code></dt><dd><p>futex user address</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_key</span> <span class="pre">*key</span></code></dt><dd><p>data that uniquely identifies a futex</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">shared</span></code></dt><dd><p>is this a shared futex?</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>For private futexes, each uaddr will be unique for a given mm_struct, and it
+won’t be freed for the life time of the process. For shared futexes, check
+<a class="reference internal" href="#c.futex_get_shared_key" title="futex_get_shared_key"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_get_shared_key()</span></code></a>.</p>
+<p><strong>Return</strong></p>
+<p>address of bucket on success, error code otherwise</p>
+<dl class="c function">
+<dt id="c.futex_get_user">
+int <code class="sig-name descname">futex_get_user</code><span class="sig-paren">(</span>u32 *<em>uval</em>, u32 __user *<em>uaddr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_get_user" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the userspace value on this address</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">*uval</span></code></dt><dd><p>variable to store the value</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">__user</span> <span class="pre">*uaddr</span></code></dt><dd><p>userspace address</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Check the comment at <a class="reference internal" href="#c.futex_enqueue" title="futex_enqueue"><code class="xref c c-func docutils literal notranslate"><span class="pre">futex_enqueue()</span></code></a> for more information.</p>
+<dl class="c function">
+<dt id="c.futex_setup_time">
+int <code class="sig-name descname">futex_setup_time</code><span class="sig-paren">(</span><em class="property">struct</em> __kernel_timespec __user *<em>timo</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/basics.html#c.hrtimer_sleeper" title="hrtimer_sleeper">hrtimer_sleeper</a> *<em>timeout</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_setup_time" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Prepare the timeout mechanism and start it.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">__kernel_timespec</span> <span class="pre">__user</span> <span class="pre">*timo</span></code></dt><dd><p>Timeout value from userspace</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">hrtimer_sleeper</span> <span class="pre">*timeout</span></code></dt><dd><p>Pointer to hrtimer handler</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">flags</span></code></dt><dd><p>Flags from userspace, to decide which clockid to use</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p>0 on success, error code otherwise</p>
+<dl class="c function">
+<dt id="c.futex_dequeue_multiple">
+int <code class="sig-name descname">futex_dequeue_multiple</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.futexv_head" title="futexv_head">futexv_head</a> *<em>futexv</em>, unsigned int <em>nr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_dequeue_multiple" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Remove multiple futexes from hash table</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futexv_head</span> <span class="pre">*futexv</span></code></dt><dd><p>list of waiters</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">nr</span></code></dt><dd><p>number of futexes to be removed</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function is used if (a) something went wrong while enqueuing, and we
+need to undo our work (then nr &lt;= nr_futexes) or (b) we woke up, and thus
+need to remove every waiter, check if some was indeed woken and return.
+Before removing a waiter, we check if it’s on the list, since we have no
+clue who have been waken.</p>
+<p><strong>Return</strong></p>
+<blockquote>
+<div><ul>
+<li><dl class="option-list">
+<dt><kbd><span class="option">-1</span></kbd></dt>
+<dd><ul class="simple">
+<li><p>If no futex was woken during the removal</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>0&gt;= - At least one futex was found woken, index of the last one</p></li>
+</ul>
+</div></blockquote>
+<dl class="c function">
+<dt id="c.futex_enqueue">
+int <code class="sig-name descname">futex_enqueue</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.futexv_head" title="futexv_head">futexv_head</a> *<em>futexv</em>, unsigned int <em>nr_futexes</em>, int *<em>awakened</em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_enqueue" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Check the value and enqueue a futex on a wait list</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futexv_head</span> <span class="pre">*futexv</span></code></dt><dd><p>List of futexes</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">nr_futexes</span></code></dt><dd><p>Number of futexes in the list</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*awakened</span></code></dt><dd><p>If a futex was awakened during enqueueing, store the index here</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Get the value from the userspace address and compares with the expected one.</p>
+<p>Getting the value from user futex address:</p>
+<p>Since we are in a hurry, we use a spin lock and we can’t sleep.
+Try to get the value with page fault disabled (when enable, we might
+sleep).</p>
+<p>If we fail, we aren’t sure if the address is invalid or is just a
+page fault. Then, release the lock (so we can sleep) and try to get
+the value with page fault enabled. In order to trigger a page fault
+handling, we just call <a class="reference internal" href="../core-api/mm-api.html#c.__get_user" title="__get_user"><code class="xref c c-func docutils literal notranslate"><span class="pre">__get_user()</span></code></a> again. If we sleep with enqueued
+futexes, we might miss a wake, so dequeue everything before sleeping.</p>
+<p>If get_user succeeds, this mean that the address is valid and we do
+the work again. Since we just handled the page fault, the page is
+likely pinned in memory and we should be luckier this time and be
+able to get the value. If we fail anyway, we will try again.</p>
+<p>If even with page faults enabled we get and error, this means that
+the address is not valid and we return from the syscall.</p>
+<p>If we got an unexpected value or need to treat a page fault and realized that
+a futex was awakened, we can priority this and return success.</p>
+<p>In success, enqueue the futex in the correct bucket</p>
+<p><strong>Return</strong></p>
+<ul class="simple">
+<li><p>1  - We were awake in the process and nothing is enqueued</p></li>
+<li><p>0  - Everything is enqueued and we are ready to sleep</p></li>
+<li><p>0&lt; - Something went wrong, nothing is enqueued, return error code</p></li>
+</ul>
+<dl class="c function">
+<dt id="c.__futex_wait">
+int <code class="sig-name descname">__futex_wait</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.futexv_head" title="futexv_head">futexv_head</a> *<em>futexv</em>, unsigned int <em>nr_futexes</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/basics.html#c.hrtimer_sleeper" title="hrtimer_sleeper">hrtimer_sleeper</a> *<em>timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__futex_wait" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Enqueue the list of futexes and wait to be woken</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futexv_head</span> <span class="pre">*futexv</span></code></dt><dd><p>List of futexes to wait</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">nr_futexes</span></code></dt><dd><p>Length of futexv</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">hrtimer_sleeper</span> <span class="pre">*timeout</span></code></dt><dd><p>Pointer to timeout handler</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<ul class="simple">
+<li><p>0 &gt;= - Hint of which futex woke us</p></li>
+<li><p>0 &lt;  - Error code</p></li>
+</ul>
+<dl class="c function">
+<dt id="c.compat_futex_parse_waitv">
+int <code class="sig-name descname">compat_futex_parse_waitv</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.futexv_head" title="futexv_head">futexv_head</a> *<em>futexv</em>, <em class="property">struct</em> compat_futex_waitv __user *<em>uwaitv</em>, unsigned int <em>nr_futexes</em><span class="sig-paren">)</span><a class="headerlink" href="#c.compat_futex_parse_waitv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Parse a waitv array from userspace</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futexv_head</span> <span class="pre">*futexv</span></code></dt><dd><p>Kernel side list of waiters to be filled</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">compat_futex_waitv</span> <span class="pre">__user</span> <span class="pre">*uwaitv</span></code></dt><dd><p>Userspace list to be parsed</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">nr_futexes</span></code></dt><dd><p>Length of futexv</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p>Error code on failure, pointer to a prepared futexv otherwise</p>
+<dl class="c function">
+<dt id="c.futex_parse_waitv">
+int <code class="sig-name descname">futex_parse_waitv</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.futexv_head" title="futexv_head">futexv_head</a> *<em>futexv</em>, <em class="property">struct</em> <a class="reference internal" href="#c.futex_waitv" title="futex_waitv">futex_waitv</a> __user *<em>uwaitv</em>, unsigned int <em>nr_futexes</em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_parse_waitv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Parse a waitv array from userspace</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futexv_head</span> <span class="pre">*futexv</span></code></dt><dd><p>Kernel side list of waiters to be filled</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_waitv</span> <span class="pre">__user</span> <span class="pre">*uwaitv</span></code></dt><dd><p>Userspace list to be parsed</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">nr_futexes</span></code></dt><dd><p>Length of futexv</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p>Error code on failure, pointer to a prepared futexv otherwise</p>
+<dl class="c function">
+<dt id="c.futex_get_parent">
+<em class="property">struct</em> <a class="reference internal" href="#c.futexv_head" title="futexv_head">futexv_head</a> *<code class="sig-name descname">futex_get_parent</code><span class="sig-paren">(</span>uintptr_t <em>waiter</em>, unsigned int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_get_parent" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>For a given futex in a futexv list, get a pointer to the futexv</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">uintptr_t</span> <span class="pre">waiter</span></code></dt><dd><p>Address of futex in the list</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">index</span></code></dt><dd><p>Index of futex in the list</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p>A pointer to its futexv struct</p>
+<dl class="c function">
+<dt id="c.futex_mark_wake">
+void <code class="sig-name descname">futex_mark_wake</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.futex_waiter" title="futex_waiter">futex_waiter</a> *<em>waiter</em>, <em class="property">struct</em> <a class="reference internal" href="#c.futex_bucket" title="futex_bucket">futex_bucket</a> *<em>bucket</em>, <em class="property">struct</em> wake_q_head *<em>wake_q</em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_mark_wake" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Find the task to be wake and add it in wake queue</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_waiter</span> <span class="pre">*waiter</span></code></dt><dd><p>Waiter to be wake</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_bucket</span> <span class="pre">*bucket</span></code></dt><dd><p>Bucket to be decremented</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">wake_q_head</span> <span class="pre">*wake_q</span></code></dt><dd><p>Wake queue to insert the task</p>
+</dd>
+</dl>
+<dl class="c function">
+<dt id="c.futex_parse_requeue">
+int <code class="sig-name descname">futex_parse_requeue</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.futex_requeue" title="futex_requeue">futex_requeue</a> *<em>rq</em>, <em class="property">struct</em> <a class="reference internal" href="#c.futex_requeue" title="futex_requeue">futex_requeue</a> __user *<em>uaddr</em>, bool *<em>shared</em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_parse_requeue" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy a user <a class="reference internal" href="#c.futex_requeue" title="futex_requeue"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_requeue</span></code></a> and check it’s flags</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_requeue</span> <span class="pre">*rq</span></code></dt><dd><p>Kernel struct</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_requeue</span> <span class="pre">__user</span> <span class="pre">*uaddr</span></code></dt><dd><p>Address of user struct</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">*shared</span></code></dt><dd><p>Out parameter, defines if this is a shared futex</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p>0 on success, error code otherwise</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../accounting/index.html" class="btn btn-neutral float-right" title="Accounting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="robust-futex-ABI.html" class="btn btn-neutral float-left" title="The robust futex ABI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright The kernel development community.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

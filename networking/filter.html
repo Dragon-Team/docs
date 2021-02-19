@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.1-dragon
+                5.12.2-dragon
               </div>
             
           
@@ -1649,8 +1649,8 @@ value that was in memory before it was modified.</p>
 </pre></div>
 </div>
 <p>This atomically compares the value addressed by <code class="docutils literal notranslate"><span class="pre">dst_reg</span> <span class="pre">+</span> <span class="pre">off</span></code> with
-<code class="docutils literal notranslate"><span class="pre">R0</span></code>. If they match it is replaced with <code class="docutils literal notranslate"><span class="pre">src_reg</span></code>, The value that was there
-before is loaded back to <code class="docutils literal notranslate"><span class="pre">R0</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">R0</span></code>. If they match it is replaced with <code class="docutils literal notranslate"><span class="pre">src_reg</span></code>. In either case, the
+value that was there before is zero-extended and loaded back to <code class="docutils literal notranslate"><span class="pre">R0</span></code>.</p>
 <p>Note that 1 and 2 byte atomic operations are not supported.</p>
 <p>Clang can generate atomic instructions by default when <code class="docutils literal notranslate"><span class="pre">-mcpu=v3</span></code> is
 enabled. If a lower version for <code class="docutils literal notranslate"><span class="pre">-mcpu</span></code> is set, the only atomic instruction
