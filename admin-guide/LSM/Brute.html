@@ -1,0 +1,571 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Brute: Fork brute force attack detection and mitigation LSM &mdash; The Linux-Next Dragon Kernel  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="LoadPin" href="LoadPin.html" />
+    <link rel="prev" title="AppArmor" href="apparmor.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> The Linux-Next Dragon Kernel
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.12.4-dragon
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">The Linux kernel user’s and administrator’s guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../README.html">Linux kernel release 5.x &lt;http://kernel.org/&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kernel-parameters.html">The kernel’s command-line parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../devices.html">Linux allocated devices (4.x+ version)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sysctl/index.html">Documentation for /proc/sys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../abi.html">Linux ABI description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../features.html">Feature status on all architectures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hw-vuln/index.html">Hardware vulnerabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting-issues.html">Reporting issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reporting-bugs.html">Reporting bugs (obsolete)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security-bugs.html">Security bugs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bug-hunting.html">Bug hunting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bug-bisect.html">Bisecting a bug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tainted-kernels.html">Tainted kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ramoops.html">Ramoops oops/panic logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dynamic-debug-howto.html">Dynamic debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../init.html">Explaining the “No working init found.” boot hang message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kdump/index.html">Documentation for Kdump - The kexec-based Crash Dumping Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../perf/index.html">Performance monitor support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pstore-blk.html">pstore block oops/panic logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sysfs-rules.html">Rules on how to access information in sysfs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../acpi/index.html">ACPI Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../aoe/index.html">ATA over Ethernet (AoE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auxdisplay/index.html">Auxiliary Display Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bcache.html">A block layer cache (bcache)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binderfs.html">The Android binderfs Filesystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binfmt-misc.html">Kernel Support for miscellaneous Binary Formats (binfmt_misc)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../blockdev/index.html">The Linux RapidIO Subsystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bootconfig.html">Boot Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../braille-console.html">Linux Braille Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../btmrvl.html">btmrvl driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cgroup-v1/index.html">Control Groups version 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cgroup-v2.html">Control Group v2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cifs/index.html">CIFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clearing-warn-once.html">Clearing WARN_ONCE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpu-load.html">CPU load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cputopology.html">How CPU topology info is exported via sysfs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dell_rbu.html">Dell Remote BIOS Update driver (dell_rbu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device-mapper/index.html">Device Mapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../edid.html">EDID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../efi-stub.html">The EFI Boot Stub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ext4.html">ext4 General Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nfs/index.html">NFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gpio/index.html">gpio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../highuid.html">Notes on the change from 16-bit UIDs to 32-bit UIDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hw_random.html">Linux support for random number generator in i8xx chipsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../initrd.html">Using the initial RAM disk (initrd)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iostats.html">I/O statistics fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../java.html">Java(tm) Binary Kernel Support for Linux v1.03</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../jfs.html">IBM’s Journaled File System (JFS) for Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kernel-per-CPU-kthreads.html">Reducing OS jitter due to per-cpu kthreads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../laptops/index.html">Laptop Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lcd-panel-cgram.html">Parallel port LCD/Keypad Panel support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ldm.html">LDM - Logical Disk Manager (Dynamic Disks)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lockup-watchdogs.html">Softlockup detector and hardlockup detector (aka nmi_watchdog)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Linux Security Module Usage</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="apparmor.html">AppArmor</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Brute: Fork brute force attack detection and mitigation LSM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#other-implementations">Other implementations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#this-implementation">This implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="LoadPin.html">LoadPin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SELinux.html">SELinux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Smack.html">Smack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tomoyo.html">TOMOYO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Yama.html">Yama</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SafeSetID.html">SafeSetID</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../md.html">RAID arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../media/index.html">Media subsystem admin and user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mm/index.html">Memory Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module-signing.html">Kernel module signing facility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mono.html">Mono(tm) Binary Kernel Support for Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../namespaces/index.html">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../numastat.html">Numa policy hit/miss statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parport.html">Parport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../perf-security.html">Perf events and tool security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pm/index.html">Power Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pnp.html">Linux Plug and Play Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rapidio.html">RapidIO Subsystem Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ras.html">Reliability, Availability and Serviceability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rtc.html">Real Time Clock (RTC) Drivers for Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../serial-console.html">Linux Serial Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../svga.html">Video Mode Selection Support 2.13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syscall-user-dispatch.html">Syscall User Dispatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sysrq.html">Linux Magic System Request Key Hacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../thunderbolt.html">USB4 and Thunderbolt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ufs.html">Using UFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unicode.html">Unicode support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vga-softcursor.html">Software cursor for VGA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../video-output.html">Video Output Switcher Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xfs.html">The SGI XFS Filesystem</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../kbuild/index.html">Kernel Build System</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware-guide/index.html">The Linux kernel firmware guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devicetree/index.html">Open Firmware and Device Tree</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../userspace-api/index.html">The Linux kernel user-space API guide</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../process/index.html">Working with the kernel development community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev-tools/index.html">Development tools for the kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../doc-guide/index.html">How to write kernel documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kernel-hacking/index.html">Kernel Hacking Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trace/index.html">Linux Tracing Technologies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintainer/index.html">Kernel Maintainer Handbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fault-injection/index.html">fault-injection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../livepatch/index.html">Kernel Livepatching</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../driver-api/index.html">The Linux driver implementer’s API guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core-api/index.html">Core API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../locking/index.html">locking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../accounting/index.html">Accounting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../block/index.html">Block</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cdrom/index.html">cdrom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpu-freq/index.html">Linux CPUFreq - CPU frequency and voltage scaling code in the Linux(TM) kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ide/index.html">Integrated Drive Electronics (IDE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fb/index.html">Frame Buffer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fpga/index.html">fpga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hid/index.html">Human Interface Devices (HID)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../i2c/index.html">I2C/SMBus Subsystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iio/index.html">Industrial I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../isdn/index.html">ISDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../infiniband/index.html">InfiniBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../leds/index.html">LEDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../netlabel/index.html">NetLabel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/index.html">Linux Networking Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pcmcia/index.html">pcmcia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../power/index.html">Power Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../target/index.html">TCM Virtual Device</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../timers/index.html">timers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spi/index.html">Serial Peripheral Interface (SPI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../w1/index.html">1-Wire Subsystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../watchdog/index.html">Linux Watchdog Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virt/index.html">Linux Virtualization Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input/index.html">The Linux Input Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hwmon/index.html">Linux Hardware Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gpu/index.html">Linux GPU Driver Developer’s Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/index.html">Security Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sound/index.html">Linux Sound Subsystem Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../crypto/index.html">Linux Kernel Crypto API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filesystems/index.html">Filesystems in the Linux kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vm/index.html">Linux Memory Management Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bpf/index.html">BPF Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usb/index.html">USB support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PCI/index.html">Linux PCI Bus Subsystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scsi/index.html">Linux SCSI Subsystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc-devices/index.html">Assorted Miscellaneous Devices Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scheduler/index.html">Linux Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mhi/index.html">MHI</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../asm-annotations.html">Assembler Annotations</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../arm/index.html">ARM Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../arm64/index.html">ARM64 Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ia64/index.html">IA-64 Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../m68k/index.html">m68k Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mips/index.html">MIPS-specific Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nios2/index.html">Nios II Specific Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openrisc/index.html">OpenRISC Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../parisc/index.html">PA-RISC Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../powerpc/index.html">powerpc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../riscv/index.html">RISC-V architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../s390/index.html">s390 Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sh/index.html">SuperH Interfaces Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sparc/index.html">Sparc Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../x86/index.html">x86-specific Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../xtensa/index.html">Xtensa Architecture</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../staging/index.html">Unsorted Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../staging/index.html#atomic-types">Atomic Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../staging/index.html#atomic-bitops">Atomic bitops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../staging/index.html#memory-barriers">Memory Barriers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../watch_queue.html">General notification mechanism</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../translations/index.html">Translations</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">The Linux-Next Dragon Kernel</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">The Linux kernel user’s and administrator’s guide</a> &raquo;</li>
+        
+          <li><a href="index.html">Linux Security Module Usage</a> &raquo;</li>
+        
+      <li>Brute: Fork brute force attack detection and mitigation LSM</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/admin-guide/LSM/Brute.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="brute-fork-brute-force-attack-detection-and-mitigation-lsm">
+<h1>Brute: Fork brute force attack detection and mitigation LSM<a class="headerlink" href="#brute-fork-brute-force-attack-detection-and-mitigation-lsm" title="Permalink to this headline">¶</a></h1>
+<p>Attacks against vulnerable userspace applications with the purpose to break ASLR
+or bypass canaries traditionally use some level of brute force with the help of
+the fork system call. This is possible since when creating a new process using
+fork its memory contents are the same as those of the parent process (the
+process that called the fork system call). So, the attacker can test the memory
+infinite times to find the correct memory values or the correct memory addresses
+without worrying about crashing the application.</p>
+<p>Based on the above scenario it would be nice to have this detected and
+mitigated, and this is the goal of this implementation. Specifically the
+following attacks are expected to be detected:</p>
+<dl class="simple">
+<dt>1.- Launching (fork()/exec()) a setuid/setgid process repeatedly until a</dt><dd><p>desirable memory layout is got (e.g. Stack Clash).</p>
+</dd>
+<dt>2.- Connecting to an exec()ing network daemon (e.g. xinetd) repeatedly until a</dt><dd><p>desirable memory layout is got (e.g. what CTFs do for simple network
+service).</p>
+</dd>
+<dt>3.- Launching processes without exec() (e.g. Android Zygote) and exposing state</dt><dd><p>to attack a sibling.</p>
+</dd>
+<dt>4.- Connecting to a fork()ing network daemon (e.g. apache) repeatedly until the</dt><dd><p>previously shared memory layout of all the other children is exposed (e.g.
+kind of related to HeartBleed).</p>
+</dd>
+</dl>
+<p>In each case, a privilege boundary has been crossed:</p>
+<p>Case 1: setuid/setgid process
+Case 2: network to local
+Case 3: privilege changes
+Case 4: network to local</p>
+<p>So, what really needs to be detected are fork/exec brute force attacks that
+cross any of the commented bounds.</p>
+<div class="section" id="other-implementations">
+<h2>Other implementations<a class="headerlink" href="#other-implementations" title="Permalink to this headline">¶</a></h2>
+<p>The public version of grsecurity, as a summary, is based on the idea of delaying
+the fork system call if a child died due to some fatal signal (SIGSEGV, SIGBUS,
+SIGKILL or SIGILL). This has some issues:</p>
+<div class="section" id="bad-practices">
+<h3>Bad practices<a class="headerlink" href="#bad-practices" title="Permalink to this headline">¶</a></h3>
+<p>Adding delays to the kernel is, in general, a bad idea.</p>
+</div>
+<div class="section" id="scenarios-not-detected-false-negatives">
+<h3>Scenarios not detected (false negatives)<a class="headerlink" href="#scenarios-not-detected-false-negatives" title="Permalink to this headline">¶</a></h3>
+<p>This protection acts only when the fork system call is called after a child has
+crashed. So, it would still be possible for an attacker to fork a big amount of
+children (in the order of thousands), then probe all of them, and finally wait
+the protection time before repeating the steps.</p>
+<p>Moreover, this method is based on the idea that the protection doesn’t act if
+the parent crashes. So, it would still be possible for an attacker to fork a
+process and probe itself. Then, fork the child process and probe itself again.
+This way, these steps can be repeated infinite times without any mitigation.</p>
+</div>
+<div class="section" id="scenarios-detected-false-positives">
+<h3>Scenarios detected (false positives)<a class="headerlink" href="#scenarios-detected-false-positives" title="Permalink to this headline">¶</a></h3>
+<p>Scenarios where an application rarely fails for reasons unrelated to a real
+attack.</p>
+</div>
+</div>
+<div class="section" id="this-implementation">
+<h2>This implementation<a class="headerlink" href="#this-implementation" title="Permalink to this headline">¶</a></h2>
+<p>The main idea behind this implementation is to improve the existing ones
+focusing on the weak points annotated before. Basically, the adopted solution is
+to detect a fast crash rate instead of only one simple crash and to detect both
+the crash of parent and child processes. Also, fine tune the detection focusing
+on privilege boundary crossing. And finally, as a mitigation method, kill all
+the offending tasks involved in the attack instead of using delays.</p>
+<p>To achieve this goal, and going into more details, this implementation is based
+on the use of some statistical data shared across all the processes that can
+have the same memory contents. Or in other words, a statistical data shared
+between all the fork hierarchy processes after an execve system call.</p>
+<p>The purpose of these statistics is, basically, collect all the necessary info
+to compute the application crash period in order to detect an attack. This crash
+period is the time between the execve system call and the first fault or the
+time between two consecutive faults, but this has a drawback. If an application
+crashes twice in a short period of time for some reason unrelated to a real
+attack, a false positive will be triggered. To avoid this scenario the
+exponential moving average (EMA) is used. This way, the application crash period
+will be a value that is not prone to change due to spurious data and follows the
+real crash period.</p>
+<p>To detect a brute force attack it is necessary that the statistics shared by all
+the fork hierarchy processes be updated in every fatal crash and the most
+important data to update is the application crash period.</p>
+<p>There are two types of brute force attacks that need to be detected. The first
+one is an attack that happens through the fork system call and the second one is
+an attack that happens through the execve system call. The first type uses the
+statistics shared by all the fork hierarchy processes, but the second type
+cannot use this statistical data due to these statistics dissapear when the
+involved tasks finished. In this last scenario the attack info should be tracked
+by the statistics of a higher fork hierarchy (the hierarchy that contains the
+process that forks before the execve system call).</p>
+<p>Moreover, these two attack types have two variants. A slow brute force attack
+that is detected if a maximum number of faults per fork hierarchy is reached and
+a fast brute force attack that is detected if the application crash period falls
+below a certain threshold.</p>
+<div class="section" id="exponential-moving-average-ema">
+<h3>Exponential moving average (EMA)<a class="headerlink" href="#exponential-moving-average-ema" title="Permalink to this headline">¶</a></h3>
+<p>This kind of average defines a weight (between 0 and 1) for the new value to add
+and applies the remainder of the weight to the current average value. This way,
+some spurious data will not excessively modify the average and only if the new
+values are persistent, the moving average will tend towards them.</p>
+<p>Mathematically the application crash period’s EMA can be expressed as follows:</p>
+<p>period_ema = period * weight + period_ema * (1 - weight)</p>
+<p>Related to the attack detection, the EMA must guarantee that not many crashes
+are needed. To demonstrate this, the scenario where an application has been
+running without any crashes for a month will be used.</p>
+<p>The period’s EMA can be written now as:</p>
+<p>period_ema[i] = period[i] * weight + period_ema[i - 1] * (1 - weight)</p>
+<p>If the new crash periods have insignificant values related to the first crash
+period (a month in this case), the formula can be rewritten as:</p>
+<p>period_ema[i] = period_ema[i - 1] * (1 - weight)</p>
+<p>And by extension:</p>
+<p>period_ema[i - 1] = period_ema[i - 2] * (1 - weight)
+period_ema[i - 2] = period_ema[i - 3] * (1 - weight)
+period_ema[i - 3] = period_ema[i - 4] * (1 - weight)</p>
+<p>So, if the substitution is made:</p>
+<p>period_ema[i] = period_ema[i - 1] * (1 - weight)
+period_ema[i] = period_ema[i - 2] * pow((1 - weight) , 2)
+period_ema[i] = period_ema[i - 3] * pow((1 - weight) , 3)
+period_ema[i] = period_ema[i - 4] * pow((1 - weight) , 4)</p>
+<p>And in a more generic form:</p>
+<p>period_ema[i] = period_ema[i - n] * pow((1 - weight) , n)</p>
+<p>Where n represents the number of iterations to obtain an EMA value. Or in other
+words, the number of crashes to detect an attack.</p>
+<p>So, if we isolate the number of crashes:</p>
+<p>period_ema[i] / period_ema[i - n] = pow((1 - weight), n)
+log(period_ema[i] / period_ema[i - n]) = log(pow((1 - weight), n))
+log(period_ema[i] / period_ema[i - n]) = n * log(1 - weight)
+n = log(period_ema[i] / period_ema[i - n]) / log(1 - weight)</p>
+<p>Then, in the commented scenario (an application has been running without any
+crashes for a month), the approximate number of crashes to detect an attack
+(using the implementation values for the weight and the crash period threshold)
+is:</p>
+<p>weight = 7 / 10
+crash_period_threshold = 30 seconds</p>
+<p>n = log(crash_period_threshold / seconds_per_month) / log(1 - weight)
+n = log(30 / (30 * 24 * 3600)) / log(1 - 0.7)
+n = 9.44</p>
+<p>So, with 10 crashes for this scenario an attack will be detected. If these steps
+are repeated for different scenarios and the results are collected:</p>
+<p>1 month without any crashes —-&gt; 9.44 crashes to detect an attack
+1 year without any crashes —–&gt; 11.50 crashes to detect an attack
+10 years without any crashes —&gt; 13.42 crashes to detect an attack</p>
+<p>However, this computation has a drawback. The first data added to the EMA not
+obtains a real average showing a trend. So the solution is simple, the EMA needs
+a minimum number of data to be able to be interpreted. This way, the case where
+a few first faults are fast enough followed by no crashes is avoided.</p>
+</div>
+<div class="section" id="per-system-enabling-disabling">
+<h3>Per system enabling/disabling<a class="headerlink" href="#per-system-enabling-disabling" title="Permalink to this headline">¶</a></h3>
+<p>This feature can be enabled at build time using the CONFIG_SECURITY_FORK_BRUTE
+option or using the visual config application under the following menu:</p>
+<p>Security options  —&gt;  Fork brute force attack detection and mitigation</p>
+<p>Also, at boot time, this feature can be disable too, by changing the “lsm=” boot
+parameter.</p>
+</div>
+<div class="section" id="kernel-selftests">
+<h3>Kernel selftests<a class="headerlink" href="#kernel-selftests" title="Permalink to this headline">¶</a></h3>
+<p>To validate all the expectations about this implementation, there is a set of
+selftests. This tests cover fork/exec brute force attacks crossing the following
+privilege boundaries:</p>
+<p>1.- setuid process
+2.- privilege changes
+3.- network to local</p>
+<p>Also, there are some tests to check that fork/exec brute force attacks without
+crossing any privilege boundariy already commented doesn’t trigger the detection
+and mitigation stage.</p>
+<p>To build the tests:
+make -C tools/testing/selftests/ TARGETS=brute</p>
+<p>To run the tests:
+make -C tools/testing/selftests TARGETS=brute run_tests</p>
+<p>To package the tests:
+make -C tools/testing/selftests TARGETS=brute gen_tar</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="LoadPin.html" class="btn btn-neutral float-right" title="LoadPin" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="apparmor.html" class="btn btn-neutral float-left" title="AppArmor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright The kernel development community.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

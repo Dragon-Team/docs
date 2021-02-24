@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.3-dragon
+                5.12.4-dragon
               </div>
             
           
@@ -532,6 +532,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#broadcom-vk-driver">BROADCOM VK DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#brocade-bfa-fc-scsi-driver">BROCADE BFA FC SCSI DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#brocade-bna-10-gigabit-ethernet-driver">BROCADE BNA 10 GIGABIT ETHERNET DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#brute-security-module">BRUTE SECURITY MODULE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bsg-block-layer-generic-sg-v4-driver">BSG (block layer generic sg v4 driver)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bt87x-audio-driver">BT87X AUDIO DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bt8xxgpio-driver">BT8XXGPIO DRIVER</a></li>
@@ -1725,7 +1726,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#performance-events-subsystem">PERFORMANCE EVENTS SUBSYSTEM</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#performance-events-tooling-arm64">PERFORMANCE EVENTS TOOLING ARM64</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#personality-handling">PERSONALITY HANDLING</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pgo-based-kernel-profiling">PGO BASED KERNEL PROFILING</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#phoenix-rc-flight-controller-adapter">PHOENIX RC FLIGHT CONTROLLER ADAPTER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#phonet-protocol">PHONET PROTOCOL</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#phram-mtd-driver">PHRAM MTD DRIVER</a></li>
@@ -8518,13 +8518,13 @@ Dirk Opfer &lt;<a class="reference external" href="mailto:dirk&#37;&#52;&#48;opf
 </dd>
 <dt class="field-odd">Files</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/arm/toshiba.yaml</span></code>
-<code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/gpio/toshiba,gpio-visconti.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/net/toshiba,visconti-dwmac.yaml</span></code>
+<code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/gpio/toshiba,gpio-visconti.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/pinctrl/toshiba,tmpv7700-pinctrl.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/watchdog/toshiba,visconti-wdt.yaml</span></code>
 <code class="docutils literal notranslate"><span class="pre">arch/arm64/boot/dts/toshiba/</span></code>
-<code class="docutils literal notranslate"><span class="pre">drivers/gpio/gpio-visconti.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/net/ethernet/stmicro/stmmac/dwmac-visconti.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/gpio/gpio-visconti.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/pinctrl/visconti/</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/watchdog/visconti_wdt.c</span></code></p>
 </dd>
@@ -11169,6 +11169,22 @@ Sudarsana Kalluru &lt;<a class="reference external" href="mailto:skalluru&#37;&#
 </dd>
 </dl>
 </div>
+<div class="section" id="brute-security-module">
+<h3>BRUTE SECURITY MODULE<a class="headerlink" href="#brute-security-module" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>John Wood &lt;<a class="reference external" href="mailto:john&#46;wood&#37;&#52;&#48;gmx&#46;com">john<span>&#46;</span>wood<span>&#64;</span>gmx<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Status</dt>
+<dd class="field-even"><p>Maintained</p>
+</dd>
+<dt class="field-odd">Files</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../admin-guide/LSM/Brute.html"><span class="doc">admin-guide/LSM/Brute</span></a>
+<code class="docutils literal notranslate"><span class="pre">security/brute/</span></code>
+<code class="docutils literal notranslate"><span class="pre">tools/testing/selftests/brute/</span></code></p>
+</dd>
+</dl>
+</div>
 <div class="section" id="bsg-block-layer-generic-sg-v4-driver">
 <h3>BSG (block layer generic sg v4 driver)<a class="headerlink" href="#bsg-block-layer-generic-sg-v4-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
@@ -11442,7 +11458,8 @@ David Sterba &lt;<a class="reference external" href="mailto:dsterba&#37;&#52;&#4
 <dd class="field-odd"><p>Maintained</p>
 </dd>
 <dt class="field-even">Files</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/soc/canaan/</span></code>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/mfd/canaan,k210-sysctl.yaml</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/soc/canaan/</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/soc/canaan/</span></code></p>
 </dd>
 </dl>
@@ -35586,26 +35603,6 @@ Leo Yan &lt;<a class="reference external" href="mailto:leo&#46;yan&#37;&#52;&#48
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">include/linux/personality.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/uapi/linux/personality.h</span></code></p>
-</dd>
-</dl>
-</div>
-<div class="section" id="pgo-based-kernel-profiling">
-<h3>PGO BASED KERNEL PROFILING<a class="headerlink" href="#pgo-based-kernel-profiling" title="Permalink to this headline">¶</a></h3>
-<dl class="field-list simple">
-<dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Sami Tolvanen &lt;<a class="reference external" href="mailto:samitolvanen&#37;&#52;&#48;google&#46;com">samitolvanen<span>&#64;</span>google<span>&#46;</span>com</a>&gt;,
-Bill Wendling &lt;<a class="reference external" href="mailto:wcw&#37;&#52;&#48;google&#46;com">wcw<span>&#64;</span>google<span>&#46;</span>com</a>&gt;</p>
-</dd>
-<dt class="field-even">Reviewer</dt>
-<dd class="field-even"><p>Nathan Chancellor &lt;<a class="reference external" href="mailto:natechancellor&#37;&#52;&#48;gmail&#46;com">natechancellor<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;,
-Nick Desaulniers &lt;<a class="reference external" href="mailto:ndesaulniers&#37;&#52;&#48;google&#46;com">ndesaulniers<span>&#64;</span>google<span>&#46;</span>com</a>&gt;</p>
-</dd>
-<dt class="field-odd">Status</dt>
-<dd class="field-odd"><p>Supported</p>
-</dd>
-<dt class="field-even">Files</dt>
-<dd class="field-even"><p><a class="reference internal" href="../dev-tools/pgo.html"><span class="doc">dev-tools/pgo</span></a>
-<code class="docutils literal notranslate"><span class="pre">kernel/pgo</span></code></p>
 </dd>
 </dl>
 </div>

@@ -120,7 +120,8 @@ Kconfig currently supports the following built-in functions.
  - $(warning-if,condition,text)
 
   The "warning-if" function takes two arguments. If the condition part is "y",
-  the text part is sent to stderr.
+  the text part is sent to stderr. The text is prefixed with the name of the
+  current Kconfig file and the current line number.
 
  - $(error-if,condition,text)
 
