@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.4-dragon
+                5.12.5-dragon
               </div>
             
           
@@ -1066,7 +1066,7 @@ reference, so that last dst_release can destroy the dst immediately.</p>
 <p>Returns true if we can free the skb.</p>
 <dl class="c function">
 <dt id="c.alloc_skb">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">alloc_skb</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">priority</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_skb" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">alloc_skb</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">priority</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_skb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate a network buffer</p>
 </dd></dl>
 
@@ -1098,7 +1098,7 @@ Some drivers call <a class="reference internal" href="#c.skb_orphan" title="skb_
 so we also check that this didnt happen.</p>
 <dl class="c function">
 <dt id="c.alloc_skb_fclone">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">alloc_skb_fclone</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">priority</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_skb_fclone" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">alloc_skb_fclone</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">priority</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_skb_fclone" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate a network buffer from fclone cache</p>
 </dd></dl>
 
@@ -1277,7 +1277,7 @@ buffer.</p>
 </dl>
 <dl class="c function">
 <dt id="c.skb_share_check">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">skb_share_check</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">pri</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_share_check" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">skb_share_check</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">pri</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_share_check" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check if buffer is shared and if so clone it</p>
 </dd></dl>
 
@@ -1296,7 +1296,7 @@ be GFP_ATOMIC.</p>
 </dl>
 <dl class="c function">
 <dt id="c.skb_unshare">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">skb_unshare</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">pri</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_unshare" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">skb_unshare</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">pri</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_unshare" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>make a copy of a shared buffer</p>
 </dd></dl>
 
@@ -1702,7 +1702,7 @@ to exist but is no longer charged to its former owner.</p>
 </dl>
 <dl class="c function">
 <dt id="c.skb_orphan_frags">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">skb_orphan_frags</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_orphan_frags" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">skb_orphan_frags</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_orphan_frags" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>orphan the frags contained in a buffer</p>
 </dd></dl>
 
@@ -1765,7 +1765,7 @@ allocates memory it can be called from an interrupt.</p>
 </dl>
 <dl class="c function">
 <dt id="c.__dev_alloc_pages">
-<em class="property"><span class="pre">struct</span></em> <span class="pre">page</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__dev_alloc_pages</span></code><span class="sig-paren">(</span><span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">order</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__dev_alloc_pages" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">page</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__dev_alloc_pages</span></code><span class="sig-paren">(</span><a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">order</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__dev_alloc_pages" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate page for network Rx</p>
 </dd></dl>
 
@@ -1781,7 +1781,7 @@ allocates memory it can be called from an interrupt.</p>
 <p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> is returned if there is no free memory.</p>
 <dl class="c function">
 <dt id="c.__dev_alloc_page">
-<em class="property"><span class="pre">struct</span></em> <span class="pre">page</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__dev_alloc_page</span></code><span class="sig-paren">(</span><span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__dev_alloc_page" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">page</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__dev_alloc_page</span></code><span class="sig-paren">(</span><a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__dev_alloc_page" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate a page for network Rx</p>
 </dd></dl>
 
@@ -3656,7 +3656,7 @@ and skb-&gt;pfmemalloc when the data is a page or page fragment.</p>
 <p>Returns a new <a class="reference internal" href="#c.sk_buff" title="sk_buff"><code class="xref c c-type docutils literal notranslate"><span class="pre">sk_buff</span></code></a> on success, <code class="docutils literal notranslate"><span class="pre">NULL</span></code> on allocation failure.</p>
 <dl class="c function">
 <dt id="c.__alloc_skb">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__alloc_skb</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em>, <span class="pre">int</span> <em><span class="pre">flags</span></em>, <span class="pre">int</span> <em><span class="pre">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__alloc_skb" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__alloc_skb</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em>, <span class="pre">int</span> <em><span class="pre">flags</span></em>, <span class="pre">int</span> <em><span class="pre">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__alloc_skb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate a network buffer</p>
 </dd></dl>
 
@@ -3681,7 +3681,7 @@ of one. The return is the buffer. On a failure the return is <code class="docuti
 </dl>
 <dl class="c function">
 <dt id="c.__netdev_alloc_skb">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__netdev_alloc_skb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.net_device" title="net_device"><span class="pre">net_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">len</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__netdev_alloc_skb" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__netdev_alloc_skb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.net_device" title="net_device"><span class="pre">net_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">len</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__netdev_alloc_skb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate an skbuff for rx on a specific device</p>
 </dd></dl>
 
@@ -3701,7 +3701,7 @@ built in space. The built in space is used for optimisations.</p>
 </dl>
 <dl class="c function">
 <dt id="c.__napi_alloc_skb">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__napi_alloc_skb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">napi_struct</span> <span class="pre">*</span><em><span class="pre">napi</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">len</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__napi_alloc_skb" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__napi_alloc_skb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">napi_struct</span> <span class="pre">*</span><em><span class="pre">napi</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">len</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__napi_alloc_skb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate skbuff for rx in a specific NAPI instance</p>
 </dd></dl>
 
@@ -3802,7 +3802,7 @@ supplied by the user.</p>
 </dl>
 <dl class="c function">
 <dt id="c.skb_copy_ubufs">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">skb_copy_ubufs</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_copy_ubufs" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">skb_copy_ubufs</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_copy_ubufs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>copy userspace skb frags buffers to kernel</p>
 </dd></dl>
 
@@ -3822,7 +3822,7 @@ to allocate kernel memory to copy to.</p>
 </dl>
 <dl class="c function">
 <dt id="c.skb_clone">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">skb_clone</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_clone" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">skb_clone</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_clone" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>duplicate an sk_buff</p>
 </dd></dl>
 
@@ -3841,7 +3841,7 @@ function returns <code class="docutils literal notranslate"><span class="pre">NU
 </dl>
 <dl class="c function">
 <dt id="c.skb_copy">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">skb_copy</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_copy" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">skb_copy</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_copy" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create private copy of an sk_buff</p>
 </dd></dl>
 
@@ -3863,7 +3863,7 @@ header is going to be modified. Use pskb_copy() instead.</p>
 </dl>
 <dl class="c function">
 <dt id="c.__pskb_copy_fclone">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__pskb_copy_fclone</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <span class="pre">int</span> <em><span class="pre">headroom</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em>, <span class="pre">bool</span> <em><span class="pre">fclone</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__pskb_copy_fclone" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__pskb_copy_fclone</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <span class="pre">int</span> <em><span class="pre">headroom</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em>, <span class="pre">bool</span> <em><span class="pre">fclone</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__pskb_copy_fclone" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create copy of an sk_buff with private head.</p>
 </dd></dl>
 
@@ -3888,7 +3888,7 @@ The returned buffer has a reference count of 1.</p>
 </dl>
 <dl class="c function">
 <dt id="c.pskb_expand_head">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">pskb_expand_head</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <span class="pre">int</span> <em><span class="pre">nhead</span></em>, <span class="pre">int</span> <em><span class="pre">ntail</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pskb_expand_head" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">pskb_expand_head</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <span class="pre">int</span> <em><span class="pre">nhead</span></em>, <span class="pre">int</span> <em><span class="pre">ntail</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pskb_expand_head" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>reallocate header of <a class="reference internal" href="#c.sk_buff" title="sk_buff"><code class="xref c c-type docutils literal notranslate"><span class="pre">sk_buff</span></code></a></p>
 </dd></dl>
 
@@ -3911,7 +3911,7 @@ reloaded after call to this function.</p>
 </dl>
 <dl class="c function">
 <dt id="c.skb_copy_expand">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">skb_copy_expand</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <span class="pre">int</span> <em><span class="pre">newheadroom</span></em>, <span class="pre">int</span> <em><span class="pre">newtailroom</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_copy_expand" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">skb_copy_expand</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><em><span class="pre">skb</span></em>, <span class="pre">int</span> <em><span class="pre">newheadroom</span></em>, <span class="pre">int</span> <em><span class="pre">newtailroom</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_copy_expand" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>copy and expand sk_buff</p>
 </dd></dl>
 
@@ -4676,7 +4676,7 @@ ethernet</p>
 <p>Returns 0 on success, -errno otherwise.</p>
 <dl class="c function">
 <dt id="c.alloc_skb_with_frags">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">alloc_skb_with_frags</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">header_len</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">data_len</span></em>, <span class="pre">int</span> <em><span class="pre">max_page_order</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">errcode</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_skb_with_frags" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_buff" title="sk_buff"><span class="pre">sk_buff</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">alloc_skb_with_frags</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">header_len</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">data_len</span></em>, <span class="pre">int</span> <em><span class="pre">max_page_order</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">errcode</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_skb_with_frags" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate skb with page frags</p>
 </dd></dl>
 
@@ -4785,7 +4785,7 @@ It’s the responsibility of the admin to adjust min_free_kbytes
 to meet the requirements</p>
 <dl class="c function">
 <dt id="c.sk_alloc">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sock" title="sock"><span class="pre">sock</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">sk_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_alloc" title="net"><span class="pre">net</span></a> <span class="pre">*</span><em><span class="pre">net</span></em>, <span class="pre">int</span> <em><span class="pre">family</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">priority</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">proto</span> <span class="pre">*</span><em><span class="pre">prot</span></em>, <span class="pre">int</span> <em><span class="pre">kern</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.sk_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sock" title="sock"><span class="pre">sock</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">sk_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sk_alloc" title="net"><span class="pre">net</span></a> <span class="pre">*</span><em><span class="pre">net</span></em>, <span class="pre">int</span> <em><span class="pre">family</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">priority</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">proto</span> <span class="pre">*</span><em><span class="pre">prot</span></em>, <span class="pre">int</span> <em><span class="pre">kern</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.sk_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>All socket objects are allocated here</p>
 </dd></dl>
 
@@ -4804,7 +4804,7 @@ to meet the requirements</p>
 </dl>
 <dl class="c function">
 <dt id="c.sk_clone_lock">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sock" title="sock"><span class="pre">sock</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">sk_clone_lock</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sock" title="sock"><span class="pre">sock</span></a> <span class="pre">*</span><em><span class="pre">sk</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">gfp_t</span> <em><span class="pre">priority</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.sk_clone_lock" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sock" title="sock"><span class="pre">sock</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">sk_clone_lock</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sock" title="sock"><span class="pre">sock</span></a> <span class="pre">*</span><em><span class="pre">sk</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">priority</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.sk_clone_lock" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>clone a socket, and lock its clone</p>
 </dd></dl>
 
@@ -4818,7 +4818,7 @@ to meet the requirements</p>
 </dl>
 <dl class="c function">
 <dt id="c.skb_page_frag_refill">
-<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">skb_page_frag_refill</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">sz</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">page_frag</span> <span class="pre">*</span><em><span class="pre">pfrag</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_page_frag_refill" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">skb_page_frag_refill</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">sz</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">page_frag</span> <span class="pre">*</span><em><span class="pre">pfrag</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skb_page_frag_refill" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check that a page_frag contains enough room</p>
 </dd></dl>
 
@@ -6044,7 +6044,7 @@ already read too far into it.</p>
 </dl>
 <dl class="c function">
 <dt id="c.xdr_stream_decode_opaque_dup">
-<span class="pre">ssize_t</span> <code class="sig-name descname"><span class="pre">xdr_stream_decode_opaque_dup</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xdr_stream</span> <span class="pre">*</span><em><span class="pre">xdr</span></em>, <span class="pre">void</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">ptr</span></em>, <span class="pre">size_t</span> <em><span class="pre">maxlen</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xdr_stream_decode_opaque_dup" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">ssize_t</span> <code class="sig-name descname"><span class="pre">xdr_stream_decode_opaque_dup</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xdr_stream</span> <span class="pre">*</span><em><span class="pre">xdr</span></em>, <span class="pre">void</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">ptr</span></em>, <span class="pre">size_t</span> <em><span class="pre">maxlen</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xdr_stream_decode_opaque_dup" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Decode and duplicate variable length opaque</p>
 </dd></dl>
 
@@ -6091,7 +6091,7 @@ already read too far into it.</p>
 </dl>
 <dl class="c function">
 <dt id="c.xdr_stream_decode_string_dup">
-<span class="pre">ssize_t</span> <code class="sig-name descname"><span class="pre">xdr_stream_decode_string_dup</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xdr_stream</span> <span class="pre">*</span><em><span class="pre">xdr</span></em>, <span class="pre">char</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">str</span></em>, <span class="pre">size_t</span> <em><span class="pre">maxlen</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xdr_stream_decode_string_dup" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">ssize_t</span> <code class="sig-name descname"><span class="pre">xdr_stream_decode_string_dup</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xdr_stream</span> <span class="pre">*</span><em><span class="pre">xdr</span></em>, <span class="pre">char</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">str</span></em>, <span class="pre">size_t</span> <em><span class="pre">maxlen</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xdr_stream_decode_string_dup" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Decode and duplicate variable length string</p>
 </dd></dl>
 

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.4-dragon
+                5.12.5-dragon
               </div>
             
           
@@ -1405,7 +1405,7 @@ transition is illegal.</p>
 </dl>
 <dl class="c function">
 <dt id="c.sdev_evt_alloc">
-<em class="property"><span class="pre">struct</span></em> <span class="pre">scsi_event</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">sdev_evt_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <span class="pre">scsi_device_event</span> <em><span class="pre">evt_type</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfpflags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.sdev_evt_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">scsi_event</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">sdev_evt_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <span class="pre">scsi_device_event</span> <em><span class="pre">evt_type</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfpflags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.sdev_evt_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate a new scsi event</p>
 </dd></dl>
 
@@ -1419,7 +1419,7 @@ transition is illegal.</p>
 </dl>
 <dl class="c function">
 <dt id="c.sdev_evt_send_simple">
-<span class="pre">void</span> <code class="sig-name descname"><span class="pre">sdev_evt_send_simple</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">scsi_device</span> <span class="pre">*</span><em><span class="pre">sdev</span></em>, <em class="property"><span class="pre">enum</span></em> <span class="pre">scsi_device_event</span> <em><span class="pre">evt_type</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfpflags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.sdev_evt_send_simple" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">sdev_evt_send_simple</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">scsi_device</span> <span class="pre">*</span><em><span class="pre">sdev</span></em>, <em class="property"><span class="pre">enum</span></em> <span class="pre">scsi_device_event</span> <em><span class="pre">evt_type</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfpflags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.sdev_evt_send_simple" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>send asserted event to uevent thread</p>
 </dd></dl>
 

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.4-dragon
+                5.12.5-dragon
               </div>
             
           
@@ -426,7 +426,7 @@
 length to zero.</p>
 <dl class="c function">
 <dt id="c.sshp_buf_alloc">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">sshp_buf_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sshp_buf" title="sshp_buf"><span class="pre">sshp_buf</span></a> <span class="pre">*</span><em><span class="pre">buf</span></em>, <span class="pre">size_t</span> <em><span class="pre">cap</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.sshp_buf_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">sshp_buf_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.sshp_buf" title="sshp_buf"><span class="pre">sshp_buf</span></a> <span class="pre">*</span><em><span class="pre">buf</span></em>, <span class="pre">size_t</span> <em><span class="pre">cap</span></em>, <a class="reference internal" href="../../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.sshp_buf_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate and initialize a SSH parser buffer.</p>
 </dd></dl>
 
@@ -1130,7 +1130,7 @@ payload of any type.</p>
 </dl>
 <dl class="c function">
 <dt id="c.ssh_ctrl_packet_alloc">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">ssh_ctrl_packet_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="client-api.html#c.ssh_packet" title="ssh_packet"><span class="pre">ssh_packet</span></a> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">packet</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="client-api.html#c.ssam_span" title="ssam_span"><span class="pre">ssam_span</span></a> <span class="pre">*</span><em><span class="pre">buffer</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.ssh_ctrl_packet_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">ssh_ctrl_packet_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="client-api.html#c.ssh_packet" title="ssh_packet"><span class="pre">ssh_packet</span></a> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">packet</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="client-api.html#c.ssam_span" title="ssam_span"><span class="pre">ssam_span</span></a> <span class="pre">*</span><em><span class="pre">buffer</span></em>, <a class="reference internal" href="../../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.ssh_ctrl_packet_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate packet from control packet cache.</p>
 </dd></dl>
 
@@ -2352,7 +2352,7 @@ this function will emit a warning.</p>
 </dl>
 <dl class="c function">
 <dt id="c.ssam_event_item_alloc">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.ssam_event_item" title="ssam_event_item"><span class="pre">ssam_event_item</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">ssam_event_item_alloc</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">len</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.ssam_event_item_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.ssam_event_item" title="ssam_event_item"><span class="pre">ssam_event_item</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">ssam_event_item_alloc</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">len</span></em>, <a class="reference internal" href="../../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.ssam_event_item_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an event item with the given payload size.</p>
 </dd></dl>
 

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.4-dragon
+                5.12.5-dragon
               </div>
             
           
@@ -2866,7 +2866,7 @@ inode list.</p>
 i_pages lock and mapping-&gt;host-&gt;i_lock.</p>
 <dl class="c function">
 <dt id="c.__bread_gfp">
-<em class="property"><span class="pre">struct</span></em> <span class="pre">buffer_head</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__bread_gfp</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">block_device</span> <span class="pre">*</span><em><span class="pre">bdev</span></em>, <span class="pre">sector_t</span> <em><span class="pre">block</span></em>, <span class="pre">unsigned</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__bread_gfp" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">buffer_head</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__bread_gfp</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">block_device</span> <span class="pre">*</span><em><span class="pre">bdev</span></em>, <span class="pre">sector_t</span> <em><span class="pre">block</span></em>, <span class="pre">unsigned</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__bread_gfp" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>reads a specified block and returns the bh</p>
 </dd></dl>
 
@@ -3034,7 +3034,7 @@ completed; the chained bio will also be freed when it completes.</p>
 <p>The caller must not set bi_private or bi_end_io in <strong>bio</strong>.</p>
 <dl class="c function">
 <dt id="c.bio_alloc_bioset">
-<em class="property"><span class="pre">struct</span></em> <span class="pre">bio</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">bio_alloc_bioset</span></code><span class="sig-paren">(</span><span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em>, <span class="pre">unsigned</span> <span class="pre">short</span> <em><span class="pre">nr_iovecs</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">bio_set</span> <span class="pre">*</span><em><span class="pre">bs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_alloc_bioset" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">bio</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">bio_alloc_bioset</span></code><span class="sig-paren">(</span><a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em>, <span class="pre">unsigned</span> <span class="pre">short</span> <em><span class="pre">nr_iovecs</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">bio_set</span> <span class="pre">*</span><em><span class="pre">bs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_alloc_bioset" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate a bio for I/O</p>
 </dd></dl>
 
@@ -3071,7 +3071,7 @@ for per bio allocations.</p>
 <p>Pointer to new bio on success, NULL on failure.</p>
 <dl class="c function">
 <dt id="c.bio_kmalloc">
-<em class="property"><span class="pre">struct</span></em> <span class="pre">bio</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">bio_kmalloc</span></code><span class="sig-paren">(</span><span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em>, <span class="pre">unsigned</span> <span class="pre">short</span> <em><span class="pre">nr_iovecs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_kmalloc" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">bio</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">bio_kmalloc</span></code><span class="sig-paren">(</span><a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em>, <span class="pre">unsigned</span> <span class="pre">short</span> <em><span class="pre">nr_iovecs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_kmalloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>kmalloc a bio for I/O</p>
 </dd></dl>
 
@@ -3121,7 +3121,7 @@ bio will be one.</p>
 </dl>
 <dl class="c function">
 <dt id="c.bio_clone_fast">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.bio_clone_fast" title="bio"><span class="pre">bio</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">bio_clone_fast</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.bio_clone_fast" title="bio"><span class="pre">bio</span></a> <span class="pre">*</span><em><span class="pre">bio</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">bio_set</span> <span class="pre">*</span><em><span class="pre">bs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_clone_fast" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.bio_clone_fast" title="bio"><span class="pre">bio</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">bio_clone_fast</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.bio_clone_fast" title="bio"><span class="pre">bio</span></a> <span class="pre">*</span><em><span class="pre">bio</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">bio_set</span> <span class="pre">*</span><em><span class="pre">bs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_clone_fast" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>clone a bio that shares the original bio’s biovec</p>
 </dd></dl>
 
@@ -3370,7 +3370,7 @@ generated if BIO_TRACE_COMPLETION is set.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.bio_split">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.bio_split" title="bio"><span class="pre">bio</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">bio_split</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.bio_split" title="bio"><span class="pre">bio</span></a> <span class="pre">*</span><em><span class="pre">bio</span></em>, <span class="pre">int</span> <em><span class="pre">sectors</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">bio_set</span> <span class="pre">*</span><em><span class="pre">bs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_split" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.bio_split" title="bio"><span class="pre">bio</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">bio_split</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.bio_split" title="bio"><span class="pre">bio</span></a> <span class="pre">*</span><em><span class="pre">bio</span></em>, <span class="pre">int</span> <em><span class="pre">sectors</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">bio_set</span> <span class="pre">*</span><em><span class="pre">bs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.bio_split" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>split a bio</p>
 </dd></dl>
 

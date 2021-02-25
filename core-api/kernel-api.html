@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.4-dragon
+                5.12.5-dragon
               </div>
             
           
@@ -2824,7 +2824,7 @@ and not a constant. Instead use <a class="reference internal" href="#c.str_has_p
 </ul>
 <dl class="c function">
 <dt id="c.kstrdup">
-<span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kstrdup</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">s</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kstrdup" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kstrdup</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">s</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kstrdup" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate space for and copy an existing string</p>
 </dd></dl>
 
@@ -2839,7 +2839,7 @@ and not a constant. Instead use <a class="reference internal" href="#c.str_has_p
 <p>newly allocated copy of <strong>s</strong> or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> in case of error</p>
 <dl class="c function">
 <dt id="c.kstrdup_const">
-<em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kstrdup_const</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">s</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kstrdup_const" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kstrdup_const</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">s</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kstrdup_const" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>conditionally duplicate an existing const string</p>
 </dd></dl>
 
@@ -2858,7 +2858,7 @@ must not be passed to <a class="reference internal" href="mm-api.html#c.krealloc
 fallback to kstrdup.</p>
 <dl class="c function">
 <dt id="c.kstrndup">
-<span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kstrndup</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">s</span></em>, <span class="pre">size_t</span> <em><span class="pre">max</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kstrndup" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kstrndup</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">s</span></em>, <span class="pre">size_t</span> <em><span class="pre">max</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kstrndup" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate space for and copy an existing string</p>
 </dd></dl>
 
@@ -2877,7 +2877,7 @@ fallback to kstrdup.</p>
 <p>newly allocated copy of <strong>s</strong> or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> in case of error</p>
 <dl class="c function">
 <dt id="c.kmemdup">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kmemdup</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">src</span></em>, <span class="pre">size_t</span> <em><span class="pre">len</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmemdup" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kmemdup</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">src</span></em>, <span class="pre">size_t</span> <em><span class="pre">len</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmemdup" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>duplicate region of memory</p>
 </dd></dl>
 
@@ -2894,7 +2894,7 @@ fallback to kstrdup.</p>
 <p>newly allocated copy of <strong>src</strong> or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> in case of error</p>
 <dl class="c function">
 <dt id="c.kmemdup_nul">
-<span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kmemdup_nul</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">s</span></em>, <span class="pre">size_t</span> <em><span class="pre">len</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmemdup_nul" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kmemdup_nul</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">s</span></em>, <span class="pre">size_t</span> <em><span class="pre">len</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmemdup_nul" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create a NUL-terminated string from unterminated data</p>
 </dd></dl>
 
@@ -4435,7 +4435,7 @@ Call <a class="reference internal" href="#c.textsearch_next" title="textsearch_n
 <code class="docutils literal notranslate"><span class="pre">UINT_MAX</span></code> if no occurrence was found.</p>
 <dl class="c function">
 <dt id="c.textsearch_prepare">
-<em class="property"><span class="pre">struct</span></em> <span class="pre">ts_config</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">textsearch_prepare</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">algo</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">pattern</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">len</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em>, <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.textsearch_prepare" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">ts_config</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">textsearch_prepare</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">algo</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">pattern</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">len</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em>, <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.textsearch_prepare" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Prepare a search</p>
 </dd></dl>
 
@@ -7202,7 +7202,7 @@ but drivers should not try to interpret that return value.</p>
 <p>Each LSM has to register its hooks with the infrastructure.</p>
 <dl class="c function">
 <dt id="c.lsm_cred_alloc">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">lsm_cred_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.lsm_cred_alloc" title="cred"><span class="pre">cred</span></a> <span class="pre">*</span><em><span class="pre">cred</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.lsm_cred_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">lsm_cred_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.lsm_cred_alloc" title="cred"><span class="pre">cred</span></a> <span class="pre">*</span><em><span class="pre">cred</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.lsm_cred_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate a composite cred blob</p>
 </dd></dl>
 
@@ -7426,7 +7426,7 @@ removed; you are responsible here.</p>
 <h2>Audit Interfaces<a class="headerlink" href="#audit-interfaces" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.audit_log_start">
-<em class="property"><span class="pre">struct</span></em> <span class="pre">audit_buffer</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">audit_log_start</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">audit_context</span> <span class="pre">*</span><em><span class="pre">ctx</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em>, <span class="pre">int</span> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.audit_log_start" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">audit_buffer</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">audit_log_start</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">audit_context</span> <span class="pre">*</span><em><span class="pre">ctx</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em>, <span class="pre">int</span> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.audit_log_start" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>obtain an audit buffer</p>
 </dd></dl>
 
@@ -7482,7 +7482,7 @@ queue and a kthread is scheduled to remove them from the queue outside the
 irq context.  May be called in any context.</p>
 <dl class="c function">
 <dt id="c.audit_log">
-<span class="pre">void</span> <code class="sig-name descname"><span class="pre">audit_log</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">audit_context</span> <span class="pre">*</span><em><span class="pre">ctx</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em>, <span class="pre">int</span> <em><span class="pre">type</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">fmt</span></em>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.audit_log" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">audit_log</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">audit_context</span> <span class="pre">*</span><em><span class="pre">ctx</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em>, <span class="pre">int</span> <em><span class="pre">type</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">fmt</span></em>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.audit_log" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Log an audit record</p>
 </dd></dl>
 
@@ -8290,7 +8290,7 @@ on burst I/O load.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.blk_rq_prep_clone">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">blk_rq_prep_clone</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">request</span> <span class="pre">*</span><em><span class="pre">rq</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">request</span> <span class="pre">*</span><em><span class="pre">rq_src</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">bio_set</span> <span class="pre">*</span><em><span class="pre">bs</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em>, <span class="pre">int</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">bio_ctr</span></em><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">bio</span><span class="pre">*</span>, <em class="property"><span class="pre">struct</span></em> <span class="pre">bio</span><span class="pre">*</span>, <span class="pre">void</span><span class="pre">*</span><span class="sig-paren">)</span>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.blk_rq_prep_clone" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">blk_rq_prep_clone</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">request</span> <span class="pre">*</span><em><span class="pre">rq</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">request</span> <span class="pre">*</span><em><span class="pre">rq_src</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">bio_set</span> <span class="pre">*</span><em><span class="pre">bs</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em>, <span class="pre">int</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">bio_ctr</span></em><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">bio</span><span class="pre">*</span>, <em class="property"><span class="pre">struct</span></em> <span class="pre">bio</span><span class="pre">*</span>, <span class="pre">void</span><span class="pre">*</span><span class="sig-paren">)</span>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.blk_rq_prep_clone" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Helper function to setup clone request</p>
 </dd></dl>
 
@@ -8403,7 +8403,7 @@ to be checked against the new queue limits again during dispatch.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.blk_rq_map_user_iov">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">blk_rq_map_user_iov</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">request_queue</span> <span class="pre">*</span><em><span class="pre">q</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">request</span> <span class="pre">*</span><em><span class="pre">rq</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">rq_map_data</span> <span class="pre">*</span><em><span class="pre">map_data</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">iov_iter</span> <span class="pre">*</span><em><span class="pre">iter</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_rq_map_user_iov" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">blk_rq_map_user_iov</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">request_queue</span> <span class="pre">*</span><em><span class="pre">q</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">request</span> <span class="pre">*</span><em><span class="pre">rq</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">rq_map_data</span> <span class="pre">*</span><em><span class="pre">map_data</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">iov_iter</span> <span class="pre">*</span><em><span class="pre">iter</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_rq_map_user_iov" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>map user data to a request, for passthrough requests</p>
 </dd></dl>
 
@@ -8454,7 +8454,7 @@ the I/O completion may have changed rq-&gt;bio.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.blk_rq_map_kern">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">blk_rq_map_kern</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">request_queue</span> <span class="pre">*</span><em><span class="pre">q</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">request</span> <span class="pre">*</span><em><span class="pre">rq</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">kbuf</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">len</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_rq_map_kern" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">blk_rq_map_kern</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">request_queue</span> <span class="pre">*</span><em><span class="pre">q</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">request</span> <span class="pre">*</span><em><span class="pre">rq</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">kbuf</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">len</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.blk_rq_map_kern" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>map kernel data to a request, for passthrough requests</p>
 </dd></dl>
 
@@ -9160,7 +9160,7 @@ for execution and wait for completion.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.blkdev_issue_discard">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">blkdev_issue_discard</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">block_device</span> <span class="pre">*</span><em><span class="pre">bdev</span></em>, <span class="pre">sector_t</span> <em><span class="pre">sector</span></em>, <span class="pre">sector_t</span> <em><span class="pre">nr_sects</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.blkdev_issue_discard" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">blkdev_issue_discard</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">block_device</span> <span class="pre">*</span><em><span class="pre">bdev</span></em>, <span class="pre">sector_t</span> <em><span class="pre">sector</span></em>, <span class="pre">sector_t</span> <em><span class="pre">nr_sects</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.blkdev_issue_discard" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>queue a discard</p>
 </dd></dl>
 
@@ -9183,7 +9183,7 @@ for execution and wait for completion.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.blkdev_issue_write_same">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">blkdev_issue_write_same</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">block_device</span> <span class="pre">*</span><em><span class="pre">bdev</span></em>, <span class="pre">sector_t</span> <em><span class="pre">sector</span></em>, <span class="pre">sector_t</span> <em><span class="pre">nr_sects</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.blkdev_issue_write_same" title="page"><span class="pre">page</span></a> <span class="pre">*</span><em><span class="pre">page</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.blkdev_issue_write_same" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">blkdev_issue_write_same</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">block_device</span> <span class="pre">*</span><em><span class="pre">bdev</span></em>, <span class="pre">sector_t</span> <em><span class="pre">sector</span></em>, <span class="pre">sector_t</span> <em><span class="pre">nr_sects</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.blkdev_issue_write_same" title="page"><span class="pre">page</span></a> <span class="pre">*</span><em><span class="pre">page</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.blkdev_issue_write_same" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>queue a write same operation</p>
 </dd></dl>
 
@@ -9206,7 +9206,7 @@ for execution and wait for completion.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.__blkdev_issue_zeroout">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">__blkdev_issue_zeroout</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">block_device</span> <span class="pre">*</span><em><span class="pre">bdev</span></em>, <span class="pre">sector_t</span> <em><span class="pre">sector</span></em>, <span class="pre">sector_t</span> <em><span class="pre">nr_sects</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">bio</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">biop</span></em>, <span class="pre">unsigned</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__blkdev_issue_zeroout" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">__blkdev_issue_zeroout</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">block_device</span> <span class="pre">*</span><em><span class="pre">bdev</span></em>, <span class="pre">sector_t</span> <em><span class="pre">sector</span></em>, <span class="pre">sector_t</span> <em><span class="pre">nr_sects</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">bio</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">biop</span></em>, <span class="pre">unsigned</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__blkdev_issue_zeroout" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>generate number of zero filed write bios</p>
 </dd></dl>
 
@@ -9236,7 +9236,7 @@ not be released if <code class="docutils literal notranslate"><span class="pre">
 </div></blockquote>
 <dl class="c function">
 <dt id="c.blkdev_issue_zeroout">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">blkdev_issue_zeroout</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">block_device</span> <span class="pre">*</span><em><span class="pre">bdev</span></em>, <span class="pre">sector_t</span> <em><span class="pre">sector</span></em>, <span class="pre">sector_t</span> <em><span class="pre">nr_sects</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em>, <span class="pre">unsigned</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.blkdev_issue_zeroout" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">blkdev_issue_zeroout</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">block_device</span> <span class="pre">*</span><em><span class="pre">bdev</span></em>, <span class="pre">sector_t</span> <em><span class="pre">sector</span></em>, <span class="pre">sector_t</span> <em><span class="pre">nr_sects</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em>, <span class="pre">unsigned</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.blkdev_issue_zeroout" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>zero-fill a block range</p>
 </dd></dl>
 

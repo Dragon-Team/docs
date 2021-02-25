@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.4-dragon
+                5.12.5-dragon
               </div>
             
           
@@ -573,7 +573,7 @@ is convenient for a “not found” value.</p>
 <p>Continue to iterate over entries, continuing after the current position.</p>
 <dl class="c function">
 <dt id="c.ida_alloc">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">ida_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.ida_alloc" title="ida"><span class="pre">ida</span></a> <span class="pre">*</span><em><span class="pre">ida</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">ida_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.ida_alloc" title="ida"><span class="pre">ida</span></a> <span class="pre">*</span><em><span class="pre">ida</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an unused ID.</p>
 </dd></dl>
 
@@ -594,7 +594,7 @@ locking in your code.</p>
 or <code class="docutils literal notranslate"><span class="pre">-ENOSPC</span></code> if there are no free IDs.</p>
 <dl class="c function">
 <dt id="c.ida_alloc_min">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">ida_alloc_min</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.ida_alloc_min" title="ida"><span class="pre">ida</span></a> <span class="pre">*</span><em><span class="pre">ida</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">min</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_alloc_min" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">ida_alloc_min</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.ida_alloc_min" title="ida"><span class="pre">ida</span></a> <span class="pre">*</span><em><span class="pre">ida</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">min</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_alloc_min" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an unused ID.</p>
 </dd></dl>
 
@@ -617,7 +617,7 @@ locking in your code.</p>
 or <code class="docutils literal notranslate"><span class="pre">-ENOSPC</span></code> if there are no free IDs.</p>
 <dl class="c function">
 <dt id="c.ida_alloc_max">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">ida_alloc_max</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.ida_alloc_max" title="ida"><span class="pre">ida</span></a> <span class="pre">*</span><em><span class="pre">ida</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">max</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_alloc_max" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">ida_alloc_max</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.ida_alloc_max" title="ida"><span class="pre">ida</span></a> <span class="pre">*</span><em><span class="pre">ida</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">max</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_alloc_max" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an unused ID.</p>
 </dd></dl>
 
@@ -640,7 +640,7 @@ locking in your code.</p>
 or <code class="docutils literal notranslate"><span class="pre">-ENOSPC</span></code> if there are no free IDs.</p>
 <dl class="c function">
 <dt id="c.idr_alloc_u32">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">idr_alloc_u32</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.idr_alloc_u32" title="idr"><span class="pre">idr</span></a> <span class="pre">*</span><em><span class="pre">idr</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">ptr</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">nextid</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">max</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_alloc_u32" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">idr_alloc_u32</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.idr_alloc_u32" title="idr"><span class="pre">idr</span></a> <span class="pre">*</span><em><span class="pre">idr</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">ptr</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">nextid</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">max</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_alloc_u32" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an ID.</p>
 </dd></dl>
 
@@ -673,7 +673,7 @@ or -ENOSPC if no free IDs could be found.  If an error occurred,
 <strong>nextid</strong> is unchanged.</p>
 <dl class="c function">
 <dt id="c.idr_alloc">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">idr_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.idr_alloc" title="idr"><span class="pre">idr</span></a> <span class="pre">*</span><em><span class="pre">idr</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">ptr</span></em>, <span class="pre">int</span> <em><span class="pre">start</span></em>, <span class="pre">int</span> <em><span class="pre">end</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">idr_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.idr_alloc" title="idr"><span class="pre">idr</span></a> <span class="pre">*</span><em><span class="pre">idr</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">ptr</span></em>, <span class="pre">int</span> <em><span class="pre">start</span></em>, <span class="pre">int</span> <em><span class="pre">end</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an ID.</p>
 </dd></dl>
 
@@ -703,7 +703,7 @@ exclude simultaneous writers.</p>
 or -ENOSPC if no free IDs could be found.</p>
 <dl class="c function">
 <dt id="c.idr_alloc_cyclic">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">idr_alloc_cyclic</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.idr_alloc_cyclic" title="idr"><span class="pre">idr</span></a> <span class="pre">*</span><em><span class="pre">idr</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">ptr</span></em>, <span class="pre">int</span> <em><span class="pre">start</span></em>, <span class="pre">int</span> <em><span class="pre">end</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_alloc_cyclic" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">idr_alloc_cyclic</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.idr_alloc_cyclic" title="idr"><span class="pre">idr</span></a> <span class="pre">*</span><em><span class="pre">idr</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">ptr</span></em>, <span class="pre">int</span> <em><span class="pre">start</span></em>, <span class="pre">int</span> <em><span class="pre">end</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.idr_alloc_cyclic" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an ID cyclically.</p>
 </dd></dl>
 
@@ -860,7 +860,7 @@ the one being replaced!).</p>
 found.  <code class="docutils literal notranslate"><span class="pre">-EINVAL</span></code> indicates that <strong>ptr</strong> was not valid.</p>
 <dl class="c function">
 <dt id="c.ida_alloc_range">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">ida_alloc_range</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.ida_alloc_range" title="ida"><span class="pre">ida</span></a> <span class="pre">*</span><em><span class="pre">ida</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">min</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">max</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_alloc_range" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">ida_alloc_range</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.ida_alloc_range" title="ida"><span class="pre">ida</span></a> <span class="pre">*</span><em><span class="pre">ida</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">min</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">max</span></em>, <a class="reference internal" href="mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.ida_alloc_range" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an unused ID.</p>
 </dd></dl>
 

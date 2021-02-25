@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.4-dragon
+                5.12.5-dragon
               </div>
             
           
@@ -495,7 +495,7 @@ assumes internal allocation of fabric payload buffer by target-core.</p>
 <p>It also assumes interal target core SGL memory allocation.</p>
 <dl class="c function">
 <dt id="c.target_submit_tmr">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">target_submit_tmr</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.target_submit_tmr" title="se_cmd"><span class="pre">se_cmd</span></a> <span class="pre">*</span><em><span class="pre">se_cmd</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">se_session</span> <span class="pre">*</span><em><span class="pre">se_sess</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">sense</span></em>, <span class="pre">u64</span> <em><span class="pre">unpacked_lun</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">fabric_tmr_ptr</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <em><span class="pre">tm_type</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em>, <span class="pre">u64</span> <em><span class="pre">tag</span></em>, <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.target_submit_tmr" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">target_submit_tmr</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.target_submit_tmr" title="se_cmd"><span class="pre">se_cmd</span></a> <span class="pre">*</span><em><span class="pre">se_cmd</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">se_session</span> <span class="pre">*</span><em><span class="pre">se_sess</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">sense</span></em>, <span class="pre">u64</span> <em><span class="pre">unpacked_lun</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">fabric_tmr_ptr</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <em><span class="pre">tm_type</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em>, <span class="pre">u64</span> <em><span class="pre">tag</span></em>, <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.target_submit_tmr" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>lookup unpacked lun and submit uninitialized se_cmd for TMR CDBs</p>
 </dd></dl>
 

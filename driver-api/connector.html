@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.4-dragon
+                5.12.5-dragon
               </div>
             
           
@@ -438,7 +438,7 @@ parameters are <code class="docutils literal notranslate"><span class="pre">cn_m
 </dl>
 <dl class="c function">
 <dt id="c.cn_netlink_send_mult">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cn_netlink_send_mult</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">cn_msg</span> <span class="pre">*</span><em><span class="pre">msg</span></em>, <span class="pre">u16</span> <em><span class="pre">len</span></em>, <span class="pre">u32</span> <em><span class="pre">portid</span></em>, <span class="pre">u32</span> <em><span class="pre">group</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cn_netlink_send_mult" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cn_netlink_send_mult</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">cn_msg</span> <span class="pre">*</span><em><span class="pre">msg</span></em>, <span class="pre">u16</span> <em><span class="pre">len</span></em>, <span class="pre">u32</span> <em><span class="pre">portid</span></em>, <span class="pre">u32</span> <em><span class="pre">group</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cn_netlink_send_mult" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Sends message to the specified groups.</p>
 </dd></dl>
 
@@ -469,7 +469,7 @@ fail under strong memory pressure.</p>
 <p>If there are no listeners for given group <code class="docutils literal notranslate"><span class="pre">-ESRCH</span></code> can be returned.</p>
 <dl class="c function">
 <dt id="c.cn_netlink_send">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cn_netlink_send</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">cn_msg</span> <span class="pre">*</span><em><span class="pre">msg</span></em>, <span class="pre">u32</span> <em><span class="pre">portid</span></em>, <span class="pre">u32</span> <em><span class="pre">group</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cn_netlink_send" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cn_netlink_send</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">cn_msg</span> <span class="pre">*</span><em><span class="pre">msg</span></em>, <span class="pre">u32</span> <em><span class="pre">portid</span></em>, <span class="pre">u32</span> <em><span class="pre">group</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cn_netlink_send" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Sends message to the specified groups.</p>
 </dd></dl>
 

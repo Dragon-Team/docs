@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.4-dragon
+                5.12.5-dragon
               </div>
             
           
@@ -618,7 +618,7 @@ If an init function is supplied, <strong>data</strong> is passed to it instead.<
 </dl>
 <dl class="c function">
 <dt id="c.kunit_alloc_resource">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kunit_alloc_resource</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.kunit" title="kunit"><span class="pre">kunit</span></a> <span class="pre">*</span><em><span class="pre">test</span></em>, <span class="pre">kunit_resource_init_t</span> <em><span class="pre">init</span></em>, <span class="pre">kunit_resource_free_t</span> <em><span class="pre">free</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">internal_gfp</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">context</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kunit_alloc_resource" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kunit_alloc_resource</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.kunit" title="kunit"><span class="pre">kunit</span></a> <span class="pre">*</span><em><span class="pre">test</span></em>, <span class="pre">kunit_resource_init_t</span> <em><span class="pre">init</span></em>, <span class="pre">kunit_resource_free_t</span> <em><span class="pre">free</span></em>, <a class="reference internal" href="../../../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">internal_gfp</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">context</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kunit_alloc_resource" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocates a <em>test managed resource</em>.</p>
 </dd></dl>
 
@@ -740,7 +740,7 @@ the caller has a reference to it via alloc_and_get() or find();
 in this case a final call to <a class="reference internal" href="#c.kunit_put_resource" title="kunit_put_resource"><code class="xref c c-func docutils literal notranslate"><span class="pre">kunit_put_resource()</span></code></a> is required.</p>
 <dl class="c function">
 <dt id="c.kunit_kmalloc">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kunit_kmalloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.kunit" title="kunit"><span class="pre">kunit</span></a> <span class="pre">*</span><em><span class="pre">test</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kunit_kmalloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kunit_kmalloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.kunit" title="kunit"><span class="pre">kunit</span></a> <span class="pre">*</span><em><span class="pre">test</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="../../../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kunit_kmalloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Like <a class="reference internal" href="../../../core-api/mm-api.html#c.kmalloc" title="kmalloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">kmalloc()</span></code></a> except the allocation is <em>test managed</em>.</p>
 </dd></dl>
 
@@ -772,7 +772,7 @@ and is automatically cleaned up after the test case concludes. See <a class="ref
 </dl>
 <dl class="c function">
 <dt id="c.kunit_kzalloc">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kunit_kzalloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.kunit" title="kunit"><span class="pre">kunit</span></a> <span class="pre">*</span><em><span class="pre">test</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kunit_kzalloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kunit_kzalloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.kunit" title="kunit"><span class="pre">kunit</span></a> <span class="pre">*</span><em><span class="pre">test</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="../../../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kunit_kzalloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Just like <a class="reference internal" href="#c.kunit_kmalloc" title="kunit_kmalloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">kunit_kmalloc()</span></code></a>, but zeroes the allocation.</p>
 </dd></dl>
 

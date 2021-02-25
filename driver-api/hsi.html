@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.4-dragon
+                5.12.5-dragon
               </div>
             
           
@@ -864,7 +864,7 @@ to free their allocated hsi_controller structures before a successful
 call to hsi_register_controller. Other use is not allowed.</p>
 <dl class="c function">
 <dt id="c.hsi_alloc_controller">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.hsi_controller" title="hsi_controller"><span class="pre">hsi_controller</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">hsi_alloc_controller</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">n_ports</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.hsi_alloc_controller" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.hsi_controller" title="hsi_controller"><span class="pre">hsi_controller</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">hsi_alloc_controller</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">n_ports</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.hsi_alloc_controller" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an HSI controller and its ports</p>
 </dd></dl>
 
@@ -892,7 +892,7 @@ call to hsi_register_controller. Other use is not allowed.</p>
 <p>Client is responsible to free the buffers pointed by the scatterlists.</p>
 <dl class="c function">
 <dt id="c.hsi_alloc_msg">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.hsi_msg" title="hsi_msg"><span class="pre">hsi_msg</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">hsi_alloc_msg</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">nents</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.hsi_alloc_msg" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.hsi_msg" title="hsi_msg"><span class="pre">hsi_msg</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">hsi_alloc_msg</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">nents</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.hsi_alloc_msg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an HSI message</p>
 </dd></dl>
 

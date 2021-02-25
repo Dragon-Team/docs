@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.4-dragon
+                5.12.5-dragon
               </div>
             
           
@@ -1396,7 +1396,7 @@ safe. But it is recommended to use managed resources only for resources that
 change rarely, if ever, during the lifetime of the <a class="reference internal" href="#c.drm_device" title="drm_device"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_device</span></code></a> instance.</p>
 <dl class="c function">
 <dt id="c.drmm_kmalloc">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">drmm_kmalloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drmm_kmalloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">drmm_kmalloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drmm_kmalloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="#c.drm_device" title="drm_device"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_device</span></code></a> managed <a class="reference internal" href="../core-api/mm-api.html#c.kmalloc" title="kmalloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">kmalloc()</span></code></a></p>
 </dd></dl>
 
@@ -1415,7 +1415,7 @@ automatically freed on the final <a class="reference internal" href="#c.drm_dev_
 before the final <a class="reference internal" href="#c.drm_dev_put" title="drm_dev_put"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_dev_put()</span></code></a> by calling <a class="reference internal" href="#c.drmm_kfree" title="drmm_kfree"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_kfree()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.drmm_kstrdup">
-<span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">drmm_kstrdup</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">s</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drmm_kstrdup" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">drmm_kstrdup</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">s</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drmm_kstrdup" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="#c.drm_device" title="drm_device"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_device</span></code></a> managed <a class="reference internal" href="../core-api/kernel-api.html#c.kstrdup" title="kstrdup"><code class="xref c c-func docutils literal notranslate"><span class="pre">kstrdup()</span></code></a></p>
 </dd></dl>
 
@@ -1494,7 +1494,7 @@ order in the final <a class="reference internal" href="#c.drm_dev_put" title="dr
 <strong>action</strong> is directly called for any cleanup work necessary on failures.</p>
 <dl class="c function">
 <dt id="c.drmm_kzalloc">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">drmm_kzalloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drmm_kzalloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">drmm_kzalloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drmm_kzalloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="#c.drm_device" title="drm_device"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_device</span></code></a> managed <a class="reference internal" href="../core-api/mm-api.html#c.kzalloc" title="kzalloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">kzalloc()</span></code></a></p>
 </dd></dl>
 
@@ -1513,7 +1513,7 @@ automatically freed on the final <a class="reference internal" href="#c.drm_dev_
 before the final <a class="reference internal" href="#c.drm_dev_put" title="drm_dev_put"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_dev_put()</span></code></a> by calling <a class="reference internal" href="#c.drmm_kfree" title="drmm_kfree"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_kfree()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.drmm_kmalloc_array">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">drmm_kmalloc_array</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">size_t</span> <em><span class="pre">n</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drmm_kmalloc_array" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">drmm_kmalloc_array</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">size_t</span> <em><span class="pre">n</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drmm_kmalloc_array" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="#c.drm_device" title="drm_device"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_device</span></code></a> managed <a class="reference internal" href="../core-api/mm-api.html#c.kmalloc_array" title="kmalloc_array"><code class="xref c c-func docutils literal notranslate"><span class="pre">kmalloc_array()</span></code></a></p>
 </dd></dl>
 
@@ -1534,7 +1534,7 @@ memory is automatically freed on the final <a class="reference internal" href="#
 like a memory allocation obtained by <a class="reference internal" href="#c.drmm_kmalloc" title="drmm_kmalloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">drmm_kmalloc()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.drmm_kcalloc">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">drmm_kcalloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">size_t</span> <em><span class="pre">n</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drmm_kcalloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">drmm_kcalloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">size_t</span> <em><span class="pre">n</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drmm_kcalloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="#c.drm_device" title="drm_device"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_device</span></code></a> managed <a class="reference internal" href="../core-api/mm-api.html#c.kcalloc" title="kcalloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">kcalloc()</span></code></a></p>
 </dd></dl>
 
@@ -2097,6 +2097,30 @@ kmalloc and <strong>p</strong> must be the first member element.</p>
 <p>This function frees the event <strong>p</strong> initialized with <a class="reference internal" href="#c.drm_event_reserve_init" title="drm_event_reserve_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_event_reserve_init()</span></code></a>
 and releases any allocated space. It is used to cancel an event when the
 nonblocking operation could not be submitted and needed to be aborted.</p>
+<dl class="c function">
+<dt id="c.drm_send_event_timestamp_locked">
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">drm_send_event_timestamp_locked</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_pending_event" title="drm_pending_event"><span class="pre">drm_pending_event</span></a> <span class="pre">*</span><em><span class="pre">e</span></em>, <span class="pre">ktime_t</span> <em><span class="pre">timestamp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_send_event_timestamp_locked" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>send DRM event to file descriptor</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_device</span> <span class="pre">*dev</span></code></dt><dd><p>DRM device</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_pending_event</span> <span class="pre">*e</span></code></dt><dd><p>DRM event to deliver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ktime_t</span> <span class="pre">timestamp</span></code></dt><dd><p>timestamp to set for the fence event in kernel’s CLOCK_MONOTONIC
+time domain</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function sends the event <strong>e</strong>, initialized with <a class="reference internal" href="#c.drm_event_reserve_init" title="drm_event_reserve_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_event_reserve_init()</span></code></a>,
+to its associated userspace DRM file. Callers must already hold
+<a class="reference internal" href="#c.drm_device" title="drm_device"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_device.event_lock</span></code></a>.</p>
+<p>Note that the core will take care of unlinking and disarming events when the
+corresponding DRM file is closed. Drivers need not worry about whether the
+DRM file for this event still exists and can call this function upon
+completion of the asynchronous work unconditionally.</p>
 <dl class="c function">
 <dt id="c.drm_send_event_locked">
 <span class="pre">void</span> <code class="sig-name descname"><span class="pre">drm_send_event_locked</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_pending_event" title="drm_pending_event"><span class="pre">drm_pending_event</span></a> <span class="pre">*</span><em><span class="pre">e</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_send_event_locked" title="Permalink to this definition">¶</a><br /></dt>

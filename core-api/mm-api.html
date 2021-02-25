@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.4-dragon
+                5.12.5-dragon
               </div>
             
           
@@ -490,11 +490,40 @@ If nr_pages is 0 or negative, returns 0. If no pages were pinned, returns
 </div>
 <div class="section" id="memory-allocation-controls">
 <span id="mm-api-gfp-flags"></span><h2>Memory Allocation Controls<a class="headerlink" href="#memory-allocation-controls" title="Permalink to this headline">¶</a></h2>
-<p>Functions which need to allocate memory often use GFP flags to express
-how that memory should be allocated. The GFP acronym stands for “get
-free pages”, the underlying memory allocation function. Not every GFP
-flag is allowed to every function which may allocate memory. Most
-users will want to use a plain <code class="docutils literal notranslate"><span class="pre">GFP_KERNEL</span></code>.</p>
+<dl class="c type">
+<dt id="c.gfp_t">
+<em class="property"><span class="pre">type</span> </em><code class="sig-name descname"><span class="pre">gfp_t</span></code><a class="headerlink" href="#c.gfp_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Memory allocation flags.</p>
+</dd></dl>
+
+<p><strong>Description</strong></p>
+<p>GFP flags are commonly used throughout Linux to indicate how memory
+should be allocated.  The GFP acronym stands for get_free_pages(),
+the underlying memory allocation function.  Not every GFP flag is
+supported by every function which may allocate memory.  Most users
+will want to use a plain <code class="docutils literal notranslate"><span class="pre">GFP_KERNEL</span></code>.</p>
+<dl class="c function">
+<dt id="c.gfpflags_normal_context">
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">gfpflags_normal_context</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.gfpflags_normal_context" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>is gfp_flags a normal sleepable context?</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">gfp_t</span> <span class="pre">gfp_flags</span></code></dt><dd><p>gfp_flags to test</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Test whether <strong>gfp_flags</strong> indicates that the allocation is from the
+<code class="docutils literal notranslate"><span class="pre">current</span></code> context and allowed to sleep.</p>
+<p>An allocation being allowed to block doesn’t mean it owns the <code class="docutils literal notranslate"><span class="pre">current</span></code>
+context.  When direct reclaim path tries to allocate memory, the
+allocation context is nested inside whatever <code class="docutils literal notranslate"><span class="pre">current</span></code> was doing at the
+time of the original allocation.  The nested allocation may be allowed
+to block but modifying anything <code class="docutils literal notranslate"><span class="pre">current</span></code> owns can corrupt the outer
+context’s expectations.</p>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> result from this function indicates that the allocation context
+can sleep and use anything that’s associated with <code class="docutils literal notranslate"><span class="pre">current</span></code>.</p>
 <div class="section" id="page-mobility-and-placement-hints">
 <h3>Page mobility and placement hints<a class="headerlink" href="#page-mobility-and-placement-hints" title="Permalink to this headline">¶</a></h3>
 <p>These flags provide hints about how mobile the page is. Pages with similar
@@ -648,7 +677,7 @@ in page fault path, while the non-light is used by khugepaged.</p>
 <h2>The Slab Cache<a class="headerlink" href="#the-slab-cache" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.kmalloc">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kmalloc</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmalloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kmalloc</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmalloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate memory</p>
 </dd></dl>
 
@@ -700,7 +729,7 @@ eventually.</p>
 </dl>
 <dl class="c function">
 <dt id="c.kmalloc_array">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kmalloc_array</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">n</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmalloc_array" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kmalloc_array</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">n</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmalloc_array" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate memory for an array.</p>
 </dd></dl>
 
@@ -715,7 +744,7 @@ eventually.</p>
 </dl>
 <dl class="c function">
 <dt id="c.krealloc_array">
-<em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">krealloc_array</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">p</span></em>, <span class="pre">size_t</span> <em><span class="pre">new_n</span></em>, <span class="pre">size_t</span> <em><span class="pre">new_size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.krealloc_array" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">krealloc_array</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">p</span></em>, <span class="pre">size_t</span> <em><span class="pre">new_n</span></em>, <span class="pre">size_t</span> <em><span class="pre">new_size</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.krealloc_array" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>reallocate memory for an array.</p>
 </dd></dl>
 
@@ -732,7 +761,7 @@ eventually.</p>
 </dl>
 <dl class="c function">
 <dt id="c.kcalloc">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kcalloc</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">n</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kcalloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kcalloc</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">n</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kcalloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate memory for an array. The memory is set to zero.</p>
 </dd></dl>
 
@@ -747,7 +776,7 @@ eventually.</p>
 </dl>
 <dl class="c function">
 <dt id="c.kzalloc">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kzalloc</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kzalloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kzalloc</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kzalloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate memory. The memory is set to zero.</p>
 </dd></dl>
 
@@ -760,7 +789,7 @@ eventually.</p>
 </dl>
 <dl class="c function">
 <dt id="c.kzalloc_node">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kzalloc_node</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em>, <span class="pre">int</span> <em><span class="pre">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kzalloc_node" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kzalloc_node</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em>, <span class="pre">int</span> <em><span class="pre">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kzalloc_node" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate zeroed memory from a particular memory node.</p>
 </dd></dl>
 
@@ -775,7 +804,7 @@ eventually.</p>
 </dl>
 <dl class="c function">
 <dt id="c.kmem_cache_alloc">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kmem_cache_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">kmem_cache</span> <span class="pre">*</span><em><span class="pre">cachep</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmem_cache_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kmem_cache_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">kmem_cache</span> <span class="pre">*</span><em><span class="pre">cachep</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmem_cache_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an object</p>
 </dd></dl>
 
@@ -793,7 +822,7 @@ if the cache has no available objects.</p>
 <p>pointer to the new object or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> in case of error</p>
 <dl class="c function">
 <dt id="c.kmem_cache_alloc_node">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kmem_cache_alloc_node</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">kmem_cache</span> <span class="pre">*</span><em><span class="pre">cachep</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em>, <span class="pre">int</span> <em><span class="pre">nodeid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmem_cache_alloc_node" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kmem_cache_alloc_node</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">kmem_cache</span> <span class="pre">*</span><em><span class="pre">cachep</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em>, <span class="pre">int</span> <em><span class="pre">nodeid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmem_cache_alloc_node" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate an object on the specified node</p>
 </dd></dl>
 
@@ -947,7 +976,7 @@ To help debugging, a zero exit status indicates all slabs were released.</p>
 <p><code class="docutils literal notranslate"><span class="pre">0</span></code> if all slabs were released, non-zero otherwise</p>
 <dl class="c function">
 <dt id="c.krealloc">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">krealloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">p</span></em>, <span class="pre">size_t</span> <em><span class="pre">new_size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.krealloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">krealloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">p</span></em>, <span class="pre">size_t</span> <em><span class="pre">new_size</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.krealloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>reallocate memory. The contents will remain unchanged.</p>
 </dd></dl>
 
@@ -1021,7 +1050,7 @@ must not be freed during the duration of the call.</p>
 <p>Function calls kfree only if <strong>x</strong> is not in .rodata section.</p>
 <dl class="c function">
 <dt id="c.kvmalloc_node">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kvmalloc_node</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em>, <span class="pre">int</span> <em><span class="pre">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kvmalloc_node" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">kvmalloc_node</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em>, <span class="pre">int</span> <em><span class="pre">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kvmalloc_node" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>attempt to allocate physically contiguous memory, but upon failure, fall back to non-contiguous (vmalloc) allocation.</p>
 </dd></dl>
 
@@ -1202,7 +1231,7 @@ are transferred from the caller to <a class="reference internal" href="#c.vmap" 
 the start address of the mapping.</p>
 <dl class="c function">
 <dt id="c.__vmalloc_node">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__vmalloc_node</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">size</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">align</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em>, <span class="pre">int</span> <em><span class="pre">node</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">caller</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__vmalloc_node" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__vmalloc_node</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">size</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">align</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em>, <span class="pre">int</span> <em><span class="pre">node</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">caller</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__vmalloc_node" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate virtually contiguous memory</p>
 </dd></dl>
 
@@ -1709,7 +1738,7 @@ caller must do that.</p>
 <p>The remove + add is atomic.  This function cannot fail.</p>
 <dl class="c function">
 <dt id="c.add_to_page_cache_locked">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">add_to_page_cache_locked</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.add_to_page_cache_locked" title="page"><span class="pre">page</span></a> <span class="pre">*</span><em><span class="pre">page</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../filesystems/api-summary.html#c.address_space" title="address_space"><span class="pre">address_space</span></a> <span class="pre">*</span><em><span class="pre">mapping</span></em>, <span class="pre">pgoff_t</span> <em><span class="pre">offset</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.add_to_page_cache_locked" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">add_to_page_cache_locked</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.add_to_page_cache_locked" title="page"><span class="pre">page</span></a> <span class="pre">*</span><em><span class="pre">page</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../filesystems/api-summary.html#c.address_space" title="address_space"><span class="pre">address_space</span></a> <span class="pre">*</span><em><span class="pre">mapping</span></em>, <span class="pre">pgoff_t</span> <em><span class="pre">offset</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.add_to_page_cache_locked" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add a locked page to the pagecache</p>
 </dd></dl>
 
@@ -1860,7 +1889,7 @@ range specified (in which case ‘index - return &gt;= max_scan’ will be true)
 In the rare case of wrap-around, ULONG_MAX will be returned.</p>
 <dl class="c function">
 <dt id="c.pagecache_get_page">
-<em class="property"><span class="pre">struct</span></em> <span class="pre">page</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">pagecache_get_page</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../filesystems/api-summary.html#c.address_space" title="address_space"><span class="pre">address_space</span></a> <span class="pre">*</span><em><span class="pre">mapping</span></em>, <span class="pre">pgoff_t</span> <em><span class="pre">index</span></em>, <span class="pre">int</span> <em><span class="pre">fgp_flags</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pagecache_get_page" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">page</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">pagecache_get_page</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../filesystems/api-summary.html#c.address_space" title="address_space"><span class="pre">address_space</span></a> <span class="pre">*</span><em><span class="pre">mapping</span></em>, <span class="pre">pgoff_t</span> <em><span class="pre">index</span></em>, <span class="pre">int</span> <em><span class="pre">fgp_flags</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pagecache_get_page" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find and get a reference to a page.</p>
 </dd></dl>
 
@@ -2080,7 +2109,7 @@ not set, try to fill the page and wait for it to become unlocked.</p>
 <p>up to date page on success, ERR_PTR() on failure.</p>
 <dl class="c function">
 <dt id="c.read_cache_page_gfp">
-<em class="property"><span class="pre">struct</span></em> <span class="pre">page</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">read_cache_page_gfp</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../filesystems/api-summary.html#c.address_space" title="address_space"><span class="pre">address_space</span></a> <span class="pre">*</span><em><span class="pre">mapping</span></em>, <span class="pre">pgoff_t</span> <em><span class="pre">index</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.read_cache_page_gfp" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">page</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">read_cache_page_gfp</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../filesystems/api-summary.html#c.address_space" title="address_space"><span class="pre">address_space</span></a> <span class="pre">*</span><em><span class="pre">mapping</span></em>, <span class="pre">pgoff_t</span> <em><span class="pre">index</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.read_cache_page_gfp" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>read into page cache, using specified page allocation flags.</p>
 </dd></dl>
 
@@ -2152,7 +2181,7 @@ and acquires i_mutex as needed.</p>
 </ul>
 <dl class="c function">
 <dt id="c.try_to_release_page">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">try_to_release_page</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.try_to_release_page" title="page"><span class="pre">page</span></a> <span class="pre">*</span><em><span class="pre">page</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.try_to_release_page" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">try_to_release_page</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.try_to_release_page" title="page"><span class="pre">page</span></a> <span class="pre">*</span><em><span class="pre">page</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.try_to_release_page" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>release old fs-specific metadata on a page</p>
 </dd></dl>
 
@@ -2634,7 +2663,7 @@ refcount.</p>
 in the cache for this index.</p>
 <dl class="c function">
 <dt id="c.find_or_create_page">
-<em class="property"><span class="pre">struct</span></em> <span class="pre">page</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">find_or_create_page</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../filesystems/api-summary.html#c.address_space" title="address_space"><span class="pre">address_space</span></a> <span class="pre">*</span><em><span class="pre">mapping</span></em>, <span class="pre">pgoff_t</span> <em><span class="pre">index</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.find_or_create_page" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">page</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">find_or_create_page</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../filesystems/api-summary.html#c.address_space" title="address_space"><span class="pre">address_space</span></a> <span class="pre">*</span><em><span class="pre">mapping</span></em>, <span class="pre">pgoff_t</span> <em><span class="pre">index</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.find_or_create_page" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>locate or add a pagecache page</p>
 </dd></dl>
 
@@ -2988,7 +3017,7 @@ might be called (eg. from IRQ contexts) while this function executes.</p>
 <p><code class="docutils literal notranslate"><span class="pre">0</span></code> on success, negative error code otherwise.</p>
 <dl class="c function">
 <dt id="c.mempool_alloc">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">mempool_alloc</span></code><span class="sig-paren">(</span><span class="pre">mempool_t</span> <span class="pre">*</span><em><span class="pre">pool</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mempool_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">mempool_alloc</span></code><span class="sig-paren">(</span><span class="pre">mempool_t</span> <span class="pre">*</span><em><span class="pre">pool</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mempool_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate an element from a specific memory pool</p>
 </dd></dl>
 
@@ -3080,7 +3109,7 @@ boundaries of 4KBytes.</p>
 and that nothing will try to use the pool after this call.</p>
 <dl class="c function">
 <dt id="c.dma_pool_alloc">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">dma_pool_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">dma_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">mem_flags</span></em>, <span class="pre">dma_addr_t</span> <span class="pre">*</span><em><span class="pre">handle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dma_pool_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">dma_pool_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">dma_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">mem_flags</span></em>, <span class="pre">dma_addr_t</span> <span class="pre">*</span><em><span class="pre">handle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dma_pool_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get a block of consistent memory</p>
 </dd></dl>
 
@@ -3598,7 +3627,7 @@ compound page, and use put_page() instead of <a class="reference internal" href=
 spinlock, but not in NMI context or while holding a raw spinlock.</p>
 <dl class="c function">
 <dt id="c.alloc_pages_exact">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">alloc_pages_exact</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_pages_exact" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">alloc_pages_exact</span></code><span class="sig-paren">(</span><span class="pre">size_t</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_pages_exact" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate an exact number physically-contiguous pages.</p>
 </dd></dl>
 
@@ -3619,7 +3648,7 @@ allocate memory in power-of-two pages.</p>
 <p>pointer to the allocated area or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> in case of error.</p>
 <dl class="c function">
 <dt id="c.alloc_pages_exact_nid">
-<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">alloc_pages_exact_nid</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">nid</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_pages_exact_nid" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">alloc_pages_exact_nid</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">nid</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_pages_exact_nid" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate an exact number of physically-contiguous pages on a node.</p>
 </dd></dl>
 
@@ -3840,7 +3869,7 @@ smaller per-cpu batchsize.</p>
 correctly with respect to min_free_kbytes.</p>
 <dl class="c function">
 <dt id="c.alloc_contig_range">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">alloc_contig_range</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">start</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">end</span></em>, <span class="pre">unsigned</span> <em><span class="pre">migratetype</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_contig_range" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">alloc_contig_range</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">start</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">end</span></em>, <span class="pre">unsigned</span> <em><span class="pre">migratetype</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_contig_range" title="Permalink to this definition">¶</a><br /></dt>
 <dd><ul class="simple">
 <li><p>tries to allocate given range of pages</p></li>
 </ul>
@@ -3872,7 +3901,7 @@ pages which PFN is in [start, end) are allocated for the caller and
 need to be freed with free_contig_range().</p>
 <dl class="c function">
 <dt id="c.alloc_contig_pages">
-<em class="property"><span class="pre">struct</span></em> <span class="pre">page</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">alloc_contig_pages</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">nr_pages</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em>, <span class="pre">int</span> <em><span class="pre">nid</span></em>, <span class="pre">nodemask_t</span> <span class="pre">*</span><em><span class="pre">nodemask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_contig_pages" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">page</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">alloc_contig_pages</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">nr_pages</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp_mask</span></em>, <span class="pre">int</span> <em><span class="pre">nid</span></em>, <span class="pre">nodemask_t</span> <span class="pre">*</span><em><span class="pre">nodemask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_contig_pages" title="Permalink to this definition">¶</a><br /></dt>
 <dd><ul class="simple">
 <li><p>tries to find and allocate contiguous range of pages</p></li>
 </ul>
