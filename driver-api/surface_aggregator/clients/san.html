@@ -388,7 +388,7 @@ should be unregistered via <a class="reference internal" href="#c.san_dgpu_notif
 <h2>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h2>
 <dl class="c struct">
 <dt id="c.san_dgpu_event">
-<em class="property">struct </em><code class="sig-name descname">san_dgpu_event</code><a class="headerlink" href="#c.san_dgpu_event" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">san_dgpu_event</span></code><a class="headerlink" href="#c.san_dgpu_event" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Discrete GPU ACPI event.</p>
 </dd></dl>
 
@@ -420,7 +420,7 @@ should be unregistered via <a class="reference internal" href="#c.san_dgpu_notif
 </dl>
 <dl class="c function">
 <dt id="c.san_client_link">
-int <code class="sig-name descname">san_client_link</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../../infrastructure.html#c.device" title="device">device</a> *<em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#c.san_client_link" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">san_client_link</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../../infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.san_client_link" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Link client as consumer to SAN device.</p>
 </dd></dl>
 
@@ -442,7 +442,7 @@ unbound.</p>
 set up yet, and <code class="docutils literal notranslate"><span class="pre">-ENOMEM</span></code> if device link creation failed.</p>
 <dl class="c function">
 <dt id="c.san_dgpu_notifier_register">
-int <code class="sig-name descname">san_dgpu_notifier_register</code><span class="sig-paren">(</span><em class="property">struct</em> notifier_block *<em>nb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.san_dgpu_notifier_register" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">san_dgpu_notifier_register</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">notifier_block</span> <span class="pre">*</span><em><span class="pre">nb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.san_dgpu_notifier_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Register a SAN dGPU notifier.</p>
 </dd></dl>
 
@@ -457,7 +457,7 @@ ACPI. The registered notifier will be called with <a class="reference internal" 
 as notifier data and the command ID of that event as notifier action.</p>
 <dl class="c function">
 <dt id="c.san_dgpu_notifier_unregister">
-int <code class="sig-name descname">san_dgpu_notifier_unregister</code><span class="sig-paren">(</span><em class="property">struct</em> notifier_block *<em>nb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.san_dgpu_notifier_unregister" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">san_dgpu_notifier_unregister</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">notifier_block</span> <span class="pre">*</span><em><span class="pre">nb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.san_dgpu_notifier_unregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Unregister a SAN dGPU notifier.</p>
 </dd></dl>
 

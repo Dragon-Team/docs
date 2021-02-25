@@ -328,7 +328,7 @@ the subsystem specific bits are torn down and the clients destroyed in turn.</p>
 <h3>Host1x Infrastructure Reference<a class="headerlink" href="#host1x-infrastructure-reference" title="Permalink to this headline">¶</a></h3>
 <dl class="c struct">
 <dt id="c.host1x_client_ops">
-<em class="property">struct </em><code class="sig-name descname">host1x_client_ops</code><a class="headerlink" href="#c.host1x_client_ops" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">host1x_client_ops</span></code><a class="headerlink" href="#c.host1x_client_ops" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>host1x client operations</p>
 </dd></dl>
 
@@ -354,7 +354,7 @@ the subsystem specific bits are torn down and the clients destroyed in turn.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.host1x_client">
-<em class="property">struct </em><code class="sig-name descname">host1x_client</code><a class="headerlink" href="#c.host1x_client" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">host1x_client</span></code><a class="headerlink" href="#c.host1x_client" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>host1x client structure</p>
 </dd></dl>
 
@@ -404,7 +404,7 @@ the subsystem specific bits are torn down and the clients destroyed in turn.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.host1x_driver">
-<em class="property">struct </em><code class="sig-name descname">host1x_driver</code><a class="headerlink" href="#c.host1x_driver" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">host1x_driver</span></code><a class="headerlink" href="#c.host1x_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>host1x logical device driver</p>
 </dd></dl>
 
@@ -436,7 +436,7 @@ the subsystem specific bits are torn down and the clients destroyed in turn.</p>
 </dl>
 <dl class="c function">
 <dt id="c.host1x_device_init">
-int <code class="sig-name descname">host1x_device_init</code><span class="sig-paren">(</span><em class="property">struct</em> host1x_device *<em>device</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_device_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">host1x_device_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">host1x_device</span> <span class="pre">*</span><em><span class="pre">device</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_device_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>initialize a host1x logical device</p>
 </dd></dl>
 
@@ -453,7 +453,7 @@ The client drivers access the subsystem specific driver data using the
 calling dev_get_drvdata()).</p>
 <dl class="c function">
 <dt id="c.host1x_device_exit">
-int <code class="sig-name descname">host1x_device_exit</code><span class="sig-paren">(</span><em class="property">struct</em> host1x_device *<em>device</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_device_exit" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">host1x_device_exit</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">host1x_device</span> <span class="pre">*</span><em><span class="pre">device</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_device_exit" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>uninitialize host1x logical device</p>
 </dd></dl>
 
@@ -469,7 +469,7 @@ subsystem-specific data structure is removed and the functionality can no
 longer be used.</p>
 <dl class="c function">
 <dt id="c.host1x_driver_register_full">
-int <code class="sig-name descname">host1x_driver_register_full</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.host1x_driver" title="host1x_driver">host1x_driver</a> *<em>driver</em>, <em class="property">struct</em> module *<em>owner</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_driver_register_full" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">host1x_driver_register_full</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.host1x_driver" title="host1x_driver"><span class="pre">host1x_driver</span></a> <span class="pre">*</span><em><span class="pre">driver</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">module</span> <span class="pre">*</span><em><span class="pre">owner</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_driver_register_full" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a host1x driver</p>
 </dd></dl>
 
@@ -487,7 +487,7 @@ registration of the driver actually triggers tho logical device creation.
 A logical device will be created for each host1x instance.</p>
 <dl class="c function">
 <dt id="c.host1x_driver_unregister">
-void <code class="sig-name descname">host1x_driver_unregister</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.host1x_driver" title="host1x_driver">host1x_driver</a> *<em>driver</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_driver_unregister" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">host1x_driver_unregister</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.host1x_driver" title="host1x_driver"><span class="pre">host1x_driver</span></a> <span class="pre">*</span><em><span class="pre">driver</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_driver_unregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unregister a host1x driver</p>
 </dd></dl>
 
@@ -501,7 +501,7 @@ void <code class="sig-name descname">host1x_driver_unregister</code><span class=
 bound to, effectively removing the subsystem devices that they represent.</p>
 <dl class="c function">
 <dt id="c.host1x_client_register">
-int <code class="sig-name descname">host1x_client_register</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.host1x_client" title="host1x_client">host1x_client</a> *<em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_client_register" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">host1x_client_register</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.host1x_client" title="host1x_client"><span class="pre">host1x_client</span></a> <span class="pre">*</span><em><span class="pre">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_client_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a host1x client</p>
 </dd></dl>
 
@@ -519,7 +519,7 @@ device and call <a class="reference internal" href="#c.host1x_device_init" title
 <a class="reference internal" href="#c.host1x_client_ops" title="host1x_client_ops"><code class="xref c c-type docutils literal notranslate"><span class="pre">host1x_client_ops.init</span></code></a> implementation.</p>
 <dl class="c function">
 <dt id="c.host1x_client_unregister">
-int <code class="sig-name descname">host1x_client_unregister</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.host1x_client" title="host1x_client">host1x_client</a> *<em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_client_unregister" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">host1x_client_unregister</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.host1x_client" title="host1x_client"><span class="pre">host1x_client</span></a> <span class="pre">*</span><em><span class="pre">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_client_unregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unregister a host1x client</p>
 </dd></dl>
 
@@ -536,7 +536,7 @@ device has already been initialized, it will be torn down.</p>
 <h3>Host1x Syncpoint Reference<a class="headerlink" href="#host1x-syncpoint-reference" title="Permalink to this headline">¶</a></h3>
 <dl class="c function">
 <dt id="c.host1x_syncpt_id">
-u32 <code class="sig-name descname">host1x_syncpt_id</code><span class="sig-paren">(</span><em class="property">struct</em> host1x_syncpt *<em>sp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_id" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u32</span> <code class="sig-name descname"><span class="pre">host1x_syncpt_id</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">host1x_syncpt</span> <span class="pre">*</span><em><span class="pre">sp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_id" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>retrieve syncpoint ID</p>
 </dd></dl>
 
@@ -551,7 +551,7 @@ often used as a value to program into registers that control how hardware
 blocks interact with syncpoints.</p>
 <dl class="c function">
 <dt id="c.host1x_syncpt_incr_max">
-u32 <code class="sig-name descname">host1x_syncpt_incr_max</code><span class="sig-paren">(</span><em class="property">struct</em> host1x_syncpt *<em>sp</em>, u32 <em>incrs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_incr_max" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u32</span> <code class="sig-name descname"><span class="pre">host1x_syncpt_incr_max</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">host1x_syncpt</span> <span class="pre">*</span><em><span class="pre">sp</span></em>, <span class="pre">u32</span> <em><span class="pre">incrs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_incr_max" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update the value sent to hardware</p>
 </dd></dl>
 
@@ -564,7 +564,7 @@ u32 <code class="sig-name descname">host1x_syncpt_incr_max</code><span class="si
 </dl>
 <dl class="c function">
 <dt id="c.host1x_syncpt_incr">
-int <code class="sig-name descname">host1x_syncpt_incr</code><span class="sig-paren">(</span><em class="property">struct</em> host1x_syncpt *<em>sp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_incr" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">host1x_syncpt_incr</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">host1x_syncpt</span> <span class="pre">*</span><em><span class="pre">sp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_incr" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>increment syncpoint value from CPU, updating cache</p>
 </dd></dl>
 
@@ -575,7 +575,7 @@ int <code class="sig-name descname">host1x_syncpt_incr</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.host1x_syncpt_wait">
-int <code class="sig-name descname">host1x_syncpt_wait</code><span class="sig-paren">(</span><em class="property">struct</em> host1x_syncpt *<em>sp</em>, u32 <em>thresh</em>, long <em>timeout</em>, u32 *<em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_wait" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">host1x_syncpt_wait</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">host1x_syncpt</span> <span class="pre">*</span><em><span class="pre">sp</span></em>, <span class="pre">u32</span> <em><span class="pre">thresh</span></em>, <span class="pre">long</span> <em><span class="pre">timeout</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_wait" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>wait for a syncpoint to reach a given value</p>
 </dd></dl>
 
@@ -592,7 +592,7 @@ int <code class="sig-name descname">host1x_syncpt_wait</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.host1x_syncpt_request">
-<em class="property">struct</em> host1x_syncpt *<code class="sig-name descname">host1x_syncpt_request</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.host1x_client" title="host1x_client">host1x_client</a> *<em>client</em>, unsigned long <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_request" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">host1x_syncpt</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">host1x_syncpt_request</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.host1x_client" title="host1x_client"><span class="pre">host1x_client</span></a> <span class="pre">*</span><em><span class="pre">client</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_request" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>request a syncpoint</p>
 </dd></dl>
 
@@ -610,7 +610,7 @@ use by the client exclusively. When no longer using a syncpoint, a host1x
 client driver needs to release it using <a class="reference internal" href="#c.host1x_syncpt_free" title="host1x_syncpt_free"><code class="xref c c-func docutils literal notranslate"><span class="pre">host1x_syncpt_free()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.host1x_syncpt_free">
-void <code class="sig-name descname">host1x_syncpt_free</code><span class="sig-paren">(</span><em class="property">struct</em> host1x_syncpt *<em>sp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_free" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">host1x_syncpt_free</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">host1x_syncpt</span> <span class="pre">*</span><em><span class="pre">sp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_free" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>free a requested syncpoint</p>
 </dd></dl>
 
@@ -627,7 +627,7 @@ under the control of hardware after calling this function, otherwise two
 clients may end up trying to access the same syncpoint concurrently.</p>
 <dl class="c function">
 <dt id="c.host1x_syncpt_read_max">
-u32 <code class="sig-name descname">host1x_syncpt_read_max</code><span class="sig-paren">(</span><em class="property">struct</em> host1x_syncpt *<em>sp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_read_max" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u32</span> <code class="sig-name descname"><span class="pre">host1x_syncpt_read_max</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">host1x_syncpt</span> <span class="pre">*</span><em><span class="pre">sp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_read_max" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>read maximum syncpoint value</p>
 </dd></dl>
 
@@ -641,7 +641,7 @@ u32 <code class="sig-name descname">host1x_syncpt_read_max</code><span class="si
 queue, either in channel or in a software thread.</p>
 <dl class="c function">
 <dt id="c.host1x_syncpt_read_min">
-u32 <code class="sig-name descname">host1x_syncpt_read_min</code><span class="sig-paren">(</span><em class="property">struct</em> host1x_syncpt *<em>sp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_read_min" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u32</span> <code class="sig-name descname"><span class="pre">host1x_syncpt_read_min</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">host1x_syncpt</span> <span class="pre">*</span><em><span class="pre">sp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_read_min" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>read minimum syncpoint value</p>
 </dd></dl>
 
@@ -655,7 +655,7 @@ u32 <code class="sig-name descname">host1x_syncpt_read_min</code><span class="si
 hardware.</p>
 <dl class="c function">
 <dt id="c.host1x_syncpt_read">
-u32 <code class="sig-name descname">host1x_syncpt_read</code><span class="sig-paren">(</span><em class="property">struct</em> host1x_syncpt *<em>sp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_read" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u32</span> <code class="sig-name descname"><span class="pre">host1x_syncpt_read</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">host1x_syncpt</span> <span class="pre">*</span><em><span class="pre">sp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_read" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>read the current syncpoint value</p>
 </dd></dl>
 
@@ -666,7 +666,7 @@ u32 <code class="sig-name descname">host1x_syncpt_read</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.host1x_syncpt_get">
-<em class="property">struct</em> host1x_syncpt *<code class="sig-name descname">host1x_syncpt_get</code><span class="sig-paren">(</span><em class="property">struct</em> host1x *<em>host</em>, unsigned int <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_get" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">host1x_syncpt</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">host1x_syncpt_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">host1x</span> <span class="pre">*</span><em><span class="pre">host</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>obtain a syncpoint by ID</p>
 </dd></dl>
 
@@ -679,7 +679,7 @@ u32 <code class="sig-name descname">host1x_syncpt_read</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.host1x_syncpt_get_base">
-<em class="property">struct</em> host1x_syncpt_base *<code class="sig-name descname">host1x_syncpt_get_base</code><span class="sig-paren">(</span><em class="property">struct</em> host1x_syncpt *<em>sp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_get_base" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">host1x_syncpt_base</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">host1x_syncpt_get_base</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">host1x_syncpt</span> <span class="pre">*</span><em><span class="pre">sp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_get_base" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>obtain the wait base associated with a syncpoint</p>
 </dd></dl>
 
@@ -690,7 +690,7 @@ u32 <code class="sig-name descname">host1x_syncpt_read</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.host1x_syncpt_base_id">
-u32 <code class="sig-name descname">host1x_syncpt_base_id</code><span class="sig-paren">(</span><em class="property">struct</em> host1x_syncpt_base *<em>base</em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_base_id" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u32</span> <code class="sig-name descname"><span class="pre">host1x_syncpt_base_id</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">host1x_syncpt_base</span> <span class="pre">*</span><em><span class="pre">base</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.host1x_syncpt_base_id" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>retrieve the ID of a syncpoint wait base</p>
 </dd></dl>
 

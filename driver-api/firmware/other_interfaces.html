@@ -366,7 +366,7 @@
 <h2>DMI Interfaces<a class="headerlink" href="#dmi-interfaces" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.dmi_check_system">
-int <code class="sig-name descname">dmi_check_system</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> dmi_system_id *<em>list</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_check_system" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">dmi_check_system</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">dmi_system_id</span> <span class="pre">*</span><em><span class="pre">list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_check_system" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check system DMI data</p>
 </dd></dl>
 
@@ -388,7 +388,7 @@ each successful match. Returns the number of matches.</p>
 </dl>
 <dl class="c function">
 <dt id="c.dmi_first_match">
-<em class="property">const</em> <em class="property">struct</em> dmi_system_id *<code class="sig-name descname">dmi_first_match</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> dmi_system_id *<em>list</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_first_match" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">dmi_system_id</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">dmi_first_match</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">dmi_system_id</span> <span class="pre">*</span><em><span class="pre">list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_first_match" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find dmi_system_id structure matching system DMI data</p>
 </dd></dl>
 
@@ -409,7 +409,7 @@ pointer to the matching entry or NULL if there’s no match.</p>
 </dl>
 <dl class="c function">
 <dt id="c.dmi_get_system_info">
-<em class="property">const</em> char *<code class="sig-name descname">dmi_get_system_info</code><span class="sig-paren">(</span>int <em>field</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_get_system_info" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">dmi_get_system_info</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">field</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_get_system_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return DMI data value</p>
 </dd></dl>
 
@@ -422,7 +422,7 @@ complex DMI data checks.</p>
 </dl>
 <dl class="c function">
 <dt id="c.dmi_name_in_vendors">
-int <code class="sig-name descname">dmi_name_in_vendors</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>str</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_name_in_vendors" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">dmi_name_in_vendors</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_name_in_vendors" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Check if string is in the DMI system or board vendor name</p>
 </dd></dl>
 
@@ -433,7 +433,7 @@ int <code class="sig-name descname">dmi_name_in_vendors</code><span class="sig-p
 </dl>
 <dl class="c function">
 <dt id="c.dmi_find_device">
-<em class="property">const</em> <em class="property">struct</em> dmi_device *<code class="sig-name descname">dmi_find_device</code><span class="sig-paren">(</span>int <em>type</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> <em class="property">struct</em> dmi_device *<em>from</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_find_device" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">dmi_device</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">dmi_find_device</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">type</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">name</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">dmi_device</span> <span class="pre">*</span><em><span class="pre">from</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_find_device" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find onboard device by type/name</p>
 </dd></dl>
 
@@ -453,7 +453,7 @@ If <strong>from</strong> is not <code class="docutils literal notranslate"><span
 </dl>
 <dl class="c function">
 <dt id="c.dmi_get_date">
-bool <code class="sig-name descname">dmi_get_date</code><span class="sig-paren">(</span>int <em>field</em>, int *<em>yearp</em>, int *<em>monthp</em>, int *<em>dayp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_get_date" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">dmi_get_date</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">field</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">yearp</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">monthp</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">dayp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_get_date" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>parse a DMI date</p>
 </dd></dl>
 
@@ -478,7 +478,7 @@ range of [0,9999], [0,12] and [0,31] respectively.</p>
 </dl>
 <dl class="c function">
 <dt id="c.dmi_get_bios_year">
-int <code class="sig-name descname">dmi_get_bios_year</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_get_bios_year" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">dmi_get_bios_year</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_get_bios_year" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get a year out of DMI_BIOS_DATE field</p>
 </dd></dl>
 
@@ -495,7 +495,7 @@ or not parseable.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.dmi_walk">
-int <code class="sig-name descname">dmi_walk</code><span class="sig-paren">(</span>void (*<em>decode</em>)<span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> dmi_header*, void*<span class="sig-paren">)</span>, void *<em>private_data</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_walk" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">dmi_walk</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">decode</span></em><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">dmi_header</span><span class="pre">*</span>, <span class="pre">void</span><span class="pre">*</span><span class="sig-paren">)</span>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">private_data</span></em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_walk" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Walk the DMI table and get called back for every record</p>
 </dd></dl>
 
@@ -510,7 +510,7 @@ or a different negative error code if DMI walking fails.</p>
 </dl>
 <dl class="c function">
 <dt id="c.dmi_match">
-bool <code class="sig-name descname">dmi_match</code><span class="sig-paren">(</span><em class="property">enum</em> dmi_field <em>f</em>, <em class="property">const</em> char *<em>str</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_match" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">dmi_match</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <span class="pre">dmi_field</span> <em><span class="pre">f</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_match" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>compare a string to the dmi field (if exists)</p>
 </dd></dl>
 
@@ -525,7 +525,7 @@ bool <code class="sig-name descname">dmi_match</code><span class="sig-paren">(</
 <p>Returns true if the requested field equals to the str (including NULL).</p>
 <dl class="c function">
 <dt id="c.dmi_memdev_type">
-u8 <code class="sig-name descname">dmi_memdev_type</code><span class="sig-paren">(</span>u16 <em>handle</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_memdev_type" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u8</span> <code class="sig-name descname"><span class="pre">dmi_memdev_type</span></code><span class="sig-paren">(</span><span class="pre">u16</span> <em><span class="pre">handle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_memdev_type" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get the memory type</p>
 </dd></dl>
 
@@ -539,7 +539,7 @@ u8 <code class="sig-name descname">dmi_memdev_type</code><span class="sig-paren"
 given DMI handle, or 0x0 if no such DMI handle exists.</p>
 <dl class="c function">
 <dt id="c.dmi_memdev_handle">
-u16 <code class="sig-name descname">dmi_memdev_handle</code><span class="sig-paren">(</span>int <em>slot</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_memdev_handle" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u16</span> <code class="sig-name descname"><span class="pre">dmi_memdev_handle</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">slot</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dmi_memdev_handle" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get the DMI handle of a memory slot</p>
 </dd></dl>
 
@@ -555,7 +555,7 @@ if there is no such slot.</p>
 <h2>EDD Interfaces<a class="headerlink" href="#edd-interfaces" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.edd_show_raw_data">
-ssize_t <code class="sig-name descname">edd_show_raw_data</code><span class="sig-paren">(</span><em class="property">struct</em> edd_device *<em>edev</em>, char *<em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.edd_show_raw_data" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">ssize_t</span> <code class="sig-name descname"><span class="pre">edd_show_raw_data</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">edd_device</span> <span class="pre">*</span><em><span class="pre">edev</span></em>, <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">buf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.edd_show_raw_data" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>copies raw data to buffer for userspace to parse</p>
 </dd></dl>
 
@@ -570,7 +570,7 @@ ssize_t <code class="sig-name descname">edd_show_raw_data</code><span class="sig
 <p>number of bytes written, or -EINVAL on failure</p>
 <dl class="c function">
 <dt id="c.edd_release">
-void <code class="sig-name descname">edd_release</code><span class="sig-paren">(</span><em class="property">struct</em> kobject *<em>kobj</em><span class="sig-paren">)</span><a class="headerlink" href="#c.edd_release" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">edd_release</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">kobject</span> <span class="pre">*</span><em><span class="pre">kobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.edd_release" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>free edd structure</p>
 </dd></dl>
 
@@ -584,7 +584,7 @@ but just in case, we use the release callback anyway.</p>
 </dl>
 <dl class="c function">
 <dt id="c.edd_dev_is_type">
-int <code class="sig-name descname">edd_dev_is_type</code><span class="sig-paren">(</span><em class="property">struct</em> edd_device *<em>edev</em>, <em class="property">const</em> char *<em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#c.edd_dev_is_type" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">edd_dev_is_type</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">edd_device</span> <span class="pre">*</span><em><span class="pre">edev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.edd_dev_is_type" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>is this EDD device a ‘type’ device?</p>
 </dd></dl>
 
@@ -599,7 +599,7 @@ int <code class="sig-name descname">edd_dev_is_type</code><span class="sig-paren
 <p>Returns 1 (TRUE) if it is a ‘type’ device, 0 otherwise.</p>
 <dl class="c function">
 <dt id="c.edd_get_pci_dev">
-<em class="property">struct</em> pci_dev *<code class="sig-name descname">edd_get_pci_dev</code><span class="sig-paren">(</span><em class="property">struct</em> edd_device *<em>edev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.edd_get_pci_dev" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">edd_get_pci_dev</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">edd_device</span> <span class="pre">*</span><em><span class="pre">edev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.edd_get_pci_dev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>finds pci_dev that matches edev</p>
 </dd></dl>
 
@@ -612,7 +612,7 @@ int <code class="sig-name descname">edd_dev_is_type</code><span class="sig-paren
 <p>Returns pci_dev if found, or NULL</p>
 <dl class="c function">
 <dt id="c.edd_init">
-int <code class="sig-name descname">edd_init</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.edd_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">edd_init</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#c.edd_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>creates sysfs tree of EDD data</p>
 </dd></dl>
 
@@ -635,7 +635,7 @@ and processed one by one. ARM’s SMCCC is used to pass the execution
 of the requests on to a secure monitor (EL3).</p>
 <dl class="c enum">
 <dt id="c.stratix10_svc_command_code">
-<em class="property">enum </em><code class="sig-name descname">stratix10_svc_command_code</code><a class="headerlink" href="#c.stratix10_svc_command_code" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">stratix10_svc_command_code</span></code><a class="headerlink" href="#c.stratix10_svc_command_code" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>supported service commands</p>
 </dd></dl>
 
@@ -677,7 +677,7 @@ is SVC_STATUS_OK or SVC_STATUS_ERROR</p>
 </dl>
 <dl class="c struct">
 <dt id="c.stratix10_svc_client_msg">
-<em class="property">struct </em><code class="sig-name descname">stratix10_svc_client_msg</code><a class="headerlink" href="#c.stratix10_svc_client_msg" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">stratix10_svc_client_msg</span></code><a class="headerlink" href="#c.stratix10_svc_client_msg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>message sent by client to service</p>
 </dd></dl>
 
@@ -703,7 +703,7 @@ is SVC_STATUS_OK or SVC_STATUS_ERROR</p>
 </dl>
 <dl class="c struct">
 <dt id="c.stratix10_svc_command_config_type">
-<em class="property">struct </em><code class="sig-name descname">stratix10_svc_command_config_type</code><a class="headerlink" href="#c.stratix10_svc_command_config_type" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">stratix10_svc_command_config_type</span></code><a class="headerlink" href="#c.stratix10_svc_command_config_type" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>config type</p>
 </dd></dl>
 
@@ -720,7 +720,7 @@ is SVC_STATUS_OK or SVC_STATUS_ERROR</p>
 </dl>
 <dl class="c struct">
 <dt id="c.stratix10_svc_cb_data">
-<em class="property">struct </em><code class="sig-name descname">stratix10_svc_cb_data</code><a class="headerlink" href="#c.stratix10_svc_cb_data" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">stratix10_svc_cb_data</span></code><a class="headerlink" href="#c.stratix10_svc_cb_data" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>callback data structure from service layer</p>
 </dd></dl>
 
@@ -746,7 +746,7 @@ is SVC_STATUS_OK or SVC_STATUS_ERROR</p>
 </dl>
 <dl class="c struct">
 <dt id="c.stratix10_svc_client">
-<em class="property">struct </em><code class="sig-name descname">stratix10_svc_client</code><a class="headerlink" href="#c.stratix10_svc_client" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">stratix10_svc_client</span></code><a class="headerlink" href="#c.stratix10_svc_client" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>service client structure</p>
 </dd></dl>
 
@@ -769,7 +769,7 @@ is SVC_STATUS_OK or SVC_STATUS_ERROR</p>
 </dl>
 <dl class="c function">
 <dt id="c.stratix10_svc_request_channel_byname">
-<em class="property">struct</em> stratix10_svc_chan *<code class="sig-name descname">stratix10_svc_request_channel_byname</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.stratix10_svc_client" title="stratix10_svc_client">stratix10_svc_client</a> *<em>client</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.stratix10_svc_request_channel_byname" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">stratix10_svc_chan</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">stratix10_svc_request_channel_byname</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.stratix10_svc_client" title="stratix10_svc_client"><span class="pre">stratix10_svc_client</span></a> <span class="pre">*</span><em><span class="pre">client</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.stratix10_svc_request_channel_byname" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>request a service channel</p>
 </dd></dl>
 
@@ -787,7 +787,7 @@ is SVC_STATUS_OK or SVC_STATUS_ERROR</p>
 or ERR_PTR() on error.</p>
 <dl class="c function">
 <dt id="c.stratix10_svc_free_channel">
-void <code class="sig-name descname">stratix10_svc_free_channel</code><span class="sig-paren">(</span><em class="property">struct</em> stratix10_svc_chan *<em>chan</em><span class="sig-paren">)</span><a class="headerlink" href="#c.stratix10_svc_free_channel" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">stratix10_svc_free_channel</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">stratix10_svc_chan</span> <span class="pre">*</span><em><span class="pre">chan</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.stratix10_svc_free_channel" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>free service channel</p>
 </dd></dl>
 
@@ -800,7 +800,7 @@ void <code class="sig-name descname">stratix10_svc_free_channel</code><span clas
 <p>This function is used by service client to free a service channel.</p>
 <dl class="c function">
 <dt id="c.stratix10_svc_send">
-int <code class="sig-name descname">stratix10_svc_send</code><span class="sig-paren">(</span><em class="property">struct</em> stratix10_svc_chan *<em>chan</em>, void *<em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.stratix10_svc_send" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">stratix10_svc_send</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">stratix10_svc_chan</span> <span class="pre">*</span><em><span class="pre">chan</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">msg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.stratix10_svc_send" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>send a message data to the remote</p>
 </dd></dl>
 
@@ -819,7 +819,7 @@ layer driver’s queue for being sent to the secure world.</p>
 <p>0 for success, -ENOMEM or -ENOBUFS on error.</p>
 <dl class="c function">
 <dt id="c.stratix10_svc_done">
-void <code class="sig-name descname">stratix10_svc_done</code><span class="sig-paren">(</span><em class="property">struct</em> stratix10_svc_chan *<em>chan</em><span class="sig-paren">)</span><a class="headerlink" href="#c.stratix10_svc_done" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">stratix10_svc_done</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">stratix10_svc_chan</span> <span class="pre">*</span><em><span class="pre">chan</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.stratix10_svc_done" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>complete service request transactions</p>
 </dd></dl>
 
@@ -834,7 +834,7 @@ or there is an error in the request process. It allows the service layer
 to stop the running thread to have maximize savings in kernel resources.</p>
 <dl class="c function">
 <dt id="c.stratix10_svc_allocate_memory">
-void *<code class="sig-name descname">stratix10_svc_allocate_memory</code><span class="sig-paren">(</span><em class="property">struct</em> stratix10_svc_chan *<em>chan</em>, size_t <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.stratix10_svc_allocate_memory" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">stratix10_svc_allocate_memory</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">stratix10_svc_chan</span> <span class="pre">*</span><em><span class="pre">chan</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.stratix10_svc_allocate_memory" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate memory</p>
 </dd></dl>
 
@@ -852,7 +852,7 @@ memory pool, service client uses this function to get allocated buffers.</p>
 <p>address of allocated memory on success, or ERR_PTR() on error.</p>
 <dl class="c function">
 <dt id="c.stratix10_svc_free_memory">
-void <code class="sig-name descname">stratix10_svc_free_memory</code><span class="sig-paren">(</span><em class="property">struct</em> stratix10_svc_chan *<em>chan</em>, void *<em>kaddr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.stratix10_svc_free_memory" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">stratix10_svc_free_memory</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">stratix10_svc_chan</span> <span class="pre">*</span><em><span class="pre">chan</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">kaddr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.stratix10_svc_free_memory" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>free allocated memory</p>
 </dd></dl>
 

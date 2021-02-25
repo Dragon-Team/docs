@@ -409,7 +409,7 @@ be dereferenced to <cite>struct cn_msg *</cite>:</p>
 <blockquote>
 <div><dl class="c function">
 <dt id="c.cn_add_callback">
-int <code class="sig-name descname">cn_add_callback</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> cb_id *<em>id</em>, <em class="property">const</em> char *<em>name</em>, void (*<em>callback</em>)<span class="sig-paren">(</span><em class="property">struct</em> cn_msg*, <em class="property">struct</em> netlink_skb_parms*<span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.cn_add_callback" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cn_add_callback</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">cb_id</span> <span class="pre">*</span><em><span class="pre">id</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">name</span></em>, <span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">callback</span></em><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">cn_msg</span><span class="pre">*</span>, <em class="property"><span class="pre">struct</span></em> <span class="pre">netlink_skb_parms</span><span class="pre">*</span><span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.cn_add_callback" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Registers new callback with connector core.</p>
 </dd></dl>
 
@@ -427,7 +427,7 @@ parameters are <code class="docutils literal notranslate"><span class="pre">cn_m
 </dl>
 <dl class="c function">
 <dt id="c.cn_del_callback">
-void <code class="sig-name descname">cn_del_callback</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> cb_id *<em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cn_del_callback" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">cn_del_callback</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">cb_id</span> <span class="pre">*</span><em><span class="pre">id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cn_del_callback" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Unregisters new callback with connector core.</p>
 </dd></dl>
 
@@ -438,7 +438,7 @@ void <code class="sig-name descname">cn_del_callback</code><span class="sig-pare
 </dl>
 <dl class="c function">
 <dt id="c.cn_netlink_send_mult">
-int <code class="sig-name descname">cn_netlink_send_mult</code><span class="sig-paren">(</span><em class="property">struct</em> cn_msg *<em>msg</em>, u16 <em>len</em>, u32 <em>portid</em>, u32 <em>group</em>, gfp_t <em>gfp_mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cn_netlink_send_mult" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cn_netlink_send_mult</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">cn_msg</span> <span class="pre">*</span><em><span class="pre">msg</span></em>, <span class="pre">u16</span> <em><span class="pre">len</span></em>, <span class="pre">u32</span> <em><span class="pre">portid</span></em>, <span class="pre">u32</span> <em><span class="pre">group</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cn_netlink_send_mult" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Sends message to the specified groups.</p>
 </dd></dl>
 
@@ -469,7 +469,7 @@ fail under strong memory pressure.</p>
 <p>If there are no listeners for given group <code class="docutils literal notranslate"><span class="pre">-ESRCH</span></code> can be returned.</p>
 <dl class="c function">
 <dt id="c.cn_netlink_send">
-int <code class="sig-name descname">cn_netlink_send</code><span class="sig-paren">(</span><em class="property">struct</em> cn_msg *<em>msg</em>, u32 <em>portid</em>, u32 <em>group</em>, gfp_t <em>gfp_mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cn_netlink_send" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cn_netlink_send</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">cn_msg</span> <span class="pre">*</span><em><span class="pre">msg</span></em>, <span class="pre">u32</span> <em><span class="pre">portid</span></em>, <span class="pre">u32</span> <em><span class="pre">group</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp_mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cn_netlink_send" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Sends message to the specified groups.</p>
 </dd></dl>
 

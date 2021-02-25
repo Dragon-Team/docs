@@ -456,7 +456,7 @@ their control.</p>
 <h3>Alternate mode structs<a class="headerlink" href="#alternate-mode-structs" title="Permalink to this headline">¶</a></h3>
 <dl class="c struct">
 <dt id="c.typec_altmode_ops">
-<em class="property">struct </em><code class="sig-name descname">typec_altmode_ops</code><a class="headerlink" href="#c.typec_altmode_ops" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">typec_altmode_ops</span></code><a class="headerlink" href="#c.typec_altmode_ops" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Alternate mode specific operations vector</p>
 </dd></dl>
 
@@ -488,7 +488,7 @@ their control.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.typec_altmode_driver">
-<em class="property">struct </em><code class="sig-name descname">typec_altmode_driver</code><a class="headerlink" href="#c.typec_altmode_driver" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">typec_altmode_driver</span></code><a class="headerlink" href="#c.typec_altmode_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>USB Type-C alternate mode device driver</p>
 </dd></dl>
 
@@ -520,7 +520,7 @@ handle all SVID specific communication.</p>
 <h3>Alternate mode driver registering/unregistering<a class="headerlink" href="#alternate-mode-driver-registering-unregistering" title="Permalink to this headline">¶</a></h3>
 <dl class="c macro">
 <dt id="c.typec_altmode_register_driver">
-<code class="sig-name descname">typec_altmode_register_driver</code><a class="headerlink" href="#c.typec_altmode_register_driver" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">typec_altmode_register_driver</span></code><a class="headerlink" href="#c.typec_altmode_register_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">typec_altmode_register_driver</span> <span class="pre">(drv)</span></code></p>
@@ -537,7 +537,7 @@ handle all SVID specific communication.</p>
 handle all SVID specific communication.</p>
 <dl class="c function">
 <dt id="c.typec_altmode_unregister_driver">
-void <code class="sig-name descname">typec_altmode_unregister_driver</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.typec_altmode_driver" title="typec_altmode_driver">typec_altmode_driver</a> *<em>drv</em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_altmode_unregister_driver" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">typec_altmode_unregister_driver</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.typec_altmode_driver" title="typec_altmode_driver"><span class="pre">typec_altmode_driver</span></a> <span class="pre">*</span><em><span class="pre">drv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_altmode_unregister_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unregisters a USB Type-C alternate mode device driver</p>
 </dd></dl>
 
@@ -554,7 +554,7 @@ handle all SVID specific communication.</p>
 <h3>Alternate mode driver operations<a class="headerlink" href="#alternate-mode-driver-operations" title="Permalink to this headline">¶</a></h3>
 <dl class="c function">
 <dt id="c.typec_altmode_notify">
-int <code class="sig-name descname">typec_altmode_notify</code><span class="sig-paren">(</span><em class="property">struct</em> typec_altmode *<em>adev</em>, unsigned long <em>conf</em>, void *<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_altmode_notify" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">typec_altmode_notify</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">typec_altmode</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">conf</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_altmode_notify" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Communication between the OS and alternate mode driver</p>
 </dd></dl>
 
@@ -576,7 +576,7 @@ drivers can also send notifications to the alternate mode drivers. The actual
 communication will be specific for every SVID.</p>
 <dl class="c function">
 <dt id="c.typec_altmode_enter">
-int <code class="sig-name descname">typec_altmode_enter</code><span class="sig-paren">(</span><em class="property">struct</em> typec_altmode *<em>adev</em>, u32 *<em>vdo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_altmode_enter" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">typec_altmode_enter</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">typec_altmode</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">vdo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_altmode_enter" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Enter Mode</p>
 </dd></dl>
 
@@ -594,7 +594,7 @@ Enter Mode command. If the alternate mode does not require VDO, <strong>vdo</str
 NULL.</p>
 <dl class="c function">
 <dt id="c.typec_altmode_exit">
-int <code class="sig-name descname">typec_altmode_exit</code><span class="sig-paren">(</span><em class="property">struct</em> typec_altmode *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_altmode_exit" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">typec_altmode_exit</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">typec_altmode</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_altmode_exit" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Exit Mode</p>
 </dd></dl>
 
@@ -607,7 +607,7 @@ int <code class="sig-name descname">typec_altmode_exit</code><span class="sig-pa
 <p>The partner of <strong>adev</strong> has initiated Exit Mode command.</p>
 <dl class="c function">
 <dt id="c.typec_altmode_attention">
-void <code class="sig-name descname">typec_altmode_attention</code><span class="sig-paren">(</span><em class="property">struct</em> typec_altmode *<em>adev</em>, u32 <em>vdo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_altmode_attention" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">typec_altmode_attention</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">typec_altmode</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <span class="pre">u32</span> <em><span class="pre">vdo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_altmode_attention" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Attention command</p>
 </dd></dl>
 
@@ -622,7 +622,7 @@ void <code class="sig-name descname">typec_altmode_attention</code><span class="
 <p>Notifies the partner of <strong>adev</strong> about Attention command.</p>
 <dl class="c function">
 <dt id="c.typec_altmode_vdm">
-int <code class="sig-name descname">typec_altmode_vdm</code><span class="sig-paren">(</span><em class="property">struct</em> typec_altmode *<em>adev</em>, <em class="property">const</em> u32 <em>header</em>, <em class="property">const</em> u32 *<em>vdo</em>, int <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_altmode_vdm" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">typec_altmode_vdm</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">typec_altmode</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">u32</span> <em><span class="pre">header</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">vdo</span></em>, <span class="pre">int</span> <em><span class="pre">count</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_altmode_vdm" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Send Vendor Defined Messages (VDM) to the partner</p>
 </dd></dl>
 
@@ -646,7 +646,7 @@ received from the partners to the alternate mode drivers.</p>
 <h3>API for the port drivers<a class="headerlink" href="#api-for-the-port-drivers" title="Permalink to this headline">¶</a></h3>
 <dl class="c function">
 <dt id="c.typec_match_altmode">
-<em class="property">struct</em> typec_altmode *<code class="sig-name descname">typec_match_altmode</code><span class="sig-paren">(</span><em class="property">struct</em> typec_altmode **<em>altmodes</em>, size_t <em>n</em>, u16 <em>svid</em>, u8 <em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_match_altmode" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">typec_altmode</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">typec_match_altmode</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">typec_altmode</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">altmodes</span></em>, <span class="pre">size_t</span> <em><span class="pre">n</span></em>, <span class="pre">u16</span> <em><span class="pre">svid</span></em>, <span class="pre">u8</span> <em><span class="pre">mode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_match_altmode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Match SVID and mode to an array of alternate modes</p>
 </dd></dl>
 
@@ -669,7 +669,7 @@ match is found.</p>
 <h3>Cable Plug operations<a class="headerlink" href="#cable-plug-operations" title="Permalink to this headline">¶</a></h3>
 <dl class="c function">
 <dt id="c.typec_altmode_get_plug">
-<em class="property">struct</em> typec_altmode *<code class="sig-name descname">typec_altmode_get_plug</code><span class="sig-paren">(</span><em class="property">struct</em> typec_altmode *<em>adev</em>, <em class="property">enum</em> typec_plug_index <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_altmode_get_plug" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">typec_altmode</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">typec_altmode_get_plug</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">typec_altmode</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">enum</span></em> <span class="pre">typec_plug_index</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_altmode_get_plug" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find cable plug alternate mode</p>
 </dd></dl>
 
@@ -685,7 +685,7 @@ match is found.</p>
 handle to the cable plug alternate mode, or NULL if none is found.</p>
 <dl class="c function">
 <dt id="c.typec_altmode_put_plug">
-void <code class="sig-name descname">typec_altmode_put_plug</code><span class="sig-paren">(</span><em class="property">struct</em> typec_altmode *<em>plug</em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_altmode_put_plug" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">typec_altmode_put_plug</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">typec_altmode</span> <span class="pre">*</span><em><span class="pre">plug</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.typec_altmode_put_plug" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Decrement cable plug alternate mode reference count</p>
 </dd></dl>
 

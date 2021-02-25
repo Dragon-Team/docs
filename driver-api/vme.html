@@ -618,7 +618,7 @@ callback function is declared as follows.</p>
 <h2>VME API<a class="headerlink" href="#vme-api" title="Permalink to this headline">¶</a></h2>
 <dl class="c struct">
 <dt id="c.vme_dev">
-<em class="property">struct </em><code class="sig-name descname">vme_dev</code><a class="headerlink" href="#c.vme_dev" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">vme_dev</span></code><a class="headerlink" href="#c.vme_dev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Structure representing a VME device</p>
 </dd></dl>
 
@@ -647,7 +647,7 @@ callback function is declared as follows.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.vme_driver">
-<em class="property">struct </em><code class="sig-name descname">vme_driver</code><a class="headerlink" href="#c.vme_driver" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">vme_driver</span></code><a class="headerlink" href="#c.vme_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Structure representing a VME driver</p>
 </dd></dl>
 
@@ -680,7 +680,7 @@ as the module name.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vme_alloc_consistent">
-void *<code class="sig-name descname">vme_alloc_consistent</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em>, size_t <em>size</em>, dma_addr_t *<em>dma</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_alloc_consistent" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">vme_alloc_consistent</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">dma_addr_t</span> <span class="pre">*</span><em><span class="pre">dma</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_alloc_consistent" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate contiguous memory.</p>
 </dd></dl>
 
@@ -700,7 +700,7 @@ create the buffers for the slave windows.</p>
 <p>Virtual address of allocation on success, NULL on failure.</p>
 <dl class="c function">
 <dt id="c.vme_free_consistent">
-void <code class="sig-name descname">vme_free_consistent</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em>, size_t <em>size</em>, void *<em>vaddr</em>, dma_addr_t <em>dma</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_free_consistent" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">vme_free_consistent</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">vaddr</span></em>, <span class="pre">dma_addr_t</span> <em><span class="pre">dma</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_free_consistent" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Free previously allocated memory.</p>
 </dd></dl>
 
@@ -719,7 +719,7 @@ void <code class="sig-name descname">vme_free_consistent</code><span class="sig-
 <p>Free previously allocated block of contiguous memory.</p>
 <dl class="c function">
 <dt id="c.vme_get_size">
-size_t <code class="sig-name descname">vme_get_size</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_get_size" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">vme_get_size</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_get_size" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Helper function returning size of a VME window</p>
 </dd></dl>
 
@@ -736,7 +736,7 @@ depending on the type of window resource handed to it.</p>
 <p>Size of the window on success, zero on failure.</p>
 <dl class="c function">
 <dt id="c.vme_slave_request">
-<em class="property">struct</em> vme_resource *<code class="sig-name descname">vme_slave_request</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vme_dev" title="vme_dev">vme_dev</a> *<em>vdev</em>, u32 <em>address</em>, u32 <em>cycle</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_slave_request" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">vme_slave_request</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.vme_dev" title="vme_dev"><span class="pre">vme_dev</span></a> <span class="pre">*</span><em><span class="pre">vdev</span></em>, <span class="pre">u32</span> <em><span class="pre">address</span></em>, <span class="pre">u32</span> <em><span class="pre">cycle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_slave_request" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Request a VME slave window resource.</p>
 </dd></dl>
 
@@ -756,7 +756,7 @@ address space and data transfer cycle.</p>
 <p>Pointer to VME resource on success, NULL on failure.</p>
 <dl class="c function">
 <dt id="c.vme_slave_set">
-int <code class="sig-name descname">vme_slave_set</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em>, int <em>enabled</em>, unsigned long long <em>vme_base</em>, unsigned long long <em>size</em>, dma_addr_t <em>buf_base</em>, u32 <em>aspace</em>, u32 <em>cycle</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_slave_set" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_slave_set</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em>, <span class="pre">int</span> <em><span class="pre">enabled</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">vme_base</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">size</span></em>, <span class="pre">dma_addr_t</span> <em><span class="pre">buf_base</span></em>, <span class="pre">u32</span> <em><span class="pre">aspace</span></em>, <span class="pre">u32</span> <em><span class="pre">cycle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_slave_set" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set VME slave window configuration.</p>
 </dd></dl>
 
@@ -788,7 +788,7 @@ returned.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vme_slave_get">
-int <code class="sig-name descname">vme_slave_get</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em>, int *<em>enabled</em>, unsigned long long *<em>vme_base</em>, unsigned long long *<em>size</em>, dma_addr_t *<em>buf_base</em>, u32 *<em>aspace</em>, u32 *<em>cycle</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_slave_get" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_slave_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">enabled</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">*</span><em><span class="pre">vme_base</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">*</span><em><span class="pre">size</span></em>, <span class="pre">dma_addr_t</span> <span class="pre">*</span><em><span class="pre">buf_base</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">aspace</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">cycle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_slave_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Retrieve VME slave window configuration.</p>
 </dd></dl>
 
@@ -818,7 +818,7 @@ int <code class="sig-name descname">vme_slave_get</code><span class="sig-paren">
 </dl>
 <dl class="c function">
 <dt id="c.vme_slave_free">
-void <code class="sig-name descname">vme_slave_free</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_slave_free" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">vme_slave_free</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_slave_free" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Free VME slave window</p>
 </dd></dl>
 
@@ -831,7 +831,7 @@ void <code class="sig-name descname">vme_slave_free</code><span class="sig-paren
 <p>Free the provided slave resource so that it may be reallocated.</p>
 <dl class="c function">
 <dt id="c.vme_master_request">
-<em class="property">struct</em> vme_resource *<code class="sig-name descname">vme_master_request</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vme_dev" title="vme_dev">vme_dev</a> *<em>vdev</em>, u32 <em>address</em>, u32 <em>cycle</em>, u32 <em>dwidth</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_master_request" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">vme_master_request</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.vme_dev" title="vme_dev"><span class="pre">vme_dev</span></a> <span class="pre">*</span><em><span class="pre">vdev</span></em>, <span class="pre">u32</span> <em><span class="pre">address</span></em>, <span class="pre">u32</span> <em><span class="pre">cycle</span></em>, <span class="pre">u32</span> <em><span class="pre">dwidth</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_master_request" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Request a VME master window resource.</p>
 </dd></dl>
 
@@ -853,7 +853,7 @@ address space, data transfer cycle and width.</p>
 <p>Pointer to VME resource on success, NULL on failure.</p>
 <dl class="c function">
 <dt id="c.vme_master_set">
-int <code class="sig-name descname">vme_master_set</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em>, int <em>enabled</em>, unsigned long long <em>vme_base</em>, unsigned long long <em>size</em>, u32 <em>aspace</em>, u32 <em>cycle</em>, u32 <em>dwidth</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_master_set" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_master_set</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em>, <span class="pre">int</span> <em><span class="pre">enabled</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">vme_base</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">size</span></em>, <span class="pre">u32</span> <em><span class="pre">aspace</span></em>, <span class="pre">u32</span> <em><span class="pre">cycle</span></em>, <span class="pre">u32</span> <em><span class="pre">dwidth</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_master_set" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set VME master window configuration.</p>
 </dd></dl>
 
@@ -885,7 +885,7 @@ returned.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vme_master_get">
-int <code class="sig-name descname">vme_master_get</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em>, int *<em>enabled</em>, unsigned long long *<em>vme_base</em>, unsigned long long *<em>size</em>, u32 *<em>aspace</em>, u32 *<em>cycle</em>, u32 *<em>dwidth</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_master_get" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_master_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">enabled</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">*</span><em><span class="pre">vme_base</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">*</span><em><span class="pre">size</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">aspace</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">cycle</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">dwidth</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_master_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Retrieve VME master window configuration.</p>
 </dd></dl>
 
@@ -915,7 +915,7 @@ int <code class="sig-name descname">vme_master_get</code><span class="sig-paren"
 </dl>
 <dl class="c function">
 <dt id="c.vme_master_read">
-ssize_t <code class="sig-name descname">vme_master_read</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em>, void *<em>buf</em>, size_t <em>count</em>, loff_t <em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_master_read" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">ssize_t</span> <code class="sig-name descname"><span class="pre">vme_master_read</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">buf</span></em>, <span class="pre">size_t</span> <em><span class="pre">count</span></em>, <span class="pre">loff_t</span> <em><span class="pre">offset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_master_read" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Read data from VME space into a buffer.</p>
 </dd></dl>
 
@@ -942,7 +942,7 @@ returned.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vme_master_write">
-ssize_t <code class="sig-name descname">vme_master_write</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em>, void *<em>buf</em>, size_t <em>count</em>, loff_t <em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_master_write" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">ssize_t</span> <code class="sig-name descname"><span class="pre">vme_master_write</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">buf</span></em>, <span class="pre">size_t</span> <em><span class="pre">count</span></em>, <span class="pre">loff_t</span> <em><span class="pre">offset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_master_write" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Write data out to VME space from a buffer.</p>
 </dd></dl>
 
@@ -969,7 +969,7 @@ returned.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vme_master_rmw">
-unsigned int <code class="sig-name descname">vme_master_rmw</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em>, unsigned int <em>mask</em>, unsigned int <em>compare</em>, unsigned int <em>swap</em>, loff_t <em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_master_rmw" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_master_rmw</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">mask</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">compare</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">swap</span></em>, <span class="pre">loff_t</span> <em><span class="pre">offset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_master_rmw" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Perform read-modify-write cycle.</p>
 </dd></dl>
 
@@ -1001,7 +1001,7 @@ errors may also be returned.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vme_master_mmap">
-int <code class="sig-name descname">vme_master_mmap</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em>, <em class="property">struct</em> vm_area_struct *<em>vma</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_master_mmap" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_master_mmap</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">vm_area_struct</span> <span class="pre">*</span><em><span class="pre">vma</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_master_mmap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Mmap region of VME master window.</p>
 </dd></dl>
 
@@ -1022,7 +1022,7 @@ errors may also be returned.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vme_master_free">
-void <code class="sig-name descname">vme_master_free</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_master_free" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">vme_master_free</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_master_free" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Free VME master window</p>
 </dd></dl>
 
@@ -1035,7 +1035,7 @@ void <code class="sig-name descname">vme_master_free</code><span class="sig-pare
 <p>Free the provided master resource so that it may be reallocated.</p>
 <dl class="c function">
 <dt id="c.vme_dma_request">
-<em class="property">struct</em> vme_resource *<code class="sig-name descname">vme_dma_request</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vme_dev" title="vme_dev">vme_dev</a> *<em>vdev</em>, u32 <em>route</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_request" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">vme_dma_request</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.vme_dev" title="vme_dev"><span class="pre">vme_dev</span></a> <span class="pre">*</span><em><span class="pre">vdev</span></em>, <span class="pre">u32</span> <em><span class="pre">route</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_request" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Request a DMA controller.</p>
 </dd></dl>
 
@@ -1053,7 +1053,7 @@ requested source/destination combination.</p>
 <p>Pointer to VME DMA resource on success, NULL on failure.</p>
 <dl class="c function">
 <dt id="c.vme_new_dma_list">
-<em class="property">struct</em> vme_dma_list *<code class="sig-name descname">vme_new_dma_list</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_new_dma_list" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">vme_dma_list</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">vme_new_dma_list</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_new_dma_list" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create new VME DMA list.</p>
 </dd></dl>
 
@@ -1072,7 +1072,7 @@ the list once it is no longer required with <a class="reference internal" href="
 </dl>
 <dl class="c function">
 <dt id="c.vme_dma_pattern_attribute">
-<em class="property">struct</em> vme_dma_attr *<code class="sig-name descname">vme_dma_pattern_attribute</code><span class="sig-paren">(</span>u32 <em>pattern</em>, u32 <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_pattern_attribute" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">vme_dma_attr</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">vme_dma_pattern_attribute</span></code><span class="sig-paren">(</span><span class="pre">u32</span> <em><span class="pre">pattern</span></em>, <span class="pre">u32</span> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_pattern_attribute" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create “Pattern” type VME DMA list attribute.</p>
 </dd></dl>
 
@@ -1091,7 +1091,7 @@ responsibility of the user to free used attributes using
 <p>Pointer to VME DMA attribute, NULL on failure.</p>
 <dl class="c function">
 <dt id="c.vme_dma_pci_attribute">
-<em class="property">struct</em> vme_dma_attr *<code class="sig-name descname">vme_dma_pci_attribute</code><span class="sig-paren">(</span>dma_addr_t <em>address</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_pci_attribute" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">vme_dma_attr</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">vme_dma_pci_attribute</span></code><span class="sig-paren">(</span><span class="pre">dma_addr_t</span> <em><span class="pre">address</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_pci_attribute" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create “PCI” type VME DMA list attribute.</p>
 </dd></dl>
 
@@ -1108,7 +1108,7 @@ using <a class="reference internal" href="#c.vme_dma_free_attribute" title="vme_
 <p>Pointer to VME DMA attribute, NULL on failure.</p>
 <dl class="c function">
 <dt id="c.vme_dma_vme_attribute">
-<em class="property">struct</em> vme_dma_attr *<code class="sig-name descname">vme_dma_vme_attribute</code><span class="sig-paren">(</span>unsigned long long <em>address</em>, u32 <em>aspace</em>, u32 <em>cycle</em>, u32 <em>dwidth</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_vme_attribute" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">vme_dma_attr</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">vme_dma_vme_attribute</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">address</span></em>, <span class="pre">u32</span> <em><span class="pre">aspace</span></em>, <span class="pre">u32</span> <em><span class="pre">cycle</span></em>, <span class="pre">u32</span> <em><span class="pre">dwidth</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_vme_attribute" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create “VME” type VME DMA list attribute.</p>
 </dd></dl>
 
@@ -1131,7 +1131,7 @@ using <a class="reference internal" href="#c.vme_dma_free_attribute" title="vme_
 <p>Pointer to VME DMA attribute, NULL on failure.</p>
 <dl class="c function">
 <dt id="c.vme_dma_free_attribute">
-void <code class="sig-name descname">vme_dma_free_attribute</code><span class="sig-paren">(</span><em class="property">struct</em> vme_dma_attr *<em>attributes</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_free_attribute" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">vme_dma_free_attribute</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_dma_attr</span> <span class="pre">*</span><em><span class="pre">attributes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_free_attribute" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Free DMA list attribute.</p>
 </dd></dl>
 
@@ -1145,7 +1145,7 @@ void <code class="sig-name descname">vme_dma_free_attribute</code><span class="s
 once <a class="reference internal" href="#c.vme_dma_list_add" title="vme_dma_list_add"><code class="xref c c-func docutils literal notranslate"><span class="pre">vme_dma_list_add()</span></code></a> has returned.</p>
 <dl class="c function">
 <dt id="c.vme_dma_list_add">
-int <code class="sig-name descname">vme_dma_list_add</code><span class="sig-paren">(</span><em class="property">struct</em> vme_dma_list *<em>list</em>, <em class="property">struct</em> vme_dma_attr *<em>src</em>, <em class="property">struct</em> vme_dma_attr *<em>dest</em>, size_t <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_list_add" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_dma_list_add</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_dma_list</span> <span class="pre">*</span><em><span class="pre">list</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">vme_dma_attr</span> <span class="pre">*</span><em><span class="pre">src</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">vme_dma_attr</span> <span class="pre">*</span><em><span class="pre">dest</span></em>, <span class="pre">size_t</span> <em><span class="pre">count</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_list_add" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Add enty to a VME DMA list.</p>
 </dd></dl>
 
@@ -1173,7 +1173,7 @@ Hardware specific errors also possible.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vme_dma_list_exec">
-int <code class="sig-name descname">vme_dma_list_exec</code><span class="sig-paren">(</span><em class="property">struct</em> vme_dma_list *<em>list</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_list_exec" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_dma_list_exec</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_dma_list</span> <span class="pre">*</span><em><span class="pre">list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_list_exec" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Queue a VME DMA list for execution.</p>
 </dd></dl>
 
@@ -1192,7 +1192,7 @@ list has been executed.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vme_dma_list_free">
-int <code class="sig-name descname">vme_dma_list_free</code><span class="sig-paren">(</span><em class="property">struct</em> vme_dma_list *<em>list</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_list_free" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_dma_list_free</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_dma_list</span> <span class="pre">*</span><em><span class="pre">list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_list_free" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Free a VME DMA list.</p>
 </dd></dl>
 
@@ -1210,7 +1210,7 @@ int <code class="sig-name descname">vme_dma_list_free</code><span class="sig-par
 </dl>
 <dl class="c function">
 <dt id="c.vme_dma_free">
-int <code class="sig-name descname">vme_dma_free</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_free" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_dma_free</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_dma_free" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Free a VME DMA resource.</p>
 </dd></dl>
 
@@ -1228,7 +1228,7 @@ int <code class="sig-name descname">vme_dma_free</code><span class="sig-paren">(
 </dl>
 <dl class="c function">
 <dt id="c.vme_irq_request">
-int <code class="sig-name descname">vme_irq_request</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vme_dev" title="vme_dev">vme_dev</a> *<em>vdev</em>, int <em>level</em>, int <em>statid</em>, void (*<em>callback</em>)<span class="sig-paren">(</span>int, int, void*<span class="sig-paren">)</span>, void *<em>priv_data</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.vme_irq_request" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_irq_request</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.vme_dev" title="vme_dev"><span class="pre">vme_dev</span></a> <span class="pre">*</span><em><span class="pre">vdev</span></em>, <span class="pre">int</span> <em><span class="pre">level</span></em>, <span class="pre">int</span> <em><span class="pre">statid</span></em>, <span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">callback</span></em><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">int</span>, <span class="pre">int</span>, <span class="pre">void</span><span class="pre">*</span><span class="sig-paren">)</span>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">priv_data</span></em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.vme_irq_request" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Request a specific VME interrupt.</p>
 </dd></dl>
 
@@ -1257,7 +1257,7 @@ already in use. Hardware specific errors also possible.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vme_irq_free">
-void <code class="sig-name descname">vme_irq_free</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vme_dev" title="vme_dev">vme_dev</a> *<em>vdev</em>, int <em>level</em>, int <em>statid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_irq_free" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">vme_irq_free</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.vme_dev" title="vme_dev"><span class="pre">vme_dev</span></a> <span class="pre">*</span><em><span class="pre">vdev</span></em>, <span class="pre">int</span> <em><span class="pre">level</span></em>, <span class="pre">int</span> <em><span class="pre">statid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_irq_free" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Free a VME interrupt.</p>
 </dd></dl>
 
@@ -1274,7 +1274,7 @@ void <code class="sig-name descname">vme_irq_free</code><span class="sig-paren">
 <p>Remove previously attached callback from VME interrupt priority/vector.</p>
 <dl class="c function">
 <dt id="c.vme_irq_generate">
-int <code class="sig-name descname">vme_irq_generate</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vme_dev" title="vme_dev">vme_dev</a> *<em>vdev</em>, int <em>level</em>, int <em>statid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_irq_generate" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_irq_generate</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.vme_dev" title="vme_dev"><span class="pre">vme_dev</span></a> <span class="pre">*</span><em><span class="pre">vdev</span></em>, <span class="pre">int</span> <em><span class="pre">level</span></em>, <span class="pre">int</span> <em><span class="pre">statid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_irq_generate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Generate VME interrupt.</p>
 </dd></dl>
 
@@ -1297,7 +1297,7 @@ statid.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vme_lm_request">
-<em class="property">struct</em> vme_resource *<code class="sig-name descname">vme_lm_request</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vme_dev" title="vme_dev">vme_dev</a> *<em>vdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_lm_request" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">vme_lm_request</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.vme_dev" title="vme_dev"><span class="pre">vme_dev</span></a> <span class="pre">*</span><em><span class="pre">vdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_lm_request" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Request a VME location monitor</p>
 </dd></dl>
 
@@ -1314,7 +1314,7 @@ addresses on the VME bus.</p>
 <p>Pointer to a VME resource on success or NULL on failure.</p>
 <dl class="c function">
 <dt id="c.vme_lm_count">
-int <code class="sig-name descname">vme_lm_count</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_lm_count" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_lm_count</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_lm_count" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Determine number of VME Addresses monitored</p>
 </dd></dl>
 
@@ -1334,7 +1334,7 @@ location monitor.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vme_lm_set">
-int <code class="sig-name descname">vme_lm_set</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em>, unsigned long long <em>lm_base</em>, u32 <em>aspace</em>, u32 <em>cycle</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_lm_set" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_lm_set</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">lm_base</span></em>, <span class="pre">u32</span> <em><span class="pre">aspace</span></em>, <span class="pre">u32</span> <em><span class="pre">cycle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_lm_set" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Configure location monitor</p>
 </dd></dl>
 
@@ -1360,7 +1360,7 @@ errors may also be returned.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vme_lm_get">
-int <code class="sig-name descname">vme_lm_get</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em>, unsigned long long *<em>lm_base</em>, u32 *<em>aspace</em>, u32 *<em>cycle</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_lm_get" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_lm_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <span class="pre">*</span><em><span class="pre">lm_base</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">aspace</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">cycle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_lm_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Retrieve location monitor settings</p>
 </dd></dl>
 
@@ -1386,7 +1386,7 @@ errors may also be returned.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vme_lm_attach">
-int <code class="sig-name descname">vme_lm_attach</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em>, int <em>monitor</em>, void (*<em>callback</em>)<span class="sig-paren">(</span>void*<span class="sig-paren">)</span>, void *<em>data</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.vme_lm_attach" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_lm_attach</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em>, <span class="pre">int</span> <em><span class="pre">monitor</span></em>, <span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">callback</span></em><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span><span class="pre">*</span><span class="sig-paren">)</span>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.vme_lm_attach" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Provide callback for location monitor address</p>
 </dd></dl>
 
@@ -1413,7 +1413,7 @@ errors may also be returned.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vme_lm_detach">
-int <code class="sig-name descname">vme_lm_detach</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em>, int <em>monitor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_lm_detach" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_lm_detach</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em>, <span class="pre">int</span> <em><span class="pre">monitor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_lm_detach" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Remove callback for location monitor address</p>
 </dd></dl>
 
@@ -1435,7 +1435,7 @@ errors may also be returned.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vme_lm_free">
-void <code class="sig-name descname">vme_lm_free</code><span class="sig-paren">(</span><em class="property">struct</em> vme_resource *<em>resource</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_lm_free" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">vme_lm_free</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vme_resource</span> <span class="pre">*</span><em><span class="pre">resource</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_lm_free" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Free allocated VME location monitor</p>
 </dd></dl>
 
@@ -1457,7 +1457,7 @@ void <code class="sig-name descname">vme_lm_free</code><span class="sig-paren">(
 </dl>
 <dl class="c function">
 <dt id="c.vme_slot_num">
-int <code class="sig-name descname">vme_slot_num</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vme_dev" title="vme_dev">vme_dev</a> *<em>vdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_slot_num" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_slot_num</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.vme_dev" title="vme_dev"><span class="pre">vme_dev</span></a> <span class="pre">*</span><em><span class="pre">vdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_slot_num" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Retrieve slot ID</p>
 </dd></dl>
 
@@ -1476,7 +1476,7 @@ be returned.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vme_bus_num">
-int <code class="sig-name descname">vme_bus_num</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vme_dev" title="vme_dev">vme_dev</a> *<em>vdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_bus_num" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_bus_num</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.vme_dev" title="vme_dev"><span class="pre">vme_dev</span></a> <span class="pre">*</span><em><span class="pre">vdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_bus_num" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Retrieve bus number</p>
 </dd></dl>
 
@@ -1494,7 +1494,7 @@ int <code class="sig-name descname">vme_bus_num</code><span class="sig-paren">(<
 </dl>
 <dl class="c function">
 <dt id="c.vme_register_driver">
-int <code class="sig-name descname">vme_register_driver</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vme_driver" title="vme_driver">vme_driver</a> *<em>drv</em>, unsigned int <em>ndevs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_register_driver" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vme_register_driver</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.vme_driver" title="vme_driver"><span class="pre">vme_driver</span></a> <span class="pre">*</span><em><span class="pre">drv</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">ndevs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_register_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Register a VME driver</p>
 </dd></dl>
 
@@ -1511,7 +1511,7 @@ int <code class="sig-name descname">vme_register_driver</code><span class="sig-p
 <p>Zero on success, error value on registration failure.</p>
 <dl class="c function">
 <dt id="c.vme_unregister_driver">
-void <code class="sig-name descname">vme_unregister_driver</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vme_driver" title="vme_driver">vme_driver</a> *<em>drv</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_unregister_driver" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">vme_unregister_driver</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.vme_driver" title="vme_driver"><span class="pre">vme_driver</span></a> <span class="pre">*</span><em><span class="pre">drv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vme_unregister_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Unregister a VME driver</p>
 </dd></dl>
 

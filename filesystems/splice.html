@@ -286,7 +286,7 @@
 without continually transferring them between the kernel and user space.</p>
 <dl class="c function">
 <dt id="c.splice_to_pipe">
-ssize_t <code class="sig-name descname">splice_to_pipe</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info">pipe_inode_info</a> *<em>pipe</em>, <em class="property">struct</em> splice_pipe_desc *<em>spd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.splice_to_pipe" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">ssize_t</span> <code class="sig-name descname"><span class="pre">splice_to_pipe</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info"><span class="pre">pipe_inode_info</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">splice_pipe_desc</span> <span class="pre">*</span><em><span class="pre">spd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.splice_to_pipe" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>fill passed data into a pipe</p>
 </dd></dl>
 
@@ -305,7 +305,7 @@ function will link that data to the pipe.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.generic_file_splice_read">
-ssize_t <code class="sig-name descname">generic_file_splice_read</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>in</em>, loff_t *<em>ppos</em>, <em class="property">struct</em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info">pipe_inode_info</a> *<em>pipe</em>, size_t <em>len</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_file_splice_read" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">ssize_t</span> <code class="sig-name descname"><span class="pre">generic_file_splice_read</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">file</span> <span class="pre">*</span><em><span class="pre">in</span></em>, <span class="pre">loff_t</span> <span class="pre">*</span><em><span class="pre">ppos</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info"><span class="pre">pipe_inode_info</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em>, <span class="pre">size_t</span> <em><span class="pre">len</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_file_splice_read" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>splice data from file to a pipe</p>
 </dd></dl>
 
@@ -329,7 +329,7 @@ used as long as it has more or less sane -&gt;read_iter().</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.splice_from_pipe_feed">
-int <code class="sig-name descname">splice_from_pipe_feed</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info">pipe_inode_info</a> *<em>pipe</em>, <em class="property">struct</em> splice_desc *<em>sd</em>, splice_actor *<em>actor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.splice_from_pipe_feed" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">splice_from_pipe_feed</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info"><span class="pre">pipe_inode_info</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">splice_desc</span> <span class="pre">*</span><em><span class="pre">sd</span></em>, <span class="pre">splice_actor</span> <span class="pre">*</span><em><span class="pre">actor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.splice_from_pipe_feed" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>feed available data from a pipe to a file</p>
 </dd></dl>
 
@@ -358,7 +358,7 @@ destination.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.splice_from_pipe_next">
-int <code class="sig-name descname">splice_from_pipe_next</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info">pipe_inode_info</a> *<em>pipe</em>, <em class="property">struct</em> splice_desc *<em>sd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.splice_from_pipe_next" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">splice_from_pipe_next</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info"><span class="pre">pipe_inode_info</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">splice_desc</span> <span class="pre">*</span><em><span class="pre">sd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.splice_from_pipe_next" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>wait for some data to splice from</p>
 </dd></dl>
 
@@ -377,7 +377,7 @@ or -errno if no more data needs to be spliced.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.splice_from_pipe_begin">
-void <code class="sig-name descname">splice_from_pipe_begin</code><span class="sig-paren">(</span><em class="property">struct</em> splice_desc *<em>sd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.splice_from_pipe_begin" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">splice_from_pipe_begin</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">splice_desc</span> <span class="pre">*</span><em><span class="pre">sd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.splice_from_pipe_begin" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>start splicing from pipe</p>
 </dd></dl>
 
@@ -394,7 +394,7 @@ initialize the necessary fields of <strong>sd</strong>.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.splice_from_pipe_end">
-void <code class="sig-name descname">splice_from_pipe_end</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info">pipe_inode_info</a> *<em>pipe</em>, <em class="property">struct</em> splice_desc *<em>sd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.splice_from_pipe_end" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">splice_from_pipe_end</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info"><span class="pre">pipe_inode_info</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">splice_desc</span> <span class="pre">*</span><em><span class="pre">sd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.splice_from_pipe_end" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>finish splicing from pipe</p>
 </dd></dl>
 
@@ -413,7 +413,7 @@ be called after a loop containing <a class="reference internal" href="#c.splice_
 </div></blockquote>
 <dl class="c function">
 <dt id="c.__splice_from_pipe">
-ssize_t <code class="sig-name descname">__splice_from_pipe</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info">pipe_inode_info</a> *<em>pipe</em>, <em class="property">struct</em> splice_desc *<em>sd</em>, splice_actor *<em>actor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__splice_from_pipe" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">ssize_t</span> <code class="sig-name descname"><span class="pre">__splice_from_pipe</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info"><span class="pre">pipe_inode_info</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">splice_desc</span> <span class="pre">*</span><em><span class="pre">sd</span></em>, <span class="pre">splice_actor</span> <span class="pre">*</span><em><span class="pre">actor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__splice_from_pipe" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>splice data from a pipe to given actor</p>
 </dd></dl>
 
@@ -435,7 +435,7 @@ pipe_to_user.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.splice_from_pipe">
-ssize_t <code class="sig-name descname">splice_from_pipe</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info">pipe_inode_info</a> *<em>pipe</em>, <em class="property">struct</em> file *<em>out</em>, loff_t *<em>ppos</em>, size_t <em>len</em>, unsigned int <em>flags</em>, splice_actor *<em>actor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.splice_from_pipe" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">ssize_t</span> <code class="sig-name descname"><span class="pre">splice_from_pipe</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info"><span class="pre">pipe_inode_info</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">file</span> <span class="pre">*</span><em><span class="pre">out</span></em>, <span class="pre">loff_t</span> <span class="pre">*</span><em><span class="pre">ppos</span></em>, <span class="pre">size_t</span> <em><span class="pre">len</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">flags</span></em>, <span class="pre">splice_actor</span> <span class="pre">*</span><em><span class="pre">actor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.splice_from_pipe" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>splice data from a pipe to a file</p>
 </dd></dl>
 
@@ -461,7 +461,7 @@ otherwise it’s identical to <a class="reference internal" href="#c.__splice_fr
 </div></blockquote>
 <dl class="c function">
 <dt id="c.iter_file_splice_write">
-ssize_t <code class="sig-name descname">iter_file_splice_write</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info">pipe_inode_info</a> *<em>pipe</em>, <em class="property">struct</em> file *<em>out</em>, loff_t *<em>ppos</em>, size_t <em>len</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iter_file_splice_write" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">ssize_t</span> <code class="sig-name descname"><span class="pre">iter_file_splice_write</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info"><span class="pre">pipe_inode_info</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">file</span> <span class="pre">*</span><em><span class="pre">out</span></em>, <span class="pre">loff_t</span> <span class="pre">*</span><em><span class="pre">ppos</span></em>, <span class="pre">size_t</span> <em><span class="pre">len</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iter_file_splice_write" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>splice data from a pipe to a file</p>
 </dd></dl>
 
@@ -486,7 +486,7 @@ This one is -&gt;write_iter-based.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.generic_splice_sendpage">
-ssize_t <code class="sig-name descname">generic_splice_sendpage</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info">pipe_inode_info</a> *<em>pipe</em>, <em class="property">struct</em> file *<em>out</em>, loff_t *<em>ppos</em>, size_t <em>len</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_splice_sendpage" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">ssize_t</span> <code class="sig-name descname"><span class="pre">generic_splice_sendpage</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info"><span class="pre">pipe_inode_info</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">file</span> <span class="pre">*</span><em><span class="pre">out</span></em>, <span class="pre">loff_t</span> <span class="pre">*</span><em><span class="pre">ppos</span></em>, <span class="pre">size_t</span> <em><span class="pre">len</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_splice_sendpage" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>splice data from a pipe to a socket</p>
 </dd></dl>
 
@@ -510,7 +510,7 @@ is involved.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.splice_direct_to_actor">
-ssize_t <code class="sig-name descname">splice_direct_to_actor</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>in</em>, <em class="property">struct</em> splice_desc *<em>sd</em>, splice_direct_actor *<em>actor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.splice_direct_to_actor" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">ssize_t</span> <code class="sig-name descname"><span class="pre">splice_direct_to_actor</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">file</span> <span class="pre">*</span><em><span class="pre">in</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">splice_desc</span> <span class="pre">*</span><em><span class="pre">sd</span></em>, <span class="pre">splice_direct_actor</span> <span class="pre">*</span><em><span class="pre">actor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.splice_direct_to_actor" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>splices data directly between two non-pipes</p>
 </dd></dl>
 
@@ -532,7 +532,7 @@ that process.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.do_splice_direct">
-long <code class="sig-name descname">do_splice_direct</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>in</em>, loff_t *<em>ppos</em>, <em class="property">struct</em> file *<em>out</em>, loff_t *<em>opos</em>, size_t <em>len</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.do_splice_direct" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">long</span> <code class="sig-name descname"><span class="pre">do_splice_direct</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">file</span> <span class="pre">*</span><em><span class="pre">in</span></em>, <span class="pre">loff_t</span> <span class="pre">*</span><em><span class="pre">ppos</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">file</span> <span class="pre">*</span><em><span class="pre">out</span></em>, <span class="pre">loff_t</span> <span class="pre">*</span><em><span class="pre">opos</span></em>, <span class="pre">size_t</span> <em><span class="pre">len</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.do_splice_direct" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>splices data directly between two files</p>
 </dd></dl>
 
@@ -565,7 +565,7 @@ can splice directly through a process-private pipe.</p>
 exported for use by modules.</p>
 <dl class="c struct">
 <dt id="c.pipe_buffer">
-<em class="property">struct </em><code class="sig-name descname">pipe_buffer</code><a class="headerlink" href="#c.pipe_buffer" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">pipe_buffer</span></code><a class="headerlink" href="#c.pipe_buffer" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>a linux kernel pipe buffer</p>
 </dd></dl>
 
@@ -596,7 +596,7 @@ exported for use by modules.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.pipe_inode_info">
-<em class="property">struct </em><code class="sig-name descname">pipe_inode_info</code><a class="headerlink" href="#c.pipe_inode_info" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">pipe_inode_info</span></code><a class="headerlink" href="#c.pipe_inode_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>a linux kernel pipe</p>
 </dd></dl>
 
@@ -673,7 +673,7 @@ exported for use by modules.</p>
 </dl>
 <dl class="c function">
 <dt id="c.pipe_empty">
-bool <code class="sig-name descname">pipe_empty</code><span class="sig-paren">(</span>unsigned int <em>head</em>, unsigned int <em>tail</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pipe_empty" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">pipe_empty</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">head</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">tail</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pipe_empty" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return true if the pipe is empty</p>
 </dd></dl>
 
@@ -686,7 +686,7 @@ bool <code class="sig-name descname">pipe_empty</code><span class="sig-paren">(<
 </dl>
 <dl class="c function">
 <dt id="c.pipe_occupancy">
-unsigned int <code class="sig-name descname">pipe_occupancy</code><span class="sig-paren">(</span>unsigned int <em>head</em>, unsigned int <em>tail</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pipe_occupancy" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">pipe_occupancy</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">head</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">tail</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pipe_occupancy" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return number of slots used in the pipe</p>
 </dd></dl>
 
@@ -699,7 +699,7 @@ unsigned int <code class="sig-name descname">pipe_occupancy</code><span class="s
 </dl>
 <dl class="c function">
 <dt id="c.pipe_full">
-bool <code class="sig-name descname">pipe_full</code><span class="sig-paren">(</span>unsigned int <em>head</em>, unsigned int <em>tail</em>, unsigned int <em>limit</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pipe_full" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">pipe_full</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">head</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">tail</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">limit</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pipe_full" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return true if the pipe is full</p>
 </dd></dl>
 
@@ -714,7 +714,7 @@ bool <code class="sig-name descname">pipe_full</code><span class="sig-paren">(</
 </dl>
 <dl class="c function">
 <dt id="c.pipe_space_for_user">
-unsigned int <code class="sig-name descname">pipe_space_for_user</code><span class="sig-paren">(</span>unsigned int <em>head</em>, unsigned int <em>tail</em>, <em class="property">struct</em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info">pipe_inode_info</a> *<em>pipe</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pipe_space_for_user" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">pipe_space_for_user</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">head</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">tail</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info"><span class="pre">pipe_inode_info</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pipe_space_for_user" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return number of slots available to userspace</p>
 </dd></dl>
 
@@ -729,7 +729,7 @@ unsigned int <code class="sig-name descname">pipe_space_for_user</code><span cla
 </dl>
 <dl class="c function">
 <dt id="c.pipe_buf_get">
-bool <code class="sig-name descname">pipe_buf_get</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info">pipe_inode_info</a> *<em>pipe</em>, <em class="property">struct</em> <a class="reference internal" href="#c.pipe_buffer" title="pipe_buffer">pipe_buffer</a> *<em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pipe_buf_get" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">pipe_buf_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info"><span class="pre">pipe_inode_info</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_buffer" title="pipe_buffer"><span class="pre">pipe_buffer</span></a> <span class="pre">*</span><em><span class="pre">buf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pipe_buf_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get a reference to a pipe_buffer</p>
 </dd></dl>
 
@@ -744,7 +744,7 @@ bool <code class="sig-name descname">pipe_buf_get</code><span class="sig-paren">
 <p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the reference was successfully obtained.</p>
 <dl class="c function">
 <dt id="c.pipe_buf_release">
-void <code class="sig-name descname">pipe_buf_release</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info">pipe_inode_info</a> *<em>pipe</em>, <em class="property">struct</em> <a class="reference internal" href="#c.pipe_buffer" title="pipe_buffer">pipe_buffer</a> *<em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pipe_buf_release" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">pipe_buf_release</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info"><span class="pre">pipe_inode_info</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_buffer" title="pipe_buffer"><span class="pre">pipe_buffer</span></a> <span class="pre">*</span><em><span class="pre">buf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pipe_buf_release" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>put a reference to a pipe_buffer</p>
 </dd></dl>
 
@@ -757,7 +757,7 @@ void <code class="sig-name descname">pipe_buf_release</code><span class="sig-par
 </dl>
 <dl class="c function">
 <dt id="c.pipe_buf_confirm">
-int <code class="sig-name descname">pipe_buf_confirm</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info">pipe_inode_info</a> *<em>pipe</em>, <em class="property">struct</em> <a class="reference internal" href="#c.pipe_buffer" title="pipe_buffer">pipe_buffer</a> *<em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pipe_buf_confirm" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">pipe_buf_confirm</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info"><span class="pre">pipe_inode_info</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_buffer" title="pipe_buffer"><span class="pre">pipe_buffer</span></a> <span class="pre">*</span><em><span class="pre">buf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pipe_buf_confirm" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>verify contents of the pipe buffer</p>
 </dd></dl>
 
@@ -770,7 +770,7 @@ int <code class="sig-name descname">pipe_buf_confirm</code><span class="sig-pare
 </dl>
 <dl class="c function">
 <dt id="c.pipe_buf_try_steal">
-bool <code class="sig-name descname">pipe_buf_try_steal</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info">pipe_inode_info</a> *<em>pipe</em>, <em class="property">struct</em> <a class="reference internal" href="#c.pipe_buffer" title="pipe_buffer">pipe_buffer</a> *<em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pipe_buf_try_steal" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">pipe_buf_try_steal</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info"><span class="pre">pipe_inode_info</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_buffer" title="pipe_buffer"><span class="pre">pipe_buffer</span></a> <span class="pre">*</span><em><span class="pre">buf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pipe_buf_try_steal" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>attempt to take ownership of a pipe_buffer</p>
 </dd></dl>
 
@@ -783,7 +783,7 @@ bool <code class="sig-name descname">pipe_buf_try_steal</code><span class="sig-p
 </dl>
 <dl class="c function">
 <dt id="c.generic_pipe_buf_try_steal">
-bool <code class="sig-name descname">generic_pipe_buf_try_steal</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info">pipe_inode_info</a> *<em>pipe</em>, <em class="property">struct</em> <a class="reference internal" href="#c.pipe_buffer" title="pipe_buffer">pipe_buffer</a> *<em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_pipe_buf_try_steal" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">generic_pipe_buf_try_steal</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info"><span class="pre">pipe_inode_info</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_buffer" title="pipe_buffer"><span class="pre">pipe_buffer</span></a> <span class="pre">*</span><em><span class="pre">buf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_pipe_buf_try_steal" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>attempt to take ownership of a <a class="reference internal" href="#c.pipe_buffer" title="pipe_buffer"><code class="xref c c-type docutils literal notranslate"><span class="pre">pipe_buffer</span></code></a></p>
 </dd></dl>
 
@@ -804,7 +804,7 @@ page cache.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.generic_pipe_buf_get">
-bool <code class="sig-name descname">generic_pipe_buf_get</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info">pipe_inode_info</a> *<em>pipe</em>, <em class="property">struct</em> <a class="reference internal" href="#c.pipe_buffer" title="pipe_buffer">pipe_buffer</a> *<em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_pipe_buf_get" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">generic_pipe_buf_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info"><span class="pre">pipe_inode_info</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_buffer" title="pipe_buffer"><span class="pre">pipe_buffer</span></a> <span class="pre">*</span><em><span class="pre">buf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_pipe_buf_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get a reference to a <a class="reference internal" href="#c.pipe_buffer" title="pipe_buffer"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">pipe_buffer</span></code></a></p>
 </dd></dl>
 
@@ -823,7 +823,7 @@ pipe into another.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.generic_pipe_buf_release">
-void <code class="sig-name descname">generic_pipe_buf_release</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info">pipe_inode_info</a> *<em>pipe</em>, <em class="property">struct</em> <a class="reference internal" href="#c.pipe_buffer" title="pipe_buffer">pipe_buffer</a> *<em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_pipe_buf_release" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">generic_pipe_buf_release</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_inode_info" title="pipe_inode_info"><span class="pre">pipe_inode_info</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pipe_buffer" title="pipe_buffer"><span class="pre">pipe_buffer</span></a> <span class="pre">*</span><em><span class="pre">buf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.generic_pipe_buf_release" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>put a reference to a <a class="reference internal" href="#c.pipe_buffer" title="pipe_buffer"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">pipe_buffer</span></code></a></p>
 </dd></dl>
 

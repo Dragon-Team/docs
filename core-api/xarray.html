@@ -725,7 +725,7 @@ and calling <a class="reference internal" href="#c.xas_split" title="xas_split">
 <h2>Functions and structures<a class="headerlink" href="#functions-and-structures" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.xa_mk_value">
-void *<code class="sig-name descname">xa_mk_value</code><span class="sig-paren">(</span>unsigned long <em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_mk_value" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xa_mk_value</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_mk_value" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create an XArray entry from an integer.</p>
 </dd></dl>
 
@@ -740,7 +740,7 @@ void *<code class="sig-name descname">xa_mk_value</code><span class="sig-paren">
 <p>An entry suitable for storing in the XArray.</p>
 <dl class="c function">
 <dt id="c.xa_to_value">
-unsigned long <code class="sig-name descname">xa_to_value</code><span class="sig-paren">(</span><em class="property">const</em> void *<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_to_value" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">long</span> <code class="sig-name descname"><span class="pre">xa_to_value</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_to_value" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get value stored in an XArray entry.</p>
 </dd></dl>
 
@@ -755,7 +755,7 @@ unsigned long <code class="sig-name descname">xa_to_value</code><span class="sig
 <p>The value stored in the XArray entry.</p>
 <dl class="c function">
 <dt id="c.xa_is_value">
-bool <code class="sig-name descname">xa_is_value</code><span class="sig-paren">(</span><em class="property">const</em> void *<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_is_value" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">xa_is_value</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_is_value" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Determine if an entry is a value.</p>
 </dd></dl>
 
@@ -770,7 +770,7 @@ bool <code class="sig-name descname">xa_is_value</code><span class="sig-paren">(
 <p>True if the entry is a value, false if it is a pointer.</p>
 <dl class="c function">
 <dt id="c.xa_tag_pointer">
-void *<code class="sig-name descname">xa_tag_pointer</code><span class="sig-paren">(</span>void *<em>p</em>, unsigned long <em>tag</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_tag_pointer" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xa_tag_pointer</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">p</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">tag</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_tag_pointer" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create an XArray entry for a tagged pointer.</p>
 </dd></dl>
 
@@ -792,7 +792,7 @@ through the array and cannot be searched for.</p>
 <p>An XArray entry.</p>
 <dl class="c function">
 <dt id="c.xa_untag_pointer">
-void *<code class="sig-name descname">xa_untag_pointer</code><span class="sig-paren">(</span>void *<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_untag_pointer" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xa_untag_pointer</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_untag_pointer" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Turn an XArray entry into a plain pointer.</p>
 </dd></dl>
 
@@ -810,7 +810,7 @@ to get the untagged version of the pointer.</p>
 <p>A pointer.</p>
 <dl class="c function">
 <dt id="c.xa_pointer_tag">
-unsigned int <code class="sig-name descname">xa_pointer_tag</code><span class="sig-paren">(</span>void *<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_pointer_tag" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">xa_pointer_tag</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_pointer_tag" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get the tag stored in an XArray entry.</p>
 </dd></dl>
 
@@ -828,7 +828,7 @@ to get the tag of that pointer.</p>
 <p>A tag.</p>
 <dl class="c function">
 <dt id="c.xa_is_zero">
-bool <code class="sig-name descname">xa_is_zero</code><span class="sig-paren">(</span><em class="property">const</em> void *<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_is_zero" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">xa_is_zero</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_is_zero" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Is the entry a zero entry?</p>
 </dd></dl>
 
@@ -844,7 +844,7 @@ a zero entry.  You can only see zero entries by using the advanced API.</p>
 <p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the entry is a zero entry.</p>
 <dl class="c function">
 <dt id="c.xa_is_err">
-bool <code class="sig-name descname">xa_is_err</code><span class="sig-paren">(</span><em class="property">const</em> void *<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_is_err" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">xa_is_err</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_is_err" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Report whether an XArray operation returned an error</p>
 </dd></dl>
 
@@ -863,7 +863,7 @@ whether an error occurred; <a class="reference internal" href="#c.xa_err" title=
 <p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the entry indicates an error.</p>
 <dl class="c function">
 <dt id="c.xa_err">
-int <code class="sig-name descname">xa_err</code><span class="sig-paren">(</span>void *<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_err" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">xa_err</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_err" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Turn an XArray result into an errno.</p>
 </dd></dl>
 
@@ -883,7 +883,7 @@ represent an errno.</p>
 <p>A negative errno or 0.</p>
 <dl class="c struct">
 <dt id="c.xa_limit">
-<em class="property">struct </em><code class="sig-name descname">xa_limit</code><a class="headerlink" href="#c.xa_limit" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">xa_limit</span></code><a class="headerlink" href="#c.xa_limit" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Represents a range of IDs.</p>
 </dd></dl>
 
@@ -909,7 +909,7 @@ Two common ranges are predefined for you:
 * xa_limit_31b       - [0 - INT_MAX]</p>
 <dl class="c struct">
 <dt id="c.xarray">
-<em class="property">struct </em><code class="sig-name descname">xarray</code><a class="headerlink" href="#c.xarray" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">xarray</span></code><a class="headerlink" href="#c.xarray" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>The anchor of the XArray.</p>
 </dd></dl>
 
@@ -931,7 +931,7 @@ allocate it separately and keep a pointer to it in your data structure.</p>
 <p>You may use the xa_lock to protect your own data structures as well.</p>
 <dl class="c macro">
 <dt id="c.DEFINE_XARRAY_FLAGS">
-<code class="sig-name descname">DEFINE_XARRAY_FLAGS</code><a class="headerlink" href="#c.DEFINE_XARRAY_FLAGS" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">DEFINE_XARRAY_FLAGS</span></code><a class="headerlink" href="#c.DEFINE_XARRAY_FLAGS" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">DEFINE_XARRAY_FLAGS</span> <span class="pre">(name,</span> <span class="pre">flags)</span></code></p>
@@ -952,7 +952,7 @@ equivalent to calling <a class="reference internal" href="#c.xa_init_flags" titl
 initialisation at compiletime instead of runtime.</p>
 <dl class="c macro">
 <dt id="c.DEFINE_XARRAY">
-<code class="sig-name descname">DEFINE_XARRAY</code><a class="headerlink" href="#c.DEFINE_XARRAY" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">DEFINE_XARRAY</span></code><a class="headerlink" href="#c.DEFINE_XARRAY" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">DEFINE_XARRAY</span> <span class="pre">(name)</span></code></p>
@@ -971,7 +971,7 @@ to calling <a class="reference internal" href="#c.xa_init" title="xa_init"><code
 compiletime instead of runtime.</p>
 <dl class="c macro">
 <dt id="c.DEFINE_XARRAY_ALLOC">
-<code class="sig-name descname">DEFINE_XARRAY_ALLOC</code><a class="headerlink" href="#c.DEFINE_XARRAY_ALLOC" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">DEFINE_XARRAY_ALLOC</span></code><a class="headerlink" href="#c.DEFINE_XARRAY_ALLOC" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">DEFINE_XARRAY_ALLOC</span> <span class="pre">(name)</span></code></p>
@@ -988,7 +988,7 @@ compiletime instead of runtime.</p>
 See also <a class="reference internal" href="#c.DEFINE_XARRAY" title="DEFINE_XARRAY"><code class="xref c c-func docutils literal notranslate"><span class="pre">DEFINE_XARRAY()</span></code></a>.</p>
 <dl class="c macro">
 <dt id="c.DEFINE_XARRAY_ALLOC1">
-<code class="sig-name descname">DEFINE_XARRAY_ALLOC1</code><a class="headerlink" href="#c.DEFINE_XARRAY_ALLOC1" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">DEFINE_XARRAY_ALLOC1</span></code><a class="headerlink" href="#c.DEFINE_XARRAY_ALLOC1" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">DEFINE_XARRAY_ALLOC1</span> <span class="pre">(name)</span></code></p>
@@ -1005,7 +1005,7 @@ See also <a class="reference internal" href="#c.DEFINE_XARRAY" title="DEFINE_XAR
 See also <a class="reference internal" href="#c.DEFINE_XARRAY" title="DEFINE_XARRAY"><code class="xref c c-func docutils literal notranslate"><span class="pre">DEFINE_XARRAY()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.xa_init_flags">
-void <code class="sig-name descname">xa_init_flags</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, gfp_t <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_init_flags" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xa_init_flags</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_init_flags" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialise an empty XArray with flags.</p>
 </dd></dl>
 
@@ -1024,7 +1024,7 @@ of <a class="reference internal" href="#c.xa_init" title="xa_init"><code class="
 <p>Any context.</p>
 <dl class="c function">
 <dt id="c.xa_init">
-void <code class="sig-name descname">xa_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xa_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialise an empty XArray.</p>
 </dd></dl>
 
@@ -1039,7 +1039,7 @@ void <code class="sig-name descname">xa_init</code><span class="sig-paren">(</sp
 <p>Any context.</p>
 <dl class="c function">
 <dt id="c.xa_empty">
-bool <code class="sig-name descname">xa_empty</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_empty" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">xa_empty</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_empty" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Determine if an array has any present entries.</p>
 </dd></dl>
 
@@ -1054,7 +1054,7 @@ bool <code class="sig-name descname">xa_empty</code><span class="sig-paren">(</s
 <p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the array contains only NULL pointers.</p>
 <dl class="c function">
 <dt id="c.xa_marked">
-bool <code class="sig-name descname">xa_marked</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, xa_mark_t <em>mark</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_marked" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">xa_marked</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">xa_mark_t</span> <em><span class="pre">mark</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_marked" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Inquire whether any entry in this array has a mark set</p>
 </dd></dl>
 
@@ -1071,7 +1071,7 @@ bool <code class="sig-name descname">xa_marked</code><span class="sig-paren">(</
 <p><code class="docutils literal notranslate"><span class="pre">true</span></code> if any entry has this mark set.</p>
 <dl class="c macro">
 <dt id="c.xa_for_each_range">
-<code class="sig-name descname">xa_for_each_range</code><a class="headerlink" href="#c.xa_for_each_range" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">xa_for_each_range</span></code><a class="headerlink" href="#c.xa_for_each_range" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">xa_for_each_range</span> <span class="pre">(xa,</span> <span class="pre">index,</span> <span class="pre">entry,</span> <span class="pre">start,</span> <span class="pre">last)</span></code></p>
@@ -1108,7 +1108,7 @@ The <a class="reference internal" href="#c.xas_for_each" title="xas_for_each"><c
 <p>Any context.  Takes and releases the RCU lock.</p>
 <dl class="c macro">
 <dt id="c.xa_for_each_start">
-<code class="sig-name descname">xa_for_each_start</code><a class="headerlink" href="#c.xa_for_each_start" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">xa_for_each_start</span></code><a class="headerlink" href="#c.xa_for_each_start" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">xa_for_each_start</span> <span class="pre">(xa,</span> <span class="pre">index,</span> <span class="pre">entry,</span> <span class="pre">start)</span></code></p>
@@ -1143,7 +1143,7 @@ The <a class="reference internal" href="#c.xas_for_each" title="xas_for_each"><c
 <p>Any context.  Takes and releases the RCU lock.</p>
 <dl class="c macro">
 <dt id="c.xa_for_each">
-<code class="sig-name descname">xa_for_each</code><a class="headerlink" href="#c.xa_for_each" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">xa_for_each</span></code><a class="headerlink" href="#c.xa_for_each" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">xa_for_each</span> <span class="pre">(xa,</span> <span class="pre">index,</span> <span class="pre">entry)</span></code></p>
@@ -1175,7 +1175,7 @@ iterator will expand into more inline code than <a class="reference internal" hr
 <p>Any context.  Takes and releases the RCU lock.</p>
 <dl class="c macro">
 <dt id="c.xa_for_each_marked">
-<code class="sig-name descname">xa_for_each_marked</code><a class="headerlink" href="#c.xa_for_each_marked" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">xa_for_each_marked</span></code><a class="headerlink" href="#c.xa_for_each_marked" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">xa_for_each_marked</span> <span class="pre">(xa,</span> <span class="pre">index,</span> <span class="pre">entry,</span> <span class="pre">filter)</span></code></p>
@@ -1211,7 +1211,7 @@ code than <a class="reference internal" href="#c.xa_for_each_marked" title="xa_f
 <p>Any context.  Takes and releases the RCU lock.</p>
 <dl class="c function">
 <dt id="c.xa_store_bh">
-void *<code class="sig-name descname">xa_store_bh</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, void *<em>entry</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_store_bh" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xa_store_bh</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_store_bh" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Store this entry in the XArray.</p>
 </dd></dl>
 
@@ -1236,7 +1236,7 @@ disabling softirqs.</p>
 <p>The old entry at this index or <a class="reference internal" href="#c.xa_err" title="xa_err"><code class="xref c c-func docutils literal notranslate"><span class="pre">xa_err()</span></code></a> if an error happened.</p>
 <dl class="c function">
 <dt id="c.xa_store_irq">
-void *<code class="sig-name descname">xa_store_irq</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, void *<em>entry</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_store_irq" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xa_store_irq</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_store_irq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Store this entry in the XArray.</p>
 </dd></dl>
 
@@ -1261,7 +1261,7 @@ disabling interrupts.</p>
 <p>The old entry at this index or <a class="reference internal" href="#c.xa_err" title="xa_err"><code class="xref c c-func docutils literal notranslate"><span class="pre">xa_err()</span></code></a> if an error happened.</p>
 <dl class="c function">
 <dt id="c.xa_erase_bh">
-void *<code class="sig-name descname">xa_erase_bh</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_erase_bh" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xa_erase_bh</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_erase_bh" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Erase this entry from the XArray.</p>
 </dd></dl>
 
@@ -1283,7 +1283,7 @@ disabling softirqs.</p>
 <p>The entry which used to be at this index.</p>
 <dl class="c function">
 <dt id="c.xa_erase_irq">
-void *<code class="sig-name descname">xa_erase_irq</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_erase_irq" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xa_erase_irq</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_erase_irq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Erase this entry from the XArray.</p>
 </dd></dl>
 
@@ -1305,7 +1305,7 @@ disabling interrupts.</p>
 <p>The entry which used to be at this index.</p>
 <dl class="c function">
 <dt id="c.xa_cmpxchg">
-void *<code class="sig-name descname">xa_cmpxchg</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, void *<em>old</em>, void *<em>entry</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_cmpxchg" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xa_cmpxchg</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">old</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_cmpxchg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Conditionally replace an entry in the XArray.</p>
 </dd></dl>
 
@@ -1332,7 +1332,7 @@ if the <strong>gfp</strong> flags permit.</p>
 <p>The old value at this index or <a class="reference internal" href="#c.xa_err" title="xa_err"><code class="xref c c-func docutils literal notranslate"><span class="pre">xa_err()</span></code></a> if an error happened.</p>
 <dl class="c function">
 <dt id="c.xa_cmpxchg_bh">
-void *<code class="sig-name descname">xa_cmpxchg_bh</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, void *<em>old</em>, void *<em>entry</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_cmpxchg_bh" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xa_cmpxchg_bh</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">old</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_cmpxchg_bh" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Conditionally replace an entry in the XArray.</p>
 </dd></dl>
 
@@ -1359,7 +1359,7 @@ disabling softirqs.  May sleep if the <strong>gfp</strong> flags permit.</p>
 <p>The old value at this index or <a class="reference internal" href="#c.xa_err" title="xa_err"><code class="xref c c-func docutils literal notranslate"><span class="pre">xa_err()</span></code></a> if an error happened.</p>
 <dl class="c function">
 <dt id="c.xa_cmpxchg_irq">
-void *<code class="sig-name descname">xa_cmpxchg_irq</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, void *<em>old</em>, void *<em>entry</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_cmpxchg_irq" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xa_cmpxchg_irq</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">old</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_cmpxchg_irq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Conditionally replace an entry in the XArray.</p>
 </dd></dl>
 
@@ -1386,7 +1386,7 @@ disabling interrupts.  May sleep if the <strong>gfp</strong> flags permit.</p>
 <p>The old value at this index or <a class="reference internal" href="#c.xa_err" title="xa_err"><code class="xref c c-func docutils literal notranslate"><span class="pre">xa_err()</span></code></a> if an error happened.</p>
 <dl class="c function">
 <dt id="c.xa_insert">
-int <code class="sig-name descname">xa_insert</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, void *<em>entry</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_insert" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">xa_insert</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_insert" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Store this entry in the XArray unless another entry is already present.</p>
 </dd></dl>
 
@@ -1413,7 +1413,7 @@ the <strong>gfp</strong> flags permit.</p>
 -ENOMEM if memory could not be allocated.</p>
 <dl class="c function">
 <dt id="c.xa_insert_bh">
-int <code class="sig-name descname">xa_insert_bh</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, void *<em>entry</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_insert_bh" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">xa_insert_bh</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_insert_bh" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Store this entry in the XArray unless another entry is already present.</p>
 </dd></dl>
 
@@ -1440,7 +1440,7 @@ disabling softirqs.  May sleep if the <strong>gfp</strong> flags permit.</p>
 -ENOMEM if memory could not be allocated.</p>
 <dl class="c function">
 <dt id="c.xa_insert_irq">
-int <code class="sig-name descname">xa_insert_irq</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, void *<em>entry</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_insert_irq" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">xa_insert_irq</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_insert_irq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Store this entry in the XArray unless another entry is already present.</p>
 </dd></dl>
 
@@ -1467,7 +1467,7 @@ disabling interrupts.  May sleep if the <strong>gfp</strong> flags permit.</p>
 -ENOMEM if memory could not be allocated.</p>
 <dl class="c function">
 <dt id="c.xa_alloc">
-int <code class="sig-name descname">xa_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, u32 *<em>id</em>, void *<em>entry</em>, <em class="property">struct</em> <a class="reference internal" href="#c.xa_limit" title="xa_limit">xa_limit</a> <em>limit</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">xa_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">id</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xa_limit" title="xa_limit"><span class="pre">xa_limit</span></a> <em><span class="pre">limit</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find somewhere to store this entry in the XArray.</p>
 </dd></dl>
 
@@ -1496,7 +1496,7 @@ the <strong>gfp</strong> flags permit.</p>
 -EBUSY if there are no free entries in <strong>limit</strong>.</p>
 <dl class="c function">
 <dt id="c.xa_alloc_bh">
-int <code class="sig-name descname">xa_alloc_bh</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, u32 *<em>id</em>, void *<em>entry</em>, <em class="property">struct</em> <a class="reference internal" href="#c.xa_limit" title="xa_limit">xa_limit</a> <em>limit</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_alloc_bh" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">xa_alloc_bh</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">id</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xa_limit" title="xa_limit"><span class="pre">xa_limit</span></a> <em><span class="pre">limit</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_alloc_bh" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find somewhere to store this entry in the XArray.</p>
 </dd></dl>
 
@@ -1525,7 +1525,7 @@ disabling softirqs.  May sleep if the <strong>gfp</strong> flags permit.</p>
 -EBUSY if there are no free entries in <strong>limit</strong>.</p>
 <dl class="c function">
 <dt id="c.xa_alloc_irq">
-int <code class="sig-name descname">xa_alloc_irq</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, u32 *<em>id</em>, void *<em>entry</em>, <em class="property">struct</em> <a class="reference internal" href="#c.xa_limit" title="xa_limit">xa_limit</a> <em>limit</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_alloc_irq" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">xa_alloc_irq</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">id</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xa_limit" title="xa_limit"><span class="pre">xa_limit</span></a> <em><span class="pre">limit</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_alloc_irq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find somewhere to store this entry in the XArray.</p>
 </dd></dl>
 
@@ -1554,7 +1554,7 @@ disabling interrupts.  May sleep if the <strong>gfp</strong> flags permit.</p>
 -EBUSY if there are no free entries in <strong>limit</strong>.</p>
 <dl class="c function">
 <dt id="c.xa_alloc_cyclic">
-int <code class="sig-name descname">xa_alloc_cyclic</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, u32 *<em>id</em>, void *<em>entry</em>, <em class="property">struct</em> <a class="reference internal" href="#c.xa_limit" title="xa_limit">xa_limit</a> <em>limit</em>, u32 *<em>next</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_alloc_cyclic" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">xa_alloc_cyclic</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">id</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xa_limit" title="xa_limit"><span class="pre">xa_limit</span></a> <em><span class="pre">limit</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">next</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_alloc_cyclic" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find somewhere to store this entry in the XArray.</p>
 </dd></dl>
 
@@ -1588,7 +1588,7 @@ allocation succeeded after wrapping, -ENOMEM if memory could not be
 allocated or -EBUSY if there are no free entries in <strong>limit</strong>.</p>
 <dl class="c function">
 <dt id="c.xa_alloc_cyclic_bh">
-int <code class="sig-name descname">xa_alloc_cyclic_bh</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, u32 *<em>id</em>, void *<em>entry</em>, <em class="property">struct</em> <a class="reference internal" href="#c.xa_limit" title="xa_limit">xa_limit</a> <em>limit</em>, u32 *<em>next</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_alloc_cyclic_bh" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">xa_alloc_cyclic_bh</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">id</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xa_limit" title="xa_limit"><span class="pre">xa_limit</span></a> <em><span class="pre">limit</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">next</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_alloc_cyclic_bh" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find somewhere to store this entry in the XArray.</p>
 </dd></dl>
 
@@ -1622,7 +1622,7 @@ allocation succeeded after wrapping, -ENOMEM if memory could not be
 allocated or -EBUSY if there are no free entries in <strong>limit</strong>.</p>
 <dl class="c function">
 <dt id="c.xa_alloc_cyclic_irq">
-int <code class="sig-name descname">xa_alloc_cyclic_irq</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, u32 *<em>id</em>, void *<em>entry</em>, <em class="property">struct</em> <a class="reference internal" href="#c.xa_limit" title="xa_limit">xa_limit</a> <em>limit</em>, u32 *<em>next</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_alloc_cyclic_irq" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">xa_alloc_cyclic_irq</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">id</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xa_limit" title="xa_limit"><span class="pre">xa_limit</span></a> <em><span class="pre">limit</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">next</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_alloc_cyclic_irq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find somewhere to store this entry in the XArray.</p>
 </dd></dl>
 
@@ -1656,7 +1656,7 @@ allocation succeeded after wrapping, -ENOMEM if memory could not be
 allocated or -EBUSY if there are no free entries in <strong>limit</strong>.</p>
 <dl class="c function">
 <dt id="c.xa_reserve">
-int <code class="sig-name descname">xa_reserve</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_reserve" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">xa_reserve</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_reserve" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Reserve this index in the XArray.</p>
 </dd></dl>
 
@@ -1683,7 +1683,7 @@ May sleep if the <strong>gfp</strong> flags permit.</p>
 <p>0 if the reservation succeeded or -ENOMEM if it failed.</p>
 <dl class="c function">
 <dt id="c.xa_reserve_bh">
-int <code class="sig-name descname">xa_reserve_bh</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_reserve_bh" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">xa_reserve_bh</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_reserve_bh" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Reserve this index in the XArray.</p>
 </dd></dl>
 
@@ -1705,7 +1705,7 @@ disabling softirqs.</p>
 <p>0 if the reservation succeeded or -ENOMEM if it failed.</p>
 <dl class="c function">
 <dt id="c.xa_reserve_irq">
-int <code class="sig-name descname">xa_reserve_irq</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_reserve_irq" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">xa_reserve_irq</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_reserve_irq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Reserve this index in the XArray.</p>
 </dd></dl>
 
@@ -1727,7 +1727,7 @@ disabling interrupts.</p>
 <p>0 if the reservation succeeded or -ENOMEM if it failed.</p>
 <dl class="c function">
 <dt id="c.xa_release">
-void <code class="sig-name descname">xa_release</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_release" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xa_release</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_release" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Release a reserved entry.</p>
 </dd></dl>
 
@@ -1744,7 +1744,7 @@ reservation.  If the entry at <strong>index</strong> has been stored to, this fu
 will do nothing.</p>
 <dl class="c function">
 <dt id="c.xa_is_sibling">
-bool <code class="sig-name descname">xa_is_sibling</code><span class="sig-paren">(</span><em class="property">const</em> void *<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_is_sibling" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">xa_is_sibling</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_is_sibling" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Is the entry a sibling entry?</p>
 </dd></dl>
 
@@ -1757,7 +1757,7 @@ bool <code class="sig-name descname">xa_is_sibling</code><span class="sig-paren"
 <p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the entry is a sibling entry.</p>
 <dl class="c function">
 <dt id="c.xa_is_retry">
-bool <code class="sig-name descname">xa_is_retry</code><span class="sig-paren">(</span><em class="property">const</em> void *<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_is_retry" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">xa_is_retry</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_is_retry" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Is the entry a retry entry?</p>
 </dd></dl>
 
@@ -1770,7 +1770,7 @@ bool <code class="sig-name descname">xa_is_retry</code><span class="sig-paren">(
 <p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the entry is a retry entry.</p>
 <dl class="c function">
 <dt id="c.xa_is_advanced">
-bool <code class="sig-name descname">xa_is_advanced</code><span class="sig-paren">(</span><em class="property">const</em> void *<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_is_advanced" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">xa_is_advanced</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_is_advanced" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Is the entry only permitted for the advanced API?</p>
 </dd></dl>
 
@@ -1783,7 +1783,7 @@ bool <code class="sig-name descname">xa_is_advanced</code><span class="sig-paren
 <p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the entry cannot be stored by the normal API.</p>
 <dl class="c macro">
 <dt id="c.xa_update_node_t">
-<code class="sig-name descname">xa_update_node_t</code><a class="headerlink" href="#c.xa_update_node_t" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">xa_update_node_t</span></code><a class="headerlink" href="#c.xa_update_node_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><strong>Typedef</strong>: A callback function from the XArray.</p>
 </dd></dl>
 
@@ -1806,7 +1806,7 @@ Implementations should not drop the xa_lock, nor re-enable
 interrupts.</p>
 <dl class="c macro">
 <dt id="c.XA_STATE">
-<code class="sig-name descname">XA_STATE</code><a class="headerlink" href="#c.XA_STATE" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">XA_STATE</span></code><a class="headerlink" href="#c.XA_STATE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">XA_STATE</span> <span class="pre">(name,</span> <span class="pre">array,</span> <span class="pre">index)</span></code></p>
@@ -1826,7 +1826,7 @@ interrupts.</p>
 <p>Declare and initialise an xa_state on the stack.</p>
 <dl class="c macro">
 <dt id="c.XA_STATE_ORDER">
-<code class="sig-name descname">XA_STATE_ORDER</code><a class="headerlink" href="#c.XA_STATE_ORDER" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">XA_STATE_ORDER</span></code><a class="headerlink" href="#c.XA_STATE_ORDER" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">XA_STATE_ORDER</span> <span class="pre">(name,</span> <span class="pre">array,</span> <span class="pre">index,</span> <span class="pre">order)</span></code></p>
@@ -1850,7 +1850,7 @@ interrupts.</p>
 want to operate on.`</p>
 <dl class="c function">
 <dt id="c.xas_error">
-int <code class="sig-name descname">xas_error</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> xa_state *<em>xas</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_error" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">xas_error</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_error" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return an errno stored in the xa_state.</p>
 </dd></dl>
 
@@ -1863,7 +1863,7 @@ int <code class="sig-name descname">xas_error</code><span class="sig-paren">(</s
 <p>0 if no error has been noted.  A negative errno if one has.</p>
 <dl class="c function">
 <dt id="c.xas_set_err">
-void <code class="sig-name descname">xas_set_err</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em>, long <em>err</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_set_err" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xas_set_err</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em>, <span class="pre">long</span> <em><span class="pre">err</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_set_err" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Note an error in the xa_state.</p>
 </dd></dl>
 
@@ -1880,7 +1880,7 @@ will probably not behave the way you think they should.  If you want
 to clear the error from an xa_state, use <a class="reference internal" href="#c.xas_reset" title="xas_reset"><code class="xref c c-func docutils literal notranslate"><span class="pre">xas_reset()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.xas_invalid">
-bool <code class="sig-name descname">xas_invalid</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> xa_state *<em>xas</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_invalid" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">xas_invalid</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_invalid" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Is the xas in a retry or error state?</p>
 </dd></dl>
 
@@ -1893,7 +1893,7 @@ bool <code class="sig-name descname">xas_invalid</code><span class="sig-paren">(
 <p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the xas cannot be used for operations.</p>
 <dl class="c function">
 <dt id="c.xas_valid">
-bool <code class="sig-name descname">xas_valid</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> xa_state *<em>xas</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_valid" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">xas_valid</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_valid" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Is the xas a valid cursor into the array?</p>
 </dd></dl>
 
@@ -1906,7 +1906,7 @@ bool <code class="sig-name descname">xas_valid</code><span class="sig-paren">(</
 <p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the xas can be used for operations.</p>
 <dl class="c function">
 <dt id="c.xas_is_node">
-bool <code class="sig-name descname">xas_is_node</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> xa_state *<em>xas</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_is_node" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">xas_is_node</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_is_node" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Does the xas point to a node?</p>
 </dd></dl>
 
@@ -1919,7 +1919,7 @@ bool <code class="sig-name descname">xas_is_node</code><span class="sig-paren">(
 <p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the xas currently references a node.</p>
 <dl class="c function">
 <dt id="c.xas_reset">
-void <code class="sig-name descname">xas_reset</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_reset" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xas_reset</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_reset" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Reset an XArray operation state.</p>
 </dd></dl>
 
@@ -1936,7 +1936,7 @@ xarray lock and want to reuse the xa_state.</p>
 <p>Any context.</p>
 <dl class="c function">
 <dt id="c.xas_retry">
-bool <code class="sig-name descname">xas_retry</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em>, <em class="property">const</em> void *<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_retry" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">xas_retry</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_retry" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Retry the operation if appropriate.</p>
 </dd></dl>
 
@@ -1957,7 +1957,7 @@ the walk from the head of the array if needed.</p>
 <p>true if the operation needs to be retried.</p>
 <dl class="c function">
 <dt id="c.xas_reload">
-void *<code class="sig-name descname">xas_reload</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_reload" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xas_reload</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_reload" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Refetch an entry from the xarray.</p>
 </dd></dl>
 
@@ -1977,7 +1977,7 @@ error or restart state, call <a class="reference internal" href="#c.xas_load" ti
 <p>The entry at this location in the xarray.</p>
 <dl class="c function">
 <dt id="c.xas_set">
-void <code class="sig-name descname">xas_set</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em>, unsigned long <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_set" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xas_set</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_set" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set up XArray operation state for a different index.</p>
 </dd></dl>
 
@@ -1994,7 +1994,7 @@ have the effect of starting a walk from the top; see <a class="reference interna
 to move to an adjacent index.</p>
 <dl class="c function">
 <dt id="c.xas_set_order">
-void <code class="sig-name descname">xas_set_order</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em>, unsigned long <em>index</em>, unsigned int <em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_set_order" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xas_set_order</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">order</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_set_order" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set up XArray operation state for a multislot entry.</p>
 </dd></dl>
 
@@ -2009,7 +2009,7 @@ void <code class="sig-name descname">xas_set_order</code><span class="sig-paren"
 </dl>
 <dl class="c function">
 <dt id="c.xas_set_update">
-void <code class="sig-name descname">xas_set_update</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em>, <a class="reference internal" href="#c.xa_update_node_t" title="xa_update_node_t">xa_update_node_t</a> <em>update</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_set_update" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xas_set_update</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em>, <a class="reference internal" href="#c.xa_update_node_t" title="xa_update_node_t"><span class="pre">xa_update_node_t</span></a> <em><span class="pre">update</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_set_update" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set up XArray operation state for a callback.</p>
 </dd></dl>
 
@@ -2025,7 +2025,7 @@ void <code class="sig-name descname">xas_set_update</code><span class="sig-paren
 This is advanced functionality and is only needed by the page cache.</p>
 <dl class="c function">
 <dt id="c.xas_next_entry">
-void *<code class="sig-name descname">xas_next_entry</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em>, unsigned long <em>max</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_next_entry" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xas_next_entry</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">max</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_next_entry" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Advance iterator to next present entry.</p>
 </dd></dl>
 
@@ -2044,7 +2044,7 @@ for all the hard cases.</p>
 <p>The next present entry after the one currently referred to by <strong>xas</strong>.</p>
 <dl class="c function">
 <dt id="c.xas_next_marked">
-void *<code class="sig-name descname">xas_next_marked</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em>, unsigned long <em>max</em>, xa_mark_t <em>mark</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_next_marked" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xas_next_marked</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">max</span></em>, <span class="pre">xa_mark_t</span> <em><span class="pre">mark</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_next_marked" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Advance iterator to next marked entry.</p>
 </dd></dl>
 
@@ -2065,7 +2065,7 @@ speed.  It is equivalent to calling <a class="reference internal" href="#c.xas_f
 <p>The next marked entry after the one currently referred to by <strong>xas</strong>.</p>
 <dl class="c macro">
 <dt id="c.xas_for_each">
-<code class="sig-name descname">xas_for_each</code><a class="headerlink" href="#c.xas_for_each" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">xas_for_each</span></code><a class="headerlink" href="#c.xas_for_each" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">xas_for_each</span> <span class="pre">(xas,</span> <span class="pre">entry,</span> <span class="pre">max)</span></code></p>
@@ -2090,7 +2090,7 @@ or the xa_lock while iterating.  If you need to drop the lock, call
 <a class="reference internal" href="#c.xas_pause" title="xas_pause"><code class="xref c c-func docutils literal notranslate"><span class="pre">xas_pause()</span></code></a> first.</p>
 <dl class="c macro">
 <dt id="c.xas_for_each_marked">
-<code class="sig-name descname">xas_for_each_marked</code><a class="headerlink" href="#c.xas_for_each_marked" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">xas_for_each_marked</span></code><a class="headerlink" href="#c.xas_for_each_marked" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">xas_for_each_marked</span> <span class="pre">(xas,</span> <span class="pre">entry,</span> <span class="pre">max,</span> <span class="pre">mark)</span></code></p>
@@ -2117,7 +2117,7 @@ or the xa_lock while iterating.  If you need to drop the lock, call
 <a class="reference internal" href="#c.xas_pause" title="xas_pause"><code class="xref c c-func docutils literal notranslate"><span class="pre">xas_pause()</span></code></a> first.</p>
 <dl class="c macro">
 <dt id="c.xas_for_each_conflict">
-<code class="sig-name descname">xas_for_each_conflict</code><a class="headerlink" href="#c.xas_for_each_conflict" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">xas_for_each_conflict</span></code><a class="headerlink" href="#c.xas_for_each_conflict" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">xas_for_each_conflict</span> <span class="pre">(xas,</span> <span class="pre">entry)</span></code></p>
@@ -2140,7 +2140,7 @@ may also call xa_set_err() to exit the loop while setting an error
 to record the reason.</p>
 <dl class="c function">
 <dt id="c.xas_prev">
-void *<code class="sig-name descname">xas_prev</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_prev" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xas_prev</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_prev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Move iterator to previous index.</p>
 </dd></dl>
 
@@ -2162,7 +2162,7 @@ around to <code class="docutils literal notranslate"><span class="pre">ULONG_MAX
 entry.</p>
 <dl class="c function">
 <dt id="c.xas_next">
-void *<code class="sig-name descname">xas_next</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_next" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xas_next</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_next" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Move state to next index.</p>
 </dd></dl>
 
@@ -2184,7 +2184,7 @@ around to 0.</p>
 entry.</p>
 <dl class="c function">
 <dt id="c.xas_load">
-void *<code class="sig-name descname">xas_load</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_load" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xas_load</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_load" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Load an entry from the XArray (advanced).</p>
 </dd></dl>
 
@@ -2206,7 +2206,7 @@ present within the range specified by <strong>xas</strong>.</p>
 <p>Usually an entry in the XArray, but see description for exceptions.</p>
 <dl class="c function">
 <dt id="c.xas_nomem">
-bool <code class="sig-name descname">xas_nomem</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_nomem" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">xas_nomem</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_nomem" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate memory if needed.</p>
 </dd></dl>
 
@@ -2231,7 +2231,7 @@ them up here.</p>
 <p>true if memory was needed, and was successfully allocated.</p>
 <dl class="c function">
 <dt id="c.xas_free_nodes">
-void <code class="sig-name descname">xas_free_nodes</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em>, <em class="property">struct</em> xa_node *<em>top</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_free_nodes" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xas_free_nodes</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">xa_node</span> <span class="pre">*</span><em><span class="pre">top</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_free_nodes" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Free this node and all nodes that it references</p>
 </dd></dl>
 
@@ -2248,7 +2248,7 @@ of its subnodes.  There may be RCU walkers with references into the tree,
 so we must replace all entries with retry markers.</p>
 <dl class="c function">
 <dt id="c.xas_create_range">
-void <code class="sig-name descname">xas_create_range</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_create_range" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xas_create_range</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_create_range" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Ensure that stores to this range will succeed</p>
 </dd></dl>
 
@@ -2264,7 +2264,7 @@ range.  This is for the benefit of users which have not yet been
 converted to use multi-index entries.</p>
 <dl class="c function">
 <dt id="c.xas_store">
-void *<code class="sig-name descname">xas_store</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em>, void *<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_store" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xas_store</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_store" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Store this entry in the XArray.</p>
 </dd></dl>
 
@@ -2285,7 +2285,7 @@ and can be changed if needed.</p>
 <p>The old entry at this index.</p>
 <dl class="c function">
 <dt id="c.xas_get_mark">
-bool <code class="sig-name descname">xas_get_mark</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> xa_state *<em>xas</em>, xa_mark_t <em>mark</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_get_mark" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">xas_get_mark</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em>, <span class="pre">xa_mark_t</span> <em><span class="pre">mark</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_get_mark" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns the state of this mark.</p>
 </dd></dl>
 
@@ -2301,7 +2301,7 @@ bool <code class="sig-name descname">xas_get_mark</code><span class="sig-paren">
 is in an error state.</p>
 <dl class="c function">
 <dt id="c.xas_set_mark">
-void <code class="sig-name descname">xas_set_mark</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> xa_state *<em>xas</em>, xa_mark_t <em>mark</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_set_mark" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xas_set_mark</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em>, <span class="pre">xa_mark_t</span> <em><span class="pre">mark</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_set_mark" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Sets the mark on this entry and its parents.</p>
 </dd></dl>
 
@@ -2318,7 +2318,7 @@ on all the ancestor entries.  Does nothing if <strong>xas</strong> has not been 
 an entry, or is in an error state.</p>
 <dl class="c function">
 <dt id="c.xas_clear_mark">
-void <code class="sig-name descname">xas_clear_mark</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> xa_state *<em>xas</em>, xa_mark_t <em>mark</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_clear_mark" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xas_clear_mark</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em>, <span class="pre">xa_mark_t</span> <em><span class="pre">mark</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_clear_mark" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Clears the mark on this entry and its parents.</p>
 </dd></dl>
 
@@ -2335,7 +2335,7 @@ attempting to clear it on all the ancestor entries.  Does nothing if
 <strong>xas</strong> has not been walked to an entry, or is in an error state.</p>
 <dl class="c function">
 <dt id="c.xas_init_marks">
-void <code class="sig-name descname">xas_init_marks</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> xa_state *<em>xas</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_init_marks" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xas_init_marks</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_init_marks" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialise all marks for the entry</p>
 </dd></dl>
 
@@ -2352,7 +2352,7 @@ marks are cleared.</p>
 up the tree multiple times.</p>
 <dl class="c function">
 <dt id="c.xas_split_alloc">
-void <code class="sig-name descname">xas_split_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em>, void *<em>entry</em>, unsigned int <em>order</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_split_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xas_split_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">order</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_split_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate memory for splitting an entry.</p>
 </dd></dl>
 
@@ -2376,7 +2376,7 @@ entries of the order stored in the <strong>xas</strong>.</p>
 <p>May sleep if <strong>gfp</strong> flags permit.</p>
 <dl class="c function">
 <dt id="c.xas_split">
-void <code class="sig-name descname">xas_split</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em>, void *<em>entry</em>, unsigned int <em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_split" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xas_split</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">order</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_split" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Split a multi-index entry into smaller entries.</p>
 </dd></dl>
 
@@ -2396,7 +2396,7 @@ copied to all the replacement entries.</p>
 <p>Any context.  The caller should hold the xa_lock.</p>
 <dl class="c function">
 <dt id="c.xas_pause">
-void <code class="sig-name descname">xas_pause</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_pause" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xas_pause</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_pause" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Pause a walk to drop a lock.</p>
 </dd></dl>
 
@@ -2417,7 +2417,7 @@ iterator may be more appropriate.</p>
 to pause a reverse iteration, we will need a xas_pause_rev().</p>
 <dl class="c function">
 <dt id="c.xas_find">
-void *<code class="sig-name descname">xas_find</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em>, unsigned long <em>max</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_find" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xas_find</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">max</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_find" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find the next present entry in the XArray.</p>
 </dd></dl>
 
@@ -2440,7 +2440,7 @@ to be immediately passed to <a class="reference internal" href="#c.xas_store" ti
 <p>The entry, if found, otherwise <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 <dl class="c function">
 <dt id="c.xas_find_marked">
-void *<code class="sig-name descname">xas_find_marked</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em>, unsigned long <em>max</em>, xa_mark_t <em>mark</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_find_marked" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xas_find_marked</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">max</span></em>, <span class="pre">xa_mark_t</span> <em><span class="pre">mark</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_find_marked" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find the next marked entry in the XArray.</p>
 </dd></dl>
 
@@ -2468,7 +2468,7 @@ state.</p>
 <p>The entry, if found, otherwise <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 <dl class="c function">
 <dt id="c.xas_find_conflict">
-void *<code class="sig-name descname">xas_find_conflict</code><span class="sig-paren">(</span><em class="property">struct</em> xa_state *<em>xas</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_find_conflict" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xas_find_conflict</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_state</span> <span class="pre">*</span><em><span class="pre">xas</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xas_find_conflict" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find the next present entry in a range.</p>
 </dd></dl>
 
@@ -2485,7 +2485,7 @@ void *<code class="sig-name descname">xas_find_conflict</code><span class="sig-p
 <p>The next entry in the range covered by <strong>xas</strong> or <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 <dl class="c function">
 <dt id="c.xa_load">
-void *<code class="sig-name descname">xa_load</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_load" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xa_load</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_load" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Load an entry from an XArray.</p>
 </dd></dl>
 
@@ -2502,7 +2502,7 @@ void *<code class="sig-name descname">xa_load</code><span class="sig-paren">(</s
 <p>The entry at <strong>index</strong> in <strong>xa</strong>.</p>
 <dl class="c function">
 <dt id="c.__xa_erase">
-void *<code class="sig-name descname">__xa_erase</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__xa_erase" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__xa_erase</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__xa_erase" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Erase this entry from the XArray while locked.</p>
 </dd></dl>
 
@@ -2523,7 +2523,7 @@ and none of the entries will be part of a multi-index entry.</p>
 <p>The entry which used to be at this index.</p>
 <dl class="c function">
 <dt id="c.xa_erase">
-void *<code class="sig-name descname">xa_erase</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_erase" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xa_erase</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_erase" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Erase this entry from the XArray.</p>
 </dd></dl>
 
@@ -2544,7 +2544,7 @@ and none of the entries will be part of a multi-index entry.</p>
 <p>The entry which used to be at this index.</p>
 <dl class="c function">
 <dt id="c.__xa_store">
-void *<code class="sig-name descname">__xa_store</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, void *<em>entry</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__xa_store" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__xa_store</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__xa_store" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Store this entry in the XArray.</p>
 </dd></dl>
 
@@ -2570,7 +2570,7 @@ release and reacquire xa_lock if <strong>gfp</strong> flags permit.</p>
 <p>The old entry at this index or <a class="reference internal" href="#c.xa_err" title="xa_err"><code class="xref c c-func docutils literal notranslate"><span class="pre">xa_err()</span></code></a> if an error happened.</p>
 <dl class="c function">
 <dt id="c.xa_store">
-void *<code class="sig-name descname">xa_store</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, void *<em>entry</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_store" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xa_store</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_store" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Store this entry in the XArray.</p>
 </dd></dl>
 
@@ -2598,7 +2598,7 @@ cannot be stored in an XArray, or xa_err(-ENOMEM) if memory allocation
 failed.</p>
 <dl class="c function">
 <dt id="c.__xa_cmpxchg">
-void *<code class="sig-name descname">__xa_cmpxchg</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, void *<em>old</em>, void *<em>entry</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__xa_cmpxchg" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">__xa_cmpxchg</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">old</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__xa_cmpxchg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Store this entry in the XArray.</p>
 </dd></dl>
 
@@ -2626,7 +2626,7 @@ release and reacquire xa_lock if <strong>gfp</strong> flags permit.</p>
 <p>The old entry at this index or <a class="reference internal" href="#c.xa_err" title="xa_err"><code class="xref c c-func docutils literal notranslate"><span class="pre">xa_err()</span></code></a> if an error happened.</p>
 <dl class="c function">
 <dt id="c.__xa_insert">
-int <code class="sig-name descname">__xa_insert</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, void *<em>entry</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__xa_insert" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">__xa_insert</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__xa_insert" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Store this entry in the XArray if no entry is present.</p>
 </dd></dl>
 
@@ -2653,7 +2653,7 @@ release and reacquire xa_lock if <strong>gfp</strong> flags permit.</p>
 -ENOMEM if memory could not be allocated.</p>
 <dl class="c function">
 <dt id="c.xa_store_range">
-void *<code class="sig-name descname">xa_store_range</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>first</em>, unsigned long <em>last</em>, void *<em>entry</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_store_range" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xa_store_range</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">first</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">last</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_store_range" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Store this entry at a range of indices in the XArray.</p>
 </dd></dl>
 
@@ -2683,7 +2683,7 @@ if the <strong>gfp</strong> flags permit.</p>
 an XArray, or xa_err(-ENOMEM) if memory allocation failed.</p>
 <dl class="c function">
 <dt id="c.xa_get_order">
-int <code class="sig-name descname">xa_get_order</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_get_order" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">xa_get_order</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_get_order" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get the order of an entry.</p>
 </dd></dl>
 
@@ -2698,7 +2698,7 @@ int <code class="sig-name descname">xa_get_order</code><span class="sig-paren">(
 <p>A number between 0 and 63 indicating the order of the entry.</p>
 <dl class="c function">
 <dt id="c.__xa_alloc">
-int <code class="sig-name descname">__xa_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, u32 *<em>id</em>, void *<em>entry</em>, <em class="property">struct</em> <a class="reference internal" href="#c.xa_limit" title="xa_limit">xa_limit</a> <em>limit</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__xa_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">__xa_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">id</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xa_limit" title="xa_limit"><span class="pre">xa_limit</span></a> <em><span class="pre">limit</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__xa_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find somewhere to store this entry in the XArray.</p>
 </dd></dl>
 
@@ -2727,7 +2727,7 @@ release and reacquire xa_lock if <strong>gfp</strong> flags permit.</p>
 -EBUSY if there are no free entries in <strong>limit</strong>.</p>
 <dl class="c function">
 <dt id="c.__xa_alloc_cyclic">
-int <code class="sig-name descname">__xa_alloc_cyclic</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, u32 *<em>id</em>, void *<em>entry</em>, <em class="property">struct</em> <a class="reference internal" href="#c.xa_limit" title="xa_limit">xa_limit</a> <em>limit</em>, u32 *<em>next</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__xa_alloc_cyclic" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">__xa_alloc_cyclic</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">id</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xa_limit" title="xa_limit"><span class="pre">xa_limit</span></a> <em><span class="pre">limit</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">next</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__xa_alloc_cyclic" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find somewhere to store this entry in the XArray.</p>
 </dd></dl>
 
@@ -2761,7 +2761,7 @@ allocation succeeded after wrapping, -ENOMEM if memory could not be
 allocated or -EBUSY if there are no free entries in <strong>limit</strong>.</p>
 <dl class="c function">
 <dt id="c.__xa_set_mark">
-void <code class="sig-name descname">__xa_set_mark</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, xa_mark_t <em>mark</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__xa_set_mark" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">__xa_set_mark</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">xa_mark_t</span> <em><span class="pre">mark</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__xa_set_mark" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set this mark on this entry while locked.</p>
 </dd></dl>
 
@@ -2780,7 +2780,7 @@ void <code class="sig-name descname">__xa_set_mark</code><span class="sig-paren"
 <p>Any context.  Expects xa_lock to be held on entry.</p>
 <dl class="c function">
 <dt id="c.__xa_clear_mark">
-void <code class="sig-name descname">__xa_clear_mark</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, xa_mark_t <em>mark</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__xa_clear_mark" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">__xa_clear_mark</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">xa_mark_t</span> <em><span class="pre">mark</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__xa_clear_mark" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Clear this mark on this entry while locked.</p>
 </dd></dl>
 
@@ -2797,7 +2797,7 @@ void <code class="sig-name descname">__xa_clear_mark</code><span class="sig-pare
 <p>Any context.  Expects xa_lock to be held on entry.</p>
 <dl class="c function">
 <dt id="c.xa_get_mark">
-bool <code class="sig-name descname">xa_get_mark</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, xa_mark_t <em>mark</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_get_mark" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">xa_get_mark</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">xa_mark_t</span> <em><span class="pre">mark</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_get_mark" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Inquire whether this mark is set on this entry.</p>
 </dd></dl>
 
@@ -2819,7 +2819,7 @@ by the time it returns.  If you need the result to be stable, use a lock.</p>
 <p>True if the entry at <strong>index</strong> has this mark set, false if it doesn’t.</p>
 <dl class="c function">
 <dt id="c.xa_set_mark">
-void <code class="sig-name descname">xa_set_mark</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, xa_mark_t <em>mark</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_set_mark" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xa_set_mark</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">xa_mark_t</span> <em><span class="pre">mark</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_set_mark" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set this mark on this entry.</p>
 </dd></dl>
 
@@ -2838,7 +2838,7 @@ void <code class="sig-name descname">xa_set_mark</code><span class="sig-paren">(
 <p>Process context.  Takes and releases the xa_lock.</p>
 <dl class="c function">
 <dt id="c.xa_clear_mark">
-void <code class="sig-name descname">xa_clear_mark</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long <em>index</em>, xa_mark_t <em>mark</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_clear_mark" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xa_clear_mark</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">index</span></em>, <span class="pre">xa_mark_t</span> <em><span class="pre">mark</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_clear_mark" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Clear this mark on this entry.</p>
 </dd></dl>
 
@@ -2857,7 +2857,7 @@ void <code class="sig-name descname">xa_clear_mark</code><span class="sig-paren"
 <p>Process context.  Takes and releases the xa_lock.</p>
 <dl class="c function">
 <dt id="c.xa_find">
-void *<code class="sig-name descname">xa_find</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long *<em>indexp</em>, unsigned long <em>max</em>, xa_mark_t <em>filter</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_find" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xa_find</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">*</span><em><span class="pre">indexp</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">max</span></em>, <span class="pre">xa_mark_t</span> <em><span class="pre">filter</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_find" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Search the XArray for an entry.</p>
 </dd></dl>
 
@@ -2885,7 +2885,7 @@ entries which are being simultaneously added.  It will not return an
 <p>The entry, if found, otherwise <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 <dl class="c function">
 <dt id="c.xa_find_after">
-void *<code class="sig-name descname">xa_find_after</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, unsigned long *<em>indexp</em>, unsigned long <em>max</em>, xa_mark_t <em>filter</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_find_after" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">xa_find_after</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">*</span><em><span class="pre">indexp</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">max</span></em>, <span class="pre">xa_mark_t</span> <em><span class="pre">filter</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_find_after" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Search the XArray for a present entry.</p>
 </dd></dl>
 
@@ -2913,7 +2913,7 @@ which are being simultaneously added.  It will not return an
 <p>The pointer, if found, otherwise <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 <dl class="c function">
 <dt id="c.xa_extract">
-unsigned int <code class="sig-name descname">xa_extract</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em>, void **<em>dst</em>, unsigned long <em>start</em>, unsigned long <em>max</em>, unsigned int <em>n</em>, xa_mark_t <em>filter</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_extract" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">xa_extract</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em>, <span class="pre">void</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">dst</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">start</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">max</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">n</span></em>, <span class="pre">xa_mark_t</span> <em><span class="pre">filter</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_extract" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Copy selected entries from the XArray into a normal array.</p>
 </dd></dl>
 
@@ -2951,7 +2951,7 @@ function will prevent concurrent modification.</p>
 <p>The number of entries copied.</p>
 <dl class="c function">
 <dt id="c.xa_delete_node">
-void <code class="sig-name descname">xa_delete_node</code><span class="sig-paren">(</span><em class="property">struct</em> xa_node *<em>node</em>, <a class="reference internal" href="#c.xa_update_node_t" title="xa_update_node_t">xa_update_node_t</a> <em>update</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_delete_node" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xa_delete_node</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">xa_node</span> <span class="pre">*</span><em><span class="pre">node</span></em>, <a class="reference internal" href="#c.xa_update_node_t" title="xa_update_node_t"><span class="pre">xa_update_node_t</span></a> <em><span class="pre">update</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_delete_node" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Private interface for workingset code.</p>
 </dd></dl>
 
@@ -2966,7 +2966,7 @@ void <code class="sig-name descname">xa_delete_node</code><span class="sig-paren
 <p>xa_lock must be held on entry and will not be released.</p>
 <dl class="c function">
 <dt id="c.xa_destroy">
-void <code class="sig-name descname">xa_destroy</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.xarray" title="xarray">xarray</a> *<em>xa</em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_destroy" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">xa_destroy</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.xarray" title="xarray"><span class="pre">xarray</span></a> <span class="pre">*</span><em><span class="pre">xa</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.xa_destroy" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Free all internal data structures.</p>
 </dd></dl>
 

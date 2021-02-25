@@ -355,7 +355,7 @@
 <h2>Fusion message devices<a class="headerlink" href="#fusion-message-devices" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.mpt_register">
-u8 <code class="sig-name descname">mpt_register</code><span class="sig-paren">(</span>MPT_CALLBACK <em>cbfunc</em>, MPT_DRIVER_CLASS <em>dclass</em>, char *<em>func_name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_register" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u8</span> <code class="sig-name descname"><span class="pre">mpt_register</span></code><span class="sig-paren">(</span><span class="pre">MPT_CALLBACK</span> <em><span class="pre">cbfunc</span></em>, <span class="pre">MPT_DRIVER_CLASS</span> <em><span class="pre">dclass</span></em>, <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">func_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Register protocol-specific main callback handler.</p>
 </dd></dl>
 
@@ -384,7 +384,7 @@ considered an error by the caller.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_deregister">
-void <code class="sig-name descname">mpt_deregister</code><span class="sig-paren">(</span>u8 <em>cb_idx</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_deregister" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">mpt_deregister</span></code><span class="sig-paren">(</span><span class="pre">u8</span> <em><span class="pre">cb_idx</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_deregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Deregister a protocol drivers resources.</p>
 </dd></dl>
 
@@ -397,7 +397,7 @@ module is unloaded.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_event_register">
-int <code class="sig-name descname">mpt_event_register</code><span class="sig-paren">(</span>u8 <em>cb_idx</em>, MPT_EVHANDLER <em>ev_cbfunc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_event_register" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpt_event_register</span></code><span class="sig-paren">(</span><span class="pre">u8</span> <em><span class="pre">cb_idx</span></em>, <span class="pre">MPT_EVHANDLER</span> <em><span class="pre">ev_cbfunc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_event_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Register protocol-specific event callback handler.</p>
 </dd></dl>
 
@@ -413,7 +413,7 @@ if/when they choose to be notified of MPT events.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_event_deregister">
-void <code class="sig-name descname">mpt_event_deregister</code><span class="sig-paren">(</span>u8 <em>cb_idx</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_event_deregister" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">mpt_event_deregister</span></code><span class="sig-paren">(</span><span class="pre">u8</span> <em><span class="pre">cb_idx</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_event_deregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Deregister protocol-specific event callback handler</p>
 </dd></dl>
 
@@ -427,7 +427,7 @@ or when its module is unloaded.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_reset_register">
-int <code class="sig-name descname">mpt_reset_register</code><span class="sig-paren">(</span>u8 <em>cb_idx</em>, MPT_RESETHANDLER <em>reset_func</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_reset_register" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpt_reset_register</span></code><span class="sig-paren">(</span><span class="pre">u8</span> <em><span class="pre">cb_idx</span></em>, <span class="pre">MPT_RESETHANDLER</span> <em><span class="pre">reset_func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_reset_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Register protocol-specific IOC reset handler.</p>
 </dd></dl>
 
@@ -443,7 +443,7 @@ if/when they choose to be notified of IOC resets.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_reset_deregister">
-void <code class="sig-name descname">mpt_reset_deregister</code><span class="sig-paren">(</span>u8 <em>cb_idx</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_reset_deregister" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">mpt_reset_deregister</span></code><span class="sig-paren">(</span><span class="pre">u8</span> <em><span class="pre">cb_idx</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_reset_deregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Deregister protocol-specific IOC reset handler.</p>
 </dd></dl>
 
@@ -457,7 +457,7 @@ or when its module is unloaded.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_device_driver_register">
-int <code class="sig-name descname">mpt_device_driver_register</code><span class="sig-paren">(</span><em class="property">struct</em> mpt_pci_driver *<em>dd_cbfunc</em>, u8 <em>cb_idx</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_device_driver_register" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpt_device_driver_register</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">mpt_pci_driver</span> <span class="pre">*</span><em><span class="pre">dd_cbfunc</span></em>, <span class="pre">u8</span> <em><span class="pre">cb_idx</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_device_driver_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Register device driver hooks</p>
 </dd></dl>
 
@@ -470,7 +470,7 @@ int <code class="sig-name descname">mpt_device_driver_register</code><span class
 </dl>
 <dl class="c function">
 <dt id="c.mpt_device_driver_deregister">
-void <code class="sig-name descname">mpt_device_driver_deregister</code><span class="sig-paren">(</span>u8 <em>cb_idx</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_device_driver_deregister" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">mpt_device_driver_deregister</span></code><span class="sig-paren">(</span><span class="pre">u8</span> <em><span class="pre">cb_idx</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_device_driver_deregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>DeRegister device driver hooks</p>
 </dd></dl>
 
@@ -481,7 +481,7 @@ void <code class="sig-name descname">mpt_device_driver_deregister</code><span cl
 </dl>
 <dl class="c function">
 <dt id="c.mpt_get_msg_frame">
-MPT_FRAME_HDR *<code class="sig-name descname">mpt_get_msg_frame</code><span class="sig-paren">(</span>u8 <em>cb_idx</em>, MPT_ADAPTER *<em>ioc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_get_msg_frame" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">MPT_FRAME_HDR</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">mpt_get_msg_frame</span></code><span class="sig-paren">(</span><span class="pre">u8</span> <em><span class="pre">cb_idx</span></em>, <span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_get_msg_frame" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Obtain an MPT request frame from the pool</p>
 </dd></dl>
 
@@ -498,7 +498,7 @@ or IOC is not active.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_put_msg_frame">
-void <code class="sig-name descname">mpt_put_msg_frame</code><span class="sig-paren">(</span>u8 <em>cb_idx</em>, MPT_ADAPTER *<em>ioc</em>, MPT_FRAME_HDR *<em>mf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_put_msg_frame" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">mpt_put_msg_frame</span></code><span class="sig-paren">(</span><span class="pre">u8</span> <em><span class="pre">cb_idx</span></em>, <span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em>, <span class="pre">MPT_FRAME_HDR</span> <span class="pre">*</span><em><span class="pre">mf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_put_msg_frame" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Send a protocol-specific MPT request frame to an IOC</p>
 </dd></dl>
 
@@ -515,7 +515,7 @@ specific MPT adapter.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_put_msg_frame_hi_pri">
-void <code class="sig-name descname">mpt_put_msg_frame_hi_pri</code><span class="sig-paren">(</span>u8 <em>cb_idx</em>, MPT_ADAPTER *<em>ioc</em>, MPT_FRAME_HDR *<em>mf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_put_msg_frame_hi_pri" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">mpt_put_msg_frame_hi_pri</span></code><span class="sig-paren">(</span><span class="pre">u8</span> <em><span class="pre">cb_idx</span></em>, <span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em>, <span class="pre">MPT_FRAME_HDR</span> <span class="pre">*</span><em><span class="pre">mf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_put_msg_frame_hi_pri" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Send a hi-pri protocol-specific MPT request frame</p>
 </dd></dl>
 
@@ -534,7 +534,7 @@ specific MPT adapter.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_free_msg_frame">
-void <code class="sig-name descname">mpt_free_msg_frame</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em>, MPT_FRAME_HDR *<em>mf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_free_msg_frame" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">mpt_free_msg_frame</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em>, <span class="pre">MPT_FRAME_HDR</span> <span class="pre">*</span><em><span class="pre">mf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_free_msg_frame" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Place MPT request frame back on FreeQ.</p>
 </dd></dl>
 
@@ -549,7 +549,7 @@ FreeQ.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_send_handshake_request">
-int <code class="sig-name descname">mpt_send_handshake_request</code><span class="sig-paren">(</span>u8 <em>cb_idx</em>, MPT_ADAPTER *<em>ioc</em>, int <em>reqBytes</em>, u32 *<em>req</em>, int <em>sleepFlag</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_send_handshake_request" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpt_send_handshake_request</span></code><span class="sig-paren">(</span><span class="pre">u8</span> <em><span class="pre">cb_idx</span></em>, <span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em>, <span class="pre">int</span> <em><span class="pre">reqBytes</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">req</span></em>, <span class="pre">int</span> <em><span class="pre">sleepFlag</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_send_handshake_request" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Send MPT request via doorbell handshake method.</p>
 </dd></dl>
 
@@ -576,7 +576,7 @@ requests since they are required to be sent via doorbell handshake.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_verify_adapter">
-int <code class="sig-name descname">mpt_verify_adapter</code><span class="sig-paren">(</span>int <em>iocid</em>, MPT_ADAPTER **<em>iocpp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_verify_adapter" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpt_verify_adapter</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">iocid</span></em>, <span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">iocpp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_verify_adapter" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Given IOC identifier, set pointer to its adapter structure.</p>
 </dd></dl>
 
@@ -593,7 +593,7 @@ Returns -1 if iocid is not found.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_attach">
-int <code class="sig-name descname">mpt_attach</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>pdev</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="../PCI/pci.html#c.pci_device_id" title="pci_device_id">pci_device_id</a> *<em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_attach" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpt_attach</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">pdev</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../PCI/pci.html#c.pci_device_id" title="pci_device_id"><span class="pre">pci_device_id</span></a> <span class="pre">*</span><em><span class="pre">id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_attach" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Install a PCI intelligent MPT adapter.</p>
 </dd></dl>
 
@@ -614,7 +614,7 @@ MPT adapter.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_detach">
-void <code class="sig-name descname">mpt_detach</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>pdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_detach" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">mpt_detach</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">pdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_detach" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Remove a PCI intelligent MPT adapter.</p>
 </dd></dl>
 
@@ -625,7 +625,7 @@ void <code class="sig-name descname">mpt_detach</code><span class="sig-paren">(<
 </dl>
 <dl class="c function">
 <dt id="c.mpt_suspend">
-int <code class="sig-name descname">mpt_suspend</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>pdev</em>, pm_message_t <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_suspend" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpt_suspend</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">pdev</span></em>, <span class="pre">pm_message_t</span> <em><span class="pre">state</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_suspend" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Fusion MPT base driver suspend routine.</p>
 </dd></dl>
 
@@ -638,7 +638,7 @@ int <code class="sig-name descname">mpt_suspend</code><span class="sig-paren">(<
 </dl>
 <dl class="c function">
 <dt id="c.mpt_resume">
-int <code class="sig-name descname">mpt_resume</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>pdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_resume" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpt_resume</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">pdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_resume" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Fusion MPT base driver resume routine.</p>
 </dd></dl>
 
@@ -649,7 +649,7 @@ int <code class="sig-name descname">mpt_resume</code><span class="sig-paren">(</
 </dl>
 <dl class="c function">
 <dt id="c.mpt_GetIocState">
-u32 <code class="sig-name descname">mpt_GetIocState</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em>, int <em>cooked</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_GetIocState" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u32</span> <code class="sig-name descname"><span class="pre">mpt_GetIocState</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em>, <span class="pre">int</span> <em><span class="pre">cooked</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_GetIocState" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get the current state of a MPT adapter.</p>
 </dd></dl>
 
@@ -664,7 +664,7 @@ Doorbell bits in MPI_IOC_STATE_MASK.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_alloc_fw_memory">
-int <code class="sig-name descname">mpt_alloc_fw_memory</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em>, int <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_alloc_fw_memory" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpt_alloc_fw_memory</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em>, <span class="pre">int</span> <em><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_alloc_fw_memory" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate firmware memory</p>
 </dd></dl>
 
@@ -680,7 +680,7 @@ is returned.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_free_fw_memory">
-void <code class="sig-name descname">mpt_free_fw_memory</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_free_fw_memory" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">mpt_free_fw_memory</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_free_fw_memory" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>free firmware memory</p>
 </dd></dl>
 
@@ -693,7 +693,7 @@ Else, delete a secondary image in same format.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mptbase_sas_persist_operation">
-int <code class="sig-name descname">mptbase_sas_persist_operation</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em>, u8 <em>persist_opcode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptbase_sas_persist_operation" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mptbase_sas_persist_operation</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em>, <span class="pre">u8</span> <em><span class="pre">persist_opcode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptbase_sas_persist_operation" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Perform operation on SAS Persistent Table</p>
 </dd></dl>
 
@@ -726,7 +726,7 @@ devices not currently present.</p></td>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.mpt_raid_phys_disk_pg0">
-int <code class="sig-name descname">mpt_raid_phys_disk_pg0</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em>, u8 <em>phys_disk_num</em>, RaidPhysDiskPage0_t *<em>phys_disk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_raid_phys_disk_pg0" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpt_raid_phys_disk_pg0</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em>, <span class="pre">u8</span> <em><span class="pre">phys_disk_num</span></em>, <span class="pre">RaidPhysDiskPage0_t</span> <span class="pre">*</span><em><span class="pre">phys_disk</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_raid_phys_disk_pg0" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>returns phys disk page zero</p>
 </dd></dl>
 
@@ -747,7 +747,7 @@ int <code class="sig-name descname">mpt_raid_phys_disk_pg0</code><span class="si
 </div></blockquote>
 <dl class="c function">
 <dt id="c.mpt_raid_phys_disk_get_num_paths">
-int <code class="sig-name descname">mpt_raid_phys_disk_get_num_paths</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em>, u8 <em>phys_disk_num</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_raid_phys_disk_get_num_paths" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpt_raid_phys_disk_get_num_paths</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em>, <span class="pre">u8</span> <em><span class="pre">phys_disk_num</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_raid_phys_disk_get_num_paths" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>returns number paths associated to this phys_num</p>
 </dd></dl>
 
@@ -764,7 +764,7 @@ int <code class="sig-name descname">mpt_raid_phys_disk_get_num_paths</code><span
 </div></blockquote>
 <dl class="c function">
 <dt id="c.mpt_raid_phys_disk_pg1">
-int <code class="sig-name descname">mpt_raid_phys_disk_pg1</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em>, u8 <em>phys_disk_num</em>, RaidPhysDiskPage1_t *<em>phys_disk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_raid_phys_disk_pg1" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpt_raid_phys_disk_pg1</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em>, <span class="pre">u8</span> <em><span class="pre">phys_disk_num</span></em>, <span class="pre">RaidPhysDiskPage1_t</span> <span class="pre">*</span><em><span class="pre">phys_disk</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_raid_phys_disk_pg1" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>returns phys disk page 1</p>
 </dd></dl>
 
@@ -785,7 +785,7 @@ int <code class="sig-name descname">mpt_raid_phys_disk_pg1</code><span class="si
 </div></blockquote>
 <dl class="c function">
 <dt id="c.mpt_findImVolumes">
-int <code class="sig-name descname">mpt_findImVolumes</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_findImVolumes" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpt_findImVolumes</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_findImVolumes" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Identify IDs of hidden disks and RAID Volumes</p>
 </dd></dl>
 
@@ -802,7 +802,7 @@ int <code class="sig-name descname">mpt_findImVolumes</code><span class="sig-par
 </div></blockquote>
 <dl class="c function">
 <dt id="c.mpt_config">
-int <code class="sig-name descname">mpt_config</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em>, CONFIGPARMS *<em>pCfg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_config" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpt_config</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em>, <span class="pre">CONFIGPARMS</span> <span class="pre">*</span><em><span class="pre">pCfg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_config" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Generic function to issue config message</p>
 </dd></dl>
 
@@ -823,7 +823,7 @@ Page header is updated.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_print_ioc_summary">
-void <code class="sig-name descname">mpt_print_ioc_summary</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em>, char *<em>buffer</em>, int *<em>size</em>, int <em>len</em>, int <em>showlan</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_print_ioc_summary" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">mpt_print_ioc_summary</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em>, <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">buffer</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">size</span></em>, <span class="pre">int</span> <em><span class="pre">len</span></em>, <span class="pre">int</span> <em><span class="pre">showlan</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_print_ioc_summary" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Write ASCII summary of IOC to a buffer.</p>
 </dd></dl>
 
@@ -844,7 +844,7 @@ a summary of IOC information, to a buffer.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_set_taskmgmt_in_progress_flag">
-int <code class="sig-name descname">mpt_set_taskmgmt_in_progress_flag</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_set_taskmgmt_in_progress_flag" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpt_set_taskmgmt_in_progress_flag</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_set_taskmgmt_in_progress_flag" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set flags associated with task management</p>
 </dd></dl>
 
@@ -857,7 +857,7 @@ int <code class="sig-name descname">mpt_set_taskmgmt_in_progress_flag</code><spa
 </dl>
 <dl class="c function">
 <dt id="c.mpt_clear_taskmgmt_in_progress_flag">
-void <code class="sig-name descname">mpt_clear_taskmgmt_in_progress_flag</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_clear_taskmgmt_in_progress_flag" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">mpt_clear_taskmgmt_in_progress_flag</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_clear_taskmgmt_in_progress_flag" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>clear flags associated with task management</p>
 </dd></dl>
 
@@ -868,7 +868,7 @@ void <code class="sig-name descname">mpt_clear_taskmgmt_in_progress_flag</code><
 </dl>
 <dl class="c function">
 <dt id="c.mpt_halt_firmware">
-void <code class="sig-name descname">mpt_halt_firmware</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_halt_firmware" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">mpt_halt_firmware</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_halt_firmware" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Halts the firmware if it is operational and panic the kernel</p>
 </dd></dl>
 
@@ -879,7 +879,7 @@ void <code class="sig-name descname">mpt_halt_firmware</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.mpt_Soft_Hard_ResetHandler">
-int <code class="sig-name descname">mpt_Soft_Hard_ResetHandler</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em>, int <em>sleepFlag</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_Soft_Hard_ResetHandler" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpt_Soft_Hard_ResetHandler</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em>, <span class="pre">int</span> <em><span class="pre">sleepFlag</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_Soft_Hard_ResetHandler" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Try less expensive reset</p>
 </dd></dl>
 
@@ -895,7 +895,7 @@ HardReset.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mpt_HardResetHandler">
-int <code class="sig-name descname">mpt_HardResetHandler</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em>, int <em>sleepFlag</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_HardResetHandler" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpt_HardResetHandler</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em>, <span class="pre">int</span> <em><span class="pre">sleepFlag</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpt_HardResetHandler" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Generic reset handler</p>
 </dd></dl>
 
@@ -918,7 +918,7 @@ or a non-interrupt thread.  In the former, must not call schedule().</p>
 </dl>
 <dl class="c function">
 <dt id="c.mptscsih_info">
-<em class="property">const</em> char *<code class="sig-name descname">mptscsih_info</code><span class="sig-paren">(</span><em class="property">struct</em> Scsi_Host *<em>SChost</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_info" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">mptscsih_info</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">Scsi_Host</span> <span class="pre">*</span><em><span class="pre">SChost</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return information about MPT adapter</p>
 </dd></dl>
 
@@ -931,7 +931,7 @@ or a non-interrupt thread.  In the former, must not call schedule().</p>
 </dl>
 <dl class="c function">
 <dt id="c.mptscsih_qcmd">
-int <code class="sig-name descname">mptscsih_qcmd</code><span class="sig-paren">(</span><em class="property">struct</em> scsi_cmnd *<em>SCpnt</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_qcmd" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mptscsih_qcmd</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">scsi_cmnd</span> <span class="pre">*</span><em><span class="pre">SCpnt</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_qcmd" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Primary Fusion MPT SCSI initiator IO start routine.</p>
 </dd></dl>
 
@@ -946,7 +946,7 @@ from a linux scsi_cmnd request and send it to the IOC.</p>
 </dl>
 <dl class="c function">
 <dt id="c.mptscsih_IssueTaskMgmt">
-int <code class="sig-name descname">mptscsih_IssueTaskMgmt</code><span class="sig-paren">(</span>MPT_SCSI_HOST *<em>hd</em>, u8 <em>type</em>, u8 <em>channel</em>, u8 <em>id</em>, u64 <em>lun</em>, int <em>ctx2abort</em>, ulong <em>timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_IssueTaskMgmt" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mptscsih_IssueTaskMgmt</span></code><span class="sig-paren">(</span><span class="pre">MPT_SCSI_HOST</span> <span class="pre">*</span><em><span class="pre">hd</span></em>, <span class="pre">u8</span> <em><span class="pre">type</span></em>, <span class="pre">u8</span> <em><span class="pre">channel</span></em>, <span class="pre">u8</span> <em><span class="pre">id</span></em>, <span class="pre">u64</span> <em><span class="pre">lun</span></em>, <span class="pre">int</span> <em><span class="pre">ctx2abort</span></em>, <span class="pre">ulong</span> <em><span class="pre">timeout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_IssueTaskMgmt" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Generic send Task Management function.</p>
 </dd></dl>
 
@@ -973,7 +973,7 @@ or a non-interrupt thread.  In the former, must not call schedule().</p>
 </dl>
 <dl class="c function">
 <dt id="c.mptscsih_abort">
-int <code class="sig-name descname">mptscsih_abort</code><span class="sig-paren">(</span><em class="property">struct</em> scsi_cmnd *<em>SCpnt</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_abort" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mptscsih_abort</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">scsi_cmnd</span> <span class="pre">*</span><em><span class="pre">SCpnt</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_abort" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Abort linux scsi_cmnd routine, new_eh variant</p>
 </dd></dl>
 
@@ -986,7 +986,7 @@ int <code class="sig-name descname">mptscsih_abort</code><span class="sig-paren"
 </dl>
 <dl class="c function">
 <dt id="c.mptscsih_dev_reset">
-int <code class="sig-name descname">mptscsih_dev_reset</code><span class="sig-paren">(</span><em class="property">struct</em> scsi_cmnd *<em>SCpnt</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_dev_reset" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mptscsih_dev_reset</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">scsi_cmnd</span> <span class="pre">*</span><em><span class="pre">SCpnt</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_dev_reset" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Perform a SCSI TARGET_RESET! new_eh variant</p>
 </dd></dl>
 
@@ -999,7 +999,7 @@ int <code class="sig-name descname">mptscsih_dev_reset</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.mptscsih_bus_reset">
-int <code class="sig-name descname">mptscsih_bus_reset</code><span class="sig-paren">(</span><em class="property">struct</em> scsi_cmnd *<em>SCpnt</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_bus_reset" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mptscsih_bus_reset</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">scsi_cmnd</span> <span class="pre">*</span><em><span class="pre">SCpnt</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_bus_reset" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Perform a SCSI BUS_RESET! new_eh variant</p>
 </dd></dl>
 
@@ -1012,7 +1012,7 @@ int <code class="sig-name descname">mptscsih_bus_reset</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.mptscsih_host_reset">
-int <code class="sig-name descname">mptscsih_host_reset</code><span class="sig-paren">(</span><em class="property">struct</em> scsi_cmnd *<em>SCpnt</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_host_reset" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mptscsih_host_reset</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">scsi_cmnd</span> <span class="pre">*</span><em><span class="pre">SCpnt</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_host_reset" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Perform a SCSI host adapter RESET (new_eh variant)</p>
 </dd></dl>
 
@@ -1025,7 +1025,7 @@ int <code class="sig-name descname">mptscsih_host_reset</code><span class="sig-p
 </dl>
 <dl class="c function">
 <dt id="c.mptscsih_taskmgmt_complete">
-int <code class="sig-name descname">mptscsih_taskmgmt_complete</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em>, MPT_FRAME_HDR *<em>mf</em>, MPT_FRAME_HDR *<em>mr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_taskmgmt_complete" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mptscsih_taskmgmt_complete</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em>, <span class="pre">MPT_FRAME_HDR</span> <span class="pre">*</span><em><span class="pre">mf</span></em>, <span class="pre">MPT_FRAME_HDR</span> <span class="pre">*</span><em><span class="pre">mr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_taskmgmt_complete" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Registered with Fusion MPT base driver</p>
 </dd></dl>
 
@@ -1045,7 +1045,7 @@ load/init time via the <a class="reference internal" href="#c.mpt_register" titl
 </dl>
 <dl class="c function">
 <dt id="c.mptscsih_get_scsi_lookup">
-<em class="property">struct</em> scsi_cmnd *<code class="sig-name descname">mptscsih_get_scsi_lookup</code><span class="sig-paren">(</span>MPT_ADAPTER *<em>ioc</em>, int <em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_get_scsi_lookup" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">scsi_cmnd</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">mptscsih_get_scsi_lookup</span></code><span class="sig-paren">(</span><span class="pre">MPT_ADAPTER</span> <span class="pre">*</span><em><span class="pre">ioc</span></em>, <span class="pre">int</span> <em><span class="pre">i</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mptscsih_get_scsi_lookup" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>retrieves scmd entry</p>
 </dd></dl>
 

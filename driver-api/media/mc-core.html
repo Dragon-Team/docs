@@ -602,7 +602,7 @@ handled by the kref put handler.</p>
 <h3><span class="section-number">4.1.13. </span>API Definitions<a class="headerlink" href="#api-definitions" title="Permalink to this headline">¶</a></h3>
 <dl class="c struct">
 <dt id="c.media_entity_notify">
-<em class="property">struct </em><code class="sig-name descname">media_entity_notify</code><a class="headerlink" href="#c.media_entity_notify" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_entity_notify</span></code><a class="headerlink" href="#c.media_entity_notify" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Media Entity Notify</p>
 </dd></dl>
 
@@ -630,7 +630,7 @@ links between existing entities and should not create entities and register
 them.</p>
 <dl class="c struct">
 <dt id="c.media_device_ops">
-<em class="property">struct </em><code class="sig-name descname">media_device_ops</code><a class="headerlink" href="#c.media_device_ops" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_device_ops</span></code><a class="headerlink" href="#c.media_device_ops" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Media device operations</p>
 </dd></dl>
 
@@ -674,7 +674,7 @@ or delete objects from the request before req_queue exits.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.media_device">
-<em class="property">struct </em><code class="sig-name descname">media_device</code><a class="headerlink" href="#c.media_device" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_device</span></code><a class="headerlink" href="#c.media_device" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Media device</p>
 </dd></dl>
 
@@ -796,7 +796,7 @@ and <strong>disable_source</strong> handlers.</p>
 </div>
 <dl class="c function">
 <dt id="c.media_entity_enum_init">
-int <code class="sig-name descname">media_entity_enum_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum">media_entity_enum</a> *<em>ent_enum</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">media_entity_enum_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum"><span class="pre">media_entity_enum</span></a> <span class="pre">*</span><em><span class="pre">ent_enum</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialise an entity enumeration</p>
 </dd></dl>
 
@@ -811,7 +811,7 @@ int <code class="sig-name descname">media_entity_enum_init</code><span class="si
 <p>zero on success or a negative error code.</p>
 <dl class="c function">
 <dt id="c.media_device_init">
-void <code class="sig-name descname">media_device_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_device_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initializes a media device element</p>
 </dd></dl>
 
@@ -830,7 +830,7 @@ within the media device, create pad to pad links and then finally register
 the media device by calling <a class="reference internal" href="#c.media_device_register" title="media_device_register"><code class="xref c c-func docutils literal notranslate"><span class="pre">media_device_register()</span></code></a> as a final step.</p>
 <dl class="c function">
 <dt id="c.media_device_cleanup">
-void <code class="sig-name descname">media_device_cleanup</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_cleanup" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_device_cleanup</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_cleanup" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Cleanups a media device element</p>
 </dd></dl>
 
@@ -844,7 +844,7 @@ void <code class="sig-name descname">media_device_cleanup</code><span class="sig
 initialized in <a class="reference internal" href="#c.media_device_init" title="media_device_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">media_device_init()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.__media_device_register">
-int <code class="sig-name descname">__media_device_register</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em>, <em class="property">struct</em> module *<em>owner</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__media_device_register" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">__media_device_register</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">module</span> <span class="pre">*</span><em><span class="pre">owner</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__media_device_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Registers a media device element</p>
 </dd></dl>
 
@@ -897,7 +897,7 @@ with the KERNEL_VERSION() macro.</p></li>
 <p>returns zero on success or a negative error code.</p>
 <dl class="c macro">
 <dt id="c.media_device_register">
-<code class="sig-name descname">media_device_register</code><a class="headerlink" href="#c.media_device_register" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">media_device_register</span></code><a class="headerlink" href="#c.media_device_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">media_device_register</span> <span class="pre">(mdev)</span></code></p>
@@ -914,7 +914,7 @@ with the KERNEL_VERSION() macro.</p></li>
 the <a class="reference internal" href="#c.__media_device_register" title="__media_device_register"><code class="xref c c-func docutils literal notranslate"><span class="pre">__media_device_register()</span></code></a> second argument (<strong>owner</strong>).</p>
 <dl class="c function">
 <dt id="c.media_device_unregister">
-void <code class="sig-name descname">media_device_unregister</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_unregister" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_device_unregister</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_unregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Unregisters a media device element</p>
 </dd></dl>
 
@@ -928,7 +928,7 @@ void <code class="sig-name descname">media_device_unregister</code><span class="
 media device.</p>
 <dl class="c function">
 <dt id="c.media_device_register_entity">
-int <code class="sig-name descname">media_device_register_entity</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_register_entity" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">media_device_register_entity</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_register_entity" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>registers a media entity inside a previously registered media device.</p>
 </dd></dl>
 
@@ -968,7 +968,7 @@ Please notice that the values <code class="docutils literal notranslate"><span c
 </div>
 <dl class="c function">
 <dt id="c.media_device_unregister_entity">
-void <code class="sig-name descname">media_device_unregister_entity</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_unregister_entity" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_device_unregister_entity</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_unregister_entity" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unregisters a media entity.</p>
 </dd></dl>
 
@@ -991,7 +991,7 @@ the driver if required.</p>
 </div>
 <dl class="c function">
 <dt id="c.media_device_register_entity_notify">
-int <code class="sig-name descname">media_device_register_entity_notify</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_entity_notify" title="media_entity_notify">media_entity_notify</a> *<em>nptr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_register_entity_notify" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">media_device_register_entity_notify</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity_notify" title="media_entity_notify"><span class="pre">media_entity_notify</span></a> <span class="pre">*</span><em><span class="pre">nptr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_register_entity_notify" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Registers a media entity_notify callback</p>
 </dd></dl>
 
@@ -1010,7 +1010,7 @@ media_entity_notify callbacks are invoked.</p>
 </div>
 <dl class="c function">
 <dt id="c.media_device_unregister_entity_notify">
-void <code class="sig-name descname">media_device_unregister_entity_notify</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_entity_notify" title="media_entity_notify">media_entity_notify</a> *<em>nptr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_unregister_entity_notify" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_device_unregister_entity_notify</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity_notify" title="media_entity_notify"><span class="pre">media_entity_notify</span></a> <span class="pre">*</span><em><span class="pre">nptr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_unregister_entity_notify" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Unregister a media entity notify callback</p>
 </dd></dl>
 
@@ -1023,7 +1023,7 @@ void <code class="sig-name descname">media_device_unregister_entity_notify</code
 </dl>
 <dl class="c function">
 <dt id="c.media_device_pci_init">
-void <code class="sig-name descname">media_device_pci_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_device_pci_init" title="pci_dev">pci_dev</a> *<em>pci_dev</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_pci_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_device_pci_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device_pci_init" title="pci_dev"><span class="pre">pci_dev</span></a> <span class="pre">*</span><em><span class="pre">pci_dev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_pci_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create and initialize a struct <a class="reference internal" href="#c.media_device" title="media_device"><code class="xref c c-type docutils literal notranslate"><span class="pre">media_device</span></code></a> from a PCI device.</p>
 </dd></dl>
 
@@ -1039,7 +1039,7 @@ name for the pci device, given by pci_name() macro.</p>
 </dl>
 <dl class="c function">
 <dt id="c.__media_device_usb_init">
-void <code class="sig-name descname">__media_device_usb_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em>, <em class="property">struct</em> <a class="reference internal" href="../usb/usb.html#c.usb_device" title="usb_device">usb_device</a> *<em>udev</em>, <em class="property">const</em> char *<em>board_name</em>, <em class="property">const</em> char *<em>driver_name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__media_device_usb_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">__media_device_usb_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../usb/usb.html#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">udev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">board_name</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">driver_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__media_device_usb_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create and initialize a struct <a class="reference internal" href="#c.media_device" title="media_device"><code class="xref c c-type docutils literal notranslate"><span class="pre">media_device</span></code></a> from a PCI device.</p>
 </dd></dl>
 
@@ -1065,7 +1065,7 @@ such macro fills driver_name with <code class="docutils literal notranslate"><sp
 </div>
 <dl class="c macro">
 <dt id="c.media_device_usb_init">
-<code class="sig-name descname">media_device_usb_init</code><a class="headerlink" href="#c.media_device_usb_init" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">media_device_usb_init</span></code><a class="headerlink" href="#c.media_device_usb_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">media_device_usb_init</span> <span class="pre">(mdev,</span> <span class="pre">udev,</span> <span class="pre">name)</span></code></p>
@@ -1088,7 +1088,7 @@ product name, if available.</p>
 <code class="docutils literal notranslate"><span class="pre">KBUILD_MODNAME</span></code>.</p>
 <dl class="c struct">
 <dt id="c.media_file_operations">
-<em class="property">struct </em><code class="sig-name descname">media_file_operations</code><a class="headerlink" href="#c.media_file_operations" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_file_operations</span></code><a class="headerlink" href="#c.media_file_operations" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Media device file operations</p>
 </dd></dl>
 
@@ -1128,7 +1128,7 @@ by the <strong>open</strong> function.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.media_devnode">
-<em class="property">struct </em><code class="sig-name descname">media_devnode</code><a class="headerlink" href="#c.media_devnode" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_devnode</span></code><a class="headerlink" href="#c.media_devnode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Media device node</p>
 </dd></dl>
 
@@ -1171,7 +1171,7 @@ routine at media-device.c.</p>
 before registering the node.</p>
 <dl class="c function">
 <dt id="c.media_devnode_register">
-int <code class="sig-name descname">media_devnode_register</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_devnode" title="media_devnode">media_devnode</a> *<em>devnode</em>, <em class="property">struct</em> module *<em>owner</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_devnode_register" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">media_devnode_register</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_devnode" title="media_devnode"><span class="pre">media_devnode</span></a> <span class="pre">*</span><em><span class="pre">devnode</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">module</span> <span class="pre">*</span><em><span class="pre">owner</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_devnode_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a media device node</p>
 </dd></dl>
 
@@ -1194,7 +1194,7 @@ the media_devnode structure is <em>not</em> called, so the caller is responsible
 freeing any data.</p>
 <dl class="c function">
 <dt id="c.media_devnode_unregister_prepare">
-void <code class="sig-name descname">media_devnode_unregister_prepare</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_devnode" title="media_devnode">media_devnode</a> *<em>devnode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_devnode_unregister_prepare" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_devnode_unregister_prepare</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_devnode" title="media_devnode"><span class="pre">media_devnode</span></a> <span class="pre">*</span><em><span class="pre">devnode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_devnode_unregister_prepare" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>clear the media device node register bit</p>
 </dd></dl>
 
@@ -1211,7 +1211,7 @@ races with unregister and device file open calls.</p>
 registered or has already been unregistered.</p>
 <dl class="c function">
 <dt id="c.media_devnode_unregister">
-void <code class="sig-name descname">media_devnode_unregister</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_devnode" title="media_devnode">media_devnode</a> *<em>devnode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_devnode_unregister" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_devnode_unregister</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_devnode" title="media_devnode"><span class="pre">media_devnode</span></a> <span class="pre">*</span><em><span class="pre">devnode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_devnode_unregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unregister a media device node</p>
 </dd></dl>
 
@@ -1226,7 +1226,7 @@ errors.</p>
 <p>Should be called after <a class="reference internal" href="#c.media_devnode_unregister_prepare" title="media_devnode_unregister_prepare"><code class="xref c c-func docutils literal notranslate"><span class="pre">media_devnode_unregister_prepare()</span></code></a></p>
 <dl class="c function">
 <dt id="c.media_devnode_data">
-<em class="property">struct</em> <a class="reference internal" href="#c.media_devnode" title="media_devnode">media_devnode</a> *<code class="sig-name descname">media_devnode_data</code><span class="sig-paren">(</span><em class="property">struct</em> file *<em>filp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_devnode_data" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_devnode" title="media_devnode"><span class="pre">media_devnode</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">media_devnode_data</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">file</span> <span class="pre">*</span><em><span class="pre">filp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_devnode_data" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>returns a pointer to the <a class="reference internal" href="#c.media_devnode" title="media_devnode"><code class="xref c c-type docutils literal notranslate"><span class="pre">media_devnode</span></code></a></p>
 </dd></dl>
 
@@ -1237,7 +1237,7 @@ errors.</p>
 </dl>
 <dl class="c function">
 <dt id="c.media_devnode_is_registered">
-int <code class="sig-name descname">media_devnode_is_registered</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_devnode" title="media_devnode">media_devnode</a> *<em>devnode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_devnode_is_registered" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">media_devnode_is_registered</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_devnode" title="media_devnode"><span class="pre">media_devnode</span></a> <span class="pre">*</span><em><span class="pre">devnode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_devnode_is_registered" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>returns true if <a class="reference internal" href="#c.media_devnode" title="media_devnode"><code class="xref c c-type docutils literal notranslate"><span class="pre">media_devnode</span></code></a> is registered; false otherwise.</p>
 </dd></dl>
 
@@ -1250,7 +1250,7 @@ int <code class="sig-name descname">media_devnode_is_registered</code><span clas
 <p>If mdev is NULL, it also returns false.</p>
 <dl class="c enum">
 <dt id="c.media_gobj_type">
-<em class="property">enum </em><code class="sig-name descname">media_gobj_type</code><a class="headerlink" href="#c.media_gobj_type" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">media_gobj_type</span></code><a class="headerlink" href="#c.media_gobj_type" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>type of a graph object</p>
 </dd></dl>
 
@@ -1268,7 +1268,7 @@ a device node</p>
 </dl>
 <dl class="c struct">
 <dt id="c.media_gobj">
-<em class="property">struct </em><code class="sig-name descname">media_gobj</code><a class="headerlink" href="#c.media_gobj" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_gobj</span></code><a class="headerlink" href="#c.media_gobj" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Define a graph object.</p>
 </dd></dl>
 
@@ -1296,7 +1296,7 @@ inside a media_device, as it is composed by
 <p>All objects on the media graph should have this struct embedded</p>
 <dl class="c struct">
 <dt id="c.media_entity_enum">
-<em class="property">struct </em><code class="sig-name descname">media_entity_enum</code><a class="headerlink" href="#c.media_entity_enum" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_entity_enum</span></code><a class="headerlink" href="#c.media_entity_enum" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>An enumeration of media entities.</p>
 </dd></dl>
 
@@ -1317,7 +1317,7 @@ inside a media_device, as it is composed by
 </dl>
 <dl class="c struct">
 <dt id="c.media_graph">
-<em class="property">struct </em><code class="sig-name descname">media_graph</code><a class="headerlink" href="#c.media_graph" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_graph</span></code><a class="headerlink" href="#c.media_graph" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Media graph traversal state</p>
 </dd></dl>
 
@@ -1349,7 +1349,7 @@ links through which they were reached.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.media_pipeline">
-<em class="property">struct </em><code class="sig-name descname">media_pipeline</code><a class="headerlink" href="#c.media_pipeline" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_pipeline</span></code><a class="headerlink" href="#c.media_pipeline" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Media pipeline related information</p>
 </dd></dl>
 
@@ -1369,7 +1369,7 @@ links through which they were reached.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.media_link">
-<em class="property">struct </em><code class="sig-name descname">media_link</code><a class="headerlink" href="#c.media_link" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_link</span></code><a class="headerlink" href="#c.media_link" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A link object part of a media graph.</p>
 </dd></dl>
 
@@ -1432,7 +1432,7 @@ link.</p>
 </dl>
 <dl class="c enum">
 <dt id="c.media_pad_signal_type">
-<em class="property">enum </em><code class="sig-name descname">media_pad_signal_type</code><a class="headerlink" href="#c.media_pad_signal_type" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">media_pad_signal_type</span></code><a class="headerlink" href="#c.media_pad_signal_type" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>type of the signal inside a media pad</p>
 </dd></dl>
 
@@ -1458,7 +1458,7 @@ an audio decoder.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.media_pad">
-<em class="property">struct </em><code class="sig-name descname">media_pad</code><a class="headerlink" href="#c.media_pad" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_pad</span></code><a class="headerlink" href="#c.media_pad" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A media pad graph object.</p>
 </dd></dl>
 
@@ -1489,7 +1489,7 @@ an audio decoder.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.media_entity_operations">
-<em class="property">struct </em><code class="sig-name descname">media_entity_operations</code><a class="headerlink" href="#c.media_entity_operations" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_entity_operations</span></code><a class="headerlink" href="#c.media_entity_operations" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Media entity operations</p>
 </dd></dl>
 
@@ -1524,7 +1524,7 @@ mutex held.</p>
 </div>
 <dl class="c enum">
 <dt id="c.media_entity_type">
-<em class="property">enum </em><code class="sig-name descname">media_entity_type</code><a class="headerlink" href="#c.media_entity_type" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">media_entity_type</span></code><a class="headerlink" href="#c.media_entity_type" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Media entity type</p>
 </dd></dl>
 
@@ -1549,7 +1549,7 @@ embedded in a v4l2_subdev structure instance will have the type
 structure using the <a class="reference internal" href="../basics.html#c.container_of" title="container_of"><code class="xref c c-func docutils literal notranslate"><span class="pre">container_of()</span></code></a> macro.</p>
 <dl class="c struct">
 <dt id="c.media_entity">
-<em class="property">struct </em><code class="sig-name descname">media_entity</code><a class="headerlink" href="#c.media_entity" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_entity</span></code><a class="headerlink" href="#c.media_entity" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A media entity graph object.</p>
 </dd></dl>
 
@@ -1636,7 +1636,7 @@ negative.</p>
 </div>
 <dl class="c struct">
 <dt id="c.media_interface">
-<em class="property">struct </em><code class="sig-name descname">media_interface</code><a class="headerlink" href="#c.media_interface" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_interface</span></code><a class="headerlink" href="#c.media_interface" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A media interface graph object.</p>
 </dd></dl>
 
@@ -1671,7 +1671,7 @@ negative.</p>
 </div>
 <dl class="c struct">
 <dt id="c.media_intf_devnode">
-<em class="property">struct </em><code class="sig-name descname">media_intf_devnode</code><a class="headerlink" href="#c.media_intf_devnode" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_intf_devnode</span></code><a class="headerlink" href="#c.media_intf_devnode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A media interface via a device node.</p>
 </dd></dl>
 
@@ -1694,7 +1694,7 @@ negative.</p>
 </dl>
 <dl class="c function">
 <dt id="c.media_entity_id">
-u32 <code class="sig-name descname">media_entity_id</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_id" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u32</span> <code class="sig-name descname"><span class="pre">media_entity_id</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_id" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return the media entity graph object id</p>
 </dd></dl>
 
@@ -1705,7 +1705,7 @@ u32 <code class="sig-name descname">media_entity_id</code><span class="sig-paren
 </dl>
 <dl class="c function">
 <dt id="c.media_type">
-<em class="property">enum</em> <a class="reference internal" href="#c.media_gobj_type" title="media_gobj_type">media_gobj_type</a> <code class="sig-name descname">media_type</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_gobj" title="media_gobj">media_gobj</a> *<em>gobj</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_type" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#c.media_gobj_type" title="media_gobj_type"><span class="pre">media_gobj_type</span></a> <code class="sig-name descname"><span class="pre">media_type</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_gobj" title="media_gobj"><span class="pre">media_gobj</span></a> <span class="pre">*</span><em><span class="pre">gobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_type" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return the media object type</p>
 </dd></dl>
 
@@ -1716,7 +1716,7 @@ u32 <code class="sig-name descname">media_entity_id</code><span class="sig-paren
 </dl>
 <dl class="c function">
 <dt id="c.media_id">
-u32 <code class="sig-name descname">media_id</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_gobj" title="media_gobj">media_gobj</a> *<em>gobj</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_id" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u32</span> <code class="sig-name descname"><span class="pre">media_id</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_gobj" title="media_gobj"><span class="pre">media_gobj</span></a> <span class="pre">*</span><em><span class="pre">gobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_id" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return the media object ID</p>
 </dd></dl>
 
@@ -1727,7 +1727,7 @@ u32 <code class="sig-name descname">media_id</code><span class="sig-paren">(</sp
 </dl>
 <dl class="c function">
 <dt id="c.media_gobj_gen_id">
-u32 <code class="sig-name descname">media_gobj_gen_id</code><span class="sig-paren">(</span><em class="property">enum</em> <a class="reference internal" href="#c.media_gobj_type" title="media_gobj_type">media_gobj_type</a> <em>type</em>, u64 <em>local_id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_gobj_gen_id" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u32</span> <code class="sig-name descname"><span class="pre">media_gobj_gen_id</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#c.media_gobj_type" title="media_gobj_type"><span class="pre">media_gobj_type</span></a> <em><span class="pre">type</span></em>, <span class="pre">u64</span> <em><span class="pre">local_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_gobj_gen_id" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>encapsulates type and ID on at the object ID</p>
 </dd></dl>
 
@@ -1740,7 +1740,7 @@ u32 <code class="sig-name descname">media_gobj_gen_id</code><span class="sig-par
 </dl>
 <dl class="c function">
 <dt id="c.is_media_entity_v4l2_video_device">
-bool <code class="sig-name descname">is_media_entity_v4l2_video_device</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.is_media_entity_v4l2_video_device" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">is_media_entity_v4l2_video_device</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.is_media_entity_v4l2_video_device" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Check if the entity is a video_device</p>
 </dd></dl>
 
@@ -1755,7 +1755,7 @@ safely be cast to a <a class="reference internal" href="v4l2-dev.html#c.video_de
 <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
 <dl class="c function">
 <dt id="c.is_media_entity_v4l2_subdev">
-bool <code class="sig-name descname">is_media_entity_v4l2_subdev</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.is_media_entity_v4l2_subdev" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">is_media_entity_v4l2_subdev</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.is_media_entity_v4l2_subdev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Check if the entity is a v4l2_subdev</p>
 </dd></dl>
 
@@ -1770,7 +1770,7 @@ safely be cast to a struct <a class="reference internal" href="v4l2-subdev.html#
 <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
 <dl class="c function">
 <dt id="c.__media_entity_enum_init">
-int <code class="sig-name descname">__media_entity_enum_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum">media_entity_enum</a> *<em>ent_enum</em>, int <em>idx_max</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__media_entity_enum_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">__media_entity_enum_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum"><span class="pre">media_entity_enum</span></a> <span class="pre">*</span><em><span class="pre">ent_enum</span></em>, <span class="pre">int</span> <em><span class="pre">idx_max</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__media_entity_enum_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialise an entity enumeration</p>
 </dd></dl>
 
@@ -1785,7 +1785,7 @@ int <code class="sig-name descname">__media_entity_enum_init</code><span class="
 <p>Returns zero on success or a negative error code.</p>
 <dl class="c function">
 <dt id="c.media_entity_enum_cleanup">
-void <code class="sig-name descname">media_entity_enum_cleanup</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum">media_entity_enum</a> *<em>ent_enum</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_cleanup" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_entity_enum_cleanup</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum"><span class="pre">media_entity_enum</span></a> <span class="pre">*</span><em><span class="pre">ent_enum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_cleanup" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Release resources of an entity enumeration</p>
 </dd></dl>
 
@@ -1796,7 +1796,7 @@ void <code class="sig-name descname">media_entity_enum_cleanup</code><span class
 </dl>
 <dl class="c function">
 <dt id="c.media_entity_enum_zero">
-void <code class="sig-name descname">media_entity_enum_zero</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum">media_entity_enum</a> *<em>ent_enum</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_zero" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_entity_enum_zero</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum"><span class="pre">media_entity_enum</span></a> <span class="pre">*</span><em><span class="pre">ent_enum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_zero" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Clear the entire enum</p>
 </dd></dl>
 
@@ -1807,7 +1807,7 @@ void <code class="sig-name descname">media_entity_enum_zero</code><span class="s
 </dl>
 <dl class="c function">
 <dt id="c.media_entity_enum_set">
-void <code class="sig-name descname">media_entity_enum_set</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum">media_entity_enum</a> *<em>ent_enum</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_set" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_entity_enum_set</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum"><span class="pre">media_entity_enum</span></a> <span class="pre">*</span><em><span class="pre">ent_enum</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_set" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Mark a single entity in the enum</p>
 </dd></dl>
 
@@ -1820,7 +1820,7 @@ void <code class="sig-name descname">media_entity_enum_set</code><span class="si
 </dl>
 <dl class="c function">
 <dt id="c.media_entity_enum_clear">
-void <code class="sig-name descname">media_entity_enum_clear</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum">media_entity_enum</a> *<em>ent_enum</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_clear" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_entity_enum_clear</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum"><span class="pre">media_entity_enum</span></a> <span class="pre">*</span><em><span class="pre">ent_enum</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_clear" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Unmark a single entity in the enum</p>
 </dd></dl>
 
@@ -1833,7 +1833,7 @@ void <code class="sig-name descname">media_entity_enum_clear</code><span class="
 </dl>
 <dl class="c function">
 <dt id="c.media_entity_enum_test">
-bool <code class="sig-name descname">media_entity_enum_test</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum">media_entity_enum</a> *<em>ent_enum</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_test" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">media_entity_enum_test</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum"><span class="pre">media_entity_enum</span></a> <span class="pre">*</span><em><span class="pre">ent_enum</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_test" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Test whether the entity is marked</p>
 </dd></dl>
 
@@ -1848,7 +1848,7 @@ bool <code class="sig-name descname">media_entity_enum_test</code><span class="s
 <p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the entity was marked.</p>
 <dl class="c function">
 <dt id="c.media_entity_enum_test_and_set">
-bool <code class="sig-name descname">media_entity_enum_test_and_set</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum">media_entity_enum</a> *<em>ent_enum</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_test_and_set" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">media_entity_enum_test_and_set</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum"><span class="pre">media_entity_enum</span></a> <span class="pre">*</span><em><span class="pre">ent_enum</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_test_and_set" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Test whether the entity is marked, and mark it</p>
 </dd></dl>
 
@@ -1863,7 +1863,7 @@ bool <code class="sig-name descname">media_entity_enum_test_and_set</code><span 
 <p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the entity was marked, and mark it before doing so.</p>
 <dl class="c function">
 <dt id="c.media_entity_enum_empty">
-bool <code class="sig-name descname">media_entity_enum_empty</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum">media_entity_enum</a> *<em>ent_enum</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_empty" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">media_entity_enum_empty</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum"><span class="pre">media_entity_enum</span></a> <span class="pre">*</span><em><span class="pre">ent_enum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_empty" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Test whether the entire enum is empty</p>
 </dd></dl>
 
@@ -1876,7 +1876,7 @@ bool <code class="sig-name descname">media_entity_enum_empty</code><span class="
 <p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the entity was empty.</p>
 <dl class="c function">
 <dt id="c.media_entity_enum_intersects">
-bool <code class="sig-name descname">media_entity_enum_intersects</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum">media_entity_enum</a> *<em>ent_enum1</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum">media_entity_enum</a> *<em>ent_enum2</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_intersects" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">media_entity_enum_intersects</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum"><span class="pre">media_entity_enum</span></a> <span class="pre">*</span><em><span class="pre">ent_enum1</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity_enum" title="media_entity_enum"><span class="pre">media_entity_enum</span></a> <span class="pre">*</span><em><span class="pre">ent_enum2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_enum_intersects" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Test whether two enums intersect</p>
 </dd></dl>
 
@@ -1892,7 +1892,7 @@ bool <code class="sig-name descname">media_entity_enum_intersects</code><span cl
 otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 <dl class="c macro">
 <dt id="c.gobj_to_entity">
-<code class="sig-name descname">gobj_to_entity</code><a class="headerlink" href="#c.gobj_to_entity" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">gobj_to_entity</span></code><a class="headerlink" href="#c.gobj_to_entity" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">gobj_to_entity</span> <span class="pre">(gobj)</span></code></p>
@@ -1906,7 +1906,7 @@ otherwise <code class="docutils literal notranslate"><span class="pre">false</sp
 </dl>
 <dl class="c macro">
 <dt id="c.gobj_to_pad">
-<code class="sig-name descname">gobj_to_pad</code><a class="headerlink" href="#c.gobj_to_pad" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">gobj_to_pad</span></code><a class="headerlink" href="#c.gobj_to_pad" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">gobj_to_pad</span> <span class="pre">(gobj)</span></code></p>
@@ -1920,7 +1920,7 @@ otherwise <code class="docutils literal notranslate"><span class="pre">false</sp
 </dl>
 <dl class="c macro">
 <dt id="c.gobj_to_link">
-<code class="sig-name descname">gobj_to_link</code><a class="headerlink" href="#c.gobj_to_link" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">gobj_to_link</span></code><a class="headerlink" href="#c.gobj_to_link" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">gobj_to_link</span> <span class="pre">(gobj)</span></code></p>
@@ -1934,7 +1934,7 @@ otherwise <code class="docutils literal notranslate"><span class="pre">false</sp
 </dl>
 <dl class="c macro">
 <dt id="c.gobj_to_intf">
-<code class="sig-name descname">gobj_to_intf</code><a class="headerlink" href="#c.gobj_to_intf" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">gobj_to_intf</span></code><a class="headerlink" href="#c.gobj_to_intf" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">gobj_to_intf</span> <span class="pre">(gobj)</span></code></p>
@@ -1948,7 +1948,7 @@ otherwise <code class="docutils literal notranslate"><span class="pre">false</sp
 </dl>
 <dl class="c macro">
 <dt id="c.intf_to_devnode">
-<code class="sig-name descname">intf_to_devnode</code><a class="headerlink" href="#c.intf_to_devnode" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">intf_to_devnode</span></code><a class="headerlink" href="#c.intf_to_devnode" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">intf_to_devnode</span> <span class="pre">(intf)</span></code></p>
@@ -1962,7 +1962,7 @@ otherwise <code class="docutils literal notranslate"><span class="pre">false</sp
 </dl>
 <dl class="c function">
 <dt id="c.media_gobj_create">
-void <code class="sig-name descname">media_gobj_create</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em>, <em class="property">enum</em> <a class="reference internal" href="#c.media_gobj_type" title="media_gobj_type">media_gobj_type</a> <em>type</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_gobj" title="media_gobj">media_gobj</a> *<em>gobj</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_gobj_create" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_gobj_create</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em>, <em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#c.media_gobj_type" title="media_gobj_type"><span class="pre">media_gobj_type</span></a> <em><span class="pre">type</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_gobj" title="media_gobj"><span class="pre">media_gobj</span></a> <span class="pre">*</span><em><span class="pre">gobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_gobj_create" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialize a graph object</p>
 </dd></dl>
 
@@ -1983,7 +1983,7 @@ interface) is embedded on some other object, this function should be
 called before registering the object at the media controller.</p>
 <dl class="c function">
 <dt id="c.media_gobj_destroy">
-void <code class="sig-name descname">media_gobj_destroy</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_gobj" title="media_gobj">media_gobj</a> *<em>gobj</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_gobj_destroy" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_gobj_destroy</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_gobj" title="media_gobj"><span class="pre">media_gobj</span></a> <span class="pre">*</span><em><span class="pre">gobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_gobj_destroy" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Stop using a graph object on a media device</p>
 </dd></dl>
 
@@ -1997,7 +1997,7 @@ void <code class="sig-name descname">media_gobj_destroy</code><span class="sig-p
 that remove/destroy media graph objects.</p>
 <dl class="c function">
 <dt id="c.media_entity_pads_init">
-int <code class="sig-name descname">media_entity_pads_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em>, u16 <em>num_pads</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_pad" title="media_pad">media_pad</a> *<em>pads</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_pads_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">media_entity_pads_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em>, <span class="pre">u16</span> <em><span class="pre">num_pads</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_pad" title="media_pad"><span class="pre">media_pad</span></a> <span class="pre">*</span><em><span class="pre">pads</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_pads_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialize the entity pads</p>
 </dd></dl>
 
@@ -2024,7 +2024,7 @@ pads array in a driver-specific structure, avoiding dynamic allocation.</p>
 <a class="reference internal" href="#c.media_entity_pads_init" title="media_entity_pads_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">media_entity_pads_init()</span></code></a>. The function will initialize the other pads fields.</p>
 <dl class="c function">
 <dt id="c.media_entity_cleanup">
-void <code class="sig-name descname">media_entity_cleanup</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_cleanup" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_entity_cleanup</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_cleanup" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>free resources associated with an entity</p>
 </dd></dl>
 
@@ -2038,7 +2038,7 @@ void <code class="sig-name descname">media_entity_cleanup</code><span class="sig
 the entity (currently, it does nothing).</p>
 <dl class="c function">
 <dt id="c.media_get_pad_index">
-int <code class="sig-name descname">media_get_pad_index</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em>, bool <em>is_sink</em>, <em class="property">enum</em> <a class="reference internal" href="#c.media_pad_signal_type" title="media_pad_signal_type">media_pad_signal_type</a> <em>sig_type</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_get_pad_index" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">media_get_pad_index</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em>, <span class="pre">bool</span> <em><span class="pre">is_sink</span></em>, <em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#c.media_pad_signal_type" title="media_pad_signal_type"><span class="pre">media_pad_signal_type</span></a> <em><span class="pre">sig_type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_get_pad_index" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>retrieves a pad index from an entity</p>
 </dd></dl>
 
@@ -2059,7 +2059,7 @@ entity is a NULL pointer, return -EINVAL.</p>
 <p><strong>Return</strong></p>
 <dl class="c function">
 <dt id="c.media_create_pad_link">
-int <code class="sig-name descname">media_create_pad_link</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>source</em>, u16 <em>source_pad</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>sink</em>, u16 <em>sink_pad</em>, u32 <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_create_pad_link" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">media_create_pad_link</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">source</span></em>, <span class="pre">u16</span> <em><span class="pre">source_pad</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">sink</span></em>, <span class="pre">u16</span> <em><span class="pre">sink_pad</span></em>, <span class="pre">u32</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_create_pad_link" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>creates a link between two entities.</p>
 </dd></dl>
 
@@ -2097,7 +2097,7 @@ set, since an immutable link is always enabled.</p>
 </div>
 <dl class="c function">
 <dt id="c.media_create_pad_links">
-int <code class="sig-name descname">media_create_pad_links</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em>, <em class="property">const</em> u32 <em>source_function</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>source</em>, <em class="property">const</em> u16 <em>source_pad</em>, <em class="property">const</em> u32 <em>sink_function</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>sink</em>, <em class="property">const</em> u16 <em>sink_pad</em>, u32 <em>flags</em>, <em class="property">const</em> bool <em>allow_both_undefined</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_create_pad_links" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">media_create_pad_links</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">u32</span> <em><span class="pre">source_function</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">source</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">u16</span> <em><span class="pre">source_pad</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">u32</span> <em><span class="pre">sink_function</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">sink</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">u16</span> <em><span class="pre">sink_pad</span></em>, <span class="pre">u32</span> <em><span class="pre">flags</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">bool</span> <em><span class="pre">allow_both_undefined</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_create_pad_links" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>creates a link between two entities.</p>
 </dd></dl>
 
@@ -2153,7 +2153,7 @@ entities to be linked.</p>
 </div>
 <dl class="c function">
 <dt id="c.media_entity_remove_links">
-void <code class="sig-name descname">media_entity_remove_links</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_remove_links" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_entity_remove_links</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_remove_links" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove all links associated with an entity</p>
 </dd></dl>
 
@@ -2170,7 +2170,7 @@ void <code class="sig-name descname">media_entity_remove_links</code><span class
 </div>
 <dl class="c function">
 <dt id="c.__media_entity_setup_link">
-int <code class="sig-name descname">__media_entity_setup_link</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_link" title="media_link">media_link</a> *<em>link</em>, u32 <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__media_entity_setup_link" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">__media_entity_setup_link</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_link" title="media_link"><span class="pre">media_link</span></a> <span class="pre">*</span><em><span class="pre">link</span></em>, <span class="pre">u32</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__media_entity_setup_link" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Configure a media link without locking</p>
 </dd></dl>
 
@@ -2190,7 +2190,7 @@ identical, return immediately.</p>
 <a class="reference internal" href="#c.media_entity_setup_link" title="media_entity_setup_link"><code class="xref c c-func docutils literal notranslate"><span class="pre">media_entity_setup_link()</span></code></a> should be used instead.</p>
 <dl class="c function">
 <dt id="c.media_entity_setup_link">
-int <code class="sig-name descname">media_entity_setup_link</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_link" title="media_link">media_link</a> *<em>link</em>, u32 <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_setup_link" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">media_entity_setup_link</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_link" title="media_link"><span class="pre">media_link</span></a> <span class="pre">*</span><em><span class="pre">link</span></em>, <span class="pre">u32</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_setup_link" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>changes the link flags properties in runtime</p>
 </dd></dl>
 
@@ -2229,7 +2229,7 @@ on <a class="reference internal" href="#c.media_create_intf_link" title="media_c
 </div>
 <dl class="c function">
 <dt id="c.media_entity_find_link">
-<em class="property">struct</em> <a class="reference internal" href="#c.media_link" title="media_link">media_link</a> *<code class="sig-name descname">media_entity_find_link</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_pad" title="media_pad">media_pad</a> *<em>source</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_pad" title="media_pad">media_pad</a> *<em>sink</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_find_link" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_link" title="media_link"><span class="pre">media_link</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">media_entity_find_link</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_pad" title="media_pad"><span class="pre">media_pad</span></a> <span class="pre">*</span><em><span class="pre">source</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_pad" title="media_pad"><span class="pre">media_pad</span></a> <span class="pre">*</span><em><span class="pre">sink</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_find_link" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find a link between two pads</p>
 </dd></dl>
 
@@ -2245,7 +2245,7 @@ on <a class="reference internal" href="#c.media_create_intf_link" title="media_c
 such link exists, return <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 <dl class="c function">
 <dt id="c.media_entity_remote_pad">
-<em class="property">struct</em> <a class="reference internal" href="#c.media_pad" title="media_pad">media_pad</a> *<code class="sig-name descname">media_entity_remote_pad</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.media_pad" title="media_pad">media_pad</a> *<em>pad</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_remote_pad" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_pad" title="media_pad"><span class="pre">media_pad</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">media_entity_remote_pad</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_pad" title="media_pad"><span class="pre">media_pad</span></a> <span class="pre">*</span><em><span class="pre">pad</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_remote_pad" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find the pad at the remote end of a link</p>
 </dd></dl>
 
@@ -2262,7 +2262,7 @@ links originating or terminating at that pad until an enabled link is found.</p>
 enabled link, or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> if no enabled link has been found.</p>
 <dl class="c function">
 <dt id="c.media_entity_get_fwnode_pad">
-int <code class="sig-name descname">media_entity_get_fwnode_pad</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em>, <em class="property">struct</em> fwnode_handle *<em>fwnode</em>, unsigned long <em>direction_flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_get_fwnode_pad" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">media_entity_get_fwnode_pad</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">fwnode_handle</span> <span class="pre">*</span><em><span class="pre">fwnode</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">direction_flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_entity_get_fwnode_pad" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get pad number from fwnode</p>
 </dd></dl>
 
@@ -2288,7 +2288,7 @@ matches the <strong>direction_flags</strong>.</p>
 <p>returns the pad number on success or a negative error code.</p>
 <dl class="c function">
 <dt id="c.media_graph_walk_init">
-int <code class="sig-name descname">media_graph_walk_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_graph" title="media_graph">media_graph</a> *<em>graph</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_graph_walk_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">media_graph_walk_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_graph" title="media_graph"><span class="pre">media_graph</span></a> <span class="pre">*</span><em><span class="pre">graph</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_graph_walk_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate resources used by graph walk.</p>
 </dd></dl>
 
@@ -2301,7 +2301,7 @@ int <code class="sig-name descname">media_graph_walk_init</code><span class="sig
 </dl>
 <dl class="c function">
 <dt id="c.media_graph_walk_cleanup">
-void <code class="sig-name descname">media_graph_walk_cleanup</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_graph" title="media_graph">media_graph</a> *<em>graph</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_graph_walk_cleanup" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_graph_walk_cleanup</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_graph" title="media_graph"><span class="pre">media_graph</span></a> <span class="pre">*</span><em><span class="pre">graph</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_graph_walk_cleanup" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Release resources used by graph walk.</p>
 </dd></dl>
 
@@ -2312,7 +2312,7 @@ void <code class="sig-name descname">media_graph_walk_cleanup</code><span class=
 </dl>
 <dl class="c function">
 <dt id="c.media_graph_walk_start">
-void <code class="sig-name descname">media_graph_walk_start</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_graph" title="media_graph">media_graph</a> *<em>graph</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_graph_walk_start" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_graph_walk_start</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_graph" title="media_graph"><span class="pre">media_graph</span></a> <span class="pre">*</span><em><span class="pre">graph</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_graph_walk_start" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Start walking the media graph at a given entity</p>
 </dd></dl>
 
@@ -2333,7 +2333,7 @@ traversal. After the graph walk, the resources must be released
 using <a class="reference internal" href="#c.media_graph_walk_cleanup" title="media_graph_walk_cleanup"><code class="xref c c-func docutils literal notranslate"><span class="pre">media_graph_walk_cleanup()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.media_graph_walk_next">
-<em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<code class="sig-name descname">media_graph_walk_next</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_graph" title="media_graph">media_graph</a> *<em>graph</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_graph_walk_next" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">media_graph_walk_next</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_graph" title="media_graph"><span class="pre">media_graph</span></a> <span class="pre">*</span><em><span class="pre">graph</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_graph_walk_next" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get the next entity in the graph</p>
 </dd></dl>
 
@@ -2351,7 +2351,7 @@ using <a class="reference internal" href="#c.media_graph_walk_cleanup" title="me
 have been traversed.</p>
 <dl class="c function">
 <dt id="c.media_pipeline_start">
-int <code class="sig-name descname">media_pipeline_start</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_pipeline" title="media_pipeline">media_pipeline</a> *<em>pipe</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_pipeline_start" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">media_pipeline_start</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_pipeline" title="media_pipeline"><span class="pre">media_pipeline</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_pipeline_start" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Mark a pipeline as streaming</p>
 </dd></dl>
 
@@ -2372,7 +2372,7 @@ pipeline pointer must be identical for all nested calls to
 <a class="reference internal" href="#c.media_pipeline_start" title="media_pipeline_start"><code class="xref c c-func docutils literal notranslate"><span class="pre">media_pipeline_start()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.__media_pipeline_start">
-int <code class="sig-name descname">__media_pipeline_start</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_pipeline" title="media_pipeline">media_pipeline</a> *<em>pipe</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__media_pipeline_start" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">__media_pipeline_start</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_pipeline" title="media_pipeline"><span class="pre">media_pipeline</span></a> <span class="pre">*</span><em><span class="pre">pipe</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__media_pipeline_start" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Mark a pipeline as streaming</p>
 </dd></dl>
 
@@ -2387,7 +2387,7 @@ int <code class="sig-name descname">__media_pipeline_start</code><span class="si
 <p>..note:: This is the non-locking version of <a class="reference internal" href="#c.media_pipeline_start" title="media_pipeline_start"><code class="xref c c-func docutils literal notranslate"><span class="pre">media_pipeline_start()</span></code></a></p>
 <dl class="c function">
 <dt id="c.media_pipeline_stop">
-void <code class="sig-name descname">media_pipeline_stop</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_pipeline_stop" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_pipeline_stop</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_pipeline_stop" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Mark a pipeline as not streaming</p>
 </dd></dl>
 
@@ -2405,7 +2405,7 @@ number of calls to this function are required to mark the pipeline as not
 streaming.</p>
 <dl class="c function">
 <dt id="c.__media_pipeline_stop">
-void <code class="sig-name descname">__media_pipeline_stop</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__media_pipeline_stop" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">__media_pipeline_stop</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__media_pipeline_stop" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Mark a pipeline as not streaming</p>
 </dd></dl>
 
@@ -2421,7 +2421,7 @@ void <code class="sig-name descname">__media_pipeline_stop</code><span class="si
 </div>
 <dl class="c function">
 <dt id="c.media_devnode_create">
-<em class="property">struct</em> <a class="reference internal" href="#c.media_intf_devnode" title="media_intf_devnode">media_intf_devnode</a> *<code class="sig-name descname">media_devnode_create</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em>, u32 <em>type</em>, u32 <em>flags</em>, u32 <em>major</em>, u32 <em>minor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_devnode_create" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_intf_devnode" title="media_intf_devnode"><span class="pre">media_intf_devnode</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">media_devnode_create</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em>, <span class="pre">u32</span> <em><span class="pre">type</span></em>, <span class="pre">u32</span> <em><span class="pre">flags</span></em>, <span class="pre">u32</span> <em><span class="pre">major</span></em>, <span class="pre">u32</span> <em><span class="pre">minor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_devnode_create" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>creates and initializes a device node interface</p>
 </dd></dl>
 
@@ -2454,7 +2454,7 @@ void <code class="sig-name descname">__media_pipeline_stop</code><span class="si
 </div>
 <dl class="c function">
 <dt id="c.media_devnode_remove">
-void <code class="sig-name descname">media_devnode_remove</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_intf_devnode" title="media_intf_devnode">media_intf_devnode</a> *<em>devnode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_devnode_remove" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_devnode_remove</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_intf_devnode" title="media_intf_devnode"><span class="pre">media_intf_devnode</span></a> <span class="pre">*</span><em><span class="pre">devnode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_devnode_remove" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>removes a device node interface</p>
 </dd></dl>
 
@@ -2468,7 +2468,7 @@ void <code class="sig-name descname">media_devnode_remove</code><span class="sig
 removed.</p>
 <dl class="c macro">
 <dt id="c.media_create_intf_link">
-<code class="sig-name descname">media_create_intf_link</code><a class="headerlink" href="#c.media_create_intf_link" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">media_create_intf_link</span></code><a class="headerlink" href="#c.media_create_intf_link" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">media_create_intf_link</span> <span class="pre">(struct</span> <span class="pre">media_entity</span> <span class="pre">*entity,</span> <span class="pre">struct</span> <span class="pre">media_interface</span> <span class="pre">*intf,</span> <span class="pre">u32</span> <span class="pre">flags)</span></code></p>
@@ -2507,7 +2507,7 @@ interface that will be part of the link.</p>
 </div>
 <dl class="c function">
 <dt id="c.__media_remove_intf_link">
-void <code class="sig-name descname">__media_remove_intf_link</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_link" title="media_link">media_link</a> *<em>link</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__media_remove_intf_link" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">__media_remove_intf_link</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_link" title="media_link"><span class="pre">media_link</span></a> <span class="pre">*</span><em><span class="pre">link</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__media_remove_intf_link" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove a single interface link</p>
 </dd></dl>
 
@@ -2523,7 +2523,7 @@ void <code class="sig-name descname">__media_remove_intf_link</code><span class=
 </div>
 <dl class="c function">
 <dt id="c.media_remove_intf_link">
-void <code class="sig-name descname">media_remove_intf_link</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_link" title="media_link">media_link</a> *<em>link</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_remove_intf_link" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_remove_intf_link</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_link" title="media_link"><span class="pre">media_link</span></a> <span class="pre">*</span><em><span class="pre">link</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_remove_intf_link" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove a single interface link</p>
 </dd></dl>
 
@@ -2539,7 +2539,7 @@ void <code class="sig-name descname">media_remove_intf_link</code><span class="s
 </div>
 <dl class="c function">
 <dt id="c.__media_remove_intf_links">
-void <code class="sig-name descname">__media_remove_intf_links</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_interface" title="media_interface">media_interface</a> *<em>intf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__media_remove_intf_links" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">__media_remove_intf_links</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_interface" title="media_interface"><span class="pre">media_interface</span></a> <span class="pre">*</span><em><span class="pre">intf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__media_remove_intf_links" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove all links associated with an interface</p>
 </dd></dl>
 
@@ -2555,7 +2555,7 @@ void <code class="sig-name descname">__media_remove_intf_links</code><span class
 </div>
 <dl class="c function">
 <dt id="c.media_remove_intf_links">
-void <code class="sig-name descname">media_remove_intf_links</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_interface" title="media_interface">media_interface</a> *<em>intf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_remove_intf_links" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_remove_intf_links</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_interface" title="media_interface"><span class="pre">media_interface</span></a> <span class="pre">*</span><em><span class="pre">intf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_remove_intf_links" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove all links associated with an interface</p>
 </dd></dl>
 
@@ -2575,7 +2575,7 @@ void <code class="sig-name descname">media_remove_intf_links</code><span class="
 </div>
 <dl class="c macro">
 <dt id="c.media_entity_call">
-<code class="sig-name descname">media_entity_call</code><a class="headerlink" href="#c.media_entity_call" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">media_entity_call</span></code><a class="headerlink" href="#c.media_entity_call" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">media_entity_call</span> <span class="pre">(entity,</span> <span class="pre">operation,</span> <span class="pre">args...)</span></code></p>
@@ -2597,7 +2597,7 @@ struct <a class="reference internal" href="#c.media_entity_operations" title="me
 it will issue a call to <strong>operation</strong>(<strong>entity</strong>, <strong>args</strong>).</p>
 <dl class="c enum">
 <dt id="c.media_request_state">
-<em class="property">enum </em><code class="sig-name descname">media_request_state</code><a class="headerlink" href="#c.media_request_state" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">media_request_state</span></code><a class="headerlink" href="#c.media_request_state" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>media request state</p>
 </dd></dl>
 
@@ -2624,7 +2624,7 @@ internally for sanity check purposes</p>
 </dl>
 <dl class="c struct">
 <dt id="c.media_request">
-<em class="property">struct </em><code class="sig-name descname">media_request</code><a class="headerlink" href="#c.media_request" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_request</span></code><a class="headerlink" href="#c.media_request" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Media device request</p>
 </dd></dl>
 
@@ -2668,7 +2668,7 @@ internally for sanity check purposes</p>
 </dl>
 <dl class="c function">
 <dt id="c.media_request_lock_for_access">
-int <code class="sig-name descname">media_request_lock_for_access</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_request" title="media_request">media_request</a> *<em>req</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_lock_for_access" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">media_request_lock_for_access</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request" title="media_request"><span class="pre">media_request</span></a> <span class="pre">*</span><em><span class="pre">req</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_lock_for_access" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Lock the request to access its objects</p>
 </dd></dl>
 
@@ -2683,7 +2683,7 @@ be held during the access. This usually takes place automatically through
 a file handle. Use <strong>media_request_unlock_for_access</strong> when done.</p>
 <dl class="c function">
 <dt id="c.media_request_unlock_for_access">
-void <code class="sig-name descname">media_request_unlock_for_access</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_request" title="media_request">media_request</a> *<em>req</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_unlock_for_access" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_request_unlock_for_access</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request" title="media_request"><span class="pre">media_request</span></a> <span class="pre">*</span><em><span class="pre">req</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_unlock_for_access" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Unlock a request previously locked for access</p>
 </dd></dl>
 
@@ -2697,7 +2697,7 @@ void <code class="sig-name descname">media_request_unlock_for_access</code><span
 <strong>media_request_lock_for_access</strong>.</p>
 <dl class="c function">
 <dt id="c.media_request_lock_for_update">
-int <code class="sig-name descname">media_request_lock_for_update</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_request" title="media_request">media_request</a> *<em>req</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_lock_for_update" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">media_request_lock_for_update</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request" title="media_request"><span class="pre">media_request</span></a> <span class="pre">*</span><em><span class="pre">req</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_lock_for_update" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Lock the request for updating its objects</p>
 </dd></dl>
 
@@ -2713,7 +2713,7 @@ usually takes place automatically through a file handle. Use
 <strong>media_request_unlock_for_update</strong> when done.</p>
 <dl class="c function">
 <dt id="c.media_request_unlock_for_update">
-void <code class="sig-name descname">media_request_unlock_for_update</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_request" title="media_request">media_request</a> *<em>req</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_unlock_for_update" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_request_unlock_for_update</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request" title="media_request"><span class="pre">media_request</span></a> <span class="pre">*</span><em><span class="pre">req</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_unlock_for_update" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Unlock a request previously locked for update</p>
 </dd></dl>
 
@@ -2727,7 +2727,7 @@ void <code class="sig-name descname">media_request_unlock_for_update</code><span
 <strong>media_request_lock_for_update</strong>.</p>
 <dl class="c function">
 <dt id="c.media_request_get">
-void <code class="sig-name descname">media_request_get</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_request" title="media_request">media_request</a> *<em>req</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_get" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_request_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request" title="media_request"><span class="pre">media_request</span></a> <span class="pre">*</span><em><span class="pre">req</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get the media request</p>
 </dd></dl>
 
@@ -2740,7 +2740,7 @@ void <code class="sig-name descname">media_request_get</code><span class="sig-pa
 <p>Get the media request.</p>
 <dl class="c function">
 <dt id="c.media_request_put">
-void <code class="sig-name descname">media_request_put</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_request" title="media_request">media_request</a> *<em>req</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_put" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_request_put</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request" title="media_request"><span class="pre">media_request</span></a> <span class="pre">*</span><em><span class="pre">req</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_put" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Put the media request</p>
 </dd></dl>
 
@@ -2754,7 +2754,7 @@ void <code class="sig-name descname">media_request_put</code><span class="sig-pa
 when the refcount reaches 0.</p>
 <dl class="c function">
 <dt id="c.media_request_get_by_fd">
-<em class="property">struct</em> <a class="reference internal" href="#c.media_request" title="media_request">media_request</a> *<code class="sig-name descname">media_request_get_by_fd</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em>, int <em>request_fd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_get_by_fd" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request" title="media_request"><span class="pre">media_request</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">media_request_get_by_fd</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em>, <span class="pre">int</span> <em><span class="pre">request_fd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_get_by_fd" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get a media request by fd</p>
 </dd></dl>
 
@@ -2775,7 +2775,7 @@ have to call <strong>media_request_put</strong> when it finished using the
 request.</p>
 <dl class="c function">
 <dt id="c.media_request_alloc">
-int <code class="sig-name descname">media_request_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em>, int *<em>alloc_fd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">media_request_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">alloc_fd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate the media request</p>
 </dd></dl>
 
@@ -2790,7 +2790,7 @@ int <code class="sig-name descname">media_request_alloc</code><span class="sig-p
 <p>Allocated the media request and put the fd in <strong>alloc_fd</strong>.</p>
 <dl class="c struct">
 <dt id="c.media_request_object_ops">
-<em class="property">struct </em><code class="sig-name descname">media_request_object_ops</code><a class="headerlink" href="#c.media_request_object_ops" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_request_object_ops</span></code><a class="headerlink" href="#c.media_request_object_ops" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Media request object operations</p>
 </dd></dl>
 
@@ -2819,7 +2819,7 @@ int <code class="sig-name descname">media_request_alloc</code><span class="sig-p
 </dl>
 <dl class="c struct">
 <dt id="c.media_request_object">
-<em class="property">struct </em><code class="sig-name descname">media_request_object</code><a class="headerlink" href="#c.media_request_object" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">media_request_object</span></code><a class="headerlink" href="#c.media_request_object" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>An opaque object that belongs to a media request</p>
 </dd></dl>
 
@@ -2854,7 +2854,7 @@ int <code class="sig-name descname">media_request_alloc</code><span class="sig-p
 another struct that contains the actual data for this request object.</p>
 <dl class="c function">
 <dt id="c.media_request_object_get">
-void <code class="sig-name descname">media_request_object_get</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_request_object" title="media_request_object">media_request_object</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_object_get" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_request_object_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request_object" title="media_request_object"><span class="pre">media_request_object</span></a> <span class="pre">*</span><em><span class="pre">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_object_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get a media request object</p>
 </dd></dl>
 
@@ -2867,7 +2867,7 @@ void <code class="sig-name descname">media_request_object_get</code><span class=
 <p>Get a media request object.</p>
 <dl class="c function">
 <dt id="c.media_request_object_put">
-void <code class="sig-name descname">media_request_object_put</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_request_object" title="media_request_object">media_request_object</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_object_put" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_request_object_put</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request_object" title="media_request_object"><span class="pre">media_request_object</span></a> <span class="pre">*</span><em><span class="pre">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_object_put" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Put a media request object</p>
 </dd></dl>
 
@@ -2881,7 +2881,7 @@ void <code class="sig-name descname">media_request_object_put</code><span class=
 object’s memory is released.</p>
 <dl class="c function">
 <dt id="c.media_request_object_find">
-<em class="property">struct</em> <a class="reference internal" href="#c.media_request_object" title="media_request_object">media_request_object</a> *<code class="sig-name descname">media_request_object_find</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_request" title="media_request">media_request</a> *<em>req</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.media_request_object_ops" title="media_request_object_ops">media_request_object_ops</a> *<em>ops</em>, void *<em>priv</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_object_find" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request_object" title="media_request_object"><span class="pre">media_request_object</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">media_request_object_find</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request" title="media_request"><span class="pre">media_request</span></a> <span class="pre">*</span><em><span class="pre">req</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request_object_ops" title="media_request_object_ops"><span class="pre">media_request_object_ops</span></a> <span class="pre">*</span><em><span class="pre">ops</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">priv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_object_find" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find an object in a request</p>
 </dd></dl>
 
@@ -2902,7 +2902,7 @@ call <a class="reference internal" href="#c.media_request_object_put" title="med
 the <strong>req-&gt;lock</strong> spin lock to make this safe.</p>
 <dl class="c function">
 <dt id="c.media_request_object_init">
-void <code class="sig-name descname">media_request_object_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_request_object" title="media_request_object">media_request_object</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_object_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_request_object_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request_object" title="media_request_object"><span class="pre">media_request_object</span></a> <span class="pre">*</span><em><span class="pre">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_object_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialise a media request object</p>
 </dd></dl>
 
@@ -2917,7 +2917,7 @@ release callback of the ops once it has no references (this function
 initialises references to one).</p>
 <dl class="c function">
 <dt id="c.media_request_object_bind">
-int <code class="sig-name descname">media_request_object_bind</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_request" title="media_request">media_request</a> *<em>req</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.media_request_object_ops" title="media_request_object_ops">media_request_object_ops</a> *<em>ops</em>, void *<em>priv</em>, bool <em>is_buffer</em>, <em class="property">struct</em> <a class="reference internal" href="#c.media_request_object" title="media_request_object">media_request_object</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_object_bind" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">media_request_object_bind</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request" title="media_request"><span class="pre">media_request</span></a> <span class="pre">*</span><em><span class="pre">req</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request_object_ops" title="media_request_object_ops"><span class="pre">media_request_object_ops</span></a> <span class="pre">*</span><em><span class="pre">ops</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">priv</span></em>, <span class="pre">bool</span> <em><span class="pre">is_buffer</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request_object" title="media_request_object"><span class="pre">media_request_object</span></a> <span class="pre">*</span><em><span class="pre">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_object_bind" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Bind a media request object to a request</p>
 </dd></dl>
 
@@ -2948,7 +2948,7 @@ and that all non-buffer objects that they depend on are processed
 first.</p>
 <dl class="c function">
 <dt id="c.media_request_object_unbind">
-void <code class="sig-name descname">media_request_object_unbind</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_request_object" title="media_request_object">media_request_object</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_object_unbind" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_request_object_unbind</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request_object" title="media_request_object"><span class="pre">media_request_object</span></a> <span class="pre">*</span><em><span class="pre">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_object_unbind" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Unbind a media request object</p>
 </dd></dl>
 
@@ -2961,7 +2961,7 @@ void <code class="sig-name descname">media_request_object_unbind</code><span cla
 <p>Unbind the media request object from the request.</p>
 <dl class="c function">
 <dt id="c.media_request_object_complete">
-void <code class="sig-name descname">media_request_object_complete</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_request_object" title="media_request_object">media_request_object</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_object_complete" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_request_object_complete</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_request_object" title="media_request_object"><span class="pre">media_request_object</span></a> <span class="pre">*</span><em><span class="pre">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_request_object_complete" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Mark the media request object as complete</p>
 </dd></dl>
 
@@ -2975,7 +2975,7 @@ void <code class="sig-name descname">media_request_object_complete</code><span c
 be completed.</p>
 <dl class="c function">
 <dt id="c.media_device_usb_allocate">
-<em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<code class="sig-name descname">media_device_usb_allocate</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../usb/usb.html#c.usb_device" title="usb_device">usb_device</a> *<em>udev</em>, <em class="property">const</em> char *<em>module_name</em>, <em class="property">struct</em> module *<em>owner</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_usb_allocate" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">media_device_usb_allocate</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../usb/usb.html#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">udev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">module_name</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">module</span> <span class="pre">*</span><em><span class="pre">owner</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_usb_allocate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate and return struct <code class="xref c c-type docutils literal notranslate"><span class="pre">media</span></code> device</p>
 </dd></dl>
 
@@ -2997,7 +2997,7 @@ drivers share usb_device and the media device. This interface allocates
 it.</p>
 <dl class="c function">
 <dt id="c.media_device_delete">
-void <code class="sig-name descname">media_device_delete</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.media_device" title="media_device">media_device</a> *<em>mdev</em>, <em class="property">const</em> char *<em>module_name</em>, <em class="property">struct</em> module *<em>owner</em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_delete" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">media_device_delete</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">module_name</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">module</span> <span class="pre">*</span><em><span class="pre">owner</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.media_device_delete" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Release media device. Calls kref_put().</p>
 </dd></dl>
 

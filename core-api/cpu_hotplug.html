@@ -626,7 +626,7 @@ fi
 <h2>Kernel Inline Documentations Reference<a class="headerlink" href="#kernel-inline-documentations-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.cpuhp_setup_state">
-int <code class="sig-name descname">cpuhp_setup_state</code><span class="sig-paren">(</span><em class="property">enum</em> cpuhp_state <em>state</em>, <em class="property">const</em> char *<em>name</em>, int (*<em>startup</em>)<span class="sig-paren">(</span>unsigned int cpu<span class="sig-paren">)</span>, int (*<em>teardown</em>)<span class="sig-paren">(</span>unsigned int cpu<span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_setup_state" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cpuhp_setup_state</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <span class="pre">cpuhp_state</span> <em><span class="pre">state</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">name</span></em>, <span class="pre">int</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">startup</span></em><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">cpu</span><span class="sig-paren">)</span>, <span class="pre">int</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">teardown</span></em><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">cpu</span><span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_setup_state" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Setup hotplug state callbacks with calling the callbacks</p>
 </dd></dl>
 
@@ -646,7 +646,7 @@ int <code class="sig-name descname">cpuhp_setup_state</code><span class="sig-par
 the present cpus which have already reached the <strong>state</strong>.</p>
 <dl class="c function">
 <dt id="c.cpuhp_setup_state_nocalls">
-int <code class="sig-name descname">cpuhp_setup_state_nocalls</code><span class="sig-paren">(</span><em class="property">enum</em> cpuhp_state <em>state</em>, <em class="property">const</em> char *<em>name</em>, int (*<em>startup</em>)<span class="sig-paren">(</span>unsigned int cpu<span class="sig-paren">)</span>, int (*<em>teardown</em>)<span class="sig-paren">(</span>unsigned int cpu<span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_setup_state_nocalls" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cpuhp_setup_state_nocalls</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <span class="pre">cpuhp_state</span> <em><span class="pre">state</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">name</span></em>, <span class="pre">int</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">startup</span></em><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">cpu</span><span class="sig-paren">)</span>, <span class="pre">int</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">teardown</span></em><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">cpu</span><span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_setup_state_nocalls" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Setup hotplug state callbacks without calling the callbacks</p>
 </dd></dl>
 
@@ -666,7 +666,7 @@ int <code class="sig-name descname">cpuhp_setup_state_nocalls</code><span class=
 during installation of this callback. NOP if SMP=n or HOTPLUG_CPU=n.</p>
 <dl class="c function">
 <dt id="c.cpuhp_setup_state_multi">
-int <code class="sig-name descname">cpuhp_setup_state_multi</code><span class="sig-paren">(</span><em class="property">enum</em> cpuhp_state <em>state</em>, <em class="property">const</em> char *<em>name</em>, int (*<em>startup</em>)<span class="sig-paren">(</span>unsigned int cpu, <em class="property">struct</em> hlist_node *node<span class="sig-paren">)</span>, int (*<em>teardown</em>)<span class="sig-paren">(</span>unsigned int cpu, <em class="property">struct</em> hlist_node *node<span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_setup_state_multi" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cpuhp_setup_state_multi</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <span class="pre">cpuhp_state</span> <em><span class="pre">state</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">name</span></em>, <span class="pre">int</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">startup</span></em><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">cpu</span>, <em class="property"><span class="pre">struct</span></em> <span class="pre">hlist_node</span> <span class="pre">*</span><span class="pre">node</span><span class="sig-paren">)</span>, <span class="pre">int</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">teardown</span></em><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">cpu</span>, <em class="property"><span class="pre">struct</span></em> <span class="pre">hlist_node</span> <span class="pre">*</span><span class="pre">node</span><span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_setup_state_multi" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Add callbacks for multi state</p>
 </dd></dl>
 
@@ -688,7 +688,7 @@ invoked once an instance for this state are registered via
 <strong>cpuhp_state_add_instance</strong> or <strong>cpuhp_state_add_instance_nocalls</strong>.</p>
 <dl class="c function">
 <dt id="c.cpuhp_state_add_instance">
-int <code class="sig-name descname">cpuhp_state_add_instance</code><span class="sig-paren">(</span><em class="property">enum</em> cpuhp_state <em>state</em>, <em class="property">struct</em> hlist_node *<em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_state_add_instance" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cpuhp_state_add_instance</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <span class="pre">cpuhp_state</span> <em><span class="pre">state</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">hlist_node</span> <span class="pre">*</span><em><span class="pre">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_state_add_instance" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Add an instance for a state and invoke startup callback.</p>
 </dd></dl>
 
@@ -705,7 +705,7 @@ the present cpus which have already reached the <strong>state</strong>. The <str
 been earlier marked as multi-instance by <strong>cpuhp_setup_state_multi</strong>.</p>
 <dl class="c function">
 <dt id="c.cpuhp_state_add_instance_nocalls">
-int <code class="sig-name descname">cpuhp_state_add_instance_nocalls</code><span class="sig-paren">(</span><em class="property">enum</em> cpuhp_state <em>state</em>, <em class="property">struct</em> hlist_node *<em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_state_add_instance_nocalls" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cpuhp_state_add_instance_nocalls</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <span class="pre">cpuhp_state</span> <em><span class="pre">state</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">hlist_node</span> <span class="pre">*</span><em><span class="pre">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_state_add_instance_nocalls" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Add an instance for a state without invoking the startup callback.</p>
 </dd></dl>
 
@@ -721,7 +721,7 @@ int <code class="sig-name descname">cpuhp_state_add_instance_nocalls</code><span
 marked as multi-instance by <strong>cpuhp_setup_state_multi</strong>.</p>
 <dl class="c function">
 <dt id="c.cpuhp_remove_state">
-void <code class="sig-name descname">cpuhp_remove_state</code><span class="sig-paren">(</span><em class="property">enum</em> cpuhp_state <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_remove_state" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">cpuhp_remove_state</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <span class="pre">cpuhp_state</span> <em><span class="pre">state</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_remove_state" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Remove hotplug state callbacks and invoke the teardown</p>
 </dd></dl>
 
@@ -735,7 +735,7 @@ void <code class="sig-name descname">cpuhp_remove_state</code><span class="sig-p
 the present cpus which have already reached the <strong>state</strong>.</p>
 <dl class="c function">
 <dt id="c.cpuhp_remove_state_nocalls">
-void <code class="sig-name descname">cpuhp_remove_state_nocalls</code><span class="sig-paren">(</span><em class="property">enum</em> cpuhp_state <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_remove_state_nocalls" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">cpuhp_remove_state_nocalls</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <span class="pre">cpuhp_state</span> <em><span class="pre">state</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_remove_state_nocalls" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Remove hotplug state callbacks without invoking teardown</p>
 </dd></dl>
 
@@ -746,7 +746,7 @@ void <code class="sig-name descname">cpuhp_remove_state_nocalls</code><span clas
 </dl>
 <dl class="c function">
 <dt id="c.cpuhp_remove_multi_state">
-void <code class="sig-name descname">cpuhp_remove_multi_state</code><span class="sig-paren">(</span><em class="property">enum</em> cpuhp_state <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_remove_multi_state" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">cpuhp_remove_multi_state</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <span class="pre">cpuhp_state</span> <em><span class="pre">state</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_remove_multi_state" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Remove hotplug multi state callback</p>
 </dd></dl>
 
@@ -761,7 +761,7 @@ void <code class="sig-name descname">cpuhp_remove_multi_state</code><span class=
 invoking this function.</p>
 <dl class="c function">
 <dt id="c.cpuhp_state_remove_instance">
-int <code class="sig-name descname">cpuhp_state_remove_instance</code><span class="sig-paren">(</span><em class="property">enum</em> cpuhp_state <em>state</em>, <em class="property">struct</em> hlist_node *<em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_state_remove_instance" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cpuhp_state_remove_instance</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <span class="pre">cpuhp_state</span> <em><span class="pre">state</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">hlist_node</span> <span class="pre">*</span><em><span class="pre">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_state_remove_instance" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Remove hotplug instance from state and invoke the teardown callback</p>
 </dd></dl>
 
@@ -777,7 +777,7 @@ int <code class="sig-name descname">cpuhp_state_remove_instance</code><span clas
 which have already reached the <strong>state</strong>.</p>
 <dl class="c function">
 <dt id="c.cpuhp_state_remove_instance_nocalls">
-int <code class="sig-name descname">cpuhp_state_remove_instance_nocalls</code><span class="sig-paren">(</span><em class="property">enum</em> cpuhp_state <em>state</em>, <em class="property">struct</em> hlist_node *<em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_state_remove_instance_nocalls" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cpuhp_state_remove_instance_nocalls</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <span class="pre">cpuhp_state</span> <em><span class="pre">state</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">hlist_node</span> <span class="pre">*</span><em><span class="pre">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cpuhp_state_remove_instance_nocalls" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Remove hotplug instance from state without invoking the reatdown callback</p>
 </dd></dl>
 

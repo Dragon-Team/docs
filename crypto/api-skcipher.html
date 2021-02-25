@@ -292,7 +292,7 @@
 managed via crypto_register_alg() and crypto_unregister_alg().</p>
 <dl class="c struct">
 <dt id="c.cipher_alg">
-<em class="property">struct </em><code class="sig-name descname">cipher_alg</code><a class="headerlink" href="#c.cipher_alg" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">cipher_alg</span></code><a class="headerlink" href="#c.cipher_alg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>single-block symmetric ciphers definition</p>
 </dd></dl>
 
@@ -360,7 +360,7 @@ called in parallel with the same transformation object.</p>
 <p>All fields are mandatory and must be filled.</p>
 <dl class="c struct">
 <dt id="c.compress_alg">
-<em class="property">struct </em><code class="sig-name descname">compress_alg</code><a class="headerlink" href="#c.compress_alg" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">compress_alg</span></code><a class="headerlink" href="#c.compress_alg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>compression/decompression algorithm</p>
 </dd></dl>
 
@@ -386,7 +386,7 @@ returned in dlen.</p>
 <p>All fields are mandatory.</p>
 <dl class="c struct">
 <dt id="c.crypto_alg">
-<em class="property">struct </em><code class="sig-name descname">crypto_alg</code><a class="headerlink" href="#c.crypto_alg" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">crypto_alg</span></code><a class="headerlink" href="#c.crypto_alg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>definition of a cryptograpic cipher algorithm</p>
 </dd></dl>
 
@@ -564,7 +564,7 @@ which operation just finished if it invoked multiple in parallel. This
 state information is unused by the kernel crypto API.</p>
 <dl class="c function">
 <dt id="c.crypto_alloc_skcipher">
-<em class="property">struct</em> crypto_skcipher *<code class="sig-name descname">crypto_alloc_skcipher</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>alg_name</em>, u32 <em>type</em>, u32 <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_alloc_skcipher" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_skcipher</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">crypto_alloc_skcipher</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">alg_name</span></em>, <span class="pre">u32</span> <em><span class="pre">type</span></em>, <span class="pre">u32</span> <em><span class="pre">mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_alloc_skcipher" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate symmetric key cipher handle</p>
 </dd></dl>
 
@@ -589,7 +589,7 @@ API invocation for that skcipher.</p>
 </dl>
 <dl class="c function">
 <dt id="c.crypto_free_skcipher">
-void <code class="sig-name descname">crypto_free_skcipher</code><span class="sig-paren">(</span><em class="property">struct</em> crypto_skcipher *<em>tfm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_free_skcipher" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">crypto_free_skcipher</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_skcipher</span> <span class="pre">*</span><em><span class="pre">tfm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_free_skcipher" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>zeroize and free cipher handle</p>
 </dd></dl>
 
@@ -600,7 +600,7 @@ void <code class="sig-name descname">crypto_free_skcipher</code><span class="sig
 </dl>
 <dl class="c function">
 <dt id="c.crypto_has_skcipher">
-int <code class="sig-name descname">crypto_has_skcipher</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>alg_name</em>, u32 <em>type</em>, u32 <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_has_skcipher" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">crypto_has_skcipher</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">alg_name</span></em>, <span class="pre">u32</span> <em><span class="pre">type</span></em>, <span class="pre">u32</span> <em><span class="pre">mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_has_skcipher" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Search for the availability of an skcipher.</p>
 </dd></dl>
 
@@ -621,7 +621,7 @@ skcipher</p>
 </dl>
 <dl class="c function">
 <dt id="c.crypto_skcipher_ivsize">
-unsigned int <code class="sig-name descname">crypto_skcipher_ivsize</code><span class="sig-paren">(</span><em class="property">struct</em> crypto_skcipher *<em>tfm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_skcipher_ivsize" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">crypto_skcipher_ivsize</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_skcipher</span> <span class="pre">*</span><em><span class="pre">tfm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_skcipher_ivsize" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>obtain IV size</p>
 </dd></dl>
 
@@ -637,7 +637,7 @@ returned. This IV size may be zero if the cipher does not need an IV.</p>
 <p>IV size in bytes</p>
 <dl class="c function">
 <dt id="c.crypto_skcipher_blocksize">
-unsigned int <code class="sig-name descname">crypto_skcipher_blocksize</code><span class="sig-paren">(</span><em class="property">struct</em> crypto_skcipher *<em>tfm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_skcipher_blocksize" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">crypto_skcipher_blocksize</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_skcipher</span> <span class="pre">*</span><em><span class="pre">tfm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_skcipher_blocksize" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>obtain block size of cipher</p>
 </dd></dl>
 
@@ -654,7 +654,7 @@ memory for the data returned by the encryption or decryption operation</p>
 <p>block size of cipher</p>
 <dl class="c function">
 <dt id="c.crypto_skcipher_setkey">
-int <code class="sig-name descname">crypto_skcipher_setkey</code><span class="sig-paren">(</span><em class="property">struct</em> crypto_skcipher *<em>tfm</em>, <em class="property">const</em> u8 *<em>key</em>, unsigned int <em>keylen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_skcipher_setkey" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">crypto_skcipher_setkey</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_skcipher</span> <span class="pre">*</span><em><span class="pre">tfm</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">key</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">keylen</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_skcipher_setkey" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set key for cipher</p>
 </dd></dl>
 
@@ -678,7 +678,7 @@ is performed.</p>
 <p>0 if the setting of the key was successful; &lt; 0 if an error occurred</p>
 <dl class="c function">
 <dt id="c.crypto_skcipher_reqtfm">
-<em class="property">struct</em> crypto_skcipher *<code class="sig-name descname">crypto_skcipher_reqtfm</code><span class="sig-paren">(</span><em class="property">struct</em> skcipher_request *<em>req</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_skcipher_reqtfm" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_skcipher</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">crypto_skcipher_reqtfm</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">skcipher_request</span> <span class="pre">*</span><em><span class="pre">req</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_skcipher_reqtfm" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>obtain cipher handle from request</p>
 </dd></dl>
 
@@ -694,7 +694,7 @@ data structure.</p>
 <p>crypto_skcipher handle</p>
 <dl class="c function">
 <dt id="c.crypto_skcipher_encrypt">
-int <code class="sig-name descname">crypto_skcipher_encrypt</code><span class="sig-paren">(</span><em class="property">struct</em> skcipher_request *<em>req</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_skcipher_encrypt" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">crypto_skcipher_encrypt</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">skcipher_request</span> <span class="pre">*</span><em><span class="pre">req</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_skcipher_encrypt" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>encrypt plaintext</p>
 </dd></dl>
 
@@ -712,7 +712,7 @@ skcipher_request_* functions.</p>
 <p>0 if the cipher operation was successful; &lt; 0 if an error occurred</p>
 <dl class="c function">
 <dt id="c.crypto_skcipher_decrypt">
-int <code class="sig-name descname">crypto_skcipher_decrypt</code><span class="sig-paren">(</span><em class="property">struct</em> skcipher_request *<em>req</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_skcipher_decrypt" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">crypto_skcipher_decrypt</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">skcipher_request</span> <span class="pre">*</span><em><span class="pre">req</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_skcipher_decrypt" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>decrypt ciphertext</p>
 </dd></dl>
 
@@ -739,7 +739,7 @@ as a handle to the skcipher_request_* API calls in a similar way as
 skcipher handle to the crypto_skcipher_* API calls.</p>
 <dl class="c function">
 <dt id="c.crypto_skcipher_reqsize">
-unsigned int <code class="sig-name descname">crypto_skcipher_reqsize</code><span class="sig-paren">(</span><em class="property">struct</em> crypto_skcipher *<em>tfm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_skcipher_reqsize" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">crypto_skcipher_reqsize</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_skcipher</span> <span class="pre">*</span><em><span class="pre">tfm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_skcipher_reqsize" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>obtain size of the request data structure</p>
 </dd></dl>
 
@@ -752,7 +752,7 @@ unsigned int <code class="sig-name descname">crypto_skcipher_reqsize</code><span
 <p>number of bytes</p>
 <dl class="c function">
 <dt id="c.skcipher_request_set_tfm">
-void <code class="sig-name descname">skcipher_request_set_tfm</code><span class="sig-paren">(</span><em class="property">struct</em> skcipher_request *<em>req</em>, <em class="property">struct</em> crypto_skcipher *<em>tfm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.skcipher_request_set_tfm" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">skcipher_request_set_tfm</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">skcipher_request</span> <span class="pre">*</span><em><span class="pre">req</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_skcipher</span> <span class="pre">*</span><em><span class="pre">tfm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skcipher_request_set_tfm" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update cipher handle reference in request</p>
 </dd></dl>
 
@@ -768,7 +768,7 @@ void <code class="sig-name descname">skcipher_request_set_tfm</code><span class=
 data structure with a different one.</p>
 <dl class="c function">
 <dt id="c.skcipher_request_alloc">
-<em class="property">struct</em> skcipher_request *<code class="sig-name descname">skcipher_request_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> crypto_skcipher *<em>tfm</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.skcipher_request_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">skcipher_request</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">skcipher_request_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_skcipher</span> <span class="pre">*</span><em><span class="pre">tfm</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skcipher_request_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate request data structure</p>
 </dd></dl>
 
@@ -787,7 +787,7 @@ handle is registered in the request data structure.</p>
 <p>allocated request handle in case of success, or NULL if out of memory</p>
 <dl class="c function">
 <dt id="c.skcipher_request_free">
-void <code class="sig-name descname">skcipher_request_free</code><span class="sig-paren">(</span><em class="property">struct</em> skcipher_request *<em>req</em><span class="sig-paren">)</span><a class="headerlink" href="#c.skcipher_request_free" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">skcipher_request_free</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">skcipher_request</span> <span class="pre">*</span><em><span class="pre">req</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skcipher_request_free" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>zeroize and free request data structure</p>
 </dd></dl>
 
@@ -798,7 +798,7 @@ void <code class="sig-name descname">skcipher_request_free</code><span class="si
 </dl>
 <dl class="c function">
 <dt id="c.skcipher_request_set_callback">
-void <code class="sig-name descname">skcipher_request_set_callback</code><span class="sig-paren">(</span><em class="property">struct</em> skcipher_request *<em>req</em>, u32 <em>flags</em>, crypto_completion_t <em>compl</em>, void *<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#c.skcipher_request_set_callback" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">skcipher_request_set_callback</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">skcipher_request</span> <span class="pre">*</span><em><span class="pre">req</span></em>, <span class="pre">u32</span> <em><span class="pre">flags</span></em>, <span class="pre">crypto_completion_t</span> <em><span class="pre">compl</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skcipher_request_set_callback" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set asynchronous callback function</p>
 </dd></dl>
 
@@ -833,7 +833,7 @@ must comply with the following template:</p>
 </div>
 <dl class="c function">
 <dt id="c.skcipher_request_set_crypt">
-void <code class="sig-name descname">skcipher_request_set_crypt</code><span class="sig-paren">(</span><em class="property">struct</em> skcipher_request *<em>req</em>, <em class="property">struct</em> scatterlist *<em>src</em>, <em class="property">struct</em> scatterlist *<em>dst</em>, unsigned int <em>cryptlen</em>, void *<em>iv</em><span class="sig-paren">)</span><a class="headerlink" href="#c.skcipher_request_set_crypt" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">skcipher_request_set_crypt</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">skcipher_request</span> <span class="pre">*</span><em><span class="pre">req</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">scatterlist</span> <span class="pre">*</span><em><span class="pre">src</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">scatterlist</span> <span class="pre">*</span><em><span class="pre">dst</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">cryptlen</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">iv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.skcipher_request_set_crypt" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set data buffers</p>
 </dd></dl>
 
@@ -872,7 +872,7 @@ block-wise and process either the input or the output data of these cipher
 operations.</p>
 <dl class="c function">
 <dt id="c.crypto_alloc_cipher">
-<em class="property">struct</em> crypto_cipher *<code class="sig-name descname">crypto_alloc_cipher</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>alg_name</em>, u32 <em>type</em>, u32 <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_alloc_cipher" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_cipher</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">crypto_alloc_cipher</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">alg_name</span></em>, <span class="pre">u32</span> <em><span class="pre">type</span></em>, <span class="pre">u32</span> <em><span class="pre">mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_alloc_cipher" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate single block cipher handle</p>
 </dd></dl>
 
@@ -897,7 +897,7 @@ invocation for that single block cipher.</p>
 </dl>
 <dl class="c function">
 <dt id="c.crypto_free_cipher">
-void <code class="sig-name descname">crypto_free_cipher</code><span class="sig-paren">(</span><em class="property">struct</em> crypto_cipher *<em>tfm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_free_cipher" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">crypto_free_cipher</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_cipher</span> <span class="pre">*</span><em><span class="pre">tfm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_free_cipher" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>zeroize and free the single block cipher handle</p>
 </dd></dl>
 
@@ -908,7 +908,7 @@ void <code class="sig-name descname">crypto_free_cipher</code><span class="sig-p
 </dl>
 <dl class="c function">
 <dt id="c.crypto_has_cipher">
-int <code class="sig-name descname">crypto_has_cipher</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>alg_name</em>, u32 <em>type</em>, u32 <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_has_cipher" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">crypto_has_cipher</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">alg_name</span></em>, <span class="pre">u32</span> <em><span class="pre">type</span></em>, <span class="pre">u32</span> <em><span class="pre">mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_has_cipher" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Search for the availability of a single block cipher</p>
 </dd></dl>
 
@@ -929,7 +929,7 @@ single block cipher</p>
 </dl>
 <dl class="c function">
 <dt id="c.crypto_cipher_blocksize">
-unsigned int <code class="sig-name descname">crypto_cipher_blocksize</code><span class="sig-paren">(</span><em class="property">struct</em> crypto_cipher *<em>tfm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_cipher_blocksize" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">crypto_cipher_blocksize</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_cipher</span> <span class="pre">*</span><em><span class="pre">tfm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_cipher_blocksize" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>obtain block size for cipher</p>
 </dd></dl>
 
@@ -946,7 +946,7 @@ memory for the data returned by the encryption or decryption operation</p>
 <p>block size of cipher</p>
 <dl class="c function">
 <dt id="c.crypto_cipher_setkey">
-int <code class="sig-name descname">crypto_cipher_setkey</code><span class="sig-paren">(</span><em class="property">struct</em> crypto_cipher *<em>tfm</em>, <em class="property">const</em> u8 *<em>key</em>, unsigned int <em>keylen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_cipher_setkey" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">crypto_cipher_setkey</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_cipher</span> <span class="pre">*</span><em><span class="pre">tfm</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">key</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">keylen</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_cipher_setkey" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set key for cipher</p>
 </dd></dl>
 
@@ -970,7 +970,7 @@ is performed.</p>
 <p>0 if the setting of the key was successful; &lt; 0 if an error occurred</p>
 <dl class="c function">
 <dt id="c.crypto_cipher_encrypt_one">
-void <code class="sig-name descname">crypto_cipher_encrypt_one</code><span class="sig-paren">(</span><em class="property">struct</em> crypto_cipher *<em>tfm</em>, u8 *<em>dst</em>, <em class="property">const</em> u8 *<em>src</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_cipher_encrypt_one" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">crypto_cipher_encrypt_one</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_cipher</span> <span class="pre">*</span><em><span class="pre">tfm</span></em>, <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">dst</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">src</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_cipher_encrypt_one" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>encrypt one block of plaintext</p>
 </dd></dl>
 
@@ -988,7 +988,7 @@ void <code class="sig-name descname">crypto_cipher_encrypt_one</code><span class
 the plaintext and ciphertext buffers are at least one block in size.</p>
 <dl class="c function">
 <dt id="c.crypto_cipher_decrypt_one">
-void <code class="sig-name descname">crypto_cipher_decrypt_one</code><span class="sig-paren">(</span><em class="property">struct</em> crypto_cipher *<em>tfm</em>, u8 *<em>dst</em>, <em class="property">const</em> u8 *<em>src</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_cipher_decrypt_one" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">crypto_cipher_decrypt_one</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_cipher</span> <span class="pre">*</span><em><span class="pre">tfm</span></em>, <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">dst</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">src</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_cipher_decrypt_one" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>decrypt one block of ciphertext</p>
 </dd></dl>
 

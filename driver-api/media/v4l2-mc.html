@@ -392,7 +392,7 @@
 <h1><span class="section-number">1.18. </span>V4L2 Media Controller functions and data structures<a class="headerlink" href="#v4l2-media-controller-functions-and-data-structures" title="Permalink to this headline">¶</a></h1>
 <dl class="c function">
 <dt id="c.v4l2_mc_create_media_graph">
-int <code class="sig-name descname">v4l2_mc_create_media_graph</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="mc-core.html#c.media_device" title="media_device">media_device</a> *<em>mdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_mc_create_media_graph" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">v4l2_mc_create_media_graph</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="mc-core.html#c.media_device" title="media_device"><span class="pre">media_device</span></a> <span class="pre">*</span><em><span class="pre">mdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_mc_create_media_graph" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create Media Controller links at the graph.</p>
 </dd></dl>
 
@@ -415,7 +415,7 @@ hardware should not use this routine, as it will not build the right graph.</p>
 </div>
 <dl class="c function">
 <dt id="c.v4l_enable_media_source">
-int <code class="sig-name descname">v4l_enable_media_source</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="v4l2-dev.html#c.video_device" title="video_device">video_device</a> *<em>vdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l_enable_media_source" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">v4l_enable_media_source</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="v4l2-dev.html#c.video_device" title="video_device"><span class="pre">video_device</span></a> <span class="pre">*</span><em><span class="pre">vdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l_enable_media_source" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Hold media source for exclusive use if free</p>
 </dd></dl>
 
@@ -436,7 +436,7 @@ that change the source configuration.</p>
 <p>returns zero on success or a negative error code.</p>
 <dl class="c function">
 <dt id="c.v4l_disable_media_source">
-void <code class="sig-name descname">v4l_disable_media_source</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="v4l2-dev.html#c.video_device" title="video_device">video_device</a> *<em>vdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l_disable_media_source" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">v4l_disable_media_source</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="v4l2-dev.html#c.video_device" title="video_device"><span class="pre">video_device</span></a> <span class="pre">*</span><em><span class="pre">vdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l_disable_media_source" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Release media source</p>
 </dd></dl>
 
@@ -454,7 +454,7 @@ media entity associated with the video device.</p>
 <p>returns zero on success or a negative error code.</p>
 <dl class="c function">
 <dt id="c.v4l2_create_fwnode_links_to_pad">
-int <code class="sig-name descname">v4l2_create_fwnode_links_to_pad</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="v4l2-subdev.html#c.v4l2_subdev" title="v4l2_subdev">v4l2_subdev</a> *<em>src_sd</em>, <em class="property">struct</em> <a class="reference internal" href="mc-core.html#c.media_pad" title="media_pad">media_pad</a> *<em>sink</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_create_fwnode_links_to_pad" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">v4l2_create_fwnode_links_to_pad</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="v4l2-subdev.html#c.v4l2_subdev" title="v4l2_subdev"><span class="pre">v4l2_subdev</span></a> <span class="pre">*</span><em><span class="pre">src_sd</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="mc-core.html#c.media_pad" title="media_pad"><span class="pre">media_pad</span></a> <span class="pre">*</span><em><span class="pre">sink</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_create_fwnode_links_to_pad" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create fwnode-based links from a source subdev to a sink subdev pad.</p>
 </dd></dl>
 
@@ -480,7 +480,7 @@ to the sink are owned by the sink.</p>
 <p>Return 0 on success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.v4l2_create_fwnode_links">
-int <code class="sig-name descname">v4l2_create_fwnode_links</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="v4l2-subdev.html#c.v4l2_subdev" title="v4l2_subdev">v4l2_subdev</a> *<em>src_sd</em>, <em class="property">struct</em> <a class="reference internal" href="v4l2-subdev.html#c.v4l2_subdev" title="v4l2_subdev">v4l2_subdev</a> *<em>sink_sd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_create_fwnode_links" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">v4l2_create_fwnode_links</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="v4l2-subdev.html#c.v4l2_subdev" title="v4l2_subdev"><span class="pre">v4l2_subdev</span></a> <span class="pre">*</span><em><span class="pre">src_sd</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="v4l2-subdev.html#c.v4l2_subdev" title="v4l2_subdev"><span class="pre">v4l2_subdev</span></a> <span class="pre">*</span><em><span class="pre">sink_sd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_create_fwnode_links" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create fwnode-based links from a source subdev to a sink subdev.</p>
 </dd></dl>
 
@@ -506,7 +506,7 @@ to the sink are owned by the sink.</p>
 <p>Return 0 on success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.v4l2_pipeline_pm_get">
-int <code class="sig-name descname">v4l2_pipeline_pm_get</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="mc-core.html#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_pipeline_pm_get" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">v4l2_pipeline_pm_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="mc-core.html#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_pipeline_pm_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Increase the use count of a pipeline</p>
 </dd></dl>
 
@@ -523,7 +523,7 @@ of this function should be paired with <a class="reference internal" href="#c.v4
 <p>Return 0 on success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.v4l2_pipeline_pm_put">
-void <code class="sig-name descname">v4l2_pipeline_pm_put</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="mc-core.html#c.media_entity" title="media_entity">media_entity</a> *<em>entity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_pipeline_pm_put" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">v4l2_pipeline_pm_put</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="mc-core.html#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">entity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_pipeline_pm_put" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Decrease the use count of a pipeline</p>
 </dd></dl>
 
@@ -539,7 +539,7 @@ void <code class="sig-name descname">v4l2_pipeline_pm_put</code><span class="sig
 of this function should be paired with <a class="reference internal" href="#c.v4l2_pipeline_link_notify" title="v4l2_pipeline_link_notify"><code class="xref c c-func docutils literal notranslate"><span class="pre">v4l2_pipeline_link_notify()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.v4l2_pipeline_link_notify">
-int <code class="sig-name descname">v4l2_pipeline_link_notify</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="mc-core.html#c.media_link" title="media_link">media_link</a> *<em>link</em>, u32 <em>flags</em>, unsigned int <em>notification</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_pipeline_link_notify" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">v4l2_pipeline_link_notify</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="mc-core.html#c.media_link" title="media_link"><span class="pre">media_link</span></a> <span class="pre">*</span><em><span class="pre">link</span></em>, <span class="pre">u32</span> <em><span class="pre">flags</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">notification</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_pipeline_link_notify" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Link management notification callback</p>
 </dd></dl>
 

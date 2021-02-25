@@ -290,7 +290,7 @@
 <h1>Random Number Algorithm Definitions<a class="headerlink" href="#random-number-algorithm-definitions" title="Permalink to this headline">¶</a></h1>
 <dl class="c struct">
 <dt id="c.rng_alg">
-<em class="property">struct </em><code class="sig-name descname">rng_alg</code><a class="headerlink" href="#c.rng_alg" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">rng_alg</span></code><a class="headerlink" href="#c.rng_alg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>random number generator definition</p>
 </dd></dl>
 
@@ -340,7 +340,7 @@ the seed size is set to zero.</p>
 CRYPTO_ALG_TYPE_RNG (listed as type “rng” in /proc/crypto)</p>
 <dl class="c function">
 <dt id="c.crypto_alloc_rng">
-<em class="property">struct</em> crypto_rng *<code class="sig-name descname">crypto_alloc_rng</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>alg_name</em>, u32 <em>type</em>, u32 <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_alloc_rng" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_rng</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">crypto_alloc_rng</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">alg_name</span></em>, <span class="pre">u32</span> <em><span class="pre">type</span></em>, <span class="pre">u32</span> <em><span class="pre">mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_alloc_rng" title="Permalink to this definition">¶</a><br /></dt>
 <dd><ul class="simple">
 <li><p>allocate RNG handle</p></li>
 </ul>
@@ -372,7 +372,7 @@ is a kernel crypto API use case for the get_random_bytes() function of the
 </dl>
 <dl class="c function">
 <dt id="c.crypto_rng_alg">
-<em class="property">struct</em> <a class="reference internal" href="#c.rng_alg" title="rng_alg">rng_alg</a> *<code class="sig-name descname">crypto_rng_alg</code><span class="sig-paren">(</span><em class="property">struct</em> crypto_rng *<em>tfm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_rng_alg" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.rng_alg" title="rng_alg"><span class="pre">rng_alg</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">crypto_rng_alg</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_rng</span> <span class="pre">*</span><em><span class="pre">tfm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_rng_alg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>obtain name of RNG</p>
 </dd></dl>
 
@@ -387,7 +387,7 @@ is a kernel crypto API use case for the get_random_bytes() function of the
 <p>generic name string</p>
 <dl class="c function">
 <dt id="c.crypto_free_rng">
-void <code class="sig-name descname">crypto_free_rng</code><span class="sig-paren">(</span><em class="property">struct</em> crypto_rng *<em>tfm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_free_rng" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">crypto_free_rng</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_rng</span> <span class="pre">*</span><em><span class="pre">tfm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_free_rng" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>zeroize and free RNG handle</p>
 </dd></dl>
 
@@ -398,7 +398,7 @@ void <code class="sig-name descname">crypto_free_rng</code><span class="sig-pare
 </dl>
 <dl class="c function">
 <dt id="c.crypto_rng_generate">
-int <code class="sig-name descname">crypto_rng_generate</code><span class="sig-paren">(</span><em class="property">struct</em> crypto_rng *<em>tfm</em>, <em class="property">const</em> u8 *<em>src</em>, unsigned int <em>slen</em>, u8 *<em>dst</em>, unsigned int <em>dlen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_rng_generate" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">crypto_rng_generate</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_rng</span> <span class="pre">*</span><em><span class="pre">tfm</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">src</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">slen</span></em>, <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">dst</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">dlen</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_rng_generate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get random number</p>
 </dd></dl>
 
@@ -423,7 +423,7 @@ cipher handle.</p>
 <p>0 function was successful; &lt; 0 if an error occurred</p>
 <dl class="c function">
 <dt id="c.crypto_rng_get_bytes">
-int <code class="sig-name descname">crypto_rng_get_bytes</code><span class="sig-paren">(</span><em class="property">struct</em> crypto_rng *<em>tfm</em>, u8 *<em>rdata</em>, unsigned int <em>dlen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_rng_get_bytes" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">crypto_rng_get_bytes</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_rng</span> <span class="pre">*</span><em><span class="pre">tfm</span></em>, <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">rdata</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">dlen</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_rng_get_bytes" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get random number</p>
 </dd></dl>
 
@@ -443,7 +443,7 @@ random number generator referenced by the cipher handle.</p>
 <p>0 function was successful; &lt; 0 if an error occurred</p>
 <dl class="c function">
 <dt id="c.crypto_rng_reset">
-int <code class="sig-name descname">crypto_rng_reset</code><span class="sig-paren">(</span><em class="property">struct</em> crypto_rng *<em>tfm</em>, <em class="property">const</em> u8 *<em>seed</em>, unsigned int <em>slen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_rng_reset" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">crypto_rng_reset</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_rng</span> <span class="pre">*</span><em><span class="pre">tfm</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">seed</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">slen</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_rng_reset" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>re-initialize the RNG</p>
 </dd></dl>
 
@@ -469,7 +469,7 @@ generator as defined by crypto_rng_seedsize.</p>
 <p>0 if the setting of the key was successful; &lt; 0 if an error occurred</p>
 <dl class="c function">
 <dt id="c.crypto_rng_seedsize">
-int <code class="sig-name descname">crypto_rng_seedsize</code><span class="sig-paren">(</span><em class="property">struct</em> crypto_rng *<em>tfm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_rng_seedsize" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">crypto_rng_seedsize</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">crypto_rng</span> <span class="pre">*</span><em><span class="pre">tfm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.crypto_rng_seedsize" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>obtain seed size of RNG</p>
 </dd></dl>
 

@@ -464,7 +464,7 @@ in state.</p>
 </ul>
 <dl class="c enum">
 <dt id="c.fpga_mgr_states">
-<em class="property">enum </em><code class="sig-name descname">fpga_mgr_states</code><a class="headerlink" href="#c.fpga_mgr_states" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">fpga_mgr_states</span></code><a class="headerlink" href="#c.fpga_mgr_states" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>fpga framework states</p>
 </dd></dl>
 
@@ -499,7 +499,7 @@ in state.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.fpga_manager">
-<em class="property">struct </em><code class="sig-name descname">fpga_manager</code><a class="headerlink" href="#c.fpga_manager" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fpga_manager</span></code><a class="headerlink" href="#c.fpga_manager" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>fpga manager structure</p>
 </dd></dl>
 
@@ -534,7 +534,7 @@ in state.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.fpga_manager_ops">
-<em class="property">struct </em><code class="sig-name descname">fpga_manager_ops</code><a class="headerlink" href="#c.fpga_manager_ops" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fpga_manager_ops</span></code><a class="headerlink" href="#c.fpga_manager_ops" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>ops for low level fpga manager drivers</p>
 </dd></dl>
 
@@ -579,7 +579,7 @@ fpga manager driver.  The optional ones are tested for NULL before being
 called, so leaving them out is fine.</p>
 <dl class="c function">
 <dt id="c.devm_fpga_mgr_create">
-<em class="property">struct</em> <a class="reference internal" href="#c.fpga_manager" title="fpga_manager">fpga_manager</a> *<code class="sig-name descname">devm_fpga_mgr_create</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.fpga_manager_ops" title="fpga_manager_ops">fpga_manager_ops</a> *<em>mops</em>, void *<em>priv</em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_fpga_mgr_create" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.fpga_manager" title="fpga_manager"><span class="pre">fpga_manager</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">devm_fpga_mgr_create</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">name</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.fpga_manager_ops" title="fpga_manager_ops"><span class="pre">fpga_manager_ops</span></a> <span class="pre">*</span><em><span class="pre">mops</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">priv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_fpga_mgr_create" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create and initialize a managed FPGA manager struct</p>
 </dd></dl>
 
@@ -606,7 +606,7 @@ before calling <a class="reference internal" href="#c.fpga_mgr_register" title="
 <p>pointer to <a class="reference internal" href="#c.fpga_manager" title="fpga_manager"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">fpga_manager</span></code></a> or NULL</p>
 <dl class="c function">
 <dt id="c.fpga_mgr_register">
-int <code class="sig-name descname">fpga_mgr_register</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.fpga_manager" title="fpga_manager">fpga_manager</a> *<em>mgr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.fpga_mgr_register" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">fpga_mgr_register</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.fpga_manager" title="fpga_manager"><span class="pre">fpga_manager</span></a> <span class="pre">*</span><em><span class="pre">mgr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.fpga_mgr_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a FPGA manager</p>
 </dd></dl>
 
@@ -619,7 +619,7 @@ int <code class="sig-name descname">fpga_mgr_register</code><span class="sig-par
 <p>0 on success, negative error code otherwise.</p>
 <dl class="c function">
 <dt id="c.fpga_mgr_unregister">
-void <code class="sig-name descname">fpga_mgr_unregister</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.fpga_manager" title="fpga_manager">fpga_manager</a> *<em>mgr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.fpga_mgr_unregister" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">fpga_mgr_unregister</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.fpga_manager" title="fpga_manager"><span class="pre">fpga_manager</span></a> <span class="pre">*</span><em><span class="pre">mgr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.fpga_mgr_unregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unregister a FPGA manager</p>
 </dd></dl>
 

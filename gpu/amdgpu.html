@@ -545,7 +545,7 @@ The interfaces are also used internally by kernel clients, including gfx,
 uvd, etc. for kernel managed allocations used by the GPU.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_subtract_pin_size">
-void <code class="sig-name descname">amdgpu_bo_subtract_pin_size</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_subtract_pin_size" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_subtract_pin_size</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_subtract_pin_size" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Remove BO from pin_size accounting</p>
 </dd></dl>
 
@@ -559,7 +559,7 @@ void <code class="sig-name descname">amdgpu_bo_subtract_pin_size</code><span cla
 <code class="xref c c-type docutils literal notranslate"><span class="pre">amdgpu_device</span></code> pin_size values accordingly.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_is_amdgpu_bo">
-bool <code class="sig-name descname">amdgpu_bo_is_amdgpu_bo</code><span class="sig-paren">(</span><em class="property">struct</em> ttm_buffer_object *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_is_amdgpu_bo" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_is_amdgpu_bo</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">ttm_buffer_object</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_is_amdgpu_bo" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check if the buffer object is an <code class="xref c c-type docutils literal notranslate"><span class="pre">amdgpu_bo</span></code></p>
 </dd></dl>
 
@@ -575,7 +575,7 @@ an <code class="xref c c-type docutils literal notranslate"><span class="pre">am
 <p>true if the object belongs to <code class="xref c c-type docutils literal notranslate"><span class="pre">amdgpu_bo</span></code>, false if not.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_placement_from_domain">
-void <code class="sig-name descname">amdgpu_bo_placement_from_domain</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>abo</em>, u32 <em>domain</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_placement_from_domain" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_placement_from_domain</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">abo</span></em>, <span class="pre">u32</span> <em><span class="pre">domain</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_placement_from_domain" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set buffer’s placement</p>
 </dd></dl>
 
@@ -591,7 +591,7 @@ void <code class="sig-name descname">amdgpu_bo_placement_from_domain</code><span
 flags.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_create_reserved">
-int <code class="sig-name descname">amdgpu_bo_create_reserved</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, unsigned long <em>size</em>, int <em>align</em>, u32 <em>domain</em>, <em class="property">struct</em> amdgpu_bo **<em>bo_ptr</em>, u64 *<em>gpu_addr</em>, void **<em>cpu_addr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_create_reserved" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_create_reserved</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">size</span></em>, <span class="pre">int</span> <em><span class="pre">align</span></em>, <span class="pre">u32</span> <em><span class="pre">domain</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">bo_ptr</span></em>, <span class="pre">u64</span> <span class="pre">*</span><em><span class="pre">gpu_addr</span></em>, <span class="pre">void</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">cpu_addr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_create_reserved" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create reserved BO for kernel use</p>
 </dd></dl>
 
@@ -621,7 +621,7 @@ reserved.</p>
 <p>0 on success, negative error code otherwise.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_create_kernel">
-int <code class="sig-name descname">amdgpu_bo_create_kernel</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, unsigned long <em>size</em>, int <em>align</em>, u32 <em>domain</em>, <em class="property">struct</em> amdgpu_bo **<em>bo_ptr</em>, u64 *<em>gpu_addr</em>, void **<em>cpu_addr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_create_kernel" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_create_kernel</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">size</span></em>, <span class="pre">int</span> <em><span class="pre">align</span></em>, <span class="pre">u32</span> <em><span class="pre">domain</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">bo_ptr</span></em>, <span class="pre">u64</span> <span class="pre">*</span><em><span class="pre">gpu_addr</span></em>, <span class="pre">void</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">cpu_addr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_create_kernel" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create BO for kernel use</p>
 </dd></dl>
 
@@ -650,7 +650,7 @@ int <code class="sig-name descname">amdgpu_bo_create_kernel</code><span class="s
 <p>0 on success, negative error code otherwise.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_create_kernel_at">
-int <code class="sig-name descname">amdgpu_bo_create_kernel_at</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, uint64_t <em>offset</em>, uint64_t <em>size</em>, uint32_t <em>domain</em>, <em class="property">struct</em> amdgpu_bo **<em>bo_ptr</em>, void **<em>cpu_addr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_create_kernel_at" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_create_kernel_at</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">offset</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">size</span></em>, <span class="pre">uint32_t</span> <em><span class="pre">domain</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">bo_ptr</span></em>, <span class="pre">void</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">cpu_addr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_create_kernel_at" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create BO for kernel use at specific location</p>
 </dd></dl>
 
@@ -675,7 +675,7 @@ int <code class="sig-name descname">amdgpu_bo_create_kernel_at</code><span class
 <p>0 on success, negative error code otherwise.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_free_kernel">
-void <code class="sig-name descname">amdgpu_bo_free_kernel</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo **<em>bo</em>, u64 *<em>gpu_addr</em>, void **<em>cpu_addr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_free_kernel" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_free_kernel</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">bo</span></em>, <span class="pre">u64</span> <span class="pre">*</span><em><span class="pre">gpu_addr</span></em>, <span class="pre">void</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">cpu_addr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_free_kernel" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>free BO for kernel use</p>
 </dd></dl>
 
@@ -692,7 +692,7 @@ void <code class="sig-name descname">amdgpu_bo_free_kernel</code><span class="si
 <p>unmaps and unpin a BO for kernel internal use.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_create">
-int <code class="sig-name descname">amdgpu_bo_create</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_bo_param *<em>bp</em>, <em class="property">struct</em> amdgpu_bo **<em>bo_ptr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_create" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_create</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo_param</span> <span class="pre">*</span><em><span class="pre">bp</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">bo_ptr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_create" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create an <code class="xref c c-type docutils literal notranslate"><span class="pre">amdgpu_bo</span></code> buffer object</p>
 </dd></dl>
 
@@ -714,7 +714,7 @@ in GTT.</p>
 <p>0 for success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_validate">
-int <code class="sig-name descname">amdgpu_bo_validate</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_validate" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_validate</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_validate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>validate an <code class="xref c c-type docutils literal notranslate"><span class="pre">amdgpu_bo</span></code> buffer object</p>
 </dd></dl>
 
@@ -732,7 +732,7 @@ make sure the buffer is resident where it needs to be.</p>
 <p>0 for success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_restore_shadow">
-int <code class="sig-name descname">amdgpu_bo_restore_shadow</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>shadow</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_fence" title="dma_fence">dma_fence</a> **<em>fence</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_restore_shadow" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_restore_shadow</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">shadow</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_fence" title="dma_fence"><span class="pre">dma_fence</span></a> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">fence</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_restore_shadow" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>restore an <code class="xref c c-type docutils literal notranslate"><span class="pre">amdgpu_bo</span></code> shadow</p>
 </dd></dl>
 
@@ -751,7 +751,7 @@ reset where vram context may be lost.</p>
 <p>0 for success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_kmap">
-int <code class="sig-name descname">amdgpu_bo_kmap</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em>, void **<em>ptr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_kmap" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_kmap</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em>, <span class="pre">void</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">ptr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_kmap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>map an <code class="xref c c-type docutils literal notranslate"><span class="pre">amdgpu_bo</span></code> buffer object</p>
 </dd></dl>
 
@@ -769,7 +769,7 @@ int <code class="sig-name descname">amdgpu_bo_kmap</code><span class="sig-paren"
 <p>0 for success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_kptr">
-void *<code class="sig-name descname">amdgpu_bo_kptr</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_kptr" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">amdgpu_bo_kptr</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_kptr" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>returns a kernel virtual address of the buffer object</p>
 </dd></dl>
 
@@ -784,7 +784,7 @@ void *<code class="sig-name descname">amdgpu_bo_kptr</code><span class="sig-pare
 <p>the virtual address of a buffer object area.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_kunmap">
-void <code class="sig-name descname">amdgpu_bo_kunmap</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_kunmap" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_kunmap</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_kunmap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unmap an <code class="xref c c-type docutils literal notranslate"><span class="pre">amdgpu_bo</span></code> buffer object</p>
 </dd></dl>
 
@@ -797,7 +797,7 @@ void <code class="sig-name descname">amdgpu_bo_kunmap</code><span class="sig-par
 <p>Unmaps a kernel map set up by <a class="reference internal" href="#c.amdgpu_bo_kmap" title="amdgpu_bo_kmap"><code class="xref c c-func docutils literal notranslate"><span class="pre">amdgpu_bo_kmap()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_ref">
-<em class="property">struct</em> amdgpu_bo *<code class="sig-name descname">amdgpu_bo_ref</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_ref" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">amdgpu_bo_ref</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_ref" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>reference an <code class="xref c c-type docutils literal notranslate"><span class="pre">amdgpu_bo</span></code> buffer object</p>
 </dd></dl>
 
@@ -812,7 +812,7 @@ void <code class="sig-name descname">amdgpu_bo_kunmap</code><span class="sig-par
 <p>a refcounted pointer to the <code class="xref c c-type docutils literal notranslate"><span class="pre">amdgpu_bo</span></code> buffer object.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_unref">
-void <code class="sig-name descname">amdgpu_bo_unref</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo **<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_unref" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_unref</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_unref" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unreference an <code class="xref c c-type docutils literal notranslate"><span class="pre">amdgpu_bo</span></code> buffer object</p>
 </dd></dl>
 
@@ -825,7 +825,7 @@ void <code class="sig-name descname">amdgpu_bo_unref</code><span class="sig-pare
 <p>Unreferences the contained <code class="xref c c-type docutils literal notranslate"><span class="pre">ttm_buffer_object</span></code> and clear the pointer</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_pin_restricted">
-int <code class="sig-name descname">amdgpu_bo_pin_restricted</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em>, u32 <em>domain</em>, u64 <em>min_offset</em>, u64 <em>max_offset</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_pin_restricted" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_pin_restricted</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em>, <span class="pre">u32</span> <em><span class="pre">domain</span></em>, <span class="pre">u64</span> <em><span class="pre">min_offset</span></em>, <span class="pre">u64</span> <em><span class="pre">max_offset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_pin_restricted" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>pin an <code class="xref c c-type docutils literal notranslate"><span class="pre">amdgpu_bo</span></code> buffer object</p>
 </dd></dl>
 
@@ -854,7 +854,7 @@ must be located.</p>
 <p>0 for success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_pin">
-int <code class="sig-name descname">amdgpu_bo_pin</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em>, u32 <em>domain</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_pin" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_pin</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em>, <span class="pre">u32</span> <em><span class="pre">domain</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_pin" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>pin an <code class="xref c c-type docutils literal notranslate"><span class="pre">amdgpu_bo</span></code> buffer object</p>
 </dd></dl>
 
@@ -873,7 +873,7 @@ on where a buffer must be located.</p>
 <p>0 for success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_unpin">
-void <code class="sig-name descname">amdgpu_bo_unpin</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_unpin" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_unpin</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_unpin" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unpin an <code class="xref c c-type docutils literal notranslate"><span class="pre">amdgpu_bo</span></code> buffer object</p>
 </dd></dl>
 
@@ -889,7 +889,7 @@ Changes placement and pin size accordingly.</p>
 <p>0 for success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_evict_vram">
-int <code class="sig-name descname">amdgpu_bo_evict_vram</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_evict_vram" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_evict_vram</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_evict_vram" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>evict VRAM buffers</p>
 </dd></dl>
 
@@ -905,7 +905,7 @@ Mainly used for evicting vram at suspend time.</p>
 <p>0 for success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_init">
-int <code class="sig-name descname">amdgpu_bo_init</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>initialize memory manager</p>
 </dd></dl>
 
@@ -920,7 +920,7 @@ int <code class="sig-name descname">amdgpu_bo_init</code><span class="sig-paren"
 <p>0 for success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_fini">
-void <code class="sig-name descname">amdgpu_bo_fini</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_fini" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_fini</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_fini" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>tear down memory manager</p>
 </dd></dl>
 
@@ -933,7 +933,7 @@ void <code class="sig-name descname">amdgpu_bo_fini</code><span class="sig-paren
 <p>Reverses <a class="reference internal" href="#c.amdgpu_bo_init" title="amdgpu_bo_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">amdgpu_bo_init()</span></code></a> to tear down memory manager.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_fbdev_mmap">
-int <code class="sig-name descname">amdgpu_bo_fbdev_mmap</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em>, <em class="property">struct</em> vm_area_struct *<em>vma</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_fbdev_mmap" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_fbdev_mmap</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">vm_area_struct</span> <span class="pre">*</span><em><span class="pre">vma</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_fbdev_mmap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>mmap fbdev memory</p>
 </dd></dl>
 
@@ -950,7 +950,7 @@ int <code class="sig-name descname">amdgpu_bo_fbdev_mmap</code><span class="sig-
 <p>0 for success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_set_tiling_flags">
-int <code class="sig-name descname">amdgpu_bo_set_tiling_flags</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em>, u64 <em>tiling_flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_set_tiling_flags" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_set_tiling_flags</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em>, <span class="pre">u64</span> <em><span class="pre">tiling_flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_set_tiling_flags" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set tiling flags</p>
 </dd></dl>
 
@@ -968,7 +968,7 @@ kernel driver to set the tiling flags on a buffer.</p>
 <p>0 for success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_get_tiling_flags">
-void <code class="sig-name descname">amdgpu_bo_get_tiling_flags</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em>, u64 *<em>tiling_flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_get_tiling_flags" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_get_tiling_flags</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em>, <span class="pre">u64</span> <span class="pre">*</span><em><span class="pre">tiling_flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_get_tiling_flags" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get tiling flags</p>
 </dd></dl>
 
@@ -984,7 +984,7 @@ void <code class="sig-name descname">amdgpu_bo_get_tiling_flags</code><span clas
 set the tiling flags on a buffer.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_set_metadata">
-int <code class="sig-name descname">amdgpu_bo_set_metadata</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em>, void *<em>metadata</em>, uint32_t <em>metadata_size</em>, uint64_t <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_set_metadata" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_set_metadata</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">metadata</span></em>, <span class="pre">uint32_t</span> <em><span class="pre">metadata_size</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_set_metadata" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set metadata</p>
 </dd></dl>
 
@@ -1006,7 +1006,7 @@ Used via GEM ioctl.</p>
 <p>0 for success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_get_metadata">
-int <code class="sig-name descname">amdgpu_bo_get_metadata</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em>, void *<em>buffer</em>, size_t <em>buffer_size</em>, uint32_t *<em>metadata_size</em>, uint64_t *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_get_metadata" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_get_metadata</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">buffer</span></em>, <span class="pre">size_t</span> <em><span class="pre">buffer_size</span></em>, <span class="pre">uint32_t</span> <span class="pre">*</span><em><span class="pre">metadata_size</span></em>, <span class="pre">uint64_t</span> <span class="pre">*</span><em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_get_metadata" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get metadata</p>
 </dd></dl>
 
@@ -1031,7 +1031,7 @@ Used via GEM ioctl.</p>
 <p>0 for success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_move_notify">
-void <code class="sig-name descname">amdgpu_bo_move_notify</code><span class="sig-paren">(</span><em class="property">struct</em> ttm_buffer_object *<em>bo</em>, bool <em>evict</em>, <em class="property">struct</em> ttm_resource *<em>new_mem</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_move_notify" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_move_notify</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">ttm_buffer_object</span> <span class="pre">*</span><em><span class="pre">bo</span></em>, <span class="pre">bool</span> <em><span class="pre">evict</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">ttm_resource</span> <span class="pre">*</span><em><span class="pre">new_mem</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_move_notify" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>notification about a memory move</p>
 </dd></dl>
 
@@ -1050,7 +1050,7 @@ bookkeeping.
 TTM driver callback which is called when ttm moves a buffer.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_release_notify">
-void <code class="sig-name descname">amdgpu_bo_release_notify</code><span class="sig-paren">(</span><em class="property">struct</em> ttm_buffer_object *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_release_notify" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_release_notify</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">ttm_buffer_object</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_release_notify" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>notification about a BO being released</p>
 </dd></dl>
 
@@ -1064,7 +1064,7 @@ void <code class="sig-name descname">amdgpu_bo_release_notify</code><span class=
 memory is released.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_fault_reserve_notify">
-vm_fault_t <code class="sig-name descname">amdgpu_bo_fault_reserve_notify</code><span class="sig-paren">(</span><em class="property">struct</em> ttm_buffer_object *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_fault_reserve_notify" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">vm_fault_t</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_fault_reserve_notify</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">ttm_buffer_object</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_fault_reserve_notify" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>notification about a memory fault</p>
 </dd></dl>
 
@@ -1081,7 +1081,7 @@ TTM driver callback for dealing with vm faults.</p>
 <p>0 for success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_fence">
-void <code class="sig-name descname">amdgpu_bo_fence</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_fence" title="dma_fence">dma_fence</a> *<em>fence</em>, bool <em>shared</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_fence" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_fence</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_fence" title="dma_fence"><span class="pre">dma_fence</span></a> <span class="pre">*</span><em><span class="pre">fence</span></em>, <span class="pre">bool</span> <em><span class="pre">shared</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_fence" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add fence to buffer object</p>
 </dd></dl>
 
@@ -1096,7 +1096,7 @@ void <code class="sig-name descname">amdgpu_bo_fence</code><span class="sig-pare
 </dl>
 <dl class="c function">
 <dt id="c.amdgpu_bo_sync_wait_resv">
-int <code class="sig-name descname">amdgpu_bo_sync_wait_resv</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_resv" title="dma_resv">dma_resv</a> *<em>resv</em>, <em class="property">enum</em> amdgpu_sync_mode <em>sync_mode</em>, void *<em>owner</em>, bool <em>intr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_sync_wait_resv" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_sync_wait_resv</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_resv" title="dma_resv"><span class="pre">dma_resv</span></a> <span class="pre">*</span><em><span class="pre">resv</span></em>, <em class="property"><span class="pre">enum</span></em> <span class="pre">amdgpu_sync_mode</span> <em><span class="pre">sync_mode</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">owner</span></em>, <span class="pre">bool</span> <em><span class="pre">intr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_sync_wait_resv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Wait for BO reservation fences</p>
 </dd></dl>
 
@@ -1119,7 +1119,7 @@ int <code class="sig-name descname">amdgpu_bo_sync_wait_resv</code><span class="
 <p>0 on success, errno otherwise.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_sync_wait">
-int <code class="sig-name descname">amdgpu_bo_sync_wait</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em>, void *<em>owner</em>, bool <em>intr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_sync_wait" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_sync_wait</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">owner</span></em>, <span class="pre">bool</span> <em><span class="pre">intr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_sync_wait" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Wrapper for amdgpu_bo_sync_wait_resv</p>
 </dd></dl>
 
@@ -1138,7 +1138,7 @@ int <code class="sig-name descname">amdgpu_bo_sync_wait</code><span class="sig-p
 <p>0 on success, errno otherwise.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_gpu_offset">
-u64 <code class="sig-name descname">amdgpu_bo_gpu_offset</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_gpu_offset" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u64</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_gpu_offset</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_gpu_offset" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return GPU offset of bo</p>
 </dd></dl>
 
@@ -1154,7 +1154,7 @@ function, it might be useful to add check for this for debugging.</p>
 <p>current GPU offset of the object.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_gpu_offset_no_check">
-u64 <code class="sig-name descname">amdgpu_bo_gpu_offset_no_check</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_gpu_offset_no_check" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u64</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_gpu_offset_no_check</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_gpu_offset_no_check" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return GPU offset of bo</p>
 </dd></dl>
 
@@ -1167,7 +1167,7 @@ u64 <code class="sig-name descname">amdgpu_bo_gpu_offset_no_check</code><span cl
 <p>current GPU offset of the object without raising warnings.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_get_preferred_pin_domain">
-uint32_t <code class="sig-name descname">amdgpu_bo_get_preferred_pin_domain</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, uint32_t <em>domain</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_get_preferred_pin_domain" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">uint32_t</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_get_preferred_pin_domain</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <span class="pre">uint32_t</span> <em><span class="pre">domain</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_get_preferred_pin_domain" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get preferred domain for scanout</p>
 </dd></dl>
 
@@ -1182,7 +1182,7 @@ uint32_t <code class="sig-name descname">amdgpu_bo_get_preferred_pin_domain</cod
 <p>Which of the allowed domains is preferred for pinning the BO for scanout.</p>
 <dl class="c function">
 <dt id="c.amdgpu_bo_print_info">
-u64 <code class="sig-name descname">amdgpu_bo_print_info</code><span class="sig-paren">(</span>int <em>id</em>, <em class="property">struct</em> amdgpu_bo *<em>bo</em>, <em class="property">struct</em> seq_file *<em>m</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_print_info" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u64</span> <code class="sig-name descname"><span class="pre">amdgpu_bo_print_info</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">id</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">seq_file</span> <span class="pre">*</span><em><span class="pre">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_bo_print_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>print BO info in debugfs file</p>
 </dd></dl>
 
@@ -1206,7 +1206,7 @@ u64 <code class="sig-name descname">amdgpu_bo_print_info</code><span class="sig-
 objects between different devices via PRIME</span></a>.</p>
 <dl class="c function">
 <dt id="c.amdgpu_gem_prime_mmap">
-int <code class="sig-name descname">amdgpu_gem_prime_mmap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-mm.html#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<em>obj</em>, <em class="property">struct</em> vm_area_struct *<em>vma</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_gem_prime_mmap" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_gem_prime_mmap</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="drm-mm.html#c.drm_gem_object" title="drm_gem_object"><span class="pre">drm_gem_object</span></a> <span class="pre">*</span><em><span class="pre">obj</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">vm_area_struct</span> <span class="pre">*</span><em><span class="pre">vma</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_gem_prime_mmap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="drm-internals.html#c.drm_driver" title="drm_driver"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_driver.gem_prime_mmap</span></code></a> implementation</p>
 </dd></dl>
 
@@ -1224,7 +1224,7 @@ virtual memory area.</p>
 <p>0 on success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_dma_buf_attach">
-int <code class="sig-name descname">amdgpu_dma_buf_attach</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf" title="dma_buf">dma_buf</a> *<em>dmabuf</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_attachment" title="dma_buf_attachment">dma_buf_attachment</a> *<em>attach</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_attach" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_dma_buf_attach</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf" title="dma_buf"><span class="pre">dma_buf</span></a> <span class="pre">*</span><em><span class="pre">dmabuf</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_attachment" title="dma_buf_attachment"><span class="pre">dma_buf_attachment</span></a> <span class="pre">*</span><em><span class="pre">attach</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_attach" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_ops" title="dma_buf_ops"><code class="xref c c-type docutils literal notranslate"><span class="pre">dma_buf_ops.attach</span></code></a> implementation</p>
 </dd></dl>
 
@@ -1239,7 +1239,7 @@ int <code class="sig-name descname">amdgpu_dma_buf_attach</code><span class="sig
 <p>Add the attachment as user to the exported DMA-buf.</p>
 <dl class="c function">
 <dt id="c.amdgpu_dma_buf_detach">
-void <code class="sig-name descname">amdgpu_dma_buf_detach</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf" title="dma_buf">dma_buf</a> *<em>dmabuf</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_attachment" title="dma_buf_attachment">dma_buf_attachment</a> *<em>attach</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_detach" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_dma_buf_detach</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf" title="dma_buf"><span class="pre">dma_buf</span></a> <span class="pre">*</span><em><span class="pre">dmabuf</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_attachment" title="dma_buf_attachment"><span class="pre">dma_buf_attachment</span></a> <span class="pre">*</span><em><span class="pre">attach</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_detach" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_ops" title="dma_buf_ops"><code class="xref c c-type docutils literal notranslate"><span class="pre">dma_buf_ops.detach</span></code></a> implementation</p>
 </dd></dl>
 
@@ -1254,7 +1254,7 @@ void <code class="sig-name descname">amdgpu_dma_buf_detach</code><span class="si
 <p>Called when an attachment is removed from the DMA-buf.</p>
 <dl class="c function">
 <dt id="c.amdgpu_dma_buf_pin">
-int <code class="sig-name descname">amdgpu_dma_buf_pin</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_attachment" title="dma_buf_attachment">dma_buf_attachment</a> *<em>attach</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_pin" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_dma_buf_pin</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_attachment" title="dma_buf_attachment"><span class="pre">dma_buf_attachment</span></a> <span class="pre">*</span><em><span class="pre">attach</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_pin" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_ops" title="dma_buf_ops"><code class="xref c c-type docutils literal notranslate"><span class="pre">dma_buf_ops.pin</span></code></a> implementation</p>
 </dd></dl>
 
@@ -1267,7 +1267,7 @@ int <code class="sig-name descname">amdgpu_dma_buf_pin</code><span class="sig-pa
 <p>Pin the BO which is backing the DMA-buf so that it can’t move any more.</p>
 <dl class="c function">
 <dt id="c.amdgpu_dma_buf_unpin">
-void <code class="sig-name descname">amdgpu_dma_buf_unpin</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_attachment" title="dma_buf_attachment">dma_buf_attachment</a> *<em>attach</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_unpin" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_dma_buf_unpin</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_attachment" title="dma_buf_attachment"><span class="pre">dma_buf_attachment</span></a> <span class="pre">*</span><em><span class="pre">attach</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_unpin" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_ops" title="dma_buf_ops"><code class="xref c c-type docutils literal notranslate"><span class="pre">dma_buf_ops.unpin</span></code></a> implementation</p>
 </dd></dl>
 
@@ -1280,7 +1280,7 @@ void <code class="sig-name descname">amdgpu_dma_buf_unpin</code><span class="sig
 <p>Unpin a previously pinned BO to make it movable again.</p>
 <dl class="c function">
 <dt id="c.amdgpu_dma_buf_map">
-<em class="property">struct</em> sg_table *<code class="sig-name descname">amdgpu_dma_buf_map</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_attachment" title="dma_buf_attachment">dma_buf_attachment</a> *<em>attach</em>, <em class="property">enum</em> dma_data_direction <em>dir</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_map" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">sg_table</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">amdgpu_dma_buf_map</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_attachment" title="dma_buf_attachment"><span class="pre">dma_buf_attachment</span></a> <span class="pre">*</span><em><span class="pre">attach</span></em>, <em class="property"><span class="pre">enum</span></em> <span class="pre">dma_data_direction</span> <em><span class="pre">dir</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_map" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_ops" title="dma_buf_ops"><code class="xref c c-type docutils literal notranslate"><span class="pre">dma_buf_ops.map_dma_buf</span></code></a> implementation</p>
 </dd></dl>
 
@@ -1300,7 +1300,7 @@ all DMA devices.</p>
 code.</p>
 <dl class="c function">
 <dt id="c.amdgpu_dma_buf_unmap">
-void <code class="sig-name descname">amdgpu_dma_buf_unmap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_attachment" title="dma_buf_attachment">dma_buf_attachment</a> *<em>attach</em>, <em class="property">struct</em> sg_table *<em>sgt</em>, <em class="property">enum</em> dma_data_direction <em>dir</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_unmap" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_dma_buf_unmap</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_attachment" title="dma_buf_attachment"><span class="pre">dma_buf_attachment</span></a> <span class="pre">*</span><em><span class="pre">attach</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">sg_table</span> <span class="pre">*</span><em><span class="pre">sgt</span></em>, <em class="property"><span class="pre">enum</span></em> <span class="pre">dma_data_direction</span> <em><span class="pre">dir</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_unmap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_ops" title="dma_buf_ops"><code class="xref c c-type docutils literal notranslate"><span class="pre">dma_buf_ops.unmap_dma_buf</span></code></a> implementation</p>
 </dd></dl>
 
@@ -1318,7 +1318,7 @@ void <code class="sig-name descname">amdgpu_dma_buf_unmap</code><span class="sig
 another device. For now, simply unpins the buffer from GTT.</p>
 <dl class="c function">
 <dt id="c.amdgpu_dma_buf_begin_cpu_access">
-int <code class="sig-name descname">amdgpu_dma_buf_begin_cpu_access</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.amdgpu_dma_buf_begin_cpu_access" title="dma_buf">dma_buf</a> *<em>dma_buf</em>, <em class="property">enum</em> dma_data_direction <em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_begin_cpu_access" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_dma_buf_begin_cpu_access</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.amdgpu_dma_buf_begin_cpu_access" title="dma_buf"><span class="pre">dma_buf</span></a> <span class="pre">*</span><em><span class="pre">dma_buf</span></em>, <em class="property"><span class="pre">enum</span></em> <span class="pre">dma_data_direction</span> <em><span class="pre">direction</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_begin_cpu_access" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_ops" title="dma_buf_ops"><code class="xref c c-type docutils literal notranslate"><span class="pre">dma_buf_ops.begin_cpu_access</span></code></a> implementation</p>
 </dd></dl>
 
@@ -1337,7 +1337,7 @@ CPU read performance.</p>
 <p>0 on success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_gem_prime_export">
-<em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf" title="dma_buf">dma_buf</a> *<code class="sig-name descname">amdgpu_gem_prime_export</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-mm.html#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<em>gobj</em>, int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_gem_prime_export" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf" title="dma_buf"><span class="pre">dma_buf</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">amdgpu_gem_prime_export</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="drm-mm.html#c.drm_gem_object" title="drm_gem_object"><span class="pre">drm_gem_object</span></a> <span class="pre">*</span><em><span class="pre">gobj</span></em>, <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_gem_prime_export" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="drm-internals.html#c.drm_driver" title="drm_driver"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_driver.gem_prime_export</span></code></a> implementation</p>
 </dd></dl>
 
@@ -1354,7 +1354,7 @@ CPU read performance.</p>
 <p>Shared DMA buffer representing the GEM BO from the given device.</p>
 <dl class="c function">
 <dt id="c.amdgpu_dma_buf_create_obj">
-<em class="property">struct</em> <a class="reference internal" href="drm-mm.html#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<code class="sig-name descname">amdgpu_dma_buf_create_obj</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device">drm_device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.amdgpu_dma_buf_create_obj" title="dma_buf">dma_buf</a> *<em>dma_buf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_create_obj" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="drm-mm.html#c.drm_gem_object" title="drm_gem_object"><span class="pre">drm_gem_object</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">amdgpu_dma_buf_create_obj</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.amdgpu_dma_buf_create_obj" title="dma_buf"><span class="pre">dma_buf</span></a> <span class="pre">*</span><em><span class="pre">dma_buf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_create_obj" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create BO for DMA-buf import</p>
 </dd></dl>
 
@@ -1372,7 +1372,7 @@ CPU read performance.</p>
 described by the given DMA-buf attachment and scatter/gather table.</p>
 <dl class="c function">
 <dt id="c.amdgpu_dma_buf_move_notify">
-void <code class="sig-name descname">amdgpu_dma_buf_move_notify</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_attachment" title="dma_buf_attachment">dma_buf_attachment</a> *<em>attach</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_move_notify" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_dma_buf_move_notify</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_attachment" title="dma_buf_attachment"><span class="pre">dma_buf_attachment</span></a> <span class="pre">*</span><em><span class="pre">attach</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dma_buf_move_notify" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="#c.amdgpu_dma_buf_move_notify" title="attach"><code class="xref c c-type docutils literal notranslate"><span class="pre">attach.move_notify</span></code></a> implementation</p>
 </dd></dl>
 
@@ -1386,7 +1386,7 @@ void <code class="sig-name descname">amdgpu_dma_buf_move_notify</code><span clas
 mapping before the next use.</p>
 <dl class="c function">
 <dt id="c.amdgpu_gem_prime_import">
-<em class="property">struct</em> <a class="reference internal" href="drm-mm.html#c.drm_gem_object" title="drm_gem_object">drm_gem_object</a> *<code class="sig-name descname">amdgpu_gem_prime_import</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device">drm_device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.amdgpu_gem_prime_import" title="dma_buf">dma_buf</a> *<em>dma_buf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_gem_prime_import" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="drm-mm.html#c.drm_gem_object" title="drm_gem_object"><span class="pre">drm_gem_object</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">amdgpu_gem_prime_import</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.amdgpu_gem_prime_import" title="dma_buf"><span class="pre">dma_buf</span></a> <span class="pre">*</span><em><span class="pre">dma_buf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_gem_prime_import" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="drm-internals.html#c.drm_driver" title="drm_driver"><code class="xref c c-type docutils literal notranslate"><span class="pre">drm_driver.gem_prime_import</span></code></a> implementation</p>
 </dd></dl>
 
@@ -1403,7 +1403,7 @@ mapping before the next use.</p>
 <p>GEM BO representing the shared DMA buffer for the given device.</p>
 <dl class="c function">
 <dt id="c.amdgpu_dmabuf_is_xgmi_accessible">
-bool <code class="sig-name descname">amdgpu_dmabuf_is_xgmi_accessible</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_bo *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dmabuf_is_xgmi_accessible" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">amdgpu_dmabuf_is_xgmi_accessible</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dmabuf_is_xgmi_accessible" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Check if xgmi available for P2P transfer</p>
 </dd></dl>
 
@@ -1429,7 +1429,7 @@ page table invalidation are completed and we once more see a coherent process
 address space.</p>
 <dl class="c function">
 <dt id="c.amdgpu_mn_invalidate_gfx">
-bool <code class="sig-name descname">amdgpu_mn_invalidate_gfx</code><span class="sig-paren">(</span><em class="property">struct</em> mmu_interval_notifier *<em>mni</em>, <em class="property">const</em> <em class="property">struct</em> mmu_notifier_range *<em>range</em>, unsigned long <em>cur_seq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_mn_invalidate_gfx" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">amdgpu_mn_invalidate_gfx</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">mmu_interval_notifier</span> <span class="pre">*</span><em><span class="pre">mni</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">mmu_notifier_range</span> <span class="pre">*</span><em><span class="pre">range</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">cur_seq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_mn_invalidate_gfx" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>callback to notify about mm change</p>
 </dd></dl>
 
@@ -1447,7 +1447,7 @@ bool <code class="sig-name descname">amdgpu_mn_invalidate_gfx</code><span class=
 potentially dirty.</p>
 <dl class="c function">
 <dt id="c.amdgpu_mn_invalidate_hsa">
-bool <code class="sig-name descname">amdgpu_mn_invalidate_hsa</code><span class="sig-paren">(</span><em class="property">struct</em> mmu_interval_notifier *<em>mni</em>, <em class="property">const</em> <em class="property">struct</em> mmu_notifier_range *<em>range</em>, unsigned long <em>cur_seq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_mn_invalidate_hsa" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">amdgpu_mn_invalidate_hsa</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">mmu_interval_notifier</span> <span class="pre">*</span><em><span class="pre">mni</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">mmu_notifier_range</span> <span class="pre">*</span><em><span class="pre">range</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">cur_seq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_mn_invalidate_hsa" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>callback to notify about mm change</p>
 </dd></dl>
 
@@ -1465,7 +1465,7 @@ bool <code class="sig-name descname">amdgpu_mn_invalidate_hsa</code><span class=
 evicting all user-mode queues of the process.</p>
 <dl class="c function">
 <dt id="c.amdgpu_mn_register">
-int <code class="sig-name descname">amdgpu_mn_register</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em>, unsigned long <em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_mn_register" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_mn_register</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">addr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_mn_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a BO for notifier updates</p>
 </dd></dl>
 
@@ -1481,7 +1481,7 @@ int <code class="sig-name descname">amdgpu_mn_register</code><span class="sig-pa
 Returns 0 on success, -ERRNO if anything goes wrong.</p>
 <dl class="c function">
 <dt id="c.amdgpu_mn_unregister">
-void <code class="sig-name descname">amdgpu_mn_unregister</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_mn_unregister" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_mn_unregister</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_mn_unregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unregister a BO for notifier updates</p>
 </dd></dl>
 
@@ -1513,7 +1513,7 @@ Cayman/Trinity support up to 8 active VMs at any given time;
 SI supports 16.</p>
 <dl class="c struct">
 <dt id="c.amdgpu_prt_cb">
-<em class="property">struct </em><code class="sig-name descname">amdgpu_prt_cb</code><a class="headerlink" href="#c.amdgpu_prt_cb" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">amdgpu_prt_cb</span></code><a class="headerlink" href="#c.amdgpu_prt_cb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Helper to disable partial resident texture feature from a fence callback</p>
 </dd></dl>
 
@@ -1533,7 +1533,7 @@ SI supports 16.</p>
 </dl>
 <dl class="c function">
 <dt id="c.amdgpu_vm_level_shift">
-unsigned <code class="sig-name descname">amdgpu_vm_level_shift</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, unsigned <em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_level_shift" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_level_shift</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <span class="pre">unsigned</span> <em><span class="pre">level</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_level_shift" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return the addr shift for each level</p>
 </dd></dl>
 
@@ -1548,7 +1548,7 @@ unsigned <code class="sig-name descname">amdgpu_vm_level_shift</code><span class
 <p>The number of bits the pfn needs to be right shifted for a level.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_num_entries">
-unsigned <code class="sig-name descname">amdgpu_vm_num_entries</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, unsigned <em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_num_entries" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_num_entries</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <span class="pre">unsigned</span> <em><span class="pre">level</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_num_entries" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return the number of entries in a PD/PT</p>
 </dd></dl>
 
@@ -1563,7 +1563,7 @@ unsigned <code class="sig-name descname">amdgpu_vm_num_entries</code><span class
 <p>The number of entries in a page directory or page table.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_num_ats_entries">
-unsigned <code class="sig-name descname">amdgpu_vm_num_ats_entries</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_num_ats_entries" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_num_ats_entries</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_num_ats_entries" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return the number of ATS entries in the root PD</p>
 </dd></dl>
 
@@ -1576,7 +1576,7 @@ unsigned <code class="sig-name descname">amdgpu_vm_num_ats_entries</code><span c
 <p>The number of entries in the root page directory which needs the ATS setting.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_entries_mask">
-uint32_t <code class="sig-name descname">amdgpu_vm_entries_mask</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, unsigned int <em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_entries_mask" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">uint32_t</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_entries_mask</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">level</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_entries_mask" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>the mask to get the entry number of a PD/PT</p>
 </dd></dl>
 
@@ -1591,7 +1591,7 @@ uint32_t <code class="sig-name descname">amdgpu_vm_entries_mask</code><span clas
 <p>The mask to extract the entry number of a PD/PT from an address.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_size">
-unsigned <code class="sig-name descname">amdgpu_vm_bo_size</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, unsigned <em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_size" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_size</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <span class="pre">unsigned</span> <em><span class="pre">level</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_size" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>returns the size of the BOs in bytes</p>
 </dd></dl>
 
@@ -1606,7 +1606,7 @@ unsigned <code class="sig-name descname">amdgpu_vm_bo_size</code><span class="si
 <p>The size of the BO for a page directory or page table in bytes.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_evicted">
-void <code class="sig-name descname">amdgpu_vm_bo_evicted</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm_bo_base *<em>vm_bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_evicted" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_evicted</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_bo_base</span> <span class="pre">*</span><em><span class="pre">vm_bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_evicted" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>vm_bo is evicted</p>
 </dd></dl>
 
@@ -1620,7 +1620,7 @@ void <code class="sig-name descname">amdgpu_vm_bo_evicted</code><span class="sig
 be.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_moved">
-void <code class="sig-name descname">amdgpu_vm_bo_moved</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm_bo_base *<em>vm_bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_moved" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_moved</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_bo_base</span> <span class="pre">*</span><em><span class="pre">vm_bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_moved" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>vm_bo is moved</p>
 </dd></dl>
 
@@ -1634,7 +1634,7 @@ void <code class="sig-name descname">amdgpu_vm_bo_moved</code><span class="sig-p
 in the page tables.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_idle">
-void <code class="sig-name descname">amdgpu_vm_bo_idle</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm_bo_base *<em>vm_bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_idle" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_idle</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_bo_base</span> <span class="pre">*</span><em><span class="pre">vm_bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_idle" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>vm_bo is idle</p>
 </dd></dl>
 
@@ -1648,7 +1648,7 @@ void <code class="sig-name descname">amdgpu_vm_bo_idle</code><span class="sig-pa
 and are now idle.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_invalidated">
-void <code class="sig-name descname">amdgpu_vm_bo_invalidated</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm_bo_base *<em>vm_bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_invalidated" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_invalidated</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_bo_base</span> <span class="pre">*</span><em><span class="pre">vm_bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_invalidated" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>vm_bo is invalidated</p>
 </dd></dl>
 
@@ -1662,7 +1662,7 @@ void <code class="sig-name descname">amdgpu_vm_bo_invalidated</code><span class=
 in the PTs.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_relocated">
-void <code class="sig-name descname">amdgpu_vm_bo_relocated</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm_bo_base *<em>vm_bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_relocated" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_relocated</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_bo_base</span> <span class="pre">*</span><em><span class="pre">vm_bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_relocated" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>vm_bo is reloacted</p>
 </dd></dl>
 
@@ -1676,7 +1676,7 @@ void <code class="sig-name descname">amdgpu_vm_bo_relocated</code><span class="s
 For the root PD, just move to idle state.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_done">
-void <code class="sig-name descname">amdgpu_vm_bo_done</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm_bo_base *<em>vm_bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_done" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_done</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_bo_base</span> <span class="pre">*</span><em><span class="pre">vm_bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_done" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>vm_bo is done</p>
 </dd></dl>
 
@@ -1690,7 +1690,7 @@ void <code class="sig-name descname">amdgpu_vm_bo_done</code><span class="sig-pa
 in the PTs.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_base_init">
-void <code class="sig-name descname">amdgpu_vm_bo_base_init</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm_bo_base *<em>base</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em>, <em class="property">struct</em> amdgpu_bo *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_base_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_base_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_bo_base</span> <span class="pre">*</span><em><span class="pre">base</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_base_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Adds bo to the list of bos associated with the vm</p>
 </dd></dl>
 
@@ -1707,7 +1707,7 @@ void <code class="sig-name descname">amdgpu_vm_bo_base_init</code><span class="s
 <p>Initialize a bo_va_base structure and add it to the appropriate lists</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_pt_parent">
-<em class="property">struct</em> amdgpu_vm_pt *<code class="sig-name descname">amdgpu_vm_pt_parent</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm_pt *<em>pt</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_parent" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_pt</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">amdgpu_vm_pt_parent</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_pt</span> <span class="pre">*</span><em><span class="pre">pt</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_parent" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get the parent page directory</p>
 </dd></dl>
 
@@ -1721,7 +1721,7 @@ void <code class="sig-name descname">amdgpu_vm_bo_base_init</code><span class="s
 the root page directory.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_pt_start">
-void <code class="sig-name descname">amdgpu_vm_pt_start</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em>, uint64_t <em>start</em>, <em class="property">struct</em> amdgpu_vm_pt_cursor *<em>cursor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_start" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_pt_start</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">start</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_pt_cursor</span> <span class="pre">*</span><em><span class="pre">cursor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_start" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>start PD/PT walk</p>
 </dd></dl>
 
@@ -1740,7 +1740,7 @@ void <code class="sig-name descname">amdgpu_vm_pt_start</code><span class="sig-p
 <p>Initialize a amdgpu_vm_pt_cursor to start a walk.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_pt_descendant">
-bool <code class="sig-name descname">amdgpu_vm_pt_descendant</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm_pt_cursor *<em>cursor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_descendant" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_pt_descendant</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_pt_cursor</span> <span class="pre">*</span><em><span class="pre">cursor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_descendant" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>go to child node</p>
 </dd></dl>
 
@@ -1757,7 +1757,7 @@ bool <code class="sig-name descname">amdgpu_vm_pt_descendant</code><span class="
 <p>True if the walk was possible, false otherwise.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_pt_sibling">
-bool <code class="sig-name descname">amdgpu_vm_pt_sibling</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm_pt_cursor *<em>cursor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_sibling" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_pt_sibling</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_pt_cursor</span> <span class="pre">*</span><em><span class="pre">cursor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_sibling" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>go to sibling node</p>
 </dd></dl>
 
@@ -1774,7 +1774,7 @@ bool <code class="sig-name descname">amdgpu_vm_pt_sibling</code><span class="sig
 <p>True if the walk was possible, false otherwise.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_pt_ancestor">
-bool <code class="sig-name descname">amdgpu_vm_pt_ancestor</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm_pt_cursor *<em>cursor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_ancestor" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_pt_ancestor</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_pt_cursor</span> <span class="pre">*</span><em><span class="pre">cursor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_ancestor" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>go to parent node</p>
 </dd></dl>
 
@@ -1789,7 +1789,7 @@ bool <code class="sig-name descname">amdgpu_vm_pt_ancestor</code><span class="si
 <p>True if the walk was possible, false otherwise.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_pt_next">
-void <code class="sig-name descname">amdgpu_vm_pt_next</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm_pt_cursor *<em>cursor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_next" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_pt_next</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_pt_cursor</span> <span class="pre">*</span><em><span class="pre">cursor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_next" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get next PD/PT in hieratchy</p>
 </dd></dl>
 
@@ -1804,7 +1804,7 @@ void <code class="sig-name descname">amdgpu_vm_pt_next</code><span class="sig-pa
 <p>Walk the PD/PT tree to the next node.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_pt_first_dfs">
-void <code class="sig-name descname">amdgpu_vm_pt_first_dfs</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em>, <em class="property">struct</em> amdgpu_vm_pt_cursor *<em>start</em>, <em class="property">struct</em> amdgpu_vm_pt_cursor *<em>cursor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_first_dfs" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_pt_first_dfs</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_pt_cursor</span> <span class="pre">*</span><em><span class="pre">start</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_pt_cursor</span> <span class="pre">*</span><em><span class="pre">cursor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_first_dfs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>start a deep first search</p>
 </dd></dl>
 
@@ -1823,7 +1823,7 @@ void <code class="sig-name descname">amdgpu_vm_pt_first_dfs</code><span class="s
 <p>Starts a deep first traversal of the PD/PT tree.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_pt_continue_dfs">
-bool <code class="sig-name descname">amdgpu_vm_pt_continue_dfs</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm_pt_cursor *<em>start</em>, <em class="property">struct</em> amdgpu_vm_pt *<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_continue_dfs" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_pt_continue_dfs</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_pt_cursor</span> <span class="pre">*</span><em><span class="pre">start</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_pt</span> <span class="pre">*</span><em><span class="pre">entry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_continue_dfs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check if the deep first search should continue</p>
 </dd></dl>
 
@@ -1838,7 +1838,7 @@ bool <code class="sig-name descname">amdgpu_vm_pt_continue_dfs</code><span class
 <p>True when the search should continue, false otherwise.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_pt_next_dfs">
-void <code class="sig-name descname">amdgpu_vm_pt_next_dfs</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm_pt_cursor *<em>cursor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_next_dfs" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_pt_next_dfs</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_pt_cursor</span> <span class="pre">*</span><em><span class="pre">cursor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_pt_next_dfs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get the next node for a deep first search</p>
 </dd></dl>
 
@@ -1853,7 +1853,7 @@ void <code class="sig-name descname">amdgpu_vm_pt_next_dfs</code><span class="si
 <p>Move the cursor to the next node in a deep first search.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_get_pd_bo">
-void <code class="sig-name descname">amdgpu_vm_get_pd_bo</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm *<em>vm</em>, <em class="property">struct</em> list_head *<em>validated</em>, <em class="property">struct</em> amdgpu_bo_list_entry *<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_get_pd_bo" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_get_pd_bo</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">list_head</span> <span class="pre">*</span><em><span class="pre">validated</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo_list_entry</span> <span class="pre">*</span><em><span class="pre">entry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_get_pd_bo" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add the VM PD to a validation list</p>
 </dd></dl>
 
@@ -1871,7 +1871,7 @@ void <code class="sig-name descname">amdgpu_vm_get_pd_bo</code><span class="sig-
 validate for command submission.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_del_from_lru_notify">
-void <code class="sig-name descname">amdgpu_vm_del_from_lru_notify</code><span class="sig-paren">(</span><em class="property">struct</em> ttm_buffer_object *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_del_from_lru_notify" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_del_from_lru_notify</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">ttm_buffer_object</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_del_from_lru_notify" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update bulk_moveable flag</p>
 </dd></dl>
 
@@ -1885,7 +1885,7 @@ void <code class="sig-name descname">amdgpu_vm_del_from_lru_notify</code><span c
 LRU.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_move_to_lru_tail">
-void <code class="sig-name descname">amdgpu_vm_move_to_lru_tail</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_move_to_lru_tail" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_move_to_lru_tail</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_move_to_lru_tail" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>move all BOs to the end of LRU</p>
 </dd></dl>
 
@@ -1901,7 +1901,7 @@ void <code class="sig-name descname">amdgpu_vm_move_to_lru_tail</code><span clas
 together.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_validate_pt_bos">
-int <code class="sig-name descname">amdgpu_vm_validate_pt_bos</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em>, int (*<em>validate</em>)<span class="sig-paren">(</span>void *p, <em class="property">struct</em> amdgpu_bo *bo<span class="sig-paren">)</span>, void *<em>param</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_validate_pt_bos" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_validate_pt_bos</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <span class="pre">int</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">validate</span></em><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><span class="pre">p</span>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><span class="pre">bo</span><span class="sig-paren">)</span>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">param</span></em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_validate_pt_bos" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>validate the page table BOs</p>
 </dd></dl>
 
@@ -1922,7 +1922,7 @@ int <code class="sig-name descname">amdgpu_vm_validate_pt_bos</code><span class=
 <p>Validation result.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_ready">
-bool <code class="sig-name descname">amdgpu_vm_ready</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm *<em>vm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_ready" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_ready</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_ready" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check VM is ready for updates</p>
 </dd></dl>
 
@@ -1937,7 +1937,7 @@ bool <code class="sig-name descname">amdgpu_vm_ready</code><span class="sig-pare
 <p>True if eviction list is empty.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_clear_bo">
-int <code class="sig-name descname">amdgpu_vm_clear_bo</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em>, <em class="property">struct</em> amdgpu_bo *<em>bo</em>, bool <em>immediate</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_clear_bo" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_clear_bo</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em>, <span class="pre">bool</span> <em><span class="pre">immediate</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_clear_bo" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>initially clear the PDs/PTs</p>
 </dd></dl>
 
@@ -1958,7 +1958,7 @@ int <code class="sig-name descname">amdgpu_vm_clear_bo</code><span class="sig-pa
 <p>0 on success, errno otherwise.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_param">
-void <code class="sig-name descname">amdgpu_vm_bo_param</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em>, int <em>level</em>, bool <em>immediate</em>, <em class="property">struct</em> amdgpu_bo_param *<em>bp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_param" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_param</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <span class="pre">int</span> <em><span class="pre">level</span></em>, <span class="pre">bool</span> <em><span class="pre">immediate</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo_param</span> <span class="pre">*</span><em><span class="pre">bp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_param" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>fill in parameters for PD/PT allocation</p>
 </dd></dl>
 
@@ -1977,7 +1977,7 @@ void <code class="sig-name descname">amdgpu_vm_bo_param</code><span class="sig-p
 </dl>
 <dl class="c function">
 <dt id="c.amdgpu_vm_alloc_pts">
-int <code class="sig-name descname">amdgpu_vm_alloc_pts</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em>, <em class="property">struct</em> amdgpu_vm_pt_cursor *<em>cursor</em>, bool <em>immediate</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_alloc_pts" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_alloc_pts</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_pt_cursor</span> <span class="pre">*</span><em><span class="pre">cursor</span></em>, <span class="pre">bool</span> <em><span class="pre">immediate</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_alloc_pts" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate a specific page table</p>
 </dd></dl>
 
@@ -1999,7 +1999,7 @@ int <code class="sig-name descname">amdgpu_vm_alloc_pts</code><span class="sig-p
 allocated, negative errno if an error occurred.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_free_table">
-void <code class="sig-name descname">amdgpu_vm_free_table</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm_pt *<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_free_table" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_free_table</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_pt</span> <span class="pre">*</span><em><span class="pre">entry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_free_table" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>fre one PD/PT</p>
 </dd></dl>
 
@@ -2010,7 +2010,7 @@ void <code class="sig-name descname">amdgpu_vm_free_table</code><span class="sig
 </dl>
 <dl class="c function">
 <dt id="c.amdgpu_vm_free_pts">
-void <code class="sig-name descname">amdgpu_vm_free_pts</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em>, <em class="property">struct</em> amdgpu_vm_pt_cursor *<em>start</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_free_pts" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_free_pts</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_pt_cursor</span> <span class="pre">*</span><em><span class="pre">start</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_free_pts" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>free PD/PT levels</p>
 </dd></dl>
 
@@ -2027,7 +2027,7 @@ void <code class="sig-name descname">amdgpu_vm_free_pts</code><span class="sig-p
 <p>Free the page directory or page table level and all sub levels.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_check_compute_bug">
-void <code class="sig-name descname">amdgpu_vm_check_compute_bug</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_check_compute_bug" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_check_compute_bug</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_check_compute_bug" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check whether asic has compute vm bug</p>
 </dd></dl>
 
@@ -2038,7 +2038,7 @@ void <code class="sig-name descname">amdgpu_vm_check_compute_bug</code><span cla
 </dl>
 <dl class="c function">
 <dt id="c.amdgpu_vm_need_pipeline_sync">
-bool <code class="sig-name descname">amdgpu_vm_need_pipeline_sync</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_ring *<em>ring</em>, <em class="property">struct</em> amdgpu_job *<em>job</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_need_pipeline_sync" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_need_pipeline_sync</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_ring</span> <span class="pre">*</span><em><span class="pre">ring</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_job</span> <span class="pre">*</span><em><span class="pre">job</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_need_pipeline_sync" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Check if pipe sync is needed for job.</p>
 </dd></dl>
 
@@ -2053,7 +2053,7 @@ bool <code class="sig-name descname">amdgpu_vm_need_pipeline_sync</code><span cl
 <p>True if sync is needed.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_flush">
-int <code class="sig-name descname">amdgpu_vm_flush</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_ring *<em>ring</em>, <em class="property">struct</em> amdgpu_job *<em>job</em>, bool <em>need_pipe_sync</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_flush" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_flush</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_ring</span> <span class="pre">*</span><em><span class="pre">ring</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_job</span> <span class="pre">*</span><em><span class="pre">job</span></em>, <span class="pre">bool</span> <em><span class="pre">need_pipe_sync</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_flush" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>hardware flush the vm</p>
 </dd></dl>
 
@@ -2072,7 +2072,7 @@ int <code class="sig-name descname">amdgpu_vm_flush</code><span class="sig-paren
 <p>0 on success, errno otherwise.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_find">
-<em class="property">struct</em> amdgpu_bo_va *<code class="sig-name descname">amdgpu_vm_bo_find</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm *<em>vm</em>, <em class="property">struct</em> amdgpu_bo *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_find" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo_va</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">amdgpu_vm_bo_find</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_find" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find the bo_va for a specific vm &amp; bo</p>
 </dd></dl>
 
@@ -2092,7 +2092,7 @@ Returns the found bo_va or NULL if none is found</p>
 <p>Found bo_va or NULL.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_map_gart">
-uint64_t <code class="sig-name descname">amdgpu_vm_map_gart</code><span class="sig-paren">(</span><em class="property">const</em> dma_addr_t *<em>pages_addr</em>, uint64_t <em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_map_gart" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">uint64_t</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_map_gart</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">dma_addr_t</span> <span class="pre">*</span><em><span class="pre">pages_addr</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">addr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_map_gart" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Resolve gart mapping of addr</p>
 </dd></dl>
 
@@ -2110,7 +2110,7 @@ to.</p>
 <p>The pointer for the page table entry.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_update_pde">
-int <code class="sig-name descname">amdgpu_vm_update_pde</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm_update_params *<em>params</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em>, <em class="property">struct</em> amdgpu_vm_pt *<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_update_pde" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_update_pde</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_update_params</span> <span class="pre">*</span><em><span class="pre">params</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_pt</span> <span class="pre">*</span><em><span class="pre">entry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_update_pde" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update a single level in the hierarchy</p>
 </dd></dl>
 
@@ -2127,7 +2127,7 @@ int <code class="sig-name descname">amdgpu_vm_update_pde</code><span class="sig-
 <p>Makes sure the requested entry in parent is up to date.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_invalidate_pds">
-void <code class="sig-name descname">amdgpu_vm_invalidate_pds</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_invalidate_pds" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_invalidate_pds</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_invalidate_pds" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>mark all PDs as invalid</p>
 </dd></dl>
 
@@ -2142,7 +2142,7 @@ void <code class="sig-name descname">amdgpu_vm_invalidate_pds</code><span class=
 <p>Mark all PD level as invalid after an error.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_update_pdes">
-int <code class="sig-name descname">amdgpu_vm_update_pdes</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em>, bool <em>immediate</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_update_pdes" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_update_pdes</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <span class="pre">bool</span> <em><span class="pre">immediate</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_update_pdes" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>make sure that all directories are valid</p>
 </dd></dl>
 
@@ -2161,7 +2161,7 @@ int <code class="sig-name descname">amdgpu_vm_update_pdes</code><span class="sig
 <p>0 for success, error for failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_fragment">
-void <code class="sig-name descname">amdgpu_vm_fragment</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm_update_params *<em>params</em>, uint64_t <em>start</em>, uint64_t <em>end</em>, uint64_t <em>flags</em>, unsigned int *<em>frag</em>, uint64_t *<em>frag_end</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_fragment" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_fragment</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_update_params</span> <span class="pre">*</span><em><span class="pre">params</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">start</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">end</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">flags</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">frag</span></em>, <span class="pre">uint64_t</span> <span class="pre">*</span><em><span class="pre">frag_end</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_fragment" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get fragment for PTEs</p>
 </dd></dl>
 
@@ -2184,7 +2184,7 @@ void <code class="sig-name descname">amdgpu_vm_fragment</code><span class="sig-p
 <p>Returns the first possible fragment for the start and end address.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_update_ptes">
-int <code class="sig-name descname">amdgpu_vm_update_ptes</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm_update_params *<em>params</em>, uint64_t <em>start</em>, uint64_t <em>end</em>, uint64_t <em>dst</em>, uint64_t <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_update_ptes" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_update_ptes</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm_update_params</span> <span class="pre">*</span><em><span class="pre">params</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">start</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">end</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">dst</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_update_ptes" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>make sure that page tables are valid</p>
 </dd></dl>
 
@@ -2207,7 +2207,7 @@ int <code class="sig-name descname">amdgpu_vm_update_ptes</code><span class="sig
 <p>0 for success, -EINVAL for failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_update_mapping">
-int <code class="sig-name descname">amdgpu_vm_bo_update_mapping</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_device *<em>bo_adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em>, bool <em>immediate</em>, bool <em>unlocked</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_resv" title="dma_resv">dma_resv</a> *<em>resv</em>, uint64_t <em>start</em>, uint64_t <em>last</em>, uint64_t <em>flags</em>, uint64_t <em>offset</em>, <em class="property">struct</em> <a class="reference internal" href="drm-mm.html#c.drm_mm_node" title="drm_mm_node">drm_mm_node</a> *<em>nodes</em>, dma_addr_t *<em>pages_addr</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_fence" title="dma_fence">dma_fence</a> **<em>fence</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_update_mapping" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_update_mapping</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">bo_adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <span class="pre">bool</span> <em><span class="pre">immediate</span></em>, <span class="pre">bool</span> <em><span class="pre">unlocked</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_resv" title="dma_resv"><span class="pre">dma_resv</span></a> <span class="pre">*</span><em><span class="pre">resv</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">start</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">last</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">flags</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">offset</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="drm-mm.html#c.drm_mm_node" title="drm_mm_node"><span class="pre">drm_mm_node</span></a> <span class="pre">*</span><em><span class="pre">nodes</span></em>, <span class="pre">dma_addr_t</span> <span class="pre">*</span><em><span class="pre">pages_addr</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_fence" title="dma_fence"><span class="pre">dma_fence</span></a> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">fence</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_update_mapping" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update a mapping in the vm page table</p>
 </dd></dl>
 
@@ -2246,7 +2246,7 @@ int <code class="sig-name descname">amdgpu_vm_bo_update_mapping</code><span clas
 <p>0 for success, -EINVAL for failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_update">
-int <code class="sig-name descname">amdgpu_vm_bo_update</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_bo_va *<em>bo_va</em>, bool <em>clear</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_update" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_update</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo_va</span> <span class="pre">*</span><em><span class="pre">bo_va</span></em>, <span class="pre">bool</span> <em><span class="pre">clear</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_update" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update all BO mappings in the vm page table</p>
 </dd></dl>
 
@@ -2265,7 +2265,7 @@ int <code class="sig-name descname">amdgpu_vm_bo_update</code><span class="sig-p
 <p>0 for success, -EINVAL for failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_update_prt_state">
-void <code class="sig-name descname">amdgpu_vm_update_prt_state</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_update_prt_state" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_update_prt_state</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_update_prt_state" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update the global PRT state</p>
 </dd></dl>
 
@@ -2276,7 +2276,7 @@ void <code class="sig-name descname">amdgpu_vm_update_prt_state</code><span clas
 </dl>
 <dl class="c function">
 <dt id="c.amdgpu_vm_prt_get">
-void <code class="sig-name descname">amdgpu_vm_prt_get</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_prt_get" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_prt_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_prt_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add a PRT user</p>
 </dd></dl>
 
@@ -2287,7 +2287,7 @@ void <code class="sig-name descname">amdgpu_vm_prt_get</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.amdgpu_vm_prt_put">
-void <code class="sig-name descname">amdgpu_vm_prt_put</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_prt_put" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_prt_put</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_prt_put" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>drop a PRT user</p>
 </dd></dl>
 
@@ -2298,7 +2298,7 @@ void <code class="sig-name descname">amdgpu_vm_prt_put</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.amdgpu_vm_prt_cb">
-void <code class="sig-name descname">amdgpu_vm_prt_cb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_fence" title="dma_fence">dma_fence</a> *<em>fence</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_fence_cb" title="dma_fence_cb">dma_fence_cb</a> *<em>_cb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_prt_cb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_prt_cb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_fence" title="dma_fence"><span class="pre">dma_fence</span></a> <span class="pre">*</span><em><span class="pre">fence</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_fence_cb" title="dma_fence_cb"><span class="pre">dma_fence_cb</span></a> <span class="pre">*</span><em><span class="pre">_cb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_prt_cb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>callback for updating the PRT status</p>
 </dd></dl>
 
@@ -2311,7 +2311,7 @@ void <code class="sig-name descname">amdgpu_vm_prt_cb</code><span class="sig-par
 </dl>
 <dl class="c function">
 <dt id="c.amdgpu_vm_add_prt_cb">
-void <code class="sig-name descname">amdgpu_vm_add_prt_cb</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_fence" title="dma_fence">dma_fence</a> *<em>fence</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_add_prt_cb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_add_prt_cb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_fence" title="dma_fence"><span class="pre">dma_fence</span></a> <span class="pre">*</span><em><span class="pre">fence</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_add_prt_cb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add callback for updating the PRT status</p>
 </dd></dl>
 
@@ -2324,7 +2324,7 @@ void <code class="sig-name descname">amdgpu_vm_add_prt_cb</code><span class="sig
 </dl>
 <dl class="c function">
 <dt id="c.amdgpu_vm_free_mapping">
-void <code class="sig-name descname">amdgpu_vm_free_mapping</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em>, <em class="property">struct</em> amdgpu_bo_va_mapping *<em>mapping</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_fence" title="dma_fence">dma_fence</a> *<em>fence</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_free_mapping" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_free_mapping</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo_va_mapping</span> <span class="pre">*</span><em><span class="pre">mapping</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_fence" title="dma_fence"><span class="pre">dma_fence</span></a> <span class="pre">*</span><em><span class="pre">fence</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_free_mapping" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>free a mapping</p>
 </dd></dl>
 
@@ -2343,7 +2343,7 @@ void <code class="sig-name descname">amdgpu_vm_free_mapping</code><span class="s
 <p>Free a mapping and make sure we decrease the PRT usage count if applicable.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_prt_fini">
-void <code class="sig-name descname">amdgpu_vm_prt_fini</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_prt_fini" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_prt_fini</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_prt_fini" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>finish all prt mappings</p>
 </dd></dl>
 
@@ -2358,7 +2358,7 @@ void <code class="sig-name descname">amdgpu_vm_prt_fini</code><span class="sig-p
 <p>Register a cleanup callback to disable PRT support after VM dies.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_clear_freed">
-int <code class="sig-name descname">amdgpu_vm_clear_freed</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_fence" title="dma_fence">dma_fence</a> **<em>fence</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_clear_freed" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_clear_freed</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_fence" title="dma_fence"><span class="pre">dma_fence</span></a> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">fence</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_clear_freed" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>clear freed BOs in the PT</p>
 </dd></dl>
 
@@ -2379,7 +2379,7 @@ PTs have to be reserved and mutex must be locked!</p>
 <p>0 for success.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_handle_moved">
-int <code class="sig-name descname">amdgpu_vm_handle_moved</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_handle_moved" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_handle_moved</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_handle_moved" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>handle moved BOs in the PT</p>
 </dd></dl>
 
@@ -2397,7 +2397,7 @@ int <code class="sig-name descname">amdgpu_vm_handle_moved</code><span class="si
 <p>0 for success.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_add">
-<em class="property">struct</em> amdgpu_bo_va *<code class="sig-name descname">amdgpu_vm_bo_add</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em>, <em class="property">struct</em> amdgpu_bo *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_add" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo_va</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">amdgpu_vm_bo_add</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_add" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add a bo to a specific vm</p>
 </dd></dl>
 
@@ -2418,7 +2418,7 @@ Add <strong>bo</strong> to the list of bos associated with the vm</p>
 <p>Newly added bo_va or NULL for failure</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_insert_map">
-void <code class="sig-name descname">amdgpu_vm_bo_insert_map</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_bo_va *<em>bo_va</em>, <em class="property">struct</em> amdgpu_bo_va_mapping *<em>mapping</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_insert_map" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_insert_map</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo_va</span> <span class="pre">*</span><em><span class="pre">bo_va</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo_va_mapping</span> <span class="pre">*</span><em><span class="pre">mapping</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_insert_map" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>insert a new mapping</p>
 </dd></dl>
 
@@ -2435,7 +2435,7 @@ void <code class="sig-name descname">amdgpu_vm_bo_insert_map</code><span class="
 <p>Insert a new mapping into all structures.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_map">
-int <code class="sig-name descname">amdgpu_vm_bo_map</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_bo_va *<em>bo_va</em>, uint64_t <em>saddr</em>, uint64_t <em>offset</em>, uint64_t <em>size</em>, uint64_t <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_map" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_map</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo_va</span> <span class="pre">*</span><em><span class="pre">bo_va</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">saddr</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">offset</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">size</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_map" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>map bo inside a vm</p>
 </dd></dl>
 
@@ -2461,7 +2461,7 @@ int <code class="sig-name descname">amdgpu_vm_bo_map</code><span class="sig-pare
 <p>0 for success, error for failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_replace_map">
-int <code class="sig-name descname">amdgpu_vm_bo_replace_map</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_bo_va *<em>bo_va</em>, uint64_t <em>saddr</em>, uint64_t <em>offset</em>, uint64_t <em>size</em>, uint64_t <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_replace_map" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_replace_map</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo_va</span> <span class="pre">*</span><em><span class="pre">bo_va</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">saddr</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">offset</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">size</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_replace_map" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>map bo inside a vm, replacing existing mappings</p>
 </dd></dl>
 
@@ -2488,7 +2488,7 @@ mappings as we do so.</p>
 <p>0 for success, error for failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_unmap">
-int <code class="sig-name descname">amdgpu_vm_bo_unmap</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_bo_va *<em>bo_va</em>, uint64_t <em>saddr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_unmap" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_unmap</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo_va</span> <span class="pre">*</span><em><span class="pre">bo_va</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">saddr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_unmap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove bo mapping from vm</p>
 </dd></dl>
 
@@ -2508,7 +2508,7 @@ int <code class="sig-name descname">amdgpu_vm_bo_unmap</code><span class="sig-pa
 <p>0 for success, error for failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_clear_mappings">
-int <code class="sig-name descname">amdgpu_vm_bo_clear_mappings</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em>, uint64_t <em>saddr</em>, uint64_t <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_clear_mappings" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_clear_mappings</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">saddr</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_clear_mappings" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove all mappings in a specific range</p>
 </dd></dl>
 
@@ -2529,7 +2529,7 @@ int <code class="sig-name descname">amdgpu_vm_bo_clear_mappings</code><span clas
 <p>0 for success, error for failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_lookup_mapping">
-<em class="property">struct</em> amdgpu_bo_va_mapping *<code class="sig-name descname">amdgpu_vm_bo_lookup_mapping</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm *<em>vm</em>, uint64_t <em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_lookup_mapping" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo_va_mapping</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">amdgpu_vm_bo_lookup_mapping</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">addr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_lookup_mapping" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find mapping by address</p>
 </dd></dl>
 
@@ -2546,7 +2546,7 @@ int <code class="sig-name descname">amdgpu_vm_bo_clear_mappings</code><span clas
 <p>The amdgpu_bo_va_mapping matching for addr or NULL</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_trace_cs">
-void <code class="sig-name descname">amdgpu_vm_bo_trace_cs</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm *<em>vm</em>, <em class="property">struct</em> ww_acquire_ctx *<em>ticket</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_trace_cs" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_trace_cs</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">ww_acquire_ctx</span> <span class="pre">*</span><em><span class="pre">ticket</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_trace_cs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>trace all reserved mappings</p>
 </dd></dl>
 
@@ -2561,7 +2561,7 @@ void <code class="sig-name descname">amdgpu_vm_bo_trace_cs</code><span class="si
 <p>Trace all mappings of BOs reserved during a command submission.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_rmv">
-void <code class="sig-name descname">amdgpu_vm_bo_rmv</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_bo_va *<em>bo_va</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_rmv" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_rmv</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo_va</span> <span class="pre">*</span><em><span class="pre">bo_va</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_rmv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove a bo to a specific vm</p>
 </dd></dl>
 
@@ -2577,7 +2577,7 @@ void <code class="sig-name descname">amdgpu_vm_bo_rmv</code><span class="sig-par
 <p>Object have to be reserved!</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_evictable">
-bool <code class="sig-name descname">amdgpu_vm_evictable</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_bo *<em>bo</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_evictable" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_evictable</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_evictable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check if we can evict a VM</p>
 </dd></dl>
 
@@ -2590,7 +2590,7 @@ bool <code class="sig-name descname">amdgpu_vm_evictable</code><span class="sig-
 <p>Check if it is possible to evict a VM.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_bo_invalidate">
-void <code class="sig-name descname">amdgpu_vm_bo_invalidate</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_bo *<em>bo</em>, bool <em>evicted</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_invalidate" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_bo_invalidate</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_bo</span> <span class="pre">*</span><em><span class="pre">bo</span></em>, <span class="pre">bool</span> <em><span class="pre">evicted</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_bo_invalidate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>mark the bo as invalid</p>
 </dd></dl>
 
@@ -2607,7 +2607,7 @@ void <code class="sig-name descname">amdgpu_vm_bo_invalidate</code><span class="
 <p>Mark <strong>bo</strong> as invalid.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_get_block_size">
-uint32_t <code class="sig-name descname">amdgpu_vm_get_block_size</code><span class="sig-paren">(</span>uint64_t <em>vm_size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_get_block_size" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">uint32_t</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_get_block_size</span></code><span class="sig-paren">(</span><span class="pre">uint64_t</span> <em><span class="pre">vm_size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_get_block_size" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>calculate VM page table size as power of two</p>
 </dd></dl>
 
@@ -2620,7 +2620,7 @@ uint32_t <code class="sig-name descname">amdgpu_vm_get_block_size</code><span cl
 <p>VM page table as power of two</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_adjust_size">
-void <code class="sig-name descname">amdgpu_vm_adjust_size</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, uint32_t <em>min_vm_size</em>, uint32_t <em>fragment_size_default</em>, unsigned <em>max_level</em>, unsigned <em>max_bits</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_adjust_size" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_adjust_size</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <span class="pre">uint32_t</span> <em><span class="pre">min_vm_size</span></em>, <span class="pre">uint32_t</span> <em><span class="pre">fragment_size_default</span></em>, <span class="pre">unsigned</span> <em><span class="pre">max_level</span></em>, <span class="pre">unsigned</span> <em><span class="pre">max_bits</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_adjust_size" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>adjust vm size, block size and fragment size</p>
 </dd></dl>
 
@@ -2639,7 +2639,7 @@ void <code class="sig-name descname">amdgpu_vm_adjust_size</code><span class="si
 </dl>
 <dl class="c function">
 <dt id="c.amdgpu_vm_wait_idle">
-long <code class="sig-name descname">amdgpu_vm_wait_idle</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm *<em>vm</em>, long <em>timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_wait_idle" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">long</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_wait_idle</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <span class="pre">long</span> <em><span class="pre">timeout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_wait_idle" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>wait for the VM to become idle</p>
 </dd></dl>
 
@@ -2652,7 +2652,7 @@ long <code class="sig-name descname">amdgpu_vm_wait_idle</code><span class="sig-
 </dl>
 <dl class="c function">
 <dt id="c.amdgpu_vm_init">
-int <code class="sig-name descname">amdgpu_vm_init</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em>, int <em>vm_context</em>, u32 <em>pasid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <span class="pre">int</span> <em><span class="pre">vm_context</span></em>, <span class="pre">u32</span> <em><span class="pre">pasid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>initialize a vm instance</p>
 </dd></dl>
 
@@ -2673,7 +2673,7 @@ int <code class="sig-name descname">amdgpu_vm_init</code><span class="sig-paren"
 <p>0 for success, error for failure.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_check_clean_reserved">
-int <code class="sig-name descname">amdgpu_vm_check_clean_reserved</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_check_clean_reserved" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_check_clean_reserved</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_check_clean_reserved" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check if a VM is clean</p>
 </dd></dl>
 
@@ -2694,7 +2694,7 @@ VM</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.amdgpu_vm_make_compute">
-int <code class="sig-name descname">amdgpu_vm_make_compute</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em>, u32 <em>pasid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_make_compute" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_make_compute</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <span class="pre">u32</span> <em><span class="pre">pasid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_make_compute" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Turn a GFX VM into a compute VM</p>
 </dd></dl>
 
@@ -2720,7 +2720,7 @@ setting.</p>
 <p>0 for success, -errno for errors.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_release_compute">
-void <code class="sig-name descname">amdgpu_vm_release_compute</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_release_compute" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_release_compute</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_release_compute" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>release a compute vm</p>
 </dd></dl>
 
@@ -2736,7 +2736,7 @@ void <code class="sig-name descname">amdgpu_vm_release_compute</code><span class
 pasid from vm. Compute should stop use of vm after this call.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_fini">
-void <code class="sig-name descname">amdgpu_vm_fini</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_vm *<em>vm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_fini" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_fini</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_fini" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>tear down a vm instance</p>
 </dd></dl>
 
@@ -2752,7 +2752,7 @@ void <code class="sig-name descname">amdgpu_vm_fini</code><span class="sig-paren
 Unbind the VM and remove all bos from the vm bo list</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_manager_init">
-void <code class="sig-name descname">amdgpu_vm_manager_init</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_manager_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_manager_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_manager_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>init the VM manager</p>
 </dd></dl>
 
@@ -2765,7 +2765,7 @@ void <code class="sig-name descname">amdgpu_vm_manager_init</code><span class="s
 <p>Initialize the VM manager structures</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_manager_fini">
-void <code class="sig-name descname">amdgpu_vm_manager_fini</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_manager_fini" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_manager_fini</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_manager_fini" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>cleanup VM manager</p>
 </dd></dl>
 
@@ -2778,7 +2778,7 @@ void <code class="sig-name descname">amdgpu_vm_manager_fini</code><span class="s
 <p>Cleanup the VM manager and free resources.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_ioctl">
-int <code class="sig-name descname">amdgpu_vm_ioctl</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device">drm_device</a> *<em>dev</em>, void *<em>data</em>, <em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_file" title="drm_file">drm_file</a> *<em>filp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_ioctl" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_ioctl</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="drm-internals.html#c.drm_file" title="drm_file"><span class="pre">drm_file</span></a> <span class="pre">*</span><em><span class="pre">filp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_ioctl" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Manages VMID reservation for vm hubs.</p>
 </dd></dl>
 
@@ -2795,7 +2795,7 @@ int <code class="sig-name descname">amdgpu_vm_ioctl</code><span class="sig-paren
 <p>0 for success, -errno for errors.</p>
 <dl class="c function">
 <dt id="c.amdgpu_vm_get_task_info">
-void <code class="sig-name descname">amdgpu_vm_get_task_info</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, u32 <em>pasid</em>, <em class="property">struct</em> amdgpu_task_info *<em>task_info</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_get_task_info" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_get_task_info</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <span class="pre">u32</span> <em><span class="pre">pasid</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_task_info</span> <span class="pre">*</span><em><span class="pre">task_info</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_get_task_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Extracts task info for a PASID.</p>
 </dd></dl>
 
@@ -2810,7 +2810,7 @@ void <code class="sig-name descname">amdgpu_vm_get_task_info</code><span class="
 </dl>
 <dl class="c function">
 <dt id="c.amdgpu_vm_set_task_info">
-void <code class="sig-name descname">amdgpu_vm_set_task_info</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm *<em>vm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_set_task_info" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_set_task_info</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_set_task_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Sets VMs task info.</p>
 </dd></dl>
 
@@ -2821,7 +2821,7 @@ void <code class="sig-name descname">amdgpu_vm_set_task_info</code><span class="
 </dl>
 <dl class="c function">
 <dt id="c.amdgpu_vm_handle_fault">
-bool <code class="sig-name descname">amdgpu_vm_handle_fault</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, u32 <em>pasid</em>, uint64_t <em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_handle_fault" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">amdgpu_vm_handle_fault</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <span class="pre">u32</span> <em><span class="pre">pasid</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">addr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_vm_handle_fault" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>graceful handling of VM faults.</p>
 </dd></dl>
 
@@ -2839,7 +2839,7 @@ bool <code class="sig-name descname">amdgpu_vm_handle_fault</code><span class="s
 shouldn’t be reported any more.</p>
 <dl class="c function">
 <dt id="c.amdgpu_debugfs_vm_bo_info">
-void <code class="sig-name descname">amdgpu_debugfs_vm_bo_info</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_vm *<em>vm</em>, <em class="property">struct</em> seq_file *<em>m</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_debugfs_vm_bo_info" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_debugfs_vm_bo_info</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_vm</span> <span class="pre">*</span><em><span class="pre">vm</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">seq_file</span> <span class="pre">*</span><em><span class="pre">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_debugfs_vm_bo_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>print BO info for the VM</p>
 </dd></dl>
 
@@ -2866,7 +2866,7 @@ support will be enabled.</p>
 support is used (with mapping between virtual and hardware IRQs).</p>
 <dl class="c function">
 <dt id="c.amdgpu_hotplug_work_func">
-void <code class="sig-name descname">amdgpu_hotplug_work_func</code><span class="sig-paren">(</span><em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_hotplug_work_func" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_hotplug_work_func</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_hotplug_work_func" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>work handler for display hotplug event</p>
 </dd></dl>
 
@@ -2887,7 +2887,7 @@ mutexes which cannot be locked in an IRQ handler (since <a class="reference inte
 sleep).</p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_disable_all">
-void <code class="sig-name descname">amdgpu_irq_disable_all</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_disable_all" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_disable_all</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_disable_all" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>disable <em>all</em> interrupts</p>
 </dd></dl>
 
@@ -2900,7 +2900,7 @@ void <code class="sig-name descname">amdgpu_irq_disable_all</code><span class="s
 <p>Disable all types of interrupts from all sources.</p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_handler">
-irqreturn_t <code class="sig-name descname">amdgpu_irq_handler</code><span class="sig-paren">(</span>int <em>irq</em>, void *<em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_handler" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">irqreturn_t</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_handler</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">irq</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">arg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_handler" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>IRQ handler</p>
 </dd></dl>
 
@@ -2917,7 +2917,7 @@ irqreturn_t <code class="sig-name descname">amdgpu_irq_handler</code><span class
 <p>result of handling the IRQ, as defined by <code class="xref c c-type docutils literal notranslate"><span class="pre">irqreturn_t</span></code></p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_handle_ih1">
-void <code class="sig-name descname">amdgpu_irq_handle_ih1</code><span class="sig-paren">(</span><em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_handle_ih1" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_handle_ih1</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_handle_ih1" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>kick of processing for IH1</p>
 </dd></dl>
 
@@ -2930,7 +2930,7 @@ void <code class="sig-name descname">amdgpu_irq_handle_ih1</code><span class="si
 <p>Kick of processing IH ring 1.</p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_handle_ih2">
-void <code class="sig-name descname">amdgpu_irq_handle_ih2</code><span class="sig-paren">(</span><em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_handle_ih2" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_handle_ih2</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_handle_ih2" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>kick of processing for IH2</p>
 </dd></dl>
 
@@ -2943,7 +2943,7 @@ void <code class="sig-name descname">amdgpu_irq_handle_ih2</code><span class="si
 <p>Kick of processing IH ring 2.</p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_handle_ih_soft">
-void <code class="sig-name descname">amdgpu_irq_handle_ih_soft</code><span class="sig-paren">(</span><em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_handle_ih_soft" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_handle_ih_soft</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_handle_ih_soft" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>kick of processing for ih_soft</p>
 </dd></dl>
 
@@ -2956,7 +2956,7 @@ void <code class="sig-name descname">amdgpu_irq_handle_ih_soft</code><span class
 <p>Kick of processing IH soft ring.</p>
 <dl class="c function">
 <dt id="c.amdgpu_msi_ok">
-bool <code class="sig-name descname">amdgpu_msi_ok</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_msi_ok" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">amdgpu_msi_ok</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_msi_ok" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check whether MSI functionality is enabled</p>
 </dd></dl>
 
@@ -2972,7 +2972,7 @@ bool <code class="sig-name descname">amdgpu_msi_ok</code><span class="sig-paren"
 <p><em>true</em> if MSIs are allowed to be enabled or <em>false</em> otherwise</p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_init">
-int <code class="sig-name descname">amdgpu_irq_init</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>initialize interrupt handling</p>
 </dd></dl>
 
@@ -2988,7 +2988,7 @@ functionality, initializes vblank, hotplug and reset interrupt handling.</p>
 <p>0 on success or error code on failure</p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_fini">
-void <code class="sig-name descname">amdgpu_irq_fini</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_fini" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_fini</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_fini" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>shut down interrupt handling</p>
 </dd></dl>
 
@@ -3003,7 +3003,7 @@ functionality, shuts down vblank, hotplug and reset interrupt handling,
 turns off interrupts from all sources (all ASICs).</p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_add_id">
-int <code class="sig-name descname">amdgpu_irq_add_id</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, unsigned <em>client_id</em>, unsigned <em>src_id</em>, <em class="property">struct</em> amdgpu_irq_src *<em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_add_id" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_add_id</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <span class="pre">unsigned</span> <em><span class="pre">client_id</span></em>, <span class="pre">unsigned</span> <em><span class="pre">src_id</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_irq_src</span> <span class="pre">*</span><em><span class="pre">source</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_add_id" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register IRQ source</p>
 </dd></dl>
 
@@ -3024,7 +3024,7 @@ int <code class="sig-name descname">amdgpu_irq_add_id</code><span class="sig-par
 <p>0 on success or error code otherwise</p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_dispatch">
-void <code class="sig-name descname">amdgpu_irq_dispatch</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_ih_ring *<em>ih</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_dispatch" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_dispatch</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_ih_ring</span> <span class="pre">*</span><em><span class="pre">ih</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_dispatch" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>dispatch IRQ to IP blocks</p>
 </dd></dl>
 
@@ -3039,7 +3039,7 @@ void <code class="sig-name descname">amdgpu_irq_dispatch</code><span class="sig-
 <p>Dispatches IRQ to IP blocks.</p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_delegate">
-void <code class="sig-name descname">amdgpu_irq_delegate</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_iv_entry *<em>entry</em>, unsigned int <em>num_dw</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_delegate" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_delegate</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_iv_entry</span> <span class="pre">*</span><em><span class="pre">entry</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">num_dw</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_delegate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>delegate IV to soft IH ring</p>
 </dd></dl>
 
@@ -3057,7 +3057,7 @@ void <code class="sig-name descname">amdgpu_irq_delegate</code><span class="sig-
 if the hardware delegation to IH1 or IH2 doesn’t work for some reason.</p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_update">
-int <code class="sig-name descname">amdgpu_irq_update</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_irq_src *<em>src</em>, unsigned <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_update" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_update</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_irq_src</span> <span class="pre">*</span><em><span class="pre">src</span></em>, <span class="pre">unsigned</span> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_update" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update hardware interrupt state</p>
 </dd></dl>
 
@@ -3074,7 +3074,7 @@ int <code class="sig-name descname">amdgpu_irq_update</code><span class="sig-par
 <p>Updates interrupt state for the specific source (all ASICs).</p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_gpu_reset_resume_helper">
-void <code class="sig-name descname">amdgpu_irq_gpu_reset_resume_helper</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_gpu_reset_resume_helper" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_gpu_reset_resume_helper</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_gpu_reset_resume_helper" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update interrupt states on all sources</p>
 </dd></dl>
 
@@ -3088,7 +3088,7 @@ void <code class="sig-name descname">amdgpu_irq_gpu_reset_resume_helper</code><s
 reset.</p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_get">
-int <code class="sig-name descname">amdgpu_irq_get</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_irq_src *<em>src</em>, unsigned <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_get" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_irq_src</span> <span class="pre">*</span><em><span class="pre">src</span></em>, <span class="pre">unsigned</span> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>enable interrupt</p>
 </dd></dl>
 
@@ -3107,7 +3107,7 @@ int <code class="sig-name descname">amdgpu_irq_get</code><span class="sig-paren"
 <p>0 on success or error code otherwise</p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_put">
-int <code class="sig-name descname">amdgpu_irq_put</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_irq_src *<em>src</em>, unsigned <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_put" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_put</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_irq_src</span> <span class="pre">*</span><em><span class="pre">src</span></em>, <span class="pre">unsigned</span> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_put" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>disable interrupt</p>
 </dd></dl>
 
@@ -3126,7 +3126,7 @@ int <code class="sig-name descname">amdgpu_irq_put</code><span class="sig-paren"
 <p>0 on success or error code otherwise</p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_enabled">
-bool <code class="sig-name descname">amdgpu_irq_enabled</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_irq_src *<em>src</em>, unsigned <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_enabled" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_enabled</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_irq_src</span> <span class="pre">*</span><em><span class="pre">src</span></em>, <span class="pre">unsigned</span> <em><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_enabled" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check whether interrupt is enabled or not</p>
 </dd></dl>
 
@@ -3146,7 +3146,7 @@ bool <code class="sig-name descname">amdgpu_irq_enabled</code><span class="sig-p
 invalid parameters</p>
 <dl class="c function">
 <dt id="c.amdgpu_irqdomain_map">
-int <code class="sig-name descname">amdgpu_irqdomain_map</code><span class="sig-paren">(</span><em class="property">struct</em> irq_domain *<em>d</em>, unsigned int <em>irq</em>, irq_hw_number_t <em>hwirq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irqdomain_map" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_irqdomain_map</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">irq_domain</span> <span class="pre">*</span><em><span class="pre">d</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">irq</span></em>, <span class="pre">irq_hw_number_t</span> <em><span class="pre">hwirq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irqdomain_map" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create mapping between virtual and hardware IRQ numbers</p>
 </dd></dl>
 
@@ -3166,7 +3166,7 @@ IRQ.</p>
 <p>0 on success or error code otherwise</p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_add_domain">
-int <code class="sig-name descname">amdgpu_irq_add_domain</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_add_domain" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_add_domain</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_add_domain" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create a linear IRQ domain</p>
 </dd></dl>
 
@@ -3182,7 +3182,7 @@ that may be driven by another driver (e.g., ACP).</p>
 <p>0 on success or error code otherwise</p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_remove_domain">
-void <code class="sig-name descname">amdgpu_irq_remove_domain</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_remove_domain" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_remove_domain</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_remove_domain" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove the IRQ domain</p>
 </dd></dl>
 
@@ -3196,7 +3196,7 @@ void <code class="sig-name descname">amdgpu_irq_remove_domain</code><span class=
 that may be driven by another driver (e.g., ACP).</p>
 <dl class="c function">
 <dt id="c.amdgpu_irq_create_mapping">
-unsigned <code class="sig-name descname">amdgpu_irq_create_mapping</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, unsigned <em>src_id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_create_mapping" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <code class="sig-name descname"><span class="pre">amdgpu_irq_create_mapping</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <span class="pre">unsigned</span> <em><span class="pre">src_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_irq_create_mapping" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create mapping between domain Linux IRQs</p>
 </dd></dl>
 
@@ -3227,7 +3227,7 @@ such as: init, fini, suspend, resume, etc.</p>
 &lt;functionality&gt;_v&lt;version&gt; (E.g.: gfx_v6_0).</p>
 <dl class="c enum">
 <dt id="c.amd_ip_block_type">
-<em class="property">enum </em><code class="sig-name descname">amd_ip_block_type</code><a class="headerlink" href="#c.amd_ip_block_type" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">amd_ip_block_type</span></code><a class="headerlink" href="#c.amd_ip_block_type" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Used to classify IP blocks by functionality.</p>
 </dd></dl>
 
@@ -3264,7 +3264,7 @@ such as: init, fini, suspend, resume, etc.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.amd_ip_funcs">
-<em class="property">struct </em><code class="sig-name descname">amd_ip_funcs</code><a class="headerlink" href="#c.amd_ip_funcs" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">amd_ip_funcs</span></code><a class="headerlink" href="#c.amd_ip_funcs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>general hooks for managing amdgpu IP Blocks</p>
 </dd></dl>
 

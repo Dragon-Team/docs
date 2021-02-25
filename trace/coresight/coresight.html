@@ -433,12 +433,12 @@ manage coresight devices on a platform.  Any coresight compliant device can
 register with the framework for as long as they use the right APIs:</p>
 <dl class="c function">
 <dt id="c.coresight_register">
-<em class="property">struct</em> coresight_device *<code class="sig-name descname">coresight_register</code><span class="sig-paren">(</span><em class="property">struct</em> coresight_desc *<em>desc</em><span class="sig-paren">)</span>;<a class="headerlink" href="#c.coresight_register" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">coresight_device</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">coresight_register</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">coresight_desc</span> <span class="pre">*</span><em><span class="pre">desc</span></em><span class="sig-paren">)</span><span class="pre">;</span><a class="headerlink" href="#c.coresight_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
 <dt id="c.coresight_unregister">
-void <code class="sig-name descname">coresight_unregister</code><span class="sig-paren">(</span><em class="property">struct</em> coresight_device *<em>csdev</em><span class="sig-paren">)</span>;<a class="headerlink" href="#c.coresight_unregister" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">coresight_unregister</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">coresight_device</span> <span class="pre">*</span><em><span class="pre">csdev</span></em><span class="sig-paren">)</span><span class="pre">;</span><a class="headerlink" href="#c.coresight_unregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p>The registering function is taking a <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">coresight_desc</span> <span class="pre">*desc</span></code> and

@@ -286,7 +286,7 @@ for the 2.6.13 release; it has been modified considerably since then.</p>
 begins with the creation of a pool using one of:</p>
 <dl class="c function">
 <dt id="c.gen_pool_create">
-<em class="property">struct</em> gen_pool *<code class="sig-name descname">gen_pool_create</code><span class="sig-paren">(</span>int <em>min_alloc_order</em>, int <em>nid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_create" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">gen_pool_create</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">min_alloc_order</span></em>, <span class="pre">int</span> <em><span class="pre">nid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_create" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create a new special memory pool</p>
 </dd></dl>
 
@@ -302,7 +302,7 @@ begins with the creation of a pool using one of:</p>
 memory not managed by the regular kmalloc/kfree interface.</p>
 <dl class="c function">
 <dt id="c.devm_gen_pool_create">
-<em class="property">struct</em> gen_pool *<code class="sig-name descname">devm_gen_pool_create</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../driver-api/infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, int <em>min_alloc_order</em>, int <em>nid</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_gen_pool_create" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">devm_gen_pool_create</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">int</span> <em><span class="pre">min_alloc_order</span></em>, <span class="pre">int</span> <em><span class="pre">nid</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_gen_pool_create" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>managed gen_pool_create</p>
 </dd></dl>
 
@@ -335,7 +335,7 @@ pool when the given device is destroyed.</p>
 <p>A pool is shut down with:</p>
 <dl class="c function">
 <dt id="c.gen_pool_destroy">
-void <code class="sig-name descname">gen_pool_destroy</code><span class="sig-paren">(</span><em class="property">struct</em> gen_pool *<em>pool</em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_destroy" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">gen_pool_destroy</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_destroy" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>destroy a special memory pool</p>
 </dd></dl>
 
@@ -355,7 +355,7 @@ that state, so one of the first orders of business is usually to add memory
 to the pool.  That can be done with one of:</p>
 <dl class="c function">
 <dt id="c.gen_pool_add">
-int <code class="sig-name descname">gen_pool_add</code><span class="sig-paren">(</span><em class="property">struct</em> gen_pool *<em>pool</em>, unsigned long <em>addr</em>, size_t <em>size</em>, int <em>nid</em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_add" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">gen_pool_add</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">addr</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">int</span> <em><span class="pre">nid</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_add" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add a new chunk of special memory to the pool</p>
 </dd></dl>
 
@@ -376,7 +376,7 @@ allocated on, or -1</p>
 <p>Returns 0 on success or a -ve errno on failure.</p>
 <dl class="c function">
 <dt id="c.gen_pool_add_owner">
-int <code class="sig-name descname">gen_pool_add_owner</code><span class="sig-paren">(</span><em class="property">struct</em> gen_pool *<em>pool</em>, unsigned long <em>virt</em>, phys_addr_t <em>phys</em>, size_t <em>size</em>, int <em>nid</em>, void *<em>owner</em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_add_owner" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">gen_pool_add_owner</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">virt</span></em>, <span class="pre">phys_addr_t</span> <em><span class="pre">phys</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">int</span> <em><span class="pre">nid</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">owner</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_add_owner" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add a new chunk of special memory to the pool</p>
 </dd></dl>
 
@@ -409,7 +409,7 @@ for DMA allocations.</p>
 are:</p>
 <dl class="c function">
 <dt id="c.gen_pool_alloc">
-unsigned long <code class="sig-name descname">gen_pool_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> gen_pool *<em>pool</em>, size_t <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">long</span> <code class="sig-name descname"><span class="pre">gen_pool_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate special memory from the pool</p>
 </dd></dl>
 
@@ -427,7 +427,7 @@ Can not be used in NMI handler on architectures without
 NMI-safe cmpxchg implementation.</p>
 <dl class="c function">
 <dt id="c.gen_pool_dma_alloc">
-void *<code class="sig-name descname">gen_pool_dma_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> gen_pool *<em>pool</em>, size_t <em>size</em>, dma_addr_t *<em>dma</em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_dma_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">gen_pool_dma_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">dma_addr_t</span> <span class="pre">*</span><em><span class="pre">dma</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_dma_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate special memory from the pool for DMA usage</p>
 </dd></dl>
 
@@ -449,7 +449,7 @@ NMI-safe cmpxchg implementation.</p>
 <p>virtual address of the allocated memory, or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> on failure</p>
 <dl class="c function">
 <dt id="c.gen_pool_free_owner">
-void <code class="sig-name descname">gen_pool_free_owner</code><span class="sig-paren">(</span><em class="property">struct</em> gen_pool *<em>pool</em>, unsigned long <em>addr</em>, size_t <em>size</em>, void **<em>owner</em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_free_owner" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">gen_pool_free_owner</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">addr</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">void</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">owner</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_free_owner" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>free allocated special memory back to the pool</p>
 </dd></dl>
 
@@ -482,7 +482,7 @@ return.  If that sort of control is needed, the following functions will be
 of interest:</p>
 <dl class="c function">
 <dt id="c.gen_pool_alloc_algo_owner">
-unsigned long <code class="sig-name descname">gen_pool_alloc_algo_owner</code><span class="sig-paren">(</span><em class="property">struct</em> gen_pool *<em>pool</em>, size_t <em>size</em>, genpool_algo_t <em>algo</em>, void *<em>data</em>, void **<em>owner</em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_alloc_algo_owner" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">long</span> <code class="sig-name descname"><span class="pre">gen_pool_alloc_algo_owner</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">genpool_algo_t</span> <em><span class="pre">algo</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">void</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">owner</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_alloc_algo_owner" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate special memory from the pool</p>
 </dd></dl>
 
@@ -506,7 +506,7 @@ Can not be used in NMI handler on architectures without
 NMI-safe cmpxchg implementation.</p>
 <dl class="c function">
 <dt id="c.gen_pool_set_algo">
-void <code class="sig-name descname">gen_pool_set_algo</code><span class="sig-paren">(</span><em class="property">struct</em> gen_pool *<em>pool</em>, genpool_algo_t <em>algo</em>, void *<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_set_algo" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">gen_pool_set_algo</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em>, <span class="pre">genpool_algo_t</span> <em><span class="pre">algo</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_set_algo" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set the allocation algorithm</p>
 </dd></dl>
 
@@ -548,7 +548,7 @@ above.  With luck, wider awareness of this module will help to prevent the
 writing of special-purpose memory allocators in the future.</p>
 <dl class="c function">
 <dt id="c.gen_pool_virt_to_phys">
-phys_addr_t <code class="sig-name descname">gen_pool_virt_to_phys</code><span class="sig-paren">(</span><em class="property">struct</em> gen_pool *<em>pool</em>, unsigned long <em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_virt_to_phys" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">phys_addr_t</span> <code class="sig-name descname"><span class="pre">gen_pool_virt_to_phys</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">addr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_virt_to_phys" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return the physical address of memory</p>
 </dd></dl>
 
@@ -563,7 +563,7 @@ phys_addr_t <code class="sig-name descname">gen_pool_virt_to_phys</code><span cl
 <p>Returns the physical address on success, or -1 on error.</p>
 <dl class="c function">
 <dt id="c.gen_pool_for_each_chunk">
-void <code class="sig-name descname">gen_pool_for_each_chunk</code><span class="sig-paren">(</span><em class="property">struct</em> gen_pool *<em>pool</em>, void (*<em>func</em>)<span class="sig-paren">(</span><em class="property">struct</em> gen_pool *pool, <em class="property">struct</em> gen_pool_chunk *chunk, void *data<span class="sig-paren">)</span>, void *<em>data</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_for_each_chunk" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">gen_pool_for_each_chunk</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em>, <span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">func</span></em><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><span class="pre">pool</span>, <em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool_chunk</span> <span class="pre">*</span><span class="pre">chunk</span>, <span class="pre">void</span> <span class="pre">*</span><span class="pre">data</span><span class="sig-paren">)</span>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_for_each_chunk" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>call func for every chunk of generic memory pool</p>
 </dd></dl>
 
@@ -581,7 +581,7 @@ void <code class="sig-name descname">gen_pool_for_each_chunk</code><span class="
 called with rcu_read_lock held.</p>
 <dl class="c function">
 <dt id="c.gen_pool_has_addr">
-bool <code class="sig-name descname">gen_pool_has_addr</code><span class="sig-paren">(</span><em class="property">struct</em> gen_pool *<em>pool</em>, unsigned long <em>start</em>, size_t <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_has_addr" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">gen_pool_has_addr</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">start</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_has_addr" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>checks if an address falls within the range of a pool</p>
 </dd></dl>
 
@@ -599,7 +599,7 @@ bool <code class="sig-name descname">gen_pool_has_addr</code><span class="sig-pa
 true if the entire range is contained in the pool and false otherwise.</p>
 <dl class="c function">
 <dt id="c.gen_pool_avail">
-size_t <code class="sig-name descname">gen_pool_avail</code><span class="sig-paren">(</span><em class="property">struct</em> gen_pool *<em>pool</em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_avail" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">gen_pool_avail</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_avail" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get available free space of the pool</p>
 </dd></dl>
 
@@ -612,7 +612,7 @@ size_t <code class="sig-name descname">gen_pool_avail</code><span class="sig-par
 <p>Return available free space of the specified pool.</p>
 <dl class="c function">
 <dt id="c.gen_pool_size">
-size_t <code class="sig-name descname">gen_pool_size</code><span class="sig-paren">(</span><em class="property">struct</em> gen_pool *<em>pool</em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_size" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">gen_pool_size</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_size" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get size in bytes of memory managed by the pool</p>
 </dd></dl>
 
@@ -625,7 +625,7 @@ size_t <code class="sig-name descname">gen_pool_size</code><span class="sig-pare
 <p>Return size in bytes of memory managed by the pool.</p>
 <dl class="c function">
 <dt id="c.gen_pool_get">
-<em class="property">struct</em> gen_pool *<code class="sig-name descname">gen_pool_get</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../driver-api/infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_get" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">gen_pool_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.gen_pool_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Obtain the gen_pool (if any) for a device</p>
 </dd></dl>
 
@@ -640,7 +640,7 @@ size_t <code class="sig-name descname">gen_pool_size</code><span class="sig-pare
 <p>Returns the gen_pool for the device if one is present, or NULL.</p>
 <dl class="c function">
 <dt id="c.of_gen_pool_get">
-<em class="property">struct</em> gen_pool *<code class="sig-name descname">of_gen_pool_get</code><span class="sig-paren">(</span><em class="property">struct</em> device_node *<em>np</em>, <em class="property">const</em> char *<em>propname</em>, int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#c.of_gen_pool_get" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">gen_pool</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">of_gen_pool_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">device_node</span> <span class="pre">*</span><em><span class="pre">np</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">propname</span></em>, <span class="pre">int</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.of_gen_pool_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find a pool by phandle property</p>
 </dd></dl>
 

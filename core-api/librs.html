@@ -423,7 +423,7 @@ which are used in the Reed-Solomon Library and are relevant for a
 developer.</p>
 <dl class="c struct">
 <dt id="c.rs_codec">
-<em class="property">struct </em><code class="sig-name descname">rs_codec</code><a class="headerlink" href="#c.rs_codec" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">rs_codec</span></code><a class="headerlink" href="#c.rs_codec" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>rs codec data</p>
 </dd></dl>
 
@@ -476,7 +476,7 @@ developer.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.rs_control">
-<em class="property">struct </em><code class="sig-name descname">rs_control</code><a class="headerlink" href="#c.rs_control" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">rs_control</span></code><a class="headerlink" href="#c.rs_control" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>rs control structure per instance</p>
 </dd></dl>
 
@@ -496,7 +496,7 @@ developer.</p>
 </dl>
 <dl class="c function">
 <dt id="c.init_rs">
-<em class="property">struct</em> <a class="reference internal" href="#c.rs_control" title="rs_control">rs_control</a> *<code class="sig-name descname">init_rs</code><span class="sig-paren">(</span>int <em>symsize</em>, int <em>gfpoly</em>, int <em>fcr</em>, int <em>prim</em>, int <em>nroots</em><span class="sig-paren">)</span><a class="headerlink" href="#c.init_rs" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.rs_control" title="rs_control"><span class="pre">rs_control</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">init_rs</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">symsize</span></em>, <span class="pre">int</span> <em><span class="pre">gfpoly</span></em>, <span class="pre">int</span> <em><span class="pre">fcr</span></em>, <span class="pre">int</span> <em><span class="pre">prim</span></em>, <span class="pre">int</span> <em><span class="pre">nroots</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.init_rs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create a RS control struct and initialize it</p>
 </dd></dl>
 
@@ -525,7 +525,7 @@ in index form</p>
 Reed-Solomon functions which are exported.</p>
 <dl class="c function">
 <dt id="c.free_rs">
-void <code class="sig-name descname">free_rs</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.rs_control" title="rs_control">rs_control</a> *<em>rs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.free_rs" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">free_rs</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.rs_control" title="rs_control"><span class="pre">rs_control</span></a> <span class="pre">*</span><em><span class="pre">rs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.free_rs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Free the rs control structure</p>
 </dd></dl>
 
@@ -540,7 +540,7 @@ caller</p>
 codec, free the codec as well.</p>
 <dl class="c function">
 <dt id="c.init_rs_gfp">
-<em class="property">struct</em> <a class="reference internal" href="#c.rs_control" title="rs_control">rs_control</a> *<code class="sig-name descname">init_rs_gfp</code><span class="sig-paren">(</span>int <em>symsize</em>, int <em>gfpoly</em>, int <em>fcr</em>, int <em>prim</em>, int <em>nroots</em>, gfp_t <em>gfp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.init_rs_gfp" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.rs_control" title="rs_control"><span class="pre">rs_control</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">init_rs_gfp</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">symsize</span></em>, <span class="pre">int</span> <em><span class="pre">gfpoly</span></em>, <span class="pre">int</span> <em><span class="pre">fcr</span></em>, <span class="pre">int</span> <em><span class="pre">prim</span></em>, <span class="pre">int</span> <em><span class="pre">nroots</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.init_rs_gfp" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create a RS control struct and initialize it</p>
 </dd></dl>
 
@@ -564,7 +564,7 @@ in index form</p>
 </dl>
 <dl class="c function">
 <dt id="c.init_rs_non_canonical">
-<em class="property">struct</em> <a class="reference internal" href="#c.rs_control" title="rs_control">rs_control</a> *<code class="sig-name descname">init_rs_non_canonical</code><span class="sig-paren">(</span>int <em>symsize</em>, int (*<em>gffunc</em>)<span class="sig-paren">(</span>int<span class="sig-paren">)</span>, int <em>fcr</em>, int <em>prim</em>, int <em>nroots</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.init_rs_non_canonical" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.rs_control" title="rs_control"><span class="pre">rs_control</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">init_rs_non_canonical</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">symsize</span></em>, <span class="pre">int</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">gffunc</span></em><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">int</span><span class="sig-paren">)</span>, <span class="pre">int</span> <em><span class="pre">fcr</span></em>, <span class="pre">int</span> <em><span class="pre">prim</span></em>, <span class="pre">int</span> <em><span class="pre">nroots</span></em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.init_rs_non_canonical" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate rs control struct for fields with non-canonical representation</p>
 </dd></dl>
 
@@ -586,7 +586,7 @@ in index form</p>
 </dl>
 <dl class="c function">
 <dt id="c.encode_rs8">
-int <code class="sig-name descname">encode_rs8</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.rs_control" title="rs_control">rs_control</a> *<em>rsc</em>, uint8_t *<em>data</em>, int <em>len</em>, uint16_t *<em>par</em>, uint16_t <em>invmsk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.encode_rs8" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">encode_rs8</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.rs_control" title="rs_control"><span class="pre">rs_control</span></a> <span class="pre">*</span><em><span class="pre">rsc</span></em>, <span class="pre">uint8_t</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">int</span> <em><span class="pre">len</span></em>, <span class="pre">uint16_t</span> <span class="pre">*</span><em><span class="pre">par</span></em>, <span class="pre">uint16_t</span> <em><span class="pre">invmsk</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.encode_rs8" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Calculate the parity for data values (8bit data width)</p>
 </dd></dl>
 
@@ -608,7 +608,7 @@ syndrome result for storage itself.</p>
 </dl>
 <dl class="c function">
 <dt id="c.decode_rs8">
-int <code class="sig-name descname">decode_rs8</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.rs_control" title="rs_control">rs_control</a> *<em>rsc</em>, uint8_t *<em>data</em>, uint16_t *<em>par</em>, int <em>len</em>, uint16_t *<em>s</em>, int <em>no_eras</em>, int *<em>eras_pos</em>, uint16_t <em>invmsk</em>, uint16_t *<em>corr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.decode_rs8" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">decode_rs8</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.rs_control" title="rs_control"><span class="pre">rs_control</span></a> <span class="pre">*</span><em><span class="pre">rsc</span></em>, <span class="pre">uint8_t</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">uint16_t</span> <span class="pre">*</span><em><span class="pre">par</span></em>, <span class="pre">int</span> <em><span class="pre">len</span></em>, <span class="pre">uint16_t</span> <span class="pre">*</span><em><span class="pre">s</span></em>, <span class="pre">int</span> <em><span class="pre">no_eras</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">eras_pos</span></em>, <span class="pre">uint16_t</span> <em><span class="pre">invmsk</span></em>, <span class="pre">uint16_t</span> <span class="pre">*</span><em><span class="pre">corr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.decode_rs8" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Decode codeword (8bit data width)</p>
 </dd></dl>
 
@@ -647,7 +647,7 @@ errors. The count includes errors in the parity.</p>
 </dl>
 <dl class="c function">
 <dt id="c.encode_rs16">
-int <code class="sig-name descname">encode_rs16</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.rs_control" title="rs_control">rs_control</a> *<em>rsc</em>, uint16_t *<em>data</em>, int <em>len</em>, uint16_t *<em>par</em>, uint16_t <em>invmsk</em><span class="sig-paren">)</span><a class="headerlink" href="#c.encode_rs16" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">encode_rs16</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.rs_control" title="rs_control"><span class="pre">rs_control</span></a> <span class="pre">*</span><em><span class="pre">rsc</span></em>, <span class="pre">uint16_t</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">int</span> <em><span class="pre">len</span></em>, <span class="pre">uint16_t</span> <span class="pre">*</span><em><span class="pre">par</span></em>, <span class="pre">uint16_t</span> <em><span class="pre">invmsk</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.encode_rs16" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Calculate the parity for data values (16bit data width)</p>
 </dd></dl>
 
@@ -667,7 +667,7 @@ int <code class="sig-name descname">encode_rs16</code><span class="sig-paren">(<
 </dl>
 <dl class="c function">
 <dt id="c.decode_rs16">
-int <code class="sig-name descname">decode_rs16</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.rs_control" title="rs_control">rs_control</a> *<em>rsc</em>, uint16_t *<em>data</em>, uint16_t *<em>par</em>, int <em>len</em>, uint16_t *<em>s</em>, int <em>no_eras</em>, int *<em>eras_pos</em>, uint16_t <em>invmsk</em>, uint16_t *<em>corr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.decode_rs16" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">decode_rs16</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.rs_control" title="rs_control"><span class="pre">rs_control</span></a> <span class="pre">*</span><em><span class="pre">rsc</span></em>, <span class="pre">uint16_t</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">uint16_t</span> <span class="pre">*</span><em><span class="pre">par</span></em>, <span class="pre">int</span> <em><span class="pre">len</span></em>, <span class="pre">uint16_t</span> <span class="pre">*</span><em><span class="pre">s</span></em>, <span class="pre">int</span> <em><span class="pre">no_eras</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">eras_pos</span></em>, <span class="pre">uint16_t</span> <em><span class="pre">invmsk</span></em>, <span class="pre">uint16_t</span> <span class="pre">*</span><em><span class="pre">corr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.decode_rs16" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Decode codeword (16bit data width)</p>
 </dd></dl>
 

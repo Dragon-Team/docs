@@ -357,7 +357,7 @@
 <h1>I3C device driver API<a class="headerlink" href="#i3c-device-driver-api" title="Permalink to this headline">¶</a></h1>
 <dl class="c enum">
 <dt id="c.i3c_error_code">
-<em class="property">enum </em><code class="sig-name descname">i3c_error_code</code><a class="headerlink" href="#c.i3c_error_code" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">i3c_error_code</span></code><a class="headerlink" href="#c.i3c_error_code" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>I3C error codes</p>
 </dd></dl>
 
@@ -381,7 +381,7 @@ i3c_device_send_hdr_cmds() one can check the error code in
 what went wrong.</p>
 <dl class="c enum">
 <dt id="c.i3c_hdr_mode">
-<em class="property">enum </em><code class="sig-name descname">i3c_hdr_mode</code><a class="headerlink" href="#c.i3c_hdr_mode" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">i3c_hdr_mode</span></code><a class="headerlink" href="#c.i3c_hdr_mode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>HDR mode ids</p>
 </dd></dl>
 
@@ -396,7 +396,7 @@ what went wrong.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.i3c_priv_xfer">
-<em class="property">struct </em><code class="sig-name descname">i3c_priv_xfer</code><a class="headerlink" href="#c.i3c_priv_xfer" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">i3c_priv_xfer</span></code><a class="headerlink" href="#c.i3c_priv_xfer" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>I3C SDR private transfer</p>
 </dd></dl>
 
@@ -429,7 +429,7 @@ what went wrong.</p>
 </dl>
 <dl class="c enum">
 <dt id="c.i3c_dcr">
-<em class="property">enum </em><code class="sig-name descname">i3c_dcr</code><a class="headerlink" href="#c.i3c_dcr" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">i3c_dcr</span></code><a class="headerlink" href="#c.i3c_dcr" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>I3C DCR values</p>
 </dd></dl>
 
@@ -440,7 +440,7 @@ what went wrong.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.i3c_device_info">
-<em class="property">struct </em><code class="sig-name descname">i3c_device_info</code><a class="headerlink" href="#c.i3c_device_info" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">i3c_device_info</span></code><a class="headerlink" href="#c.i3c_device_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>I3C device information</p>
 </dd></dl>
 
@@ -497,7 +497,7 @@ For each I3C slave attached to a master with
 to retrieve these data.</p>
 <dl class="c struct">
 <dt id="c.i3c_driver">
-<em class="property">struct </em><code class="sig-name descname">i3c_driver</code><a class="headerlink" href="#c.i3c_driver" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">i3c_driver</span></code><a class="headerlink" href="#c.i3c_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>I3C device driver</p>
 </dd></dl>
 
@@ -524,7 +524,7 @@ which device to bind to this driver</p>
 </dl>
 <dl class="c macro">
 <dt id="c.module_i3c_driver">
-<code class="sig-name descname">module_i3c_driver</code><a class="headerlink" href="#c.module_i3c_driver" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">module_i3c_driver</span></code><a class="headerlink" href="#c.module_i3c_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">module_i3c_driver</span> <span class="pre">(__drv)</span></code></p>
@@ -542,7 +542,7 @@ driver.
 Should be used by any driver that does not require extra init/cleanup steps.</p>
 <dl class="c function">
 <dt id="c.i3c_i2c_driver_register">
-int <code class="sig-name descname">i3c_i2c_driver_register</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.i3c_driver" title="i3c_driver">i3c_driver</a> *<em>i3cdrv</em>, <em class="property">struct</em> <a class="reference internal" href="../i2c.html#c.i2c_driver" title="i2c_driver">i2c_driver</a> *<em>i2cdrv</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_i2c_driver_register" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">i3c_i2c_driver_register</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.i3c_driver" title="i3c_driver"><span class="pre">i3c_driver</span></a> <span class="pre">*</span><em><span class="pre">i3cdrv</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../i2c.html#c.i2c_driver" title="i2c_driver"><span class="pre">i2c_driver</span></a> <span class="pre">*</span><em><span class="pre">i2cdrv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_i2c_driver_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Register an i2c and an i3c driver</p>
 </dd></dl>
 
@@ -563,7 +563,7 @@ I2C driver.</p>
 <p>0 if both registrations succeeds, a negative error code otherwise.</p>
 <dl class="c function">
 <dt id="c.i3c_i2c_driver_unregister">
-void <code class="sig-name descname">i3c_i2c_driver_unregister</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.i3c_driver" title="i3c_driver">i3c_driver</a> *<em>i3cdrv</em>, <em class="property">struct</em> <a class="reference internal" href="../i2c.html#c.i2c_driver" title="i2c_driver">i2c_driver</a> *<em>i2cdrv</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_i2c_driver_unregister" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">i3c_i2c_driver_unregister</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.i3c_driver" title="i3c_driver"><span class="pre">i3c_driver</span></a> <span class="pre">*</span><em><span class="pre">i3cdrv</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../i2c.html#c.i2c_driver" title="i2c_driver"><span class="pre">i2c_driver</span></a> <span class="pre">*</span><em><span class="pre">i2cdrv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_i2c_driver_unregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Unregister an i2c and an i3c driver</p>
 </dd></dl>
 
@@ -580,7 +580,7 @@ Note that when CONFIG_I3C is not enabled, this function only unregisters the
 <strong>i2cdrv</strong>.</p>
 <dl class="c macro">
 <dt id="c.module_i3c_i2c_driver">
-<code class="sig-name descname">module_i3c_i2c_driver</code><a class="headerlink" href="#c.module_i3c_i2c_driver" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">module_i3c_i2c_driver</span></code><a class="headerlink" href="#c.module_i3c_i2c_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">module_i3c_i2c_driver</span> <span class="pre">(__i3cdrv,</span> <span class="pre">__i2cdrv)</span></code></p>
@@ -602,7 +602,7 @@ the I2C driver will be registered.
 Should be used by any driver that does not require extra init/cleanup steps.</p>
 <dl class="c struct">
 <dt id="c.i3c_ibi_setup">
-<em class="property">struct </em><code class="sig-name descname">i3c_ibi_setup</code><a class="headerlink" href="#c.i3c_ibi_setup" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">i3c_ibi_setup</span></code><a class="headerlink" href="#c.i3c_ibi_setup" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>IBI setup object</p>
 </dd></dl>
 
@@ -638,7 +638,7 @@ copies every bit of information and do not use it after
 <a class="reference internal" href="#c.i3c_device_request_ibi" title="i3c_device_request_ibi"><code class="xref c c-func docutils literal notranslate"><span class="pre">i3c_device_request_ibi()</span></code></a> has returned.</p>
 <dl class="c function">
 <dt id="c.i3c_device_do_priv_xfers">
-int <code class="sig-name descname">i3c_device_do_priv_xfers</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device">i3c_device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.i3c_priv_xfer" title="i3c_priv_xfer">i3c_priv_xfer</a> *<em>xfers</em>, int <em>nxfers</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_device_do_priv_xfers" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">i3c_device_do_priv_xfers</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device"><span class="pre">i3c_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.i3c_priv_xfer" title="i3c_priv_xfer"><span class="pre">i3c_priv_xfer</span></a> <span class="pre">*</span><em><span class="pre">xfers</span></em>, <span class="pre">int</span> <em><span class="pre">nxfers</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_device_do_priv_xfers" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>do I3C SDR private transfers directed to a specific device</p>
 </dd></dl>
 
@@ -658,7 +658,7 @@ int <code class="sig-name descname">i3c_device_do_priv_xfers</code><span class="
 <p>0 in case of success, a negative error core otherwise.</p>
 <dl class="c function">
 <dt id="c.i3c_device_get_info">
-void <code class="sig-name descname">i3c_device_get_info</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device">i3c_device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.i3c_device_info" title="i3c_device_info">i3c_device_info</a> *<em>info</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_device_get_info" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">i3c_device_get_info</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device"><span class="pre">i3c_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.i3c_device_info" title="i3c_device_info"><span class="pre">i3c_device_info</span></a> <span class="pre">*</span><em><span class="pre">info</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_device_get_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get I3C device information</p>
 </dd></dl>
 
@@ -673,7 +673,7 @@ void <code class="sig-name descname">i3c_device_get_info</code><span class="sig-
 <p>Retrieve I3C dev info.</p>
 <dl class="c function">
 <dt id="c.i3c_device_disable_ibi">
-int <code class="sig-name descname">i3c_device_disable_ibi</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device">i3c_device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_device_disable_ibi" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">i3c_device_disable_ibi</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device"><span class="pre">i3c_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_device_disable_ibi" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Disable IBIs coming from a specific device</p>
 </dd></dl>
 
@@ -689,7 +689,7 @@ all pending IBIs to be processed.</p>
 <p>0 in case of success, a negative error core otherwise.</p>
 <dl class="c function">
 <dt id="c.i3c_device_enable_ibi">
-int <code class="sig-name descname">i3c_device_enable_ibi</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device">i3c_device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_device_enable_ibi" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">i3c_device_enable_ibi</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device"><span class="pre">i3c_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_device_enable_ibi" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Enable IBIs coming from a specific device</p>
 </dd></dl>
 
@@ -708,7 +708,7 @@ returns to its caller.</p>
 <p>0 in case of success, a negative error core otherwise.</p>
 <dl class="c function">
 <dt id="c.i3c_device_request_ibi">
-int <code class="sig-name descname">i3c_device_request_ibi</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device">i3c_device</a> *<em>dev</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.i3c_ibi_setup" title="i3c_ibi_setup">i3c_ibi_setup</a> *<em>req</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_device_request_ibi" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">i3c_device_request_ibi</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device"><span class="pre">i3c_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.i3c_ibi_setup" title="i3c_ibi_setup"><span class="pre">i3c_ibi_setup</span></a> <span class="pre">*</span><em><span class="pre">req</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_device_request_ibi" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Request an IBI</p>
 </dd></dl>
 
@@ -727,7 +727,7 @@ enabled until <a class="reference internal" href="#c.i3c_device_enable_ibi" titl
 <p>0 in case of success, a negative error core otherwise.</p>
 <dl class="c function">
 <dt id="c.i3c_device_free_ibi">
-void <code class="sig-name descname">i3c_device_free_ibi</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device">i3c_device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_device_free_ibi" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">i3c_device_free_ibi</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device"><span class="pre">i3c_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_device_free_ibi" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Free all resources needed for IBI handling</p>
 </dd></dl>
 
@@ -742,7 +742,7 @@ allocated by <a class="reference internal" href="#c.i3c_device_request_ibi" titl
 IBIs with <a class="reference internal" href="#c.i3c_device_disable_ibi" title="i3c_device_disable_ibi"><code class="xref c c-func docutils literal notranslate"><span class="pre">i3c_device_disable_ibi()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.i3cdev_to_dev">
-<em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<code class="sig-name descname">i3cdev_to_dev</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device">i3c_device</a> *<em>i3cdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3cdev_to_dev" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">i3cdev_to_dev</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device"><span class="pre">i3c_device</span></a> <span class="pre">*</span><em><span class="pre">i3cdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3cdev_to_dev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns the device embedded in <strong>i3cdev</strong></p>
 </dd></dl>
 
@@ -755,7 +755,7 @@ IBIs with <a class="reference internal" href="#c.i3c_device_disable_ibi" title="
 <p>a pointer to a device object.</p>
 <dl class="c function">
 <dt id="c.dev_to_i3cdev">
-<em class="property">struct</em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device">i3c_device</a> *<code class="sig-name descname">dev_to_i3cdev</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_to_i3cdev" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device"><span class="pre">i3c_device</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">dev_to_i3cdev</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dev_to_i3cdev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns the I3C device containing <strong>dev</strong></p>
 </dd></dl>
 
@@ -768,7 +768,7 @@ IBIs with <a class="reference internal" href="#c.i3c_device_disable_ibi" title="
 <p>a pointer to an I3C device object.</p>
 <dl class="c function">
 <dt id="c.i3c_device_match_id">
-<em class="property">const</em> <em class="property">struct</em> i3c_device_id *<code class="sig-name descname">i3c_device_match_id</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device">i3c_device</a> *<em>i3cdev</em>, <em class="property">const</em> <em class="property">struct</em> i3c_device_id *<em>id_table</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_device_match_id" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">i3c_device_id</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">i3c_device_match_id</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="master-driver-api.html#c.i3c_device" title="i3c_device"><span class="pre">i3c_device</span></a> <span class="pre">*</span><em><span class="pre">i3cdev</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">i3c_device_id</span> <span class="pre">*</span><em><span class="pre">id_table</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_device_match_id" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns the i3c_device_id entry matching <strong>i3cdev</strong></p>
 </dd></dl>
 
@@ -783,7 +783,7 @@ IBIs with <a class="reference internal" href="#c.i3c_device_disable_ibi" title="
 <p>a pointer to an i3c_device_id object or NULL if there’s no match.</p>
 <dl class="c function">
 <dt id="c.i3c_driver_register_with_owner">
-int <code class="sig-name descname">i3c_driver_register_with_owner</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.i3c_driver" title="i3c_driver">i3c_driver</a> *<em>drv</em>, <em class="property">struct</em> module *<em>owner</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_driver_register_with_owner" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">i3c_driver_register_with_owner</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.i3c_driver" title="i3c_driver"><span class="pre">i3c_driver</span></a> <span class="pre">*</span><em><span class="pre">drv</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">module</span> <span class="pre">*</span><em><span class="pre">owner</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_driver_register_with_owner" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register an I3C device driver</p>
 </dd></dl>
 
@@ -800,7 +800,7 @@ int <code class="sig-name descname">i3c_driver_register_with_owner</code><span c
 <p>0 in case of success, a negative error core otherwise.</p>
 <dl class="c function">
 <dt id="c.i3c_driver_unregister">
-void <code class="sig-name descname">i3c_driver_unregister</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.i3c_driver" title="i3c_driver">i3c_driver</a> *<em>drv</em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_driver_unregister" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">i3c_driver_unregister</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.i3c_driver" title="i3c_driver"><span class="pre">i3c_driver</span></a> <span class="pre">*</span><em><span class="pre">drv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.i3c_driver_unregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unregister an I3C device driver</p>
 </dd></dl>
 

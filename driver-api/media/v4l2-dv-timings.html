@@ -392,7 +392,7 @@
 <h1><span class="section-number">1.16. </span>V4L2 DV Timings functions<a class="headerlink" href="#v4l2-dv-timings-functions" title="Permalink to this headline">¶</a></h1>
 <dl class="c function">
 <dt id="c.v4l2_calc_timeperframe">
-<em class="property">struct</em> v4l2_fract <code class="sig-name descname">v4l2_calc_timeperframe</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> v4l2_dv_timings *<em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_calc_timeperframe" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_fract</span> <code class="sig-name descname"><span class="pre">v4l2_calc_timeperframe</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_dv_timings</span> <span class="pre">*</span><em><span class="pre">t</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_calc_timeperframe" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>helper function to calculate timeperframe based v4l2_dv_timings fields.</p>
 </dd></dl>
 
@@ -407,7 +407,7 @@ horizontal/vertical measures. This means that v4l2_dv_timings structure
 must be correctly and fully filled.</p>
 <dl class="c macro">
 <dt id="c.v4l2_check_dv_timings_fnc">
-<code class="sig-name descname">v4l2_check_dv_timings_fnc</code><a class="headerlink" href="#c.v4l2_check_dv_timings_fnc" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">v4l2_check_dv_timings_fnc</span></code><a class="headerlink" href="#c.v4l2_check_dv_timings_fnc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><strong>Typedef</strong>: timings check callback</p>
 </dd></dl>
 
@@ -426,7 +426,7 @@ must be correctly and fully filled.</p>
 <p>Returns true if the given timings are valid.</p>
 <dl class="c function">
 <dt id="c.v4l2_valid_dv_timings">
-bool <code class="sig-name descname">v4l2_valid_dv_timings</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> v4l2_dv_timings *<em>t</em>, <em class="property">const</em> <em class="property">struct</em> v4l2_dv_timings_cap *<em>cap</em>, <a class="reference internal" href="#c.v4l2_check_dv_timings_fnc" title="v4l2_check_dv_timings_fnc">v4l2_check_dv_timings_fnc</a> <em>fnc</em>, void *<em>fnc_handle</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_valid_dv_timings" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">v4l2_valid_dv_timings</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_dv_timings</span> <span class="pre">*</span><em><span class="pre">t</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_dv_timings_cap</span> <span class="pre">*</span><em><span class="pre">cap</span></em>, <a class="reference internal" href="#c.v4l2_check_dv_timings_fnc" title="v4l2_check_dv_timings_fnc"><span class="pre">v4l2_check_dv_timings_fnc</span></a> <em><span class="pre">fnc</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">fnc_handle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_valid_dv_timings" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>are these timings valid?</p>
 </dd></dl>
 
@@ -447,7 +447,7 @@ hardware capabilities and the callback function (if non-NULL), returns
 false otherwise.</p>
 <dl class="c function">
 <dt id="c.v4l2_enum_dv_timings_cap">
-int <code class="sig-name descname">v4l2_enum_dv_timings_cap</code><span class="sig-paren">(</span><em class="property">struct</em> v4l2_enum_dv_timings *<em>t</em>, <em class="property">const</em> <em class="property">struct</em> v4l2_dv_timings_cap *<em>cap</em>, <a class="reference internal" href="#c.v4l2_check_dv_timings_fnc" title="v4l2_check_dv_timings_fnc">v4l2_check_dv_timings_fnc</a> <em>fnc</em>, void *<em>fnc_handle</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_enum_dv_timings_cap" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">v4l2_enum_dv_timings_cap</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_enum_dv_timings</span> <span class="pre">*</span><em><span class="pre">t</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_dv_timings_cap</span> <span class="pre">*</span><em><span class="pre">cap</span></em>, <a class="reference internal" href="#c.v4l2_check_dv_timings_fnc" title="v4l2_check_dv_timings_fnc"><span class="pre">v4l2_check_dv_timings_fnc</span></a> <em><span class="pre">fnc</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">fnc_handle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_enum_dv_timings_cap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Helper function to enumerate possible DV timings based on capabilities</p>
 </dd></dl>
 
@@ -470,7 +470,7 @@ hardware capabilities and the callback function (if non-NULL).</p>
 return 0, otherwise it returns -EINVAL.</p>
 <dl class="c function">
 <dt id="c.v4l2_find_dv_timings_cap">
-bool <code class="sig-name descname">v4l2_find_dv_timings_cap</code><span class="sig-paren">(</span><em class="property">struct</em> v4l2_dv_timings *<em>t</em>, <em class="property">const</em> <em class="property">struct</em> v4l2_dv_timings_cap *<em>cap</em>, unsigned <em>pclock_delta</em>, <a class="reference internal" href="#c.v4l2_check_dv_timings_fnc" title="v4l2_check_dv_timings_fnc">v4l2_check_dv_timings_fnc</a> <em>fnc</em>, void *<em>fnc_handle</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_find_dv_timings_cap" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">v4l2_find_dv_timings_cap</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_dv_timings</span> <span class="pre">*</span><em><span class="pre">t</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_dv_timings_cap</span> <span class="pre">*</span><em><span class="pre">cap</span></em>, <span class="pre">unsigned</span> <em><span class="pre">pclock_delta</span></em>, <a class="reference internal" href="#c.v4l2_check_dv_timings_fnc" title="v4l2_check_dv_timings_fnc"><span class="pre">v4l2_check_dv_timings_fnc</span></a> <em><span class="pre">fnc</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">fnc_handle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_find_dv_timings_cap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find the closest timings struct</p>
 </dd></dl>
 
@@ -497,7 +497,7 @@ function (if non-NULL).</p>
 On failure it will return false.</p>
 <dl class="c function">
 <dt id="c.v4l2_find_dv_timings_cea861_vic">
-bool <code class="sig-name descname">v4l2_find_dv_timings_cea861_vic</code><span class="sig-paren">(</span><em class="property">struct</em> v4l2_dv_timings *<em>t</em>, u8 <em>vic</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_find_dv_timings_cea861_vic" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">v4l2_find_dv_timings_cea861_vic</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_dv_timings</span> <span class="pre">*</span><em><span class="pre">t</span></em>, <span class="pre">u8</span> <em><span class="pre">vic</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_find_dv_timings_cea861_vic" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find timings based on CEA-861 VIC</p>
 </dd></dl>
 
@@ -513,7 +513,7 @@ bool <code class="sig-name descname">v4l2_find_dv_timings_cea861_vic</code><span
 On failure it will return false.</p>
 <dl class="c function">
 <dt id="c.v4l2_match_dv_timings">
-bool <code class="sig-name descname">v4l2_match_dv_timings</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> v4l2_dv_timings *<em>measured</em>, <em class="property">const</em> <em class="property">struct</em> v4l2_dv_timings *<em>standard</em>, unsigned <em>pclock_delta</em>, bool <em>match_reduced_fps</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_match_dv_timings" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">v4l2_match_dv_timings</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_dv_timings</span> <span class="pre">*</span><em><span class="pre">measured</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_dv_timings</span> <span class="pre">*</span><em><span class="pre">standard</span></em>, <span class="pre">unsigned</span> <em><span class="pre">pclock_delta</span></em>, <span class="pre">bool</span> <em><span class="pre">match_reduced_fps</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_match_dv_timings" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>do two timings match?</p>
 </dd></dl>
 
@@ -534,7 +534,7 @@ match.</p>
 <p>Returns true if the two timings match, returns false otherwise.</p>
 <dl class="c function">
 <dt id="c.v4l2_print_dv_timings">
-void <code class="sig-name descname">v4l2_print_dv_timings</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>dev_prefix</em>, <em class="property">const</em> char *<em>prefix</em>, <em class="property">const</em> <em class="property">struct</em> v4l2_dv_timings *<em>t</em>, bool <em>detailed</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_print_dv_timings" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">v4l2_print_dv_timings</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">dev_prefix</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">prefix</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_dv_timings</span> <span class="pre">*</span><em><span class="pre">t</span></em>, <span class="pre">bool</span> <em><span class="pre">detailed</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_print_dv_timings" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>log the contents of a dv_timings struct</p>
 </dd></dl>
 
@@ -551,7 +551,7 @@ void <code class="sig-name descname">v4l2_print_dv_timings</code><span class="si
 </dl>
 <dl class="c function">
 <dt id="c.v4l2_detect_cvt">
-bool <code class="sig-name descname">v4l2_detect_cvt</code><span class="sig-paren">(</span>unsigned <em>frame_height</em>, unsigned <em>hfreq</em>, unsigned <em>vsync</em>, unsigned <em>active_width</em>, u32 <em>polarities</em>, bool <em>interlaced</em>, <em class="property">struct</em> v4l2_dv_timings *<em>fmt</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_detect_cvt" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">v4l2_detect_cvt</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <em><span class="pre">frame_height</span></em>, <span class="pre">unsigned</span> <em><span class="pre">hfreq</span></em>, <span class="pre">unsigned</span> <em><span class="pre">vsync</span></em>, <span class="pre">unsigned</span> <em><span class="pre">active_width</span></em>, <span class="pre">u32</span> <em><span class="pre">polarities</span></em>, <span class="pre">bool</span> <em><span class="pre">interlaced</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_dv_timings</span> <span class="pre">*</span><em><span class="pre">fmt</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_detect_cvt" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>detect if the given timings follow the CVT standard</p>
 </dd></dl>
 
@@ -581,7 +581,7 @@ valid CVT format. If so, then it will return true, and fmt will be filled
 in with the found CVT timings.</p>
 <dl class="c function">
 <dt id="c.v4l2_detect_gtf">
-bool <code class="sig-name descname">v4l2_detect_gtf</code><span class="sig-paren">(</span>unsigned <em>frame_height</em>, unsigned <em>hfreq</em>, unsigned <em>vsync</em>, u32 <em>polarities</em>, bool <em>interlaced</em>, <em class="property">struct</em> v4l2_fract <em>aspect</em>, <em class="property">struct</em> v4l2_dv_timings *<em>fmt</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_detect_gtf" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">v4l2_detect_gtf</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <em><span class="pre">frame_height</span></em>, <span class="pre">unsigned</span> <em><span class="pre">hfreq</span></em>, <span class="pre">unsigned</span> <em><span class="pre">vsync</span></em>, <span class="pre">u32</span> <em><span class="pre">polarities</span></em>, <span class="pre">bool</span> <em><span class="pre">interlaced</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_fract</span> <em><span class="pre">aspect</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_dv_timings</span> <span class="pre">*</span><em><span class="pre">fmt</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_detect_gtf" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>detect if the given timings follow the GTF standard</p>
 </dd></dl>
 
@@ -613,7 +613,7 @@ valid GTF format. If so, then it will return true, and fmt will be filled
 in with the found GTF timings.</p>
 <dl class="c function">
 <dt id="c.v4l2_calc_aspect_ratio">
-<em class="property">struct</em> v4l2_fract <code class="sig-name descname">v4l2_calc_aspect_ratio</code><span class="sig-paren">(</span>u8 <em>hor_landscape</em>, u8 <em>vert_portrait</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_calc_aspect_ratio" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_fract</span> <code class="sig-name descname"><span class="pre">v4l2_calc_aspect_ratio</span></code><span class="sig-paren">(</span><span class="pre">u8</span> <em><span class="pre">hor_landscape</span></em>, <span class="pre">u8</span> <em><span class="pre">vert_portrait</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_calc_aspect_ratio" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>calculate the aspect ratio based on bytes 0x15 and 0x16 from the EDID.</p>
 </dd></dl>
 
@@ -630,7 +630,7 @@ See VESA Enhanced EDID standard, release A, rev 2, section 3.6.2:
 “Horizontal and Vertical Screen Size or Aspect Ratio”</p>
 <dl class="c function">
 <dt id="c.v4l2_dv_timings_aspect_ratio">
-<em class="property">struct</em> v4l2_fract <code class="sig-name descname">v4l2_dv_timings_aspect_ratio</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> v4l2_dv_timings *<em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_dv_timings_aspect_ratio" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_fract</span> <code class="sig-name descname"><span class="pre">v4l2_dv_timings_aspect_ratio</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_dv_timings</span> <span class="pre">*</span><em><span class="pre">t</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_dv_timings_aspect_ratio" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>calculate the aspect ratio based on the v4l2_dv_timings information.</p>
 </dd></dl>
 
@@ -641,7 +641,7 @@ See VESA Enhanced EDID standard, release A, rev 2, section 3.6.2:
 </dl>
 <dl class="c function">
 <dt id="c.can_reduce_fps">
-bool <code class="sig-name descname">can_reduce_fps</code><span class="sig-paren">(</span><em class="property">struct</em> v4l2_bt_timings *<em>bt</em><span class="sig-paren">)</span><a class="headerlink" href="#c.can_reduce_fps" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">can_reduce_fps</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">v4l2_bt_timings</span> <span class="pre">*</span><em><span class="pre">bt</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.can_reduce_fps" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check if conditions for reduced fps are true.</p>
 </dd></dl>
 
@@ -661,7 +661,7 @@ are met:</p>
 </div></blockquote>
 <dl class="c struct">
 <dt id="c.v4l2_hdmi_colorimetry">
-<em class="property">struct </em><code class="sig-name descname">v4l2_hdmi_colorimetry</code><a class="headerlink" href="#c.v4l2_hdmi_colorimetry" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">v4l2_hdmi_colorimetry</span></code><a class="headerlink" href="#c.v4l2_hdmi_colorimetry" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>describes the HDMI colorimetry information</p>
 </dd></dl>
 

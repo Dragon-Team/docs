@@ -372,7 +372,7 @@
 <p>W1 kernel API functions.</p>
 <dl class="c struct">
 <dt id="c.w1_reg_num">
-<em class="property">struct </em><code class="sig-name descname">w1_reg_num</code><a class="headerlink" href="#c.w1_reg_num" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">w1_reg_num</span></code><a class="headerlink" href="#c.w1_reg_num" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>broken out slave device id</p>
 </dd></dl>
 
@@ -405,7 +405,7 @@
 </dl>
 <dl class="c struct">
 <dt id="c.w1_slave">
-<em class="property">struct </em><code class="sig-name descname">w1_slave</code><a class="headerlink" href="#c.w1_slave" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">w1_slave</span></code><a class="headerlink" href="#c.w1_slave" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>holds a single slave device on the bus</p>
 </dd></dl>
 
@@ -455,7 +455,7 @@
 </dl>
 <dl class="c struct">
 <dt id="c.w1_bus_master">
-<em class="property">struct </em><code class="sig-name descname">w1_bus_master</code><a class="headerlink" href="#c.w1_bus_master" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">w1_bus_master</span></code><a class="headerlink" href="#c.w1_bus_master" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>operations available on a bus master</p>
 </dd></dl>
 
@@ -526,7 +526,7 @@ Either define read_bit and write_bit OR define, at minimum, touch_bit and
 reset_bus.</p>
 <dl class="c enum">
 <dt id="c.w1_master_flags">
-<em class="property">enum </em><code class="sig-name descname">w1_master_flags</code><a class="headerlink" href="#c.w1_master_flags" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">w1_master_flags</span></code><a class="headerlink" href="#c.w1_master_flags" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>bitfields used in w1_master.flags</p>
 </dd></dl>
 
@@ -539,7 +539,7 @@ reset_bus.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.w1_master">
-<em class="property">struct </em><code class="sig-name descname">w1_master</code><a class="headerlink" href="#c.w1_master" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">w1_master</span></code><a class="headerlink" href="#c.w1_master" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>one per bus master</p>
 </dd></dl>
 
@@ -630,7 +630,7 @@ reset_bus.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.w1_family_ops">
-<em class="property">struct </em><code class="sig-name descname">w1_family_ops</code><a class="headerlink" href="#c.w1_family_ops" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">w1_family_ops</span></code><a class="headerlink" href="#c.w1_family_ops" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>operations for a family type</p>
 </dd></dl>
 
@@ -656,7 +656,7 @@ reset_bus.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.w1_family">
-<em class="property">struct </em><code class="sig-name descname">w1_family</code><a class="headerlink" href="#c.w1_family" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">w1_family</span></code><a class="headerlink" href="#c.w1_family" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>reference counted family structure.</p>
 </dd></dl>
 
@@ -685,7 +685,7 @@ reset_bus.</p>
 </dl>
 <dl class="c macro">
 <dt id="c.module_w1_family">
-<code class="sig-name descname">module_w1_family</code><a class="headerlink" href="#c.module_w1_family" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">module_w1_family</span></code><a class="headerlink" href="#c.module_w1_family" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">module_w1_family</span> <span class="pre">(__w1_family)</span></code></p>
@@ -707,7 +707,7 @@ use this macro once, and calling it replaces <a class="reference internal" href=
 <p>W1 core functions.</p>
 <dl class="c function">
 <dt id="c.w1_search">
-void <code class="sig-name descname">w1_search</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_master" title="w1_master">w1_master</a> *<em>dev</em>, u8 <em>search_type</em>, w1_slave_found_callback <em>cb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_search" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">w1_search</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_master" title="w1_master"><span class="pre">w1_master</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">u8</span> <em><span class="pre">search_type</span></em>, <span class="pre">w1_slave_found_callback</span> <em><span class="pre">cb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_search" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Performs a ROM Search &amp; registers any devices found.</p>
 </dd></dl>
 
@@ -731,7 +731,7 @@ When we can scan all 64 bits without having to choose a path, we are done.</p>
 <p>See “Application note 187 1-wire search algorithm” at www.maxim-ic.com</p>
 <dl class="c function">
 <dt id="c.w1_process_callbacks">
-int <code class="sig-name descname">w1_process_callbacks</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_master" title="w1_master">w1_master</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_process_callbacks" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">w1_process_callbacks</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_master" title="w1_master"><span class="pre">w1_master</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_process_callbacks" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>execute each dev-&gt;async_list callback entry</p>
 </dd></dl>
 
@@ -750,7 +750,7 @@ int <code class="sig-name descname">w1_process_callbacks</code><span class="sig-
 <p>Allows registering device family operations.</p>
 <dl class="c function">
 <dt id="c.w1_register_family">
-int <code class="sig-name descname">w1_register_family</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_family" title="w1_family">w1_family</a> *<em>newf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_register_family" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">w1_register_family</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_family" title="w1_family"><span class="pre">w1_family</span></a> <span class="pre">*</span><em><span class="pre">newf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_register_family" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a device family driver</p>
 </dd></dl>
 
@@ -761,7 +761,7 @@ int <code class="sig-name descname">w1_register_family</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.w1_unregister_family">
-void <code class="sig-name descname">w1_unregister_family</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_family" title="w1_family">w1_family</a> *<em>fent</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_unregister_family" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">w1_unregister_family</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_family" title="w1_family"><span class="pre">w1_family</span></a> <span class="pre">*</span><em><span class="pre">fent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_unregister_family" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unregister a device family driver</p>
 </dd></dl>
 
@@ -776,7 +776,7 @@ void <code class="sig-name descname">w1_unregister_family</code><span class="sig
 <p>W1 internal initialization for master devices.</p>
 <dl class="c struct">
 <dt id="c.w1_async_cmd">
-<em class="property">struct </em><code class="sig-name descname">w1_async_cmd</code><a class="headerlink" href="#c.w1_async_cmd" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">w1_async_cmd</span></code><a class="headerlink" href="#c.w1_async_cmd" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>execute callback from the w1_process kthread</p>
 </dd></dl>
 
@@ -804,7 +804,7 @@ the callback.  Embed this into the structure with the command details.</p>
 <p>W1 internal initialization for master devices.</p>
 <dl class="c function">
 <dt id="c.w1_add_master_device">
-int <code class="sig-name descname">w1_add_master_device</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_bus_master" title="w1_bus_master">w1_bus_master</a> *<em>master</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_add_master_device" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">w1_add_master_device</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_bus_master" title="w1_bus_master"><span class="pre">w1_bus_master</span></a> <span class="pre">*</span><em><span class="pre">master</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_add_master_device" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>registers a new master device</p>
 </dd></dl>
 
@@ -815,7 +815,7 @@ int <code class="sig-name descname">w1_add_master_device</code><span class="sig-
 </dl>
 <dl class="c function">
 <dt id="c.w1_remove_master_device">
-void <code class="sig-name descname">w1_remove_master_device</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_bus_master" title="w1_bus_master">w1_bus_master</a> *<em>bm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_remove_master_device" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">w1_remove_master_device</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_bus_master" title="w1_bus_master"><span class="pre">w1_bus_master</span></a> <span class="pre">*</span><em><span class="pre">bm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_remove_master_device" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unregister a master device</p>
 </dd></dl>
 
@@ -830,7 +830,7 @@ void <code class="sig-name descname">w1_remove_master_device</code><span class="
 <p>W1 external netlink API structures and commands.</p>
 <dl class="c enum">
 <dt id="c.w1_cn_msg_flags">
-<em class="property">enum </em><code class="sig-name descname">w1_cn_msg_flags</code><a class="headerlink" href="#c.w1_cn_msg_flags" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">w1_cn_msg_flags</span></code><a class="headerlink" href="#c.w1_cn_msg_flags" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>bitfield flags for struct cn_msg.flags</p>
 </dd></dl>
 
@@ -843,7 +843,7 @@ to handle multiple struct cn_msg, <a class="reference internal" href="#c.w1_netl
 </dl>
 <dl class="c enum">
 <dt id="c.w1_netlink_message_types">
-<em class="property">enum </em><code class="sig-name descname">w1_netlink_message_types</code><a class="headerlink" href="#c.w1_netlink_message_types" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">w1_netlink_message_types</span></code><a class="headerlink" href="#c.w1_netlink_message_types" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>message type</p>
 </dd></dl>
 
@@ -867,7 +867,7 @@ operation</p>
 </dl>
 <dl class="c struct">
 <dt id="c.w1_netlink_msg">
-<em class="property">struct </em><code class="sig-name descname">w1_netlink_msg</code><a class="headerlink" href="#c.w1_netlink_msg" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">w1_netlink_msg</span></code><a class="headerlink" href="#c.w1_netlink_msg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>holds w1 message type, id, and result</p>
 </dd></dl>
 
@@ -914,7 +914,7 @@ The netlink connector data sequence is, struct nlmsghdr, struct cn_msg,
 then one or more <a class="reference internal" href="#c.w1_netlink_msg" title="w1_netlink_msg"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">w1_netlink_msg</span></code></a> (each with optional data).</p>
 <dl class="c enum">
 <dt id="c.w1_commands">
-<em class="property">enum </em><code class="sig-name descname">w1_commands</code><a class="headerlink" href="#c.w1_commands" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">w1_commands</span></code><a class="headerlink" href="#c.w1_commands" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>commands available for master or slave operations</p>
 </dd></dl>
 
@@ -946,7 +946,7 @@ devices found during that search</p>
 </dl>
 <dl class="c struct">
 <dt id="c.w1_netlink_cmd">
-<em class="property">struct </em><code class="sig-name descname">w1_netlink_cmd</code><a class="headerlink" href="#c.w1_netlink_cmd" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">w1_netlink_cmd</span></code><a class="headerlink" href="#c.w1_netlink_cmd" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>holds the command and data</p>
 </dd></dl>
 
@@ -979,7 +979,7 @@ each with optional data.</p>
 <p>W1 input/output.</p>
 <dl class="c function">
 <dt id="c.w1_touch_bit">
-u8 <code class="sig-name descname">w1_touch_bit</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_master" title="w1_master">w1_master</a> *<em>dev</em>, int <em>bit</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_touch_bit" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u8</span> <code class="sig-name descname"><span class="pre">w1_touch_bit</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_master" title="w1_master"><span class="pre">w1_master</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">int</span> <em><span class="pre">bit</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_touch_bit" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Generates a write-0 or write-1 cycle and samples the level.</p>
 </dd></dl>
 
@@ -992,7 +992,7 @@ u8 <code class="sig-name descname">w1_touch_bit</code><span class="sig-paren">(<
 </dl>
 <dl class="c function">
 <dt id="c.w1_write_8">
-void <code class="sig-name descname">w1_write_8</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_master" title="w1_master">w1_master</a> *<em>dev</em>, u8 <em>byte</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_write_8" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">w1_write_8</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_master" title="w1_master"><span class="pre">w1_master</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">u8</span> <em><span class="pre">byte</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_write_8" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Writes 8 bits.</p>
 </dd></dl>
 
@@ -1005,7 +1005,7 @@ void <code class="sig-name descname">w1_write_8</code><span class="sig-paren">(<
 </dl>
 <dl class="c function">
 <dt id="c.w1_triplet">
-u8 <code class="sig-name descname">w1_triplet</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_master" title="w1_master">w1_master</a> *<em>dev</em>, int <em>bdir</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_triplet" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u8</span> <code class="sig-name descname"><span class="pre">w1_triplet</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_master" title="w1_master"><span class="pre">w1_master</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">int</span> <em><span class="pre">bdir</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_triplet" title="Permalink to this definition">¶</a><br /></dt>
 <dd><ul class="simple">
 <li><p>Does a triplet - used for searching ROM addresses.</p></li>
 </ul>
@@ -1030,7 +1030,7 @@ bit 2 = dir_taken</p>
 <p>bit fields - see above</p>
 <dl class="c function">
 <dt id="c.w1_read_8">
-u8 <code class="sig-name descname">w1_read_8</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_master" title="w1_master">w1_master</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_read_8" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u8</span> <code class="sig-name descname"><span class="pre">w1_read_8</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_master" title="w1_master"><span class="pre">w1_master</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_read_8" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Reads 8 bits.</p>
 </dd></dl>
 
@@ -1043,7 +1043,7 @@ u8 <code class="sig-name descname">w1_read_8</code><span class="sig-paren">(</sp
 <p>the byte read</p>
 <dl class="c function">
 <dt id="c.w1_write_block">
-void <code class="sig-name descname">w1_write_block</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_master" title="w1_master">w1_master</a> *<em>dev</em>, <em class="property">const</em> u8 *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_write_block" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">w1_write_block</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_master" title="w1_master"><span class="pre">w1_master</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">buf</span></em>, <span class="pre">int</span> <em><span class="pre">len</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_write_block" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Writes a series of bytes.</p>
 </dd></dl>
 
@@ -1058,7 +1058,7 @@ void <code class="sig-name descname">w1_write_block</code><span class="sig-paren
 </dl>
 <dl class="c function">
 <dt id="c.w1_touch_block">
-void <code class="sig-name descname">w1_touch_block</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_master" title="w1_master">w1_master</a> *<em>dev</em>, u8 *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_touch_block" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">w1_touch_block</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_master" title="w1_master"><span class="pre">w1_master</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">buf</span></em>, <span class="pre">int</span> <em><span class="pre">len</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_touch_block" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Touches a series of bytes.</p>
 </dd></dl>
 
@@ -1073,7 +1073,7 @@ void <code class="sig-name descname">w1_touch_block</code><span class="sig-paren
 </dl>
 <dl class="c function">
 <dt id="c.w1_read_block">
-u8 <code class="sig-name descname">w1_read_block</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_master" title="w1_master">w1_master</a> *<em>dev</em>, u8 *<em>buf</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_read_block" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u8</span> <code class="sig-name descname"><span class="pre">w1_read_block</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_master" title="w1_master"><span class="pre">w1_master</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">buf</span></em>, <span class="pre">int</span> <em><span class="pre">len</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_read_block" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Reads a series of bytes.</p>
 </dd></dl>
 
@@ -1090,7 +1090,7 @@ u8 <code class="sig-name descname">w1_read_block</code><span class="sig-paren">(
 <p>the number of bytes read</p>
 <dl class="c function">
 <dt id="c.w1_reset_bus">
-int <code class="sig-name descname">w1_reset_bus</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_master" title="w1_master">w1_master</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_reset_bus" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">w1_reset_bus</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_master" title="w1_master"><span class="pre">w1_master</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_reset_bus" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Issues a reset bus sequence.</p>
 </dd></dl>
 
@@ -1103,7 +1103,7 @@ int <code class="sig-name descname">w1_reset_bus</code><span class="sig-paren">(
 <p>0=Device present, 1=No device present or error</p>
 <dl class="c function">
 <dt id="c.w1_reset_select_slave">
-int <code class="sig-name descname">w1_reset_select_slave</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_slave" title="w1_slave">w1_slave</a> *<em>sl</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_reset_select_slave" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">w1_reset_select_slave</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_slave" title="w1_slave"><span class="pre">w1_slave</span></a> <span class="pre">*</span><em><span class="pre">sl</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_reset_select_slave" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>reset and select a slave</p>
 </dd></dl>
 
@@ -1121,7 +1121,7 @@ The w1 master lock must be held.</p>
 <p>0=success, anything else=error</p>
 <dl class="c function">
 <dt id="c.w1_reset_resume_command">
-int <code class="sig-name descname">w1_reset_resume_command</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_master" title="w1_master">w1_master</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_reset_resume_command" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">w1_reset_resume_command</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_master" title="w1_master"><span class="pre">w1_master</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_reset_resume_command" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>resume instead of another match ROM</p>
 </dd></dl>
 
@@ -1142,7 +1142,7 @@ doesn’t work of course, but the resume command is the next best thing.</p>
 <p>The w1 master lock must be held.</p>
 <dl class="c function">
 <dt id="c.w1_next_pullup">
-void <code class="sig-name descname">w1_next_pullup</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_master" title="w1_master">w1_master</a> *<em>dev</em>, int <em>delay</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_next_pullup" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">w1_next_pullup</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_master" title="w1_master"><span class="pre">w1_master</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">int</span> <em><span class="pre">delay</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_next_pullup" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register for a strong pullup</p>
 </dd></dl>
 
@@ -1164,7 +1164,7 @@ The w1 master lock must be held.</p>
 <p>0=success, anything else=error</p>
 <dl class="c function">
 <dt id="c.w1_write_bit">
-void <code class="sig-name descname">w1_write_bit</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_master" title="w1_master">w1_master</a> *<em>dev</em>, int <em>bit</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_write_bit" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">w1_write_bit</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_master" title="w1_master"><span class="pre">w1_master</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">int</span> <em><span class="pre">bit</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_write_bit" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Generates a write-0 or write-1 cycle.</p>
 </dd></dl>
 
@@ -1179,7 +1179,7 @@ void <code class="sig-name descname">w1_write_bit</code><span class="sig-paren">
 <p>Only call if dev-&gt;bus_master-&gt;touch_bit is NULL</p>
 <dl class="c function">
 <dt id="c.w1_pre_write">
-void <code class="sig-name descname">w1_pre_write</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_master" title="w1_master">w1_master</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_pre_write" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">w1_pre_write</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_master" title="w1_master"><span class="pre">w1_master</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_pre_write" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>pre-write operations</p>
 </dd></dl>
 
@@ -1194,7 +1194,7 @@ Program the hardware for a strong pullup, if one has been requested and
 the hardware supports it.</p>
 <dl class="c function">
 <dt id="c.w1_post_write">
-void <code class="sig-name descname">w1_post_write</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_master" title="w1_master">w1_master</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_post_write" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">w1_post_write</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_master" title="w1_master"><span class="pre">w1_master</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_post_write" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>post-write options</p>
 </dd></dl>
 
@@ -1209,7 +1209,7 @@ If a strong pullup was requested, clear it if the hardware supports
 them, or execute the delay otherwise, in either case clear the request.</p>
 <dl class="c function">
 <dt id="c.w1_read_bit">
-u8 <code class="sig-name descname">w1_read_bit</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.w1_master" title="w1_master">w1_master</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_read_bit" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">u8</span> <code class="sig-name descname"><span class="pre">w1_read_bit</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.w1_master" title="w1_master"><span class="pre">w1_master</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.w1_read_bit" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Generates a write-1 cycle and samples the level.</p>
 </dd></dl>
 

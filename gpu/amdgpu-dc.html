@@ -311,7 +311,7 @@ requests into DC requests, and DC responses into DRM responses.</p>
 <p>The root control structure is <a class="reference internal" href="#c.amdgpu_display_manager" title="amdgpu_display_manager"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">amdgpu_display_manager</span></code></a>.</p>
 <dl class="c struct">
 <dt id="c.irq_list_head">
-<em class="property">struct </em><code class="sig-name descname">irq_list_head</code><a class="headerlink" href="#c.irq_list_head" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">irq_list_head</span></code><a class="headerlink" href="#c.irq_list_head" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Linked-list for low context IRQ handlers.</p>
 </dd></dl>
 
@@ -331,7 +331,7 @@ requests into DC requests, and DC responses into DRM responses.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.dm_compressor_info">
-<em class="property">struct </em><code class="sig-name descname">dm_compressor_info</code><a class="headerlink" href="#c.dm_compressor_info" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">dm_compressor_info</span></code><a class="headerlink" href="#c.dm_compressor_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Buffer info used by frame buffer compression</p>
 </dd></dl>
 
@@ -354,7 +354,7 @@ requests into DC requests, and DC responses into DRM responses.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.vblank_workqueue">
-<em class="property">struct </em><code class="sig-name descname">vblank_workqueue</code><a class="headerlink" href="#c.vblank_workqueue" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">vblank_workqueue</span></code><a class="headerlink" href="#c.vblank_workqueue" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Works to be executed in a separate thread during vblank</p>
 </dd></dl>
 
@@ -380,7 +380,7 @@ requests into DC requests, and DC responses into DRM responses.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.amdgpu_dm_backlight_caps">
-<em class="property">struct </em><code class="sig-name descname">amdgpu_dm_backlight_caps</code><a class="headerlink" href="#c.amdgpu_dm_backlight_caps" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">amdgpu_dm_backlight_caps</span></code><a class="headerlink" href="#c.amdgpu_dm_backlight_caps" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Information about backlight</p>
 </dd></dl>
 
@@ -419,7 +419,7 @@ in nits.</p>
 <p>Describe the backlight support for ACPI or eDP AUX.</p>
 <dl class="c struct">
 <dt id="c.amdgpu_display_manager">
-<em class="property">struct </em><code class="sig-name descname">amdgpu_display_manager</code><a class="headerlink" href="#c.amdgpu_display_manager" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">amdgpu_display_manager</span></code><a class="headerlink" href="#c.amdgpu_display_manager" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Central amdgpu display manager device</p>
 </dd></dl>
 
@@ -577,7 +577,7 @@ the base driver’s device list to be initialized and torn down accordingly.</p>
 <p>The functions to do so are provided as hooks in <a class="reference internal" href="amdgpu.html#c.amd_ip_funcs" title="amd_ip_funcs"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">amd_ip_funcs</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.dm_hw_init">
-int <code class="sig-name descname">dm_hw_init</code><span class="sig-paren">(</span>void *<em>handle</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dm_hw_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">dm_hw_init</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">handle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dm_hw_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialize DC device</p>
 </dd></dl>
 
@@ -603,7 +603,7 @@ hooks is a future TODO item.</p>
 </ul>
 <dl class="c function">
 <dt id="c.dm_hw_fini">
-int <code class="sig-name descname">dm_hw_fini</code><span class="sig-paren">(</span>void *<em>handle</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dm_hw_fini" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">dm_hw_fini</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">handle</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dm_hw_fini" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Teardown DC device</p>
 </dd></dl>
 
@@ -644,7 +644,7 @@ dce110_register_irq_handlers() and dcn10_register_irq_handlers().</p>
 <a class="reference internal" href="amdgpu.html#c.amdgpu_irq_update" title="amdgpu_irq_update"><code class="xref c c-func docutils literal notranslate"><span class="pre">amdgpu_irq_update()</span></code></a> to enable or disable the interrupt.</p>
 <dl class="c struct">
 <dt id="c.amdgpu_dm_irq_handler_data">
-<em class="property">struct </em><code class="sig-name descname">amdgpu_dm_irq_handler_data</code><a class="headerlink" href="#c.amdgpu_dm_irq_handler_data" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">amdgpu_dm_irq_handler_data</span></code><a class="headerlink" href="#c.amdgpu_dm_irq_handler_data" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Data for DM interrupt handlers.</p>
 </dd></dl>
 
@@ -673,7 +673,7 @@ dce110_register_irq_handlers() and dcn10_register_irq_handlers().</p>
 </dl>
 <dl class="c function">
 <dt id="c.dm_irq_work_func">
-void <code class="sig-name descname">dm_irq_work_func</code><span class="sig-paren">(</span><em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dm_irq_work_func" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">dm_irq_work_func</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dm_irq_work_func" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Handle an IRQ outside of the interrupt handler proper.</p>
 </dd></dl>
 
@@ -684,7 +684,7 @@ void <code class="sig-name descname">dm_irq_work_func</code><span class="sig-par
 </dl>
 <dl class="c function">
 <dt id="c.amdgpu_dm_irq_register_interrupt">
-void *<code class="sig-name descname">amdgpu_dm_irq_register_interrupt</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> dc_interrupt_params *<em>int_params</em>, void (*<em>ih</em>)<span class="sig-paren">(</span>void*<span class="sig-paren">)</span>, void *<em>handler_args</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_irq_register_interrupt" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">amdgpu_dm_irq_register_interrupt</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">dc_interrupt_params</span> <span class="pre">*</span><em><span class="pre">int_params</span></em>, <span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">ih</span></em><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span><span class="pre">*</span><span class="sig-paren">)</span>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">handler_args</span></em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_irq_register_interrupt" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Register a handler within DM.</p>
 </dd></dl>
 
@@ -713,7 +713,7 @@ registered handler will be called first.</p>
 </dl>
 <dl class="c function">
 <dt id="c.amdgpu_dm_irq_unregister_interrupt">
-void <code class="sig-name descname">amdgpu_dm_irq_unregister_interrupt</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">enum</em> dc_irq_source <em>irq_source</em>, void *<em>ih</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_irq_unregister_interrupt" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_dm_irq_unregister_interrupt</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">enum</span></em> <span class="pre">dc_irq_source</span> <em><span class="pre">irq_source</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">ih</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_irq_unregister_interrupt" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Remove a handler from the DM IRQ table</p>
 </dd></dl>
 
@@ -731,7 +731,7 @@ void <code class="sig-name descname">amdgpu_dm_irq_unregister_interrupt</code><s
 for the given irq source. If found, remove it. Otherwise, do nothing.</p>
 <dl class="c function">
 <dt id="c.amdgpu_dm_irq_init">
-int <code class="sig-name descname">amdgpu_dm_irq_init</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_irq_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_dm_irq_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_irq_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialize DM IRQ management</p>
 </dd></dl>
 
@@ -750,7 +750,7 @@ handlers are called in sequence, FIFO according to registration order.</p>
 will be deferred to a workqueue. See <a class="reference internal" href="#c.irq_list_head" title="irq_list_head"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">irq_list_head</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.amdgpu_dm_irq_fini">
-void <code class="sig-name descname">amdgpu_dm_irq_fini</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_irq_fini" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_dm_irq_fini</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_irq_fini" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Tear down DM IRQ management</p>
 </dd></dl>
 
@@ -763,7 +763,7 @@ void <code class="sig-name descname">amdgpu_dm_irq_fini</code><span class="sig-p
 <p>Flush all work within the low context IRQ table.</p>
 <dl class="c function">
 <dt id="c.amdgpu_dm_irq_handler">
-int <code class="sig-name descname">amdgpu_dm_irq_handler</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em>, <em class="property">struct</em> amdgpu_irq_src *<em>source</em>, <em class="property">struct</em> amdgpu_iv_entry *<em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_irq_handler" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_dm_irq_handler</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_irq_src</span> <span class="pre">*</span><em><span class="pre">source</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_iv_entry</span> <span class="pre">*</span><em><span class="pre">entry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_irq_handler" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Generic DM IRQ handler</p>
 </dd></dl>
 
@@ -781,7 +781,7 @@ int <code class="sig-name descname">amdgpu_dm_irq_handler</code><span class="sig
 irq. The DM IRQ table is used to find the corresponding handlers.</p>
 <dl class="c function">
 <dt id="c.amdgpu_dm_hpd_init">
-void <code class="sig-name descname">amdgpu_dm_hpd_init</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_hpd_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_dm_hpd_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_hpd_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>hpd setup callback.</p>
 </dd></dl>
 
@@ -795,7 +795,7 @@ void <code class="sig-name descname">amdgpu_dm_hpd_init</code><span class="sig-p
 Enable the pin, set the polarity, and enable the hpd interrupts.</p>
 <dl class="c function">
 <dt id="c.amdgpu_dm_hpd_fini">
-void <code class="sig-name descname">amdgpu_dm_hpd_fini</code><span class="sig-paren">(</span><em class="property">struct</em> amdgpu_device *<em>adev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_hpd_fini" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_dm_hpd_fini</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_hpd_fini" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>hpd tear down callback.</p>
 </dd></dl>
 
@@ -809,7 +809,7 @@ void <code class="sig-name descname">amdgpu_dm_hpd_fini</code><span class="sig-p
 Disable the hpd interrupts.</p>
 <dl class="c function">
 <dt id="c.dm_pflip_high_irq">
-void <code class="sig-name descname">dm_pflip_high_irq</code><span class="sig-paren">(</span>void *<em>interrupt_params</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dm_pflip_high_irq" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">dm_pflip_high_irq</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">interrupt_params</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dm_pflip_high_irq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Handle pageflip interrupt</p>
 </dd></dl>
 
@@ -823,7 +823,7 @@ void <code class="sig-name descname">dm_pflip_high_irq</code><span class="sig-pa
 that the pageflip has been completed.</p>
 <dl class="c function">
 <dt id="c.dm_crtc_high_irq">
-void <code class="sig-name descname">dm_crtc_high_irq</code><span class="sig-paren">(</span>void *<em>interrupt_params</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dm_crtc_high_irq" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">dm_crtc_high_irq</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">interrupt_params</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dm_crtc_high_irq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Handles CRTC interrupt</p>
 </dd></dl>
 
@@ -841,7 +841,7 @@ event handler.</p>
 <p><em>WIP</em></p>
 <dl class="c function">
 <dt id="c.amdgpu_dm_atomic_commit_tail">
-void <code class="sig-name descname">amdgpu_dm_atomic_commit_tail</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_atomic_state" title="drm_atomic_state">drm_atomic_state</a> *<em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_atomic_commit_tail" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_dm_atomic_commit_tail</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="drm-kms.html#c.drm_atomic_state" title="drm_atomic_state"><span class="pre">drm_atomic_state</span></a> <span class="pre">*</span><em><span class="pre">state</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_atomic_commit_tail" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>AMDgpu DM’s commit tail implementation.</p>
 </dd></dl>
 
@@ -856,7 +856,7 @@ programming the hardware. Any failures here implies a hardware failure, since
 atomic check should have filtered anything non-kosher.</p>
 <dl class="c function">
 <dt id="c.amdgpu_dm_atomic_check">
-int <code class="sig-name descname">amdgpu_dm_atomic_check</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device">drm_device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_atomic_state" title="drm_atomic_state">drm_atomic_state</a> *<em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_atomic_check" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">amdgpu_dm_atomic_check</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="drm-kms.html#c.drm_atomic_state" title="drm_atomic_state"><span class="pre">drm_atomic_state</span></a> <span class="pre">*</span><em><span class="pre">state</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_atomic_check" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Atomic check implementation for AMDgpu DM.</p>
 </dd></dl>
 

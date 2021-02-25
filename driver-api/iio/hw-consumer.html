@@ -406,7 +406,7 @@ static int adc_probe(struct platform_device *pdev)
 <h2>More details<a class="headerlink" href="#more-details" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.iio_hw_consumer_alloc">
-<em class="property">struct</em> iio_hw_consumer *<code class="sig-name descname">iio_hw_consumer_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_hw_consumer_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">iio_hw_consumer</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">iio_hw_consumer_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_hw_consumer_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate IIO hardware consumer</p>
 </dd></dl>
 
@@ -419,7 +419,7 @@ static int adc_probe(struct platform_device *pdev)
 <p>Returns a valid iio_hw_consumer on success or a ERR_PTR() on failure.</p>
 <dl class="c function">
 <dt id="c.iio_hw_consumer_free">
-void <code class="sig-name descname">iio_hw_consumer_free</code><span class="sig-paren">(</span><em class="property">struct</em> iio_hw_consumer *<em>hwc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_hw_consumer_free" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">iio_hw_consumer_free</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">iio_hw_consumer</span> <span class="pre">*</span><em><span class="pre">hwc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_hw_consumer_free" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Free IIO hardware consumer</p>
 </dd></dl>
 
@@ -430,7 +430,7 @@ void <code class="sig-name descname">iio_hw_consumer_free</code><span class="sig
 </dl>
 <dl class="c function">
 <dt id="c.devm_iio_hw_consumer_alloc">
-<em class="property">struct</em> iio_hw_consumer *<code class="sig-name descname">devm_iio_hw_consumer_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_iio_hw_consumer_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">iio_hw_consumer</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">devm_iio_hw_consumer_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_iio_hw_consumer_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Resource-managed <a class="reference internal" href="#c.iio_hw_consumer_alloc" title="iio_hw_consumer_alloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">iio_hw_consumer_alloc()</span></code></a></p>
 </dd></dl>
 
@@ -445,7 +445,7 @@ is automatically freed on driver detach.</p>
 <p>returns pointer to allocated iio_hw_consumer on success, NULL on failure.</p>
 <dl class="c function">
 <dt id="c.iio_hw_consumer_enable">
-int <code class="sig-name descname">iio_hw_consumer_enable</code><span class="sig-paren">(</span><em class="property">struct</em> iio_hw_consumer *<em>hwc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_hw_consumer_enable" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">iio_hw_consumer_enable</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">iio_hw_consumer</span> <span class="pre">*</span><em><span class="pre">hwc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_hw_consumer_enable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Enable IIO hardware consumer</p>
 </dd></dl>
 
@@ -458,7 +458,7 @@ int <code class="sig-name descname">iio_hw_consumer_enable</code><span class="si
 <p>Returns 0 on success.</p>
 <dl class="c function">
 <dt id="c.iio_hw_consumer_disable">
-void <code class="sig-name descname">iio_hw_consumer_disable</code><span class="sig-paren">(</span><em class="property">struct</em> iio_hw_consumer *<em>hwc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_hw_consumer_disable" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">iio_hw_consumer_disable</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">iio_hw_consumer</span> <span class="pre">*</span><em><span class="pre">hwc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_hw_consumer_disable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Disable IIO hardware consumer</p>
 </dd></dl>
 

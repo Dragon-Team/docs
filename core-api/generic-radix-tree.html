@@ -303,7 +303,7 @@ __idx_to_offset.</p>
 <h2>generic radix tree functions<a class="headerlink" href="#generic-radix-tree-functions" title="Permalink to this headline">¶</a></h2>
 <dl class="c macro">
 <dt id="c.genradix_init">
-<code class="sig-name descname">genradix_init</code><a class="headerlink" href="#c.genradix_init" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">genradix_init</span></code><a class="headerlink" href="#c.genradix_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">genradix_init</span> <span class="pre">(_radix)</span></code></p>
@@ -319,7 +319,7 @@ __idx_to_offset.</p>
 <p>Does not fail</p>
 <dl class="c macro">
 <dt id="c.genradix_free">
-<code class="sig-name descname">genradix_free</code><a class="headerlink" href="#c.genradix_free" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">genradix_free</span></code><a class="headerlink" href="#c.genradix_free" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">genradix_free</span> <span class="pre">(_radix)</span></code></p>
@@ -335,7 +335,7 @@ __idx_to_offset.</p>
 <p>After freeing, <strong>_radix</strong> will be reinitialized and empty</p>
 <dl class="c macro">
 <dt id="c.genradix_ptr">
-<code class="sig-name descname">genradix_ptr</code><a class="headerlink" href="#c.genradix_ptr" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">genradix_ptr</span></code><a class="headerlink" href="#c.genradix_ptr" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">genradix_ptr</span> <span class="pre">(_radix,</span> <span class="pre">_idx)</span></code></p>
@@ -353,7 +353,7 @@ __idx_to_offset.</p>
 <p>Returns a pointer to entry at <strong>_idx</strong>, or NULL if that entry does not exist.</p>
 <dl class="c macro">
 <dt id="c.genradix_ptr_alloc">
-<code class="sig-name descname">genradix_ptr_alloc</code><a class="headerlink" href="#c.genradix_ptr_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">genradix_ptr_alloc</span></code><a class="headerlink" href="#c.genradix_ptr_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">genradix_ptr_alloc</span> <span class="pre">(_radix,</span> <span class="pre">_idx,</span> <span class="pre">_gfp)</span></code></p>
@@ -373,7 +373,7 @@ __idx_to_offset.</p>
 <p>Returns a pointer to entry at <strong>_idx</strong>, or NULL on allocation failure</p>
 <dl class="c macro">
 <dt id="c.genradix_iter_init">
-<code class="sig-name descname">genradix_iter_init</code><a class="headerlink" href="#c.genradix_iter_init" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">genradix_iter_init</span></code><a class="headerlink" href="#c.genradix_iter_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">genradix_iter_init</span> <span class="pre">(_radix,</span> <span class="pre">_idx)</span></code></p>
@@ -389,7 +389,7 @@ __idx_to_offset.</p>
 </dl>
 <dl class="c macro">
 <dt id="c.genradix_iter_peek">
-<code class="sig-name descname">genradix_iter_peek</code><a class="headerlink" href="#c.genradix_iter_peek" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">genradix_iter_peek</span></code><a class="headerlink" href="#c.genradix_iter_peek" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">genradix_iter_peek</span> <span class="pre">(_iter,</span> <span class="pre">_radix)</span></code></p>
@@ -407,7 +407,7 @@ __idx_to_offset.</p>
 <p>If no more entries exist at or above <strong>_iter</strong>’s current position, returns NULL</p>
 <dl class="c macro">
 <dt id="c.genradix_for_each">
-<code class="sig-name descname">genradix_for_each</code><a class="headerlink" href="#c.genradix_for_each" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">genradix_for_each</span></code><a class="headerlink" href="#c.genradix_for_each" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">genradix_for_each</span> <span class="pre">(_radix,</span> <span class="pre">_iter,</span> <span class="pre">_p)</span></code></p>
@@ -428,7 +428,7 @@ __idx_to_offset.</p>
 will be the current entry’s index.</p>
 <dl class="c macro">
 <dt id="c.genradix_prealloc">
-<code class="sig-name descname">genradix_prealloc</code><a class="headerlink" href="#c.genradix_prealloc" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">genradix_prealloc</span></code><a class="headerlink" href="#c.genradix_prealloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">genradix_prealloc</span> <span class="pre">(_radix,</span> <span class="pre">_nr,</span> <span class="pre">_gfp)</span></code></p>

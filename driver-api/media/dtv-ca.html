@@ -371,7 +371,7 @@
 <h1><span class="section-number">2.4. </span>Digital TV Conditional Access kABI<a class="headerlink" href="#digital-tv-conditional-access-kabi" title="Permalink to this headline">¶</a></h1>
 <dl class="c struct">
 <dt id="c.dvb_ca_en50221">
-<em class="property">struct </em><code class="sig-name descname">dvb_ca_en50221</code><a class="headerlink" href="#c.dvb_ca_en50221" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">dvb_ca_en50221</span></code><a class="headerlink" href="#c.dvb_ca_en50221" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Structure describing a CA interface</p>
 </dd></dl>
 
@@ -429,7 +429,7 @@ called for different slots concurrently and need to use locks where
 and if appropriate. There will be no concurrent access to one slot.</p>
 <dl class="c function">
 <dt id="c.dvb_ca_en50221_camchange_irq">
-void <code class="sig-name descname">dvb_ca_en50221_camchange_irq</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dvb_ca_en50221" title="dvb_ca_en50221">dvb_ca_en50221</a> *<em>pubca</em>, int <em>slot</em>, int <em>change_type</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_ca_en50221_camchange_irq" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">dvb_ca_en50221_camchange_irq</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.dvb_ca_en50221" title="dvb_ca_en50221"><span class="pre">dvb_ca_en50221</span></a> <span class="pre">*</span><em><span class="pre">pubca</span></em>, <span class="pre">int</span> <em><span class="pre">slot</span></em>, <span class="pre">int</span> <em><span class="pre">change_type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_ca_en50221_camchange_irq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A CAMCHANGE IRQ has occurred.</p>
 </dd></dl>
 
@@ -444,7 +444,7 @@ void <code class="sig-name descname">dvb_ca_en50221_camchange_irq</code><span cl
 </dl>
 <dl class="c function">
 <dt id="c.dvb_ca_en50221_camready_irq">
-void <code class="sig-name descname">dvb_ca_en50221_camready_irq</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dvb_ca_en50221" title="dvb_ca_en50221">dvb_ca_en50221</a> *<em>pubca</em>, int <em>slot</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_ca_en50221_camready_irq" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">dvb_ca_en50221_camready_irq</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.dvb_ca_en50221" title="dvb_ca_en50221"><span class="pre">dvb_ca_en50221</span></a> <span class="pre">*</span><em><span class="pre">pubca</span></em>, <span class="pre">int</span> <em><span class="pre">slot</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_ca_en50221_camready_irq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A CAMREADY IRQ has occurred.</p>
 </dd></dl>
 
@@ -457,7 +457,7 @@ void <code class="sig-name descname">dvb_ca_en50221_camready_irq</code><span cla
 </dl>
 <dl class="c function">
 <dt id="c.dvb_ca_en50221_frda_irq">
-void <code class="sig-name descname">dvb_ca_en50221_frda_irq</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dvb_ca_en50221" title="dvb_ca_en50221">dvb_ca_en50221</a> *<em>ca</em>, int <em>slot</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_ca_en50221_frda_irq" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">dvb_ca_en50221_frda_irq</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.dvb_ca_en50221" title="dvb_ca_en50221"><span class="pre">dvb_ca_en50221</span></a> <span class="pre">*</span><em><span class="pre">ca</span></em>, <span class="pre">int</span> <em><span class="pre">slot</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_ca_en50221_frda_irq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>An FR or a DA IRQ has occurred.</p>
 </dd></dl>
 
@@ -470,7 +470,7 @@ void <code class="sig-name descname">dvb_ca_en50221_frda_irq</code><span class="
 </dl>
 <dl class="c function">
 <dt id="c.dvb_ca_en50221_init">
-int <code class="sig-name descname">dvb_ca_en50221_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dvb_ca_en50221_init" title="dvb_adapter">dvb_adapter</a> *<em>dvb_adapter</em>, <em class="property">struct</em> <a class="reference internal" href="#c.dvb_ca_en50221" title="dvb_ca_en50221">dvb_ca_en50221</a> *<em>ca</em>, int <em>flags</em>, int <em>slot_count</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_ca_en50221_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">dvb_ca_en50221_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.dvb_ca_en50221_init" title="dvb_adapter"><span class="pre">dvb_adapter</span></a> <span class="pre">*</span><em><span class="pre">dvb_adapter</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.dvb_ca_en50221" title="dvb_ca_en50221"><span class="pre">dvb_ca_en50221</span></a> <span class="pre">*</span><em><span class="pre">ca</span></em>, <span class="pre">int</span> <em><span class="pre">flags</span></em>, <span class="pre">int</span> <em><span class="pre">slot_count</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_ca_en50221_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialise a new DVB CA device.</p>
 </dd></dl>
 
@@ -489,7 +489,7 @@ int <code class="sig-name descname">dvb_ca_en50221_init</code><span class="sig-p
 <p><strong>return</strong> 0 on success, nonzero on failure</p>
 <dl class="c function">
 <dt id="c.dvb_ca_en50221_release">
-void <code class="sig-name descname">dvb_ca_en50221_release</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.dvb_ca_en50221" title="dvb_ca_en50221">dvb_ca_en50221</a> *<em>ca</em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_ca_en50221_release" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">dvb_ca_en50221_release</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.dvb_ca_en50221" title="dvb_ca_en50221"><span class="pre">dvb_ca_en50221</span></a> <span class="pre">*</span><em><span class="pre">ca</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.dvb_ca_en50221_release" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Release a DVB CA device.</p>
 </dd></dl>
 

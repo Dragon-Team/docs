@@ -304,7 +304,7 @@ unregistering probes with these callback sites is covered in the
 <h2>IRQ<a class="headerlink" href="#irq" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.trace_irq_handler_entry">
-void <code class="sig-name descname">trace_irq_handler_entry</code><span class="sig-paren">(</span>int <em>irq</em>, <em class="property">struct</em> <a class="reference internal" href="genericirq.html#c.irqaction" title="irqaction">irqaction</a> *<em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_irq_handler_entry" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_irq_handler_entry</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">irq</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="genericirq.html#c.irqaction" title="irqaction"><span class="pre">irqaction</span></a> <span class="pre">*</span><em><span class="pre">action</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_irq_handler_entry" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>called immediately before the irq action handler</p>
 </dd></dl>
 
@@ -323,7 +323,7 @@ conjunction with the irq_handler_exit tracepoint, we can figure
 out irq handler latencies.</p>
 <dl class="c function">
 <dt id="c.trace_irq_handler_exit">
-void <code class="sig-name descname">trace_irq_handler_exit</code><span class="sig-paren">(</span>int <em>irq</em>, <em class="property">struct</em> <a class="reference internal" href="genericirq.html#c.irqaction" title="irqaction">irqaction</a> *<em>action</em>, int <em>ret</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_irq_handler_exit" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_irq_handler_exit</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">irq</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="genericirq.html#c.irqaction" title="irqaction"><span class="pre">irqaction</span></a> <span class="pre">*</span><em><span class="pre">action</span></em>, <span class="pre">int</span> <em><span class="pre">ret</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_irq_handler_exit" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>called immediately after the irq action handler returns</p>
 </dd></dl>
 
@@ -343,7 +343,7 @@ a shared irq line, or the irq was not handled successfully. Can be used in
 conjunction with the irq_handler_entry to understand irq handler latencies.</p>
 <dl class="c function">
 <dt id="c.trace_softirq_entry">
-void <code class="sig-name descname">trace_softirq_entry</code><span class="sig-paren">(</span>unsigned int <em>vec_nr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_softirq_entry" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_softirq_entry</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">vec_nr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_softirq_entry" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>called immediately before the softirq handler</p>
 </dd></dl>
 
@@ -357,7 +357,7 @@ void <code class="sig-name descname">trace_softirq_entry</code><span class="sig-
 we can determine the softirq handler routine.</p>
 <dl class="c function">
 <dt id="c.trace_softirq_exit">
-void <code class="sig-name descname">trace_softirq_exit</code><span class="sig-paren">(</span>unsigned int <em>vec_nr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_softirq_exit" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_softirq_exit</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">vec_nr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_softirq_exit" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>called immediately after the softirq handler returns</p>
 </dd></dl>
 
@@ -371,7 +371,7 @@ void <code class="sig-name descname">trace_softirq_exit</code><span class="sig-p
 we can determine the softirq handler routine.</p>
 <dl class="c function">
 <dt id="c.trace_softirq_raise">
-void <code class="sig-name descname">trace_softirq_raise</code><span class="sig-paren">(</span>unsigned int <em>vec_nr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_softirq_raise" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_softirq_raise</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">vec_nr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_softirq_raise" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>called immediately when a softirq is raised</p>
 </dd></dl>
 
@@ -388,7 +388,7 @@ we can determine the softirq raise to run latency.</p>
 <h2>SIGNAL<a class="headerlink" href="#signal" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.trace_signal_generate">
-void <code class="sig-name descname">trace_signal_generate</code><span class="sig-paren">(</span>int <em>sig</em>, <em class="property">struct</em> kernel_siginfo *<em>info</em>, <em class="property">struct</em> task_struct *<em>task</em>, int <em>group</em>, int <em>result</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_signal_generate" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_signal_generate</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">sig</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">kernel_siginfo</span> <span class="pre">*</span><em><span class="pre">info</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">task_struct</span> <span class="pre">*</span><em><span class="pre">task</span></em>, <span class="pre">int</span> <em><span class="pre">group</span></em>, <span class="pre">int</span> <em><span class="pre">result</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_signal_generate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>called when a signal is generated</p>
 </dd></dl>
 
@@ -413,7 +413,7 @@ SEND_SIG_NOINFO means that si_code is SI_USER, and SEND_SIG_PRIV
 means that si_code is SI_KERNEL.</p>
 <dl class="c function">
 <dt id="c.trace_signal_deliver">
-void <code class="sig-name descname">trace_signal_deliver</code><span class="sig-paren">(</span>int <em>sig</em>, <em class="property">struct</em> kernel_siginfo *<em>info</em>, <em class="property">struct</em> k_sigaction *<em>ka</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_signal_deliver" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_signal_deliver</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">sig</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">kernel_siginfo</span> <span class="pre">*</span><em><span class="pre">info</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">k_sigaction</span> <span class="pre">*</span><em><span class="pre">ka</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_signal_deliver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>called when a signal is delivered</p>
 </dd></dl>
 
@@ -439,7 +439,7 @@ matching generated signals and delivered signals may not be correct.</p>
 <h2>Block IO<a class="headerlink" href="#block-io" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.trace_block_touch_buffer">
-void <code class="sig-name descname">trace_block_touch_buffer</code><span class="sig-paren">(</span><em class="property">struct</em> buffer_head *<em>bh</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_touch_buffer" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_touch_buffer</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">buffer_head</span> <span class="pre">*</span><em><span class="pre">bh</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_touch_buffer" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>mark a buffer accessed</p>
 </dd></dl>
 
@@ -452,7 +452,7 @@ void <code class="sig-name descname">trace_block_touch_buffer</code><span class=
 <p>Called from touch_buffer().</p>
 <dl class="c function">
 <dt id="c.trace_block_dirty_buffer">
-void <code class="sig-name descname">trace_block_dirty_buffer</code><span class="sig-paren">(</span><em class="property">struct</em> buffer_head *<em>bh</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_dirty_buffer" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_dirty_buffer</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">buffer_head</span> <span class="pre">*</span><em><span class="pre">bh</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_dirty_buffer" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>mark a buffer dirty</p>
 </dd></dl>
 
@@ -465,7 +465,7 @@ void <code class="sig-name descname">trace_block_dirty_buffer</code><span class=
 <p>Called from <a class="reference internal" href="../filesystems/api-summary.html#c.mark_buffer_dirty" title="mark_buffer_dirty"><code class="xref c c-func docutils literal notranslate"><span class="pre">mark_buffer_dirty()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.trace_block_rq_requeue">
-void <code class="sig-name descname">trace_block_rq_requeue</code><span class="sig-paren">(</span><em class="property">struct</em> request *<em>rq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_requeue" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_rq_requeue</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">request</span> <span class="pre">*</span><em><span class="pre">rq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_requeue" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>place block IO request back on a queue</p>
 </dd></dl>
 
@@ -480,7 +480,7 @@ void <code class="sig-name descname">trace_block_rq_requeue</code><span class="s
 put back in the queue.</p>
 <dl class="c function">
 <dt id="c.trace_block_rq_complete">
-void <code class="sig-name descname">trace_block_rq_complete</code><span class="sig-paren">(</span><em class="property">struct</em> request *<em>rq</em>, int <em>error</em>, unsigned int <em>nr_bytes</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_complete" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_rq_complete</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">request</span> <span class="pre">*</span><em><span class="pre">rq</span></em>, <span class="pre">int</span> <em><span class="pre">error</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">nr_bytes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_complete" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>block IO operation completed by device driver</p>
 </dd></dl>
 
@@ -501,7 +501,7 @@ do for the request. If <strong>rq-&gt;bio</strong> is non-NULL then there is
 additional work required to complete the request.</p>
 <dl class="c function">
 <dt id="c.trace_block_rq_insert">
-void <code class="sig-name descname">trace_block_rq_insert</code><span class="sig-paren">(</span><em class="property">struct</em> request *<em>rq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_insert" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_rq_insert</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">request</span> <span class="pre">*</span><em><span class="pre">rq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_insert" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>insert block operation request into queue</p>
 </dd></dl>
 
@@ -517,7 +517,7 @@ be examined to determine which device and sectors the pending
 operation would access.</p>
 <dl class="c function">
 <dt id="c.trace_block_rq_issue">
-void <code class="sig-name descname">trace_block_rq_issue</code><span class="sig-paren">(</span><em class="property">struct</em> request *<em>rq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_issue" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_rq_issue</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">request</span> <span class="pre">*</span><em><span class="pre">rq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_issue" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>issue pending block IO request operation to device driver</p>
 </dd></dl>
 
@@ -531,7 +531,7 @@ void <code class="sig-name descname">trace_block_rq_issue</code><span class="sig
 device driver for processing.</p>
 <dl class="c function">
 <dt id="c.trace_block_rq_merge">
-void <code class="sig-name descname">trace_block_rq_merge</code><span class="sig-paren">(</span><em class="property">struct</em> request *<em>rq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_merge" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_rq_merge</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">request</span> <span class="pre">*</span><em><span class="pre">rq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_merge" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>merge request with another one in the elevator</p>
 </dd></dl>
 
@@ -545,7 +545,7 @@ void <code class="sig-name descname">trace_block_rq_merge</code><span class="sig
 request queued in the elevator.</p>
 <dl class="c function">
 <dt id="c.trace_block_bio_complete">
-void <code class="sig-name descname">trace_block_bio_complete</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, <em class="property">struct</em> <a class="reference internal" href="#c.trace_block_bio_complete" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_complete" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_bio_complete</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">request_queue</span> <span class="pre">*</span><em><span class="pre">q</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.trace_block_bio_complete" title="bio"><span class="pre">bio</span></a> <span class="pre">*</span><em><span class="pre">bio</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_complete" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>completed all work on the block operation</p>
 </dd></dl>
 
@@ -561,7 +561,7 @@ void <code class="sig-name descname">trace_block_bio_complete</code><span class=
 block IO operation <strong>bio</strong>.</p>
 <dl class="c function">
 <dt id="c.trace_block_bio_bounce">
-void <code class="sig-name descname">trace_block_bio_bounce</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.trace_block_bio_bounce" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_bounce" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_bio_bounce</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.trace_block_bio_bounce" title="bio"><span class="pre">bio</span></a> <span class="pre">*</span><em><span class="pre">bio</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_bounce" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>used bounce buffer when processing block operation</p>
 </dd></dl>
 
@@ -578,7 +578,7 @@ bounce buffer requires extra copying of data and decreases
 performance.</p>
 <dl class="c function">
 <dt id="c.trace_block_bio_backmerge">
-void <code class="sig-name descname">trace_block_bio_backmerge</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.trace_block_bio_backmerge" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_backmerge" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_bio_backmerge</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.trace_block_bio_backmerge" title="bio"><span class="pre">bio</span></a> <span class="pre">*</span><em><span class="pre">bio</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_backmerge" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>merging block operation to the end of an existing operation</p>
 </dd></dl>
 
@@ -591,7 +591,7 @@ void <code class="sig-name descname">trace_block_bio_backmerge</code><span class
 <p>Merging block request <strong>bio</strong> to the end of an existing block request.</p>
 <dl class="c function">
 <dt id="c.trace_block_bio_frontmerge">
-void <code class="sig-name descname">trace_block_bio_frontmerge</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.trace_block_bio_frontmerge" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_frontmerge" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_bio_frontmerge</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.trace_block_bio_frontmerge" title="bio"><span class="pre">bio</span></a> <span class="pre">*</span><em><span class="pre">bio</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_frontmerge" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>merging block operation to the beginning of an existing operation</p>
 </dd></dl>
 
@@ -604,7 +604,7 @@ void <code class="sig-name descname">trace_block_bio_frontmerge</code><span clas
 <p>Merging block IO operation <strong>bio</strong> to the beginning of an existing block request.</p>
 <dl class="c function">
 <dt id="c.trace_block_bio_queue">
-void <code class="sig-name descname">trace_block_bio_queue</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.trace_block_bio_queue" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_queue" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_bio_queue</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.trace_block_bio_queue" title="bio"><span class="pre">bio</span></a> <span class="pre">*</span><em><span class="pre">bio</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_queue" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>putting new block IO operation in queue</p>
 </dd></dl>
 
@@ -617,7 +617,7 @@ void <code class="sig-name descname">trace_block_bio_queue</code><span class="si
 <p>About to place the block IO operation <strong>bio</strong> into queue <strong>q</strong>.</p>
 <dl class="c function">
 <dt id="c.trace_block_getrq">
-void <code class="sig-name descname">trace_block_getrq</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.trace_block_getrq" title="bio">bio</a> *<em>bio</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_getrq" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_getrq</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.trace_block_getrq" title="bio"><span class="pre">bio</span></a> <span class="pre">*</span><em><span class="pre">bio</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_getrq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get a free request entry in queue for block IO operations</p>
 </dd></dl>
 
@@ -630,7 +630,7 @@ void <code class="sig-name descname">trace_block_getrq</code><span class="sig-pa
 <p>A request struct has been allocated to handle the block IO operation <strong>bio</strong>.</p>
 <dl class="c function">
 <dt id="c.trace_block_plug">
-void <code class="sig-name descname">trace_block_plug</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_plug" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_plug</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">request_queue</span> <span class="pre">*</span><em><span class="pre">q</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_plug" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>keep operations requests in request queue</p>
 </dd></dl>
 
@@ -645,7 +645,7 @@ to be sent to the device driver. Instead, accumulate requests in
 the queue to improve throughput performance of the block device.</p>
 <dl class="c function">
 <dt id="c.trace_block_unplug">
-void <code class="sig-name descname">trace_block_unplug</code><span class="sig-paren">(</span><em class="property">struct</em> request_queue *<em>q</em>, unsigned int <em>depth</em>, bool <em>explicit</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_unplug" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_unplug</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">request_queue</span> <span class="pre">*</span><em><span class="pre">q</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">depth</span></em>, <span class="pre">bool</span> <em><span class="pre">explicit</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_unplug" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>release of operations requests in request queue</p>
 </dd></dl>
 
@@ -663,7 +663,7 @@ void <code class="sig-name descname">trace_block_unplug</code><span class="sig-p
 on elements in the request queue.</p>
 <dl class="c function">
 <dt id="c.trace_block_split">
-void <code class="sig-name descname">trace_block_split</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.trace_block_split" title="bio">bio</a> *<em>bio</em>, unsigned int <em>new_sector</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_split" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_split</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.trace_block_split" title="bio"><span class="pre">bio</span></a> <span class="pre">*</span><em><span class="pre">bio</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">new_sector</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_split" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>split a single bio struct into two bio structs</p>
 </dd></dl>
 
@@ -681,7 +681,7 @@ hardware limitations such as operation crossing device boundaries in a RAID
 system.</p>
 <dl class="c function">
 <dt id="c.trace_block_bio_remap">
-void <code class="sig-name descname">trace_block_bio_remap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.trace_block_bio_remap" title="bio">bio</a> *<em>bio</em>, dev_t <em>dev</em>, sector_t <em>from</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_remap" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_bio_remap</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.trace_block_bio_remap" title="bio"><span class="pre">bio</span></a> <span class="pre">*</span><em><span class="pre">bio</span></em>, <span class="pre">dev_t</span> <em><span class="pre">dev</span></em>, <span class="pre">sector_t</span> <em><span class="pre">from</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_bio_remap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>map request for a logical device to the raw device</p>
 </dd></dl>
 
@@ -699,7 +699,7 @@ void <code class="sig-name descname">trace_block_bio_remap</code><span class="si
 raw block device.</p>
 <dl class="c function">
 <dt id="c.trace_block_rq_remap">
-void <code class="sig-name descname">trace_block_rq_remap</code><span class="sig-paren">(</span><em class="property">struct</em> request *<em>rq</em>, dev_t <em>dev</em>, sector_t <em>from</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_remap" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_block_rq_remap</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">request</span> <span class="pre">*</span><em><span class="pre">rq</span></em>, <span class="pre">dev_t</span> <em><span class="pre">dev</span></em>, <span class="pre">sector_t</span> <em><span class="pre">from</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_block_rq_remap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>map request for a block operation request</p>
 </dd></dl>
 
@@ -721,7 +721,7 @@ the original sector.</p>
 <h2>Workqueue<a class="headerlink" href="#workqueue" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.trace_workqueue_queue_work">
-void <code class="sig-name descname">trace_workqueue_queue_work</code><span class="sig-paren">(</span>unsigned int <em>req_cpu</em>, <em class="property">struct</em> pool_workqueue *<em>pwq</em>, <em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_workqueue_queue_work" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_workqueue_queue_work</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">req_cpu</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">pool_workqueue</span> <span class="pre">*</span><em><span class="pre">pwq</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_workqueue_queue_work" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>called when a work gets queued</p>
 </dd></dl>
 
@@ -740,7 +740,7 @@ delayed work is actually queued on a workqueue (ie: once the delay
 has been reached).</p>
 <dl class="c function">
 <dt id="c.trace_workqueue_activate_work">
-void <code class="sig-name descname">trace_workqueue_activate_work</code><span class="sig-paren">(</span><em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_workqueue_activate_work" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_workqueue_activate_work</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_workqueue_activate_work" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>called when a work gets activated</p>
 </dd></dl>
 
@@ -755,7 +755,7 @@ which happens immediately after queueing unless <strong>max_active</strong> limi
 is reached.</p>
 <dl class="c function">
 <dt id="c.trace_workqueue_execute_start">
-void <code class="sig-name descname">trace_workqueue_execute_start</code><span class="sig-paren">(</span><em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_workqueue_execute_start" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_workqueue_execute_start</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_workqueue_execute_start" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>called immediately before the workqueue callback</p>
 </dd></dl>
 
@@ -768,7 +768,7 @@ void <code class="sig-name descname">trace_workqueue_execute_start</code><span c
 <p>Allows to track workqueue execution.</p>
 <dl class="c function">
 <dt id="c.trace_workqueue_execute_end">
-void <code class="sig-name descname">trace_workqueue_execute_end</code><span class="sig-paren">(</span><em class="property">struct</em> work_struct *<em>work</em>, work_func_t <em>function</em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_workqueue_execute_end" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">trace_workqueue_execute_end</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em>, <span class="pre">work_func_t</span> <em><span class="pre">function</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.trace_workqueue_execute_end" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>called immediately after the workqueue callback</p>
 </dd></dl>
 

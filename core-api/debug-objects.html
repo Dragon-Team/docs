@@ -323,7 +323,7 @@ tracking objects and the state of the internal tracking objects pool.</p>
 <h2>Debug functions<a class="headerlink" href="#debug-functions" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.debug_object_init">
-void <code class="sig-name descname">debug_object_init</code><span class="sig-paren">(</span>void *<em>addr</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.debug_obj_descr" title="debug_obj_descr">debug_obj_descr</a> *<em>descr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.debug_object_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">debug_object_init</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">addr</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.debug_obj_descr" title="debug_obj_descr"><span class="pre">debug_obj_descr</span></a> <span class="pre">*</span><em><span class="pre">descr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.debug_object_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>debug checks when an object is initialized</p>
 </dd></dl>
 
@@ -353,7 +353,7 @@ calling code must use <a class="reference internal" href="#c.debug_object_init_o
 object before leaving the function which allocated it. See next section.</p>
 <dl class="c function">
 <dt id="c.debug_object_init_on_stack">
-void <code class="sig-name descname">debug_object_init_on_stack</code><span class="sig-paren">(</span>void *<em>addr</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.debug_obj_descr" title="debug_obj_descr">debug_obj_descr</a> *<em>descr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.debug_object_init_on_stack" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">debug_object_init_on_stack</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">addr</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.debug_obj_descr" title="debug_obj_descr"><span class="pre">debug_obj_descr</span></a> <span class="pre">*</span><em><span class="pre">descr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.debug_object_init_on_stack" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>debug checks when an object on stack is initialized</p>
 </dd></dl>
 
@@ -383,7 +383,7 @@ calling <a class="reference internal" href="#c.debug_object_free" title="debug_o
 object returns. Otherwise we keep track of stale objects.</p>
 <dl class="c function">
 <dt id="c.debug_object_activate">
-int <code class="sig-name descname">debug_object_activate</code><span class="sig-paren">(</span>void *<em>addr</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.debug_obj_descr" title="debug_obj_descr">debug_obj_descr</a> *<em>descr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.debug_object_activate" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">debug_object_activate</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">addr</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.debug_obj_descr" title="debug_obj_descr"><span class="pre">debug_obj_descr</span></a> <span class="pre">*</span><em><span class="pre">descr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.debug_object_activate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>debug checks when an object is activated</p>
 </dd></dl>
 
@@ -414,7 +414,7 @@ object.</p>
 tracker object is set to ODEBUG_STATE_ACTIVE.</p>
 <dl class="c function">
 <dt id="c.debug_object_deactivate">
-void <code class="sig-name descname">debug_object_deactivate</code><span class="sig-paren">(</span>void *<em>addr</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.debug_obj_descr" title="debug_obj_descr">debug_obj_descr</a> *<em>descr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.debug_object_deactivate" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">debug_object_deactivate</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">addr</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.debug_obj_descr" title="debug_obj_descr"><span class="pre">debug_obj_descr</span></a> <span class="pre">*</span><em><span class="pre">descr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.debug_object_deactivate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>debug checks when an object is deactivated</p>
 </dd></dl>
 
@@ -434,7 +434,7 @@ or destroyed objects.</p>
 tracker object is set to ODEBUG_STATE_INACTIVE.</p>
 <dl class="c function">
 <dt id="c.debug_object_destroy">
-void <code class="sig-name descname">debug_object_destroy</code><span class="sig-paren">(</span>void *<em>addr</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.debug_obj_descr" title="debug_obj_descr">debug_obj_descr</a> *<em>descr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.debug_object_destroy" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">debug_object_destroy</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">addr</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.debug_obj_descr" title="debug_obj_descr"><span class="pre">debug_obj_descr</span></a> <span class="pre">*</span><em><span class="pre">descr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.debug_object_destroy" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>debug checks when an object is destroyed</p>
 </dd></dl>
 
@@ -460,7 +460,7 @@ deactivate an active object in order to prevent damage to the subsystem.</p>
 tracker object is set to ODEBUG_STATE_DESTROYED.</p>
 <dl class="c function">
 <dt id="c.debug_object_free">
-void <code class="sig-name descname">debug_object_free</code><span class="sig-paren">(</span>void *<em>addr</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.debug_obj_descr" title="debug_obj_descr">debug_obj_descr</a> *<em>descr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.debug_object_free" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">debug_object_free</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">addr</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.debug_obj_descr" title="debug_obj_descr"><span class="pre">debug_obj_descr</span></a> <span class="pre">*</span><em><span class="pre">descr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.debug_object_free" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>debug checks when an object is freed</p>
 </dd></dl>
 
@@ -483,7 +483,7 @@ prevent damage to the subsystem.</p>
 usage of the object is detected by the other debug checks.</p>
 <dl class="c function">
 <dt id="c.debug_object_assert_init">
-void <code class="sig-name descname">debug_object_assert_init</code><span class="sig-paren">(</span>void *<em>addr</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.debug_obj_descr" title="debug_obj_descr">debug_obj_descr</a> *<em>descr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.debug_object_assert_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">debug_object_assert_init</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">addr</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.debug_obj_descr" title="debug_obj_descr"><span class="pre">debug_obj_descr</span></a> <span class="pre">*</span><em><span class="pre">descr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.debug_object_assert_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>debug checks when object should be init-ed</p>
 </dd></dl>
 
@@ -508,7 +508,7 @@ and other specific initializing functions.</p>
 <h3>Debug object type description structure<a class="headerlink" href="#debug-object-type-description-structure" title="Permalink to this headline">¶</a></h3>
 <dl class="c struct">
 <dt id="c.debug_obj">
-<em class="property">struct </em><code class="sig-name descname">debug_obj</code><a class="headerlink" href="#c.debug_obj" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">debug_obj</span></code><a class="headerlink" href="#c.debug_obj" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>representaion of an tracked object</p>
 </dd></dl>
 
@@ -537,7 +537,7 @@ and other specific initializing functions.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.debug_obj_descr">
-<em class="property">struct </em><code class="sig-name descname">debug_obj_descr</code><a class="headerlink" href="#c.debug_obj_descr" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">debug_obj_descr</span></code><a class="headerlink" href="#c.debug_obj_descr" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>object type specific debug description structure</p>
 </dd></dl>
 

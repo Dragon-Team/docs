@@ -353,7 +353,7 @@ drivers want to use it.</p>
 <h2>In-kernel interface<a class="headerlink" href="#in-kernel-interface" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.vga_set_legacy_decoding">
-void <code class="sig-name descname">vga_set_legacy_decoding</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>pdev</em>, unsigned int <em>decodes</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vga_set_legacy_decoding" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">vga_set_legacy_decoding</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">pdev</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">decodes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vga_set_legacy_decoding" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -371,7 +371,7 @@ interrupts at any time.</p>
 </dl>
 <dl class="c function">
 <dt id="c.vga_get_interruptible">
-int <code class="sig-name descname">vga_get_interruptible</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>pdev</em>, unsigned int <em>rsrc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vga_get_interruptible" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vga_get_interruptible</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">pdev</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">rsrc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vga_get_interruptible" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -386,7 +386,7 @@ int <code class="sig-name descname">vga_get_interruptible</code><span class="sig
 <p>On success, release the VGA resource again with <a class="reference internal" href="#c.vga_put" title="vga_put"><code class="xref c c-func docutils literal notranslate"><span class="pre">vga_put()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.vga_get_uninterruptible">
-int <code class="sig-name descname">vga_get_uninterruptible</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>pdev</em>, unsigned int <em>rsrc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vga_get_uninterruptible" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vga_get_uninterruptible</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">pdev</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">rsrc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vga_get_uninterruptible" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>shortcut to <a class="reference internal" href="#c.vga_get" title="vga_get"><code class="xref c c-func docutils literal notranslate"><span class="pre">vga_get()</span></code></a></p>
 </dd></dl>
 
@@ -402,7 +402,7 @@ int <code class="sig-name descname">vga_get_uninterruptible</code><span class="s
 <p>On success, release the VGA resource again with <a class="reference internal" href="#c.vga_put" title="vga_put"><code class="xref c c-func docutils literal notranslate"><span class="pre">vga_put()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.vga_default_device">
-<em class="property">struct</em> pci_dev *<code class="sig-name descname">vga_default_device</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.vga_default_device" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">vga_default_device</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#c.vga_default_device" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return the default VGA device, for vgacon</p>
 </dd></dl>
 
@@ -427,7 +427,7 @@ us about it, so we basically never allow anybody to succeed a
 <a class="reference internal" href="#c.vga_get" title="vga_get"><code class="xref c c-func docutils literal notranslate"><span class="pre">vga_get()</span></code></a>…</p>
 <dl class="c function">
 <dt id="c.vga_remove_vgacon">
-int <code class="sig-name descname">vga_remove_vgacon</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>pdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vga_remove_vgacon" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vga_remove_vgacon</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">pdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vga_remove_vgacon" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>deactivete vga console</p>
 </dd></dl>
 
@@ -443,7 +443,7 @@ sure vga register access done by vgacon will not disturb the
 device.</p>
 <dl class="c function">
 <dt id="c.vga_get">
-int <code class="sig-name descname">vga_get</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>pdev</em>, unsigned int <em>rsrc</em>, int <em>interruptible</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vga_get" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vga_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">pdev</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">rsrc</span></em>, <span class="pre">int</span> <em><span class="pre">interruptible</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vga_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>acquire &amp; locks VGA resources</p>
 </dd></dl>
 
@@ -480,7 +480,7 @@ supported (a per-resource counter is maintained)</p>
 <p><strong>Return</strong></p>
 <dl class="c function">
 <dt id="c.vga_put">
-void <code class="sig-name descname">vga_put</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>pdev</em>, unsigned int <em>rsrc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vga_put" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">vga_put</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">pdev</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">rsrc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vga_put" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>release lock on legacy VGA resources</p>
 </dd></dl>
 
@@ -498,7 +498,7 @@ vga_tryget(). The resources aren’t disabled right away, so that a subsequence
 counter, so locks are only released if the counter reaches 0.</p>
 <dl class="c function">
 <dt id="c.vga_client_register">
-int <code class="sig-name descname">vga_client_register</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>pdev</em>, void *<em>cookie</em>, void (*<em>irq_set_state</em>)<span class="sig-paren">(</span>void *cookie, bool state<span class="sig-paren">)</span>, unsigned int (*<em>set_vga_decode</em>)<span class="sig-paren">(</span>void *cookie, bool decode<span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.vga_client_register" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vga_client_register</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">pdev</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">cookie</span></em>, <span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">irq_set_state</span></em><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><span class="pre">cookie</span>, <span class="pre">bool</span> <span class="pre">state</span><span class="sig-paren">)</span>, <span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">set_vga_decode</span></em><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><span class="pre">cookie</span>, <span class="pre">bool</span> <span class="pre">decode</span><span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.vga_client_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register or unregister a VGA arbitration client</p>
 </dd></dl>
 

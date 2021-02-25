@@ -384,7 +384,7 @@ access, special privileged instructions are Then used to copy data into enclave
 pages and establish enclave page permissions.</p>
 <dl class="c function">
 <dt id="c.sgx_ioc_enclave_create">
-long <code class="sig-name descname">sgx_ioc_enclave_create</code><span class="sig-paren">(</span><em class="property">struct</em> sgx_encl *<em>encl</em>, void __user *<em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sgx_ioc_enclave_create" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">long</span> <code class="sig-name descname"><span class="pre">sgx_ioc_enclave_create</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">sgx_encl</span> <span class="pre">*</span><em><span class="pre">encl</span></em>, <span class="pre">void</span> <span class="pre">__user</span> <span class="pre">*</span><em><span class="pre">arg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.sgx_ioc_enclave_create" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>handler for <code class="docutils literal notranslate"><span class="pre">SGX_IOC_ENCLAVE_CREATE</span></code></p>
 </dd></dl>
 
@@ -405,7 +405,7 @@ long <code class="sig-name descname">sgx_ioc_enclave_create</code><span class="s
 </ul>
 <dl class="c function">
 <dt id="c.sgx_ioc_enclave_add_pages">
-long <code class="sig-name descname">sgx_ioc_enclave_add_pages</code><span class="sig-paren">(</span><em class="property">struct</em> sgx_encl *<em>encl</em>, void __user *<em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sgx_ioc_enclave_add_pages" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">long</span> <code class="sig-name descname"><span class="pre">sgx_ioc_enclave_add_pages</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">sgx_encl</span> <span class="pre">*</span><em><span class="pre">encl</span></em>, <span class="pre">void</span> <span class="pre">__user</span> <span class="pre">*</span><em><span class="pre">arg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.sgx_ioc_enclave_add_pages" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>The handler for <code class="docutils literal notranslate"><span class="pre">SGX_IOC_ENCLAVE_ADD_PAGES</span></code></p>
 </dd></dl>
 
@@ -454,7 +454,7 @@ been invalidated. This will cause EADD and EEXTEND to fail.</p></li>
 </ul>
 <dl class="c function">
 <dt id="c.sgx_ioc_enclave_init">
-long <code class="sig-name descname">sgx_ioc_enclave_init</code><span class="sig-paren">(</span><em class="property">struct</em> sgx_encl *<em>encl</em>, void __user *<em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sgx_ioc_enclave_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">long</span> <code class="sig-name descname"><span class="pre">sgx_ioc_enclave_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">sgx_encl</span> <span class="pre">*</span><em><span class="pre">encl</span></em>, <span class="pre">void</span> <span class="pre">__user</span> <span class="pre">*</span><em><span class="pre">arg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.sgx_ioc_enclave_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>handler for <code class="docutils literal notranslate"><span class="pre">SGX_IOC_ENCLAVE_INIT</span></code></p>
 </dd></dl>
 
@@ -478,7 +478,7 @@ the enclave’s MRSIGNER, which is caculated from the provided sigstruct.</p>
 </ul>
 <dl class="c function">
 <dt id="c.sgx_ioc_enclave_provision">
-long <code class="sig-name descname">sgx_ioc_enclave_provision</code><span class="sig-paren">(</span><em class="property">struct</em> sgx_encl *<em>encl</em>, void __user *<em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.sgx_ioc_enclave_provision" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">long</span> <code class="sig-name descname"><span class="pre">sgx_ioc_enclave_provision</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">sgx_encl</span> <span class="pre">*</span><em><span class="pre">encl</span></em>, <span class="pre">void</span> <span class="pre">__user</span> <span class="pre">*</span><em><span class="pre">arg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.sgx_ioc_enclave_provision" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>handler for <code class="docutils literal notranslate"><span class="pre">SGX_IOC_ENCLAVE_PROVISION</span></code></p>
 </dd></dl>
 
@@ -516,7 +516,7 @@ a signal and return the fault information directly to its caller.  This avoids
 the need to juggle signal handlers.</p>
 <dl class="c macro">
 <dt id="c.vdso_sgx_enter_enclave_t">
-<code class="sig-name descname">vdso_sgx_enter_enclave_t</code><a class="headerlink" href="#c.vdso_sgx_enter_enclave_t" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">vdso_sgx_enter_enclave_t</span></code><a class="headerlink" href="#c.vdso_sgx_enter_enclave_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><strong>Typedef</strong>: Prototype for __vdso_sgx_enter_enclave(), a vDSO function to enter an SGX enclave.</p>
 </dd></dl>
 

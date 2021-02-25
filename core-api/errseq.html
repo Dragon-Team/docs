@@ -426,7 +426,7 @@ since the last time it was checked.</p>
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.errseq_set">
-errseq_t <code class="sig-name descname">errseq_set</code><span class="sig-paren">(</span>errseq_t *<em>eseq</em>, int <em>err</em><span class="sig-paren">)</span><a class="headerlink" href="#c.errseq_set" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">errseq_t</span> <code class="sig-name descname"><span class="pre">errseq_set</span></code><span class="sig-paren">(</span><span class="pre">errseq_t</span> <span class="pre">*</span><em><span class="pre">eseq</span></em>, <span class="pre">int</span> <em><span class="pre">err</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.errseq_set" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set a errseq_t for later reporting</p>
 </dd></dl>
 
@@ -447,7 +447,7 @@ return value should not be used as a previously sampled value in later
 calls as it will not have the SEEN flag set.</p>
 <dl class="c function">
 <dt id="c.errseq_sample">
-errseq_t <code class="sig-name descname">errseq_sample</code><span class="sig-paren">(</span>errseq_t *<em>eseq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.errseq_sample" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">errseq_t</span> <code class="sig-name descname"><span class="pre">errseq_sample</span></code><span class="sig-paren">(</span><span class="pre">errseq_t</span> <span class="pre">*</span><em><span class="pre">eseq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.errseq_sample" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Grab current errseq_t value.</p>
 </dd></dl>
 
@@ -467,7 +467,7 @@ see it the next time it checks for an error.</p>
 <p>The current errseq value.</p>
 <dl class="c function">
 <dt id="c.errseq_check">
-int <code class="sig-name descname">errseq_check</code><span class="sig-paren">(</span>errseq_t *<em>eseq</em>, errseq_t <em>since</em><span class="sig-paren">)</span><a class="headerlink" href="#c.errseq_check" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">errseq_check</span></code><span class="sig-paren">(</span><span class="pre">errseq_t</span> <span class="pre">*</span><em><span class="pre">eseq</span></em>, <span class="pre">errseq_t</span> <em><span class="pre">since</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.errseq_check" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Has an error occurred since a particular sample point?</p>
 </dd></dl>
 
@@ -486,7 +486,7 @@ is no need to mark the value as seen.</p>
 <p>The latest error set in the errseq_t or 0 if it hasn’t changed.</p>
 <dl class="c function">
 <dt id="c.errseq_check_and_advance">
-int <code class="sig-name descname">errseq_check_and_advance</code><span class="sig-paren">(</span>errseq_t *<em>eseq</em>, errseq_t *<em>since</em><span class="sig-paren">)</span><a class="headerlink" href="#c.errseq_check_and_advance" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">errseq_check_and_advance</span></code><span class="sig-paren">(</span><span class="pre">errseq_t</span> <span class="pre">*</span><em><span class="pre">eseq</span></em>, <span class="pre">errseq_t</span> <span class="pre">*</span><em><span class="pre">since</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.errseq_check_and_advance" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Check an errseq_t and advance to current value.</p>
 </dd></dl>
 

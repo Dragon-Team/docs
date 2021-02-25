@@ -474,7 +474,7 @@ USB, and in APIs including this host side API, gadget APIs, usb character
 devices and debugfs interfaces.</p>
 <dl class="c function">
 <dt id="c.usb_ep_type_string">
-<em class="property">const</em> char *<code class="sig-name descname">usb_ep_type_string</code><span class="sig-paren">(</span>int <em>ep_type</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_ep_type_string" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_ep_type_string</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">ep_type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_ep_type_string" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns human readable-name of the endpoint type.</p>
 </dd></dl>
 
@@ -487,7 +487,7 @@ usually got by usb_endpoint_type(), the string ‘unknown’ will be returned.</
 </dl>
 <dl class="c function">
 <dt id="c.usb_speed_string">
-<em class="property">const</em> char *<code class="sig-name descname">usb_speed_string</code><span class="sig-paren">(</span><em class="property">enum</em> usb_device_speed <em>speed</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_speed_string" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_speed_string</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <span class="pre">usb_device_speed</span> <em><span class="pre">speed</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_speed_string" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns human readable-name of the speed.</p>
 </dd></dl>
 
@@ -500,7 +500,7 @@ USB_SPEED_UNKNOWN will be returned.</p>
 </dl>
 <dl class="c function">
 <dt id="c.usb_get_maximum_speed">
-<em class="property">enum</em> usb_device_speed <code class="sig-name descname">usb_get_maximum_speed</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_maximum_speed" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span></em> <span class="pre">usb_device_speed</span> <code class="sig-name descname"><span class="pre">usb_get_maximum_speed</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_maximum_speed" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get maximum requested speed for a given USB controller.</p>
 </dd></dl>
 
@@ -514,7 +514,7 @@ USB_SPEED_UNKNOWN will be returned.</p>
 and returns the corresponding enum usb_device_speed.</p>
 <dl class="c function">
 <dt id="c.usb_get_maximum_ssp_rate">
-<em class="property">enum</em> usb_ssp_rate <code class="sig-name descname">usb_get_maximum_ssp_rate</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_maximum_ssp_rate" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span></em> <span class="pre">usb_ssp_rate</span> <code class="sig-name descname"><span class="pre">usb_get_maximum_ssp_rate</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_maximum_ssp_rate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get the signaling rate generation and lane count of a SuperSpeed Plus capable device.</p>
 </dd></dl>
 
@@ -529,7 +529,7 @@ and returns the corresponding enum usb_device_speed.</p>
 function returns the corresponding enum usb_ssp_rate.</p>
 <dl class="c function">
 <dt id="c.usb_state_string">
-<em class="property">const</em> char *<code class="sig-name descname">usb_state_string</code><span class="sig-paren">(</span><em class="property">enum</em> usb_device_state <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_state_string" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_state_string</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <span class="pre">usb_device_state</span> <em><span class="pre">state</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_state_string" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns human readable name for the state.</p>
 </dd></dl>
 
@@ -542,7 +542,7 @@ the string UNKNOWN will be returned.</p>
 </dl>
 <dl class="c function">
 <dt id="c.usb_decode_ctrl">
-<em class="property">const</em> char *<code class="sig-name descname">usb_decode_ctrl</code><span class="sig-paren">(</span>char *<em>str</em>, size_t <em>size</em>, __u8 <em>bRequestType</em>, __u8 <em>bRequest</em>, __u16 <em>wValue</em>, __u16 <em>wIndex</em>, __u16 <em>wLength</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_decode_ctrl" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_decode_ctrl</span></code><span class="sig-paren">(</span><span class="pre">char</span> <span class="pre">*</span><em><span class="pre">str</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">__u8</span> <em><span class="pre">bRequestType</span></em>, <span class="pre">__u8</span> <em><span class="pre">bRequest</span></em>, <span class="pre">__u16</span> <em><span class="pre">wValue</span></em>, <span class="pre">__u16</span> <em><span class="pre">wIndex</span></em>, <span class="pre">__u16</span> <em><span class="pre">wLength</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_decode_ctrl" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns human readable representation of control request.</p>
 </dd></dl>
 
@@ -581,7 +581,7 @@ drivers and devices, and support passing buffers through usbcore to some
 HCD that performs the I/O for the device driver.</p>
 <dl class="c struct">
 <dt id="c.usb_host_endpoint">
-<em class="property">struct </em><code class="sig-name descname">usb_host_endpoint</code><a class="headerlink" href="#c.usb_host_endpoint" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">usb_host_endpoint</span></code><a class="headerlink" href="#c.usb_host_endpoint" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>host-side endpoint descriptor and queue</p>
 </dd></dl>
 
@@ -629,7 +629,7 @@ with one or more transfer descriptors (TDs) per urb</p>
 descriptor within an active interface in a given USB configuration.</p>
 <dl class="c struct">
 <dt id="c.usb_interface">
-<em class="property">struct </em><code class="sig-name descname">usb_interface</code><a class="headerlink" href="#c.usb_interface" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">usb_interface</span></code><a class="headerlink" href="#c.usb_interface" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>what usb device drivers talk to</p>
 </dd></dl>
 
@@ -730,7 +730,7 @@ stored in numerical order anyhow.  Use <a class="reference internal" href="#c.us
 look up an alternate setting in the altsetting array based on its number.</p>
 <dl class="c struct">
 <dt id="c.usb_interface_cache">
-<em class="property">struct </em><code class="sig-name descname">usb_interface_cache</code><a class="headerlink" href="#c.usb_interface_cache" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">usb_interface_cache</span></code><a class="headerlink" href="#c.usb_interface_cache" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>long-term representation of a device interface</p>
 </dd></dl>
 
@@ -761,7 +761,7 @@ structures at any time, permitting comparison of configurations and
 providing support for the /sys/kernel/debug/usb/devices pseudo-file.</p>
 <dl class="c struct">
 <dt id="c.usb_host_config">
-<em class="property">struct </em><code class="sig-name descname">usb_host_config</code><a class="headerlink" href="#c.usb_host_config" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">usb_host_config</span></code><a class="headerlink" href="#c.usb_host_config" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>representation of a device’s configuration</p>
 </dd></dl>
 
@@ -823,7 +823,7 @@ desires (expressed through userspace tools).  However, drivers can call
 all its interfaces.</p>
 <dl class="c struct">
 <dt id="c.usb_device">
-<em class="property">struct </em><code class="sig-name descname">usb_device</code><a class="headerlink" href="#c.usb_device" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">usb_device</span></code><a class="headerlink" href="#c.usb_device" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>kernel’s representation of a USB device</p>
 </dd></dl>
 
@@ -1032,7 +1032,7 @@ Will be used as wValue for SetIsochDelay requests.</p>
 <a class="reference internal" href="#c.usb_set_device_state" title="usb_set_device_state"><code class="xref c c-func docutils literal notranslate"><span class="pre">usb_set_device_state()</span></code></a>.</p>
 <dl class="c macro">
 <dt id="c.usb_hub_for_each_child">
-<code class="sig-name descname">usb_hub_for_each_child</code><a class="headerlink" href="#c.usb_hub_for_each_child" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">usb_hub_for_each_child</span></code><a class="headerlink" href="#c.usb_hub_for_each_child" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">usb_hub_for_each_child</span> <span class="pre">(hdev,</span> <span class="pre">port1,</span> <span class="pre">child)</span></code></p>
@@ -1050,7 +1050,7 @@ Will be used as wValue for SetIsochDelay requests.</p>
 </dl>
 <dl class="c function">
 <dt id="c.usb_interface_claimed">
-int <code class="sig-name descname">usb_interface_claimed</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>iface</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_interface_claimed" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_interface_claimed</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">iface</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_interface_claimed" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>returns true iff an interface is claimed</p>
 </dd></dl>
 
@@ -1068,7 +1068,7 @@ probe() entries don’t need extra locking, but other call contexts
 may need to explicitly claim that lock.</p>
 <dl class="c function">
 <dt id="c.usb_make_path">
-int <code class="sig-name descname">usb_make_path</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, char *<em>buf</em>, size_t <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_make_path" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_make_path</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">buf</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_make_path" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>returns stable device path in the usb tree</p>
 </dd></dl>
 
@@ -1101,7 +1101,7 @@ USB 2.0 root hubs (EHCI host controllers) will get one path ID if they are
 high speed, and a different one if they are full or low speed.</p>
 <dl class="c macro">
 <dt id="c.USB_DEVICE">
-<code class="sig-name descname">USB_DEVICE</code><a class="headerlink" href="#c.USB_DEVICE" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">USB_DEVICE</span></code><a class="headerlink" href="#c.USB_DEVICE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">USB_DEVICE</span> <span class="pre">(vend,</span> <span class="pre">prod)</span></code></p>
@@ -1120,7 +1120,7 @@ high speed, and a different one if they are full or low speed.</p>
 specific device.</p>
 <dl class="c macro">
 <dt id="c.USB_DEVICE_VER">
-<code class="sig-name descname">USB_DEVICE_VER</code><a class="headerlink" href="#c.USB_DEVICE_VER" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">USB_DEVICE_VER</span></code><a class="headerlink" href="#c.USB_DEVICE_VER" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">USB_DEVICE_VER</span> <span class="pre">(vend,</span> <span class="pre">prod,</span> <span class="pre">lo,</span> <span class="pre">hi)</span></code></p>
@@ -1143,7 +1143,7 @@ specific device.</p>
 specific device, with a version range.</p>
 <dl class="c macro">
 <dt id="c.USB_DEVICE_INTERFACE_CLASS">
-<code class="sig-name descname">USB_DEVICE_INTERFACE_CLASS</code><a class="headerlink" href="#c.USB_DEVICE_INTERFACE_CLASS" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">USB_DEVICE_INTERFACE_CLASS</span></code><a class="headerlink" href="#c.USB_DEVICE_INTERFACE_CLASS" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">USB_DEVICE_INTERFACE_CLASS</span> <span class="pre">(vend,</span> <span class="pre">prod,</span> <span class="pre">cl)</span></code></p>
@@ -1164,7 +1164,7 @@ specific device, with a version range.</p>
 specific interface class of devices.</p>
 <dl class="c macro">
 <dt id="c.USB_DEVICE_INTERFACE_PROTOCOL">
-<code class="sig-name descname">USB_DEVICE_INTERFACE_PROTOCOL</code><a class="headerlink" href="#c.USB_DEVICE_INTERFACE_PROTOCOL" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">USB_DEVICE_INTERFACE_PROTOCOL</span></code><a class="headerlink" href="#c.USB_DEVICE_INTERFACE_PROTOCOL" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">USB_DEVICE_INTERFACE_PROTOCOL</span> <span class="pre">(vend,</span> <span class="pre">prod,</span> <span class="pre">pr)</span></code></p>
@@ -1185,7 +1185,7 @@ specific interface class of devices.</p>
 specific interface protocol of devices.</p>
 <dl class="c macro">
 <dt id="c.USB_DEVICE_INTERFACE_NUMBER">
-<code class="sig-name descname">USB_DEVICE_INTERFACE_NUMBER</code><a class="headerlink" href="#c.USB_DEVICE_INTERFACE_NUMBER" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">USB_DEVICE_INTERFACE_NUMBER</span></code><a class="headerlink" href="#c.USB_DEVICE_INTERFACE_NUMBER" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">USB_DEVICE_INTERFACE_NUMBER</span> <span class="pre">(vend,</span> <span class="pre">prod,</span> <span class="pre">num)</span></code></p>
@@ -1206,7 +1206,7 @@ specific interface protocol of devices.</p>
 specific interface number of devices.</p>
 <dl class="c macro">
 <dt id="c.USB_DEVICE_INFO">
-<code class="sig-name descname">USB_DEVICE_INFO</code><a class="headerlink" href="#c.USB_DEVICE_INFO" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">USB_DEVICE_INFO</span></code><a class="headerlink" href="#c.USB_DEVICE_INFO" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">USB_DEVICE_INFO</span> <span class="pre">(cl,</span> <span class="pre">sc,</span> <span class="pre">pr)</span></code></p>
@@ -1227,7 +1227,7 @@ specific interface number of devices.</p>
 specific class of devices.</p>
 <dl class="c macro">
 <dt id="c.USB_INTERFACE_INFO">
-<code class="sig-name descname">USB_INTERFACE_INFO</code><a class="headerlink" href="#c.USB_INTERFACE_INFO" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">USB_INTERFACE_INFO</span></code><a class="headerlink" href="#c.USB_INTERFACE_INFO" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">USB_INTERFACE_INFO</span> <span class="pre">(cl,</span> <span class="pre">sc,</span> <span class="pre">pr)</span></code></p>
@@ -1248,7 +1248,7 @@ specific class of devices.</p>
 specific class of interfaces.</p>
 <dl class="c macro">
 <dt id="c.USB_DEVICE_AND_INTERFACE_INFO">
-<code class="sig-name descname">USB_DEVICE_AND_INTERFACE_INFO</code><a class="headerlink" href="#c.USB_DEVICE_AND_INTERFACE_INFO" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">USB_DEVICE_AND_INTERFACE_INFO</span></code><a class="headerlink" href="#c.USB_DEVICE_AND_INTERFACE_INFO" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">USB_DEVICE_AND_INTERFACE_INFO</span> <span class="pre">(vend,</span> <span class="pre">prod,</span> <span class="pre">cl,</span> <span class="pre">sc,</span> <span class="pre">pr)</span></code></p>
@@ -1275,7 +1275,7 @@ specific device with a specific class of interfaces.</p>
 vendor specific bDeviceClass values, but standards-compliant interfaces.</p>
 <dl class="c macro">
 <dt id="c.USB_VENDOR_AND_INTERFACE_INFO">
-<code class="sig-name descname">USB_VENDOR_AND_INTERFACE_INFO</code><a class="headerlink" href="#c.USB_VENDOR_AND_INTERFACE_INFO" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">USB_VENDOR_AND_INTERFACE_INFO</span></code><a class="headerlink" href="#c.USB_VENDOR_AND_INTERFACE_INFO" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">USB_VENDOR_AND_INTERFACE_INFO</span> <span class="pre">(vend,</span> <span class="pre">cl,</span> <span class="pre">sc,</span> <span class="pre">pr)</span></code></p>
@@ -1300,7 +1300,7 @@ specific vendor with a specific class of interfaces.</p>
 vendor specific bDeviceClass values, but standards-compliant interfaces.</p>
 <dl class="c struct">
 <dt id="c.usbdrv_wrap">
-<em class="property">struct </em><code class="sig-name descname">usbdrv_wrap</code><a class="headerlink" href="#c.usbdrv_wrap" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">usbdrv_wrap</span></code><a class="headerlink" href="#c.usbdrv_wrap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>wrapper for driver-model structure</p>
 </dd></dl>
 
@@ -1320,7 +1320,7 @@ vendor specific bDeviceClass values, but standards-compliant interfaces.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.usb_driver">
-<em class="property">struct </em><code class="sig-name descname">usb_driver</code><a class="headerlink" href="#c.usb_driver" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">usb_driver</span></code><a class="headerlink" href="#c.usb_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>identifies USB interface driver to usbcore</p>
 </dd></dl>
 
@@ -1429,7 +1429,7 @@ well as forcing all pending I/O requests to complete (by unlinking
 them as necessary, and blocking until the unlinks complete).</p>
 <dl class="c struct">
 <dt id="c.usb_device_driver">
-<em class="property">struct </em><code class="sig-name descname">usb_device_driver</code><a class="headerlink" href="#c.usb_device_driver" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">usb_device_driver</span></code><a class="headerlink" href="#c.usb_device_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>identifies USB device driver to usbcore</p>
 </dd></dl>
 
@@ -1490,7 +1490,7 @@ own, so this part of the setup does not need to be replicated.</p>
 match, and id_table.</p>
 <dl class="c struct">
 <dt id="c.usb_class_driver">
-<em class="property">struct </em><code class="sig-name descname">usb_class_driver</code><a class="headerlink" href="#c.usb_class_driver" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">usb_class_driver</span></code><a class="headerlink" href="#c.usb_class_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>identifies a USB driver that wants to use the USB major number</p>
 </dd></dl>
 
@@ -1521,7 +1521,7 @@ device node to create.</p>
 parameters used for them.</p>
 <dl class="c macro">
 <dt id="c.module_usb_driver">
-<code class="sig-name descname">module_usb_driver</code><a class="headerlink" href="#c.module_usb_driver" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">module_usb_driver</span></code><a class="headerlink" href="#c.module_usb_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">module_usb_driver</span> <span class="pre">(__usb_driver)</span></code></p>
@@ -1539,7 +1539,7 @@ init/exit. This eliminates a lot of boilerplate. Each module may only
 use this macro once, and calling it replaces <a class="reference internal" href="../basics.html#c.module_init" title="module_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">module_init()</span></code></a> and <a class="reference internal" href="../basics.html#c.module_exit" title="module_exit"><code class="xref c c-func docutils literal notranslate"><span class="pre">module_exit()</span></code></a></p>
 <dl class="c struct">
 <dt id="c.urb">
-<em class="property">struct </em><code class="sig-name descname">urb</code><a class="headerlink" href="#c.urb" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">urb</span></code><a class="headerlink" href="#c.urb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>USB Request Block</p>
 </dd></dl>
 
@@ -1766,7 +1766,7 @@ when the urb is owned by the hcd, that is, since the call to
 <a class="reference internal" href="#c.usb_submit_urb" title="usb_submit_urb"><code class="xref c c-func docutils literal notranslate"><span class="pre">usb_submit_urb()</span></code></a> till the entry into the completion routine.</p>
 <dl class="c function">
 <dt id="c.usb_fill_control_urb">
-void <code class="sig-name descname">usb_fill_control_urb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_fill_control_urb" title="urb">urb</a> *<em>urb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, unsigned int <em>pipe</em>, unsigned char *<em>setup_packet</em>, void *<em>transfer_buffer</em>, int <em>buffer_length</em>, usb_complete_t <em>complete_fn</em>, void *<em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_fill_control_urb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_fill_control_urb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_fill_control_urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">pipe</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">setup_packet</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">transfer_buffer</span></em>, <span class="pre">int</span> <em><span class="pre">buffer_length</span></em>, <span class="pre">usb_complete_t</span> <em><span class="pre">complete_fn</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">context</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_fill_control_urb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>initializes a control urb</p>
 </dd></dl>
 
@@ -1794,7 +1794,7 @@ void <code class="sig-name descname">usb_fill_control_urb</code><span class="sig
 it to a device.</p>
 <dl class="c function">
 <dt id="c.usb_fill_bulk_urb">
-void <code class="sig-name descname">usb_fill_bulk_urb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_fill_bulk_urb" title="urb">urb</a> *<em>urb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, unsigned int <em>pipe</em>, void *<em>transfer_buffer</em>, int <em>buffer_length</em>, usb_complete_t <em>complete_fn</em>, void *<em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_fill_bulk_urb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_fill_bulk_urb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_fill_bulk_urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">pipe</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">transfer_buffer</span></em>, <span class="pre">int</span> <em><span class="pre">buffer_length</span></em>, <span class="pre">usb_complete_t</span> <em><span class="pre">complete_fn</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">context</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_fill_bulk_urb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>macro to help initialize a bulk urb</p>
 </dd></dl>
 
@@ -1820,7 +1820,7 @@ void <code class="sig-name descname">usb_fill_bulk_urb</code><span class="sig-pa
 to a device.</p>
 <dl class="c function">
 <dt id="c.usb_fill_int_urb">
-void <code class="sig-name descname">usb_fill_int_urb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_fill_int_urb" title="urb">urb</a> *<em>urb</em>, <em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, unsigned int <em>pipe</em>, void *<em>transfer_buffer</em>, int <em>buffer_length</em>, usb_complete_t <em>complete_fn</em>, void *<em>context</em>, int <em>interval</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_fill_int_urb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_fill_int_urb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_fill_int_urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">pipe</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">transfer_buffer</span></em>, <span class="pre">int</span> <em><span class="pre">buffer_length</span></em>, <span class="pre">usb_complete_t</span> <em><span class="pre">complete_fn</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">context</span></em>, <span class="pre">int</span> <em><span class="pre">interval</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_fill_int_urb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>macro to help initialize a interrupt urb</p>
 </dd></dl>
 
@@ -1857,7 +1857,7 @@ through to the host controller, rather than being translated into microframe
 units.</p>
 <dl class="c function">
 <dt id="c.usb_urb_dir_in">
-int <code class="sig-name descname">usb_urb_dir_in</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_urb_dir_in" title="urb">urb</a> *<em>urb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_urb_dir_in" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_urb_dir_in</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_urb_dir_in" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_urb_dir_in" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check if an URB describes an IN transfer</p>
 </dd></dl>
 
@@ -1871,7 +1871,7 @@ int <code class="sig-name descname">usb_urb_dir_in</code><span class="sig-paren"
 otherwise 0.</p>
 <dl class="c function">
 <dt id="c.usb_urb_dir_out">
-int <code class="sig-name descname">usb_urb_dir_out</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_urb_dir_out" title="urb">urb</a> *<em>urb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_urb_dir_out" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_urb_dir_out</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_urb_dir_out" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_urb_dir_out" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check if an URB describes an OUT transfer</p>
 </dd></dl>
 
@@ -1885,7 +1885,7 @@ int <code class="sig-name descname">usb_urb_dir_out</code><span class="sig-paren
 otherwise 0.</p>
 <dl class="c struct">
 <dt id="c.usb_sg_request">
-<em class="property">struct </em><code class="sig-name descname">usb_sg_request</code><a class="headerlink" href="#c.usb_sg_request" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">usb_sg_request</span></code><a class="headerlink" href="#c.usb_sg_request" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>support for scatter/gather I/O</p>
 </dd></dl>
 
@@ -1934,7 +1934,7 @@ of bounce buffers on some systems. In some cases, drivers may be able to
 rely on 64bit DMA to eliminate another kind of bounce buffer.</p>
 <dl class="c function">
 <dt id="c.usb_init_urb">
-void <code class="sig-name descname">usb_init_urb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_init_urb" title="urb">urb</a> *<em>urb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_init_urb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_init_urb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_init_urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_init_urb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>initializes a urb so that it can be used by a USB driver</p>
 </dd></dl>
 
@@ -1953,7 +1953,7 @@ use by the USB core.</p>
 <p>Only use this function if you _really_ understand what you are doing.</p>
 <dl class="c function">
 <dt id="c.usb_alloc_urb">
-<em class="property">struct</em> <a class="reference internal" href="#c.urb" title="urb">urb</a> *<code class="sig-name descname">usb_alloc_urb</code><span class="sig-paren">(</span>int <em>iso_packets</em>, gfp_t <em>mem_flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_alloc_urb" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_alloc_urb</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">iso_packets</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">mem_flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_alloc_urb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>creates a new urb for a USB driver to use</p>
 </dd></dl>
 
@@ -1975,7 +1975,7 @@ endpoints, pass ‘0’ as the number of iso packets.</p>
 <p>A pointer to the new urb, or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> if no memory is available.</p>
 <dl class="c function">
 <dt id="c.usb_free_urb">
-void <code class="sig-name descname">usb_free_urb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_free_urb" title="urb">urb</a> *<em>urb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_free_urb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_free_urb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_free_urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_free_urb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>frees the memory used by a urb when all users of it are finished</p>
 </dd></dl>
 
@@ -1992,7 +1992,7 @@ of the urb calls this function, the memory of the urb is freed.</p>
 URB_FREE_BUFFER transfer flag is set.</p>
 <dl class="c function">
 <dt id="c.usb_get_urb">
-<em class="property">struct</em> <a class="reference internal" href="#c.usb_get_urb" title="urb">urb</a> *<code class="sig-name descname">usb_get_urb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_get_urb" title="urb">urb</a> *<em>urb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_urb" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_get_urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_get_urb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_get_urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_urb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>increments the reference count of the urb</p>
 </dd></dl>
 
@@ -2009,7 +2009,7 @@ for urbs.</p>
 <p>A pointer to the urb with the incremented reference counter.</p>
 <dl class="c function">
 <dt id="c.usb_anchor_urb">
-void <code class="sig-name descname">usb_anchor_urb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_anchor_urb" title="urb">urb</a> *<em>urb</em>, <em class="property">struct</em> usb_anchor *<em>anchor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_anchor_urb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_anchor_urb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_anchor_urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">usb_anchor</span> <span class="pre">*</span><em><span class="pre">anchor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_anchor_urb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>anchors an URB while it is processed</p>
 </dd></dl>
 
@@ -2025,7 +2025,7 @@ void <code class="sig-name descname">usb_anchor_urb</code><span class="sig-paren
 without bothering to track them</p>
 <dl class="c function">
 <dt id="c.usb_unanchor_urb">
-void <code class="sig-name descname">usb_unanchor_urb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_unanchor_urb" title="urb">urb</a> *<em>urb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_unanchor_urb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_unanchor_urb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_unanchor_urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_unanchor_urb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unanchors an URB</p>
 </dd></dl>
 
@@ -2038,7 +2038,7 @@ void <code class="sig-name descname">usb_unanchor_urb</code><span class="sig-par
 <p>Call this to stop the system keeping track of this URB</p>
 <dl class="c function">
 <dt id="c.usb_pipe_type_check">
-int <code class="sig-name descname">usb_pipe_type_check</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, unsigned int <em>pipe</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_pipe_type_check" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_pipe_type_check</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">pipe</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_pipe_type_check" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>sanity check of a specific pipe for a usb device</p>
 </dd></dl>
 
@@ -2055,7 +2055,7 @@ given usb device.  It returns 0 if the pipe is valid for the specific usb
 device, otherwise a negative error code.</p>
 <dl class="c function">
 <dt id="c.usb_urb_ep_type_check">
-int <code class="sig-name descname">usb_urb_ep_type_check</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.usb_urb_ep_type_check" title="urb">urb</a> *<em>urb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_urb_ep_type_check" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_urb_ep_type_check</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_urb_ep_type_check" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_urb_ep_type_check" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>sanity check of endpoint in the given urb</p>
 </dd></dl>
 
@@ -2070,7 +2070,7 @@ given urb.  It returns 0 if the urb contains a valid endpoint, otherwise
 a negative error code.</p>
 <dl class="c function">
 <dt id="c.usb_submit_urb">
-int <code class="sig-name descname">usb_submit_urb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_submit_urb" title="urb">urb</a> *<em>urb</em>, gfp_t <em>mem_flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_submit_urb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_submit_urb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_submit_urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">mem_flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_submit_urb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>issue an asynchronous transfer request for an endpoint</p>
 </dd></dl>
 
@@ -2201,7 +2201,7 @@ GFP_NOIO, unless b) or c) apply</p></li>
 <p>0 on successful submissions. A negative error number otherwise.</p>
 <dl class="c function">
 <dt id="c.usb_unlink_urb">
-int <code class="sig-name descname">usb_unlink_urb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_unlink_urb" title="urb">urb</a> *<em>urb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_unlink_urb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_unlink_urb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_unlink_urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_unlink_urb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>abort/cancel a transfer request for an endpoint</p>
 </dd></dl>
 
@@ -2272,7 +2272,7 @@ place.</p>
 failure.</p>
 <dl class="c function">
 <dt id="c.usb_kill_urb">
-void <code class="sig-name descname">usb_kill_urb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_kill_urb" title="urb">urb</a> *<em>urb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_kill_urb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_kill_urb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_kill_urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_kill_urb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>cancel a transfer request and wait for it to finish</p>
 </dd></dl>
 
@@ -2302,7 +2302,7 @@ situations where the caller can’t schedule().</p>
 method has returned.</p>
 <dl class="c function">
 <dt id="c.usb_poison_urb">
-void <code class="sig-name descname">usb_poison_urb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_poison_urb" title="urb">urb</a> *<em>urb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_poison_urb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_poison_urb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_poison_urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_poison_urb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>reliably kill a transfer and prevent further use of an URB</p>
 </dd></dl>
 
@@ -2332,7 +2332,7 @@ situations where the caller can’t schedule().</p>
 method has returned.</p>
 <dl class="c function">
 <dt id="c.usb_block_urb">
-void <code class="sig-name descname">usb_block_urb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_block_urb" title="urb">urb</a> *<em>urb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_block_urb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_block_urb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_block_urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_block_urb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>reliably prevent further use of an URB</p>
 </dd></dl>
 
@@ -2350,7 +2350,7 @@ particular, when a driver calls this routine, it must insure that the
 completion handler cannot deallocate the URB.</p>
 <dl class="c function">
 <dt id="c.usb_kill_anchored_urbs">
-void <code class="sig-name descname">usb_kill_anchored_urbs</code><span class="sig-paren">(</span><em class="property">struct</em> usb_anchor *<em>anchor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_kill_anchored_urbs" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_kill_anchored_urbs</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_anchor</span> <span class="pre">*</span><em><span class="pre">anchor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_kill_anchored_urbs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>kill all URBs associated with an anchor</p>
 </dd></dl>
 
@@ -2367,7 +2367,7 @@ anchor after this function returns.</p>
 method has returned.</p>
 <dl class="c function">
 <dt id="c.usb_poison_anchored_urbs">
-void <code class="sig-name descname">usb_poison_anchored_urbs</code><span class="sig-paren">(</span><em class="property">struct</em> usb_anchor *<em>anchor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_poison_anchored_urbs" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_poison_anchored_urbs</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_anchor</span> <span class="pre">*</span><em><span class="pre">anchor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_poison_anchored_urbs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>cease all traffic from an anchor</p>
 </dd></dl>
 
@@ -2384,7 +2384,7 @@ poisoned</p>
 method has returned.</p>
 <dl class="c function">
 <dt id="c.usb_unpoison_anchored_urbs">
-void <code class="sig-name descname">usb_unpoison_anchored_urbs</code><span class="sig-paren">(</span><em class="property">struct</em> usb_anchor *<em>anchor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_unpoison_anchored_urbs" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_unpoison_anchored_urbs</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_anchor</span> <span class="pre">*</span><em><span class="pre">anchor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_unpoison_anchored_urbs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>let an anchor be used successfully again</p>
 </dd></dl>
 
@@ -2398,7 +2398,7 @@ void <code class="sig-name descname">usb_unpoison_anchored_urbs</code><span clas
 the anchor can be used normally after it returns</p>
 <dl class="c function">
 <dt id="c.usb_unlink_anchored_urbs">
-void <code class="sig-name descname">usb_unlink_anchored_urbs</code><span class="sig-paren">(</span><em class="property">struct</em> usb_anchor *<em>anchor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_unlink_anchored_urbs" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_unlink_anchored_urbs</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_anchor</span> <span class="pre">*</span><em><span class="pre">anchor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_unlink_anchored_urbs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>asynchronously cancel transfer requests en masse</p>
 </dd></dl>
 
@@ -2416,7 +2416,7 @@ function has returned.</p>
 method has returned.</p>
 <dl class="c function">
 <dt id="c.usb_anchor_suspend_wakeups">
-void <code class="sig-name descname">usb_anchor_suspend_wakeups</code><span class="sig-paren">(</span><em class="property">struct</em> usb_anchor *<em>anchor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_anchor_suspend_wakeups" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_anchor_suspend_wakeups</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_anchor</span> <span class="pre">*</span><em><span class="pre">anchor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_anchor_suspend_wakeups" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -2430,7 +2430,7 @@ usb_wait_anchor_empty_timeout waiters. This is used in the hcd urb give-
 back path to delay waking up until after the completion handler has run.</p>
 <dl class="c function">
 <dt id="c.usb_anchor_resume_wakeups">
-void <code class="sig-name descname">usb_anchor_resume_wakeups</code><span class="sig-paren">(</span><em class="property">struct</em> usb_anchor *<em>anchor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_anchor_resume_wakeups" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_anchor_resume_wakeups</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_anchor</span> <span class="pre">*</span><em><span class="pre">anchor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_anchor_resume_wakeups" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><strong>Parameters</strong></p>
@@ -2443,7 +2443,7 @@ void <code class="sig-name descname">usb_anchor_resume_wakeups</code><span class
 wake up any current waiters if the anchor is empty.</p>
 <dl class="c function">
 <dt id="c.usb_wait_anchor_empty_timeout">
-int <code class="sig-name descname">usb_wait_anchor_empty_timeout</code><span class="sig-paren">(</span><em class="property">struct</em> usb_anchor *<em>anchor</em>, unsigned int <em>timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_wait_anchor_empty_timeout" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_wait_anchor_empty_timeout</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_anchor</span> <span class="pre">*</span><em><span class="pre">anchor</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">timeout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_wait_anchor_empty_timeout" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>wait for an anchor to be unused</p>
 </dd></dl>
 
@@ -2461,7 +2461,7 @@ URBs have finished</p>
 <p>Non-zero if the anchor became unused. Zero on timeout.</p>
 <dl class="c function">
 <dt id="c.usb_get_from_anchor">
-<em class="property">struct</em> <a class="reference internal" href="#c.urb" title="urb">urb</a> *<code class="sig-name descname">usb_get_from_anchor</code><span class="sig-paren">(</span><em class="property">struct</em> usb_anchor *<em>anchor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_from_anchor" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_get_from_anchor</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_anchor</span> <span class="pre">*</span><em><span class="pre">anchor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_from_anchor" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get an anchor’s oldest urb</p>
 </dd></dl>
 
@@ -2478,7 +2478,7 @@ unanchor and return it</p>
 urbs associated with it.</p>
 <dl class="c function">
 <dt id="c.usb_scuttle_anchored_urbs">
-void <code class="sig-name descname">usb_scuttle_anchored_urbs</code><span class="sig-paren">(</span><em class="property">struct</em> usb_anchor *<em>anchor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_scuttle_anchored_urbs" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_scuttle_anchored_urbs</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_anchor</span> <span class="pre">*</span><em><span class="pre">anchor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_scuttle_anchored_urbs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unanchor all an anchor’s urbs</p>
 </dd></dl>
 
@@ -2491,7 +2491,7 @@ void <code class="sig-name descname">usb_scuttle_anchored_urbs</code><span class
 <p>use this to get rid of all an anchor’s urbs</p>
 <dl class="c function">
 <dt id="c.usb_anchor_empty">
-int <code class="sig-name descname">usb_anchor_empty</code><span class="sig-paren">(</span><em class="property">struct</em> usb_anchor *<em>anchor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_anchor_empty" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_anchor_empty</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_anchor</span> <span class="pre">*</span><em><span class="pre">anchor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_anchor_empty" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>is an anchor empty</p>
 </dd></dl>
 
@@ -2504,7 +2504,7 @@ int <code class="sig-name descname">usb_anchor_empty</code><span class="sig-pare
 <p>1 if the anchor has no urbs associated with it.</p>
 <dl class="c function">
 <dt id="c.usb_control_msg">
-int <code class="sig-name descname">usb_control_msg</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, unsigned int <em>pipe</em>, __u8 <em>request</em>, __u8 <em>requesttype</em>, __u16 <em>value</em>, __u16 <em>index</em>, void *<em>data</em>, __u16 <em>size</em>, int <em>timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_control_msg" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_control_msg</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">pipe</span></em>, <span class="pre">__u8</span> <em><span class="pre">request</span></em>, <span class="pre">__u8</span> <em><span class="pre">requesttype</span></em>, <span class="pre">__u16</span> <em><span class="pre">value</span></em>, <span class="pre">__u16</span> <em><span class="pre">index</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">__u16</span> <em><span class="pre">size</span></em>, <span class="pre">int</span> <em><span class="pre">timeout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_control_msg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Builds a control urb, sends it off and waits for completion</p>
 </dd></dl>
 
@@ -2545,7 +2545,7 @@ don’t have a handle on the URB used, you can’t cancel the request.</p>
 error number.</p>
 <dl class="c function">
 <dt id="c.usb_control_msg_send">
-int <code class="sig-name descname">usb_control_msg_send</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, __u8 <em>endpoint</em>, __u8 <em>request</em>, __u8 <em>requesttype</em>, __u16 <em>value</em>, __u16 <em>index</em>, <em class="property">const</em> void *<em>driver_data</em>, __u16 <em>size</em>, int <em>timeout</em>, gfp_t <em>memflags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_control_msg_send" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_control_msg_send</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">__u8</span> <em><span class="pre">endpoint</span></em>, <span class="pre">__u8</span> <em><span class="pre">request</span></em>, <span class="pre">__u8</span> <em><span class="pre">requesttype</span></em>, <span class="pre">__u16</span> <em><span class="pre">value</span></em>, <span class="pre">__u16</span> <em><span class="pre">index</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">driver_data</span></em>, <span class="pre">__u16</span> <em><span class="pre">size</span></em>, <span class="pre">int</span> <em><span class="pre">timeout</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">memflags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_control_msg_send" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Builds a control “send” message, sends it off and waits for completion</p>
 </dd></dl>
 
@@ -2592,7 +2592,7 @@ memory (i.e. memory that can be successfully DMAed to a device).</p>
 <p>If successful, 0 is returned, Otherwise, a negative error number.</p>
 <dl class="c function">
 <dt id="c.usb_control_msg_recv">
-int <code class="sig-name descname">usb_control_msg_recv</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, __u8 <em>endpoint</em>, __u8 <em>request</em>, __u8 <em>requesttype</em>, __u16 <em>value</em>, __u16 <em>index</em>, void *<em>driver_data</em>, __u16 <em>size</em>, int <em>timeout</em>, gfp_t <em>memflags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_control_msg_recv" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_control_msg_recv</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">__u8</span> <em><span class="pre">endpoint</span></em>, <span class="pre">__u8</span> <em><span class="pre">request</span></em>, <span class="pre">__u8</span> <em><span class="pre">requesttype</span></em>, <span class="pre">__u16</span> <em><span class="pre">value</span></em>, <span class="pre">__u16</span> <em><span class="pre">index</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">driver_data</span></em>, <span class="pre">__u16</span> <em><span class="pre">size</span></em>, <span class="pre">int</span> <em><span class="pre">timeout</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">memflags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_control_msg_recv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Builds a control “receive” message, sends it off and waits for completion</p>
 </dd></dl>
 
@@ -2644,7 +2644,7 @@ where a variable amount of data might be returned.</p>
 <p>If successful, 0 is returned, Otherwise, a negative error number.</p>
 <dl class="c function">
 <dt id="c.usb_interrupt_msg">
-int <code class="sig-name descname">usb_interrupt_msg</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>usb_dev</em>, unsigned int <em>pipe</em>, void *<em>data</em>, int <em>len</em>, int *<em>actual_length</em>, int <em>timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_interrupt_msg" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_interrupt_msg</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">usb_dev</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">pipe</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">int</span> <em><span class="pre">len</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">actual_length</span></em>, <span class="pre">int</span> <em><span class="pre">timeout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_interrupt_msg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Builds an interrupt urb, sends it off and waits for completion</p>
 </dd></dl>
 
@@ -2680,7 +2680,7 @@ don’t have a handle on the URB used, you can’t cancel the request.</p>
 bytes transferred will be stored in the <strong>actual_length</strong> parameter.</p>
 <dl class="c function">
 <dt id="c.usb_bulk_msg">
-int <code class="sig-name descname">usb_bulk_msg</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>usb_dev</em>, unsigned int <em>pipe</em>, void *<em>data</em>, int <em>len</em>, int *<em>actual_length</em>, int <em>timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_bulk_msg" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_bulk_msg</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">usb_dev</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">pipe</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">int</span> <em><span class="pre">len</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">actual_length</span></em>, <span class="pre">int</span> <em><span class="pre">timeout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_bulk_msg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Builds a bulk urb, sends it off and waits for completion</p>
 </dd></dl>
 
@@ -2720,7 +2720,7 @@ interrupt endpoints.  We will take the liberty of creating an interrupt URB
 bytes transferred will be stored in the <strong>actual_length</strong> parameter.</p>
 <dl class="c function">
 <dt id="c.usb_sg_init">
-int <code class="sig-name descname">usb_sg_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_sg_request" title="usb_sg_request">usb_sg_request</a> *<em>io</em>, <em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, unsigned <em>pipe</em>, unsigned <em>period</em>, <em class="property">struct</em> scatterlist *<em>sg</em>, int <em>nents</em>, size_t <em>length</em>, gfp_t <em>mem_flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_sg_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_sg_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_sg_request" title="usb_sg_request"><span class="pre">usb_sg_request</span></a> <span class="pre">*</span><em><span class="pre">io</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">unsigned</span> <em><span class="pre">pipe</span></em>, <span class="pre">unsigned</span> <em><span class="pre">period</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">scatterlist</span> <span class="pre">*</span><em><span class="pre">sg</span></em>, <span class="pre">int</span> <em><span class="pre">nents</span></em>, <span class="pre">size_t</span> <em><span class="pre">length</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">mem_flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_sg_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>initializes scatterlist-based bulk/interrupt I/O request</p>
 </dd></dl>
 
@@ -2759,7 +2759,7 @@ complete (or to be canceled) and then cleans up all resources allocated by
 <p>Zero for success, else a negative errno value.</p>
 <dl class="c function">
 <dt id="c.usb_sg_wait">
-void <code class="sig-name descname">usb_sg_wait</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_sg_request" title="usb_sg_request">usb_sg_request</a> *<em>io</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_sg_wait" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_sg_wait</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_sg_request" title="usb_sg_request"><span class="pre">usb_sg_request</span></a> <span class="pre">*</span><em><span class="pre">io</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_sg_wait" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>synchronously execute scatter/gather request</p>
 </dd></dl>
 
@@ -2806,7 +2806,7 @@ under an xHCI host controller, as the bandwidth is reserved when the
 configuration or interface alt setting is selected.</p>
 <dl class="c function">
 <dt id="c.usb_sg_cancel">
-void <code class="sig-name descname">usb_sg_cancel</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_sg_request" title="usb_sg_request">usb_sg_request</a> *<em>io</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_sg_cancel" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_sg_cancel</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_sg_request" title="usb_sg_request"><span class="pre">usb_sg_request</span></a> <span class="pre">*</span><em><span class="pre">io</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_sg_cancel" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>stop scatter/gather i/o issued by <a class="reference internal" href="#c.usb_sg_wait" title="usb_sg_wait"><code class="xref c c-func docutils literal notranslate"><span class="pre">usb_sg_wait()</span></code></a></p>
 </dd></dl>
 
@@ -2821,7 +2821,7 @@ It can also prevents one initialized by <a class="reference internal" href="#c.u
 so that call just frees resources allocated to the request.</p>
 <dl class="c function">
 <dt id="c.usb_get_descriptor">
-int <code class="sig-name descname">usb_get_descriptor</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, unsigned char <em>type</em>, unsigned char <em>index</em>, void *<em>buf</em>, int <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_descriptor" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_get_descriptor</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <em><span class="pre">type</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <em><span class="pre">index</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">buf</span></em>, <span class="pre">int</span> <em><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_descriptor" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>issues a generic GET_DESCRIPTOR request</p>
 </dd></dl>
 
@@ -2854,7 +2854,7 @@ devices also use class-specific or vendor-specific descriptors.</p>
 returned by the underlying <a class="reference internal" href="#c.usb_control_msg" title="usb_control_msg"><code class="xref c c-func docutils literal notranslate"><span class="pre">usb_control_msg()</span></code></a> call.</p>
 <dl class="c function">
 <dt id="c.usb_string">
-int <code class="sig-name descname">usb_string</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, int <em>index</em>, char *<em>buf</em>, size_t <em>size</em><span class="sig-paren">)</span><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_string</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">int</span> <em><span class="pre">index</span></em>, <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">buf</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em><span class="sig-paren">)</span><br /></dt>
 <dd><p>returns UTF-8 version of a string descriptor</p>
 </dd></dl>
 
@@ -2881,7 +2881,7 @@ chooses strings in the first language supported by the device.</p>
 <p>length of the string (&gt;= 0) or usb_control_msg status (&lt; 0).</p>
 <dl class="c function">
 <dt id="c.usb_get_status">
-int <code class="sig-name descname">usb_get_status</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, int <em>recip</em>, int <em>type</em>, int <em>target</em>, void *<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_status" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_get_status</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">int</span> <em><span class="pre">recip</span></em>, <span class="pre">int</span> <em><span class="pre">type</span></em>, <span class="pre">int</span> <em><span class="pre">target</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_status" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>issues a GET_STATUS call</p>
 </dd></dl>
 
@@ -2913,7 +2913,7 @@ function should be used to clear halt (“stall”) status.</p>
 or else the status code from the underlying <a class="reference internal" href="#c.usb_control_msg" title="usb_control_msg"><code class="xref c c-func docutils literal notranslate"><span class="pre">usb_control_msg()</span></code></a> call.</p>
 <dl class="c function">
 <dt id="c.usb_clear_halt">
-int <code class="sig-name descname">usb_clear_halt</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, int <em>pipe</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_clear_halt" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_clear_halt</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">int</span> <em><span class="pre">pipe</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_clear_halt" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>tells device to clear endpoint halt/stall condition</p>
 </dd></dl>
 
@@ -2943,7 +2943,7 @@ same status code used to report a true stall.</p>
 underlying <a class="reference internal" href="#c.usb_control_msg" title="usb_control_msg"><code class="xref c c-func docutils literal notranslate"><span class="pre">usb_control_msg()</span></code></a> call.</p>
 <dl class="c function">
 <dt id="c.usb_reset_endpoint">
-void <code class="sig-name descname">usb_reset_endpoint</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, unsigned int <em>epaddr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_reset_endpoint" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_reset_endpoint</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">epaddr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_reset_endpoint" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Reset an endpoint’s state.</p>
 </dd></dl>
 
@@ -2960,7 +2960,7 @@ endpoint number + USB_DIR_IN for input</p>
 sequence number or current window.</p>
 <dl class="c function">
 <dt id="c.usb_set_interface">
-int <code class="sig-name descname">usb_set_interface</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, int <em>interface</em>, int <em>alternate</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_set_interface" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_set_interface</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">int</span> <em><span class="pre">interface</span></em>, <span class="pre">int</span> <em><span class="pre">alternate</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_set_interface" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Makes a particular alternate setting be current</p>
 </dd></dl>
 
@@ -3004,7 +3004,7 @@ endpoints in that interface; all such urbs must first be completed
 underlying <a class="reference internal" href="#c.usb_control_msg" title="usb_control_msg"><code class="xref c c-func docutils literal notranslate"><span class="pre">usb_control_msg()</span></code></a> call.</p>
 <dl class="c function">
 <dt id="c.usb_reset_configuration">
-int <code class="sig-name descname">usb_reset_configuration</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_reset_configuration" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_reset_configuration</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_reset_configuration" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>lightweight device reset</p>
 </dd></dl>
 
@@ -3033,7 +3033,7 @@ with endpoints disabled, and interfaces only partially enabled.</p>
 <p>Zero on success, else a negative error code.</p>
 <dl class="c function">
 <dt id="c.usb_driver_set_configuration">
-int <code class="sig-name descname">usb_driver_set_configuration</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>udev</em>, int <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_driver_set_configuration" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_driver_set_configuration</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">udev</span></em>, <span class="pre">int</span> <em><span class="pre">config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_driver_set_configuration" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Provide a way for drivers to change device configurations</p>
 </dd></dl>
 
@@ -3061,7 +3061,7 @@ The caller has no way to know whether the queued request will eventually
 succeed.</p>
 <dl class="c function">
 <dt id="c.cdc_parse_cdc_header">
-int <code class="sig-name descname">cdc_parse_cdc_header</code><span class="sig-paren">(</span><em class="property">struct</em> usb_cdc_parsed_header *<em>hdr</em>, <em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>intf</em>, u8 *<em>buffer</em>, int <em>buflen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cdc_parse_cdc_header" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cdc_parse_cdc_header</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_cdc_parsed_header</span> <span class="pre">*</span><em><span class="pre">hdr</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">intf</span></em>, <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">buffer</span></em>, <span class="pre">int</span> <em><span class="pre">buflen</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cdc_parse_cdc_header" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>parse the extra headers present in CDC devices</p>
 </dd></dl>
 
@@ -3085,7 +3085,7 @@ about the capabilities of the device.</p>
 if the header is contradictory beyond salvage</p>
 <dl class="c function">
 <dt id="c.usb_register_dev">
-int <code class="sig-name descname">usb_register_dev</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>intf</em>, <em class="property">struct</em> <a class="reference internal" href="#c.usb_class_driver" title="usb_class_driver">usb_class_driver</a> *<em>class_driver</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_register_dev" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_register_dev</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">intf</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_class_driver" title="usb_class_driver"><span class="pre">usb_class_driver</span></a> <span class="pre">*</span><em><span class="pre">class_driver</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_register_dev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a USB device, and ask for a minor number</p>
 </dd></dl>
 
@@ -3110,7 +3110,7 @@ the minor numbers given out by this function.</p>
 device, and 0 on success.</p>
 <dl class="c function">
 <dt id="c.usb_deregister_dev">
-void <code class="sig-name descname">usb_deregister_dev</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>intf</em>, <em class="property">struct</em> <a class="reference internal" href="#c.usb_class_driver" title="usb_class_driver">usb_class_driver</a> *<em>class_driver</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_deregister_dev" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_deregister_dev</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">intf</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_class_driver" title="usb_class_driver"><span class="pre">usb_class_driver</span></a> <span class="pre">*</span><em><span class="pre">class_driver</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_deregister_dev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>deregister a USB device’s dynamic minor.</p>
 </dd></dl>
 
@@ -3130,7 +3130,7 @@ from the system.)</p>
 <p>This should be called by all drivers that use the USB major number.</p>
 <dl class="c function">
 <dt id="c.usb_driver_claim_interface">
-int <code class="sig-name descname">usb_driver_claim_interface</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_driver" title="usb_driver">usb_driver</a> *<em>driver</em>, <em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>iface</em>, void *<em>priv</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_driver_claim_interface" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_driver_claim_interface</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_driver" title="usb_driver"><span class="pre">usb_driver</span></a> <span class="pre">*</span><em><span class="pre">driver</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">iface</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">priv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_driver_claim_interface" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>bind a driver to an interface</p>
 </dd></dl>
 
@@ -3159,7 +3159,7 @@ lock.</p>
 <p>0 on success.</p>
 <dl class="c function">
 <dt id="c.usb_driver_release_interface">
-void <code class="sig-name descname">usb_driver_release_interface</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_driver" title="usb_driver">usb_driver</a> *<em>driver</em>, <em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>iface</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_driver_release_interface" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_driver_release_interface</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_driver" title="usb_driver"><span class="pre">usb_driver</span></a> <span class="pre">*</span><em><span class="pre">driver</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">iface</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_driver_release_interface" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unbind a driver from an interface</p>
 </dd></dl>
 
@@ -3180,7 +3180,7 @@ need extra locking, but other call contexts may need to explicitly claim
 that lock.</p>
 <dl class="c function">
 <dt id="c.usb_match_id">
-<em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="../basics.html#c.usb_device_id" title="usb_device_id">usb_device_id</a> *<code class="sig-name descname">usb_match_id</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>interface</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="../basics.html#c.usb_device_id" title="usb_device_id">usb_device_id</a> *<em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_match_id" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../basics.html#c.usb_device_id" title="usb_device_id"><span class="pre">usb_device_id</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_match_id</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">interface</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../basics.html#c.usb_device_id" title="usb_device_id"><span class="pre">usb_device_id</span></a> <span class="pre">*</span><em><span class="pre">id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_match_id" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find first usb_device_id matching device or interface</p>
 </dd></dl>
 
@@ -3251,7 +3251,7 @@ its associated class and subclass.</p>
 <p>The first matching usb_device_id, or <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 <dl class="c function">
 <dt id="c.usb_register_device_driver">
-int <code class="sig-name descname">usb_register_device_driver</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device_driver" title="usb_device_driver">usb_device_driver</a> *<em>new_udriver</em>, <em class="property">struct</em> module *<em>owner</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_register_device_driver" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_register_device_driver</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device_driver" title="usb_device_driver"><span class="pre">usb_device_driver</span></a> <span class="pre">*</span><em><span class="pre">new_udriver</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">module</span> <span class="pre">*</span><em><span class="pre">owner</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_register_device_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a USB device (not interface) driver</p>
 </dd></dl>
 
@@ -3270,7 +3270,7 @@ added, allowing the new driver to attach to any recognized devices.</p>
 <p>A negative error code on failure and 0 on success.</p>
 <dl class="c function">
 <dt id="c.usb_deregister_device_driver">
-void <code class="sig-name descname">usb_deregister_device_driver</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device_driver" title="usb_device_driver">usb_device_driver</a> *<em>udriver</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_deregister_device_driver" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_deregister_device_driver</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device_driver" title="usb_device_driver"><span class="pre">usb_device_driver</span></a> <span class="pre">*</span><em><span class="pre">udriver</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_deregister_device_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unregister a USB device (not interface) driver</p>
 </dd></dl>
 
@@ -3285,7 +3285,7 @@ void <code class="sig-name descname">usb_deregister_device_driver</code><span cl
 <p>Unlinks the specified driver from the internal USB driver list.</p>
 <dl class="c function">
 <dt id="c.usb_register_driver">
-int <code class="sig-name descname">usb_register_driver</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_driver" title="usb_driver">usb_driver</a> *<em>new_driver</em>, <em class="property">struct</em> module *<em>owner</em>, <em class="property">const</em> char *<em>mod_name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_register_driver" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_register_driver</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_driver" title="usb_driver"><span class="pre">usb_driver</span></a> <span class="pre">*</span><em><span class="pre">new_driver</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">module</span> <span class="pre">*</span><em><span class="pre">owner</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">mod_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_register_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a USB interface driver</p>
 </dd></dl>
 
@@ -3310,7 +3310,7 @@ added, allowing the new driver to attach to any recognized interfaces.</p>
 takes care of that.</p>
 <dl class="c function">
 <dt id="c.usb_deregister">
-void <code class="sig-name descname">usb_deregister</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_driver" title="usb_driver">usb_driver</a> *<em>driver</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_deregister" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_deregister</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_driver" title="usb_driver"><span class="pre">usb_driver</span></a> <span class="pre">*</span><em><span class="pre">driver</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_deregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unregister a USB interface driver</p>
 </dd></dl>
 
@@ -3329,7 +3329,7 @@ void <code class="sig-name descname">usb_deregister</code><span class="sig-paren
 this * call will no longer do it for you.</p>
 <dl class="c function">
 <dt id="c.usb_enable_autosuspend">
-void <code class="sig-name descname">usb_enable_autosuspend</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>udev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_enable_autosuspend" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_enable_autosuspend</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">udev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_enable_autosuspend" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allow a USB device to be autosuspended</p>
 </dd></dl>
 
@@ -3345,7 +3345,7 @@ necessary conditions are satisfied.</p>
 <p>The caller must hold <strong>udev</strong>’s device lock.</p>
 <dl class="c function">
 <dt id="c.usb_disable_autosuspend">
-void <code class="sig-name descname">usb_disable_autosuspend</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>udev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_disable_autosuspend" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_disable_autosuspend</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">udev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_disable_autosuspend" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>prevent a USB device from being autosuspended</p>
 </dd></dl>
 
@@ -3360,7 +3360,7 @@ if it is already autosuspended.</p>
 <p>The caller must hold <strong>udev</strong>’s device lock.</p>
 <dl class="c function">
 <dt id="c.usb_autopm_put_interface">
-void <code class="sig-name descname">usb_autopm_put_interface</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>intf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_autopm_put_interface" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_autopm_put_interface</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">intf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_autopm_put_interface" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>decrement a USB interface’s PM-usage counter</p>
 </dd></dl>
 
@@ -3380,7 +3380,7 @@ attempt may fail (see autosuspend_check()).</p>
 <p>This routine can run only in process context.</p>
 <dl class="c function">
 <dt id="c.usb_autopm_put_interface_async">
-void <code class="sig-name descname">usb_autopm_put_interface_async</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>intf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_autopm_put_interface_async" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_autopm_put_interface_async</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">intf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_autopm_put_interface_async" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>decrement a USB interface’s PM-usage counter</p>
 </dd></dl>
 
@@ -3400,7 +3400,7 @@ handler, if no more URBs were pending.</p>
 <p>This routine can run in atomic context.</p>
 <dl class="c function">
 <dt id="c.usb_autopm_put_interface_no_suspend">
-void <code class="sig-name descname">usb_autopm_put_interface_no_suspend</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>intf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_autopm_put_interface_no_suspend" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_autopm_put_interface_no_suspend</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">intf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_autopm_put_interface_no_suspend" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>decrement a USB interface’s PM-usage counter</p>
 </dd></dl>
 
@@ -3415,7 +3415,7 @@ autosuspend.</p>
 <p>This routine can run in atomic context.</p>
 <dl class="c function">
 <dt id="c.usb_autopm_get_interface">
-int <code class="sig-name descname">usb_autopm_get_interface</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>intf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_autopm_get_interface" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_autopm_get_interface</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">intf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_autopm_get_interface" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>increment a USB interface’s PM-usage counter</p>
 </dd></dl>
 
@@ -3439,7 +3439,7 @@ However if the autoresume fails then the counter is re-decremented.</p>
 <p>0 on success.</p>
 <dl class="c function">
 <dt id="c.usb_autopm_get_interface_async">
-int <code class="sig-name descname">usb_autopm_get_interface_async</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>intf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_autopm_get_interface_async" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_autopm_get_interface_async</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">intf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_autopm_get_interface_async" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>increment a USB interface’s PM-usage counter</p>
 </dd></dl>
 
@@ -3462,7 +3462,7 @@ resumed.</p>
 <p>0 on success. A negative error code otherwise.</p>
 <dl class="c function">
 <dt id="c.usb_autopm_get_interface_no_resume">
-void <code class="sig-name descname">usb_autopm_get_interface_no_resume</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>intf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_autopm_get_interface_no_resume" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_autopm_get_interface_no_resume</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">intf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_autopm_get_interface_no_resume" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>increment a USB interface’s PM-usage counter</p>
 </dd></dl>
 
@@ -3477,7 +3477,7 @@ autoresume.</p>
 <p>This routine can run in atomic context.</p>
 <dl class="c function">
 <dt id="c.usb_find_common_endpoints">
-int <code class="sig-name descname">usb_find_common_endpoints</code><span class="sig-paren">(</span><em class="property">struct</em> usb_host_interface *<em>alt</em>, <em class="property">struct</em> usb_endpoint_descriptor **<em>bulk_in</em>, <em class="property">struct</em> usb_endpoint_descriptor **<em>bulk_out</em>, <em class="property">struct</em> usb_endpoint_descriptor **<em>int_in</em>, <em class="property">struct</em> usb_endpoint_descriptor **<em>int_out</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_find_common_endpoints" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_find_common_endpoints</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_host_interface</span> <span class="pre">*</span><em><span class="pre">alt</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">usb_endpoint_descriptor</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">bulk_in</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">usb_endpoint_descriptor</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">bulk_out</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">usb_endpoint_descriptor</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">int_in</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">usb_endpoint_descriptor</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">int_out</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_find_common_endpoints" title="Permalink to this definition">¶</a><br /></dt>
 <dd><ul class="simple">
 <li><p>look up common endpoint descriptors</p></li>
 </ul>
@@ -3506,7 +3506,7 @@ NULL.</p>
 <p>Zero if all requested descriptors were found, or -ENXIO otherwise.</p>
 <dl class="c function">
 <dt id="c.usb_find_common_endpoints_reverse">
-int <code class="sig-name descname">usb_find_common_endpoints_reverse</code><span class="sig-paren">(</span><em class="property">struct</em> usb_host_interface *<em>alt</em>, <em class="property">struct</em> usb_endpoint_descriptor **<em>bulk_in</em>, <em class="property">struct</em> usb_endpoint_descriptor **<em>bulk_out</em>, <em class="property">struct</em> usb_endpoint_descriptor **<em>int_in</em>, <em class="property">struct</em> usb_endpoint_descriptor **<em>int_out</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_find_common_endpoints_reverse" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_find_common_endpoints_reverse</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_host_interface</span> <span class="pre">*</span><em><span class="pre">alt</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">usb_endpoint_descriptor</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">bulk_in</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">usb_endpoint_descriptor</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">bulk_out</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">usb_endpoint_descriptor</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">int_in</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">usb_endpoint_descriptor</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">int_out</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_find_common_endpoints_reverse" title="Permalink to this definition">¶</a><br /></dt>
 <dd><ul class="simple">
 <li><p>look up common endpoint descriptors</p></li>
 </ul>
@@ -3535,7 +3535,7 @@ NULL.</p>
 <p>Zero if all requested descriptors were found, or -ENXIO otherwise.</p>
 <dl class="c function">
 <dt id="c.usb_find_alt_setting">
-<em class="property">struct</em> usb_host_interface *<code class="sig-name descname">usb_find_alt_setting</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_host_config" title="usb_host_config">usb_host_config</a> *<em>config</em>, unsigned int <em>iface_num</em>, unsigned int <em>alt_num</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_find_alt_setting" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">usb_host_interface</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_find_alt_setting</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_host_config" title="usb_host_config"><span class="pre">usb_host_config</span></a> <span class="pre">*</span><em><span class="pre">config</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">iface_num</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">alt_num</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_find_alt_setting" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Given a configuration, find the alternate setting for the given interface.</p>
 </dd></dl>
 
@@ -3554,7 +3554,7 @@ NULL.</p>
 <p>The alternate setting, if found. <code class="docutils literal notranslate"><span class="pre">NULL</span></code> otherwise.</p>
 <dl class="c function">
 <dt id="c.usb_ifnum_to_if">
-<em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<code class="sig-name descname">usb_ifnum_to_if</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, unsigned <em>ifnum</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_ifnum_to_if" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_ifnum_to_if</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">unsigned</span> <em><span class="pre">ifnum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_ifnum_to_if" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get the interface object with a given interface number</p>
 </dd></dl>
 
@@ -3581,7 +3581,7 @@ on this device or you have locked the device!</p>
 if found. <code class="docutils literal notranslate"><span class="pre">NULL</span></code> otherwise.</p>
 <dl class="c function">
 <dt id="c.usb_altnum_to_altsetting">
-<em class="property">struct</em> usb_host_interface *<code class="sig-name descname">usb_altnum_to_altsetting</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>intf</em>, unsigned int <em>altnum</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_altnum_to_altsetting" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">usb_host_interface</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_altnum_to_altsetting</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">intf</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">altnum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_altnum_to_altsetting" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get the altsetting structure with a given alternate setting number.</p>
 </dd></dl>
 
@@ -3606,7 +3606,7 @@ or you have locked the device!</p>
 has <strong>altnum</strong> as the alternate setting number. <code class="docutils literal notranslate"><span class="pre">NULL</span></code> if not found.</p>
 <dl class="c function">
 <dt id="c.usb_find_interface">
-<em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<code class="sig-name descname">usb_find_interface</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_driver" title="usb_driver">usb_driver</a> *<em>drv</em>, int <em>minor</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_find_interface" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_find_interface</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_driver" title="usb_driver"><span class="pre">usb_driver</span></a> <span class="pre">*</span><em><span class="pre">drv</span></em>, <span class="pre">int</span> <em><span class="pre">minor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_find_interface" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find usb_interface pointer for driver and device</p>
 </dd></dl>
 
@@ -3625,7 +3625,7 @@ that share the USB major number.</p>
 <p>A pointer to the interface with the matching major and <strong>minor</strong>.</p>
 <dl class="c function">
 <dt id="c.usb_for_each_dev">
-int <code class="sig-name descname">usb_for_each_dev</code><span class="sig-paren">(</span>void *<em>data</em>, int (*<em>fn</em>)<span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a>*, void*<span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_for_each_dev" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_for_each_dev</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">int</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">fn</span></em><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a><span class="pre">*</span>, <span class="pre">void</span><span class="pre">*</span><span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_for_each_dev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>iterate over all USB devices in the system</p>
 </dd></dl>
 
@@ -3642,7 +3642,7 @@ returns anything other than 0, we break the iteration prematurely and return
 that value.</p>
 <dl class="c function">
 <dt id="c.usb_alloc_dev">
-<em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<code class="sig-name descname">usb_alloc_dev</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>parent</em>, <em class="property">struct</em> usb_bus *<em>bus</em>, unsigned <em>port1</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_alloc_dev" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_alloc_dev</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">parent</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">usb_bus</span> <span class="pre">*</span><em><span class="pre">bus</span></em>, <span class="pre">unsigned</span> <em><span class="pre">port1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_alloc_dev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>usb device constructor (usbcore-internal)</p>
 </dd></dl>
 
@@ -3666,7 +3666,7 @@ controllers) should ever call this.</p>
 failure.</p>
 <dl class="c function">
 <dt id="c.usb_get_dev">
-<em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<code class="sig-name descname">usb_get_dev</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_dev" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_get_dev</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_dev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>increments the reference count of the usb device structure</p>
 </dd></dl>
 
@@ -3684,7 +3684,7 @@ them by calling <a class="reference internal" href="#c.usb_put_dev" title="usb_p
 <p>A pointer to the device with the incremented reference counter.</p>
 <dl class="c function">
 <dt id="c.usb_put_dev">
-void <code class="sig-name descname">usb_put_dev</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_put_dev" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_put_dev</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_put_dev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>release a use of the usb device structure</p>
 </dd></dl>
 
@@ -3698,7 +3698,7 @@ void <code class="sig-name descname">usb_put_dev</code><span class="sig-paren">(
 user of the device calls this function, the memory of the device is freed.</p>
 <dl class="c function">
 <dt id="c.usb_get_intf">
-<em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<code class="sig-name descname">usb_get_intf</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>intf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_intf" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_get_intf</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">intf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_intf" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>increments the reference count of the usb interface structure</p>
 </dd></dl>
 
@@ -3716,7 +3716,7 @@ them by calling <a class="reference internal" href="#c.usb_put_intf" title="usb_
 <p>A pointer to the interface with the incremented reference counter.</p>
 <dl class="c function">
 <dt id="c.usb_put_intf">
-void <code class="sig-name descname">usb_put_intf</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>intf</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_put_intf" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_put_intf</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">intf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_put_intf" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>release a use of the usb interface structure</p>
 </dd></dl>
 
@@ -3731,7 +3731,7 @@ last user of the interface calls this function, the memory of the interface
 is freed.</p>
 <dl class="c function">
 <dt id="c.usb_lock_device_for_reset">
-int <code class="sig-name descname">usb_lock_device_for_reset</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>udev</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>iface</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_lock_device_for_reset" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_lock_device_for_reset</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">udev</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">iface</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_lock_device_for_reset" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>cautiously acquire the lock for a usb device structure</p>
 </dd></dl>
 
@@ -3753,7 +3753,7 @@ or suspend() method will block waiting for a device reset to complete.</p>
 <p>A negative error code for failure, otherwise 0.</p>
 <dl class="c function">
 <dt id="c.usb_get_current_frame_number">
-int <code class="sig-name descname">usb_get_current_frame_number</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_current_frame_number" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_get_current_frame_number</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_current_frame_number" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return current bus frame number</p>
 </dd></dl>
 
@@ -3773,7 +3773,7 @@ into the future, others could support scheduling up to 1024 frames
 into the future.</p>
 <dl class="c function">
 <dt id="c.usb_alloc_coherent">
-void *<code class="sig-name descname">usb_alloc_coherent</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, size_t <em>size</em>, gfp_t <em>mem_flags</em>, dma_addr_t *<em>dma</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_alloc_coherent" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_alloc_coherent</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">mem_flags</span></em>, <span class="pre">dma_addr_t</span> <span class="pre">*</span><em><span class="pre">dma</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_alloc_coherent" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate dma-consistent buffer for URB_NO_xxx_DMA_MAP</p>
 </dd></dl>
 
@@ -3805,7 +3805,7 @@ bus-snooping caches, these buffers are uncached.</p>
 <p>When the buffer is no longer used, free it with <a class="reference internal" href="#c.usb_free_coherent" title="usb_free_coherent"><code class="xref c c-func docutils literal notranslate"><span class="pre">usb_free_coherent()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.usb_free_coherent">
-void <code class="sig-name descname">usb_free_coherent</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>dev</em>, size_t <em>size</em>, void *<em>addr</em>, dma_addr_t <em>dma</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_free_coherent" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_free_coherent</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">addr</span></em>, <span class="pre">dma_addr_t</span> <em><span class="pre">dma</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_free_coherent" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>free memory allocated with <a class="reference internal" href="#c.usb_alloc_coherent" title="usb_alloc_coherent"><code class="xref c c-func docutils literal notranslate"><span class="pre">usb_alloc_coherent()</span></code></a></p>
 </dd></dl>
 
@@ -3826,7 +3826,7 @@ been allocated using <a class="reference internal" href="#c.usb_alloc_coherent" 
 those provided in that allocation request.</p>
 <dl class="c function">
 <dt id="c.usb_hub_clear_tt_buffer">
-int <code class="sig-name descname">usb_hub_clear_tt_buffer</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_hub_clear_tt_buffer" title="urb">urb</a> *<em>urb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hub_clear_tt_buffer" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_hub_clear_tt_buffer</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_hub_clear_tt_buffer" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hub_clear_tt_buffer" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>clear control/bulk TT state in high speed hub</p>
 </dd></dl>
 
@@ -3846,7 +3846,7 @@ speed transactions until that state is fully cleared out.</p>
 <p>0 if successful. A negative error code otherwise.</p>
 <dl class="c function">
 <dt id="c.usb_set_device_state">
-void <code class="sig-name descname">usb_set_device_state</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>udev</em>, <em class="property">enum</em> usb_device_state <em>new_state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_set_device_state" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_set_device_state</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">udev</span></em>, <em class="property"><span class="pre">enum</span></em> <span class="pre">usb_device_state</span> <em><span class="pre">new_state</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_set_device_state" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>change a device’s current state (usbcore, hcds)</p>
 </dd></dl>
 
@@ -3873,7 +3873,7 @@ USB_STATE_NOTATTACHED then all of udev’s descendants’ states are also set
 to USB_STATE_NOTATTACHED.</p>
 <dl class="c function">
 <dt id="c.usb_root_hub_lost_power">
-void <code class="sig-name descname">usb_root_hub_lost_power</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>rhdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_root_hub_lost_power" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_root_hub_lost_power</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">rhdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_root_hub_lost_power" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>called by HCD if the root hub lost Vbus power</p>
 </dd></dl>
 
@@ -3891,7 +3891,7 @@ power-session recovery for all the “USB-PERSIST”-enabled child devices;
 the others will be disconnected.</p>
 <dl class="c function">
 <dt id="c.usb_reset_device">
-int <code class="sig-name descname">usb_reset_device</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>udev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_reset_device" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_reset_device</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">udev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_reset_device" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>warn interface drivers and perform a USB port reset</p>
 </dd></dl>
 
@@ -3917,7 +3917,7 @@ For calls that might not occur during probe(), drivers should lock
 the device using <a class="reference internal" href="#c.usb_lock_device_for_reset" title="usb_lock_device_for_reset"><code class="xref c c-func docutils literal notranslate"><span class="pre">usb_lock_device_for_reset()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.usb_queue_reset_device">
-void <code class="sig-name descname">usb_queue_reset_device</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>iface</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_queue_reset_device" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_queue_reset_device</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">iface</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_queue_reset_device" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Reset a USB device from an atomic context</p>
 </dd></dl>
 
@@ -3949,7 +3949,7 @@ for nested unbinding issues!</p></li>
 </ul>
 <dl class="c function">
 <dt id="c.usb_hub_find_child">
-<em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<code class="sig-name descname">usb_hub_find_child</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_device" title="usb_device">usb_device</a> *<em>hdev</em>, int <em>port1</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hub_find_child" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_hub_find_child</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">hdev</span></em>, <span class="pre">int</span> <em><span class="pre">port1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hub_find_child" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get the pointer of child device attached to the port which is specified by <strong>port1</strong>.</p>
 </dd></dl>
 
@@ -3992,7 +3992,7 @@ that lets HCDs share common code, to shrink driver size and
 significantly reduce hcd-specific behaviors.</p>
 <dl class="c function">
 <dt id="c.usb_calc_bus_time">
-long <code class="sig-name descname">usb_calc_bus_time</code><span class="sig-paren">(</span>int <em>speed</em>, int <em>is_input</em>, int <em>isoc</em>, int <em>bytecount</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_calc_bus_time" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">long</span> <code class="sig-name descname"><span class="pre">usb_calc_bus_time</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">speed</span></em>, <span class="pre">int</span> <em><span class="pre">is_input</span></em>, <span class="pre">int</span> <em><span class="pre">isoc</span></em>, <span class="pre">int</span> <em><span class="pre">bytecount</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_calc_bus_time" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>approximate periodic transaction time in nanoseconds</p>
 </dd></dl>
 
@@ -4014,7 +4014,7 @@ long <code class="sig-name descname">usb_calc_bus_time</code><span class="sig-pa
 scheduled in software, this function is only used for such scheduling.</p>
 <dl class="c function">
 <dt id="c.usb_hcd_link_urb_to_ep">
-int <code class="sig-name descname">usb_hcd_link_urb_to_ep</code><span class="sig-paren">(</span><em class="property">struct</em> usb_hcd *<em>hcd</em>, <em class="property">struct</em> <a class="reference internal" href="#c.usb_hcd_link_urb_to_ep" title="urb">urb</a> *<em>urb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_link_urb_to_ep" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_hcd_link_urb_to_ep</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_hcd</span> <span class="pre">*</span><em><span class="pre">hcd</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_hcd_link_urb_to_ep" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_link_urb_to_ep" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add an URB to its endpoint queue</p>
 </dd></dl>
 
@@ -4037,7 +4037,7 @@ anyway, it must call <a class="reference internal" href="#c.usb_hcd_unlink_urb_f
 the private spinlock and returning.</p>
 <dl class="c function">
 <dt id="c.usb_hcd_check_unlink_urb">
-int <code class="sig-name descname">usb_hcd_check_unlink_urb</code><span class="sig-paren">(</span><em class="property">struct</em> usb_hcd *<em>hcd</em>, <em class="property">struct</em> <a class="reference internal" href="#c.usb_hcd_check_unlink_urb" title="urb">urb</a> *<em>urb</em>, int <em>status</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_check_unlink_urb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_hcd_check_unlink_urb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_hcd</span> <span class="pre">*</span><em><span class="pre">hcd</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_hcd_check_unlink_urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em>, <span class="pre">int</span> <em><span class="pre">status</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_check_unlink_urb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check whether an URB may be unlinked</p>
 </dd></dl>
 
@@ -4067,7 +4067,7 @@ the dequeue() method must fail).  The possible error codes are:</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.usb_hcd_unlink_urb_from_ep">
-void <code class="sig-name descname">usb_hcd_unlink_urb_from_ep</code><span class="sig-paren">(</span><em class="property">struct</em> usb_hcd *<em>hcd</em>, <em class="property">struct</em> <a class="reference internal" href="#c.usb_hcd_unlink_urb_from_ep" title="urb">urb</a> *<em>urb</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_unlink_urb_from_ep" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_hcd_unlink_urb_from_ep</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_hcd</span> <span class="pre">*</span><em><span class="pre">hcd</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_hcd_unlink_urb_from_ep" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_unlink_urb_from_ep" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove an URB from its endpoint queue</p>
 </dd></dl>
 
@@ -4085,7 +4085,7 @@ interrupts must be disabled.  The actions carried out here are required
 for URB completion.</p>
 <dl class="c function">
 <dt id="c.usb_hcd_giveback_urb">
-void <code class="sig-name descname">usb_hcd_giveback_urb</code><span class="sig-paren">(</span><em class="property">struct</em> usb_hcd *<em>hcd</em>, <em class="property">struct</em> <a class="reference internal" href="#c.usb_hcd_giveback_urb" title="urb">urb</a> *<em>urb</em>, int <em>status</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_giveback_urb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_hcd_giveback_urb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_hcd</span> <span class="pre">*</span><em><span class="pre">hcd</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_hcd_giveback_urb" title="urb"><span class="pre">urb</span></a> <span class="pre">*</span><em><span class="pre">urb</span></em>, <span class="pre">int</span> <em><span class="pre">status</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_giveback_urb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return URB from HCD to device driver</p>
 </dd></dl>
 
@@ -4114,7 +4114,7 @@ or resubmits this URB.</p>
 the HCD hasn’t checked for them.</p>
 <dl class="c function">
 <dt id="c.usb_alloc_streams">
-int <code class="sig-name descname">usb_alloc_streams</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>interface</em>, <em class="property">struct</em> <a class="reference internal" href="#c.usb_host_endpoint" title="usb_host_endpoint">usb_host_endpoint</a> **<em>eps</em>, unsigned int <em>num_eps</em>, unsigned int <em>num_streams</em>, gfp_t <em>mem_flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_alloc_streams" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_alloc_streams</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">interface</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_host_endpoint" title="usb_host_endpoint"><span class="pre">usb_host_endpoint</span></a> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">eps</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">num_eps</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">num_streams</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">mem_flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_alloc_streams" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate bulk endpoint stream IDs.</p>
 </dd></dl>
 
@@ -4140,7 +4140,7 @@ complete in a different order than they were queued.</p>
 error code.</p>
 <dl class="c function">
 <dt id="c.usb_free_streams">
-int <code class="sig-name descname">usb_free_streams</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.usb_interface" title="usb_interface">usb_interface</a> *<em>interface</em>, <em class="property">struct</em> <a class="reference internal" href="#c.usb_host_endpoint" title="usb_host_endpoint">usb_host_endpoint</a> **<em>eps</em>, unsigned int <em>num_eps</em>, gfp_t <em>mem_flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_free_streams" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_free_streams</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">interface</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_host_endpoint" title="usb_host_endpoint"><span class="pre">usb_host_endpoint</span></a> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">eps</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">num_eps</span></em>, <span class="pre">gfp_t</span> <em><span class="pre">mem_flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_free_streams" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>free bulk endpoint stream IDs.</p>
 </dd></dl>
 
@@ -4162,7 +4162,7 @@ Can fail if we are given bad arguments, or HCD is broken.</p>
 <p>0 on success. On failure, a negative error code.</p>
 <dl class="c function">
 <dt id="c.usb_hcd_resume_root_hub">
-void <code class="sig-name descname">usb_hcd_resume_root_hub</code><span class="sig-paren">(</span><em class="property">struct</em> usb_hcd *<em>hcd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_resume_root_hub" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_hcd_resume_root_hub</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_hcd</span> <span class="pre">*</span><em><span class="pre">hcd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_resume_root_hub" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>called by HCD to resume its root hub</p>
 </dd></dl>
 
@@ -4178,7 +4178,7 @@ wakeup request is received.  The routine submits a workqueue request
 to resume the root hub (that is, manage its downstream ports again).</p>
 <dl class="c function">
 <dt id="c.usb_bus_start_enum">
-int <code class="sig-name descname">usb_bus_start_enum</code><span class="sig-paren">(</span><em class="property">struct</em> usb_bus *<em>bus</em>, unsigned <em>port_num</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_bus_start_enum" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_bus_start_enum</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_bus</span> <span class="pre">*</span><em><span class="pre">bus</span></em>, <span class="pre">unsigned</span> <em><span class="pre">port_num</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_bus_start_enum" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>start immediate enumeration (for OTG)</p>
 </dd></dl>
 
@@ -4200,7 +4200,7 @@ HNP protocol timing requirements for starting a port reset.</p>
 <p>0 if successful.</p>
 <dl class="c function">
 <dt id="c.usb_hcd_irq">
-irqreturn_t <code class="sig-name descname">usb_hcd_irq</code><span class="sig-paren">(</span>int <em>irq</em>, void *<em>__hcd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_irq" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">irqreturn_t</span> <code class="sig-name descname"><span class="pre">usb_hcd_irq</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">irq</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">__hcd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_irq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>hook IRQs to HCD framework (bus glue)</p>
 </dd></dl>
 
@@ -4218,7 +4218,7 @@ Checks whether the controller is now dead.</p>
 <p><code class="docutils literal notranslate"><span class="pre">IRQ_HANDLED</span></code> if the IRQ was handled. <code class="docutils literal notranslate"><span class="pre">IRQ_NONE</span></code> otherwise.</p>
 <dl class="c function">
 <dt id="c.usb_hc_died">
-void <code class="sig-name descname">usb_hc_died</code><span class="sig-paren">(</span><em class="property">struct</em> usb_hcd *<em>hcd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hc_died" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_hc_died</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_hcd</span> <span class="pre">*</span><em><span class="pre">hcd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hc_died" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>report abnormal shutdown of a host controller (bus glue)</p>
 </dd></dl>
 
@@ -4234,7 +4234,7 @@ by the PCI glue, so only glue for non-PCI busses should need to call it.</p>
 <p>Only call this function with the primary HCD.</p>
 <dl class="c function">
 <dt id="c.usb_create_shared_hcd">
-<em class="property">struct</em> usb_hcd *<code class="sig-name descname">usb_create_shared_hcd</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> hc_driver *<em>driver</em>, <em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">const</em> char *<em>bus_name</em>, <em class="property">struct</em> usb_hcd *<em>primary_hcd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_create_shared_hcd" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">usb_hcd</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_create_shared_hcd</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">hc_driver</span> <span class="pre">*</span><em><span class="pre">driver</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">bus_name</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">usb_hcd</span> <span class="pre">*</span><em><span class="pre">primary_hcd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_create_shared_hcd" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create and initialize an HCD structure</p>
 </dd></dl>
 
@@ -4261,7 +4261,7 @@ hcd structure.</p>
 On failure (e.g. if memory is unavailable), <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 <dl class="c function">
 <dt id="c.usb_create_hcd">
-<em class="property">struct</em> usb_hcd *<code class="sig-name descname">usb_create_hcd</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> hc_driver *<em>driver</em>, <em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">const</em> char *<em>bus_name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_create_hcd" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">usb_hcd</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_create_hcd</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">hc_driver</span> <span class="pre">*</span><em><span class="pre">driver</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">bus_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_create_hcd" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create and initialize an HCD structure</p>
 </dd></dl>
 
@@ -4285,7 +4285,7 @@ hcd structure.</p>
 structure. On failure (e.g. if memory is unavailable), <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 <dl class="c function">
 <dt id="c.usb_add_hcd">
-int <code class="sig-name descname">usb_add_hcd</code><span class="sig-paren">(</span><em class="property">struct</em> usb_hcd *<em>hcd</em>, unsigned int <em>irqnum</em>, unsigned long <em>irqflags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_add_hcd" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_add_hcd</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_hcd</span> <span class="pre">*</span><em><span class="pre">hcd</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">irqnum</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">irqflags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_add_hcd" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>finish generic HCD structure initialization and register</p>
 </dd></dl>
 
@@ -4304,7 +4304,7 @@ buffers of consistent memory, register the bus, request the IRQ line,
 and call the driver’s reset() and <a class="reference internal" href="../../networking/ieee802154.html#c.start" title="start"><code class="xref c c-func docutils literal notranslate"><span class="pre">start()</span></code></a> routines.</p>
 <dl class="c function">
 <dt id="c.usb_remove_hcd">
-void <code class="sig-name descname">usb_remove_hcd</code><span class="sig-paren">(</span><em class="property">struct</em> usb_hcd *<em>hcd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_remove_hcd" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_remove_hcd</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_hcd</span> <span class="pre">*</span><em><span class="pre">hcd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_remove_hcd" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>shutdown processing for generic HCDs</p>
 </dd></dl>
 
@@ -4320,7 +4320,7 @@ void <code class="sig-name descname">usb_remove_hcd</code><span class="sig-paren
 invoking the HCD’s <a class="reference internal" href="../../networking/ieee802154.html#c.stop" title="stop"><code class="xref c c-func docutils literal notranslate"><span class="pre">stop()</span></code></a> method.</p>
 <dl class="c function">
 <dt id="c.usb_hcd_pci_probe">
-int <code class="sig-name descname">usb_hcd_pci_probe</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="../../PCI/pci.html#c.pci_device_id" title="pci_device_id">pci_device_id</a> *<em>id</em>, <em class="property">const</em> <em class="property">struct</em> hc_driver *<em>driver</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_pci_probe" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_hcd_pci_probe</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../../PCI/pci.html#c.pci_device_id" title="pci_device_id"><span class="pre">pci_device_id</span></a> <span class="pre">*</span><em><span class="pre">id</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">hc_driver</span> <span class="pre">*</span><em><span class="pre">driver</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_pci_probe" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>initialize PCI-based HCDs</p>
 </dd></dl>
 
@@ -4344,7 +4344,7 @@ through the hotplug entry’s driver_data.</p>
 <p>0 if successful.</p>
 <dl class="c function">
 <dt id="c.usb_hcd_pci_remove">
-void <code class="sig-name descname">usb_hcd_pci_remove</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_pci_remove" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_hcd_pci_remove</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_pci_remove" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>shutdown processing for PCI-based HCDs</p>
 </dd></dl>
 
@@ -4362,7 +4362,7 @@ context, normally “rmmod”, “apmd”, or something similar.</p>
 <p>Store this function in the HCD’s <a class="reference internal" href="../../PCI/pci.html#c.pci_driver" title="pci_driver"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">pci_driver</span></code></a> as remove().</p>
 <dl class="c function">
 <dt id="c.usb_hcd_pci_shutdown">
-void <code class="sig-name descname">usb_hcd_pci_shutdown</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_pci_shutdown" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">usb_hcd_pci_shutdown</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_hcd_pci_shutdown" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>shutdown host controller</p>
 </dd></dl>
 
@@ -4373,7 +4373,7 @@ void <code class="sig-name descname">usb_hcd_pci_shutdown</code><span class="sig
 </dl>
 <dl class="c function">
 <dt id="c.hcd_buffer_create">
-int <code class="sig-name descname">hcd_buffer_create</code><span class="sig-paren">(</span><em class="property">struct</em> usb_hcd *<em>hcd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.hcd_buffer_create" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">hcd_buffer_create</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_hcd</span> <span class="pre">*</span><em><span class="pre">hcd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.hcd_buffer_create" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>initialize buffer pools</p>
 </dd></dl>
 
@@ -4393,7 +4393,7 @@ will be shared by all drivers using that controller.</p>
 <p>0 if successful. A negative errno value otherwise.</p>
 <dl class="c function">
 <dt id="c.hcd_buffer_destroy">
-void <code class="sig-name descname">hcd_buffer_destroy</code><span class="sig-paren">(</span><em class="property">struct</em> usb_hcd *<em>hcd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.hcd_buffer_destroy" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">hcd_buffer_destroy</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">usb_hcd</span> <span class="pre">*</span><em><span class="pre">hcd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.hcd_buffer_destroy" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>deallocate buffer pools</p>
 </dd></dl>
 

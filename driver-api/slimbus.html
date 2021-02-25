@@ -437,7 +437,7 @@ steps to boot the device so that it’s functional after the bus has been reset.
 <h3>Driver and Controller APIs:<a class="headerlink" href="#driver-and-controller-apis" title="Permalink to this headline">¶</a></h3>
 <dl class="c struct">
 <dt id="c.slim_eaddr">
-<em class="property">struct </em><code class="sig-name descname">slim_eaddr</code><a class="headerlink" href="#c.slim_eaddr" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">slim_eaddr</span></code><a class="headerlink" href="#c.slim_eaddr" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Enumeration address for a SLIMbus device</p>
 </dd></dl>
 
@@ -463,7 +463,7 @@ steps to boot the device so that it’s functional after the bus has been reset.
 </dl>
 <dl class="c enum">
 <dt id="c.slim_device_status">
-<em class="property">enum </em><code class="sig-name descname">slim_device_status</code><a class="headerlink" href="#c.slim_device_status" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">slim_device_status</span></code><a class="headerlink" href="#c.slim_device_status" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>slim device status</p>
 </dd></dl>
 
@@ -478,7 +478,7 @@ steps to boot the device so that it’s functional after the bus has been reset.
 </dl>
 <dl class="c struct">
 <dt id="c.slim_device">
-<em class="property">struct </em><code class="sig-name descname">slim_device</code><a class="headerlink" href="#c.slim_device" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">slim_device</span></code><a class="headerlink" href="#c.slim_device" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Slim device handle.</p>
 </dd></dl>
 
@@ -520,7 +520,7 @@ device is registered with a controller.
 Pointer to this structure is used by client-driver as a handle.</p>
 <dl class="c struct">
 <dt id="c.slim_driver">
-<em class="property">struct </em><code class="sig-name descname">slim_driver</code><a class="headerlink" href="#c.slim_driver" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">slim_driver</span></code><a class="headerlink" href="#c.slim_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>SLIMbus ‘generic device’ (slave) device driver (similar to ‘spi_device’ on SPI)</p>
 </dd></dl>
 
@@ -555,7 +555,7 @@ this structure</p>
 </dl>
 <dl class="c struct">
 <dt id="c.slim_val_inf">
-<em class="property">struct </em><code class="sig-name descname">slim_val_inf</code><a class="headerlink" href="#c.slim_val_inf" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">slim_val_inf</span></code><a class="headerlink" href="#c.slim_val_inf" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Slimbus value or information element</p>
 </dd></dl>
 
@@ -587,7 +587,7 @@ Rest of the transactions are synchronous anyway.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.slim_stream_config">
-<em class="property">struct </em><code class="sig-name descname">slim_stream_config</code><a class="headerlink" href="#c.slim_stream_config" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">slim_stream_config</span></code><a class="headerlink" href="#c.slim_stream_config" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>SLIMbus stream configuration Configuring a stream is done at hw_params or prepare call from audio drivers where they have all the required information regarding rate, number of channels and so on. There is a 1:1 mapping of channel and ports.</p>
 </dd></dl>
 
@@ -620,7 +620,7 @@ or SNDRV_PCM_STREAM_CAPTURE.</p>
 </dl>
 <dl class="c macro">
 <dt id="c.module_slim_driver">
-<code class="sig-name descname">module_slim_driver</code><a class="headerlink" href="#c.module_slim_driver" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">module_slim_driver</span></code><a class="headerlink" href="#c.module_slim_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">module_slim_driver</span> <span class="pre">(__slim_driver)</span></code></p>
@@ -638,7 +638,7 @@ init/exit. This eliminates a lot of boilerplate. Each module may only
 use this macro once, and calling it replaces <a class="reference internal" href="basics.html#c.module_init" title="module_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">module_init()</span></code></a> and <a class="reference internal" href="basics.html#c.module_exit" title="module_exit"><code class="xref c c-func docutils literal notranslate"><span class="pre">module_exit()</span></code></a></p>
 <dl class="c struct">
 <dt id="c.slim_framer">
-<em class="property">struct </em><code class="sig-name descname">slim_framer</code><a class="headerlink" href="#c.slim_framer" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">slim_framer</span></code><a class="headerlink" href="#c.slim_framer" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Represents SLIMbus framer. Every controller may have multiple framers. There is 1 active framer device responsible for clocking the bus. Manager is responsible for framer hand-over.</p>
 </dd></dl>
 
@@ -665,7 +665,7 @@ frequency (‘clock gear 10’) at which the bus can operate.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.slim_msg_txn">
-<em class="property">struct </em><code class="sig-name descname">slim_msg_txn</code><a class="headerlink" href="#c.slim_msg_txn" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">slim_msg_txn</span></code><a class="headerlink" href="#c.slim_msg_txn" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Message to be sent by the controller. This structure has packet header, payload and buffer to be filled (if any)</p>
 </dd></dl>
 
@@ -709,7 +709,7 @@ for tid based transactions.</p>
 </dl>
 <dl class="c enum">
 <dt id="c.slim_clk_state">
-<em class="property">enum </em><code class="sig-name descname">slim_clk_state</code><a class="headerlink" href="#c.slim_clk_state" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">slim_clk_state</span></code><a class="headerlink" href="#c.slim_clk_state" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>SLIMbus controller’s clock state used internally for maintaining current clock state.</p>
 </dd></dl>
 
@@ -726,7 +726,7 @@ transition fails, state changes back to SLIM_CLK_ACTIVE</p>
 </dl>
 <dl class="c struct">
 <dt id="c.slim_sched">
-<em class="property">struct </em><code class="sig-name descname">slim_sched</code><a class="headerlink" href="#c.slim_sched" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">slim_sched</span></code><a class="headerlink" href="#c.slim_sched" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Framework uses this structure internally for scheduling.</p>
 </dd></dl>
 
@@ -754,7 +754,7 @@ messages can be sent on the bus when reconfiguration is in progress.</p>
 </dl>
 <dl class="c enum">
 <dt id="c.slim_port_direction">
-<em class="property">enum </em><code class="sig-name descname">slim_port_direction</code><a class="headerlink" href="#c.slim_port_direction" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">slim_port_direction</span></code><a class="headerlink" href="#c.slim_port_direction" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>SLIMbus port direction</p>
 </dd></dl>
 
@@ -767,7 +767,7 @@ messages can be sent on the bus when reconfiguration is in progress.</p>
 </dl>
 <dl class="c enum">
 <dt id="c.slim_port_state">
-<em class="property">enum </em><code class="sig-name descname">slim_port_state</code><a class="headerlink" href="#c.slim_port_state" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">slim_port_state</span></code><a class="headerlink" href="#c.slim_port_state" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>SLIMbus Port/Endpoint state machine according to SLIMbus Spec 2.0</p>
 </dd></dl>
 
@@ -787,7 +787,7 @@ and ACTIVATE_CHANNEL core commands. Ready for data transmission.</p>
 </dl>
 <dl class="c enum">
 <dt id="c.slim_channel_state">
-<em class="property">enum </em><code class="sig-name descname">slim_channel_state</code><a class="headerlink" href="#c.slim_channel_state" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">slim_channel_state</span></code><a class="headerlink" href="#c.slim_channel_state" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>SLIMbus channel state machine used by core.</p>
 </dd></dl>
 
@@ -810,7 +810,7 @@ and ACTIVATE_CHANNEL core commands. Ready for data transmission.</p>
 </dl>
 <dl class="c enum">
 <dt id="c.slim_ch_data_fmt">
-<em class="property">enum </em><code class="sig-name descname">slim_ch_data_fmt</code><a class="headerlink" href="#c.slim_ch_data_fmt" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">slim_ch_data_fmt</span></code><a class="headerlink" href="#c.slim_ch_data_fmt" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>SLIMbus channel data Type identifiers according to Table 60 of SLIMbus Spec 1.01.01</p>
 </dd></dl>
 
@@ -827,7 +827,7 @@ and ACTIVATE_CHANNEL core commands. Ready for data transmission.</p>
 </dl>
 <dl class="c enum">
 <dt id="c.slim_ch_aux_bit_fmt">
-<em class="property">enum </em><code class="sig-name descname">slim_ch_aux_bit_fmt</code><a class="headerlink" href="#c.slim_ch_aux_bit_fmt" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">slim_ch_aux_bit_fmt</span></code><a class="headerlink" href="#c.slim_ch_aux_bit_fmt" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>SLIMbus channel Aux Field format IDs according to Table 63 of SLIMbus Spec 2.0</p>
 </dd></dl>
 
@@ -842,7 +842,7 @@ and ACTIVATE_CHANNEL core commands. Ready for data transmission.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.slim_channel">
-<em class="property">struct </em><code class="sig-name descname">slim_channel</code><a class="headerlink" href="#c.slim_channel" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">slim_channel</span></code><a class="headerlink" href="#c.slim_channel" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>SLIMbus channel, used for state machine</p>
 </dd></dl>
 
@@ -874,7 +874,7 @@ and ACTIVATE_CHANNEL core commands. Ready for data transmission.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.slim_port">
-<em class="property">struct </em><code class="sig-name descname">slim_port</code><a class="headerlink" href="#c.slim_port" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">slim_port</span></code><a class="headerlink" href="#c.slim_port" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>SLIMbus port</p>
 </dd></dl>
 
@@ -900,7 +900,7 @@ and ACTIVATE_CHANNEL core commands. Ready for data transmission.</p>
 </dl>
 <dl class="c enum">
 <dt id="c.slim_transport_protocol">
-<em class="property">enum </em><code class="sig-name descname">slim_transport_protocol</code><a class="headerlink" href="#c.slim_transport_protocol" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">slim_transport_protocol</span></code><a class="headerlink" href="#c.slim_transport_protocol" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>SLIMbus Transport protocol list from Table 47 of SLIMbus 2.0 specs.</p>
 </dd></dl>
 
@@ -928,7 +928,7 @@ but pull is a unicast.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.slim_stream_runtime">
-<em class="property">struct </em><code class="sig-name descname">slim_stream_runtime</code><a class="headerlink" href="#c.slim_stream_runtime" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">slim_stream_runtime</span></code><a class="headerlink" href="#c.slim_stream_runtime" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>SLIMbus stream runtime instance</p>
 </dd></dl>
 
@@ -972,7 +972,7 @@ but pull is a unicast.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.slim_controller">
-<em class="property">struct </em><code class="sig-name descname">slim_controller</code><a class="headerlink" href="#c.slim_controller" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">slim_controller</span></code><a class="headerlink" href="#c.slim_controller" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Controls every instance of SLIMbus (similar to ‘master’ on SPI)</p>
 </dd></dl>
 
@@ -1072,7 +1072,7 @@ the controller out of clock pause.</p>
 </dl>
 <dl class="c function">
 <dt id="c.slim_unregister_controller">
-int <code class="sig-name descname">slim_unregister_controller</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_controller" title="slim_controller">slim_controller</a> *<em>ctrl</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_unregister_controller" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">slim_unregister_controller</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_controller" title="slim_controller"><span class="pre">slim_controller</span></a> <span class="pre">*</span><em><span class="pre">ctrl</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_unregister_controller" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Controller tear-down.</p>
 </dd></dl>
 
@@ -1083,7 +1083,7 @@ int <code class="sig-name descname">slim_unregister_controller</code><span class
 </dl>
 <dl class="c function">
 <dt id="c.slim_report_absent">
-void <code class="sig-name descname">slim_report_absent</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_device" title="slim_device">slim_device</a> *<em>sbdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_report_absent" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">slim_report_absent</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_device" title="slim_device"><span class="pre">slim_device</span></a> <span class="pre">*</span><em><span class="pre">sbdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_report_absent" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Controller calls this function when a device reports absent, OR when the device cannot be communicated with</p>
 </dd></dl>
 
@@ -1094,7 +1094,7 @@ void <code class="sig-name descname">slim_report_absent</code><span class="sig-p
 </dl>
 <dl class="c function">
 <dt id="c.slim_get_device">
-<em class="property">struct</em> <a class="reference internal" href="#c.slim_device" title="slim_device">slim_device</a> *<code class="sig-name descname">slim_get_device</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_controller" title="slim_controller">slim_controller</a> *<em>ctrl</em>, <em class="property">struct</em> <a class="reference internal" href="#c.slim_eaddr" title="slim_eaddr">slim_eaddr</a> *<em>e_addr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_get_device" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_device" title="slim_device"><span class="pre">slim_device</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">slim_get_device</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_controller" title="slim_controller"><span class="pre">slim_controller</span></a> <span class="pre">*</span><em><span class="pre">ctrl</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_eaddr" title="slim_eaddr"><span class="pre">slim_eaddr</span></a> <span class="pre">*</span><em><span class="pre">e_addr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_get_device" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get handle to a device.</p>
 </dd></dl>
 
@@ -1110,7 +1110,7 @@ void <code class="sig-name descname">slim_report_absent</code><span class="sig-p
 device and returns pointer to it if the device has not yet enumerated.</p>
 <dl class="c function">
 <dt id="c.of_slim_get_device">
-<em class="property">struct</em> <a class="reference internal" href="#c.slim_device" title="slim_device">slim_device</a> *<code class="sig-name descname">of_slim_get_device</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_controller" title="slim_controller">slim_controller</a> *<em>ctrl</em>, <em class="property">struct</em> device_node *<em>np</em><span class="sig-paren">)</span><a class="headerlink" href="#c.of_slim_get_device" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_device" title="slim_device"><span class="pre">slim_device</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">of_slim_get_device</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_controller" title="slim_controller"><span class="pre">slim_controller</span></a> <span class="pre">*</span><em><span class="pre">ctrl</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">device_node</span> <span class="pre">*</span><em><span class="pre">np</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.of_slim_get_device" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get handle to a device using dt node.</p>
 </dd></dl>
 
@@ -1126,7 +1126,7 @@ device and returns pointer to it if the device has not yet enumerated.</p>
 device and returns pointer to it if the device has not yet enumerated.</p>
 <dl class="c function">
 <dt id="c.slim_device_report_present">
-int <code class="sig-name descname">slim_device_report_present</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_controller" title="slim_controller">slim_controller</a> *<em>ctrl</em>, <em class="property">struct</em> <a class="reference internal" href="#c.slim_eaddr" title="slim_eaddr">slim_eaddr</a> *<em>e_addr</em>, u8 *<em>laddr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_device_report_present" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">slim_device_report_present</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_controller" title="slim_controller"><span class="pre">slim_controller</span></a> <span class="pre">*</span><em><span class="pre">ctrl</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_eaddr" title="slim_eaddr"><span class="pre">slim_eaddr</span></a> <span class="pre">*</span><em><span class="pre">e_addr</span></em>, <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">laddr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_device_report_present" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Report enumerated device.</p>
 </dd></dl>
 
@@ -1146,7 +1146,7 @@ Function returns -EXFULL to indicate that all logical addresses are already
 taken.</p>
 <dl class="c function">
 <dt id="c.slim_get_logical_addr">
-int <code class="sig-name descname">slim_get_logical_addr</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_device" title="slim_device">slim_device</a> *<em>sbdev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_get_logical_addr" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">slim_get_logical_addr</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_device" title="slim_device"><span class="pre">slim_device</span></a> <span class="pre">*</span><em><span class="pre">sbdev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_get_logical_addr" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get/allocate logical address of a SLIMbus device.</p>
 </dd></dl>
 
@@ -1172,7 +1172,7 @@ to initiate it).</p>
 <h4>Clock-pause APIs:<a class="headerlink" href="#clock-pause-apis" title="Permalink to this headline">¶</a></h4>
 <dl class="c function">
 <dt id="c.slim_ctrl_clk_pause">
-int <code class="sig-name descname">slim_ctrl_clk_pause</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_controller" title="slim_controller">slim_controller</a> *<em>ctrl</em>, bool <em>wakeup</em>, u8 <em>restart</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_ctrl_clk_pause" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">slim_ctrl_clk_pause</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_controller" title="slim_controller"><span class="pre">slim_controller</span></a> <span class="pre">*</span><em><span class="pre">ctrl</span></em>, <span class="pre">bool</span> <em><span class="pre">wakeup</span></em>, <span class="pre">u8</span> <em><span class="pre">restart</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_ctrl_clk_pause" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Called by slimbus controller to enter/exit ‘clock pause’</p>
 </dd></dl>
 
@@ -1205,7 +1205,7 @@ The header file &lt;linux/slimbus.h&gt; has more documentation about messaging A
 <h4>Messaging APIs:<a class="headerlink" href="#messaging-apis" title="Permalink to this headline">¶</a></h4>
 <dl class="c function">
 <dt id="c.slim_msg_response">
-void <code class="sig-name descname">slim_msg_response</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_controller" title="slim_controller">slim_controller</a> *<em>ctrl</em>, u8 *<em>reply</em>, u8 <em>tid</em>, u8 <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_msg_response" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">slim_msg_response</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_controller" title="slim_controller"><span class="pre">slim_controller</span></a> <span class="pre">*</span><em><span class="pre">ctrl</span></em>, <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">reply</span></em>, <span class="pre">u8</span> <em><span class="pre">tid</span></em>, <span class="pre">u8</span> <em><span class="pre">len</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_msg_response" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Deliver Message response received from a device to the framework.</p>
 </dd></dl>
 
@@ -1227,7 +1227,7 @@ to manage 1 more table other than the one managed by framework mapping TID
 with buffers</p>
 <dl class="c function">
 <dt id="c.slim_alloc_txn_tid">
-int <code class="sig-name descname">slim_alloc_txn_tid</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_controller" title="slim_controller">slim_controller</a> *<em>ctrl</em>, <em class="property">struct</em> <a class="reference internal" href="#c.slim_msg_txn" title="slim_msg_txn">slim_msg_txn</a> *<em>txn</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_alloc_txn_tid" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">slim_alloc_txn_tid</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_controller" title="slim_controller"><span class="pre">slim_controller</span></a> <span class="pre">*</span><em><span class="pre">ctrl</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_msg_txn" title="slim_msg_txn"><span class="pre">slim_msg_txn</span></a> <span class="pre">*</span><em><span class="pre">txn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_alloc_txn_tid" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate a tid to txn</p>
 </dd></dl>
 
@@ -1242,7 +1242,7 @@ int <code class="sig-name descname">slim_alloc_txn_tid</code><span class="sig-pa
 <p>zero on success with valid txn-&gt;tid and error code on failures.</p>
 <dl class="c function">
 <dt id="c.slim_free_txn_tid">
-void <code class="sig-name descname">slim_free_txn_tid</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_controller" title="slim_controller">slim_controller</a> *<em>ctrl</em>, <em class="property">struct</em> <a class="reference internal" href="#c.slim_msg_txn" title="slim_msg_txn">slim_msg_txn</a> *<em>txn</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_free_txn_tid" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">slim_free_txn_tid</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_controller" title="slim_controller"><span class="pre">slim_controller</span></a> <span class="pre">*</span><em><span class="pre">ctrl</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_msg_txn" title="slim_msg_txn"><span class="pre">slim_msg_txn</span></a> <span class="pre">*</span><em><span class="pre">txn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_free_txn_tid" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Freee tid of txn</p>
 </dd></dl>
 
@@ -1255,7 +1255,7 @@ void <code class="sig-name descname">slim_free_txn_tid</code><span class="sig-pa
 </dl>
 <dl class="c function">
 <dt id="c.slim_do_transfer">
-int <code class="sig-name descname">slim_do_transfer</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_controller" title="slim_controller">slim_controller</a> *<em>ctrl</em>, <em class="property">struct</em> <a class="reference internal" href="#c.slim_msg_txn" title="slim_msg_txn">slim_msg_txn</a> *<em>txn</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_do_transfer" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">slim_do_transfer</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_controller" title="slim_controller"><span class="pre">slim_controller</span></a> <span class="pre">*</span><em><span class="pre">ctrl</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_msg_txn" title="slim_msg_txn"><span class="pre">slim_msg_txn</span></a> <span class="pre">*</span><em><span class="pre">txn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_do_transfer" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Process a SLIMbus-messaging transaction</p>
 </dd></dl>
 
@@ -1277,7 +1277,7 @@ address to a slave device</p>
 </dl>
 <dl class="c function">
 <dt id="c.slim_xfer_msg">
-int <code class="sig-name descname">slim_xfer_msg</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_device" title="slim_device">slim_device</a> *<em>sbdev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.slim_val_inf" title="slim_val_inf">slim_val_inf</a> *<em>msg</em>, u8 <em>mc</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_xfer_msg" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">slim_xfer_msg</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_device" title="slim_device"><span class="pre">slim_device</span></a> <span class="pre">*</span><em><span class="pre">sbdev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_val_inf" title="slim_val_inf"><span class="pre">slim_val_inf</span></a> <span class="pre">*</span><em><span class="pre">msg</span></em>, <span class="pre">u8</span> <em><span class="pre">mc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_xfer_msg" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Transfer a value info message on slim device</p>
 </dd></dl>
 
@@ -1296,7 +1296,7 @@ int <code class="sig-name descname">slim_xfer_msg</code><span class="sig-paren">
 <p>-ETIMEDOUT: If transmission of this message timed out</p>
 <dl class="c function">
 <dt id="c.slim_read">
-int <code class="sig-name descname">slim_read</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_device" title="slim_device">slim_device</a> *<em>sdev</em>, u32 <em>addr</em>, size_t <em>count</em>, u8 *<em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_read" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">slim_read</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_device" title="slim_device"><span class="pre">slim_device</span></a> <span class="pre">*</span><em><span class="pre">sdev</span></em>, <span class="pre">u32</span> <em><span class="pre">addr</span></em>, <span class="pre">size_t</span> <em><span class="pre">count</span></em>, <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_read" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Read SLIMbus value element</p>
 </dd></dl>
 
@@ -1317,7 +1317,7 @@ this message timed out (e.g. due to bus lines not being clocked
 or driven by controller)</p>
 <dl class="c function">
 <dt id="c.slim_readb">
-int <code class="sig-name descname">slim_readb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_device" title="slim_device">slim_device</a> *<em>sdev</em>, u32 <em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_readb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">slim_readb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_device" title="slim_device"><span class="pre">slim_device</span></a> <span class="pre">*</span><em><span class="pre">sdev</span></em>, <span class="pre">u32</span> <em><span class="pre">addr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_readb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Read byte from SLIMbus value element</p>
 </dd></dl>
 
@@ -1332,7 +1332,7 @@ int <code class="sig-name descname">slim_readb</code><span class="sig-paren">(</
 <p>byte value of value element.</p>
 <dl class="c function">
 <dt id="c.slim_write">
-int <code class="sig-name descname">slim_write</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_device" title="slim_device">slim_device</a> *<em>sdev</em>, u32 <em>addr</em>, size_t <em>count</em>, u8 *<em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_write" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">slim_write</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_device" title="slim_device"><span class="pre">slim_device</span></a> <span class="pre">*</span><em><span class="pre">sdev</span></em>, <span class="pre">u32</span> <em><span class="pre">addr</span></em>, <span class="pre">size_t</span> <em><span class="pre">count</span></em>, <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_write" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Write SLIMbus value element</p>
 </dd></dl>
 
@@ -1353,7 +1353,7 @@ this message timed out (e.g. due to bus lines not being clocked
 or driven by controller)</p>
 <dl class="c function">
 <dt id="c.slim_writeb">
-int <code class="sig-name descname">slim_writeb</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_device" title="slim_device">slim_device</a> *<em>sdev</em>, u32 <em>addr</em>, u8 <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_writeb" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">slim_writeb</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_device" title="slim_device"><span class="pre">slim_device</span></a> <span class="pre">*</span><em><span class="pre">sdev</span></em>, <span class="pre">u32</span> <em><span class="pre">addr</span></em>, <span class="pre">u8</span> <em><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_writeb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Write byte to SLIMbus value element</p>
 </dd></dl>
 
@@ -1375,7 +1375,7 @@ or driven by controller)</p>
 <h4>Streaming APIs:<a class="headerlink" href="#streaming-apis" title="Permalink to this headline">¶</a></h4>
 <dl class="c function">
 <dt id="c.slim_stream_allocate">
-<em class="property">struct</em> <a class="reference internal" href="#c.slim_stream_runtime" title="slim_stream_runtime">slim_stream_runtime</a> *<code class="sig-name descname">slim_stream_allocate</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_device" title="slim_device">slim_device</a> *<em>dev</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_stream_allocate" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_stream_runtime" title="slim_stream_runtime"><span class="pre">slim_stream_runtime</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">slim_stream_allocate</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_device" title="slim_device"><span class="pre">slim_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_stream_allocate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate a new SLIMbus Stream</p>
 </dd></dl>
 
@@ -1395,7 +1395,7 @@ to use it in subsequent stream apis. state of stream is set to ALLOCATED</p>
 From ASoC DPCM framework, this state is linked to startup() operation.</p>
 <dl class="c function">
 <dt id="c.slim_stream_prepare">
-int <code class="sig-name descname">slim_stream_prepare</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_stream_runtime" title="slim_stream_runtime">slim_stream_runtime</a> *<em>rt</em>, <em class="property">struct</em> <a class="reference internal" href="#c.slim_stream_config" title="slim_stream_config">slim_stream_config</a> *<em>cfg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_stream_prepare" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">slim_stream_prepare</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_stream_runtime" title="slim_stream_runtime"><span class="pre">slim_stream_runtime</span></a> <span class="pre">*</span><em><span class="pre">rt</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_stream_config" title="slim_stream_config"><span class="pre">slim_stream_config</span></a> <span class="pre">*</span><em><span class="pre">cfg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_stream_prepare" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Prepare a SLIMbus Stream</p>
 </dd></dl>
 
@@ -1412,7 +1412,7 @@ return zero on success and error code on failure. From ASoC DPCM framework,
 this state is linked to hw_params() operation.</p>
 <dl class="c function">
 <dt id="c.slim_stream_enable">
-int <code class="sig-name descname">slim_stream_enable</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_stream_runtime" title="slim_stream_runtime">slim_stream_runtime</a> *<em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_stream_enable" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">slim_stream_enable</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_stream_runtime" title="slim_stream_runtime"><span class="pre">slim_stream_runtime</span></a> <span class="pre">*</span><em><span class="pre">stream</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_stream_enable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Enable a prepared SLIMbus Stream</p>
 </dd></dl>
 
@@ -1429,7 +1429,7 @@ SLIMbus stream</p>
 this state is linked to trigger() start operation.</p>
 <dl class="c function">
 <dt id="c.slim_stream_disable">
-int <code class="sig-name descname">slim_stream_disable</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_stream_runtime" title="slim_stream_runtime">slim_stream_runtime</a> *<em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_stream_disable" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">slim_stream_disable</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_stream_runtime" title="slim_stream_runtime"><span class="pre">slim_stream_runtime</span></a> <span class="pre">*</span><em><span class="pre">stream</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_stream_disable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Disable a SLIMbus Stream</p>
 </dd></dl>
 
@@ -1446,7 +1446,7 @@ SLIMbus stream</p>
 this state is linked to trigger() pause operation.</p>
 <dl class="c function">
 <dt id="c.slim_stream_unprepare">
-int <code class="sig-name descname">slim_stream_unprepare</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_stream_runtime" title="slim_stream_runtime">slim_stream_runtime</a> *<em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_stream_unprepare" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">slim_stream_unprepare</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_stream_runtime" title="slim_stream_runtime"><span class="pre">slim_stream_runtime</span></a> <span class="pre">*</span><em><span class="pre">stream</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_stream_unprepare" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Un-prepare a SLIMbus Stream</p>
 </dd></dl>
 
@@ -1463,7 +1463,7 @@ SLIMbus stream</p>
 this state is linked to trigger() stop operation.</p>
 <dl class="c function">
 <dt id="c.slim_stream_free">
-int <code class="sig-name descname">slim_stream_free</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.slim_stream_runtime" title="slim_stream_runtime">slim_stream_runtime</a> *<em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_stream_free" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">slim_stream_free</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.slim_stream_runtime" title="slim_stream_runtime"><span class="pre">slim_stream_runtime</span></a> <span class="pre">*</span><em><span class="pre">stream</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.slim_stream_free" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Free a SLIMbus Stream</p>
 </dd></dl>
 

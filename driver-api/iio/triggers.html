@@ -439,7 +439,7 @@ trigger gets changed.</p></li>
 <h2>More details<a class="headerlink" href="#more-details" title="Permalink to this headline">¶</a></h2>
 <dl class="c struct">
 <dt id="c.iio_trigger_ops">
-<em class="property">struct </em><code class="sig-name descname">iio_trigger_ops</code><a class="headerlink" href="#c.iio_trigger_ops" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">iio_trigger_ops</span></code><a class="headerlink" href="#c.iio_trigger_ops" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>operations structure for an iio_trigger.</p>
 </dd></dl>
 
@@ -467,7 +467,7 @@ current trigger gets changed.</p>
 instances of a given device.</p>
 <dl class="c struct">
 <dt id="c.iio_trigger">
-<em class="property">struct </em><code class="sig-name descname">iio_trigger</code><a class="headerlink" href="#c.iio_trigger" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">iio_trigger</span></code><a class="headerlink" href="#c.iio_trigger" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>industrial I/O trigger device</p>
 </dd></dl>
 
@@ -525,7 +525,7 @@ device as the one providing the trigger.</p>
 </dl>
 <dl class="c function">
 <dt id="c.iio_trigger_set_drvdata">
-void <code class="sig-name descname">iio_trigger_set_drvdata</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.iio_trigger" title="iio_trigger">iio_trigger</a> *<em>trig</em>, void *<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_trigger_set_drvdata" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">iio_trigger_set_drvdata</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.iio_trigger" title="iio_trigger"><span class="pre">iio_trigger</span></a> <span class="pre">*</span><em><span class="pre">trig</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_trigger_set_drvdata" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set trigger driver data</p>
 </dd></dl>
 
@@ -541,7 +541,7 @@ void <code class="sig-name descname">iio_trigger_set_drvdata</code><span class="
 retrieved by <a class="reference internal" href="#c.iio_trigger_get_drvdata" title="iio_trigger_get_drvdata"><code class="xref c c-func docutils literal notranslate"><span class="pre">iio_trigger_get_drvdata()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.iio_trigger_get_drvdata">
-void *<code class="sig-name descname">iio_trigger_get_drvdata</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.iio_trigger" title="iio_trigger">iio_trigger</a> *<em>trig</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_trigger_get_drvdata" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">iio_trigger_get_drvdata</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.iio_trigger" title="iio_trigger"><span class="pre">iio_trigger</span></a> <span class="pre">*</span><em><span class="pre">trig</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_trigger_get_drvdata" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get trigger driver data</p>
 </dd></dl>
 
@@ -554,7 +554,7 @@ void *<code class="sig-name descname">iio_trigger_get_drvdata</code><span class=
 <p>Returns the data previously set with <a class="reference internal" href="#c.iio_trigger_set_drvdata" title="iio_trigger_set_drvdata"><code class="xref c c-func docutils literal notranslate"><span class="pre">iio_trigger_set_drvdata()</span></code></a></p>
 <dl class="c macro">
 <dt id="c.iio_trigger_register">
-<code class="sig-name descname">iio_trigger_register</code><a class="headerlink" href="#c.iio_trigger_register" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">iio_trigger_register</span></code><a class="headerlink" href="#c.iio_trigger_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">iio_trigger_register</span> <span class="pre">(trig_info)</span></code></p>
@@ -568,7 +568,7 @@ void *<code class="sig-name descname">iio_trigger_get_drvdata</code><span class=
 </dl>
 <dl class="c function">
 <dt id="c.iio_trigger_unregister">
-void <code class="sig-name descname">iio_trigger_unregister</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.iio_trigger" title="iio_trigger">iio_trigger</a> *<em>trig_info</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_trigger_unregister" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">iio_trigger_unregister</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.iio_trigger" title="iio_trigger"><span class="pre">iio_trigger</span></a> <span class="pre">*</span><em><span class="pre">trig_info</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_trigger_unregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unregister a trigger from the core</p>
 </dd></dl>
 
@@ -579,7 +579,7 @@ void <code class="sig-name descname">iio_trigger_unregister</code><span class="s
 </dl>
 <dl class="c function">
 <dt id="c.iio_trigger_set_immutable">
-int <code class="sig-name descname">iio_trigger_set_immutable</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev">iio_dev</a> *<em>indio_dev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.iio_trigger" title="iio_trigger">iio_trigger</a> *<em>trig</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_trigger_set_immutable" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">iio_trigger_set_immutable</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev"><span class="pre">iio_dev</span></a> <span class="pre">*</span><em><span class="pre">indio_dev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.iio_trigger" title="iio_trigger"><span class="pre">iio_trigger</span></a> <span class="pre">*</span><em><span class="pre">trig</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_trigger_set_immutable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set an immutable trigger on destination</p>
 </dd></dl>
 
@@ -592,7 +592,7 @@ int <code class="sig-name descname">iio_trigger_set_immutable</code><span class=
 </dl>
 <dl class="c function">
 <dt id="c.iio_trigger_poll">
-void <code class="sig-name descname">iio_trigger_poll</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.iio_trigger" title="iio_trigger">iio_trigger</a> *<em>trig</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_trigger_poll" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">iio_trigger_poll</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.iio_trigger" title="iio_trigger"><span class="pre">iio_trigger</span></a> <span class="pre">*</span><em><span class="pre">trig</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_trigger_poll" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>called on a trigger occurring</p>
 </dd></dl>
 
@@ -605,7 +605,7 @@ void <code class="sig-name descname">iio_trigger_poll</code><span class="sig-par
 <p>Typically called in relevant hardware interrupt handler.</p>
 <dl class="c function">
 <dt id="c.iio_trigger_using_own">
-bool <code class="sig-name descname">iio_trigger_using_own</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev">iio_dev</a> *<em>indio_dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_trigger_using_own" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">iio_trigger_using_own</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev"><span class="pre">iio_dev</span></a> <span class="pre">*</span><em><span class="pre">indio_dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_trigger_using_own" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>tells us if we use our own HW trigger ourselves</p>
 </dd></dl>
 
@@ -616,7 +616,7 @@ bool <code class="sig-name descname">iio_trigger_using_own</code><span class="si
 </dl>
 <dl class="c function">
 <dt id="c.devm_iio_trigger_alloc">
-<em class="property">struct</em> <a class="reference internal" href="#c.iio_trigger" title="iio_trigger">iio_trigger</a> *<code class="sig-name descname">devm_iio_trigger_alloc</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">const</em> char *<em>fmt</em>, ...<span class="sig-paren">)</span><a class="headerlink" href="#c.devm_iio_trigger_alloc" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.iio_trigger" title="iio_trigger"><span class="pre">iio_trigger</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">devm_iio_trigger_alloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">fmt</span></em>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_iio_trigger_alloc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Resource-managed iio_trigger_alloc()</p>
 </dd></dl>
 
@@ -639,7 +639,7 @@ automatically freed on driver detach.</p>
 <p>Pointer to allocated iio_trigger on success, NULL on failure.</p>
 <dl class="c function">
 <dt id="c.__devm_iio_trigger_register">
-int <code class="sig-name descname">__devm_iio_trigger_register</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.iio_trigger" title="iio_trigger">iio_trigger</a> *<em>trig_info</em>, <em class="property">struct</em> module *<em>this_mod</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__devm_iio_trigger_register" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">__devm_iio_trigger_register</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.iio_trigger" title="iio_trigger"><span class="pre">iio_trigger</span></a> <span class="pre">*</span><em><span class="pre">trig_info</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">module</span> <span class="pre">*</span><em><span class="pre">this_mod</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__devm_iio_trigger_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Resource-managed <a class="reference internal" href="#c.iio_trigger_register" title="iio_trigger_register"><code class="xref c c-func docutils literal notranslate"><span class="pre">iio_trigger_register()</span></code></a></p>
 </dd></dl>
 
@@ -661,7 +661,7 @@ information.</p>
 <p>0 on success, negative error number on failure.</p>
 <dl class="c function">
 <dt id="c.iio_trigger_validate_own_device">
-int <code class="sig-name descname">iio_trigger_validate_own_device</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.iio_trigger" title="iio_trigger">iio_trigger</a> *<em>trig</em>, <em class="property">struct</em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev">iio_dev</a> *<em>indio_dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_trigger_validate_own_device" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">iio_trigger_validate_own_device</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.iio_trigger" title="iio_trigger"><span class="pre">iio_trigger</span></a> <span class="pre">*</span><em><span class="pre">trig</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev"><span class="pre">iio_dev</span></a> <span class="pre">*</span><em><span class="pre">indio_dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_trigger_validate_own_device" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Check if a trigger and IIO device belong to the same device</p>
 </dd></dl>
 

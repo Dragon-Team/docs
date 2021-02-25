@@ -350,7 +350,7 @@
 <h1>Parallel Port Devices<a class="headerlink" href="#parallel-port-devices" title="Permalink to this headline">¶</a></h1>
 <dl class="c macro">
 <dt id="c.parport_register_driver">
-<code class="sig-name descname">parport_register_driver</code><a class="headerlink" href="#c.parport_register_driver" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">parport_register_driver</span></code><a class="headerlink" href="#c.parport_register_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">parport_register_driver</span> <span class="pre">(driver)</span></code></p>
@@ -383,7 +383,7 @@ but the new device model can fail and will return the error code.</p>
 </dl>
 <dl class="c function">
 <dt id="c.parport_yield">
-int <code class="sig-name descname">parport_yield</code><span class="sig-paren">(</span><em class="property">struct</em> pardevice *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_yield" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">parport_yield</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pardevice</span> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_yield" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>relinquish a parallel port temporarily</p>
 </dd></dl>
 
@@ -409,7 +409,7 @@ timeslice is half a second, but it can be adjusted via the /proc
 interface.</p>
 <dl class="c function">
 <dt id="c.parport_yield_blocking">
-int <code class="sig-name descname">parport_yield_blocking</code><span class="sig-paren">(</span><em class="property">struct</em> pardevice *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_yield_blocking" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">parport_yield_blocking</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pardevice</span> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_yield_blocking" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>relinquish a parallel port temporarily</p>
 </dd></dl>
 
@@ -425,7 +425,7 @@ drivers to do so.  Afterwards it tries to reclaim the port using
 <a class="reference internal" href="#c.parport_claim_or_block" title="parport_claim_or_block"><code class="xref c c-func docutils literal notranslate"><span class="pre">parport_claim_or_block()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.parport_wait_event">
-int <code class="sig-name descname">parport_wait_event</code><span class="sig-paren">(</span><em class="property">struct</em> parport *<em>port</em>, signed long <em>timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_wait_event" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">parport_wait_event</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">parport</span> <span class="pre">*</span><em><span class="pre">port</span></em>, <span class="pre">signed</span> <span class="pre">long</span> <em><span class="pre">timeout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_wait_event" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>wait for an event on a parallel port</p>
 </dd></dl>
 
@@ -446,7 +446,7 @@ what it’s doing as soon as it can.</p>
 </dl>
 <dl class="c function">
 <dt id="c.parport_wait_peripheral">
-int <code class="sig-name descname">parport_wait_peripheral</code><span class="sig-paren">(</span><em class="property">struct</em> parport *<em>port</em>, unsigned char <em>mask</em>, unsigned char <em>result</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_wait_peripheral" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">parport_wait_peripheral</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">parport</span> <span class="pre">*</span><em><span class="pre">port</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <em><span class="pre">mask</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <em><span class="pre">result</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_wait_peripheral" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>wait for status lines to change in 35ms</p>
 </dd></dl>
 
@@ -476,7 +476,7 @@ polling fails it uses <a class="reference internal" href="#c.parport_wait_event"
 </dl>
 <dl class="c function">
 <dt id="c.parport_negotiate">
-int <code class="sig-name descname">parport_negotiate</code><span class="sig-paren">(</span><em class="property">struct</em> parport *<em>port</em>, int <em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_negotiate" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">parport_negotiate</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">parport</span> <span class="pre">*</span><em><span class="pre">port</span></em>, <span class="pre">int</span> <em><span class="pre">mode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_negotiate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>negotiate an IEEE 1284 mode</p>
 </dd></dl>
 
@@ -496,7 +496,7 @@ has rejected the negotiation.</p>
 </dl>
 <dl class="c function">
 <dt id="c.parport_write">
-ssize_t <code class="sig-name descname">parport_write</code><span class="sig-paren">(</span><em class="property">struct</em> parport *<em>port</em>, <em class="property">const</em> void *<em>buffer</em>, size_t <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_write" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">ssize_t</span> <code class="sig-name descname"><span class="pre">parport_write</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">parport</span> <span class="pre">*</span><em><span class="pre">port</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">buffer</span></em>, <span class="pre">size_t</span> <em><span class="pre">len</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_write" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>write a block of data to a parallel port</p>
 </dd></dl>
 
@@ -519,7 +519,7 @@ or positive), or else an error code.</p>
 </dl>
 <dl class="c function">
 <dt id="c.parport_read">
-ssize_t <code class="sig-name descname">parport_read</code><span class="sig-paren">(</span><em class="property">struct</em> parport *<em>port</em>, void *<em>buffer</em>, size_t <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_read" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">ssize_t</span> <code class="sig-name descname"><span class="pre">parport_read</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">parport</span> <span class="pre">*</span><em><span class="pre">port</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">buffer</span></em>, <span class="pre">size_t</span> <em><span class="pre">len</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_read" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>read a block of data from a parallel port</p>
 </dd></dl>
 
@@ -542,7 +542,7 @@ or positive), or else an error code.</p>
 </dl>
 <dl class="c function">
 <dt id="c.parport_set_timeout">
-long <code class="sig-name descname">parport_set_timeout</code><span class="sig-paren">(</span><em class="property">struct</em> pardevice *<em>dev</em>, long <em>inactivity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_set_timeout" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">long</span> <code class="sig-name descname"><span class="pre">parport_set_timeout</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pardevice</span> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">long</span> <em><span class="pre">inactivity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_set_timeout" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set the inactivity timeout for a device</p>
 </dd></dl>
 
@@ -562,7 +562,7 @@ up.</p>
 </dl>
 <dl class="c function">
 <dt id="c.__parport_register_driver">
-int <code class="sig-name descname">__parport_register_driver</code><span class="sig-paren">(</span><em class="property">struct</em> parport_driver *<em>drv</em>, <em class="property">struct</em> module *<em>owner</em>, <em class="property">const</em> char *<em>mod_name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__parport_register_driver" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">__parport_register_driver</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">parport_driver</span> <span class="pre">*</span><em><span class="pre">drv</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">module</span> <span class="pre">*</span><em><span class="pre">owner</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">mod_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__parport_register_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a parallel port device driver</p>
 </dd></dl>
 
@@ -596,7 +596,7 @@ but the new device model can fail and will return the error code.</p>
 </dl>
 <dl class="c function">
 <dt id="c.parport_unregister_driver">
-void <code class="sig-name descname">parport_unregister_driver</code><span class="sig-paren">(</span><em class="property">struct</em> parport_driver *<em>drv</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_unregister_driver" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">parport_unregister_driver</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">parport_driver</span> <span class="pre">*</span><em><span class="pre">drv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_unregister_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>deregister a parallel port device driver</p>
 </dd></dl>
 
@@ -618,7 +618,7 @@ finished by the time this function returns.</p>
 </dl>
 <dl class="c function">
 <dt id="c.parport_get_port">
-<em class="property">struct</em> parport *<code class="sig-name descname">parport_get_port</code><span class="sig-paren">(</span><em class="property">struct</em> parport *<em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_get_port" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">parport</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">parport_get_port</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">parport</span> <span class="pre">*</span><em><span class="pre">port</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_get_port" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>increment a port’s reference count</p>
 </dd></dl>
 
@@ -631,7 +631,7 @@ until the matching <a class="reference internal" href="#c.parport_put_port" titl
 </dl>
 <dl class="c function">
 <dt id="c.parport_put_port">
-void <code class="sig-name descname">parport_put_port</code><span class="sig-paren">(</span><em class="property">struct</em> parport *<em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_put_port" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">parport_put_port</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">parport</span> <span class="pre">*</span><em><span class="pre">port</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_put_port" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>decrement a port’s reference count</p>
 </dd></dl>
 
@@ -645,7 +645,7 @@ zero (port is no longer used), free_port is called.</p>
 </dl>
 <dl class="c function">
 <dt id="c.parport_register_port">
-<em class="property">struct</em> parport *<code class="sig-name descname">parport_register_port</code><span class="sig-paren">(</span>unsigned long <em>base</em>, int <em>irq</em>, int <em>dma</em>, <em class="property">struct</em> parport_operations *<em>ops</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_register_port" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">parport</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">parport_register_port</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">base</span></em>, <span class="pre">int</span> <em><span class="pre">irq</span></em>, <span class="pre">int</span> <em><span class="pre">dma</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">parport_operations</span> <span class="pre">*</span><em><span class="pre">ops</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_register_port" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a parallel port</p>
 </dd></dl>
 
@@ -679,7 +679,7 @@ this function will return <code class="docutils literal notranslate"><span class
 </dl>
 <dl class="c function">
 <dt id="c.parport_announce_port">
-void <code class="sig-name descname">parport_announce_port</code><span class="sig-paren">(</span><em class="property">struct</em> parport *<em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_announce_port" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">parport_announce_port</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">parport</span> <span class="pre">*</span><em><span class="pre">port</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_announce_port" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>tell device drivers about a parallel port</p>
 </dd></dl>
 
@@ -696,7 +696,7 @@ functions will be called, with <strong>port</strong> as the parameter.</p>
 </dl>
 <dl class="c function">
 <dt id="c.parport_remove_port">
-void <code class="sig-name descname">parport_remove_port</code><span class="sig-paren">(</span><em class="property">struct</em> parport *<em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_remove_port" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">parport_remove_port</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">parport</span> <span class="pre">*</span><em><span class="pre">port</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_remove_port" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>deregister a parallel port</p>
 </dd></dl>
 
@@ -718,7 +718,7 @@ with <strong>port</strong> as the parameter.</p>
 </dl>
 <dl class="c function">
 <dt id="c.parport_register_dev_model">
-<em class="property">struct</em> pardevice *<code class="sig-name descname">parport_register_dev_model</code><span class="sig-paren">(</span><em class="property">struct</em> parport *<em>port</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> <em class="property">struct</em> pardev_cb *<em>par_dev_cb</em>, int <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_register_dev_model" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">pardevice</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">parport_register_dev_model</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">parport</span> <span class="pre">*</span><em><span class="pre">port</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">name</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">pardev_cb</span> <span class="pre">*</span><em><span class="pre">par_dev_cb</span></em>, <span class="pre">int</span> <em><span class="pre">id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_register_dev_model" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a device on a parallel port</p>
 </dd></dl>
 
@@ -782,7 +782,7 @@ to allocate space for that structure.</p>
 </dl>
 <dl class="c function">
 <dt id="c.parport_unregister_device">
-void <code class="sig-name descname">parport_unregister_device</code><span class="sig-paren">(</span><em class="property">struct</em> pardevice *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_unregister_device" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">parport_unregister_device</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pardevice</span> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_unregister_device" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>deregister a device on a parallel port</p>
 </dd></dl>
 
@@ -794,7 +794,7 @@ void <code class="sig-name descname">parport_unregister_device</code><span class
 </dl>
 <dl class="c function">
 <dt id="c.parport_find_number">
-<em class="property">struct</em> parport *<code class="sig-name descname">parport_find_number</code><span class="sig-paren">(</span>int <em>number</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_find_number" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">parport</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">parport_find_number</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">number</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_find_number" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find a parallel port by number</p>
 </dd></dl>
 
@@ -810,7 +810,7 @@ gives you, use <a class="reference internal" href="#c.parport_put_port" title="p
 </dl>
 <dl class="c function">
 <dt id="c.parport_find_base">
-<em class="property">struct</em> parport *<code class="sig-name descname">parport_find_base</code><span class="sig-paren">(</span>unsigned long <em>base</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_find_base" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">parport</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">parport_find_base</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">base</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_find_base" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find a parallel port by base address</p>
 </dd></dl>
 
@@ -826,7 +826,7 @@ gives you, use <a class="reference internal" href="#c.parport_put_port" title="p
 </dl>
 <dl class="c function">
 <dt id="c.parport_claim">
-int <code class="sig-name descname">parport_claim</code><span class="sig-paren">(</span><em class="property">struct</em> pardevice *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_claim" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">parport_claim</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pardevice</span> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_claim" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>claim access to a parallel port device</p>
 </dd></dl>
 
@@ -843,7 +843,7 @@ the port.</p>
 </dl>
 <dl class="c function">
 <dt id="c.parport_claim_or_block">
-int <code class="sig-name descname">parport_claim_or_block</code><span class="sig-paren">(</span><em class="property">struct</em> pardevice *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_claim_or_block" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">parport_claim_or_block</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pardevice</span> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_claim_or_block" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>claim access to a parallel port device</p>
 </dd></dl>
 
@@ -858,7 +858,7 @@ needing to sleep.  A negative error code indicates failure.</p>
 </dl>
 <dl class="c function">
 <dt id="c.parport_release">
-void <code class="sig-name descname">parport_release</code><span class="sig-paren">(</span><em class="property">struct</em> pardevice *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_release" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">parport_release</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pardevice</span> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_release" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>give up access to a parallel port device</p>
 </dd></dl>
 
@@ -872,7 +872,7 @@ you should not try claiming it again.</p>
 </dl>
 <dl class="c function">
 <dt id="c.parport_open">
-<em class="property">struct</em> pardevice *<code class="sig-name descname">parport_open</code><span class="sig-paren">(</span>int <em>devnum</em>, <em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_open" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">pardevice</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">parport_open</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">devnum</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_open" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find a device by canonical device number</p>
 </dd></dl>
 
@@ -891,7 +891,7 @@ for parport_register_device().</p>
 </dl>
 <dl class="c function">
 <dt id="c.parport_close">
-void <code class="sig-name descname">parport_close</code><span class="sig-paren">(</span><em class="property">struct</em> pardevice *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_close" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">parport_close</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pardevice</span> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_close" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>close a device opened with <a class="reference internal" href="#c.parport_open" title="parport_open"><code class="xref c c-func docutils literal notranslate"><span class="pre">parport_open()</span></code></a></p>
 </dd></dl>
 
@@ -907,7 +907,7 @@ parport_register_device().</p>
 <h1>16x50 UART Driver<a class="headerlink" href="#x50-uart-driver" title="Permalink to this headline">¶</a></h1>
 <dl class="c function">
 <dt id="c.uart_update_timeout">
-void <code class="sig-name descname">uart_update_timeout</code><span class="sig-paren">(</span><em class="property">struct</em> uart_port *<em>port</em>, unsigned int <em>cflag</em>, unsigned int <em>baud</em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_update_timeout" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">uart_update_timeout</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">uart_port</span> <span class="pre">*</span><em><span class="pre">port</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">cflag</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">baud</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_update_timeout" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update per-port FIFO timeout.</p>
 </dd></dl>
 
@@ -924,7 +924,7 @@ reflect the actual hardware settings.</p>
 </dl>
 <dl class="c function">
 <dt id="c.uart_get_baud_rate">
-unsigned int <code class="sig-name descname">uart_get_baud_rate</code><span class="sig-paren">(</span><em class="property">struct</em> uart_port *<em>port</em>, <em class="property">struct</em> ktermios *<em>termios</em>, <em class="property">struct</em> ktermios *<em>old</em>, unsigned int <em>min</em>, unsigned int <em>max</em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_get_baud_rate" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">uart_get_baud_rate</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">uart_port</span> <span class="pre">*</span><em><span class="pre">port</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">ktermios</span> <span class="pre">*</span><em><span class="pre">termios</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">ktermios</span> <span class="pre">*</span><em><span class="pre">old</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">min</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">max</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_get_baud_rate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return baud rate for a particular port</p>
 </dd></dl>
 
@@ -951,7 +951,7 @@ where B0 is requested (“hang up”).</p>
 </dl>
 <dl class="c function">
 <dt id="c.uart_get_divisor">
-unsigned int <code class="sig-name descname">uart_get_divisor</code><span class="sig-paren">(</span><em class="property">struct</em> uart_port *<em>port</em>, unsigned int <em>baud</em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_get_divisor" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">uart_get_divisor</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">uart_port</span> <span class="pre">*</span><em><span class="pre">port</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">baud</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_get_divisor" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return uart clock divisor</p>
 </dd></dl>
 
@@ -965,7 +965,7 @@ unsigned int <code class="sig-name descname">uart_get_divisor</code><span class=
 </dl>
 <dl class="c function">
 <dt id="c.uart_console_write">
-void <code class="sig-name descname">uart_console_write</code><span class="sig-paren">(</span><em class="property">struct</em> uart_port *<em>port</em>, <em class="property">const</em> char *<em>s</em>, unsigned int <em>count</em>, void (*<em>putchar</em>)<span class="sig-paren">(</span><em class="property">struct</em> uart_port*, int<span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_console_write" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">uart_console_write</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">uart_port</span> <span class="pre">*</span><em><span class="pre">port</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">s</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">count</span></em>, <span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">putchar</span></em><span class="pre">)</span><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">uart_port</span><span class="pre">*</span>, <span class="pre">int</span><span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_console_write" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>write a console message to a serial port</p>
 </dd></dl>
 
@@ -982,7 +982,7 @@ void <code class="sig-name descname">uart_console_write</code><span class="sig-p
 </dl>
 <dl class="c function">
 <dt id="c.uart_parse_earlycon">
-int <code class="sig-name descname">uart_parse_earlycon</code><span class="sig-paren">(</span>char *<em>p</em>, unsigned char *<em>iotype</em>, resource_size_t *<em>addr</em>, char **<em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_parse_earlycon" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">uart_parse_earlycon</span></code><span class="sig-paren">(</span><span class="pre">char</span> <span class="pre">*</span><em><span class="pre">p</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">iotype</span></em>, <span class="pre">resource_size_t</span> <span class="pre">*</span><em><span class="pre">addr</span></em>, <span class="pre">char</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">options</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_parse_earlycon" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Parse earlycon options</p>
 </dd></dl>
 
@@ -1011,7 +1011,7 @@ console=&lt;name&gt;,0x&lt;addr&gt;,&lt;options&gt;</p>
 </dl>
 <dl class="c function">
 <dt id="c.uart_parse_options">
-void <code class="sig-name descname">uart_parse_options</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>options</em>, int *<em>baud</em>, int *<em>parity</em>, int *<em>bits</em>, int *<em>flow</em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_parse_options" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">uart_parse_options</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">options</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">baud</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">parity</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">bits</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">flow</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_parse_options" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Parse serial port baud/parity/bits/flow control.</p>
 </dd></dl>
 
@@ -1033,7 +1033,7 @@ eg: 115200n8r</p>
 </dl>
 <dl class="c function">
 <dt id="c.uart_set_options">
-int <code class="sig-name descname">uart_set_options</code><span class="sig-paren">(</span><em class="property">struct</em> uart_port *<em>port</em>, <em class="property">struct</em> console *<em>co</em>, int <em>baud</em>, int <em>parity</em>, int <em>bits</em>, int <em>flow</em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_set_options" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">uart_set_options</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">uart_port</span> <span class="pre">*</span><em><span class="pre">port</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">console</span> <span class="pre">*</span><em><span class="pre">co</span></em>, <span class="pre">int</span> <em><span class="pre">baud</span></em>, <span class="pre">int</span> <em><span class="pre">parity</span></em>, <span class="pre">int</span> <em><span class="pre">bits</span></em>, <span class="pre">int</span> <em><span class="pre">flow</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_set_options" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>setup the serial console parameters</p>
 </dd></dl>
 
@@ -1054,7 +1054,7 @@ int <code class="sig-name descname">uart_set_options</code><span class="sig-pare
 </dl>
 <dl class="c function">
 <dt id="c.uart_register_driver">
-int <code class="sig-name descname">uart_register_driver</code><span class="sig-paren">(</span><em class="property">struct</em> uart_driver *<em>drv</em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_register_driver" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">uart_register_driver</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">uart_driver</span> <span class="pre">*</span><em><span class="pre">drv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_register_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a driver with the uart core layer</p>
 </dd></dl>
 
@@ -1071,7 +1071,7 @@ registered using uart_add_one_port after this call has succeeded.</p>
 </dl>
 <dl class="c function">
 <dt id="c.uart_unregister_driver">
-void <code class="sig-name descname">uart_unregister_driver</code><span class="sig-paren">(</span><em class="property">struct</em> uart_driver *<em>drv</em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_unregister_driver" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">uart_unregister_driver</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">uart_driver</span> <span class="pre">*</span><em><span class="pre">drv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_unregister_driver" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove a driver from the uart core layer</p>
 </dd></dl>
 
@@ -1086,7 +1086,7 @@ level driver must have removed all its ports via the
 </dl>
 <dl class="c function">
 <dt id="c.uart_add_one_port">
-int <code class="sig-name descname">uart_add_one_port</code><span class="sig-paren">(</span><em class="property">struct</em> uart_driver *<em>drv</em>, <em class="property">struct</em> uart_port *<em>uport</em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_add_one_port" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">uart_add_one_port</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">uart_driver</span> <span class="pre">*</span><em><span class="pre">drv</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">uart_port</span> <span class="pre">*</span><em><span class="pre">uport</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_add_one_port" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>attach a driver-defined port structure</p>
 </dd></dl>
 
@@ -1108,7 +1108,7 @@ more levels of structures.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.uart_remove_one_port">
-int <code class="sig-name descname">uart_remove_one_port</code><span class="sig-paren">(</span><em class="property">struct</em> uart_driver *<em>drv</em>, <em class="property">struct</em> uart_port *<em>uport</em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_remove_one_port" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">uart_remove_one_port</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">uart_driver</span> <span class="pre">*</span><em><span class="pre">drv</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">uart_port</span> <span class="pre">*</span><em><span class="pre">uport</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_remove_one_port" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>detach a driver defined port structure</p>
 </dd></dl>
 
@@ -1129,7 +1129,7 @@ for this port.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.uart_handle_dcd_change">
-void <code class="sig-name descname">uart_handle_dcd_change</code><span class="sig-paren">(</span><em class="property">struct</em> uart_port *<em>uport</em>, unsigned int <em>status</em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_handle_dcd_change" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">uart_handle_dcd_change</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">uart_port</span> <span class="pre">*</span><em><span class="pre">uport</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">status</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_handle_dcd_change" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>handle a change of carrier detect state</p>
 </dd></dl>
 
@@ -1143,7 +1143,7 @@ void <code class="sig-name descname">uart_handle_dcd_change</code><span class="s
 </dl>
 <dl class="c function">
 <dt id="c.uart_handle_cts_change">
-void <code class="sig-name descname">uart_handle_cts_change</code><span class="sig-paren">(</span><em class="property">struct</em> uart_port *<em>uport</em>, unsigned int <em>status</em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_handle_cts_change" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">uart_handle_cts_change</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">uart_port</span> <span class="pre">*</span><em><span class="pre">uport</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">status</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_handle_cts_change" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>handle a change of clear-to-send state</p>
 </dd></dl>
 
@@ -1157,7 +1157,7 @@ void <code class="sig-name descname">uart_handle_cts_change</code><span class="s
 </dl>
 <dl class="c function">
 <dt id="c.uart_insert_char">
-void <code class="sig-name descname">uart_insert_char</code><span class="sig-paren">(</span><em class="property">struct</em> uart_port *<em>port</em>, unsigned int <em>status</em>, unsigned int <em>overrun</em>, unsigned int <em>ch</em>, unsigned int <em>flag</em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_insert_char" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">uart_insert_char</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">uart_port</span> <span class="pre">*</span><em><span class="pre">port</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">status</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">overrun</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">ch</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">flag</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_insert_char" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>push a char to the uart layer</p>
 </dd></dl>
 
@@ -1179,7 +1179,7 @@ void <code class="sig-name descname">uart_insert_char</code><span class="sig-par
 insertion.</p>
 <dl class="c function">
 <dt id="c.uart_try_toggle_sysrq">
-bool <code class="sig-name descname">uart_try_toggle_sysrq</code><span class="sig-paren">(</span><em class="property">struct</em> uart_port *<em>port</em>, unsigned int <em>ch</em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_try_toggle_sysrq" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">uart_try_toggle_sysrq</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">uart_port</span> <span class="pre">*</span><em><span class="pre">port</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">ch</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_try_toggle_sysrq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Enables SysRq from serial line</p>
 </dd></dl>
 
@@ -1196,7 +1196,7 @@ handled some other way, true if <strong>ch</strong> was consumed.</p>
 </dl>
 <dl class="c function">
 <dt id="c.uart_get_rs485_mode">
-int <code class="sig-name descname">uart_get_rs485_mode</code><span class="sig-paren">(</span><em class="property">struct</em> uart_port *<em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_get_rs485_mode" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">uart_get_rs485_mode</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">uart_port</span> <span class="pre">*</span><em><span class="pre">port</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.uart_get_rs485_mode" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>retrieve rs485 properties for given uart</p>
 </dd></dl>
 
@@ -1210,7 +1210,7 @@ int <code class="sig-name descname">uart_get_rs485_mode</code><span class="sig-p
 Documentation/devicetree/bindings/serial/rs485.txt.</p>
 <dl class="c function">
 <dt id="c.serial8250_get_port">
-<em class="property">struct</em> uart_8250_port *<code class="sig-name descname">serial8250_get_port</code><span class="sig-paren">(</span>int <em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#c.serial8250_get_port" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">uart_8250_port</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">serial8250_get_port</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">line</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.serial8250_get_port" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>retrieve struct uart_8250_port</p>
 </dd></dl>
 
@@ -1229,7 +1229,7 @@ callbacks should not be invoked if there is any operation performed on the
 port.</p>
 <dl class="c function">
 <dt id="c.serial8250_suspend_port">
-void <code class="sig-name descname">serial8250_suspend_port</code><span class="sig-paren">(</span>int <em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#c.serial8250_suspend_port" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">serial8250_suspend_port</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">line</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.serial8250_suspend_port" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>suspend one serial port</p>
 </dd></dl>
 
@@ -1241,7 +1241,7 @@ void <code class="sig-name descname">serial8250_suspend_port</code><span class="
 </dl>
 <dl class="c function">
 <dt id="c.serial8250_resume_port">
-void <code class="sig-name descname">serial8250_resume_port</code><span class="sig-paren">(</span>int <em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#c.serial8250_resume_port" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">serial8250_resume_port</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">line</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.serial8250_resume_port" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>resume one serial port</p>
 </dd></dl>
 
@@ -1253,7 +1253,7 @@ void <code class="sig-name descname">serial8250_resume_port</code><span class="s
 </dl>
 <dl class="c function">
 <dt id="c.serial8250_register_8250_port">
-int <code class="sig-name descname">serial8250_register_8250_port</code><span class="sig-paren">(</span><em class="property">struct</em> uart_8250_port *<em>up</em><span class="sig-paren">)</span><a class="headerlink" href="#c.serial8250_register_8250_port" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">serial8250_register_8250_port</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">uart_8250_port</span> <span class="pre">*</span><em><span class="pre">up</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.serial8250_register_8250_port" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a serial port</p>
 </dd></dl>
 
@@ -1270,7 +1270,7 @@ If this fails an error is returned.</p>
 </dl>
 <dl class="c function">
 <dt id="c.serial8250_unregister_port">
-void <code class="sig-name descname">serial8250_unregister_port</code><span class="sig-paren">(</span>int <em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#c.serial8250_unregister_port" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">serial8250_unregister_port</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">line</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.serial8250_unregister_port" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove a 16x50 serial port at runtime</p>
 </dd></dl>
 
@@ -1299,7 +1299,7 @@ active state of the signal.</p>
 used by one consumer at a time.</p>
 <dl class="c enum">
 <dt id="c.pwm_polarity">
-<em class="property">enum </em><code class="sig-name descname">pwm_polarity</code><a class="headerlink" href="#c.pwm_polarity" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">pwm_polarity</span></code><a class="headerlink" href="#c.pwm_polarity" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>polarity of a PWM signal</p>
 </dd></dl>
 
@@ -1316,7 +1316,7 @@ period</p>
 </dl>
 <dl class="c struct">
 <dt id="c.pwm_args">
-<em class="property">struct </em><code class="sig-name descname">pwm_args</code><a class="headerlink" href="#c.pwm_args" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">pwm_args</span></code><a class="headerlink" href="#c.pwm_args" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>board-dependent PWM arguments</p>
 </dd></dl>
 
@@ -1343,7 +1343,7 @@ configuration that users want to use on this PWM device rather than the
 current PWM hardware state.</p>
 <dl class="c struct">
 <dt id="c.pwm_device">
-<em class="property">struct </em><code class="sig-name descname">pwm_device</code><a class="headerlink" href="#c.pwm_device" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">pwm_device</span></code><a class="headerlink" href="#c.pwm_device" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>PWM channel object</p>
 </dd></dl>
 
@@ -1384,7 +1384,7 @@ current PWM hardware state.</p>
 </dl>
 <dl class="c function">
 <dt id="c.pwm_get_state">
-void <code class="sig-name descname">pwm_get_state</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<em>pwm</em>, <em class="property">struct</em> pwm_state *<em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_get_state" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">pwm_get_state</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><em><span class="pre">pwm</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">pwm_state</span> <span class="pre">*</span><em><span class="pre">state</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_get_state" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>retrieve the current PWM state</p>
 </dd></dl>
 
@@ -1397,7 +1397,7 @@ void <code class="sig-name descname">pwm_get_state</code><span class="sig-paren"
 </dl>
 <dl class="c function">
 <dt id="c.pwm_init_state">
-void <code class="sig-name descname">pwm_init_state</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<em>pwm</em>, <em class="property">struct</em> pwm_state *<em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_init_state" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">pwm_init_state</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><em><span class="pre">pwm</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">pwm_state</span> <span class="pre">*</span><em><span class="pre">state</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_init_state" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>prepare a new state to be applied with <a class="reference internal" href="#c.pwm_apply_state" title="pwm_apply_state"><code class="xref c c-func docutils literal notranslate"><span class="pre">pwm_apply_state()</span></code></a></p>
 </dd></dl>
 
@@ -1421,7 +1421,7 @@ an error if the user calls <a class="reference internal" href="#c.pwm_apply_stat
 first.</p>
 <dl class="c function">
 <dt id="c.pwm_get_relative_duty_cycle">
-unsigned int <code class="sig-name descname">pwm_get_relative_duty_cycle</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> pwm_state *<em>state</em>, unsigned int <em>scale</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_get_relative_duty_cycle" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">pwm_get_relative_duty_cycle</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">pwm_state</span> <span class="pre">*</span><em><span class="pre">state</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">scale</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_get_relative_duty_cycle" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get a relative duty cycle value</p>
 </dd></dl>
 
@@ -1440,7 +1440,7 @@ in nanosecond) into a value relative to the period.</p>
 duty = pwm_get_relative_duty_cycle(<code class="xref c c-type docutils literal notranslate"><span class="pre">state</span></code>, 100);</p>
 <dl class="c function">
 <dt id="c.pwm_set_relative_duty_cycle">
-int <code class="sig-name descname">pwm_set_relative_duty_cycle</code><span class="sig-paren">(</span><em class="property">struct</em> pwm_state *<em>state</em>, unsigned int <em>duty_cycle</em>, unsigned int <em>scale</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_set_relative_duty_cycle" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">pwm_set_relative_duty_cycle</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pwm_state</span> <span class="pre">*</span><em><span class="pre">state</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">duty_cycle</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">scale</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_set_relative_duty_cycle" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set a relative duty cycle value</p>
 </dd></dl>
 
@@ -1464,7 +1464,7 @@ pwm_apply_state(pwm, <code class="xref c c-type docutils literal notranslate"><s
 inconsistent (<strong>scale</strong> == 0 or <strong>duty_cycle</strong> &gt; <strong>scale</strong>).</p>
 <dl class="c struct">
 <dt id="c.pwm_ops">
-<em class="property">struct </em><code class="sig-name descname">pwm_ops</code><a class="headerlink" href="#c.pwm_ops" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">pwm_ops</span></code><a class="headerlink" href="#c.pwm_ops" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>PWM controller operations</p>
 </dd></dl>
 
@@ -1510,7 +1510,7 @@ registered.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.pwm_chip">
-<em class="property">struct </em><code class="sig-name descname">pwm_chip</code><a class="headerlink" href="#c.pwm_chip" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">pwm_chip</span></code><a class="headerlink" href="#c.pwm_chip" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>abstract a PWM controller</p>
 </dd></dl>
 
@@ -1548,7 +1548,7 @@ registered.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.pwm_capture">
-<em class="property">struct </em><code class="sig-name descname">pwm_capture</code><a class="headerlink" href="#c.pwm_capture" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">pwm_capture</span></code><a class="headerlink" href="#c.pwm_capture" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>PWM capture data</p>
 </dd></dl>
 
@@ -1568,7 +1568,7 @@ registered.</p>
 </dl>
 <dl class="c function">
 <dt id="c.pwm_config">
-int <code class="sig-name descname">pwm_config</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<em>pwm</em>, int <em>duty_ns</em>, int <em>period_ns</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_config" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">pwm_config</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><em><span class="pre">pwm</span></em>, <span class="pre">int</span> <em><span class="pre">duty_ns</span></em>, <span class="pre">int</span> <em><span class="pre">period_ns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_config" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>change a PWM device configuration</p>
 </dd></dl>
 
@@ -1585,7 +1585,7 @@ int <code class="sig-name descname">pwm_config</code><span class="sig-paren">(</
 <p>0 on success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.pwm_enable">
-int <code class="sig-name descname">pwm_enable</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<em>pwm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_enable" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">pwm_enable</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><em><span class="pre">pwm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_enable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>start a PWM output toggling</p>
 </dd></dl>
 
@@ -1598,7 +1598,7 @@ int <code class="sig-name descname">pwm_enable</code><span class="sig-paren">(</
 <p>0 on success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.pwm_disable">
-void <code class="sig-name descname">pwm_disable</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<em>pwm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_disable" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">pwm_disable</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><em><span class="pre">pwm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_disable" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>stop a PWM output toggling</p>
 </dd></dl>
 
@@ -1609,7 +1609,7 @@ void <code class="sig-name descname">pwm_disable</code><span class="sig-paren">(
 </dl>
 <dl class="c function">
 <dt id="c.pwm_set_chip_data">
-int <code class="sig-name descname">pwm_set_chip_data</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<em>pwm</em>, void *<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_set_chip_data" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">pwm_set_chip_data</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><em><span class="pre">pwm</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_set_chip_data" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set private chip data for a PWM</p>
 </dd></dl>
 
@@ -1624,7 +1624,7 @@ int <code class="sig-name descname">pwm_set_chip_data</code><span class="sig-par
 <p>0 on success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.pwm_get_chip_data">
-void *<code class="sig-name descname">pwm_get_chip_data</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<em>pwm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_get_chip_data" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">pwm_get_chip_data</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><em><span class="pre">pwm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_get_chip_data" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get private chip data for a PWM</p>
 </dd></dl>
 
@@ -1637,7 +1637,7 @@ void *<code class="sig-name descname">pwm_get_chip_data</code><span class="sig-p
 <p>A pointer to the chip-private data for the PWM device.</p>
 <dl class="c function">
 <dt id="c.pwmchip_add_with_polarity">
-int <code class="sig-name descname">pwmchip_add_with_polarity</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pwm_chip" title="pwm_chip">pwm_chip</a> *<em>chip</em>, <em class="property">enum</em> <a class="reference internal" href="#c.pwm_polarity" title="pwm_polarity">pwm_polarity</a> <em>polarity</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwmchip_add_with_polarity" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">pwmchip_add_with_polarity</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_chip" title="pwm_chip"><span class="pre">pwm_chip</span></a> <span class="pre">*</span><em><span class="pre">chip</span></em>, <em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#c.pwm_polarity" title="pwm_polarity"><span class="pre">pwm_polarity</span></a> <em><span class="pre">polarity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwmchip_add_with_polarity" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a new PWM chip</p>
 </dd></dl>
 
@@ -1656,7 +1656,7 @@ will be used. The initial polarity for all channels is specified by the
 <p>0 on success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.pwmchip_add">
-int <code class="sig-name descname">pwmchip_add</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pwm_chip" title="pwm_chip">pwm_chip</a> *<em>chip</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwmchip_add" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">pwmchip_add</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_chip" title="pwm_chip"><span class="pre">pwm_chip</span></a> <span class="pre">*</span><em><span class="pre">chip</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwmchip_add" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register a new PWM chip</p>
 </dd></dl>
 
@@ -1672,7 +1672,7 @@ will be used. The initial polarity for all channels is normal.</p>
 <p>0 on success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.pwmchip_remove">
-int <code class="sig-name descname">pwmchip_remove</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pwm_chip" title="pwm_chip">pwm_chip</a> *<em>chip</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwmchip_remove" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">pwmchip_remove</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_chip" title="pwm_chip"><span class="pre">pwm_chip</span></a> <span class="pre">*</span><em><span class="pre">chip</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwmchip_remove" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>remove a PWM chip</p>
 </dd></dl>
 
@@ -1688,7 +1688,7 @@ a PWM device that is still requested.</p>
 <p>0 on success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.pwm_request">
-<em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<code class="sig-name descname">pwm_request</code><span class="sig-paren">(</span>int <em>pwm</em>, <em class="property">const</em> char *<em>label</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_request" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">pwm_request</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">pwm</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">label</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_request" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>request a PWM device</p>
 </dd></dl>
 
@@ -1706,7 +1706,7 @@ a PWM device that is still requested.</p>
 failure.</p>
 <dl class="c function">
 <dt id="c.pwm_request_from_chip">
-<em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<code class="sig-name descname">pwm_request_from_chip</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pwm_chip" title="pwm_chip">pwm_chip</a> *<em>chip</em>, unsigned int <em>index</em>, <em class="property">const</em> char *<em>label</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_request_from_chip" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">pwm_request_from_chip</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_chip" title="pwm_chip"><span class="pre">pwm_chip</span></a> <span class="pre">*</span><em><span class="pre">chip</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">index</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">label</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_request_from_chip" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>request a PWM device relative to a PWM chip</p>
 </dd></dl>
 
@@ -1725,7 +1725,7 @@ chip. A negative error code is returned if the index is not valid for the
 specified PWM chip or if the PWM device cannot be requested.</p>
 <dl class="c function">
 <dt id="c.pwm_free">
-void <code class="sig-name descname">pwm_free</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<em>pwm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_free" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">pwm_free</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><em><span class="pre">pwm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_free" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>free a PWM device</p>
 </dd></dl>
 
@@ -1738,7 +1738,7 @@ void <code class="sig-name descname">pwm_free</code><span class="sig-paren">(</s
 <p>This function is deprecated, use <a class="reference internal" href="#c.pwm_put" title="pwm_put"><code class="xref c c-func docutils literal notranslate"><span class="pre">pwm_put()</span></code></a> instead.</p>
 <dl class="c function">
 <dt id="c.pwm_apply_state">
-int <code class="sig-name descname">pwm_apply_state</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<em>pwm</em>, <em class="property">const</em> <em class="property">struct</em> pwm_state *<em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_apply_state" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">pwm_apply_state</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><em><span class="pre">pwm</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">pwm_state</span> <span class="pre">*</span><em><span class="pre">state</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_apply_state" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>atomically apply a new state to a PWM device</p>
 </dd></dl>
 
@@ -1751,7 +1751,7 @@ int <code class="sig-name descname">pwm_apply_state</code><span class="sig-paren
 </dl>
 <dl class="c function">
 <dt>
-int <code class="sig-name descname">pwm_capture</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<em>pwm</em>, <em class="property">struct</em> <a class="reference internal" href="#c.pwm_capture" title="pwm_capture">pwm_capture</a> *<em>result</em>, unsigned long <em>timeout</em><span class="sig-paren">)</span><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">pwm_capture</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><em><span class="pre">pwm</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_capture" title="pwm_capture"><span class="pre">pwm_capture</span></a> <span class="pre">*</span><em><span class="pre">result</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">timeout</span></em><span class="sig-paren">)</span><br /></dt>
 <dd><p>capture and report a PWM signal</p>
 </dd></dl>
 
@@ -1768,7 +1768,7 @@ int <code class="sig-name descname">pwm_capture</code><span class="sig-paren">(<
 <p>0 on success or a negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.pwm_adjust_config">
-int <code class="sig-name descname">pwm_adjust_config</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<em>pwm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_adjust_config" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">pwm_adjust_config</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><em><span class="pre">pwm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_adjust_config" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>adjust the current PWM config to the PWM arguments</p>
 </dd></dl>
 
@@ -1783,7 +1783,7 @@ by the DT or PWM lookup table. This is particularly useful to adapt
 the bootloader config to the Linux one.</p>
 <dl class="c function">
 <dt id="c.of_pwm_get">
-<em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<code class="sig-name descname">of_pwm_get</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">struct</em> device_node *<em>np</em>, <em class="property">const</em> char *<em>con_id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.of_pwm_get" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">of_pwm_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">device_node</span> <span class="pre">*</span><em><span class="pre">np</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">con_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.of_pwm_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>request a PWM via the PWM framework</p>
 </dd></dl>
 
@@ -1811,7 +1811,7 @@ parameter.</p>
 error code on failure.</p>
 <dl class="c function">
 <dt id="c.pwm_get">
-<em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<code class="sig-name descname">pwm_get</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">const</em> char *<em>con_id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_get" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">pwm_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">con_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>look up and request a PWM device</p>
 </dd></dl>
 
@@ -1833,7 +1833,7 @@ and is ready to be used.</p>
 error code on failure.</p>
 <dl class="c function">
 <dt id="c.pwm_put">
-void <code class="sig-name descname">pwm_put</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<em>pwm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_put" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">pwm_put</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><em><span class="pre">pwm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwm_put" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>release a PWM device</p>
 </dd></dl>
 
@@ -1844,7 +1844,7 @@ void <code class="sig-name descname">pwm_put</code><span class="sig-paren">(</sp
 </dl>
 <dl class="c function">
 <dt id="c.devm_pwm_get">
-<em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<code class="sig-name descname">devm_pwm_get</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">const</em> char *<em>con_id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_pwm_get" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">devm_pwm_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">con_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_pwm_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>resource managed <a class="reference internal" href="#c.pwm_get" title="pwm_get"><code class="xref c c-func docutils literal notranslate"><span class="pre">pwm_get()</span></code></a></p>
 </dd></dl>
 
@@ -1863,7 +1863,7 @@ automatically be released on driver detach.</p>
 error code on failure.</p>
 <dl class="c function">
 <dt id="c.devm_of_pwm_get">
-<em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<code class="sig-name descname">devm_of_pwm_get</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">struct</em> device_node *<em>np</em>, <em class="property">const</em> char *<em>con_id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_of_pwm_get" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">devm_of_pwm_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">device_node</span> <span class="pre">*</span><em><span class="pre">np</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">con_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_of_pwm_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>resource managed <a class="reference internal" href="#c.of_pwm_get" title="of_pwm_get"><code class="xref c c-func docutils literal notranslate"><span class="pre">of_pwm_get()</span></code></a></p>
 </dd></dl>
 
@@ -1884,7 +1884,7 @@ automatically be released on driver detach.</p>
 error code on failure.</p>
 <dl class="c function">
 <dt id="c.devm_fwnode_pwm_get">
-<em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<code class="sig-name descname">devm_fwnode_pwm_get</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">struct</em> fwnode_handle *<em>fwnode</em>, <em class="property">const</em> char *<em>con_id</em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_fwnode_pwm_get" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">devm_fwnode_pwm_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">fwnode_handle</span> <span class="pre">*</span><em><span class="pre">fwnode</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">con_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_fwnode_pwm_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>request a resource managed PWM from firmware node</p>
 </dd></dl>
 
@@ -1905,7 +1905,7 @@ acpi_pwm_get() for a detailed description.</p>
 error code on failure.</p>
 <dl class="c function">
 <dt id="c.devm_pwm_put">
-void <code class="sig-name descname">devm_pwm_put</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="infrastructure.html#c.device" title="device">device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.pwm_device" title="pwm_device">pwm_device</a> *<em>pwm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_pwm_put" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">devm_pwm_put</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.pwm_device" title="pwm_device"><span class="pre">pwm_device</span></a> <span class="pre">*</span><em><span class="pre">pwm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.devm_pwm_put" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>resource managed <a class="reference internal" href="#c.pwm_put" title="pwm_put"><code class="xref c c-func docutils literal notranslate"><span class="pre">pwm_put()</span></code></a></p>
 </dd></dl>
 

@@ -311,7 +311,7 @@ scope will inherently drop __GFP_FS respectively __GFP_IO from the given
 mask so no memory allocation can recurse back in the FS/IO.</p>
 <dl class="c function">
 <dt id="c.memalloc_nofs_save">
-unsigned int <code class="sig-name descname">memalloc_nofs_save</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.memalloc_nofs_save" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">memalloc_nofs_save</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#c.memalloc_nofs_save" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Marks implicit GFP_NOFS allocation scope.</p>
 </dd></dl>
 
@@ -329,7 +329,7 @@ returned by this function.</p>
 <p>This function is safe to be used from any context.</p>
 <dl class="c function">
 <dt id="c.memalloc_nofs_restore">
-void <code class="sig-name descname">memalloc_nofs_restore</code><span class="sig-paren">(</span>unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.memalloc_nofs_restore" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">memalloc_nofs_restore</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.memalloc_nofs_restore" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Ends the implicit GFP_NOFS scope.</p>
 </dd></dl>
 
@@ -344,7 +344,7 @@ Always make sure that the given flags is the return value from the
 pairing memalloc_nofs_save call.</p>
 <dl class="c function">
 <dt id="c.memalloc_noio_save">
-unsigned int <code class="sig-name descname">memalloc_noio_save</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.memalloc_noio_save" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">memalloc_noio_save</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#c.memalloc_noio_save" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Marks implicit GFP_NOIO allocation scope.</p>
 </dd></dl>
 
@@ -362,7 +362,7 @@ returned by this function.</p>
 <p>This function is safe to be used from any context.</p>
 <dl class="c function">
 <dt id="c.memalloc_noio_restore">
-void <code class="sig-name descname">memalloc_noio_restore</code><span class="sig-paren">(</span>unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.memalloc_noio_restore" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">memalloc_noio_restore</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.memalloc_noio_restore" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Ends the implicit GFP_NOIO scope.</p>
 </dd></dl>
 

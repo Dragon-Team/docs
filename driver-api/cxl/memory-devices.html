@@ -386,7 +386,7 @@ things like firmware update.</p></li>
 </dl>
 <dl class="c struct">
 <dt id="c.mbox_cmd">
-<em class="property">struct </em><code class="sig-name descname">mbox_cmd</code><a class="headerlink" href="#c.mbox_cmd" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">mbox_cmd</span></code><a class="headerlink" href="#c.mbox_cmd" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A command to be submitted to hardware.</p>
 </dd></dl>
 
@@ -430,7 +430,7 @@ Command Register section of the CXL 2.0 8.2.8.4.5. <strong>payload_in</strong> a
 defined in CXL 2.0 8.2.8.4.8.</p>
 <dl class="c struct">
 <dt id="c.cxl_memdev">
-<em class="property">struct </em><code class="sig-name descname">cxl_memdev</code><a class="headerlink" href="#c.cxl_memdev" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">cxl_memdev</span></code><a class="headerlink" href="#c.cxl_memdev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>CXL bus object representing a Type-3 Memory Device</p>
 </dd></dl>
 
@@ -462,7 +462,7 @@ defined in CXL 2.0 8.2.8.4.8.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.cxl_mem_command">
-<em class="property">struct </em><code class="sig-name descname">cxl_mem_command</code><a class="headerlink" href="#c.cxl_mem_command" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">cxl_mem_command</span></code><a class="headerlink" href="#c.cxl_mem_command" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Driver representation of a memory device command</p>
 </dd></dl>
 
@@ -498,7 +498,7 @@ the user then submit the <strong>opcode</strong> to the hardware.</p>
 <p>See <a class="reference internal" href="#c.cxl_command_info" title="cxl_command_info"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">cxl_command_info</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.__cxl_mem_mbox_send_cmd">
-int <code class="sig-name descname">__cxl_mem_mbox_send_cmd</code><span class="sig-paren">(</span><em class="property">struct</em> cxl_mem *<em>cxlm</em>, <em class="property">struct</em> <a class="reference internal" href="#c.__cxl_mem_mbox_send_cmd" title="mbox_cmd">mbox_cmd</a> *<em>mbox_cmd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.__cxl_mem_mbox_send_cmd" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">__cxl_mem_mbox_send_cmd</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">cxl_mem</span> <span class="pre">*</span><em><span class="pre">cxlm</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.__cxl_mem_mbox_send_cmd" title="mbox_cmd"><span class="pre">mbox_cmd</span></a> <span class="pre">*</span><em><span class="pre">mbox_cmd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__cxl_mem_mbox_send_cmd" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Execute a mailbox command</p>
 </dd></dl>
 
@@ -530,7 +530,7 @@ not need to coordinate with each other. The driver only uses the primary
 mailbox.</p>
 <dl class="c function">
 <dt id="c.cxl_mem_mbox_get">
-int <code class="sig-name descname">cxl_mem_mbox_get</code><span class="sig-paren">(</span><em class="property">struct</em> cxl_mem *<em>cxlm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cxl_mem_mbox_get" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cxl_mem_mbox_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">cxl_mem</span> <span class="pre">*</span><em><span class="pre">cxlm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cxl_mem_mbox_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Acquire exclusive access to the mailbox.</p>
 </dd></dl>
 
@@ -545,7 +545,7 @@ int <code class="sig-name descname">cxl_mem_mbox_get</code><span class="sig-pare
 <p>0 if exclusive access was acquired.</p>
 <dl class="c function">
 <dt id="c.cxl_mem_mbox_put">
-void <code class="sig-name descname">cxl_mem_mbox_put</code><span class="sig-paren">(</span><em class="property">struct</em> cxl_mem *<em>cxlm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cxl_mem_mbox_put" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">cxl_mem_mbox_put</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">cxl_mem</span> <span class="pre">*</span><em><span class="pre">cxlm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cxl_mem_mbox_put" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Release exclusive access to the mailbox.</p>
 </dd></dl>
 
@@ -558,7 +558,7 @@ void <code class="sig-name descname">cxl_mem_mbox_put</code><span class="sig-par
 <p>Any context. Expects mbox_mutex to be held.</p>
 <dl class="c function">
 <dt id="c.handle_mailbox_cmd_from_user">
-int <code class="sig-name descname">handle_mailbox_cmd_from_user</code><span class="sig-paren">(</span><em class="property">struct</em> cxl_mem *<em>cxlm</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.cxl_mem_command" title="cxl_mem_command">cxl_mem_command</a> *<em>cmd</em>, u64 <em>in_payload</em>, u64 <em>out_payload</em>, s32 *<em>size_out</em>, u32 *<em>retval</em><span class="sig-paren">)</span><a class="headerlink" href="#c.handle_mailbox_cmd_from_user" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">handle_mailbox_cmd_from_user</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">cxl_mem</span> <span class="pre">*</span><em><span class="pre">cxlm</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.cxl_mem_command" title="cxl_mem_command"><span class="pre">cxl_mem_command</span></a> <span class="pre">*</span><em><span class="pre">cmd</span></em>, <span class="pre">u64</span> <em><span class="pre">in_payload</span></em>, <span class="pre">u64</span> <em><span class="pre">out_payload</span></em>, <span class="pre">s32</span> <span class="pre">*</span><em><span class="pre">size_out</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">retval</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.handle_mailbox_cmd_from_user" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Dispatch a mailbox command for userspace.</p>
 </dd></dl>
 
@@ -600,7 +600,7 @@ userspace.</p>
 <p>See cxl_send_cmd().</p>
 <dl class="c function">
 <dt id="c.cxl_validate_cmd_from_user">
-int <code class="sig-name descname">cxl_validate_cmd_from_user</code><span class="sig-paren">(</span><em class="property">struct</em> cxl_mem *<em>cxlm</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.cxl_send_command" title="cxl_send_command">cxl_send_command</a> *<em>send_cmd</em>, <em class="property">struct</em> <a class="reference internal" href="#c.cxl_mem_command" title="cxl_mem_command">cxl_mem_command</a> *<em>out_cmd</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cxl_validate_cmd_from_user" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cxl_validate_cmd_from_user</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">cxl_mem</span> <span class="pre">*</span><em><span class="pre">cxlm</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.cxl_send_command" title="cxl_send_command"><span class="pre">cxl_send_command</span></a> <span class="pre">*</span><em><span class="pre">send_cmd</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.cxl_mem_command" title="cxl_mem_command"><span class="pre">cxl_mem_command</span></a> <span class="pre">*</span><em><span class="pre">out_cmd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cxl_validate_cmd_from_user" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Check fields for CXL_MEM_SEND_COMMAND.</p>
 </dd></dl>
 
@@ -629,7 +629,7 @@ safe to send to the hardware.</p>
 <p>See <a class="reference internal" href="#c.handle_mailbox_cmd_from_user" title="handle_mailbox_cmd_from_user"><code class="xref c c-func docutils literal notranslate"><span class="pre">handle_mailbox_cmd_from_user()</span></code></a></p>
 <dl class="c function">
 <dt id="c.cxl_mem_mbox_send_cmd">
-int <code class="sig-name descname">cxl_mem_mbox_send_cmd</code><span class="sig-paren">(</span><em class="property">struct</em> cxl_mem *<em>cxlm</em>, u16 <em>opcode</em>, void *<em>in</em>, size_t <em>in_size</em>, void *<em>out</em>, size_t <em>out_size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cxl_mem_mbox_send_cmd" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cxl_mem_mbox_send_cmd</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">cxl_mem</span> <span class="pre">*</span><em><span class="pre">cxlm</span></em>, <span class="pre">u16</span> <em><span class="pre">opcode</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">in</span></em>, <span class="pre">size_t</span> <em><span class="pre">in_size</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">out</span></em>, <span class="pre">size_t</span> <em><span class="pre">out_size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cxl_mem_mbox_send_cmd" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Send a mailbox command to a memory device.</p>
 </dd></dl>
 
@@ -668,7 +668,7 @@ kernel will only be able to use results when both are successful.</p>
 <p>See <a class="reference internal" href="#c.__cxl_mem_mbox_send_cmd" title="__cxl_mem_mbox_send_cmd"><code class="xref c c-func docutils literal notranslate"><span class="pre">__cxl_mem_mbox_send_cmd()</span></code></a></p>
 <dl class="c function">
 <dt id="c.cxl_mem_setup_regs">
-int <code class="sig-name descname">cxl_mem_setup_regs</code><span class="sig-paren">(</span><em class="property">struct</em> cxl_mem *<em>cxlm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cxl_mem_setup_regs" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cxl_mem_setup_regs</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">cxl_mem</span> <span class="pre">*</span><em><span class="pre">cxlm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cxl_mem_setup_regs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Setup necessary MMIO.</p>
 </dd></dl>
 
@@ -685,7 +685,7 @@ regions. The purpose of this function is to enumerate and map those
 registers.</p>
 <dl class="c function">
 <dt id="c.cxl_walk_cel">
-void <code class="sig-name descname">cxl_walk_cel</code><span class="sig-paren">(</span><em class="property">struct</em> cxl_mem *<em>cxlm</em>, size_t <em>size</em>, u8 *<em>cel</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cxl_walk_cel" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">cxl_walk_cel</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">cxl_mem</span> <span class="pre">*</span><em><span class="pre">cxlm</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">u8</span> <span class="pre">*</span><em><span class="pre">cel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cxl_walk_cel" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Walk through the Command Effects Log.</p>
 </dd></dl>
 
@@ -703,7 +703,7 @@ void <code class="sig-name descname">cxl_walk_cel</code><span class="sig-paren">
 command. If so, the command is enabled for the device and can be used later.</p>
 <dl class="c function">
 <dt id="c.cxl_mem_enumerate_cmds">
-int <code class="sig-name descname">cxl_mem_enumerate_cmds</code><span class="sig-paren">(</span><em class="property">struct</em> cxl_mem *<em>cxlm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cxl_mem_enumerate_cmds" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cxl_mem_enumerate_cmds</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">cxl_mem</span> <span class="pre">*</span><em><span class="pre">cxlm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cxl_mem_enumerate_cmds" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Enumerate commands for a device.</p>
 </dd></dl>
 
@@ -719,7 +719,7 @@ determine the set of supported commands for the hardware and update the
 enabled_cmds bitmap in the <strong>cxlm</strong>.</p>
 <dl class="c function">
 <dt id="c.cxl_mem_identify">
-int <code class="sig-name descname">cxl_mem_identify</code><span class="sig-paren">(</span><em class="property">struct</em> cxl_mem *<em>cxlm</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cxl_mem_identify" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">cxl_mem_identify</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">cxl_mem</span> <span class="pre">*</span><em><span class="pre">cxlm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cxl_mem_identify" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Send the IDENTIFY command to the device.</p>
 </dd></dl>
 
@@ -749,7 +749,7 @@ by userspace. Userspace must check the results from the QUERY command in
 order to determine the live set of commands.</p>
 <dl class="c struct">
 <dt id="c.cxl_command_info">
-<em class="property">struct </em><code class="sig-name descname">cxl_command_info</code><a class="headerlink" href="#c.cxl_command_info" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">cxl_command_info</span></code><a class="headerlink" href="#c.cxl_command_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Command information returned from a query.</p>
 </dd></dl>
 
@@ -790,7 +790,7 @@ bytes of output.</p>
 <p>See <a class="reference internal" href="#c.cxl_mem_query_commands" title="cxl_mem_query_commands"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">cxl_mem_query_commands</span></code></a>.</p>
 <dl class="c struct">
 <dt id="c.cxl_mem_query_commands">
-<em class="property">struct </em><code class="sig-name descname">cxl_mem_query_commands</code><a class="headerlink" href="#c.cxl_mem_query_commands" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">cxl_mem_query_commands</span></code><a class="headerlink" href="#c.cxl_mem_query_commands" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Query supported commands.</p>
 </dd></dl>
 
@@ -829,7 +829,7 @@ supported commands</p></li>
 </div></blockquote>
 <dl class="c struct">
 <dt id="c.cxl_send_command">
-<em class="property">struct </em><code class="sig-name descname">cxl_send_command</code><a class="headerlink" href="#c.cxl_send_command" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">cxl_send_command</span></code><a class="headerlink" href="#c.cxl_send_command" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Send a command to a memory device.</p>
 </dd></dl>
 

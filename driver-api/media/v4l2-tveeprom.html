@@ -392,7 +392,7 @@
 <h1><span class="section-number">1.26. </span>Hauppauge TV EEPROM functions and data structures<a class="headerlink" href="#hauppauge-tv-eeprom-functions-and-data-structures" title="Permalink to this headline">¶</a></h1>
 <dl class="c enum">
 <dt id="c.tveeprom_audio_processor">
-<em class="property">enum </em><code class="sig-name descname">tveeprom_audio_processor</code><a class="headerlink" href="#c.tveeprom_audio_processor" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">tveeprom_audio_processor</span></code><a class="headerlink" href="#c.tveeprom_audio_processor" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Specifies the type of audio processor used on a Hauppauge device.</p>
 </dd></dl>
 
@@ -410,7 +410,7 @@ video processor</p>
 </dl>
 <dl class="c struct">
 <dt id="c.tveeprom">
-<em class="property">struct </em><code class="sig-name descname">tveeprom</code><a class="headerlink" href="#c.tveeprom" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">tveeprom</span></code><a class="headerlink" href="#c.tveeprom" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Contains the fields parsed from Hauppauge eeproms</p>
 </dd></dl>
 
@@ -483,7 +483,7 @@ decoder based on the PCI or USB ID.</p>
 </dl>
 <dl class="c function">
 <dt id="c.tveeprom_hauppauge_analog">
-void <code class="sig-name descname">tveeprom_hauppauge_analog</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.tveeprom" title="tveeprom">tveeprom</a> *<em>tvee</em>, unsigned char *<em>eeprom_data</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tveeprom_hauppauge_analog" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">tveeprom_hauppauge_analog</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.tveeprom" title="tveeprom"><span class="pre">tveeprom</span></a> <span class="pre">*</span><em><span class="pre">tvee</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">eeprom_data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.tveeprom_hauppauge_analog" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Fill <a class="reference internal" href="#c.tveeprom" title="tveeprom"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">tveeprom</span></code></a> using the contents of the eeprom previously filled at <strong>eeprom_data</strong> field.</p>
 </dd></dl>
 
@@ -498,7 +498,7 @@ eeprom read from the Hauppauge device.</p>
 </dl>
 <dl class="c function">
 <dt id="c.tveeprom_read">
-int <code class="sig-name descname">tveeprom_read</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../i2c.html#c.i2c_client" title="i2c_client">i2c_client</a> *<em>c</em>, unsigned char *<em>eedata</em>, int <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.tveeprom_read" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">tveeprom_read</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../i2c.html#c.i2c_client" title="i2c_client"><span class="pre">i2c_client</span></a> <span class="pre">*</span><em><span class="pre">c</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">eedata</span></em>, <span class="pre">int</span> <em><span class="pre">len</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.tveeprom_read" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Reads the contents of the eeprom found at the Hauppauge devices.</p>
 </dd></dl>
 

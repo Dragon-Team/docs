@@ -372,7 +372,7 @@
 <h3><span class="section-number">8.1.13.1.1. </span>vimc-streamer<a class="headerlink" href="#vimc-streamer" title="Permalink to this headline">¶</a></h3>
 <dl class="c struct">
 <dt id="c.vimc_stream">
-<em class="property">struct </em><code class="sig-name descname">vimc_stream</code><a class="headerlink" href="#c.vimc_stream" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">vimc_stream</span></code><a class="headerlink" href="#c.vimc_stream" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>struct that represents a stream in the pipeline</p>
 </dd></dl>
 
@@ -406,7 +406,7 @@ used to keep track of all entities and subdevices that generates and
 process frames for the stream.</p>
 <dl class="c function">
 <dt id="c.vimc_get_source_entity">
-<em class="property">struct</em> <a class="reference internal" href="../mc-core.html#c.media_entity" title="media_entity">media_entity</a> *<code class="sig-name descname">vimc_get_source_entity</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="../mc-core.html#c.media_entity" title="media_entity">media_entity</a> *<em>ent</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vimc_get_source_entity" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../mc-core.html#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">vimc_get_source_entity</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../mc-core.html#c.media_entity" title="media_entity"><span class="pre">media_entity</span></a> <span class="pre">*</span><em><span class="pre">ent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vimc_get_source_entity" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get the entity connected with the first sink pad</p>
 </dd></dl>
 
@@ -422,7 +422,7 @@ linked with the first sink pad from the given media entity pad list.</p>
 <p>The source pad or NULL, if it wasn’t found.</p>
 <dl class="c function">
 <dt id="c.vimc_streamer_pipeline_terminate">
-void <code class="sig-name descname">vimc_streamer_pipeline_terminate</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vimc_stream" title="vimc_stream">vimc_stream</a> *<em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vimc_streamer_pipeline_terminate" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">vimc_streamer_pipeline_terminate</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.vimc_stream" title="vimc_stream"><span class="pre">vimc_stream</span></a> <span class="pre">*</span><em><span class="pre">stream</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vimc_streamer_pipeline_terminate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Disable stream in all ved in stream</p>
 </dd></dl>
 
@@ -436,7 +436,7 @@ disabled.</p>
 <p>Calls s_stream to disable the stream in each entity of the pipeline</p>
 <dl class="c function">
 <dt id="c.vimc_streamer_pipeline_init">
-int <code class="sig-name descname">vimc_streamer_pipeline_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vimc_stream" title="vimc_stream">vimc_stream</a> *<em>stream</em>, <em class="property">struct</em> vimc_ent_device *<em>ved</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vimc_streamer_pipeline_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vimc_streamer_pipeline_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.vimc_stream" title="vimc_stream"><span class="pre">vimc_stream</span></a> <span class="pre">*</span><em><span class="pre">stream</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">vimc_ent_device</span> <span class="pre">*</span><em><span class="pre">ved</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vimc_streamer_pipeline_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initializes the stream structure</p>
 </dd></dl>
 
@@ -456,7 +456,7 @@ the pipeline.</p>
 <p>0 if success, error code otherwise.</p>
 <dl class="c function">
 <dt id="c.vimc_streamer_thread">
-int <code class="sig-name descname">vimc_streamer_thread</code><span class="sig-paren">(</span>void *<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vimc_streamer_thread" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vimc_streamer_thread</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vimc_streamer_thread" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Process frames through the pipeline</p>
 </dd></dl>
 
@@ -473,7 +473,7 @@ the next one of the pipeline at a fixed framerate.</p>
 kthread API).</p>
 <dl class="c function">
 <dt id="c.vimc_streamer_s_stream">
-int <code class="sig-name descname">vimc_streamer_s_stream</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.vimc_stream" title="vimc_stream">vimc_stream</a> *<em>stream</em>, <em class="property">struct</em> vimc_ent_device *<em>ved</em>, int <em>enable</em><span class="sig-paren">)</span><a class="headerlink" href="#c.vimc_streamer_s_stream" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">vimc_streamer_s_stream</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.vimc_stream" title="vimc_stream"><span class="pre">vimc_stream</span></a> <span class="pre">*</span><em><span class="pre">stream</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">vimc_ent_device</span> <span class="pre">*</span><em><span class="pre">ved</span></em>, <span class="pre">int</span> <em><span class="pre">enable</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.vimc_streamer_s_stream" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Start/stop the streaming on the media pipeline</p>
 </dd></dl>
 

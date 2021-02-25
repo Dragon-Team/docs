@@ -493,7 +493,7 @@ port.</p>
 <h2>Public Functions Provided<a class="headerlink" href="#public-functions-provided" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.virt_to_phys">
-phys_addr_t <code class="sig-name descname">virt_to_phys</code><span class="sig-paren">(</span><em class="property">volatile</em> void *<em>address</em><span class="sig-paren">)</span><a class="headerlink" href="#c.virt_to_phys" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">phys_addr_t</span> <code class="sig-name descname"><span class="pre">virt_to_phys</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">volatile</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">address</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.virt_to_phys" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>map virtual addresses to physical</p>
 </dd></dl>
 
@@ -510,7 +510,7 @@ this function</p>
 </dl>
 <dl class="c function">
 <dt id="c.phys_to_virt">
-void *<code class="sig-name descname">phys_to_virt</code><span class="sig-paren">(</span>phys_addr_t <em>address</em><span class="sig-paren">)</span><a class="headerlink" href="#c.phys_to_virt" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">phys_to_virt</span></code><span class="sig-paren">(</span><span class="pre">phys_addr_t</span> <em><span class="pre">address</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.phys_to_virt" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>map physical address to virtual</p>
 </dd></dl>
 
@@ -527,7 +527,7 @@ this function</p>
 </dl>
 <dl class="c function">
 <dt id="c.ioremap">
-void __iomem *<code class="sig-name descname">ioremap</code><span class="sig-paren">(</span>resource_size_t <em>offset</em>, unsigned long <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.ioremap" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">__iomem</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">ioremap</span></code><span class="sig-paren">(</span><span class="pre">resource_size_t</span> <em><span class="pre">offset</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.ioremap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>map bus memory into CPU space</p>
 </dd></dl>
 
@@ -548,7 +548,7 @@ address.</p>
 look at <a class="reference internal" href="#c.pci_iomap" title="pci_iomap"><code class="xref c c-func docutils literal notranslate"><span class="pre">pci_iomap()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.iosubmit_cmds512">
-void <code class="sig-name descname">iosubmit_cmds512</code><span class="sig-paren">(</span>void __iomem *<em>dst</em>, <em class="property">const</em> void *<em>src</em>, size_t <em>count</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iosubmit_cmds512" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">iosubmit_cmds512</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">__iomem</span> <span class="pre">*</span><em><span class="pre">dst</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">src</span></em>, <span class="pre">size_t</span> <em><span class="pre">count</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iosubmit_cmds512" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>copy data to single MMIO location, in 512-bit units</p>
 </dd></dl>
 
@@ -569,7 +569,7 @@ performed afterwards.</p>
 instruction is supported on the platform.</p>
 <dl class="c function">
 <dt id="c.pci_iomap_range">
-void __iomem *<code class="sig-name descname">pci_iomap_range</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em>, int <em>bar</em>, unsigned long <em>offset</em>, unsigned long <em>maxlen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_iomap_range" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">__iomem</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">pci_iomap_range</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">int</span> <em><span class="pre">bar</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">offset</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">maxlen</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_iomap_range" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create a virtual mapping cookie for a PCI BAR</p>
 </dd></dl>
 
@@ -593,7 +593,7 @@ you expect from them in the correct way.</p>
 the complete BAR from offset to the end, pass <code class="docutils literal notranslate"><span class="pre">0</span></code> here.</p>
 <dl class="c function">
 <dt id="c.pci_iomap_wc_range">
-void __iomem *<code class="sig-name descname">pci_iomap_wc_range</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em>, int <em>bar</em>, unsigned long <em>offset</em>, unsigned long <em>maxlen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_iomap_wc_range" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">__iomem</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">pci_iomap_wc_range</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">int</span> <em><span class="pre">bar</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">offset</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">maxlen</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_iomap_wc_range" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create a virtual WC mapping cookie for a PCI BAR</p>
 </dd></dl>
 
@@ -618,7 +618,7 @@ is used.</p>
 the complete BAR from offset to the end, pass <code class="docutils literal notranslate"><span class="pre">0</span></code> here.</p>
 <dl class="c function">
 <dt id="c.pci_iomap">
-void __iomem *<code class="sig-name descname">pci_iomap</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em>, int <em>bar</em>, unsigned long <em>maxlen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_iomap" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">__iomem</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">pci_iomap</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">int</span> <em><span class="pre">bar</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">maxlen</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_iomap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create a virtual mapping cookie for a PCI BAR</p>
 </dd></dl>
 
@@ -640,7 +640,7 @@ you expect from them in the correct way.</p>
 the complete BAR without checking for its length first, pass <code class="docutils literal notranslate"><span class="pre">0</span></code> here.</p>
 <dl class="c function">
 <dt id="c.pci_iomap_wc">
-void __iomem *<code class="sig-name descname">pci_iomap_wc</code><span class="sig-paren">(</span><em class="property">struct</em> pci_dev *<em>dev</em>, int <em>bar</em>, unsigned long <em>maxlen</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_iomap_wc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <span class="pre">__iomem</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">pci_iomap_wc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pci_dev</span> <span class="pre">*</span><em><span class="pre">dev</span></em>, <span class="pre">int</span> <em><span class="pre">bar</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">maxlen</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pci_iomap_wc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create a virtual WC mapping cookie for a PCI BAR</p>
 </dd></dl>
 

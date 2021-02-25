@@ -480,7 +480,7 @@ the channel in the scan_elements directory.</p>
 <h2>More details<a class="headerlink" href="#more-details" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.iio_push_to_buffers_with_timestamp">
-int <code class="sig-name descname">iio_push_to_buffers_with_timestamp</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev">iio_dev</a> *<em>indio_dev</em>, void *<em>data</em>, int64_t <em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_push_to_buffers_with_timestamp" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">iio_push_to_buffers_with_timestamp</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev"><span class="pre">iio_dev</span></a> <span class="pre">*</span><em><span class="pre">indio_dev</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em>, <span class="pre">int64_t</span> <em><span class="pre">timestamp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_push_to_buffers_with_timestamp" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>push data and timestamp to buffers</p>
 </dd></dl>
 
@@ -502,7 +502,7 @@ data buffer needs to be large enough to hold the additional timestamp
 <p>Returns 0 on success, a negative error code otherwise.</p>
 <dl class="c function">
 <dt id="c.iio_validate_scan_mask_onehot">
-bool <code class="sig-name descname">iio_validate_scan_mask_onehot</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev">iio_dev</a> *<em>indio_dev</em>, <em class="property">const</em> unsigned long *<em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_validate_scan_mask_onehot" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">iio_validate_scan_mask_onehot</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev"><span class="pre">iio_dev</span></a> <span class="pre">*</span><em><span class="pre">indio_dev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">*</span><em><span class="pre">mask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_validate_scan_mask_onehot" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Validates that exactly one channel is selected</p>
 </dd></dl>
 
@@ -519,7 +519,7 @@ can be used for devices where only one channel can be active for sampling at
 a time.</p>
 <dl class="c function">
 <dt id="c.iio_push_to_buffers">
-int <code class="sig-name descname">iio_push_to_buffers</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev">iio_dev</a> *<em>indio_dev</em>, <em class="property">const</em> void *<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_push_to_buffers" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">iio_push_to_buffers</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev"><span class="pre">iio_dev</span></a> <span class="pre">*</span><em><span class="pre">indio_dev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_push_to_buffers" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>push to a registered buffer.</p>
 </dd></dl>
 
@@ -532,7 +532,7 @@ int <code class="sig-name descname">iio_push_to_buffers</code><span class="sig-p
 </dl>
 <dl class="c function">
 <dt id="c.iio_buffer_get">
-<em class="property">struct</em> iio_buffer *<code class="sig-name descname">iio_buffer_get</code><span class="sig-paren">(</span><em class="property">struct</em> iio_buffer *<em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_buffer_get" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">iio_buffer</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">iio_buffer_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">iio_buffer</span> <span class="pre">*</span><em><span class="pre">buffer</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_buffer_get" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Grab a reference to the buffer</p>
 </dd></dl>
 
@@ -545,7 +545,7 @@ int <code class="sig-name descname">iio_push_to_buffers</code><span class="sig-p
 <p>Returns the pointer to the buffer that was passed into the function.</p>
 <dl class="c function">
 <dt id="c.iio_buffer_put">
-void <code class="sig-name descname">iio_buffer_put</code><span class="sig-paren">(</span><em class="property">struct</em> iio_buffer *<em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_buffer_put" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">iio_buffer_put</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">iio_buffer</span> <span class="pre">*</span><em><span class="pre">buffer</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_buffer_put" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Release the reference to the buffer</p>
 </dd></dl>
 
@@ -556,7 +556,7 @@ void <code class="sig-name descname">iio_buffer_put</code><span class="sig-paren
 </dl>
 <dl class="c function">
 <dt id="c.iio_device_attach_buffer">
-void <code class="sig-name descname">iio_device_attach_buffer</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev">iio_dev</a> *<em>indio_dev</em>, <em class="property">struct</em> iio_buffer *<em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_device_attach_buffer" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">iio_device_attach_buffer</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="core.html#c.iio_dev" title="iio_dev"><span class="pre">iio_dev</span></a> <span class="pre">*</span><em><span class="pre">indio_dev</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">iio_buffer</span> <span class="pre">*</span><em><span class="pre">buffer</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.iio_device_attach_buffer" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Attach a buffer to a IIO device</p>
 </dd></dl>
 

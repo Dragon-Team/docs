@@ -484,7 +484,7 @@ Users:          libraw1394;
 </pre>
 <dl class="c struct">
 <dt id="c.fw_cdev_event_common">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_event_common</code><a class="headerlink" href="#c.fw_cdev_event_common" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_event_common</span></code><a class="headerlink" href="#c.fw_cdev_event_common" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Common part of all fw_cdev_event_* types</p>
 </dd></dl>
 
@@ -510,7 +510,7 @@ corresponding event.  It is big enough to hold a pointer on all platforms.
 The ioctl used to set <strong>closure</strong> depends on the <strong>type</strong> of event.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_event_bus_reset">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_event_bus_reset</code><a class="headerlink" href="#c.fw_cdev_event_bus_reset" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_event_bus_reset</span></code><a class="headerlink" href="#c.fw_cdev_event_bus_reset" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Sent when a bus reset occurred</p>
 </dd></dl>
 
@@ -555,7 +555,7 @@ new node ID for this device, new root ID, and others.</p>
 Kernels with ABI version &lt; 4 do not set <strong>bm_node_id</strong>.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_event_response">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_event_response</code><a class="headerlink" href="#c.fw_cdev_event_response" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_event_response</span></code><a class="headerlink" href="#c.fw_cdev_event_response" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Sent when a response packet was received</p>
 </dd></dl>
 
@@ -595,7 +595,7 @@ broadcast write transactions, and transmission of asynchronous stream
 packets.  <strong>rcode</strong> indicates success or failure of such transmissions.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_event_request">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_event_request</code><a class="headerlink" href="#c.fw_cdev_event_request" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_event_request</span></code><a class="headerlink" href="#c.fw_cdev_event_request" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Old version of <a class="reference internal" href="#c.fw_cdev_event_request2" title="fw_cdev_event_request2"><code class="xref c c-type docutils literal notranslate"><span class="pre">fw_cdev_event_request2</span></code></a></p>
 </dd></dl>
 
@@ -634,7 +634,7 @@ the client implements ABI version &lt;= 3.  <a class="reference internal" href="
 essential information; use <a class="reference internal" href="#c.fw_cdev_event_request2" title="fw_cdev_event_request2"><code class="xref c c-type docutils literal notranslate"><span class="pre">fw_cdev_event_request2</span></code></a> instead.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_event_request2">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_event_request2</code><a class="headerlink" href="#c.fw_cdev_event_request2" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_event_request2</span></code><a class="headerlink" href="#c.fw_cdev_event_request2" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Sent on incoming request to an address region</p>
 </dd></dl>
 
@@ -710,7 +710,7 @@ an <a class="reference internal" href="#c.fw_cdev_event_request2" title="fw_cdev
 card index, node ID, and generation for outbound requests.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_event_iso_interrupt">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_event_iso_interrupt</code><a class="headerlink" href="#c.fw_cdev_event_iso_interrupt" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_event_iso_interrupt</span></code><a class="headerlink" href="#c.fw_cdev_event_iso_interrupt" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Sent when an iso packet was completed</p>
 </dd></dl>
 
@@ -774,7 +774,7 @@ data followed directly after the 1394 is header if header_size &gt; 4.
 Behaviour of ver. 1 of this ABI is no longer available since ABI ver. 2.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_event_iso_interrupt_mc">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_event_iso_interrupt_mc</code><a class="headerlink" href="#c.fw_cdev_event_iso_interrupt_mc" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_event_iso_interrupt_mc</span></code><a class="headerlink" href="#c.fw_cdev_event_iso_interrupt_mc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>An iso buffer chunk was completed</p>
 </dd></dl>
 
@@ -823,7 +823,7 @@ for this condition, assemble a broken-up packet from its parts, and not to
 re-queue any buffer chunks in which as yet unread packet parts reside.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_event_iso_resource">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_event_iso_resource</code><a class="headerlink" href="#c.fw_cdev_event_iso_resource" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_event_iso_resource</span></code><a class="headerlink" href="#c.fw_cdev_event_iso_resource" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Iso resources were allocated or freed</p>
 </dd></dl>
 
@@ -863,7 +863,7 @@ reallocation after a bus reset failed.</p>
 <strong>bandwidth</strong> is 0 if no bandwidth was (de)allocated or if reallocation failed.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_event_phy_packet">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_event_phy_packet</code><a class="headerlink" href="#c.fw_cdev_event_phy_packet" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_event_phy_packet</span></code><a class="headerlink" href="#c.fw_cdev_event_phy_packet" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A PHY packet was transmitted or received</p>
 </dd></dl>
 
@@ -899,7 +899,7 @@ ping time in 49.152MHz clocks if **rcode</strong> is <code class="docutils liter
 consists of the two PHY packet quadlets, in host byte order.</p>
 <dl class="c union">
 <dt id="c.fw_cdev_event">
-<em class="property">union </em><code class="sig-name descname">fw_cdev_event</code><a class="headerlink" href="#c.fw_cdev_event" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">union</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_event</span></code><a class="headerlink" href="#c.fw_cdev_event" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Convenience union of fw_cdev_event_* types</p>
 </dd></dl>
 
@@ -953,7 +953,7 @@ an event into a buffer that is not large enough for it, the data that does
 not fit will be discarded so that the next read(2) will return a new event.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_get_info">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_get_info</code><a class="headerlink" href="#c.fw_cdev_get_info" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_get_info</span></code><a class="headerlink" href="#c.fw_cdev_get_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>General purpose information ioctl</p>
 </dd></dl>
 
@@ -1000,7 +1000,7 @@ performs right after it opened a /dev/fw* file.</p>
 is started by this ioctl.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_send_request">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_send_request</code><a class="headerlink" href="#c.fw_cdev_send_request" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_send_request</span></code><a class="headerlink" href="#c.fw_cdev_send_request" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Send an asynchronous request packet</p>
 </dd></dl>
 
@@ -1038,7 +1038,7 @@ in the <strong>data</strong> field.  Once the transaction completes, the kernel 
 user space in the response event.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_send_response">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_send_response</code><a class="headerlink" href="#c.fw_cdev_send_response" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_send_response</span></code><a class="headerlink" href="#c.fw_cdev_send_response" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Send an asynchronous response packet</p>
 </dd></dl>
 
@@ -1070,7 +1070,7 @@ send a reply using this ioctl.  The event has a handle to the kernel-side
 pending transaction, which should be used with this ioctl.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_allocate">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_allocate</code><a class="headerlink" href="#c.fw_cdev_allocate" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_allocate</span></code><a class="headerlink" href="#c.fw_cdev_allocate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate a CSR in an address range</p>
 </dd></dl>
 
@@ -1123,7 +1123,7 @@ ignored and effectively assumed to be <strong>offset</strong> + <strong>length</
 this can for example be tested by #ifdef FW_CDEV_EVENT_REQUEST2.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_deallocate">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_deallocate</code><a class="headerlink" href="#c.fw_cdev_deallocate" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_deallocate</span></code><a class="headerlink" href="#c.fw_cdev_deallocate" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Free a CSR address range or isochronous resource</p>
 </dd></dl>
 
@@ -1141,7 +1141,7 @@ kernel when the range or resource was allocated</p>
 </dl>
 <dl class="c struct">
 <dt id="c.fw_cdev_initiate_bus_reset">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_initiate_bus_reset</code><a class="headerlink" href="#c.fw_cdev_initiate_bus_reset" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_initiate_bus_reset</span></code><a class="headerlink" href="#c.fw_cdev_initiate_bus_reset" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initiate a bus reset</p>
 </dd></dl>
 
@@ -1166,7 +1166,7 @@ considerably later than the ioctl because the kernel ensures a grace period
 between subsequent bus resets as per IEEE 1394 bus management specification.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_add_descriptor">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_add_descriptor</code><a class="headerlink" href="#c.fw_cdev_add_descriptor" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_add_descriptor</span></code><a class="headerlink" href="#c.fw_cdev_add_descriptor" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Add contents to the local node’s config ROM</p>
 </dd></dl>
 
@@ -1211,7 +1211,7 @@ change of the Configuration ROM to other nodes.</p>
 The ioctl only succeeds on device files which represent a local node.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_remove_descriptor">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_remove_descriptor</code><a class="headerlink" href="#c.fw_cdev_remove_descriptor" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_remove_descriptor</span></code><a class="headerlink" href="#c.fw_cdev_remove_descriptor" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Remove contents from the Configuration ROM</p>
 </dd></dl>
 
@@ -1233,7 +1233,7 @@ nodes’ Configuration ROMs.  The kernel will also generate a bus reset to
 signal the change of the Configuration ROM to other nodes.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_create_iso_context">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_create_iso_context</code><a class="headerlink" href="#c.fw_cdev_create_iso_context" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_create_iso_context</span></code><a class="headerlink" href="#c.fw_cdev_create_iso_context" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create a context for isochronous I/O</p>
 </dd></dl>
 
@@ -1285,7 +1285,7 @@ create on a card at a time is a hardware limit, typically 4 or 8 contexts per
 direction, and of them at most one multichannel receive context.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_set_iso_channels">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_set_iso_channels</code><a class="headerlink" href="#c.fw_cdev_set_iso_channels" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_set_iso_channels</span></code><a class="headerlink" href="#c.fw_cdev_set_iso_channels" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Select channels in multichannel reception</p>
 </dd></dl>
 
@@ -1310,7 +1310,7 @@ on a channel in <strong>channels</strong>.  In that case, the bitmask of all uno
 channels is returned in <strong>channels</strong>.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_iso_packet">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_iso_packet</code><a class="headerlink" href="#c.fw_cdev_iso_packet" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_iso_packet</span></code><a class="headerlink" href="#c.fw_cdev_iso_packet" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Isochronous packet</p>
 </dd></dl>
 
@@ -1378,7 +1378,7 @@ for single-channel reception.</p>
 entirely, an <a class="reference internal" href="#c.fw_cdev_event_iso_interrupt_mc" title="fw_cdev_event_iso_interrupt_mc"><code class="xref c c-type docutils literal notranslate"><span class="pre">fw_cdev_event_iso_interrupt_mc</span></code></a> event will be sent.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_queue_iso">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_queue_iso</code><a class="headerlink" href="#c.fw_cdev_queue_iso" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_queue_iso</span></code><a class="headerlink" href="#c.fw_cdev_queue_iso" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Queue isochronous packets for I/O</p>
 </dd></dl>
 
@@ -1416,7 +1416,7 @@ resubmitted easily.</p>
 relative to the buffer start.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_start_iso">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_start_iso</code><a class="headerlink" href="#c.fw_cdev_start_iso" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_start_iso</span></code><a class="headerlink" href="#c.fw_cdev_start_iso" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Start an isochronous transmission or reception</p>
 </dd></dl>
 
@@ -1446,7 +1446,7 @@ Use FW_CDEV_ISO_CONTEXT_MATCH_* macros to set <strong>tags</strong>.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.fw_cdev_stop_iso">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_stop_iso</code><a class="headerlink" href="#c.fw_cdev_stop_iso" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_stop_iso</span></code><a class="headerlink" href="#c.fw_cdev_stop_iso" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Stop an isochronous transmission or reception</p>
 </dd></dl>
 
@@ -1463,7 +1463,7 @@ Use FW_CDEV_ISO_CONTEXT_MATCH_* macros to set <strong>tags</strong>.</p>
 </dl>
 <dl class="c struct">
 <dt id="c.fw_cdev_flush_iso">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_flush_iso</code><a class="headerlink" href="#c.fw_cdev_flush_iso" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_flush_iso</span></code><a class="headerlink" href="#c.fw_cdev_flush_iso" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>flush completed iso packets</p>
 </dd></dl>
 
@@ -1489,7 +1489,7 @@ events generated by this ioctl are sent synchronously, i.e., are available
 for reading from the file descriptor when this ioctl returns.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_get_cycle_timer">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_get_cycle_timer</code><a class="headerlink" href="#c.fw_cdev_get_cycle_timer" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_get_cycle_timer</span></code><a class="headerlink" href="#c.fw_cdev_get_cycle_timer" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>read cycle timer register</p>
 </dd></dl>
 
@@ -1514,7 +1514,7 @@ and only with microseconds resolution.</p>
 monotonic) <strong>cycle_timer</strong> values on certain controllers.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_get_cycle_timer2">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_get_cycle_timer2</code><a class="headerlink" href="#c.fw_cdev_get_cycle_timer2" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_get_cycle_timer2</span></code><a class="headerlink" href="#c.fw_cdev_get_cycle_timer2" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>read cycle timer register</p>
 </dd></dl>
 
@@ -1550,7 +1550,7 @@ and Linux’ <code class="docutils literal notranslate"><span class="pre">CLOCK_
 per IEEE 1394 or Isochronous Cycle Timer register per OHCI-1394.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_allocate_iso_resource">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_allocate_iso_resource</code><a class="headerlink" href="#c.fw_cdev_allocate_iso_resource" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_allocate_iso_resource</span></code><a class="headerlink" href="#c.fw_cdev_allocate_iso_resource" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>(De)allocate a channel or bandwidth</p>
 </dd></dl>
 
@@ -1607,7 +1607,7 @@ representing channel 0 and the most significant bit representing channel 63:
 one quadlet of data (payload or header data) at speed S1600.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_send_stream_packet">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_send_stream_packet</code><a class="headerlink" href="#c.fw_cdev_send_stream_packet" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_send_stream_packet</span></code><a class="headerlink" href="#c.fw_cdev_send_stream_packet" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>send an asynchronous stream packet</p>
 </dd></dl>
 
@@ -1650,7 +1650,7 @@ writes an <a class="reference internal" href="#c.fw_cdev_event_response" title="
 the transmission.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_send_phy_packet">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_send_phy_packet</code><a class="headerlink" href="#c.fw_cdev_send_phy_packet" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_send_phy_packet</span></code><a class="headerlink" href="#c.fw_cdev_send_phy_packet" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>send a PHY packet</p>
 </dd></dl>
 
@@ -1681,7 +1681,7 @@ are an exception to this rule.</p>
 <p>The ioctl is only permitted on device files which represent a local node.</p>
 <dl class="c struct">
 <dt id="c.fw_cdev_receive_phy_packets">
-<em class="property">struct </em><code class="sig-name descname">fw_cdev_receive_phy_packets</code><a class="headerlink" href="#c.fw_cdev_receive_phy_packets" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">fw_cdev_receive_phy_packets</span></code><a class="headerlink" href="#c.fw_cdev_receive_phy_packets" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>start reception of PHY packets</p>
 </dd></dl>
 
@@ -1842,7 +1842,7 @@ Users:          udev rules to create /dev/disk/by-id/ symlinks
 </pre>
 <dl class="c function">
 <dt id="c.fw_csr_string">
-int <code class="sig-name descname">fw_csr_string</code><span class="sig-paren">(</span><em class="property">const</em> u32 *<em>directory</em>, int <em>key</em>, char *<em>buf</em>, size_t <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#c.fw_csr_string" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">fw_csr_string</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">directory</span></em>, <span class="pre">int</span> <em><span class="pre">key</span></em>, <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">buf</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.fw_csr_string" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>reads a string from the configuration ROM</p>
 </dd></dl>
 
@@ -1868,7 +1868,7 @@ zero byte fit into <strong>size</strong>.</p>
 <h2>Firewire core transaction interfaces<a class="headerlink" href="#firewire-core-transaction-interfaces" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.fw_send_request">
-void <code class="sig-name descname">fw_send_request</code><span class="sig-paren">(</span><em class="property">struct</em> fw_card *<em>card</em>, <em class="property">struct</em> fw_transaction *<em>t</em>, int <em>tcode</em>, int <em>destination_id</em>, int <em>generation</em>, int <em>speed</em>, unsigned long long <em>offset</em>, void *<em>payload</em>, size_t <em>length</em>, fw_transaction_callback_t <em>callback</em>, void *<em>callback_data</em><span class="sig-paren">)</span><a class="headerlink" href="#c.fw_send_request" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">fw_send_request</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">fw_card</span> <span class="pre">*</span><em><span class="pre">card</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">fw_transaction</span> <span class="pre">*</span><em><span class="pre">t</span></em>, <span class="pre">int</span> <em><span class="pre">tcode</span></em>, <span class="pre">int</span> <em><span class="pre">destination_id</span></em>, <span class="pre">int</span> <em><span class="pre">generation</span></em>, <span class="pre">int</span> <em><span class="pre">speed</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">offset</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">payload</span></em>, <span class="pre">size_t</span> <em><span class="pre">length</span></em>, <span class="pre">fw_transaction_callback_t</span> <em><span class="pre">callback</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">callback_data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.fw_send_request" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>submit a request packet for transmission</p>
 </dd></dl>
 
@@ -1926,7 +1926,7 @@ transaction completion and hence execution of <strong>callback</strong> may happ
 before <a class="reference internal" href="#c.fw_send_request" title="fw_send_request"><code class="xref c c-func docutils literal notranslate"><span class="pre">fw_send_request()</span></code></a> returns.</p>
 <dl class="c function">
 <dt id="c.fw_run_transaction">
-int <code class="sig-name descname">fw_run_transaction</code><span class="sig-paren">(</span><em class="property">struct</em> fw_card *<em>card</em>, int <em>tcode</em>, int <em>destination_id</em>, int <em>generation</em>, int <em>speed</em>, unsigned long long <em>offset</em>, void *<em>payload</em>, size_t <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#c.fw_run_transaction" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">fw_run_transaction</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">fw_card</span> <span class="pre">*</span><em><span class="pre">card</span></em>, <span class="pre">int</span> <em><span class="pre">tcode</span></em>, <span class="pre">int</span> <em><span class="pre">destination_id</span></em>, <span class="pre">int</span> <em><span class="pre">generation</span></em>, <span class="pre">int</span> <em><span class="pre">speed</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span> <em><span class="pre">offset</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">payload</span></em>, <span class="pre">size_t</span> <em><span class="pre">length</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.fw_run_transaction" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>send request and sleep until transaction is completed</p>
 </dd></dl>
 
@@ -1956,7 +1956,7 @@ to the payload of the response.  DMA mapping restrictions apply to outbound
 request payloads of &gt;= 8 bytes but not to inbound response payloads.</p>
 <dl class="c function">
 <dt id="c.fw_core_add_address_handler">
-int <code class="sig-name descname">fw_core_add_address_handler</code><span class="sig-paren">(</span><em class="property">struct</em> fw_address_handler *<em>handler</em>, <em class="property">const</em> <em class="property">struct</em> fw_address_region *<em>region</em><span class="sig-paren">)</span><a class="headerlink" href="#c.fw_core_add_address_handler" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">fw_core_add_address_handler</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">fw_address_handler</span> <span class="pre">*</span><em><span class="pre">handler</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">fw_address_region</span> <span class="pre">*</span><em><span class="pre">region</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.fw_core_add_address_handler" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>register for incoming requests</p>
 </dd></dl>
 
@@ -1979,7 +1979,7 @@ Return value:  0 on success, non-zero otherwise.</p>
 <p>Address allocations are exclusive, except for the FCP registers.</p>
 <dl class="c function">
 <dt id="c.fw_core_remove_address_handler">
-void <code class="sig-name descname">fw_core_remove_address_handler</code><span class="sig-paren">(</span><em class="property">struct</em> fw_address_handler *<em>handler</em><span class="sig-paren">)</span><a class="headerlink" href="#c.fw_core_remove_address_handler" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">fw_core_remove_address_handler</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">fw_address_handler</span> <span class="pre">*</span><em><span class="pre">handler</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.fw_core_remove_address_handler" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>unregister an address handler</p>
 </dd></dl>
 
@@ -1994,7 +1994,7 @@ void <code class="sig-name descname">fw_core_remove_address_handler</code><span 
 guaranteed to not run on any CPU anymore.</p>
 <dl class="c function">
 <dt id="c.fw_get_request_speed">
-int <code class="sig-name descname">fw_get_request_speed</code><span class="sig-paren">(</span><em class="property">struct</em> fw_request *<em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#c.fw_get_request_speed" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">fw_get_request_speed</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">fw_request</span> <span class="pre">*</span><em><span class="pre">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.fw_get_request_speed" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>returns speed at which the <strong>request</strong> was received</p>
 </dd></dl>
 
@@ -2005,7 +2005,7 @@ int <code class="sig-name descname">fw_get_request_speed</code><span class="sig-
 </dl>
 <dl class="c function">
 <dt id="c.fw_rcode_string">
-<em class="property">const</em> char *<code class="sig-name descname">fw_rcode_string</code><span class="sig-paren">(</span>int <em>rcode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.fw_rcode_string" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">fw_rcode_string</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">rcode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.fw_rcode_string" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>convert a firewire result code to an error description</p>
 </dd></dl>
 
@@ -2019,7 +2019,7 @@ int <code class="sig-name descname">fw_get_request_speed</code><span class="sig-
 <h2>Firewire Isochronous I/O interfaces<a class="headerlink" href="#firewire-isochronous-i-o-interfaces" title="Permalink to this headline">¶</a></h2>
 <dl class="c function">
 <dt id="c.fw_iso_resource_manage">
-void <code class="sig-name descname">fw_iso_resource_manage</code><span class="sig-paren">(</span><em class="property">struct</em> fw_card *<em>card</em>, int <em>generation</em>, u64 <em>channels_mask</em>, int *<em>channel</em>, int *<em>bandwidth</em>, bool <em>allocate</em><span class="sig-paren">)</span><a class="headerlink" href="#c.fw_iso_resource_manage" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">fw_iso_resource_manage</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">fw_card</span> <span class="pre">*</span><em><span class="pre">card</span></em>, <span class="pre">int</span> <em><span class="pre">generation</span></em>, <span class="pre">u64</span> <em><span class="pre">channels_mask</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">channel</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">bandwidth</span></em>, <span class="pre">bool</span> <em><span class="pre">allocate</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.fw_iso_resource_manage" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Allocate or deallocate a channel and/or bandwidth</p>
 </dd></dl>
 

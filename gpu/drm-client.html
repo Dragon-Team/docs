@@ -268,7 +268,7 @@
 <p>GEM drivers which provide a GEM based dumb buffer with a virtual address are supported.</p>
 <dl class="c struct">
 <dt id="c.drm_client_funcs">
-<em class="property">struct </em><code class="sig-name descname">drm_client_funcs</code><a class="headerlink" href="#c.drm_client_funcs" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">drm_client_funcs</span></code><a class="headerlink" href="#c.drm_client_funcs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>DRM client callbacks</p>
 </dd></dl>
 
@@ -305,7 +305,7 @@ This callback is not called after <strong>unregister</strong> has been called.</
 </dl>
 <dl class="c struct">
 <dt id="c.drm_client_dev">
-<em class="property">struct </em><code class="sig-name descname">drm_client_dev</code><a class="headerlink" href="#c.drm_client_dev" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">drm_client_dev</span></code><a class="headerlink" href="#c.drm_client_dev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>DRM client instance</p>
 </dd></dl>
 
@@ -341,7 +341,7 @@ This callback is not called after <strong>unregister</strong> has been called.</
 </dl>
 <dl class="c struct">
 <dt id="c.drm_client_buffer">
-<em class="property">struct </em><code class="sig-name descname">drm_client_buffer</code><a class="headerlink" href="#c.drm_client_buffer" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">drm_client_buffer</span></code><a class="headerlink" href="#c.drm_client_buffer" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>DRM client buffer</p>
 </dd></dl>
 
@@ -373,7 +373,7 @@ This callback is not called after <strong>unregister</strong> has been called.</
 </dl>
 <dl class="c macro">
 <dt id="c.drm_client_for_each_modeset">
-<code class="sig-name descname">drm_client_for_each_modeset</code><a class="headerlink" href="#c.drm_client_for_each_modeset" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">drm_client_for_each_modeset</span></code><a class="headerlink" href="#c.drm_client_for_each_modeset" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">drm_client_for_each_modeset</span> <span class="pre">(modeset,</span> <span class="pre">client)</span></code></p>
@@ -389,7 +389,7 @@ This callback is not called after <strong>unregister</strong> has been called.</
 </dl>
 <dl class="c macro">
 <dt id="c.drm_client_for_each_connector_iter">
-<code class="sig-name descname">drm_client_for_each_connector_iter</code><a class="headerlink" href="#c.drm_client_for_each_connector_iter" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">drm_client_for_each_connector_iter</span></code><a class="headerlink" href="#c.drm_client_for_each_connector_iter" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">drm_client_for_each_connector_iter</span> <span class="pre">(connector,</span> <span class="pre">iter)</span></code></p>
@@ -409,7 +409,7 @@ writeback connectors).</p>
 <p>For more info see <a class="reference internal" href="drm-kms.html#c.drm_for_each_connector_iter" title="drm_for_each_connector_iter"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_for_each_connector_iter()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.drm_client_init">
-int <code class="sig-name descname">drm_client_init</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device">drm_device</a> *<em>dev</em>, <em class="property">struct</em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev">drm_client_dev</a> *<em>client</em>, <em class="property">const</em> char *<em>name</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.drm_client_funcs" title="drm_client_funcs">drm_client_funcs</a> *<em>funcs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">drm_client_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev"><span class="pre">drm_client_dev</span></a> <span class="pre">*</span><em><span class="pre">client</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">name</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_client_funcs" title="drm_client_funcs"><span class="pre">drm_client_funcs</span></a> <span class="pre">*</span><em><span class="pre">funcs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialise a DRM client</p>
 </dd></dl>
 
@@ -433,7 +433,7 @@ The client is freed when the <a class="reference internal" href="drm-internals.h
 <p>Zero on success or negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.drm_client_register">
-void <code class="sig-name descname">drm_client_register</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev">drm_client_dev</a> *<em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_register" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">drm_client_register</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev"><span class="pre">drm_client_dev</span></a> <span class="pre">*</span><em><span class="pre">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Register client</p>
 </dd></dl>
 
@@ -450,7 +450,7 @@ directly (outside the unregister callback), instead cleanup will happen
 automatically on driver unload.</p>
 <dl class="c function">
 <dt id="c.drm_client_release">
-void <code class="sig-name descname">drm_client_release</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev">drm_client_dev</a> *<em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_release" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">drm_client_release</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev"><span class="pre">drm_client_dev</span></a> <span class="pre">*</span><em><span class="pre">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_release" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Release DRM client resources</p>
 </dd></dl>
 
@@ -469,7 +469,7 @@ is fbdev which cannot free the buffer if userspace has open file descriptors.</p
 The driver has to be unloaded before the client can be unloaded.</p>
 <dl class="c function">
 <dt id="c.drm_client_dev_hotplug">
-void <code class="sig-name descname">drm_client_dev_hotplug</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device">drm_device</a> *<em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_dev_hotplug" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">drm_client_dev_hotplug</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="drm-internals.html#c.drm_device" title="drm_device"><span class="pre">drm_device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_dev_hotplug" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Send hotplug event to clients</p>
 </dd></dl>
 
@@ -484,7 +484,7 @@ void <code class="sig-name descname">drm_client_dev_hotplug</code><span class="s
 don’t need to call this function themselves.</p>
 <dl class="c function">
 <dt id="c.drm_client_buffer_vmap">
-int <code class="sig-name descname">drm_client_buffer_vmap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_buffer" title="drm_client_buffer">drm_client_buffer</a> *<em>buffer</em>, <em class="property">struct</em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_map" title="dma_buf_map">dma_buf_map</a> *<em>map_copy</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_buffer_vmap" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">drm_client_buffer_vmap</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_client_buffer" title="drm_client_buffer"><span class="pre">drm_client_buffer</span></a> <span class="pre">*</span><em><span class="pre">buffer</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/dma-buf.html#c.dma_buf_map" title="dma_buf_map"><span class="pre">dma_buf_map</span></a> <span class="pre">*</span><em><span class="pre">map_copy</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_buffer_vmap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Map DRM client buffer into address space</p>
 </dd></dl>
 
@@ -511,7 +511,7 @@ function. So you can modify it at will during blit and draw operations.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.drm_client_buffer_vunmap">
-void <code class="sig-name descname">drm_client_buffer_vunmap</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_buffer" title="drm_client_buffer">drm_client_buffer</a> *<em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_buffer_vunmap" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">drm_client_buffer_vunmap</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_client_buffer" title="drm_client_buffer"><span class="pre">drm_client_buffer</span></a> <span class="pre">*</span><em><span class="pre">buffer</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_buffer_vunmap" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Unmap DRM client buffer</p>
 </dd></dl>
 
@@ -526,7 +526,7 @@ function is only required by clients that manage their buffer mappings
 by themselves.</p>
 <dl class="c function">
 <dt id="c.drm_client_framebuffer_create">
-<em class="property">struct</em> <a class="reference internal" href="#c.drm_client_buffer" title="drm_client_buffer">drm_client_buffer</a> *<code class="sig-name descname">drm_client_framebuffer_create</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev">drm_client_dev</a> *<em>client</em>, u32 <em>width</em>, u32 <em>height</em>, u32 <em>format</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_framebuffer_create" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_client_buffer" title="drm_client_buffer"><span class="pre">drm_client_buffer</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">drm_client_framebuffer_create</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev"><span class="pre">drm_client_dev</span></a> <span class="pre">*</span><em><span class="pre">client</span></em>, <span class="pre">u32</span> <em><span class="pre">width</span></em>, <span class="pre">u32</span> <em><span class="pre">height</span></em>, <span class="pre">u32</span> <em><span class="pre">format</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_framebuffer_create" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create a client framebuffer</p>
 </dd></dl>
 
@@ -549,7 +549,7 @@ Call <a class="reference internal" href="#c.drm_client_framebuffer_delete" title
 <p>Pointer to a client buffer or an error pointer on failure.</p>
 <dl class="c function">
 <dt id="c.drm_client_framebuffer_delete">
-void <code class="sig-name descname">drm_client_framebuffer_delete</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_buffer" title="drm_client_buffer">drm_client_buffer</a> *<em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_framebuffer_delete" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">drm_client_framebuffer_delete</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_client_buffer" title="drm_client_buffer"><span class="pre">drm_client_buffer</span></a> <span class="pre">*</span><em><span class="pre">buffer</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_framebuffer_delete" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Delete a client framebuffer</p>
 </dd></dl>
 
@@ -560,7 +560,7 @@ void <code class="sig-name descname">drm_client_framebuffer_delete</code><span c
 </dl>
 <dl class="c function">
 <dt id="c.drm_client_framebuffer_flush">
-int <code class="sig-name descname">drm_client_framebuffer_flush</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_buffer" title="drm_client_buffer">drm_client_buffer</a> *<em>buffer</em>, <em class="property">struct</em> <a class="reference internal" href="drm-kms-helpers.html#c.drm_rect" title="drm_rect">drm_rect</a> *<em>rect</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_framebuffer_flush" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">drm_client_framebuffer_flush</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_client_buffer" title="drm_client_buffer"><span class="pre">drm_client_buffer</span></a> <span class="pre">*</span><em><span class="pre">buffer</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="drm-kms-helpers.html#c.drm_rect" title="drm_rect"><span class="pre">drm_rect</span></a> <span class="pre">*</span><em><span class="pre">rect</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_framebuffer_flush" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Manually flush client framebuffer</p>
 </dd></dl>
 
@@ -578,7 +578,7 @@ for drivers that need it.</p>
 <p>Zero on success or negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.drm_client_modeset_probe">
-int <code class="sig-name descname">drm_client_modeset_probe</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev">drm_client_dev</a> *<em>client</em>, unsigned int <em>width</em>, unsigned int <em>height</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_modeset_probe" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">drm_client_modeset_probe</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev"><span class="pre">drm_client_dev</span></a> <span class="pre">*</span><em><span class="pre">client</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">width</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">height</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_modeset_probe" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Probe for displays</p>
 </dd></dl>
 
@@ -598,7 +598,7 @@ config in the client’s modeset array.</p>
 <p>Zero on success or negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.drm_client_rotation">
-bool <code class="sig-name descname">drm_client_rotation</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="drm-kms.html#c.drm_mode_set" title="drm_mode_set">drm_mode_set</a> *<em>modeset</em>, unsigned int *<em>rotation</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_rotation" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">drm_client_rotation</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="drm-kms.html#c.drm_mode_set" title="drm_mode_set"><span class="pre">drm_mode_set</span></a> <span class="pre">*</span><em><span class="pre">modeset</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">rotation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_rotation" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Check the initial rotation value</p>
 </dd></dl>
 
@@ -618,7 +618,7 @@ to match the rotation needed on its connector.</p>
 <p>True if the plane can do the rotation, false otherwise.</p>
 <dl class="c function">
 <dt id="c.drm_client_modeset_check">
-int <code class="sig-name descname">drm_client_modeset_check</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev">drm_client_dev</a> *<em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_modeset_check" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">drm_client_modeset_check</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev"><span class="pre">drm_client_dev</span></a> <span class="pre">*</span><em><span class="pre">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_modeset_check" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Check modeset configuration</p>
 </dd></dl>
 
@@ -633,7 +633,7 @@ int <code class="sig-name descname">drm_client_modeset_check</code><span class="
 <p>Zero on success or negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.drm_client_modeset_commit_locked">
-int <code class="sig-name descname">drm_client_modeset_commit_locked</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev">drm_client_dev</a> *<em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_modeset_commit_locked" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">drm_client_modeset_commit_locked</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev"><span class="pre">drm_client_dev</span></a> <span class="pre">*</span><em><span class="pre">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_modeset_commit_locked" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Force commit CRTC configuration</p>
 </dd></dl>
 
@@ -650,7 +650,7 @@ master reference acquired with drm_master_internal_acquire().</p>
 <p>Zero on success or negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.drm_client_modeset_commit">
-int <code class="sig-name descname">drm_client_modeset_commit</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev">drm_client_dev</a> *<em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_modeset_commit" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">drm_client_modeset_commit</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev"><span class="pre">drm_client_dev</span></a> <span class="pre">*</span><em><span class="pre">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_modeset_commit" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Commit CRTC configuration</p>
 </dd></dl>
 
@@ -665,7 +665,7 @@ int <code class="sig-name descname">drm_client_modeset_commit</code><span class=
 <p>Zero on success or negative error code on failure.</p>
 <dl class="c function">
 <dt id="c.drm_client_modeset_dpms">
-int <code class="sig-name descname">drm_client_modeset_dpms</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev">drm_client_dev</a> *<em>client</em>, int <em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_modeset_dpms" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">drm_client_modeset_dpms</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.drm_client_dev" title="drm_client_dev"><span class="pre">drm_client_dev</span></a> <span class="pre">*</span><em><span class="pre">client</span></em>, <span class="pre">int</span> <em><span class="pre">mode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drm_client_modeset_dpms" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set DPMS mode</p>
 </dd></dl>
 

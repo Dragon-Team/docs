@@ -629,7 +629,7 @@ trace.</p>
 <h2>Kernel Inline Documentations Reference<a class="headerlink" href="#kernel-inline-documentations-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="c struct">
 <dt id="c.workqueue_attrs">
-<em class="property">struct </em><code class="sig-name descname">workqueue_attrs</code><a class="headerlink" href="#c.workqueue_attrs" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">workqueue_attrs</span></code><a class="headerlink" href="#c.workqueue_attrs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A struct for workqueue attributes.</p>
 </dd></dl>
 
@@ -657,7 +657,7 @@ doesn’t participate in pool hash calculations or equality comparisons.</p>
 <p>This can be used to change attributes of an unbound workqueue.</p>
 <dl class="c macro">
 <dt id="c.work_pending">
-<code class="sig-name descname">work_pending</code><a class="headerlink" href="#c.work_pending" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">work_pending</span></code><a class="headerlink" href="#c.work_pending" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">work_pending</span> <span class="pre">(work)</span></code></p>
@@ -671,7 +671,7 @@ doesn’t participate in pool hash calculations or equality comparisons.</p>
 </dl>
 <dl class="c macro">
 <dt id="c.delayed_work_pending">
-<code class="sig-name descname">delayed_work_pending</code><a class="headerlink" href="#c.delayed_work_pending" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">delayed_work_pending</span></code><a class="headerlink" href="#c.delayed_work_pending" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">delayed_work_pending</span> <span class="pre">(w)</span></code></p>
@@ -685,7 +685,7 @@ doesn’t participate in pool hash calculations or equality comparisons.</p>
 </dl>
 <dl class="c function">
 <dt id="c.alloc_workqueue">
-<em class="property">struct</em> workqueue_struct *<code class="sig-name descname">alloc_workqueue</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>fmt</em>, unsigned int <em>flags</em>, int <em>max_active</em>, ...<span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_workqueue" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">alloc_workqueue</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">fmt</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">flags</span></em>, <span class="pre">int</span> <em><span class="pre">max_active</span></em>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_workqueue" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate a workqueue</p>
 </dd></dl>
 
@@ -709,7 +709,7 @@ information on WQ_* flags, please refer to
 <p>Pointer to the allocated workqueue on success, <code class="docutils literal notranslate"><span class="pre">NULL</span></code> on failure.</p>
 <dl class="c macro">
 <dt id="c.alloc_ordered_workqueue">
-<code class="sig-name descname">alloc_ordered_workqueue</code><a class="headerlink" href="#c.alloc_ordered_workqueue" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">alloc_ordered_workqueue</span></code><a class="headerlink" href="#c.alloc_ordered_workqueue" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">alloc_ordered_workqueue</span> <span class="pre">(fmt,</span> <span class="pre">flags,</span> <span class="pre">args...)</span></code></p>
@@ -733,7 +733,7 @@ implemented as unbound workqueues with <strong>max_active</strong> of one.</p>
 <p>Pointer to the allocated workqueue on success, <code class="docutils literal notranslate"><span class="pre">NULL</span></code> on failure.</p>
 <dl class="c function">
 <dt id="c.queue_work">
-bool <code class="sig-name descname">queue_work</code><span class="sig-paren">(</span><em class="property">struct</em> workqueue_struct *<em>wq</em>, <em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.queue_work" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">queue_work</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.queue_work" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>queue work on a workqueue</p>
 </dd></dl>
 
@@ -760,7 +760,7 @@ r0 = queue_work(wq, work);           r1 = READ_ONCE(x);</p>
 <p>Forbids: r0 == true &amp;&amp; r1 == 0</p>
 <dl class="c function">
 <dt id="c.queue_delayed_work">
-bool <code class="sig-name descname">queue_delayed_work</code><span class="sig-paren">(</span><em class="property">struct</em> workqueue_struct *<em>wq</em>, <em class="property">struct</em> delayed_work *<em>dwork</em>, unsigned long <em>delay</em><span class="sig-paren">)</span><a class="headerlink" href="#c.queue_delayed_work" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">queue_delayed_work</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">delayed_work</span> <span class="pre">*</span><em><span class="pre">dwork</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">delay</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.queue_delayed_work" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>queue work on a workqueue after delay</p>
 </dd></dl>
 
@@ -777,7 +777,7 @@ bool <code class="sig-name descname">queue_delayed_work</code><span class="sig-p
 <p>Equivalent to <a class="reference internal" href="#c.queue_delayed_work_on" title="queue_delayed_work_on"><code class="xref c c-func docutils literal notranslate"><span class="pre">queue_delayed_work_on()</span></code></a> but tries to use the local CPU.</p>
 <dl class="c function">
 <dt id="c.mod_delayed_work">
-bool <code class="sig-name descname">mod_delayed_work</code><span class="sig-paren">(</span><em class="property">struct</em> workqueue_struct *<em>wq</em>, <em class="property">struct</em> delayed_work *<em>dwork</em>, unsigned long <em>delay</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mod_delayed_work" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">mod_delayed_work</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">delayed_work</span> <span class="pre">*</span><em><span class="pre">dwork</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">delay</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mod_delayed_work" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>modify delay of or queue a delayed work</p>
 </dd></dl>
 
@@ -794,7 +794,7 @@ bool <code class="sig-name descname">mod_delayed_work</code><span class="sig-par
 <p><a class="reference internal" href="#c.mod_delayed_work_on" title="mod_delayed_work_on"><code class="xref c c-func docutils literal notranslate"><span class="pre">mod_delayed_work_on()</span></code></a> on local CPU.</p>
 <dl class="c function">
 <dt id="c.schedule_work_on">
-bool <code class="sig-name descname">schedule_work_on</code><span class="sig-paren">(</span>int <em>cpu</em>, <em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.schedule_work_on" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">schedule_work_on</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">cpu</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.schedule_work_on" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>put work task on a specific cpu</p>
 </dd></dl>
 
@@ -809,7 +809,7 @@ bool <code class="sig-name descname">schedule_work_on</code><span class="sig-par
 <p>This puts a job on a specific cpu</p>
 <dl class="c function">
 <dt id="c.schedule_work">
-bool <code class="sig-name descname">schedule_work</code><span class="sig-paren">(</span><em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.schedule_work" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">schedule_work</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.schedule_work" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>put work task in global workqueue</p>
 </dd></dl>
 
@@ -828,7 +828,7 @@ workqueue otherwise.</p>
 DocBook header of <a class="reference internal" href="#c.queue_work" title="queue_work"><code class="xref c c-func docutils literal notranslate"><span class="pre">queue_work()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.flush_scheduled_work">
-void <code class="sig-name descname">flush_scheduled_work</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.flush_scheduled_work" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">flush_scheduled_work</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#c.flush_scheduled_work" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>ensure that any scheduled work has run to completion.</p>
 </dd></dl>
 
@@ -857,7 +857,7 @@ In such cases you should use <a class="reference internal" href="#c.cancel_delay
 <a class="reference internal" href="#c.cancel_work_sync" title="cancel_work_sync"><code class="xref c c-func docutils literal notranslate"><span class="pre">cancel_work_sync()</span></code></a> instead.</p>
 <dl class="c function">
 <dt id="c.schedule_delayed_work_on">
-bool <code class="sig-name descname">schedule_delayed_work_on</code><span class="sig-paren">(</span>int <em>cpu</em>, <em class="property">struct</em> delayed_work *<em>dwork</em>, unsigned long <em>delay</em><span class="sig-paren">)</span><a class="headerlink" href="#c.schedule_delayed_work_on" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">schedule_delayed_work_on</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">cpu</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">delayed_work</span> <span class="pre">*</span><em><span class="pre">dwork</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">delay</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.schedule_delayed_work_on" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>queue work in global workqueue on CPU after delay</p>
 </dd></dl>
 
@@ -875,7 +875,7 @@ bool <code class="sig-name descname">schedule_delayed_work_on</code><span class=
 workqueue on the specified CPU.</p>
 <dl class="c function">
 <dt id="c.schedule_delayed_work">
-bool <code class="sig-name descname">schedule_delayed_work</code><span class="sig-paren">(</span><em class="property">struct</em> delayed_work *<em>dwork</em>, unsigned long <em>delay</em><span class="sig-paren">)</span><a class="headerlink" href="#c.schedule_delayed_work" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">schedule_delayed_work</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">delayed_work</span> <span class="pre">*</span><em><span class="pre">dwork</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">delay</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.schedule_delayed_work" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>put work task in global workqueue after delay</p>
 </dd></dl>
 
@@ -891,7 +891,7 @@ bool <code class="sig-name descname">schedule_delayed_work</code><span class="si
 workqueue.</p>
 <dl class="c macro">
 <dt id="c.for_each_pool">
-<code class="sig-name descname">for_each_pool</code><a class="headerlink" href="#c.for_each_pool" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">for_each_pool</span></code><a class="headerlink" href="#c.for_each_pool" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">for_each_pool</span> <span class="pre">(pool,</span> <span class="pre">pi)</span></code></p>
@@ -913,7 +913,7 @@ caller is responsible for guaranteeing that the pool stays online.</p>
 ignored.</p>
 <dl class="c macro">
 <dt id="c.for_each_pool_worker">
-<code class="sig-name descname">for_each_pool_worker</code><a class="headerlink" href="#c.for_each_pool_worker" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">for_each_pool_worker</span></code><a class="headerlink" href="#c.for_each_pool_worker" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">for_each_pool_worker</span> <span class="pre">(worker,</span> <span class="pre">pool)</span></code></p>
@@ -933,7 +933,7 @@ ignored.</p>
 ignored.</p>
 <dl class="c macro">
 <dt id="c.for_each_pwq">
-<code class="sig-name descname">for_each_pwq</code><a class="headerlink" href="#c.for_each_pwq" title="Permalink to this definition">¶</a><br /></dt>
+<code class="sig-name descname"><span class="pre">for_each_pwq</span></code><a class="headerlink" href="#c.for_each_pwq" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <p><code class="docutils literal notranslate"><span class="pre">for_each_pwq</span> <span class="pre">(pwq,</span> <span class="pre">wq)</span></code></p>
@@ -955,7 +955,7 @@ responsible for guaranteeing that the pwq stays online.</p>
 ignored.</p>
 <dl class="c function">
 <dt id="c.worker_pool_assign_id">
-int <code class="sig-name descname">worker_pool_assign_id</code><span class="sig-paren">(</span><em class="property">struct</em> worker_pool *<em>pool</em><span class="sig-paren">)</span><a class="headerlink" href="#c.worker_pool_assign_id" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">worker_pool_assign_id</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">worker_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.worker_pool_assign_id" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate ID and assing it to <strong>pool</strong></p>
 </dd></dl>
 
@@ -969,7 +969,7 @@ int <code class="sig-name descname">worker_pool_assign_id</code><span class="sig
 successfully, -errno on failure.</p>
 <dl class="c function">
 <dt id="c.unbound_pwq_by_node">
-<em class="property">struct</em> pool_workqueue *<code class="sig-name descname">unbound_pwq_by_node</code><span class="sig-paren">(</span><em class="property">struct</em> workqueue_struct *<em>wq</em>, int <em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#c.unbound_pwq_by_node" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">pool_workqueue</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">unbound_pwq_by_node</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em>, <span class="pre">int</span> <em><span class="pre">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.unbound_pwq_by_node" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return the unbound pool_workqueue for the given node</p>
 </dd></dl>
 
@@ -989,7 +989,7 @@ responsible for guaranteeing that the pwq stays online.</p>
 <p>The unbound pool_workqueue for <strong>node</strong>.</p>
 <dl class="c function">
 <dt id="c.get_work_pool">
-<em class="property">struct</em> worker_pool *<code class="sig-name descname">get_work_pool</code><span class="sig-paren">(</span><em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.get_work_pool" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">worker_pool</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">get_work_pool</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.get_work_pool" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return the worker_pool a given work was associated with</p>
 </dd></dl>
 
@@ -1010,7 +1010,7 @@ returned pool is and stays online.</p>
 <p>The worker_pool <strong>work</strong> was last associated with.  <code class="docutils literal notranslate"><span class="pre">NULL</span></code> if none.</p>
 <dl class="c function">
 <dt id="c.get_work_pool_id">
-int <code class="sig-name descname">get_work_pool_id</code><span class="sig-paren">(</span><em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.get_work_pool_id" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">get_work_pool_id</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.get_work_pool_id" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>return the worker pool ID a given work is associated with</p>
 </dd></dl>
 
@@ -1024,7 +1024,7 @@ int <code class="sig-name descname">get_work_pool_id</code><span class="sig-pare
 <code class="docutils literal notranslate"><span class="pre">WORK_OFFQ_POOL_NONE</span></code> if none.</p>
 <dl class="c function">
 <dt id="c.wake_up_worker">
-void <code class="sig-name descname">wake_up_worker</code><span class="sig-paren">(</span><em class="property">struct</em> worker_pool *<em>pool</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wake_up_worker" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">wake_up_worker</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">worker_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.wake_up_worker" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>wake up an idle worker</p>
 </dd></dl>
 
@@ -1039,7 +1039,7 @@ void <code class="sig-name descname">wake_up_worker</code><span class="sig-paren
 <p>raw_spin_lock_irq(pool-&gt;lock).</p>
 <dl class="c function">
 <dt id="c.wq_worker_running">
-void <code class="sig-name descname">wq_worker_running</code><span class="sig-paren">(</span><em class="property">struct</em> task_struct *<em>task</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wq_worker_running" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">wq_worker_running</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">task_struct</span> <span class="pre">*</span><em><span class="pre">task</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.wq_worker_running" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>a worker is running again</p>
 </dd></dl>
 
@@ -1052,7 +1052,7 @@ void <code class="sig-name descname">wq_worker_running</code><span class="sig-pa
 <p>This function is called when a worker returns from schedule()</p>
 <dl class="c function">
 <dt id="c.wq_worker_sleeping">
-void <code class="sig-name descname">wq_worker_sleeping</code><span class="sig-paren">(</span><em class="property">struct</em> task_struct *<em>task</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wq_worker_sleeping" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">wq_worker_sleeping</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">task_struct</span> <span class="pre">*</span><em><span class="pre">task</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.wq_worker_sleeping" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>a worker is going to sleep</p>
 </dd></dl>
 
@@ -1067,7 +1067,7 @@ going to sleep. Preemption needs to be disabled to protect -&gt;sleeping
 assignment.</p>
 <dl class="c function">
 <dt id="c.wq_worker_last_func">
-work_func_t <code class="sig-name descname">wq_worker_last_func</code><span class="sig-paren">(</span><em class="property">struct</em> task_struct *<em>task</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wq_worker_last_func" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">work_func_t</span> <code class="sig-name descname"><span class="pre">wq_worker_last_func</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">task_struct</span> <span class="pre">*</span><em><span class="pre">task</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.wq_worker_last_func" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>retrieve worker’s last work function</p>
 </dd></dl>
 
@@ -1094,7 +1094,7 @@ is guaranteed to not be processing any works.</p>
 hasn’t executed any work yet.</p>
 <dl class="c function">
 <dt id="c.worker_set_flags">
-void <code class="sig-name descname">worker_set_flags</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.worker_set_flags" title="worker">worker</a> *<em>worker</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.worker_set_flags" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">worker_set_flags</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.worker_set_flags" title="worker"><span class="pre">worker</span></a> <span class="pre">*</span><em><span class="pre">worker</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.worker_set_flags" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set worker flags and adjust nr_running accordingly</p>
 </dd></dl>
 
@@ -1111,7 +1111,7 @@ void <code class="sig-name descname">worker_set_flags</code><span class="sig-par
 <p>raw_spin_lock_irq(pool-&gt;lock)</p>
 <dl class="c function">
 <dt id="c.worker_clr_flags">
-void <code class="sig-name descname">worker_clr_flags</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.worker_clr_flags" title="worker">worker</a> *<em>worker</em>, unsigned int <em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.worker_clr_flags" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">worker_clr_flags</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.worker_clr_flags" title="worker"><span class="pre">worker</span></a> <span class="pre">*</span><em><span class="pre">worker</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.worker_clr_flags" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>clear worker flags and adjust nr_running accordingly</p>
 </dd></dl>
 
@@ -1128,7 +1128,7 @@ void <code class="sig-name descname">worker_clr_flags</code><span class="sig-par
 <p>raw_spin_lock_irq(pool-&gt;lock)</p>
 <dl class="c function">
 <dt id="c.find_worker_executing_work">
-<em class="property">struct</em> worker *<code class="sig-name descname">find_worker_executing_work</code><span class="sig-paren">(</span><em class="property">struct</em> worker_pool *<em>pool</em>, <em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.find_worker_executing_work" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">worker</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">find_worker_executing_work</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">worker_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.find_worker_executing_work" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>find worker which is executing a work</p>
 </dd></dl>
 
@@ -1165,7 +1165,7 @@ actually occurs, it should be easy to locate the culprit work function.</p>
 otherwise.</p>
 <dl class="c function">
 <dt id="c.move_linked_works">
-void <code class="sig-name descname">move_linked_works</code><span class="sig-paren">(</span><em class="property">struct</em> work_struct *<em>work</em>, <em class="property">struct</em> list_head *<em>head</em>, <em class="property">struct</em> work_struct **<em>nextp</em><span class="sig-paren">)</span><a class="headerlink" href="#c.move_linked_works" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">move_linked_works</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">list_head</span> <span class="pre">*</span><em><span class="pre">head</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">nextp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.move_linked_works" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>move linked works to a list</p>
 </dd></dl>
 
@@ -1189,7 +1189,7 @@ nested inside outer <a class="reference internal" href="kernel-api.html#c.list_f
 <p>raw_spin_lock_irq(pool-&gt;lock).</p>
 <dl class="c function">
 <dt id="c.get_pwq">
-void <code class="sig-name descname">get_pwq</code><span class="sig-paren">(</span><em class="property">struct</em> pool_workqueue *<em>pwq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.get_pwq" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">get_pwq</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pool_workqueue</span> <span class="pre">*</span><em><span class="pre">pwq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.get_pwq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get an extra reference on the specified pool_workqueue</p>
 </dd></dl>
 
@@ -1203,7 +1203,7 @@ void <code class="sig-name descname">get_pwq</code><span class="sig-paren">(</sp
 <strong>pwq</strong> has positive refcnt and be holding the matching pool-&gt;lock.</p>
 <dl class="c function">
 <dt id="c.put_pwq">
-void <code class="sig-name descname">put_pwq</code><span class="sig-paren">(</span><em class="property">struct</em> pool_workqueue *<em>pwq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.put_pwq" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">put_pwq</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pool_workqueue</span> <span class="pre">*</span><em><span class="pre">pwq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.put_pwq" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>put a pool_workqueue reference</p>
 </dd></dl>
 
@@ -1217,7 +1217,7 @@ void <code class="sig-name descname">put_pwq</code><span class="sig-paren">(</sp
 destruction.  The caller should be holding the matching pool-&gt;lock.</p>
 <dl class="c function">
 <dt id="c.put_pwq_unlocked">
-void <code class="sig-name descname">put_pwq_unlocked</code><span class="sig-paren">(</span><em class="property">struct</em> pool_workqueue *<em>pwq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.put_pwq_unlocked" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">put_pwq_unlocked</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pool_workqueue</span> <span class="pre">*</span><em><span class="pre">pwq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.put_pwq_unlocked" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="#c.put_pwq" title="put_pwq"><code class="xref c c-func docutils literal notranslate"><span class="pre">put_pwq()</span></code></a> with surrounding pool lock/unlock</p>
 </dd></dl>
 
@@ -1230,7 +1230,7 @@ void <code class="sig-name descname">put_pwq_unlocked</code><span class="sig-par
 <p><a class="reference internal" href="#c.put_pwq" title="put_pwq"><code class="xref c c-func docutils literal notranslate"><span class="pre">put_pwq()</span></code></a> with locking.  This function also allows <code class="docutils literal notranslate"><span class="pre">NULL</span></code> <strong>pwq</strong>.</p>
 <dl class="c function">
 <dt id="c.pwq_dec_nr_in_flight">
-void <code class="sig-name descname">pwq_dec_nr_in_flight</code><span class="sig-paren">(</span><em class="property">struct</em> pool_workqueue *<em>pwq</em>, int <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwq_dec_nr_in_flight" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">pwq_dec_nr_in_flight</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pool_workqueue</span> <span class="pre">*</span><em><span class="pre">pwq</span></em>, <span class="pre">int</span> <em><span class="pre">color</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwq_dec_nr_in_flight" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>decrement pwq’s nr_in_flight</p>
 </dd></dl>
 
@@ -1248,7 +1248,7 @@ decrement nr_in_flight of its pwq and handle workqueue flushing.</p>
 <p>raw_spin_lock_irq(pool-&gt;lock).</p>
 <dl class="c function">
 <dt id="c.try_to_grab_pending">
-int <code class="sig-name descname">try_to_grab_pending</code><span class="sig-paren">(</span><em class="property">struct</em> work_struct *<em>work</em>, bool <em>is_dwork</em>, unsigned long *<em>flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.try_to_grab_pending" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">try_to_grab_pending</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em>, <span class="pre">bool</span> <em><span class="pre">is_dwork</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">*</span><em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.try_to_grab_pending" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>steal work item from worklist and disable irq</p>
 </dd></dl>
 
@@ -1298,7 +1298,7 @@ disabled on entry.  This, combined with delayed_work-&gt;timer being
 irqsafe, ensures that we return -EAGAIN for finite short period of time.</p>
 <dl class="c function">
 <dt id="c.insert_work">
-void <code class="sig-name descname">insert_work</code><span class="sig-paren">(</span><em class="property">struct</em> pool_workqueue *<em>pwq</em>, <em class="property">struct</em> work_struct *<em>work</em>, <em class="property">struct</em> list_head *<em>head</em>, unsigned int <em>extra_flags</em><span class="sig-paren">)</span><a class="headerlink" href="#c.insert_work" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">insert_work</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pool_workqueue</span> <span class="pre">*</span><em><span class="pre">pwq</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">list_head</span> <span class="pre">*</span><em><span class="pre">head</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">extra_flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.insert_work" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>insert a work into a pool</p>
 </dd></dl>
 
@@ -1320,7 +1320,7 @@ work_struct flags.</p>
 <p>raw_spin_lock_irq(pool-&gt;lock).</p>
 <dl class="c function">
 <dt id="c.queue_work_on">
-bool <code class="sig-name descname">queue_work_on</code><span class="sig-paren">(</span>int <em>cpu</em>, <em class="property">struct</em> workqueue_struct *<em>wq</em>, <em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.queue_work_on" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">queue_work_on</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">cpu</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.queue_work_on" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>queue work on specific cpu</p>
 </dd></dl>
 
@@ -1340,7 +1340,7 @@ can’t go away.</p>
 <p><code class="docutils literal notranslate"><span class="pre">false</span></code> if <strong>work</strong> was already on a queue, <code class="docutils literal notranslate"><span class="pre">true</span></code> otherwise.</p>
 <dl class="c function">
 <dt id="c.workqueue_select_cpu_near">
-int <code class="sig-name descname">workqueue_select_cpu_near</code><span class="sig-paren">(</span>int <em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#c.workqueue_select_cpu_near" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">workqueue_select_cpu_near</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.workqueue_select_cpu_near" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Select a CPU based on NUMA node</p>
 </dd></dl>
 
@@ -1356,7 +1356,7 @@ WORK_CPU_UNBOUND indicating that we should just schedule to any
 available CPU if we need to schedule this work.</p>
 <dl class="c function">
 <dt id="c.queue_work_node">
-bool <code class="sig-name descname">queue_work_node</code><span class="sig-paren">(</span>int <em>node</em>, <em class="property">struct</em> workqueue_struct *<em>wq</em>, <em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.queue_work_node" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">queue_work_node</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">node</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.queue_work_node" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>queue work on a “random” cpu for a given NUMA node</p>
 </dd></dl>
 
@@ -1383,7 +1383,7 @@ are running on the node. In that case we just use the current CPU.</p>
 <p><code class="docutils literal notranslate"><span class="pre">false</span></code> if <strong>work</strong> was already on a queue, <code class="docutils literal notranslate"><span class="pre">true</span></code> otherwise.</p>
 <dl class="c function">
 <dt id="c.queue_delayed_work_on">
-bool <code class="sig-name descname">queue_delayed_work_on</code><span class="sig-paren">(</span>int <em>cpu</em>, <em class="property">struct</em> workqueue_struct *<em>wq</em>, <em class="property">struct</em> delayed_work *<em>dwork</em>, unsigned long <em>delay</em><span class="sig-paren">)</span><a class="headerlink" href="#c.queue_delayed_work_on" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">queue_delayed_work_on</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">cpu</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">delayed_work</span> <span class="pre">*</span><em><span class="pre">dwork</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">delay</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.queue_delayed_work_on" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>queue work on specific CPU after delay</p>
 </dd></dl>
 
@@ -1404,7 +1404,7 @@ bool <code class="sig-name descname">queue_delayed_work_on</code><span class="si
 execution.</p>
 <dl class="c function">
 <dt id="c.mod_delayed_work_on">
-bool <code class="sig-name descname">mod_delayed_work_on</code><span class="sig-paren">(</span>int <em>cpu</em>, <em class="property">struct</em> workqueue_struct *<em>wq</em>, <em class="property">struct</em> delayed_work *<em>dwork</em>, unsigned long <em>delay</em><span class="sig-paren">)</span><a class="headerlink" href="#c.mod_delayed_work_on" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">mod_delayed_work_on</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">cpu</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">delayed_work</span> <span class="pre">*</span><em><span class="pre">dwork</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">delay</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mod_delayed_work_on" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>modify delay of or queue a delayed work on specific CPU</p>
 </dd></dl>
 
@@ -1431,7 +1431,7 @@ See <a class="reference internal" href="#c.try_to_grab_pending" title="try_to_gr
 pending and its timer was modified.</p>
 <dl class="c function">
 <dt id="c.queue_rcu_work">
-bool <code class="sig-name descname">queue_rcu_work</code><span class="sig-paren">(</span><em class="property">struct</em> workqueue_struct *<em>wq</em>, <em class="property">struct</em> rcu_work *<em>rwork</em><span class="sig-paren">)</span><a class="headerlink" href="#c.queue_rcu_work" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">queue_rcu_work</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">rcu_work</span> <span class="pre">*</span><em><span class="pre">rwork</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.queue_rcu_work" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>queue work after a RCU grace period</p>
 </dd></dl>
 
@@ -1449,7 +1449,7 @@ While <strong>rwork</strong> is guaranteed to be executed after a <code class="d
 execution may happen before a full RCU grace period has passed.</p>
 <dl class="c function">
 <dt id="c.worker_enter_idle">
-void <code class="sig-name descname">worker_enter_idle</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.worker_enter_idle" title="worker">worker</a> *<em>worker</em><span class="sig-paren">)</span><a class="headerlink" href="#c.worker_enter_idle" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">worker_enter_idle</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.worker_enter_idle" title="worker"><span class="pre">worker</span></a> <span class="pre">*</span><em><span class="pre">worker</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.worker_enter_idle" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>enter idle state</p>
 </dd></dl>
 
@@ -1465,7 +1465,7 @@ necessary.</p>
 raw_spin_lock_irq(pool-&gt;lock).</p>
 <dl class="c function">
 <dt id="c.worker_leave_idle">
-void <code class="sig-name descname">worker_leave_idle</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.worker_leave_idle" title="worker">worker</a> *<em>worker</em><span class="sig-paren">)</span><a class="headerlink" href="#c.worker_leave_idle" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">worker_leave_idle</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.worker_leave_idle" title="worker"><span class="pre">worker</span></a> <span class="pre">*</span><em><span class="pre">worker</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.worker_leave_idle" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>leave idle state</p>
 </dd></dl>
 
@@ -1480,7 +1480,7 @@ void <code class="sig-name descname">worker_leave_idle</code><span class="sig-pa
 raw_spin_lock_irq(pool-&gt;lock).</p>
 <dl class="c function">
 <dt id="c.worker_attach_to_pool">
-void <code class="sig-name descname">worker_attach_to_pool</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.worker_attach_to_pool" title="worker">worker</a> *<em>worker</em>, <em class="property">struct</em> worker_pool *<em>pool</em><span class="sig-paren">)</span><a class="headerlink" href="#c.worker_attach_to_pool" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">worker_attach_to_pool</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.worker_attach_to_pool" title="worker"><span class="pre">worker</span></a> <span class="pre">*</span><em><span class="pre">worker</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">worker_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.worker_attach_to_pool" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>attach a worker to a pool</p>
 </dd></dl>
 
@@ -1497,7 +1497,7 @@ cpu-binding of <strong>worker</strong> are kept coordinated with the pool across
 cpu-[un]hotplugs.</p>
 <dl class="c function">
 <dt id="c.worker_detach_from_pool">
-void <code class="sig-name descname">worker_detach_from_pool</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.worker_detach_from_pool" title="worker">worker</a> *<em>worker</em><span class="sig-paren">)</span><a class="headerlink" href="#c.worker_detach_from_pool" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">worker_detach_from_pool</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.worker_detach_from_pool" title="worker"><span class="pre">worker</span></a> <span class="pre">*</span><em><span class="pre">worker</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.worker_detach_from_pool" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>detach a worker from its pool</p>
 </dd></dl>
 
@@ -1512,7 +1512,7 @@ caller worker shouldn’t access to the pool after detached except it has
 other reference to the pool.</p>
 <dl class="c function">
 <dt id="c.create_worker">
-<em class="property">struct</em> worker *<code class="sig-name descname">create_worker</code><span class="sig-paren">(</span><em class="property">struct</em> worker_pool *<em>pool</em><span class="sig-paren">)</span><a class="headerlink" href="#c.create_worker" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">worker</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">create_worker</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">worker_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.create_worker" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create a new workqueue worker</p>
 </dd></dl>
 
@@ -1529,7 +1529,7 @@ other reference to the pool.</p>
 <p>Pointer to the newly created worker.</p>
 <dl class="c function">
 <dt id="c.destroy_worker">
-void <code class="sig-name descname">destroy_worker</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.destroy_worker" title="worker">worker</a> *<em>worker</em><span class="sig-paren">)</span><a class="headerlink" href="#c.destroy_worker" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">destroy_worker</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.destroy_worker" title="worker"><span class="pre">worker</span></a> <span class="pre">*</span><em><span class="pre">worker</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.destroy_worker" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>destroy a workqueue worker</p>
 </dd></dl>
 
@@ -1545,7 +1545,7 @@ be idle.</p>
 <p>raw_spin_lock_irq(pool-&gt;lock).</p>
 <dl class="c function">
 <dt id="c.maybe_create_worker">
-void <code class="sig-name descname">maybe_create_worker</code><span class="sig-paren">(</span><em class="property">struct</em> worker_pool *<em>pool</em><span class="sig-paren">)</span><a class="headerlink" href="#c.maybe_create_worker" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">maybe_create_worker</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">worker_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.maybe_create_worker" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>create a new worker if necessary</p>
 </dd></dl>
 
@@ -1568,7 +1568,7 @@ multiple times.  Does GFP_KERNEL allocations.  Called only from
 manager.</p>
 <dl class="c function">
 <dt id="c.manage_workers">
-bool <code class="sig-name descname">manage_workers</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.manage_workers" title="worker">worker</a> *<em>worker</em><span class="sig-paren">)</span><a class="headerlink" href="#c.manage_workers" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">manage_workers</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.manage_workers" title="worker"><span class="pre">worker</span></a> <span class="pre">*</span><em><span class="pre">worker</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.manage_workers" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>manage worker pool</p>
 </dd></dl>
 
@@ -1594,7 +1594,7 @@ the conditions that the caller verified before calling the function may
 no longer be true.</p>
 <dl class="c function">
 <dt id="c.process_one_work">
-void <code class="sig-name descname">process_one_work</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.process_one_work" title="worker">worker</a> *<em>worker</em>, <em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.process_one_work" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">process_one_work</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.process_one_work" title="worker"><span class="pre">worker</span></a> <span class="pre">*</span><em><span class="pre">worker</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.process_one_work" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>process single work</p>
 </dd></dl>
 
@@ -1615,7 +1615,7 @@ call this function to process a work.</p>
 <p>raw_spin_lock_irq(pool-&gt;lock) which is released and regrabbed.</p>
 <dl class="c function">
 <dt id="c.process_scheduled_works">
-void <code class="sig-name descname">process_scheduled_works</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.process_scheduled_works" title="worker">worker</a> *<em>worker</em><span class="sig-paren">)</span><a class="headerlink" href="#c.process_scheduled_works" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">process_scheduled_works</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.process_scheduled_works" title="worker"><span class="pre">worker</span></a> <span class="pre">*</span><em><span class="pre">worker</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.process_scheduled_works" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>process scheduled works</p>
 </dd></dl>
 
@@ -1633,7 +1633,7 @@ fetches a work from the top and executes it.</p>
 multiple times.</p>
 <dl class="c function">
 <dt id="c.worker_thread">
-int <code class="sig-name descname">worker_thread</code><span class="sig-paren">(</span>void *<em>__worker</em><span class="sig-paren">)</span><a class="headerlink" href="#c.worker_thread" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">worker_thread</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">__worker</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.worker_thread" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>the worker thread function</p>
 </dd></dl>
 
@@ -1652,7 +1652,7 @@ will be explained in <a class="reference internal" href="#c.rescuer_thread" titl
 <p>0</p>
 <dl class="c function">
 <dt id="c.rescuer_thread">
-int <code class="sig-name descname">rescuer_thread</code><span class="sig-paren">(</span>void *<em>__rescuer</em><span class="sig-paren">)</span><a class="headerlink" href="#c.rescuer_thread" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">rescuer_thread</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">__rescuer</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.rescuer_thread" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>the rescuer thread function</p>
 </dd></dl>
 
@@ -1677,7 +1677,7 @@ those works so that forward progress can be guaranteed.</p>
 <p>0</p>
 <dl class="c function">
 <dt id="c.check_flush_dependency">
-void <code class="sig-name descname">check_flush_dependency</code><span class="sig-paren">(</span><em class="property">struct</em> workqueue_struct *<em>target_wq</em>, <em class="property">struct</em> work_struct *<em>target_work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.check_flush_dependency" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">check_flush_dependency</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">target_wq</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">target_work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.check_flush_dependency" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>check for flush dependency sanity</p>
 </dd></dl>
 
@@ -1696,7 +1696,7 @@ reclaiming memory or running on a workqueue which doesn’t have
 a deadlock.</p>
 <dl class="c function">
 <dt id="c.insert_wq_barrier">
-void <code class="sig-name descname">insert_wq_barrier</code><span class="sig-paren">(</span><em class="property">struct</em> pool_workqueue *<em>pwq</em>, <em class="property">struct</em> wq_barrier *<em>barr</em>, <em class="property">struct</em> work_struct *<em>target</em>, <em class="property">struct</em> <a class="reference internal" href="#c.insert_wq_barrier" title="worker">worker</a> *<em>worker</em><span class="sig-paren">)</span><a class="headerlink" href="#c.insert_wq_barrier" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">insert_wq_barrier</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pool_workqueue</span> <span class="pre">*</span><em><span class="pre">pwq</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">wq_barrier</span> <span class="pre">*</span><em><span class="pre">barr</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">target</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.insert_wq_barrier" title="worker"><span class="pre">worker</span></a> <span class="pre">*</span><em><span class="pre">worker</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.insert_wq_barrier" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>insert a barrier work</p>
 </dd></dl>
 
@@ -1727,7 +1727,7 @@ underneath us, so we can’t reliably determine pwq from <strong>target</strong>
 <p>raw_spin_lock_irq(pool-&gt;lock).</p>
 <dl class="c function">
 <dt id="c.flush_workqueue_prep_pwqs">
-bool <code class="sig-name descname">flush_workqueue_prep_pwqs</code><span class="sig-paren">(</span><em class="property">struct</em> workqueue_struct *<em>wq</em>, int <em>flush_color</em>, int <em>work_color</em><span class="sig-paren">)</span><a class="headerlink" href="#c.flush_workqueue_prep_pwqs" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">flush_workqueue_prep_pwqs</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em>, <span class="pre">int</span> <em><span class="pre">flush_color</span></em>, <span class="pre">int</span> <em><span class="pre">work_color</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.flush_workqueue_prep_pwqs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>prepare pwqs for workqueue flushing</p>
 </dd></dl>
 
@@ -1762,7 +1762,7 @@ advanced to <strong>work_color</strong>.</p>
 otherwise.</p>
 <dl class="c function">
 <dt id="c.flush_workqueue">
-void <code class="sig-name descname">flush_workqueue</code><span class="sig-paren">(</span><em class="property">struct</em> workqueue_struct *<em>wq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.flush_workqueue" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">flush_workqueue</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.flush_workqueue" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>ensure that any scheduled work has run to completion.</p>
 </dd></dl>
 
@@ -1776,7 +1776,7 @@ void <code class="sig-name descname">flush_workqueue</code><span class="sig-pare
 have finished execution, but it is not livelocked by new incoming ones.</p>
 <dl class="c function">
 <dt id="c.drain_workqueue">
-void <code class="sig-name descname">drain_workqueue</code><span class="sig-paren">(</span><em class="property">struct</em> workqueue_struct *<em>wq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.drain_workqueue" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">drain_workqueue</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.drain_workqueue" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>drain a workqueue</p>
 </dd></dl>
 
@@ -1794,7 +1794,7 @@ by the depth of chaining and should be relatively short.  Whine if it
 takes too long.</p>
 <dl class="c function">
 <dt id="c.flush_work">
-bool <code class="sig-name descname">flush_work</code><span class="sig-paren">(</span><em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.flush_work" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">flush_work</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.flush_work" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>wait for a work to finish executing the last queueing instance</p>
 </dd></dl>
 
@@ -1811,7 +1811,7 @@ on return if it hasn’t been requeued since flush started.</p>
 <code class="docutils literal notranslate"><span class="pre">false</span></code> if it was already idle.</p>
 <dl class="c function">
 <dt id="c.cancel_work_sync">
-bool <code class="sig-name descname">cancel_work_sync</code><span class="sig-paren">(</span><em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cancel_work_sync" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">cancel_work_sync</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cancel_work_sync" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>cancel a work and wait for it to finish</p>
 </dd></dl>
 
@@ -1833,7 +1833,7 @@ queued can’t be destroyed before this function returns.</p>
 <p><code class="docutils literal notranslate"><span class="pre">true</span></code> if <strong>work</strong> was pending, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
 <dl class="c function">
 <dt id="c.flush_delayed_work">
-bool <code class="sig-name descname">flush_delayed_work</code><span class="sig-paren">(</span><em class="property">struct</em> delayed_work *<em>dwork</em><span class="sig-paren">)</span><a class="headerlink" href="#c.flush_delayed_work" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">flush_delayed_work</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">delayed_work</span> <span class="pre">*</span><em><span class="pre">dwork</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.flush_delayed_work" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>wait for a dwork to finish executing the last queueing</p>
 </dd></dl>
 
@@ -1851,7 +1851,7 @@ considers the last queueing instance of <strong>dwork</strong>.</p>
 <code class="docutils literal notranslate"><span class="pre">false</span></code> if it was already idle.</p>
 <dl class="c function">
 <dt id="c.flush_rcu_work">
-bool <code class="sig-name descname">flush_rcu_work</code><span class="sig-paren">(</span><em class="property">struct</em> rcu_work *<em>rwork</em><span class="sig-paren">)</span><a class="headerlink" href="#c.flush_rcu_work" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">flush_rcu_work</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">rcu_work</span> <span class="pre">*</span><em><span class="pre">rwork</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.flush_rcu_work" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>wait for a rwork to finish executing the last queueing</p>
 </dd></dl>
 
@@ -1865,7 +1865,7 @@ bool <code class="sig-name descname">flush_rcu_work</code><span class="sig-paren
 <code class="docutils literal notranslate"><span class="pre">false</span></code> if it was already idle.</p>
 <dl class="c function">
 <dt id="c.cancel_delayed_work">
-bool <code class="sig-name descname">cancel_delayed_work</code><span class="sig-paren">(</span><em class="property">struct</em> delayed_work *<em>dwork</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cancel_delayed_work" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">cancel_delayed_work</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">delayed_work</span> <span class="pre">*</span><em><span class="pre">dwork</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cancel_delayed_work" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>cancel a delayed work</p>
 </dd></dl>
 
@@ -1886,7 +1886,7 @@ it returns <code class="docutils literal notranslate"><span class="pre">true</sp
 use <a class="reference internal" href="#c.cancel_delayed_work_sync" title="cancel_delayed_work_sync"><code class="xref c c-func docutils literal notranslate"><span class="pre">cancel_delayed_work_sync()</span></code></a> to wait on it.</p>
 <dl class="c function">
 <dt id="c.cancel_delayed_work_sync">
-bool <code class="sig-name descname">cancel_delayed_work_sync</code><span class="sig-paren">(</span><em class="property">struct</em> delayed_work *<em>dwork</em><span class="sig-paren">)</span><a class="headerlink" href="#c.cancel_delayed_work_sync" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">cancel_delayed_work_sync</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">delayed_work</span> <span class="pre">*</span><em><span class="pre">dwork</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cancel_delayed_work_sync" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>cancel a delayed work and wait for it to finish</p>
 </dd></dl>
 
@@ -1901,7 +1901,7 @@ bool <code class="sig-name descname">cancel_delayed_work_sync</code><span class=
 <p><code class="docutils literal notranslate"><span class="pre">true</span></code> if <strong>dwork</strong> was pending, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
 <dl class="c function">
 <dt id="c.schedule_on_each_cpu">
-int <code class="sig-name descname">schedule_on_each_cpu</code><span class="sig-paren">(</span>work_func_t <em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#c.schedule_on_each_cpu" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">schedule_on_each_cpu</span></code><span class="sig-paren">(</span><span class="pre">work_func_t</span> <em><span class="pre">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.schedule_on_each_cpu" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>execute a function synchronously on each online CPU</p>
 </dd></dl>
 
@@ -1918,7 +1918,7 @@ system workqueue and blocks until all CPUs have completed.
 <p>0 on success, -errno on failure.</p>
 <dl class="c function">
 <dt id="c.execute_in_process_context">
-int <code class="sig-name descname">execute_in_process_context</code><span class="sig-paren">(</span>work_func_t <em>fn</em>, <em class="property">struct</em> execute_work *<em>ew</em><span class="sig-paren">)</span><a class="headerlink" href="#c.execute_in_process_context" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">execute_in_process_context</span></code><span class="sig-paren">(</span><span class="pre">work_func_t</span> <em><span class="pre">fn</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">execute_work</span> <span class="pre">*</span><em><span class="pre">ew</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.execute_in_process_context" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>reliably execute the routine with user context</p>
 </dd></dl>
 
@@ -1940,7 +1940,7 @@ otherwise schedules the function for delayed execution.</p>
 </dl>
 <dl class="c function">
 <dt id="c.free_workqueue_attrs">
-void <code class="sig-name descname">free_workqueue_attrs</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c.workqueue_attrs" title="workqueue_attrs">workqueue_attrs</a> *<em>attrs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.free_workqueue_attrs" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">free_workqueue_attrs</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.workqueue_attrs" title="workqueue_attrs"><span class="pre">workqueue_attrs</span></a> <span class="pre">*</span><em><span class="pre">attrs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.free_workqueue_attrs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>free a workqueue_attrs</p>
 </dd></dl>
 
@@ -1953,7 +1953,7 @@ void <code class="sig-name descname">free_workqueue_attrs</code><span class="sig
 <p>Undo <a class="reference internal" href="#c.alloc_workqueue_attrs" title="alloc_workqueue_attrs"><code class="xref c c-func docutils literal notranslate"><span class="pre">alloc_workqueue_attrs()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.alloc_workqueue_attrs">
-<em class="property">struct</em> <a class="reference internal" href="#c.workqueue_attrs" title="workqueue_attrs">workqueue_attrs</a> *<code class="sig-name descname">alloc_workqueue_attrs</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_workqueue_attrs" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.workqueue_attrs" title="workqueue_attrs"><span class="pre">workqueue_attrs</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">alloc_workqueue_attrs</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_workqueue_attrs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>allocate a workqueue_attrs</p>
 </dd></dl>
 
@@ -1969,7 +1969,7 @@ return it.</p>
 <p>The allocated new workqueue_attr on success. <code class="docutils literal notranslate"><span class="pre">NULL</span></code> on failure.</p>
 <dl class="c function">
 <dt id="c.init_worker_pool">
-int <code class="sig-name descname">init_worker_pool</code><span class="sig-paren">(</span><em class="property">struct</em> worker_pool *<em>pool</em><span class="sig-paren">)</span><a class="headerlink" href="#c.init_worker_pool" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">init_worker_pool</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">worker_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.init_worker_pool" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>initialize a newly zalloc’d worker_pool</p>
 </dd></dl>
 
@@ -1986,7 +1986,7 @@ inside <strong>pool</strong> proper are initialized and <a class="reference inte
 on <strong>pool</strong> safely to release it.</p>
 <dl class="c function">
 <dt id="c.put_unbound_pool">
-void <code class="sig-name descname">put_unbound_pool</code><span class="sig-paren">(</span><em class="property">struct</em> worker_pool *<em>pool</em><span class="sig-paren">)</span><a class="headerlink" href="#c.put_unbound_pool" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">put_unbound_pool</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">worker_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.put_unbound_pool" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>put a worker_pool</p>
 </dd></dl>
 
@@ -2003,7 +2003,7 @@ successfully or not, <a class="reference internal" href="#c.init_worker_pool" ti
 <p>Should be called with wq_pool_mutex held.</p>
 <dl class="c function">
 <dt id="c.get_unbound_pool">
-<em class="property">struct</em> worker_pool *<code class="sig-name descname">get_unbound_pool</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.workqueue_attrs" title="workqueue_attrs">workqueue_attrs</a> *<em>attrs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.get_unbound_pool" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">worker_pool</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">get_unbound_pool</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.workqueue_attrs" title="workqueue_attrs"><span class="pre">workqueue_attrs</span></a> <span class="pre">*</span><em><span class="pre">attrs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.get_unbound_pool" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>get a worker_pool with the specified attributes</p>
 </dd></dl>
 
@@ -2023,7 +2023,7 @@ create a new one.</p>
 On failure, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 <dl class="c function">
 <dt id="c.pwq_adjust_max_active">
-void <code class="sig-name descname">pwq_adjust_max_active</code><span class="sig-paren">(</span><em class="property">struct</em> pool_workqueue *<em>pwq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwq_adjust_max_active" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">pwq_adjust_max_active</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pool_workqueue</span> <span class="pre">*</span><em><span class="pre">pwq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.pwq_adjust_max_active" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update a pwq’s max_active to the current setting</p>
 </dd></dl>
 
@@ -2038,7 +2038,7 @@ workqueue’s saved_max_active and activate delayed work items
 accordingly.  If <strong>pwq</strong> is freezing, clear <strong>pwq-&gt;max_active</strong> to zero.</p>
 <dl class="c function">
 <dt id="c.wq_calc_node_cpumask">
-bool <code class="sig-name descname">wq_calc_node_cpumask</code><span class="sig-paren">(</span><em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.workqueue_attrs" title="workqueue_attrs">workqueue_attrs</a> *<em>attrs</em>, int <em>node</em>, int <em>cpu_going_down</em>, cpumask_t *<em>cpumask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wq_calc_node_cpumask" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">wq_calc_node_cpumask</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.workqueue_attrs" title="workqueue_attrs"><span class="pre">workqueue_attrs</span></a> <span class="pre">*</span><em><span class="pre">attrs</span></em>, <span class="pre">int</span> <em><span class="pre">node</span></em>, <span class="pre">int</span> <em><span class="pre">cpu_going_down</span></em>, <span class="pre">cpumask_t</span> <span class="pre">*</span><em><span class="pre">cpumask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.wq_calc_node_cpumask" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>calculate a wq_attrs’ cpumask for the specified node</p>
 </dd></dl>
 
@@ -2068,7 +2068,7 @@ stable.</p>
 <code class="docutils literal notranslate"><span class="pre">false</span></code> if equal.</p>
 <dl class="c function">
 <dt id="c.apply_workqueue_attrs">
-int <code class="sig-name descname">apply_workqueue_attrs</code><span class="sig-paren">(</span><em class="property">struct</em> workqueue_struct *<em>wq</em>, <em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c.workqueue_attrs" title="workqueue_attrs">workqueue_attrs</a> *<em>attrs</em><span class="sig-paren">)</span><a class="headerlink" href="#c.apply_workqueue_attrs" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">apply_workqueue_attrs</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.workqueue_attrs" title="workqueue_attrs"><span class="pre">workqueue_attrs</span></a> <span class="pre">*</span><em><span class="pre">attrs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.apply_workqueue_attrs" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>apply new workqueue_attrs to an unbound workqueue</p>
 </dd></dl>
 
@@ -2092,7 +2092,7 @@ back-to-back will stay on its current pwq.</p>
 <p>0 on success and -errno on failure.</p>
 <dl class="c function">
 <dt id="c.wq_update_unbound_numa">
-void <code class="sig-name descname">wq_update_unbound_numa</code><span class="sig-paren">(</span><em class="property">struct</em> workqueue_struct *<em>wq</em>, int <em>cpu</em>, bool <em>online</em><span class="sig-paren">)</span><a class="headerlink" href="#c.wq_update_unbound_numa" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">wq_update_unbound_numa</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em>, <span class="pre">int</span> <em><span class="pre">cpu</span></em>, <span class="pre">bool</span> <em><span class="pre">online</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.wq_update_unbound_numa" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>update NUMA affinity of a wq for CPU hot[un]plug</p>
 </dd></dl>
 
@@ -2121,7 +2121,7 @@ affinity, it’s the user’s responsibility to flush the work item from
 CPU_DOWN_PREPARE.</p>
 <dl class="c function">
 <dt id="c.destroy_workqueue">
-void <code class="sig-name descname">destroy_workqueue</code><span class="sig-paren">(</span><em class="property">struct</em> workqueue_struct *<em>wq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.destroy_workqueue" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">destroy_workqueue</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.destroy_workqueue" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>safely terminate a workqueue</p>
 </dd></dl>
 
@@ -2134,7 +2134,7 @@ void <code class="sig-name descname">destroy_workqueue</code><span class="sig-pa
 <p>Safely destroy a workqueue. All work currently pending will be done first.</p>
 <dl class="c function">
 <dt id="c.workqueue_set_max_active">
-void <code class="sig-name descname">workqueue_set_max_active</code><span class="sig-paren">(</span><em class="property">struct</em> workqueue_struct *<em>wq</em>, int <em>max_active</em><span class="sig-paren">)</span><a class="headerlink" href="#c.workqueue_set_max_active" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">workqueue_set_max_active</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em>, <span class="pre">int</span> <em><span class="pre">max_active</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.workqueue_set_max_active" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>adjust max_active of a workqueue</p>
 </dd></dl>
 
@@ -2151,7 +2151,7 @@ void <code class="sig-name descname">workqueue_set_max_active</code><span class=
 <p>Don’t call from IRQ context.</p>
 <dl class="c function">
 <dt id="c.current_work">
-<em class="property">struct</em> work_struct *<code class="sig-name descname">current_work</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.current_work" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">current_work</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#c.current_work" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>retrieve <code class="docutils literal notranslate"><span class="pre">current</span></code> task’s work struct</p>
 </dd></dl>
 
@@ -2167,7 +2167,7 @@ Useful to find out the context that the <code class="docutils literal notranslat
 <p>work struct if <code class="docutils literal notranslate"><span class="pre">current</span></code> task is a workqueue worker, <code class="docutils literal notranslate"><span class="pre">NULL</span></code> otherwise.</p>
 <dl class="c function">
 <dt id="c.current_is_workqueue_rescuer">
-bool <code class="sig-name descname">current_is_workqueue_rescuer</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.current_is_workqueue_rescuer" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">current_is_workqueue_rescuer</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#c.current_is_workqueue_rescuer" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>is <code class="docutils literal notranslate"><span class="pre">current</span></code> workqueue rescuer?</p>
 </dd></dl>
 
@@ -2183,7 +2183,7 @@ work functions to determine whether it’s being run off the rescuer task.</p>
 <p><code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">current</span></code> is a workqueue rescuer. <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
 <dl class="c function">
 <dt id="c.workqueue_congested">
-bool <code class="sig-name descname">workqueue_congested</code><span class="sig-paren">(</span>int <em>cpu</em>, <em class="property">struct</em> workqueue_struct *<em>wq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.workqueue_congested" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">workqueue_congested</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">cpu</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.workqueue_congested" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>test whether a workqueue is congested</p>
 </dd></dl>
 
@@ -2207,7 +2207,7 @@ contested on other CPUs / NUMA nodes.</p>
 <p><code class="docutils literal notranslate"><span class="pre">true</span></code> if congested, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
 <dl class="c function">
 <dt id="c.work_busy">
-unsigned int <code class="sig-name descname">work_busy</code><span class="sig-paren">(</span><em class="property">struct</em> work_struct *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#c.work_busy" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">unsigned</span> <span class="pre">int</span> <code class="sig-name descname"><span class="pre">work_busy</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.work_busy" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>test whether a work is currently pending or running</p>
 </dd></dl>
 
@@ -2224,7 +2224,7 @@ unreliable and only useful as advisory hints or for debugging.</p>
 <p>OR’d bitmask of WORK_BUSY_* bits.</p>
 <dl class="c function">
 <dt id="c.set_worker_desc">
-void <code class="sig-name descname">set_worker_desc</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>fmt</em>, ...<span class="sig-paren">)</span><a class="headerlink" href="#c.set_worker_desc" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">set_worker_desc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">fmt</span></em>, <span class="pre">...</span><span class="sig-paren">)</span><a class="headerlink" href="#c.set_worker_desc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>set description for the current work item</p>
 </dd></dl>
 
@@ -2242,7 +2242,7 @@ information will be printed out together to help debugging.  The
 description can be at most WORKER_DESC_LEN including the trailing ‘0’.</p>
 <dl class="c function">
 <dt id="c.print_worker_info">
-void <code class="sig-name descname">print_worker_info</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>log_lvl</em>, <em class="property">struct</em> task_struct *<em>task</em><span class="sig-paren">)</span><a class="headerlink" href="#c.print_worker_info" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">print_worker_info</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">log_lvl</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">task_struct</span> <span class="pre">*</span><em><span class="pre">task</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.print_worker_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>print out worker information and description</p>
 </dd></dl>
 
@@ -2262,7 +2262,7 @@ task_struct itself is accessible.  While safe, this function isn’t
 synchronized and may print out mixups or garbages of limited length.</p>
 <dl class="c function">
 <dt id="c.show_workqueue_state">
-void <code class="sig-name descname">show_workqueue_state</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.show_workqueue_state" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">show_workqueue_state</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#c.show_workqueue_state" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>dump workqueue state</p>
 </dd></dl>
 
@@ -2276,7 +2276,7 @@ void <code class="sig-name descname">show_workqueue_state</code><span class="sig
 all busy workqueues and pools.</p>
 <dl class="c function">
 <dt id="c.rebind_workers">
-void <code class="sig-name descname">rebind_workers</code><span class="sig-paren">(</span><em class="property">struct</em> worker_pool *<em>pool</em><span class="sig-paren">)</span><a class="headerlink" href="#c.rebind_workers" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">rebind_workers</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">worker_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.rebind_workers" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>rebind all workers of a pool to the associated CPU</p>
 </dd></dl>
 
@@ -2289,7 +2289,7 @@ void <code class="sig-name descname">rebind_workers</code><span class="sig-paren
 <p><strong>pool-&gt;cpu</strong> is coming online.  Rebind all workers to the CPU.</p>
 <dl class="c function">
 <dt id="c.restore_unbound_workers_cpumask">
-void <code class="sig-name descname">restore_unbound_workers_cpumask</code><span class="sig-paren">(</span><em class="property">struct</em> worker_pool *<em>pool</em>, int <em>cpu</em><span class="sig-paren">)</span><a class="headerlink" href="#c.restore_unbound_workers_cpumask" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">restore_unbound_workers_cpumask</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">worker_pool</span> <span class="pre">*</span><em><span class="pre">pool</span></em>, <span class="pre">int</span> <em><span class="pre">cpu</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.restore_unbound_workers_cpumask" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>restore cpumask of unbound workers</p>
 </dd></dl>
 
@@ -2307,7 +2307,7 @@ its cpus_allowed.  If <strong>cpu</strong> is in <strong>pool</strong>’s cpuma
 online CPU before, cpus_allowed of all its workers should be restored.</p>
 <dl class="c function">
 <dt id="c.work_on_cpu">
-long <code class="sig-name descname">work_on_cpu</code><span class="sig-paren">(</span>int <em>cpu</em>, long (*<em>fn</em>)<span class="sig-paren">(</span>void*<span class="sig-paren">)</span>, void *<em>arg</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.work_on_cpu" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">long</span> <code class="sig-name descname"><span class="pre">work_on_cpu</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">cpu</span></em>, <span class="pre">long</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">fn</span></em><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span><span class="pre">*</span><span class="sig-paren">)</span>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">arg</span></em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.work_on_cpu" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>run a function in thread context on a particular cpu</p>
 </dd></dl>
 
@@ -2327,7 +2327,7 @@ The caller must not hold any locks which would prevent <strong>fn</strong> from 
 <p>The value <strong>fn</strong> returns.</p>
 <dl class="c function">
 <dt id="c.work_on_cpu_safe">
-long <code class="sig-name descname">work_on_cpu_safe</code><span class="sig-paren">(</span>int <em>cpu</em>, long (*<em>fn</em>)<span class="sig-paren">(</span>void*<span class="sig-paren">)</span>, void *<em>arg</em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.work_on_cpu_safe" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">long</span> <code class="sig-name descname"><span class="pre">work_on_cpu_safe</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">cpu</span></em>, <span class="pre">long</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">fn</span></em><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span><span class="pre">*</span><span class="sig-paren">)</span>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">arg</span></em>, <span class="sig-paren">)</span><a class="headerlink" href="#c.work_on_cpu_safe" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>run a function in thread context on a particular cpu</p>
 </dd></dl>
 
@@ -2347,7 +2347,7 @@ any locks which would prevent <strong>fn</strong> from completing.</p>
 <p>The value <strong>fn</strong> returns.</p>
 <dl class="c function">
 <dt id="c.freeze_workqueues_begin">
-void <code class="sig-name descname">freeze_workqueues_begin</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.freeze_workqueues_begin" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">freeze_workqueues_begin</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#c.freeze_workqueues_begin" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>begin freezing workqueues</p>
 </dd></dl>
 
@@ -2364,7 +2364,7 @@ pool-&gt;worklist.</p>
 <p>Grabs and releases wq_pool_mutex, wq-&gt;mutex and pool-&gt;lock’s.</p>
 <dl class="c function">
 <dt id="c.freeze_workqueues_busy">
-bool <code class="sig-name descname">freeze_workqueues_busy</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.freeze_workqueues_busy" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">freeze_workqueues_busy</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#c.freeze_workqueues_busy" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>are freezable workqueues still busy?</p>
 </dd></dl>
 
@@ -2383,7 +2383,7 @@ between <a class="reference internal" href="#c.freeze_workqueues_begin" title="f
 is complete.</p>
 <dl class="c function">
 <dt id="c.thaw_workqueues">
-void <code class="sig-name descname">thaw_workqueues</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.thaw_workqueues" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">thaw_workqueues</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#c.thaw_workqueues" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>thaw workqueues</p>
 </dd></dl>
 
@@ -2399,7 +2399,7 @@ frozen works are transferred to their respective pool worklists.</p>
 <p>Grabs and releases wq_pool_mutex, wq-&gt;mutex and pool-&gt;lock’s.</p>
 <dl class="c function">
 <dt id="c.workqueue_set_unbound_cpumask">
-int <code class="sig-name descname">workqueue_set_unbound_cpumask</code><span class="sig-paren">(</span>cpumask_var_t <em>cpumask</em><span class="sig-paren">)</span><a class="headerlink" href="#c.workqueue_set_unbound_cpumask" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">workqueue_set_unbound_cpumask</span></code><span class="sig-paren">(</span><span class="pre">cpumask_var_t</span> <em><span class="pre">cpumask</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.workqueue_set_unbound_cpumask" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set the low-level unbound cpumask</p>
 </dd></dl>
 
@@ -2418,7 +2418,7 @@ and apply it to all unbound workqueues and updates all pwqs of them.</p>
 </dl>
 <dl class="c function">
 <dt id="c.workqueue_sysfs_register">
-int <code class="sig-name descname">workqueue_sysfs_register</code><span class="sig-paren">(</span><em class="property">struct</em> workqueue_struct *<em>wq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.workqueue_sysfs_register" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">workqueue_sysfs_register</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.workqueue_sysfs_register" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>make a workqueue visible in sysfs</p>
 </dd></dl>
 
@@ -2439,7 +2439,7 @@ attributes.</p>
 <p>0 on success, -errno on failure.</p>
 <dl class="c function">
 <dt id="c.workqueue_sysfs_unregister">
-void <code class="sig-name descname">workqueue_sysfs_unregister</code><span class="sig-paren">(</span><em class="property">struct</em> workqueue_struct *<em>wq</em><span class="sig-paren">)</span><a class="headerlink" href="#c.workqueue_sysfs_unregister" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">workqueue_sysfs_unregister</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">workqueue_struct</span> <span class="pre">*</span><em><span class="pre">wq</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.workqueue_sysfs_unregister" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>undo <a class="reference internal" href="#c.workqueue_sysfs_register" title="workqueue_sysfs_register"><code class="xref c c-func docutils literal notranslate"><span class="pre">workqueue_sysfs_register()</span></code></a></p>
 </dd></dl>
 
@@ -2452,7 +2452,7 @@ void <code class="sig-name descname">workqueue_sysfs_unregister</code><span clas
 <p>If <strong>wq</strong> is registered to sysfs by <a class="reference internal" href="#c.workqueue_sysfs_register" title="workqueue_sysfs_register"><code class="xref c c-func docutils literal notranslate"><span class="pre">workqueue_sysfs_register()</span></code></a>, unregister.</p>
 <dl class="c function">
 <dt id="c.workqueue_init_early">
-void <code class="sig-name descname">workqueue_init_early</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.workqueue_init_early" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">workqueue_init_early</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#c.workqueue_init_early" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>early init for workqueue subsystem</p>
 </dd></dl>
 
@@ -2470,7 +2470,7 @@ items.  Actual work item execution starts only after kthreads can be
 created and scheduled right before early initcalls.</p>
 <dl class="c function">
 <dt id="c.workqueue_init">
-void <code class="sig-name descname">workqueue_init</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#c.workqueue_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">workqueue_init</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#c.workqueue_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>bring workqueue subsystem fully online</p>
 </dd></dl>
 
