@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.5-dragon
+                5.12.7-dragon
               </div>
             
           
@@ -9828,8 +9828,9 @@ during any kernel release.</p>
   struct netpoll_info __rcu       *npinfo;
 #endif;
   possible_net_t nd_net;
+  void *ml_priv;
+  enum netdev_ml_priv_type        ml_priv_type;
   union {
-    void *ml_priv;
     struct pcpu_lstats __percpu             *lstats;
     struct pcpu_sw_netstats __percpu        *tstats;
     struct pcpu_dstats __percpu             *dstats;
@@ -10173,9 +10174,11 @@ a new link</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">nd_net</span></code></dt><dd><p>Network namespace this network device is inside</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">{unnamed_union}</span></code></dt><dd><p>anonymous</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">ml_priv</span></code></dt><dd><p>Mid-layer private</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ml_priv_type</span></code></dt><dd><p>Mid-layer private type</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">{unnamed_union}</span></code></dt><dd><p>anonymous</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">lstats</span></code></dt><dd><p>Loopback statistics</p>
 </dd>

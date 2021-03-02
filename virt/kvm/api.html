@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.5-dragon
+                5.12.7-dragon
               </div>
             
           
@@ -6501,8 +6501,9 @@ Windows or Hyper-V guests).</p>
 Functional Specification (TLFS). These leaves can’t be obtained with
 KVM_GET_SUPPORTED_CPUID ioctl because some of them intersect with KVM feature
 leaves (0x40000000, 0x40000001).</p>
-<dl class="simple">
-<dt>Currently, the following list of CPUID leaves are returned:</dt><dd><ul class="simple">
+<p>Currently, the following list of CPUID leaves are returned:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>HYPERV_CPUID_VENDOR_AND_MAX_FUNCTIONS</p></li>
 <li><p>HYPERV_CPUID_INTERFACE</p></li>
 <li><p>HYPERV_CPUID_VERSION</p></li>
@@ -6514,8 +6515,7 @@ leaves (0x40000000, 0x40000001).</p>
 <li><p>HYPERV_CPUID_SYNDBG_INTERFACE</p></li>
 <li><p>HYPERV_CPUID_SYNDBG_PLATFORM_CAPABILITIES</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <p>Userspace invokes KVM_GET_SUPPORTED_HV_CPUID by passing a kvm_cpuid2 structure
 with the ‘nent’ field indicating the number of entries in the variable-size
 array ‘entries’.  If the number of entries is too low to describe all Hyper-V
@@ -6526,13 +6526,11 @@ number of valid entries in the ‘entries’ array, which is then filled.</p>
 userspace should not expect to get any particular value there.</p>
 <p>Note, vcpu version of KVM_GET_SUPPORTED_HV_CPUID is currently deprecated. Unlike
 system ioctl which exposes all supported feature bits unconditionally, vcpu
-version has the following quirks:
-- HYPERV_CPUID_NESTED_FEATURES leaf and HV_X64_ENLIGHTENED_VMCS_RECOMMENDED</p>
-<blockquote>
-<div><p>feature bit are only exposed when Enlightened VMCS was previously enabled
-on the corresponding vCPU (KVM_CAP_HYPERV_ENLIGHTENED_VMCS).</p>
-</div></blockquote>
+version has the following quirks:</p>
 <ul class="simple">
+<li><p>HYPERV_CPUID_NESTED_FEATURES leaf and HV_X64_ENLIGHTENED_VMCS_RECOMMENDED
+feature bit are only exposed when Enlightened VMCS was previously enabled
+on the corresponding vCPU (KVM_CAP_HYPERV_ENLIGHTENED_VMCS).</p></li>
 <li><p>HV_STIMER_DIRECT_MODE_AVAILABLE bit is only exposed with in-kernel LAPIC.
 (presumes KVM_CREATE_IRQCHIP has already been called).</p></li>
 </ul>

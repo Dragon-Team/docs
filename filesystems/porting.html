@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.5-dragon
+                5.12.7-dragon
               </div>
             
           
@@ -902,10 +902,6 @@ no matter what.  Everything is handled by the caller.</p>
 its result is kern_unmount() or kern_unmount_array().</p>
 <p>—</p>
 <p><strong>mandatory</strong></p>
-<p>mnt_want_write_file() can now only be paired with mnt_drop_write_file(),
-whereas previously it could be paired with mnt_drop_write() as well.</p>
-<p>—</p>
-<p><strong>mandatory</strong></p>
 <p>zero-length bvec segments are disallowed, they must be filtered out before
 passed on to an iterator.</p>
 <p>—</p>
@@ -914,6 +910,10 @@ passed on to an iterator.</p>
 uses the one provided. Anyone issuing kiocb-I/O should ensure that the bvec and
 page references stay until I/O has completed, i.e. until -&gt;ki_complete() has
 been called or returned with non -EIOCBQUEUED code.</p>
+<p>—</p>
+<p><strong>mandatory</strong></p>
+<p>mnt_want_write_file() can now only be paired with mnt_drop_write_file(),
+whereas previously it could be paired with mnt_drop_write() as well.</p>
 </div>
 
 
