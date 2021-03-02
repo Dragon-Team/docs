@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.7-dragon
+                5.12.8-dragon
               </div>
             
           
@@ -369,6 +369,12 @@ offsets. If KALLSYMS are disabled then the symbol address is printed instead.</p
 used when printing stack backtraces. The specifier takes into
 consideration the effect of compiler optimisations which may occur
 when tail-calls are used and marked with the noreturn GCC attribute.</p>
+<p>If the pointer is within a module, the module name and build ID is printed after
+the symbol name.</p>
+<dl class="simple">
+<dt>::</dt><dd><p>%pS     versatile_init+0x0/0x110 [module_name] (ed5019fdf5e53be37cb1ba7899292d7e143b259e)</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="probed-pointers-from-bpf-tracing">
 <h3>Probed Pointers from BPF / tracing<a class="headerlink" href="#probed-pointers-from-bpf-tracing" title="Permalink to this headline">¶</a></h3>

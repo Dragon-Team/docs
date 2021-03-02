@@ -114,6 +114,12 @@ used when printing stack backtraces. The specifier takes into
 consideration the effect of compiler optimisations which may occur
 when tail-calls are used and marked with the noreturn GCC attribute.
 
+If the pointer is within a module, the module name and build ID is printed after
+the symbol name.
+
+::
+	%pS	versatile_init+0x0/0x110 [module_name] (ed5019fdf5e53be37cb1ba7899292d7e143b259e)
+
 Probed Pointers from BPF / tracing
 ----------------------------------
 
