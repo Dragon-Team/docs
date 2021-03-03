@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.8-dragon
+                5.12.9-dragon
               </div>
             
           
@@ -1808,8 +1808,23 @@ use page flips.</p>
 version when executing fastsets. For full modeset, <a class="reference internal" href="#c.intel_psr_disable" title="intel_psr_disable"><code class="xref c c-func docutils literal notranslate"><span class="pre">intel_psr_disable()</span></code></a> and
 <a class="reference internal" href="#c.intel_psr_enable" title="intel_psr_enable"><code class="xref c c-func docutils literal notranslate"><span class="pre">intel_psr_enable()</span></code></a> should be called instead.</p>
 <dl class="c function">
+<dt id="c.psr_wait_for_idle">
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">psr_wait_for_idle</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.psr_wait_for_idle" title="intel_dp"><span class="pre">intel_dp</span></a> <span class="pre">*</span><em><span class="pre">intel_dp</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">out_value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.psr_wait_for_idle" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>wait for PSR1 to idle</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">intel_dp</span> <span class="pre">*intel_dp</span></code></dt><dd><p>Intel DP</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">*out_value</span></code></dt><dd><p>PSR status in case of failure</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p>0 on success or -ETIMEOUT if PSR status does not idle.</p>
+<dl class="c function">
 <dt id="c.intel_psr_wait_for_idle">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">intel_psr_wait_for_idle</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">intel_crtc_state</span> <span class="pre">*</span><em><span class="pre">new_crtc_state</span></em>, <span class="pre">u32</span> <span class="pre">*</span><em><span class="pre">out_value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_psr_wait_for_idle" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">intel_psr_wait_for_idle</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">intel_crtc_state</span> <span class="pre">*</span><em><span class="pre">new_crtc_state</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_psr_wait_for_idle" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>wait for PSR1 to idle</p>
 </dd></dl>
 
@@ -1817,14 +1832,10 @@ version when executing fastsets. For full modeset, <a class="reference internal"
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">intel_crtc_state</span> <span class="pre">*new_crtc_state</span></code></dt><dd><p>new CRTC state</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">*out_value</span></code></dt><dd><p>PSR status in case of failure</p>
-</dd>
 </dl>
 <p><strong>Description</strong></p>
 <p>This function is expected to be called from pipe_update_start() where it is
 not expected to race with PSR enable or disable.</p>
-<p><strong>Return</strong></p>
-<p>0 on success or -ETIMEOUT if PSR status does not idle.</p>
 <dl class="c function">
 <dt id="c.intel_psr_invalidate">
 <span class="pre">void</span> <code class="sig-name descname"><span class="pre">intel_psr_invalidate</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">drm_i915_private</span> <span class="pre">*</span><em><span class="pre">dev_priv</span></em>, <span class="pre">unsigned</span> <em><span class="pre">frontbuffer_bits</span></em>, <em class="property"><span class="pre">enum</span></em> <span class="pre">fb_op_origin</span> <em><span class="pre">origin</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_psr_invalidate" title="Permalink to this definition">¶</a><br /></dt>
@@ -1869,18 +1880,19 @@ can be enabled again if no other frontbuffer relevant to PSR is dirty.</p>
 <p>Dirty frontbuffers relevant to PSR are tracked in busy_frontbuffer_bits.</p>
 <dl class="c function">
 <dt id="c.intel_psr_init">
-<span class="pre">void</span> <code class="sig-name descname"><span class="pre">intel_psr_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">drm_i915_private</span> <span class="pre">*</span><em><span class="pre">dev_priv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_psr_init" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">intel_psr_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.intel_psr_init" title="intel_dp"><span class="pre">intel_dp</span></a> <span class="pre">*</span><em><span class="pre">intel_dp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_psr_init" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Init basic PSR work and mutex.</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">drm_i915_private</span> <span class="pre">*dev_priv</span></code></dt><dd><p>i915 device private</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">intel_dp</span> <span class="pre">*intel_dp</span></code></dt><dd><p>Intel DP</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>This function is  called only once at driver load to initialize basic
-PSR stuff.</p>
+<p>This function is called after the initializing connector.
+(the initializing of connector treats the handling of connector capabilities)
+And it initializes basic PSR stuff for each DP Encoder.</p>
 </div>
 <div class="section" id="frame-buffer-compression-fbc">
 <h3>Frame Buffer Compression (FBC)<a class="headerlink" href="#frame-buffer-compression-fbc" title="Permalink to this headline">¶</a></h3>
@@ -2472,6 +2484,21 @@ assume LVDS is present.</p>
 </dl>
 <p><strong>Description</strong></p>
 <p>Return true if LSPCON is present on this port</p>
+<dl class="c function">
+<dt id="c.intel_bios_is_lane_reversal_needed">
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">intel_bios_is_lane_reversal_needed</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <span class="pre">drm_i915_private</span> <span class="pre">*</span><em><span class="pre">i915</span></em>, <em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#c.intel_bios_is_lane_reversal_needed" title="port"><span class="pre">port</span></a> <em><span class="pre">port</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.intel_bios_is_lane_reversal_needed" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>if lane reversal needed on port</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">struct</span> <span class="pre">drm_i915_private</span> <span class="pre">*i915</span></code></dt><dd><p>i915 device instance</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">port</span> <span class="pre">port</span></code></dt><dd><p>port to check</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Return true if port requires lane reversal</p>
 <dl class="c struct">
 <dt id="c.vbt_header">
 <em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">vbt_header</span></code><a class="headerlink" href="#c.vbt_header" title="Permalink to this definition">¶</a><br /></dt>

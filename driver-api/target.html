@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.8-dragon
+                5.12.9-dragon
               </div>
             
           
@@ -413,18 +413,16 @@ each command.</p>
 </dd>
 </dl>
 <dl class="c function">
-<dt id="c.target_submit_cmd_map_sgls">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">target_submit_cmd_map_sgls</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.target_submit_cmd_map_sgls" title="se_cmd"><span class="pre">se_cmd</span></a> <span class="pre">*</span><em><span class="pre">se_cmd</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">se_session</span> <span class="pre">*</span><em><span class="pre">se_sess</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">cdb</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">sense</span></em>, <span class="pre">u64</span> <em><span class="pre">unpacked_lun</span></em>, <span class="pre">u32</span> <em><span class="pre">data_length</span></em>, <span class="pre">int</span> <em><span class="pre">task_attr</span></em>, <span class="pre">int</span> <em><span class="pre">data_dir</span></em>, <span class="pre">int</span> <em><span class="pre">flags</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">scatterlist</span> <span class="pre">*</span><em><span class="pre">sgl</span></em>, <span class="pre">u32</span> <em><span class="pre">sgl_count</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">scatterlist</span> <span class="pre">*</span><em><span class="pre">sgl_bidi</span></em>, <span class="pre">u32</span> <em><span class="pre">sgl_bidi_count</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">scatterlist</span> <span class="pre">*</span><em><span class="pre">sgl_prot</span></em>, <span class="pre">u32</span> <em><span class="pre">sgl_prot_count</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.target_submit_cmd_map_sgls" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>lookup unpacked lun and submit uninitialized se_cmd + use pre-allocated SGL memory.</p>
+<dt id="c.target_init_cmd">
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">target_init_cmd</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.target_init_cmd" title="se_cmd"><span class="pre">se_cmd</span></a> <span class="pre">*</span><em><span class="pre">se_cmd</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">se_session</span> <span class="pre">*</span><em><span class="pre">se_sess</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">sense</span></em>, <span class="pre">u64</span> <em><span class="pre">unpacked_lun</span></em>, <span class="pre">u32</span> <em><span class="pre">data_length</span></em>, <span class="pre">int</span> <em><span class="pre">task_attr</span></em>, <span class="pre">int</span> <em><span class="pre">data_dir</span></em>, <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.target_init_cmd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>initialize se_cmd</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">se_cmd</span> <span class="pre">*se_cmd</span></code></dt><dd><p>command descriptor to submit</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">se_cmd</span> <span class="pre">*se_cmd</span></code></dt><dd><p>command descriptor to init</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">se_session</span> <span class="pre">*se_sess</span></code></dt><dd><p>associated se_sess for endpoint</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*cdb</span></code></dt><dd><p>pointer to SCSI CDB</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*sense</span></code></dt><dd><p>pointer to SCSI sense buffer</p>
 </dd>
@@ -438,6 +436,31 @@ each command.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">flags</span></code></dt><dd><p>flags for command submission from target_sc_flags_tables</p>
 </dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Task tags are supported if the caller has set <strong>se_cmd-&gt;tag</strong>.</p>
+<p>If the fabric driver calls target_stop_session, then it must check the
+return code and handle failures. This will never fail for other drivers,
+and the return code can be ignored.</p>
+<p><strong>Return</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>less than zero to signal active I/O shutdown failure.</p></li>
+<li><p>zero on success.</p></li>
+</ul>
+</div></blockquote>
+<dl class="c function">
+<dt id="c.target_submit_prep">
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">target_submit_prep</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.target_submit_prep" title="se_cmd"><span class="pre">se_cmd</span></a> <span class="pre">*</span><em><span class="pre">se_cmd</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">cdb</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">scatterlist</span> <span class="pre">*</span><em><span class="pre">sgl</span></em>, <span class="pre">u32</span> <em><span class="pre">sgl_count</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">scatterlist</span> <span class="pre">*</span><em><span class="pre">sgl_bidi</span></em>, <span class="pre">u32</span> <em><span class="pre">sgl_bidi_count</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">scatterlist</span> <span class="pre">*</span><em><span class="pre">sgl_prot</span></em>, <span class="pre">u32</span> <em><span class="pre">sgl_prot_count</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.target_submit_prep" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>prepare cmd for submission</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">se_cmd</span> <span class="pre">*se_cmd</span></code></dt><dd><p>command descriptor to prep</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*cdb</span></code></dt><dd><p>pointer to SCSI CDB</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">scatterlist</span> <span class="pre">*sgl</span></code></dt><dd><p>struct scatterlist memory for unidirectional mapping</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">sgl_count</span></code></dt><dd><p>scatterlist count for unidirectional mapping</p>
@@ -450,17 +473,35 @@ each command.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">sgl_prot_count</span></code></dt><dd><p>scatterlist count for protection information</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">gfp_t</span> <span class="pre">gfp</span></code></dt><dd><p>gfp allocation type</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>less than zero to signal failure.</p></li>
+<li><p>zero on success.</p></li>
+</ul>
+</div></blockquote>
+<p>If failure is returned, lio will the callers queue_status to complete
+the cmd.</p>
+<dl class="c function">
+<dt id="c.target_submit">
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">target_submit</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.target_submit" title="se_cmd"><span class="pre">se_cmd</span></a> <span class="pre">*</span><em><span class="pre">se_cmd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.target_submit" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>perform final initialization and submit cmd to LIO core</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">se_cmd</span> <span class="pre">*se_cmd</span></code></dt><dd><p>command descriptor to submit</p>
+</dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>Task tags are supported if the caller has set <strong>se_cmd-&gt;tag</strong>.</p>
-<p>Returns non zero to signal active I/O shutdown failure.  All other
-setup exceptions will be returned as a SCSI CHECK_CONDITION response,
-but still return zero here.</p>
-<p>This may only be called from process context, and also currently
-assumes internal allocation of fabric payload buffer by target-core.</p>
+<p>target_submit_prep must have been called on the cmd, and this must be
+called from process context.</p>
 <dl class="c function">
 <dt id="c.target_submit_cmd">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">target_submit_cmd</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.target_submit_cmd" title="se_cmd"><span class="pre">se_cmd</span></a> <span class="pre">*</span><em><span class="pre">se_cmd</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">se_session</span> <span class="pre">*</span><em><span class="pre">se_sess</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">cdb</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">sense</span></em>, <span class="pre">u64</span> <em><span class="pre">unpacked_lun</span></em>, <span class="pre">u32</span> <em><span class="pre">data_length</span></em>, <span class="pre">int</span> <em><span class="pre">task_attr</span></em>, <span class="pre">int</span> <em><span class="pre">data_dir</span></em>, <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.target_submit_cmd" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">target_submit_cmd</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.target_submit_cmd" title="se_cmd"><span class="pre">se_cmd</span></a> <span class="pre">*</span><em><span class="pre">se_cmd</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">se_session</span> <span class="pre">*</span><em><span class="pre">se_sess</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">cdb</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">sense</span></em>, <span class="pre">u64</span> <em><span class="pre">unpacked_lun</span></em>, <span class="pre">u32</span> <em><span class="pre">data_length</span></em>, <span class="pre">int</span> <em><span class="pre">task_attr</span></em>, <span class="pre">int</span> <em><span class="pre">data_dir</span></em>, <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.target_submit_cmd" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>lookup unpacked lun and submit uninitialized se_cmd</p>
 </dd></dl>
 
@@ -487,12 +528,24 @@ assumes internal allocation of fabric payload buffer by target-core.</p>
 </dl>
 <p><strong>Description</strong></p>
 <p>Task tags are supported if the caller has set <strong>se_cmd-&gt;tag</strong>.</p>
-<p>Returns non zero to signal active I/O shutdown failure.  All other
-setup exceptions will be returned as a SCSI CHECK_CONDITION response,
-but still return zero here.</p>
 <p>This may only be called from process context, and also currently
 assumes internal allocation of fabric payload buffer by target-core.</p>
 <p>It also assumes interal target core SGL memory allocation.</p>
+<p>This function must only be used by drivers that do their own
+sync during shutdown and does not use target_stop_session. If there
+is a failure this function will call into the fabric driver’s
+queue_status with a CHECK_CONDITION.</p>
+<dl class="c function">
+<dt id="c.target_queue_submission">
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">target_queue_submission</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.target_queue_submission" title="se_cmd"><span class="pre">se_cmd</span></a> <span class="pre">*</span><em><span class="pre">se_cmd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.target_queue_submission" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>queue the cmd to run on the LIO workqueue</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">se_cmd</span> <span class="pre">*se_cmd</span></code></dt><dd><p>command descriptor to submit</p>
+</dd>
+</dl>
 <dl class="c function">
 <dt id="c.target_submit_tmr">
 <span class="pre">int</span> <code class="sig-name descname"><span class="pre">target_submit_tmr</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.target_submit_tmr" title="se_cmd"><span class="pre">se_cmd</span></a> <span class="pre">*</span><em><span class="pre">se_cmd</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">se_session</span> <span class="pre">*</span><em><span class="pre">se_sess</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">sense</span></em>, <span class="pre">u64</span> <em><span class="pre">unpacked_lun</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">fabric_tmr_ptr</span></em>, <span class="pre">unsigned</span> <span class="pre">char</span> <em><span class="pre">tm_type</span></em>, <a class="reference internal" href="../core-api/mm-api.html#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em>, <span class="pre">u64</span> <em><span class="pre">tag</span></em>, <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.target_submit_tmr" title="Permalink to this definition">¶</a><br /></dt>

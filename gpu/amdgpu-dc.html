@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.8-dragon
+                5.12.9-dragon
               </div>
             
           
@@ -310,26 +310,6 @@ Likewise, to force enable on unsupported ASICs, set <cite>amdgpu.dc=1</cite>.</p
 requests into DC requests, and DC responses into DRM responses.</p>
 <p>The root control structure is <a class="reference internal" href="#c.amdgpu_display_manager" title="amdgpu_display_manager"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">amdgpu_display_manager</span></code></a>.</p>
 <dl class="c struct">
-<dt id="c.irq_list_head">
-<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">irq_list_head</span></code><a class="headerlink" href="#c.irq_list_head" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Linked-list for low context IRQ handlers.</p>
-</dd></dl>
-
-<p><strong>Definition</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct irq_list_head {
-  struct list_head head;
-  struct work_struct work;
-};
-</pre></div>
-</div>
-<p><strong>Members</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">head</span></code></dt><dd><p>The list_head within <code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">handler_data</span></code></p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">work</span></code></dt><dd><p>A work_struct containing the deferred handler work</p>
-</dd>
-</dl>
-<dl class="c struct">
 <dt id="c.dm_compressor_info">
 <em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">dm_compressor_info</span></code><a class="headerlink" href="#c.dm_compressor_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Buffer info used by frame buffer compression</p>
@@ -445,7 +425,7 @@ in nits.</p>
 #endif;
   struct drm_audio_component *audio_component;
   bool audio_registered;
-  struct irq_list_head irq_handler_list_low_tab[DAL_IRQ_SOURCES_NUMBER];
+  struct list_head irq_handler_list_low_tab[DAL_IRQ_SOURCES_NUMBER];
   struct list_head irq_handler_list_high_tab[DAL_IRQ_SOURCES_NUMBER];
   struct common_irq_params pflip_params[DC_IRQ_SOURCE_PFLIP_LAST - DC_IRQ_SOURCE_PFLIP_FIRST + 1];
   struct common_irq_params vblank_params[DC_IRQ_SOURCE_VBLANK6 - DC_IRQ_SOURCE_VBLANK1 + 1];
@@ -655,6 +635,7 @@ dce110_register_irq_handlers() and dcn10_register_irq_handlers().</p>
   void *handler_arg;
   struct amdgpu_display_manager *dm;
   enum dc_irq_source irq_source;
+  struct work_struct work;
 };
 </pre></div>
 </div>
@@ -747,7 +728,7 @@ for the given irq source. If found, remove it. Otherwise, do nothing.</p>
 list_heads are initialized here. When an interrupt n is triggered, all m
 handlers are called in sequence, FIFO according to registration order.</p>
 <p>The low context table requires special steps to initialize, since handlers
-will be deferred to a workqueue. See <a class="reference internal" href="#c.irq_list_head" title="irq_list_head"><code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">irq_list_head</span></code></a>.</p>
+will be deferred to a workqueue. See <code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">irq_list_head</span></code>.</p>
 <dl class="c function">
 <dt id="c.amdgpu_dm_irq_fini">
 <span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_dm_irq_fini</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">amdgpu_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_dm_irq_fini" title="Permalink to this definition">¶</a><br /></dt>

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.8-dragon
+                5.12.9-dragon
               </div>
             
           
@@ -1343,6 +1343,7 @@ or unaligned OUT)</p>
   enum usb_phy_interface  hsphy_mode;
   struct usb_role_switch  *role_sw;
   enum usb_dr_mode        role_switch_default_mode;
+  struct power_supply     *usb_psy;
   u32 fladj;
   u32 irq_gadget;
   u32 otg_irq;

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.8-dragon
+                5.12.9-dragon
               </div>
             
           
@@ -101,10 +101,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../process/index.html">Working with the kernel development community</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Development tools for the kernel</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Checkpatch</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">1 Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#options">2 Options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#message-levels">3 Message Levels</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#type-descriptions">4 Type Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#message-levels">Message Levels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#type-descriptions">Type Descriptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#allocation-style">Allocation style</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api-usage">API usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comment-style">Comment style</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#commit-message">Commit message</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comparison-style">Comparison style</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spacing-and-brackets">Spacing and Brackets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#others">Others</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="coccinelle.html">Coccinelle</a></li>
@@ -272,18 +280,14 @@
             
   <div class="section" id="checkpatch">
 <h1>Checkpatch<a class="headerlink" href="#checkpatch" title="Permalink to this headline">¶</a></h1>
-<p>This document describes the kernel script checkpatch.pl.</p>
-<div class="section" id="introduction">
-<h2>1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>Checkpatch (scripts/checkpatch.pl) is a perl script which checks for trivial style
-violations in patches and optionally corrects them.  Checkpatch can also be run on
-file contexts and without the kernel tree.</p>
-<p>It should be noted that checkpatch may not be always right.  At times the human
-judgement should take preference over what checkpatch has to say.  If your code looks
-better with the violations, then its probably best left alone.</p>
-</div>
+<p>Checkpatch (scripts/checkpatch.pl) is a perl script which checks for trivial
+style violations in patches and optionally corrects them.  Checkpatch can
+also be run on file contexts and without the kernel tree.</p>
+<p>Checkpatch is not always right. Your judgement takes precedence over checkpatch
+messages.  If your code looks better with the violations, then its probably
+best left alone.</p>
 <div class="section" id="options">
-<h2>2 Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
 <p>This section will describe the options checkpatch can be run with.</p>
 <p>Usage:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./scripts/checkpatch.pl [OPTION]... [FILE]...
@@ -309,8 +313,8 @@ or otherwise have the right to pass it on as an open-source patch.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Signed-off-by: Random J Developer &lt;random@developer.example.org&gt;
 </pre></div>
 </div>
-<p>Setting this flag effectively stops a message for a missing signed-off-by line
-in a patch context.</p>
+<p>Setting this flag effectively stops a message for a missing signed-off-by
+line in a patch context.</p>
 </li>
 <li><p>–patch</p>
 <p>Treat FILE as a patch.  This is the default option and need not be
@@ -318,7 +322,8 @@ explicitly specified.</p>
 </li>
 <li><p>–emacs</p>
 <p>Set output to emacs compile window format.  This allows emacs users to jump
-from the error in the compile window directly to the offending line in the patch.</p>
+from the error in the compile window directly to the offending line in the
+patch.</p>
 </li>
 <li><p>–terse</p>
 <p>Output only one line per report.</p>
@@ -350,22 +355,22 @@ checkpatch on source files in the kernel.</p>
 do not activate by default.  Use this flag to activate the CHECK tests.</p>
 </li>
 <li><p>–list-types</p>
-<p>Every message emitted by checkpatch has an associated TYPE.  Add this flag to
-display all the types in checkpatch.</p>
-<p>Note that when this flag is active, checkpatch does not read the input FILE, and
-no message is emitted.  Only a list of types in checkpatch is output.</p>
+<p>Every message emitted by checkpatch has an associated TYPE.  Add this flag
+to display all the types in checkpatch.</p>
+<p>Note that when this flag is active, checkpatch does not read the input FILE,
+and no message is emitted.  Only a list of types in checkpatch is output.</p>
 </li>
 <li><p>–types TYPE(,TYPE2…)</p>
 <p>Only display messages with the given types.</p>
 <p>Example:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./scripts/checkpatch.pl mypatch.patch --types EMAIL_SUBJECT,NO_AUTHOR_SIGN_OFF
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./scripts/checkpatch.pl mypatch.patch --types EMAIL_SUBJECT,BRACES
 </pre></div>
 </div>
 </li>
 <li><p>–ignore TYPE(,TYPE2…)</p>
-<p>Strip off messages with the given types.</p>
+<p>Checkpatch will not emit messages for the specified types.</p>
 <p>Example:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./scripts/checkpatch.pl mypatch.patch --ignore EMAIL_SUBJECT,NO_AUTHOR_SIGN_OFF
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./scripts/checkpatch.pl mypatch.patch --ignore EMAIL_SUBJECT,BRACES
 </pre></div>
 </div>
 </li>
@@ -374,14 +379,14 @@ no message is emitted.  Only a list of types in checkpatch is output.</p>
 Set this flag to show the message type in the output.</p>
 </li>
 <li><p>–max-line-length=n</p>
-<p>Set the max line length (default 100).  On exceeding the given length, a message
-is emitted.</p>
-<p>The message level is different for patch and file contexts.  For patches, a WARNING is
-emitted.  While a milder CHECK is emitted for files.  So for file contexts, the –strict
-flag must also be enabled.</p>
+<p>Set the max line length (default 100).  If a line exceeds the specified
+length, a LONG_LINE message is emitted.</p>
+<p>The message level is different for patch and file contexts.  For patches,
+a WARNING is emitted.  While a milder CHECK is emitted for files.  So for
+file contexts, the –strict flag must also be enabled.</p>
 </li>
 <li><p>–min-conf-desc-length=n</p>
-<p>Set the min description length, if shorter, warn.</p>
+<p>Set the Kconfig entry minimum description length, if shorter, warn.</p>
 </li>
 <li><p>–tab-size=n</p>
 <p>Set the number of spaces for tab (default 8).</p>
@@ -411,8 +416,9 @@ excluded from this.</p>
 automatically fixable errors corrected.</p>
 </li>
 <li><p>–fix-inplace</p>
-<p>EXPERIMENTAL - Similar to –fix but the input file is overwritten with fixes.</p>
-<p>DO NOT USE this flag unless you are absolutely sure and you have a backup in place.</p>
+<p>EXPERIMENTAL - Similar to –fix but input file is overwritten with fixes.</p>
+<p>DO NOT USE this flag unless you are absolutely sure and you have a backup
+in place.</p>
 </li>
 <li><p>–ignore-perl-version</p>
 <p>Override checking of perl version.  Runtime errors maybe encountered after
@@ -422,7 +428,8 @@ enabling this flag if the perl version does not meet the minimum specified.</p>
 <p>Use the codespell dictionary for checking spelling errors.</p>
 </li>
 <li><p>–codespellfile</p>
-<p>Use the specified codespell file.  Default is ‘/usr/share/codespell/dictionary.txt’.</p>
+<p>Use the specified codespell file.
+Default is ‘/usr/share/codespell/dictionary.txt’.</p>
 </li>
 <li><p>–typedefsfile</p>
 <p>Read additional types from this file.</p>
@@ -441,9 +448,9 @@ Default is ‘auto’.</p>
 </div></blockquote>
 </div>
 <div class="section" id="message-levels">
-<h2>3 Message Levels<a class="headerlink" href="#message-levels" title="Permalink to this headline">¶</a></h2>
-<p>Messages in checkpatch are divided into three levels. The levels of messages in
-checkpatch denote the severity of the error. They are:</p>
+<h2>Message Levels<a class="headerlink" href="#message-levels" title="Permalink to this headline">¶</a></h2>
+<p>Messages in checkpatch are divided into three levels. The levels of messages
+in checkpatch denote the severity of the error. They are:</p>
 <blockquote>
 <div><ul>
 <li><p>ERROR</p>
@@ -461,32 +468,277 @@ more careful review.  But it is milder than an ERROR.</p>
 </div></blockquote>
 </div>
 <div class="section" id="type-descriptions">
-<h2>4 Type Descriptions<a class="headerlink" href="#type-descriptions" title="Permalink to this headline">¶</a></h2>
+<h2>Type Descriptions<a class="headerlink" href="#type-descriptions" title="Permalink to this headline">¶</a></h2>
 <p>This section contains a description of all the message types in checkpatch.</p>
-<dl class="field-list simple">
-<dt class="field-odd">LINE_SPACING</dt>
-<dd class="field-odd"><p>Vertical space is wasted given the limited number of lines an
-editor window can display when multiple blank lines are used.</p>
+<div class="section" id="allocation-style">
+<h3>Allocation style<a class="headerlink" href="#allocation-style" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl>
+<dt><strong>ALLOC_ARRAY_ARGS</strong></dt><dd><p>The first argument for kcalloc or kmalloc_array should be the
+number of elements.  sizeof() as the first argument is generally
+wrong.
+See: <a class="reference external" href="https://www.kernel.org/doc/html/latest/core-api/memory-allocation.html">https://www.kernel.org/doc/html/latest/core-api/memory-allocation.html</a></p>
 </dd>
-<dt class="field-even">MISSING_SIGN_OFF</dt>
-<dd class="field-even"><p>The patch is missing a Signed-off-by line.  A signed-off-by
+<dt><strong>ALLOC_SIZEOF_STRUCT</strong></dt><dd><p>The allocation style is bad.  In general for family of
+allocation functions using sizeof() to get memory size,
+constructs like:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p = alloc(sizeof(struct foo), ...)
+</pre></div>
+</div>
+<p>should be:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p = alloc(sizeof(*p), ...)
+</pre></div>
+</div>
+<p>See: <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/coding-style.html#allocating-memory">https://www.kernel.org/doc/html/latest/process/coding-style.html#allocating-memory</a></p>
+</dd>
+<dt><strong>ALLOC_WITH_MULTIPLY</strong></dt><dd><p>Prefer kmalloc_array/kcalloc over kmalloc/kzalloc with a
+sizeof multiply.
+See: <a class="reference external" href="https://www.kernel.org/doc/html/latest/core-api/memory-allocation.html">https://www.kernel.org/doc/html/latest/core-api/memory-allocation.html</a></p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="api-usage">
+<h3>API usage<a class="headerlink" href="#api-usage" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl>
+<dt><strong>ARCH_DEFINES</strong></dt><dd><p>Architecture specific defines should be avoided wherever
+possible.</p>
+</dd>
+<dt><strong>ARCH_INCLUDE_LINUX</strong></dt><dd><p>Whenever asm/file.h is included and linux/file.h exists, a
+conversion can be made when linux/file.h includes asm/file.h.
+However this is not always the case (See signal.h).
+This message type is emitted only for includes from arch/.</p>
+</dd>
+<dt><strong>ARRAY_SIZE</strong></dt><dd><p>The ARRAY_SIZE(foo) macro should be preferred over
+sizeof(foo)/sizeof(foo[0]) for finding number of elements in an
+array.</p>
+<p>The macro is defined in include/linux/kernel.h:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
+</pre></div>
+</div>
+</dd>
+<dt><strong>AVOID_BUG</strong></dt><dd><p>BUG() or BUG_ON() should be avoided totally.
+Use WARN() and WARN_ON() instead, and handle the “impossible”
+error condition as gracefully as possible.
+See: <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/deprecated.html#bug-and-bug-on">https://www.kernel.org/doc/html/latest/process/deprecated.html#bug-and-bug-on</a></p>
+</dd>
+<dt><strong>AVOID_EXTERNS</strong></dt><dd><p>Function prototypes don’t need to be declared extern in .h
+files.  It’s assumed by the compiler and is unnecessary.</p>
+</dd>
+<dt><strong>AVOID_L_PREFIX</strong></dt><dd><p>Local symbol names that are prefixed with <cite>.L</cite> should be avoided,
+as this has special meaning for the assembler; a symbol entry will
+not be emitted into the symbol table.  This can prevent <cite>objtool</cite>
+from generating correct unwind info.</p>
+<p>Symbols with STB_LOCAL binding may still be used, and <cite>.L</cite> prefixed
+local symbol names are still generally usable within a function,
+but <cite>.L</cite> prefixed local symbol names should not be used to denote
+the beginning or end of code regions via
+<cite>SYM_CODE_START_LOCAL</cite>/<cite>SYM_CODE_END</cite></p>
+</dd>
+<dt><strong>BIT_MACRO</strong></dt><dd><p>Defines like: 1 &lt;&lt; &lt;digit&gt; could be BIT(digit).
+The BIT() macro is defined in include/linux/bitops.h:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#define BIT(nr)         (1UL &lt;&lt; (nr))
+</pre></div>
+</div>
+</dd>
+<dt><strong>CONSIDER_KSTRTO</strong></dt><dd><p>The <a class="reference internal" href="../core-api/kernel-api.html#c.simple_strtol" title="simple_strtol"><code class="xref c c-func docutils literal notranslate"><span class="pre">simple_strtol()</span></code></a>, <a class="reference internal" href="../core-api/kernel-api.html#c.simple_strtoll" title="simple_strtoll"><code class="xref c c-func docutils literal notranslate"><span class="pre">simple_strtoll()</span></code></a>, <a class="reference internal" href="../core-api/kernel-api.html#c.simple_strtoul" title="simple_strtoul"><code class="xref c c-func docutils literal notranslate"><span class="pre">simple_strtoul()</span></code></a>, and
+<a class="reference internal" href="../core-api/kernel-api.html#c.simple_strtoull" title="simple_strtoull"><code class="xref c c-func docutils literal notranslate"><span class="pre">simple_strtoull()</span></code></a> functions explicitly ignore overflows, which
+may lead to unexpected results in callers.  The respective <a class="reference internal" href="../core-api/kernel-api.html#c.kstrtol" title="kstrtol"><code class="xref c c-func docutils literal notranslate"><span class="pre">kstrtol()</span></code></a>,
+<a class="reference internal" href="../core-api/kernel-api.html#c.kstrtoll" title="kstrtoll"><code class="xref c c-func docutils literal notranslate"><span class="pre">kstrtoll()</span></code></a>, <a class="reference internal" href="../core-api/kernel-api.html#c.kstrtoul" title="kstrtoul"><code class="xref c c-func docutils literal notranslate"><span class="pre">kstrtoul()</span></code></a>, and <a class="reference internal" href="../core-api/kernel-api.html#c.kstrtoull" title="kstrtoull"><code class="xref c c-func docutils literal notranslate"><span class="pre">kstrtoull()</span></code></a> functions tend to be the
+correct replacements.
+See: <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/deprecated.html#simple-strtol-simple-strtoll-simple-strtoul-simple-strtoull">https://www.kernel.org/doc/html/latest/process/deprecated.html#simple-strtol-simple-strtoll-simple-strtoul-simple-strtoull</a></p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="comment-style">
+<h3>Comment style<a class="headerlink" href="#comment-style" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl>
+<dt><strong>BLOCK_COMMENT_STYLE</strong></dt><dd><p>The comment style is incorrect.  The preferred style for multi-
+line comments is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/*
+* This is the preferred style
+* for multi line comments.
+*/
+</pre></div>
+</div>
+<p>The networking comment style is a bit different, with the first line
+not empty like the former:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/* This is the preferred comment style
+* for files in net/ and drivers/net/
+*/
+</pre></div>
+</div>
+<p>See: <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/coding-style.html#commenting">https://www.kernel.org/doc/html/latest/process/coding-style.html#commenting</a></p>
+</dd>
+<dt><strong>C99_COMMENTS</strong></dt><dd><p>C99 style single line comments (//) should not be used.
+Prefer the block comment style instead.
+See: <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/coding-style.html#commenting">https://www.kernel.org/doc/html/latest/process/coding-style.html#commenting</a></p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="commit-message">
+<h3>Commit message<a class="headerlink" href="#commit-message" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl>
+<dt><strong>BAD_SIGN_OFF</strong></dt><dd><p>The signed-off-by line does not fall in line with the standards
+specified by the community.
+See: <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/submitting-patches.html#developer-s-certificate-of-origin-1-1">https://www.kernel.org/doc/html/latest/process/submitting-patches.html#developer-s-certificate-of-origin-1-1</a></p>
+</dd>
+<dt><strong>BAD_STABLE_ADDRESS_STYLE</strong></dt><dd><p>The email format for stable is incorrect.
+Some valid options for stable address are:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. stable@vger.kernel.org
+2. stable@kernel.org
+</pre></div>
+</div>
+<p>For adding version info, the following comment style should be used:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>stable@vger.kernel.org # version info
+</pre></div>
+</div>
+</dd>
+<dt><strong>COMMIT_COMMENT_SYMBOL</strong></dt><dd><p>Commit log lines starting with a ‘#’ are ignored by git as
+comments.  To solve this problem addition of a single space
+infront of the log line is enough.</p>
+</dd>
+<dt><strong>COMMIT_MESSAGE</strong></dt><dd><p>The patch is missing a commit description.  A brief
+description of the changes made by the patch should be added.
+See: <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/submitting-patches.html#describe-your-changes">https://www.kernel.org/doc/html/latest/process/submitting-patches.html#describe-your-changes</a></p>
+</dd>
+<dt><strong>MISSING_SIGN_OFF</strong></dt><dd><p>The patch is missing a Signed-off-by line.  A signed-off-by
 line should be added according to Developer’s certificate of
 Origin.
-ref: <cite><a class="reference internal" href="../process/submitting-patches.html"><span class="doc">Submitting patches: the essential guide to getting your code into the kernel</span></a></cite></p>
+See: <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/submitting-patches.html#sign-your-work-the-developer-s-certificate-of-origin">https://www.kernel.org/doc/html/latest/process/submitting-patches.html#sign-your-work-the-developer-s-certificate-of-origin</a></p>
 </dd>
-<dt class="field-odd">NO_AUTHOR_SIGN_OFF</dt>
-<dd class="field-odd"><p>The author of the patch has not signed off the patch.  It is
+<dt><strong>NO_AUTHOR_SIGN_OFF</strong></dt><dd><p>The author of the patch has not signed off the patch.  It is
 required that a simple sign off line should be present at the
 end of explanation of the patch to denote that the author has
 written it or otherwise has the rights to pass it on as an open
-source patch.</p>
-</dd>
-<dt class="field-even">TRAILING_WHITESPACE</dt>
-<dd class="field-even"><p>Trailing whitespace should always be removed.
-Some editors highlight the trailing whitespace and cause visual
-distractions when editing files.</p>
+source patch.
+See: <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/submitting-patches.html#sign-your-work-the-developer-s-certificate-of-origin">https://www.kernel.org/doc/html/latest/process/submitting-patches.html#sign-your-work-the-developer-s-certificate-of-origin</a></p>
 </dd>
 </dl>
+</div></blockquote>
+</div>
+<div class="section" id="comparison-style">
+<h3>Comparison style<a class="headerlink" href="#comparison-style" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl>
+<dt><strong>ASSIGN_IN_IF</strong></dt><dd><p>Do not use assignments in if condition.
+Example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if ((foo = bar(...)) &lt; BAZ) {
+</pre></div>
+</div>
+<p>should be written as:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>foo = bar(...);
+if (foo &lt; BAZ) {
+</pre></div>
+</div>
+</dd>
+<dt><strong>BOOL_COMPARISON</strong></dt><dd><p>Comparisons of A to true and false are better written
+as A and !A.
+See: <a class="reference external" href="https://lore.kernel.org/lkml/1365563834.27174.12.camel&#64;joe-AO722/">https://lore.kernel.org/lkml/1365563834.27174.12.camel&#64;joe-AO722/</a></p>
+</dd>
+<dt><strong>COMPARISON_TO_NULL</strong></dt><dd><p>Comparisons to NULL in the form (foo == NULL) or (foo != NULL)
+are better written as (!foo) and (foo).</p>
+</dd>
+<dt><strong>CONSTANT_COMPARISON</strong></dt><dd><p>Comparisons with a constant or upper case identifier on the left
+side of the test should be avoided.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="spacing-and-brackets">
+<h3>Spacing and Brackets<a class="headerlink" href="#spacing-and-brackets" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl>
+<dt><strong>ASSIGNMENT_CONTINUATIONS</strong></dt><dd><p>Assignment operators should not be written at the start of a
+line but should follow the operand at the previous line.</p>
+</dd>
+<dt><strong>BRACES</strong></dt><dd><p>The placement of braces is stylistically incorrect.
+The preferred way is to put the opening brace last on the line,
+and put the closing brace first:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if (x is true) {
+  we do y
+}
+</pre></div>
+</div>
+<p>This applies for all non-functional blocks.
+However, there is one special case, namely functions: they have the
+opening brace at the beginning of the next line, thus:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int function(int x)
+{
+  body of function
+}
+</pre></div>
+</div>
+<p>See: <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/coding-style.html#placing-braces-and-spaces">https://www.kernel.org/doc/html/latest/process/coding-style.html#placing-braces-and-spaces</a></p>
+</dd>
+<dt><strong>BRACKET_SPACE</strong></dt><dd><p>Whitespace before opening bracket ‘[‘ is prohibited.
+There are some exceptions:</p>
+<ol class="arabic">
+<li><p>With a type on the left:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>;int [] a;
+</pre></div>
+</div>
+</li>
+<li><p>At the beginning of a line for slice initialisers:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[0...10] = 5,
+</pre></div>
+</div>
+</li>
+<li><p>Inside a curly brace:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>= { [0...10] = 5 }
+</pre></div>
+</div>
+</li>
+</ol>
+</dd>
+<dt><strong>CODE_INDENT</strong></dt><dd><p>Code indent should use tabs instead of spaces.
+Outside of comments, documentation and Kconfig,
+spaces are never used for indentation.
+See: <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/coding-style.html#indentation">https://www.kernel.org/doc/html/latest/process/coding-style.html#indentation</a></p>
+</dd>
+<dt><strong>CONCATENATED_STRING</strong></dt><dd><p>Concatenated elements should have a space in between.
+Example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>printk(KERN_INFO&quot;bar&quot;);
+</pre></div>
+</div>
+<p>should be:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>printk(KERN_INFO &quot;bar&quot;);
+</pre></div>
+</div>
+</dd>
+<dt><strong>LINE_SPACING</strong></dt><dd><p>Vertical space is wasted given the limited number of lines an
+editor window can display when multiple blank lines are used.
+See: <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/coding-style.html#spaces">https://www.kernel.org/doc/html/latest/process/coding-style.html#spaces</a></p>
+</dd>
+<dt><strong>SPACING</strong></dt><dd><p>Whitespace style used in the kernel sources is described in kernel docs.
+See: <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/coding-style.html#spaces">https://www.kernel.org/doc/html/latest/process/coding-style.html#spaces</a></p>
+</dd>
+<dt><strong>TRAILING_WHITESPACE</strong></dt><dd><p>Trailing whitespace should always be removed.
+Some editors highlight the trailing whitespace and cause visual
+distractions when editing files.
+See: <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/coding-style.html#spaces">https://www.kernel.org/doc/html/latest/process/coding-style.html#spaces</a></p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="others">
+<h3>Others<a class="headerlink" href="#others" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt><strong>CAMELCASE</strong></dt><dd><p>Avoid CamelCase Identifiers.
+See: <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/coding-style.html#naming">https://www.kernel.org/doc/html/latest/process/coding-style.html#naming</a></p>
+</dd>
+<dt><strong>CONFIG_DESCRIPTION</strong></dt><dd><p>Kconfig symbols should have a help text which fully describes
+it.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
 </div>
 </div>
 

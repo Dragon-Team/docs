@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.12.8-dragon
+                5.12.9-dragon
               </div>
             
           
@@ -6940,18 +6940,26 @@
 </li>
       <li><a href="core-api/mm-api.html#c.end_page_writeback">end_page_writeback (C function)</a>
 </li>
+      <li><a href="filesystems/api-summary.html#c.ep_events_available">ep_events_available (C function)</a>
+</li>
+      <li><a href="filesystems/api-summary.html#c.ep_loop_check">ep_loop_check (C function)</a>
+</li>
+      <li><a href="filesystems/api-summary.html#c.ep_loop_check_proc">ep_loop_check_proc (C function)</a>
+</li>
+      <li><a href="filesystems/api-summary.html#c.ep_poll">ep_poll (C function)</a>
+</li>
       <li><a href="core-api/errseq.html#c.errseq_check">errseq_check (C function)</a>
 </li>
       <li><a href="core-api/errseq.html#c.errseq_check_and_advance">errseq_check_and_advance (C function)</a>
 </li>
       <li><a href="core-api/errseq.html#c.errseq_sample">errseq_sample (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core-api/errseq.html#c.errseq_set">errseq_set (C function)</a>
 </li>
       <li><a href="driver-api/s390-drivers.html#c.erw">erw (C struct)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="driver-api/s390-drivers.html#c.erw_eadm">erw_eadm (C struct)</a>
 </li>
       <li><a href="driver-api/s390-drivers.html#c.esw0">esw0 (C struct)</a>
@@ -9386,6 +9394,8 @@
 </li>
       <li><a href="gpu/i915.html#c.intel_bios_is_dsi_present">intel_bios_is_dsi_present (C function)</a>
 </li>
+      <li><a href="gpu/i915.html#c.intel_bios_is_lane_reversal_needed">intel_bios_is_lane_reversal_needed (C function)</a>
+</li>
       <li><a href="gpu/i915.html#c.intel_bios_is_lspcon_present">intel_bios_is_lspcon_present (C function)</a>
 </li>
       <li><a href="gpu/i915.html#c.intel_bios_is_lvds_present">intel_bios_is_lvds_present (C function)</a>
@@ -9999,8 +10009,6 @@
       <li><a href="core-api/genericirq.html#c.irq_get_next_irq">irq_get_next_irq (C function)</a>
 </li>
       <li><a href="core-api/genericirq.html#c.irq_has_action">irq_has_action (C function)</a>
-</li>
-      <li><a href="gpu/amdgpu-dc.html#c.irq_list_head">irq_list_head (C struct)</a>
 </li>
       <li><a href="core-api/genericirq.html#c.irq_percpu_is_enabled">irq_percpu_is_enabled (C function)</a>
 </li>
@@ -13246,10 +13254,10 @@
 </li>
       <li><a href="networking/kapi.html#c.phy_ethtool_get_strings">phy_ethtool_get_strings (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="networking/kapi.html#c.phy_ethtool_get_wol">phy_ethtool_get_wol (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="networking/kapi.html#c.phy_ethtool_nway_reset">phy_ethtool_nway_reset (C function)</a>
 </li>
       <li><a href="networking/kapi.html#c.phy_ethtool_set_eee">phy_ethtool_set_eee (C function)</a>
@@ -13705,6 +13713,8 @@
       <li><a href="networking/kapi.html#c.pskb_trim_rcsum">pskb_trim_rcsum (C function)</a>
 </li>
       <li><a href="networking/kapi.html#c.pskb_trim_unique">pskb_trim_unique (C function)</a>
+</li>
+      <li><a href="gpu/i915.html#c.psr_wait_for_idle">psr_wait_for_idle (C function)</a>
 </li>
       <li><a href="admin-guide/pstore-blk.html#c.pstore_blk_config">pstore_blk_config (C struct)</a>
 </li>
@@ -14386,10 +14396,10 @@
 </li>
       <li><a href="core-api/genericirq.html#c.request_nmi">request_nmi (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core-api/genericirq.html#c.request_percpu_nmi">request_percpu_nmi (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core-api/kernel-api.html#c.request_resource">request_resource (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.request_resource_conflict">request_resource_conflict (C function)</a>
@@ -14445,6 +14455,8 @@
       <li><a href="core-api/kernel-api.html#c.resource_alignment">resource_alignment (C function)</a>
 </li>
       <li><a href="core-api/workqueue.html#c.restore_unbound_workers_cpumask">restore_unbound_workers_cpumask (C function)</a>
+</li>
+      <li><a href="filesystems/api-summary.html#c.reverse_path_check">reverse_path_check (C function)</a>
 </li>
       <li><a href="admin-guide/rapidio.html#c.rio_add_device">rio_add_device (C function)</a>
 </li>
@@ -17630,15 +17642,21 @@
 </li>
       <li><a href="driver-api/target.html#c.target_get_sess_cmd">target_get_sess_cmd (C function)</a>
 </li>
+      <li><a href="driver-api/target.html#c.target_init_cmd">target_init_cmd (C function)</a>
+</li>
       <li><a href="driver-api/target.html#c.target_put_sess_cmd">target_put_sess_cmd (C function)</a>
+</li>
+      <li><a href="driver-api/target.html#c.target_queue_submission">target_queue_submission (C function)</a>
 </li>
       <li><a href="driver-api/target.html#c.target_send_busy">target_send_busy (C function)</a>
 </li>
       <li><a href="driver-api/target.html#c.target_stop_session">target_stop_session (C function)</a>
 </li>
+      <li><a href="driver-api/target.html#c.target_submit">target_submit (C function)</a>
+</li>
       <li><a href="driver-api/target.html#c.target_submit_cmd">target_submit_cmd (C function)</a>
 </li>
-      <li><a href="driver-api/target.html#c.target_submit_cmd_map_sgls">target_submit_cmd_map_sgls (C function)</a>
+      <li><a href="driver-api/target.html#c.target_submit_prep">target_submit_prep (C function)</a>
 </li>
       <li><a href="driver-api/target.html#c.target_submit_tmr">target_submit_tmr (C function)</a>
 </li>
@@ -17922,10 +17940,10 @@
 </li>
       <li><a href="networking/tipc.html#c.tipc_send_group_anycast">tipc_send_group_anycast (C function)</a>
 </li>
-      <li><a href="networking/tipc.html#c.tipc_send_group_bcast">tipc_send_group_bcast (C function)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="networking/tipc.html#c.tipc_send_group_bcast">tipc_send_group_bcast (C function)</a>
+</li>
       <li><a href="networking/tipc.html#c.tipc_send_group_mcast">tipc_send_group_mcast (C function)</a>
 </li>
       <li><a href="networking/tipc.html#c.tipc_send_group_msg">tipc_send_group_msg (C function)</a>

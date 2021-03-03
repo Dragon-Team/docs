@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.8-dragon
+                5.12.9-dragon
               </div>
             
           
@@ -148,6 +148,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#the-linux-vfs">The Linux VFS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#the-proc-filesystem">The proc filesystem</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#events-based-on-file-descriptors">Events based on file descriptors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#eventpoll-epoll-interfaces">eventpoll (epoll) interfaces</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#the-filesystem-for-exporting-kernel-objects">The Filesystem for Exporting Kernel Objects</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#the-debugfs-filesystem">The debugfs filesystem</a></li>
 </ul>
@@ -5470,6 +5471,102 @@ pointer:</p>
 <dd><p>: The <strong>fd</strong> file descriptor is not an eventfd file.</p>
 </dd>
 </dl>
+</div>
+<div class="section" id="eventpoll-epoll-interfaces">
+<h2>eventpoll (epoll) interfaces<a class="headerlink" href="#eventpoll-epoll-interfaces" title="Permalink to this headline">¶</a></h2>
+<dl class="c function">
+<dt id="c.ep_events_available">
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">ep_events_available</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">eventpoll</span> <span class="pre">*</span><em><span class="pre">ep</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.ep_events_available" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Checks if ready events might be available.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">eventpoll</span> <span class="pre">*ep</span></code></dt><dd><p>Pointer to the eventpoll context.</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<dl class="simple">
+<dt>a value different than <code class="docutils literal notranslate"><span class="pre">zero</span></code> if ready events are available,</dt><dd><p>or <code class="docutils literal notranslate"><span class="pre">zero</span></code> otherwise.</p>
+</dd>
+</dl>
+<dl class="c function">
+<dt id="c.reverse_path_check">
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">reverse_path_check</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#c.reverse_path_check" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The tfile_check_list is list of epitem_head, which have links that are proposed to be newly added. We need to make sure that those added links don’t add too many paths such that we will spend all our time waking up eventpoll objects.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">void</span></code></dt><dd><p>no arguments</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">zero</span></code> if the proposed links don’t create too many paths,</dt><dd><p><code class="docutils literal notranslate"><span class="pre">-1</span></code> otherwise.</p>
+</dd>
+</dl>
+<dl class="c function">
+<dt id="c.ep_poll">
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">ep_poll</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">eventpoll</span> <span class="pre">*</span><em><span class="pre">ep</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">epoll_event</span> <span class="pre">__user</span> <span class="pre">*</span><em><span class="pre">events</span></em>, <span class="pre">int</span> <em><span class="pre">maxevents</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">timespec64</span> <span class="pre">*</span><em><span class="pre">timeout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.ep_poll" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Retrieves ready events, and delivers them to the caller-supplied event buffer.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">eventpoll</span> <span class="pre">*ep</span></code></dt><dd><p>Pointer to the eventpoll context.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">epoll_event</span> <span class="pre">__user</span> <span class="pre">*events</span></code></dt><dd><p>Pointer to the userspace buffer where the ready events should be
+stored.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">maxevents</span></code></dt><dd><p>Size (in terms of number of events) of the caller event buffer.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">timespec64</span> <span class="pre">*timeout</span></code></dt><dd><p>Maximum timeout for the ready events fetch operation, in
+timespec. If the timeout is zero, the function will not block,
+while if the <strong>timeout</strong> ptr is NULL, the function will block
+until at least one event has been retrieved (or an error
+occurred).</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<dl class="simple">
+<dt>the number of ready events which have been fetched, or an</dt><dd><p>error code, in case of error.</p>
+</dd>
+</dl>
+<dl class="c function">
+<dt id="c.ep_loop_check_proc">
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">ep_loop_check_proc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">eventpoll</span> <span class="pre">*</span><em><span class="pre">ep</span></em>, <span class="pre">int</span> <em><span class="pre">depth</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.ep_loop_check_proc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>verify that adding an epoll file inside another epoll structure does not violate the constraints, in terms of closed loops, or too deep chains (which can result in excessive stack usage).</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">eventpoll</span> <span class="pre">*ep</span></code></dt><dd><p>the <code class="xref c c-type docutils literal notranslate"><span class="pre">struct</span> <span class="pre">eventpoll</span></code> to be currently checked.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">depth</span></code></dt><dd><p>Current depth of the path being checked.</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">zero</span></code> if adding the epoll <strong>file</strong> inside current epoll</dt><dd><p>structure <strong>ep</strong> does not violate the constraints, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> otherwise.</p>
+</dd>
+</dl>
+<dl class="c function">
+<dt id="c.ep_loop_check">
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">ep_loop_check</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">eventpoll</span> <span class="pre">*</span><em><span class="pre">ep</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">eventpoll</span> <span class="pre">*</span><em><span class="pre">to</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.ep_loop_check" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Performs a check to verify that adding an epoll file (<strong>to</strong>) into another epoll file (represented by <strong>ep</strong>) does not create closed loops or too deep chains.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">eventpoll</span> <span class="pre">*ep</span></code></dt><dd><p>Pointer to the epoll we are inserting into.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">eventpoll</span> <span class="pre">*to</span></code></dt><dd><p>Pointer to the epoll to be inserted.</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">zero</span></code> if adding the epoll <strong>to</strong> inside the epoll <strong>from</strong>
+does not violate the constraints, or <code class="docutils literal notranslate"><span class="pre">-1</span></code> otherwise.</p>
 </div>
 <div class="section" id="the-filesystem-for-exporting-kernel-objects">
 <h2>The Filesystem for Exporting Kernel Objects<a class="headerlink" href="#the-filesystem-for-exporting-kernel-objects" title="Permalink to this headline">¶</a></h2>

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.8-dragon
+                5.12.9-dragon
               </div>
             
           
@@ -719,8 +719,10 @@ request_queue.tag_set_list.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct blk_mq_ops {
   blk_status_t (*queue_rq)(struct blk_mq_hw_ctx *, const struct blk_mq_queue_data *);
   void (*commit_rqs)(struct blk_mq_hw_ctx *);
-  bool (*get_budget)(struct request_queue *);
-  void (*put_budget)(struct request_queue *);
+  int (*get_budget)(struct request_queue *);
+  void (*put_budget)(struct request_queue *, int);
+  void (*set_rq_budget_token)(struct request *, int);
+  int (*get_rq_budget_token)(struct request *);
   enum blk_eh_timer_return (*timeout)(struct request *, bool);
   int (*poll)(struct blk_mq_hw_ctx *);
   void (*complete)(struct request *);
