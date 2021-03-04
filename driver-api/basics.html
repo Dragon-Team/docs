@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.9-dragon
+                5.12.10-dragon
               </div>
             
           
@@ -5267,13 +5267,13 @@ set. Returns zero on success and <code class="docutils literal notranslate"><spa
 <code class="docutils literal notranslate"><span class="pre">-EINVAL</span></code> otherwise.</p>
 <dl class="c function">
 <dt id="c.kmsg_dump_get_line">
-<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">kmsg_dump_get_line</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">kmsg_dumper</span> <span class="pre">*</span><em><span class="pre">dumper</span></em>, <span class="pre">bool</span> <em><span class="pre">syslog</span></em>, <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">line</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">size_t</span> <span class="pre">*</span><em><span class="pre">len</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmsg_dump_get_line" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">kmsg_dump_get_line</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">kmsg_dump_iter</span> <span class="pre">*</span><em><span class="pre">iter</span></em>, <span class="pre">bool</span> <em><span class="pre">syslog</span></em>, <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">line</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">size_t</span> <span class="pre">*</span><em><span class="pre">len</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmsg_dump_get_line" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>retrieve one kmsg log line</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">kmsg_dumper</span> <span class="pre">*dumper</span></code></dt><dd><p>registered kmsg dumper</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">kmsg_dump_iter</span> <span class="pre">*iter</span></code></dt><dd><p>kmsg dump iterator</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">syslog</span></code></dt><dd><p>include the “&lt;4&gt;” prefixes</p>
 </dd>
@@ -5293,13 +5293,13 @@ towards the end of the buffer with the youngest messages.</p>
 read.</p>
 <dl class="c function">
 <dt id="c.kmsg_dump_get_buffer">
-<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">kmsg_dump_get_buffer</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">kmsg_dumper</span> <span class="pre">*</span><em><span class="pre">dumper</span></em>, <span class="pre">bool</span> <em><span class="pre">syslog</span></em>, <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">buf</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">size_t</span> <span class="pre">*</span><em><span class="pre">len</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmsg_dump_get_buffer" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">kmsg_dump_get_buffer</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">kmsg_dump_iter</span> <span class="pre">*</span><em><span class="pre">iter</span></em>, <span class="pre">bool</span> <em><span class="pre">syslog</span></em>, <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">buf</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">size_t</span> <span class="pre">*</span><em><span class="pre">len_out</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmsg_dump_get_buffer" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>copy kmsg log lines</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">kmsg_dumper</span> <span class="pre">*dumper</span></code></dt><dd><p>registered kmsg dumper</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">kmsg_dump_iter</span> <span class="pre">*iter</span></code></dt><dd><p>kmsg dump iterator</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">syslog</span></code></dt><dd><p>include the “&lt;4&gt;” prefixes</p>
 </dd>
@@ -5307,7 +5307,7 @@ read.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">size</span></code></dt><dd><p>maximum size of the buffer</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">*len</span></code></dt><dd><p>length of line placed into buffer</p>
+<dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">*len_out</span></code></dt><dd><p>length of line placed into buffer</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
@@ -5321,13 +5321,13 @@ available older records, not including the earlier retrieved ones.</p>
 read.</p>
 <dl class="c function">
 <dt id="c.kmsg_dump_rewind">
-<span class="pre">void</span> <code class="sig-name descname"><span class="pre">kmsg_dump_rewind</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">kmsg_dumper</span> <span class="pre">*</span><em><span class="pre">dumper</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmsg_dump_rewind" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">kmsg_dump_rewind</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">kmsg_dump_iter</span> <span class="pre">*</span><em><span class="pre">iter</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmsg_dump_rewind" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>reset the iterator</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">kmsg_dumper</span> <span class="pre">*dumper</span></code></dt><dd><p>registered kmsg dumper</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">kmsg_dump_iter</span> <span class="pre">*iter</span></code></dt><dd><p>kmsg dump iterator</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>

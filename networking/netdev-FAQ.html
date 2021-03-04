@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.9-dragon
+                5.12.10-dragon
               </div>
             
           
@@ -137,10 +137,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#i-submitted-multiple-versions-of-the-patch-series-should-i-directly-update-patchwork-for-the-previous-versions-of-these-patch-series">I submitted multiple versions of the patch series. Should I directly update patchwork for the previous versions of these patch series?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#i-made-changes-to-only-a-few-patches-in-a-patch-series-should-i-resend-only-those-changed">I made changes to only a few patches in a patch series should I resend only those changed?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#i-submitted-multiple-versions-of-a-patch-series-and-it-looks-like-a-version-other-than-the-last-one-has-been-accepted-what-should-i-do">I submitted multiple versions of a patch series and it looks like a version other than the last one has been accepted, what should I do?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#how-can-i-tell-what-patches-are-queued-up-for-backporting-to-the-various-stable-releases">How can I tell what patches are queued up for backporting to the various stable releases?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#i-see-a-network-patch-and-i-think-it-should-be-backported-to-stable-should-i-request-it-via-stable-vger-kernel-org-like-the-references-in-the-kernel-s-documentation-process-stable-kernel-rules-rst-file-say">I see a network patch and I think it should be backported to stable. Should I request it via stable&#64;vger.kernel.org like the references in the kernel’s Documentation/process/stable-kernel-rules.rst file say?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#i-have-created-a-network-patch-and-i-think-it-should-be-backported-to-stable-should-i-add-a-cc-stable-vger-kernel-org-like-the-references-in-the-kernel-s-documentation-directory-say">I have created a network patch and I think it should be backported to stable. Should I add a Cc: stable&#64;vger.kernel.org like the references in the kernel’s Documentation/ directory say?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#are-all-networking-bug-fixes-backported-to-all-stable-releases">Are all networking bug fixes backported to all stable releases?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#are-there-special-rules-regarding-stable-submissions-on-netdev">Are there special rules regarding stable submissions on netdev?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#is-the-comment-style-convention-different-for-the-networking-content">Is the comment style convention different for the networking content?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#i-am-working-in-existing-code-that-has-the-former-comment-style-and-not-the-latter-should-i-submit-new-code-in-the-former-style-or-the-latter">I am working in existing code that has the former comment style and not the latter. Should I submit new code in the former style or the latter?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#i-found-a-bug-that-might-have-possible-security-implications-or-similar-should-i-mail-the-main-netdev-maintainer-off-list">I found a bug that might have possible security implications or similar. Should I mail the main netdev maintainer off-list?</a></li>
@@ -525,69 +522,13 @@ Please send incremental versions on top of what has been merged in order to fix
 the patches the way they would look like if your latest patch series was to be
 merged.</p>
 </div>
-<div class="section" id="how-can-i-tell-what-patches-are-queued-up-for-backporting-to-the-various-stable-releases">
-<h2>How can I tell what patches are queued up for backporting to the various stable releases?<a class="headerlink" href="#how-can-i-tell-what-patches-are-queued-up-for-backporting-to-the-various-stable-releases" title="Permalink to this headline">¶</a></h2>
-<p>Normally Greg Kroah-Hartman collects stable commits himself, but for
-networking, Dave collects up patches he deems critical for the
-networking subsystem, and then hands them off to Greg.</p>
-<p>There is a patchworks queue that you can see here:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://patchwork.kernel.org/bundle/netdev/stable/?state=*">https://patchwork.kernel.org/bundle/netdev/stable/?state=*</a></p>
-</div></blockquote>
-<p>It contains the patches which Dave has selected, but not yet handed off
-to Greg.  If Greg already has the patch, then it will be here:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git">https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git</a></p>
-</div></blockquote>
-<p>A quick way to find whether the patch is in this stable-queue is to
-simply clone the repo, and then git grep the mainline commit ID, e.g.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>stable-queue$ git grep -l 284041ef21fdf2e
-releases/3.0.84/ipv6-fix-possible-crashes-in-ip6_cork_release.patch
-releases/3.4.51/ipv6-fix-possible-crashes-in-ip6_cork_release.patch
-releases/3.9.8/ipv6-fix-possible-crashes-in-ip6_cork_release.patch
-stable/stable-queue$
-</pre></div>
-</div>
-</div>
-<div class="section" id="i-see-a-network-patch-and-i-think-it-should-be-backported-to-stable-should-i-request-it-via-stable-vger-kernel-org-like-the-references-in-the-kernel-s-documentation-process-stable-kernel-rules-rst-file-say">
-<h2>I see a network patch and I think it should be backported to stable. Should I request it via <a class="reference external" href="mailto:stable&#37;&#52;&#48;vger&#46;kernel&#46;org">stable<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a> like the references in the kernel’s Documentation/process/stable-kernel-rules.rst file say?<a class="headerlink" href="#i-see-a-network-patch-and-i-think-it-should-be-backported-to-stable-should-i-request-it-via-stable-vger-kernel-org-like-the-references-in-the-kernel-s-documentation-process-stable-kernel-rules-rst-file-say" title="Permalink to this headline">¶</a></h2>
-<p>No, not for networking.  Check the stable queues as per above first
-to see if it is already queued.  If not, then send a mail to netdev,
-listing the upstream commit ID and why you think it should be a stable
-candidate.</p>
-<p>Before you jump to go do the above, do note that the normal stable rules
-in <a class="reference internal" href="../process/stable-kernel-rules.html#stable-kernel-rules"><span class="std std-ref"><a class="reference internal" href="../process/stable-kernel-rules.html"><span class="doc">Everything you ever wanted to know about Linux -stable releases</span></a></span></a>
-still apply.  So you need to explicitly indicate why it is a critical
-fix and exactly what users are impacted.  In addition, you need to
-convince yourself that you <em>really</em> think it has been overlooked,
-vs. having been considered and rejected.</p>
-<p>Generally speaking, the longer it has had a chance to “soak” in
-mainline, the better the odds that it is an OK candidate for stable.  So
-scrambling to request a commit be added the day after it appears should
-be avoided.</p>
-</div>
-<div class="section" id="i-have-created-a-network-patch-and-i-think-it-should-be-backported-to-stable-should-i-add-a-cc-stable-vger-kernel-org-like-the-references-in-the-kernel-s-documentation-directory-say">
-<h2>I have created a network patch and I think it should be backported to stable. Should I add a Cc: <a class="reference external" href="mailto:stable&#37;&#52;&#48;vger&#46;kernel&#46;org">stable<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a> like the references in the kernel’s Documentation/ directory say?<a class="headerlink" href="#i-have-created-a-network-patch-and-i-think-it-should-be-backported-to-stable-should-i-add-a-cc-stable-vger-kernel-org-like-the-references-in-the-kernel-s-documentation-directory-say" title="Permalink to this headline">¶</a></h2>
-<p>No.  See above answer.  In short, if you think it really belongs in
-stable, then ensure you write a decent commit log that describes who
-gets impacted by the bug fix and how it manifests itself, and when the
-bug was introduced.  If you do that properly, then the commit will get
-handled appropriately and most likely get put in the patchworks stable
-queue if it really warrants it.</p>
-<p>If you think there is some valid information relating to it being in
-stable that does <em>not</em> belong in the commit log, then use the three dash
-marker line as described in
-<a class="reference internal" href="../process/submitting-patches.html#the-canonical-patch-format"><span class="std std-ref"><a class="reference internal" href="../process/submitting-patches.html"><span class="doc">Submitting patches: the essential guide to getting your code into the kernel</span></a></span></a>
-to temporarily embed that information into the patch that you send.</p>
-</div>
-<div class="section" id="are-all-networking-bug-fixes-backported-to-all-stable-releases">
-<h2>Are all networking bug fixes backported to all stable releases?<a class="headerlink" href="#are-all-networking-bug-fixes-backported-to-all-stable-releases" title="Permalink to this headline">¶</a></h2>
-<p>Due to capacity, Dave could only take care of the backports for the
-last two stable releases. For earlier stable releases, each stable
-branch maintainer is supposed to take care of them. If you find any
-patch is missing from an earlier stable branch, please notify
-<a class="reference external" href="mailto:stable&#37;&#52;&#48;vger&#46;kernel&#46;org">stable<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a> with either a commit ID or a formal patch
-backported, and CC Dave and other relevant networking developers.</p>
+<div class="section" id="are-there-special-rules-regarding-stable-submissions-on-netdev">
+<h2>Are there special rules regarding stable submissions on netdev?<a class="headerlink" href="#are-there-special-rules-regarding-stable-submissions-on-netdev" title="Permalink to this headline">¶</a></h2>
+<p>While it used to be the case that netdev submissions were not supposed
+to carry explicit <code class="docutils literal notranslate"><span class="pre">CC:</span> <span class="pre">stable&#64;vger.kernel.org</span></code> tags that is no longer
+the case today. Please follow the standard stable rules in
+<a class="reference internal" href="../process/stable-kernel-rules.html#stable-kernel-rules"><span class="std std-ref"><a class="reference internal" href="../process/stable-kernel-rules.html"><span class="doc">Everything you ever wanted to know about Linux -stable releases</span></a></span></a>,
+and make sure you include appropriate Fixes tags!</p>
 </div>
 <div class="section" id="is-the-comment-style-convention-different-for-the-networking-content">
 <h2>Is the comment style convention different for the networking content?<a class="headerlink" href="#is-the-comment-style-convention-different-for-the-networking-content" title="Permalink to this headline">¶</a></h2>

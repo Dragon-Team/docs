@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.12.9-dragon
+                5.12.10-dragon
               </div>
             
           
@@ -428,7 +428,7 @@
 </li>
       <li><a href="core-api/mm-api.html#c.__free_pages">__free_pages (C function)</a>
 </li>
-      <li><a href="locking/futex2.html#c.__futex_wait">__futex_wait (C function)</a>
+      <li><a href="locking/futex2.html#c.__futex_waitv">__futex_waitv (C function)</a>
 </li>
       <li><a href="filesystems/api-summary.html#c.__generic_file_fsync">__generic_file_fsync (C function)</a>
 </li>
@@ -784,7 +784,7 @@
 </li>
       <li><a href="core-api/kernel-api.html#c.acct_process">acct_process (C function)</a>
 </li>
-      <li><a href="driver-api/gpio/index.html#c.acpi_dev_gpio_irq_get">acpi_dev_gpio_irq_get (C function)</a>
+      <li><a href="driver-api/gpio/index.html#c.acpi_dev_gpio_irq_get_by">acpi_dev_gpio_irq_get_by (C function)</a>
 </li>
       <li><a href="driver-api/gpio/index.html#c.acpi_gpiochip_free_interrupts">acpi_gpiochip_free_interrupts (C function)</a>
 </li>
@@ -7324,10 +7324,10 @@
 </li>
       <li><a href="gpu/drm-kms.html#c.for_each_old_crtc_in_state">for_each_old_crtc_in_state (C macro)</a>
 </li>
-      <li><a href="gpu/drm-kms-helpers.html#c.for_each_old_mst_mgr_in_state">for_each_old_mst_mgr_in_state (C macro)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="gpu/drm-kms-helpers.html#c.for_each_old_mst_mgr_in_state">for_each_old_mst_mgr_in_state (C macro)</a>
+</li>
       <li><a href="gpu/drm-kms.html#c.for_each_old_plane_in_state">for_each_old_plane_in_state (C macro)</a>
 </li>
       <li><a href="gpu/drm-kms.html#c.for_each_old_private_obj_in_state">for_each_old_private_obj_in_state (C macro)</a>
@@ -7486,8 +7486,6 @@
 </li>
       <li><a href="kernel-hacking/locking.html#c.futex_setup_timer">futex_setup_timer (C function)</a>
 </li>
-      <li><a href="locking/futex2.html#c.futex_single_waiter">futex_single_waiter (C struct)</a>
-</li>
       <li><a href="kernel-hacking/locking.html#c.futex_top_waiter">futex_top_waiter (C function)</a>
 </li>
       <li><a href="kernel-hacking/locking.html#c.futex_wait_queue_me">futex_wait_queue_me (C function)</a>
@@ -7498,9 +7496,9 @@
 </li>
       <li><a href="locking/futex2.html#c.futex_waiter">futex_waiter (C struct)</a>
 </li>
-      <li><a href="locking/futex2.html#c.futex_waitv">futex_waitv (C struct)</a>
+      <li><a href="locking/futex2.html#c.futex_waiter_head">futex_waiter_head (C struct)</a>
 </li>
-      <li><a href="locking/futex2.html#c.futexv_head">futexv_head (C struct)</a>
+      <li><a href="locking/futex2.html#c.futex_waitv">futex_waitv (C struct)</a>
 </li>
       <li><a href="driver-api/firewire.html#c.fw_cdev_add_descriptor">fw_cdev_add_descriptor (C struct)</a>
 </li>
@@ -9394,8 +9392,6 @@
 </li>
       <li><a href="gpu/i915.html#c.intel_bios_is_dsi_present">intel_bios_is_dsi_present (C function)</a>
 </li>
-      <li><a href="gpu/i915.html#c.intel_bios_is_lane_reversal_needed">intel_bios_is_lane_reversal_needed (C function)</a>
-</li>
       <li><a href="gpu/i915.html#c.intel_bios_is_lspcon_present">intel_bios_is_lspcon_present (C function)</a>
 </li>
       <li><a href="gpu/i915.html#c.intel_bios_is_lvds_present">intel_bios_is_lvds_present (C function)</a>
@@ -10636,6 +10632,10 @@
 </li>
       <li><a href="core-api/mm-api.html#c.kmem_cache_shrink">kmem_cache_shrink (C function)</a>
 </li>
+      <li><a href="core-api/mm-api.html#c.kmem_dump_obj">kmem_dump_obj (C function)</a>
+</li>
+      <li><a href="core-api/mm-api.html#c.kmem_valid_obj">kmem_valid_obj (C function)</a>
+</li>
       <li><a href="core-api/kernel-api.html#c.kmemdup">kmemdup (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.kmemdup_nul">kmemdup_nul (C function)</a>
@@ -10742,10 +10742,10 @@
 </li>
       <li><a href="core-api/genericirq.html#c.kstat_irqs_usr">kstat_irqs_usr (C function)</a>
 </li>
-      <li><a href="core-api/kernel-api.html#c.kstrdup">kstrdup (C function)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="core-api/kernel-api.html#c.kstrdup">kstrdup (C function)</a>
+</li>
       <li><a href="core-api/kernel-api.html#c.kstrdup_const">kstrdup_const (C function)</a>
 </li>
       <li><a href="core-api/kernel-api.html#c.kstrndup">kstrndup (C function)</a>
@@ -13616,6 +13616,8 @@
 </li>
       <li><a href="driver-api/infrastructure.html#c.pnp_unregister_protocol">pnp_unregister_protocol (C function)</a>
 </li>
+      <li><a href="core-api/kernel-api.html#c.poll_state_synchronize_rcu">poll_state_synchronize_rcu (C function)</a>
+</li>
       <li><a href="core-api/kernel-api.html#c.poll_state_synchronize_srcu">poll_state_synchronize_srcu (C function)</a>
 </li>
       <li><a href="filesystems/api-summary.html#c.positive_aop_returns">positive_aop_returns (C enum)</a>
@@ -13713,8 +13715,6 @@
       <li><a href="networking/kapi.html#c.pskb_trim_rcsum">pskb_trim_rcsum (C function)</a>
 </li>
       <li><a href="networking/kapi.html#c.pskb_trim_unique">pskb_trim_unique (C function)</a>
-</li>
-      <li><a href="gpu/i915.html#c.psr_wait_for_idle">psr_wait_for_idle (C function)</a>
 </li>
       <li><a href="admin-guide/pstore-blk.html#c.pstore_blk_config">pstore_blk_config (C struct)</a>
 </li>

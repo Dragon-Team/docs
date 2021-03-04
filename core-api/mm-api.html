@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.9-dragon
+                5.12.10-dragon
               </div>
             
           
@@ -974,6 +974,42 @@ as davem.</p>
 To help debugging, a zero exit status indicates all slabs were released.</p>
 <p><strong>Return</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">0</span></code> if all slabs were released, non-zero otherwise</p>
+<dl class="c function">
+<dt id="c.kmem_valid_obj">
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">kmem_valid_obj</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmem_valid_obj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>does the pointer reference a valid slab object?</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*object</span></code></dt><dd><p>pointer to query.</p>
+</dd>
+</dl>
+<p><strong>Return</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the pointer is to a not-yet-freed object from
+<a class="reference internal" href="#c.kmalloc" title="kmalloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">kmalloc()</span></code></a> or <a class="reference internal" href="#c.kmem_cache_alloc" title="kmem_cache_alloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">kmem_cache_alloc()</span></code></a>, either <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code> if the pointer
+is to an already-freed object, and <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
+<dl class="c function">
+<dt id="c.kmem_dump_obj">
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">kmem_dump_obj</span></code><span class="sig-paren">(</span><span class="pre">void</span> <span class="pre">*</span><em><span class="pre">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.kmem_dump_obj" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Print available slab provenance information</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*object</span></code></dt><dd><p>slab object for which to find provenance information.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>This function uses <a class="reference internal" href="printk-basics.html#c.pr_cont" title="pr_cont"><code class="xref c c-func docutils literal notranslate"><span class="pre">pr_cont()</span></code></a>, so that the caller is expected to have
+printed out whatever preamble is appropriate.  The provenance information
+depends on the type of object and on how much debugging is enabled.
+For a slab-cache object, the fact that it is a slab object is printed,
+and, if available, the slab name, return address, and stack trace from
+the allocation of that object.</p>
+<p>This function will splat if passed a pointer to a non-slab object.
+If you are not sure what type of object you have, you should instead
+use mem_dump_obj().</p>
 <dl class="c function">
 <dt id="c.krealloc">
 <span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">krealloc</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">p</span></em>, <span class="pre">size_t</span> <em><span class="pre">new_size</span></em>, <a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.krealloc" title="Permalink to this definition">¶</a><br /></dt>

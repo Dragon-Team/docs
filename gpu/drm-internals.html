@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.9-dragon
+                5.12.10-dragon
               </div>
             
           
@@ -545,6 +545,7 @@ possibily leaving the hardware enabled.</p>
   struct list_head vblank_event_list;
   spinlock_t event_lock;
   struct drm_agp_head *agp;
+  struct pci_dev *pdev;
   unsigned int num_crtcs;
   struct drm_mode_config mode_config;
   struct mutex object_name_lock;
@@ -663,6 +664,8 @@ to use the per-crtc value.</p>
 general. See <a class="reference internal" href="#c.drm_send_event" title="drm_send_event"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_send_event()</span></code></a> and <a class="reference internal" href="#c.drm_send_event_locked" title="drm_send_event_locked"><code class="xref c c-func docutils literal notranslate"><span class="pre">drm_send_event_locked()</span></code></a>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">agp</span></code></dt><dd><p>AGP data</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pdev</span></code></dt><dd><p>PCI device structure</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">num_crtcs</span></code></dt><dd><p>Number of CRTCs on this device</p>
 </dd>

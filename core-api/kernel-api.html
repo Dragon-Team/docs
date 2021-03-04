@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.9-dragon
+                5.12.10-dragon
               </div>
             
           
@@ -3526,7 +3526,11 @@ should be set. The range will divided to groups of specific size.
 From each group will be used only defined amount of bits.
 Syntax: range:used_size/group_size</p>
 <p><strong>Example</strong></p>
-<p>0-1023:2/256 ==&gt; 0,1,256,257,512,513,768,769</p>
+<p>0-1023:2/256 ==&gt; 0,1,256,257,512,513,768,769
+The value ‘N’ can be used as a dynamically substituted token for the
+maximum allowed value; i.e (nmaskbits - 1).  Keep in mind that it is
+dynamic, so if system changes cause the bitmap width to change, such
+as more cores in a CPU list, then any ranges using N will also change.</p>
 <p><strong>Return</strong></p>
 <p>0 on success, -errno on invalid input strings. Error values:</p>
 <blockquote>
@@ -11546,11 +11550,18 @@ ordering guarantees for either the CPU or the compiler.</p>
 <code class="sig-name descname"><span class="pre">kfree_rcu</span></code><a class="headerlink" href="#c.kfree_rcu" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
-<p><code class="docutils literal notranslate"><span class="pre">kfree_rcu</span> <span class="pre">()</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">kfree_rcu</span> <span class="pre">(ptr,</span> <span class="pre">rhf...)</span></code></p>
 <blockquote>
 <div><p>kfree an object after a grace period.</p>
 </div></blockquote>
 <p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">ptr</span></code></dt><dd><p>pointer to kfree for both single- and double-argument invocations.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">rhf...</span></code></dt><dd><p>the name of the struct rcu_head within the type of <strong>ptr</strong>,
+but only for double-argument invocations.</p>
+</dd>
+</dl>
 <p><strong>Description</strong></p>
 <p>Many rcu callbacks functions just call <a class="reference internal" href="mm-api.html#c.kfree" title="kfree"><code class="xref c c-func docutils literal notranslate"><span class="pre">kfree()</span></code></a> on the base structure.
 These functions are trivial, but their size adds up, and furthermore
@@ -12090,8 +12101,30 @@ again only if the system has more than one CPU).</p>
 </dl>
 <p><strong>Description</strong></p>
 <p>Returns a cookie that is used by a later call to <a class="reference internal" href="#c.cond_synchronize_rcu" title="cond_synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">cond_synchronize_rcu()</span></code></a>
-to determine whether or not a full grace period has elapsed in the
-meantime.</p>
+or <a class="reference internal" href="#c.poll_state_synchronize_rcu" title="poll_state_synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">poll_state_synchronize_rcu()</span></code></a> to determine whether or not a full
+grace period has elapsed in the meantime.</p>
+<dl class="c function">
+<dt id="c.poll_state_synchronize_rcu">
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">poll_state_synchronize_rcu</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">oldstate</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.poll_state_synchronize_rcu" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Conditionally wait for an RCU grace period</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">oldstate</span></code></dt><dd><p>return from call to <a class="reference internal" href="#c.get_state_synchronize_rcu" title="get_state_synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">get_state_synchronize_rcu()</span></code></a> or start_poll_synchronize_rcu()</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>If a full RCU grace period has elapsed since the earlier call from
+which oldstate was obtained, return <strong>true</strong>, otherwise return <strong>false</strong>.
+Otherwise, invoke <a class="reference internal" href="#c.synchronize_rcu" title="synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">synchronize_rcu()</span></code></a> to wait for a full grace period.</p>
+<p>Yes, this function does not take counter wrap into account.
+But counter wrap is harmless.  If the counter wraps, we have waited for
+more than 2 billion grace periods (and way more on a 64-bit system!).
+Those needing to keep oldstate values for very long time periods
+(many hours even on 32-bit systems) should check them occasionally
+and either refresh them or set a flag indicating that the grace period
+has completed.</p>
 <dl class="c function">
 <dt id="c.cond_synchronize_rcu">
 <span class="pre">void</span> <code class="sig-name descname"><span class="pre">cond_synchronize_rcu</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">oldstate</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.cond_synchronize_rcu" title="Permalink to this definition">¶</a><br /></dt>
@@ -12105,8 +12138,8 @@ meantime.</p>
 </dl>
 <p><strong>Description</strong></p>
 <p>If a full RCU grace period has elapsed since the earlier call to
-<a class="reference internal" href="#c.get_state_synchronize_rcu" title="get_state_synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">get_state_synchronize_rcu()</span></code></a>, just return.  Otherwise, invoke
-<a class="reference internal" href="#c.synchronize_rcu" title="synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">synchronize_rcu()</span></code></a> to wait for a full grace period.</p>
+<a class="reference internal" href="#c.get_state_synchronize_rcu" title="get_state_synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">get_state_synchronize_rcu()</span></code></a> or start_poll_synchronize_rcu(), just return.
+Otherwise, invoke <a class="reference internal" href="#c.synchronize_rcu" title="synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">synchronize_rcu()</span></code></a> to wait for a full grace period.</p>
 <p>Yes, this function does not take counter wrap into account.  But
 counter wrap is harmless.  If the counter wraps, we have waited for
 more than 2 billion grace periods (and way more on a 64-bit system!),
@@ -13609,7 +13642,7 @@ list-traversal primitive must be guarded by <a class="reference internal" href="
 <p><strong>Description</strong></p>
 <p>The barrier() is needed to make sure compiler doesn’t cache first element [1],
 as this loop can be restarted [2]
-[1] Documentation/core-api/atomic_ops.rst around line 114
+[1] Documentation/memory-barriers.txt around line 1533
 [2] <a class="reference internal" href="../RCU/rculist_nulls.html"><span class="doc">Using RCU hlist_nulls to protect list and objects</span></a> around line 146</p>
 <dl class="c macro">
 <dt id="c.hlist_nulls_for_each_entry_safe">

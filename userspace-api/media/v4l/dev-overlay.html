@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.9-dragon
+                5.12.10-dragon
               </div>
             
           
@@ -321,6 +321,10 @@ overlay. This must be supported by all drivers capable of simultaneous
 capturing and overlay. Optionally these drivers may also permit
 capturing and overlay with a single file descriptor for compatibility
 with V4L and earlier versions of V4L2. <a class="footnote-reference brackets" href="#f1" id="id1">1</a></p>
+<p>A common application of two file descriptors is the X11
+<a class="reference internal" href="hist-v4l2.html#xvideo"><span class="std std-ref">Xv/V4L</span></a> interface driver and a V4L2 application.
+While the X server controls video overlay, the application can take
+advantage of memory mapping and DMA.</p>
 <div class="section" id="querying-capabilities">
 <h2><span class="section-number">4.2.1. </span>Querying Capabilities<a class="headerlink" href="#querying-capabilities" title="Permalink to this headline">¶</a></h2>
 <p>Devices supporting the video overlay interface set the
@@ -547,11 +551,7 @@ Offsets increase to the right and down.</p>
 <a class="reference internal" href="vidioc-overlay.html#vidioc-overlay"><span class="std std-ref">ioctl VIDIOC_OVERLAY</span></a> ioctl.</p>
 <dl class="footnote brackets">
 <dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>A common application of two file descriptors is the XFree86
-<a class="reference internal" href="hist-v4l2.html#xvideo"><span class="std std-ref">Xv/V4L</span></a> interface driver and a V4L2 application.
-While the X server controls video overlay, the application can take
-advantage of memory mapping and DMA.</p>
-<p>In the opinion of the designers of this API, no driver writer taking
+<dd><p>In the opinion of the designers of this API, no driver writer taking
 the efforts to support simultaneous capturing and overlay will
 restrict this ability by requiring a single file descriptor, as in
 V4L and earlier versions of V4L2. Making this optional means

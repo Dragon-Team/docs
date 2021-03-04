@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.9-dragon
+                5.12.10-dragon
               </div>
             
           
@@ -292,10 +292,10 @@
 <dd class="field-odd"><p>André Almeida &lt;<a class="reference external" href="mailto:andrealmeid&#37;&#52;&#48;collabora&#46;com">andrealmeid<span>&#64;</span>collabora<span>&#46;</span>com</a>&gt;</p>
 </dd>
 </dl>
-<p>futex, or fast user mutex, is a set of syscalls to allow the userspace to create
+<p>futex, or fast user mutex, is a set of syscalls to allow userspace to create
 performant synchronization mechanisms, such as mutexes, semaphores and
 conditional variables in userspace. C standard libraries, like glibc, uses it
-as means to implements more high level interfaces like pthreads.</p>
+as a means to implement more high level interfaces like pthreads.</p>
 <div class="section" id="the-interface">
 <h2>The interface<a class="headerlink" href="#the-interface" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="uapi-functions">
@@ -407,7 +407,7 @@ success, error code otherwise.</p>
 
 <p><strong>Definition</strong></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct futex_waitv {
-  void *uaddr;
+  void __user *uaddr;
   unsigned int val;
   unsigned int flags;
 };
@@ -430,7 +430,7 @@ success, error code otherwise.</p>
 
 <p><strong>Definition</strong></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct futex_requeue {
-  void *uaddr;
+  void __user *uaddr;
   unsigned int flags;
 };
 </pre></div>
@@ -451,7 +451,7 @@ default size.</p>
 <p>By default, the timeout uses a monotonic clock, but can be used as a realtime
 one by using the FUTEX_REALTIME_CLOCK flag.</p>
 <p>By default, futexes are of the private type, that means that this user address
-will be accessed by threads that shares the same memory region. This allows for
+will be accessed by threads that share the same memory region. This allows for
 some internal optimizations, so they are faster. However, if the address needs
 to be shared with different processes (like using <code class="docutils literal notranslate"><span class="pre">mmap()</span></code> or <code class="docutils literal notranslate"><span class="pre">shm()</span></code>), they
 need to be defined as shared and the flag FUTEX_SHARED_FLAG is used to set that.</p>
@@ -469,20 +469,20 @@ FUTEX_NUMA_FLAG and using the following structure (where X can be 8, 16, or
 <p>This structure should be passed at the <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*uaddr</span></code> of futex functions. The
 address of the structure will be used to be waited on/waken on, and the
 <code class="docutils literal notranslate"><span class="pre">value</span></code> will be compared to <code class="docutils literal notranslate"><span class="pre">val</span></code> as usual. The <code class="docutils literal notranslate"><span class="pre">hint</span></code> member is used to
-defined which node the futex will use. When waiting, the futex will be
+define which node the futex will use. When waiting, the futex will be
 registered on a kernel-side table stored on that node; when waking, the futex
 will be searched for on that given table. That means that there’s no redundancy
-between tables, and the wrong <code class="docutils literal notranslate"><span class="pre">hint</span></code> value will led to undesired behavior.
+between tables, and the wrong <code class="docutils literal notranslate"><span class="pre">hint</span></code> value will lead to undesired behavior.
 Userspace is responsible for dealing with node migrations issues that may
-occur. <code class="docutils literal notranslate"><span class="pre">hint</span></code> can range from [0, MAX_NUMA_NODES], for specifying a node, or
+occur. <code class="docutils literal notranslate"><span class="pre">hint</span></code> can range from [0, MAX_NUMA_NODES), for specifying a node, or
 -1, to use the same node the current process is using.</p>
 <p>When not using FUTEX_NUMA_FLAG on a NUMA system, the futex will be stored on a
-global table on some node, defined at compilation time.</p>
+global table on allocated on the first node.</p>
 </div>
 <div class="section" id="the-timo-argument">
 <h3>The <code class="docutils literal notranslate"><span class="pre">timo</span></code> argument<a class="headerlink" href="#the-timo-argument" title="Permalink to this headline">¶</a></h3>
 <p>As per the Y2038 work done in the kernel, new interfaces shouldn’t add timeout
-options known to be buggy. Given that, <code class="docutils literal notranslate"><span class="pre">timo</span></code> should be a 64bit timeout at
+options known to be buggy. Given that, <code class="docutils literal notranslate"><span class="pre">timo</span></code> should be a 64-bit timeout at
 all platforms, using an absolute timeout value.</p>
 </div>
 </div>
@@ -496,9 +496,9 @@ this should be somewhat expected.</p>
 <p>For the wait operations, they are all treated as if you want to wait on N
 futexes, so the path for futex_wait and futex_waitv is the basically the same.
 For both syscalls, the first step is to prepare an internal list for the list
-of futexes to wait for (using <a class="reference internal" href="#c.futexv_head" title="futexv_head"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futexv_head</span></code></a>). For futex_wait() calls, this
+of futexes to wait for (using struct futexv_head). For futex_wait() calls, this
 list will have a single object.</p>
-<p>We have a hash table, were waiters register themselves before sleeping.  Then,
+<p>We have a hash table, where waiters register themselves before sleeping. Then
 the wake function checks this table looking for waiters at uaddr.  The hash
 bucket to be used is determined by a <a class="reference internal" href="#c.futex_key" title="futex_key"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_key</span></code></a>, that stores information
 to uniquely identify an address from a given process. Given the huge address
@@ -510,7 +510,7 @@ any futex_wake() calls. If any waiter fails the check above, we dequeue all
 futexes. The check (<code class="docutils literal notranslate"><span class="pre">*uaddr</span> <span class="pre">==</span> <span class="pre">val</span></code>) can fail for two reasons:</p>
 <ul class="simple">
 <li><p>The values are different, and we return -EAGAIN. However, if while
-dequeueing we found that some futex were awakened, we prioritize this
+dequeueing we found that some futexes were awakened, we prioritize this
 and return success.</p></li>
 <li><p>When trying to access the user address, we do so with page faults
 disabled because we are holding a bucket’s spin lock (and can’t sleep
@@ -518,20 +518,20 @@ while holding a spin lock). If there’s an error, it might be a page
 fault, or an invalid address. We release the lock, dequeue everyone
 (because it’s illegal to sleep while there are futexes enqueued, we
 could lose wakeups) and try again with page fault enabled. If we
-succeeded, this means that the address is valid, but we need to do
+succeed, this means that the address is valid, but we need to do
 all the work again. For serialization reasons, we need to have the
 spin lock when getting the user value. Additionally, for shared
 futexes, we also need to recalculate the hash, since the underlying
 mapping mechanisms could have changed when dealing with page fault.
 If, even with page fault enabled, we can’t access the address, it
 means it’s an invalid user address, and we return -EFAULT. For this
-case, we prioritize the error, even if some futex were awaken.</p></li>
+case, we prioritize the error, even if some futexes were awaken.</p></li>
 </ul>
 <p>If the check is OK, they are enqueued on a linked list in our bucket, and
 proceed to the next one. If all waiters succeed, we put the thread to sleep
 until a futex_wake() call, timeout expires or we get a signal. After waking up,
-we dequeue everyone, and check if some futex was awaken. This dequeue is done by
-iteratively walking at each element of struct futex_head list.</p>
+we dequeue everyone, and check if some futex was awakened. This dequeue is done
+by iteratively walking at each element of struct futex_head list.</p>
 <p>All enqueuing/dequeuing operations requires to hold the bucket lock, to avoid
 racing while modifying the list.</p>
 </div>
@@ -539,9 +539,9 @@ racing while modifying the list.</p>
 <h3>Waking<a class="headerlink" href="#waking" title="Permalink to this headline">¶</a></h3>
 <p>We get the bucket that’s storing the waiters at uaddr, and wake the required
 number of waiters, checking for hash collision.</p>
-<p>There’s an optimization that makes futex_wake() not taking the bucket lock if
-there’s no one to be wake on that bucket. It checks an atomic counter that each
-bucket has, if it says 0, than the syscall exits. In order to this work, the
+<p>There’s an optimization that makes futex_wake() not take the bucket lock if
+there’s no one to be woken on that bucket. It checks an atomic counter that each
+bucket has, if it says 0, then the syscall exits. In order for this to work, the
 waiter thread increases it before taking the lock, so the wake thread will
 correctly see that there’s someone waiting and will continue the path to take
 the bucket lock. To get the correct serialization, the waiter issues a memory
@@ -551,40 +551,40 @@ barrier before checking it.</p>
 <div class="section" id="requeuing">
 <h3>Requeuing<a class="headerlink" href="#requeuing" title="Permalink to this headline">¶</a></h3>
 <p>The requeue path first checks for each <a class="reference internal" href="#c.futex_requeue" title="futex_requeue"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_requeue</span></code></a> and their flags.
-Then, it will compare the excepted value with the one at uaddr1::uaddr.
+Then, it will compare the expected value with the one at uaddr1::uaddr.
 Following the same serialization explained at <a class="reference internal" href="#waking">Waking</a>, we increase the atomic
 counter for the bucket of uaddr2 before taking the lock. We need to have both
-buckets locks at same time so we don’t race with others futexes operations. To
+buckets locks at same time so we don’t race with other futex operation. To
 ensure the locks are taken in the same order for all threads (and thus avoiding
 deadlocks), every requeue operation takes the “smaller” bucket first, when
 comparing both addresses.</p>
 <p>If the compare with user value succeeds, we proceed by waking <code class="docutils literal notranslate"><span class="pre">nr_wake</span></code>
 futexes, and then requeuing <code class="docutils literal notranslate"><span class="pre">nr_requeue</span></code> from bucket of uaddr1 to the uaddr2.
 This consists in a simple list deletion/addition and replacing the old futex key
-for the new one.</p>
+with the new one.</p>
 </div>
 <div class="section" id="futex-keys">
 <h3>Futex keys<a class="headerlink" href="#futex-keys" title="Permalink to this headline">¶</a></h3>
 <p>There are two types of futexes: private and shared ones. The private are futexes
-meant to be used by threads that shares the same memory space, are easier to be
-uniquely identified an thus can have some performance optimization. The elements
-for identifying one are: the start address of the page where the address is,
-the address offset within the page and the current-&gt;mm pointer.</p>
-<p>Now, for uniquely identifying shared futex:</p>
+meant to be used by threads that share the same memory space, are easier to be
+uniquely identified and thus can have some performance optimization. The
+elements for identifying one are: the start address of the page where the
+address is, the address offset within the page and the current-&gt;mm pointer.</p>
+<p>Now, for uniquely identifying a shared futex:</p>
 <ul class="simple">
 <li><p>If the page containing the user address is an anonymous page, we can
 just use the same data used for private futexes (the start address of
 the page, the address offset within the page and the current-&gt;mm
-pointer) that will be enough for uniquely identifying such futex. We
+pointer); that will be enough for uniquely identifying such futex. We
 also set one bit at the key to differentiate if a private futex is
-used on the same address (mixing shared and private calls do not
+used on the same address (mixing shared and private calls does not
 work).</p></li>
 <li><p>If the page is file-backed, current-&gt;mm maybe isn’t the same one for
 every user of this futex, so we need to use other data: the
-page-&gt;index, an UUID for the struct inode and the offset within the
+page-&gt;index, a UUID for the struct inode and the offset within the
 page.</p></li>
 </ul>
-<p>Note that members of futex_key doesn’t have any particular meaning after they
+<p>Note that members of futex_key don’t have any particular meaning after they
 are part of the struct - they are just bytes to identify a futex.  Given that,
 we don’t need to use a particular name or type that matches the original data,
 we only need to care about the bitsize of each component and make both private
@@ -624,7 +624,7 @@ and shared fit in the same memory space.</p>
 
 <p><strong>Definition</strong></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct futex_waiter {
-  uintptr_t uaddr;
+  void __user *uaddr;
   struct futex_key key;
   struct list_head list;
   unsigned int val;
@@ -652,13 +652,13 @@ and shared fit in the same memory space.</p>
 </dd>
 </dl>
 <dl class="c struct">
-<dt id="c.futexv_head">
-<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">futexv_head</span></code><a class="headerlink" href="#c.futexv_head" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="c.futex_waiter_head">
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">futex_waiter_head</span></code><a class="headerlink" href="#c.futex_waiter_head" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>List of futexes to be waited</p>
 </dd></dl>
 
 <p><strong>Definition</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct futexv_head {
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct futex_waiter_head {
   struct task_struct *task;
   bool hint;
   struct futex_waiter objects[0];
@@ -695,26 +695,6 @@ and shared fit in the same memory space.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">lock</span></code></dt><dd><p>Bucket lock</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">list</span></code></dt><dd><p>List of waiters on this bucket</p>
-</dd>
-</dl>
-<dl class="c struct">
-<dt id="c.futex_single_waiter">
-<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">futex_single_waiter</span></code><a class="headerlink" href="#c.futex_single_waiter" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Wrapper for a futexv_head of one element</p>
-</dd></dl>
-
-<p><strong>Definition</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct futex_single_waiter {
-  struct futexv_head futexv;
-  struct futex_waiter waiter;
-};
-</pre></div>
-</div>
-<p><strong>Members</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">futexv</span></code></dt><dd><p>Single futexv element</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">waiter</span></code></dt><dd><p>Single waiter element</p>
 </dd>
 </dl>
 <dl class="c function">
@@ -815,13 +795,13 @@ won’t be freed for the life time of the process. For shared futexes, check
 <p>0 on success, error code otherwise</p>
 <dl class="c function">
 <dt id="c.futex_dequeue_multiple">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">futex_dequeue_multiple</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.futexv_head" title="futexv_head"><span class="pre">futexv_head</span></a> <span class="pre">*</span><em><span class="pre">futexv</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">nr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_dequeue_multiple" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">futex_dequeue_multiple</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.futex_waiter_head" title="futex_waiter_head"><span class="pre">futex_waiter_head</span></a> <span class="pre">*</span><em><span class="pre">futexv</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">nr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_dequeue_multiple" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Remove multiple futexes from hash table</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futexv_head</span> <span class="pre">*futexv</span></code></dt><dd><p>list of waiters</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_waiter_head</span> <span class="pre">*futexv</span></code></dt><dd><p>list of waiters</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">nr</span></code></dt><dd><p>number of futexes to be removed</p>
 </dd>
@@ -848,13 +828,13 @@ clue who have been waken.</p>
 </div></blockquote>
 <dl class="c function">
 <dt id="c.futex_enqueue">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">futex_enqueue</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.futexv_head" title="futexv_head"><span class="pre">futexv_head</span></a> <span class="pre">*</span><em><span class="pre">futexv</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">nr_futexes</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">awakened</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_enqueue" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">futex_enqueue</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.futex_waiter_head" title="futex_waiter_head"><span class="pre">futex_waiter_head</span></a> <span class="pre">*</span><em><span class="pre">futexv</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">nr_futexes</span></em>, <span class="pre">int</span> <span class="pre">*</span><em><span class="pre">awakened</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_enqueue" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Check the value and enqueue a futex on a wait list</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futexv_head</span> <span class="pre">*futexv</span></code></dt><dd><p>List of futexes</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_waiter_head</span> <span class="pre">*futexv</span></code></dt><dd><p>List of futexes</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">nr_futexes</span></code></dt><dd><p>Number of futexes in the list</p>
 </dd>
@@ -888,18 +868,20 @@ a futex was awakened, we can priority this and return success.</p>
 <li><p>0&lt; - Something went wrong, nothing is enqueued, return error code</p></li>
 </ul>
 <dl class="c function">
-<dt id="c.__futex_wait">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">__futex_wait</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.futexv_head" title="futexv_head"><span class="pre">futexv_head</span></a> <span class="pre">*</span><em><span class="pre">futexv</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">nr_futexes</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../driver-api/basics.html#c.hrtimer_sleeper" title="hrtimer_sleeper"><span class="pre">hrtimer_sleeper</span></a> <span class="pre">*</span><em><span class="pre">timeout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__futex_wait" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="c.__futex_waitv">
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">__futex_waitv</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.futex_waiter_head" title="futex_waiter_head"><span class="pre">futex_waiter_head</span></a> <span class="pre">*</span><em><span class="pre">futexv</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">nr_futexes</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">__kernel_timespec</span> <span class="pre">__user</span> <span class="pre">*</span><em><span class="pre">timo</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__futex_waitv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Enqueue the list of futexes and wait to be woken</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futexv_head</span> <span class="pre">*futexv</span></code></dt><dd><p>List of futexes to wait</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_waiter_head</span> <span class="pre">*futexv</span></code></dt><dd><p>List of futexes to wait</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">nr_futexes</span></code></dt><dd><p>Length of futexv</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">hrtimer_sleeper</span> <span class="pre">*timeout</span></code></dt><dd><p>Pointer to timeout handler</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">__kernel_timespec</span> <span class="pre">__user</span> <span class="pre">*timo</span></code></dt><dd><p>Timeout</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">flags</span></code></dt><dd><p>Timeout flags</p>
 </dd>
 </dl>
 <p><strong>Return</strong></p>
@@ -909,13 +891,13 @@ a futex was awakened, we can priority this and return success.</p>
 </ul>
 <dl class="c function">
 <dt id="c.compat_futex_parse_waitv">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">compat_futex_parse_waitv</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.futexv_head" title="futexv_head"><span class="pre">futexv_head</span></a> <span class="pre">*</span><em><span class="pre">futexv</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">compat_futex_waitv</span> <span class="pre">__user</span> <span class="pre">*</span><em><span class="pre">uwaitv</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">nr_futexes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.compat_futex_parse_waitv" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">compat_futex_parse_waitv</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.futex_waiter_head" title="futex_waiter_head"><span class="pre">futex_waiter_head</span></a> <span class="pre">*</span><em><span class="pre">futexv</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">compat_futex_waitv</span> <span class="pre">__user</span> <span class="pre">*</span><em><span class="pre">uwaitv</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">nr_futexes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.compat_futex_parse_waitv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Parse a waitv array from userspace</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futexv_head</span> <span class="pre">*futexv</span></code></dt><dd><p>Kernel side list of waiters to be filled</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_waiter_head</span> <span class="pre">*futexv</span></code></dt><dd><p>Kernel side list of waiters to be filled</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">compat_futex_waitv</span> <span class="pre">__user</span> <span class="pre">*uwaitv</span></code></dt><dd><p>Userspace list to be parsed</p>
 </dd>
@@ -926,13 +908,13 @@ a futex was awakened, we can priority this and return success.</p>
 <p>Error code on failure, pointer to a prepared futexv otherwise</p>
 <dl class="c function">
 <dt id="c.futex_parse_waitv">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">futex_parse_waitv</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.futexv_head" title="futexv_head"><span class="pre">futexv_head</span></a> <span class="pre">*</span><em><span class="pre">futexv</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.futex_waitv" title="futex_waitv"><span class="pre">futex_waitv</span></a> <span class="pre">__user</span> <span class="pre">*</span><em><span class="pre">uwaitv</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">nr_futexes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_parse_waitv" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">futex_parse_waitv</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.futex_waiter_head" title="futex_waiter_head"><span class="pre">futex_waiter_head</span></a> <span class="pre">*</span><em><span class="pre">futexv</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.futex_waitv" title="futex_waitv"><span class="pre">futex_waitv</span></a> <span class="pre">__user</span> <span class="pre">*</span><em><span class="pre">uwaitv</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">nr_futexes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_parse_waitv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Parse a waitv array from userspace</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futexv_head</span> <span class="pre">*futexv</span></code></dt><dd><p>Kernel side list of waiters to be filled</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_waiter_head</span> <span class="pre">*futexv</span></code></dt><dd><p>Kernel side list of waiters to be filled</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">futex_waitv</span> <span class="pre">__user</span> <span class="pre">*uwaitv</span></code></dt><dd><p>Userspace list to be parsed</p>
 </dd>
@@ -943,7 +925,7 @@ a futex was awakened, we can priority this and return success.</p>
 <p>Error code on failure, pointer to a prepared futexv otherwise</p>
 <dl class="c function">
 <dt id="c.futex_get_parent">
-<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.futexv_head" title="futexv_head"><span class="pre">futexv_head</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">futex_get_parent</span></code><span class="sig-paren">(</span><span class="pre">uintptr_t</span> <em><span class="pre">waiter</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_get_parent" title="Permalink to this definition">¶</a><br /></dt>
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.futex_waiter_head" title="futex_waiter_head"><span class="pre">futex_waiter_head</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">futex_get_parent</span></code><span class="sig-paren">(</span><span class="pre">uintptr_t</span> <em><span class="pre">waiter</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.futex_get_parent" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>For a given futex in a futexv list, get a pointer to the futexv</p>
 </dd></dl>
 

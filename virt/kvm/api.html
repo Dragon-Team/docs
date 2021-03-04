@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.9-dragon
+                5.12.10-dragon
               </div>
             
           
@@ -5713,58 +5713,20 @@ base 2 of the page size in the bottom 6 bits.</p>
 number of milliseconds until preparation is complete,
 -EFAULT if struct kvm_reinject_control cannot be read,
 -EINVAL if the supplied shift or flags are invalid,
--ENOMEM if unable to allocate the new HPT,
--ENOSPC if there was a hash collision</p>
-</dd>
-</dl>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct kvm_ppc_rmmu_info {
-      struct kvm_ppc_radix_geom {
-              __u8    page_shift;
-              __u8    level_bits[4];
-              __u8    pad[3];
-      }       geometries[8];
-      __u32   ap_encodings[8];
-};
-</pre></div>
-</div>
-<p>The geometries[] field gives up to 8 supported geometries for the
-radix page table, in terms of the log base 2 of the smallest page
-size, and the number of bits indexed at each level of the tree, from
-the PTE level up to the PGD level in that order.  Any unused entries
-will have 0 in the page_shift field.</p>
-<p>The ap_encodings gives the supported page sizes and their AP field
-encodings, encoded with the AP value in the top 3 bits and the log
-base 2 of the page size in the bottom 6 bits.</p>
-</div>
-<div class="section" id="id11">
-<h3>4.102 KVM_PPC_RESIZE_HPT_PREPARE<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<dl class="field-list simple">
-<dt class="field-odd">Capability</dt>
-<dd class="field-odd"><p>KVM_CAP_SPAPR_RESIZE_HPT</p>
-</dd>
-<dt class="field-even">Architectures</dt>
-<dd class="field-even"><p>powerpc</p>
-</dd>
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>vm ioctl</p>
-</dd>
-<dt class="field-even">Parameters</dt>
-<dd class="field-even"><p>struct kvm_ppc_resize_hpt (in)</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>0 on successful completion,
-&gt;0 if a new HPT is being prepared, the value is an estimated
-number of milliseconds until preparation is complete,
--EFAULT if struct kvm_reinject_control cannot be read,
--EINVAL if the supplied shift or flags are invalid,when moving existing
-HPT entries to the new HPT,
--EIO on other error conditions</p>
+-ENOMEM if unable to allocate the new HPT,</p>
 </dd>
 </dl>
 <p>Used to implement the PAPR extension for runtime resizing of a guest’s
 Hashed Page Table (HPT).  Specifically this starts, stops or monitors
 the preparation of a new potential HPT for the guest, essentially
 implementing the H_RESIZE_HPT_PREPARE hypercall.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct kvm_ppc_resize_hpt {
+      __u64 flags;
+      __u32 shift;
+      __u32 pad;
+};
+</pre></div>
+</div>
 <p>If called with shift &gt; 0 when there is no pending HPT for the guest,
 this begins preparation of a new pending HPT of size 2^(shift) bytes.
 It then returns a positive integer with the estimated number of
@@ -5789,13 +5751,6 @@ flags will result in an -EINVAL.</p>
 <p>Normally this will be called repeatedly with the same parameters until
 it returns &lt;= 0.  The first call will initiate preparation, subsequent
 ones will monitor preparation until it completes or fails.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct kvm_ppc_resize_hpt {
-      __u64 flags;
-      __u32 shift;
-      __u32 pad;
-};
-</pre></div>
-</div>
 </div>
 <div class="section" id="kvm-ppc-resize-hpt-commit">
 <h3>4.103 KVM_PPC_RESIZE_HPT_COMMIT<a class="headerlink" href="#kvm-ppc-resize-hpt-commit" title="Permalink to this headline">¶</a></h3>
@@ -5828,6 +5783,13 @@ HPT entries to the new HPT,
 Hashed Page Table (HPT).  Specifically this requests that the guest be
 transferred to working with the new HPT, essentially implementing the
 H_RESIZE_HPT_COMMIT hypercall.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct kvm_ppc_resize_hpt {
+      __u64 flags;
+      __u32 shift;
+      __u32 pad;
+};
+</pre></div>
+</div>
 <p>This should only be called after KVM_PPC_RESIZE_HPT_PREPARE has
 returned 0 with the same parameters.  In other cases
 KVM_PPC_RESIZE_HPT_COMMIT will return an error (usually -ENXIO or
@@ -5839,13 +5801,6 @@ memory accesses.</p>
 <p>On succsful completion, the pending HPT will become the guest’s active
 HPT and the previous HPT will be discarded.</p>
 <p>On failure, the guest will still be operating on its previous HPT.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct kvm_ppc_resize_hpt {
-      __u64 flags;
-      __u32 shift;
-      __u32 pad;
-};
-</pre></div>
-</div>
 </div>
 <div class="section" id="kvm-x86-get-mce-cap-supported">
 <h3>4.104 KVM_X86_GET_MCE_CAP_SUPPORTED<a class="headerlink" href="#kvm-x86-get-mce-cap-supported" title="Permalink to this headline">¶</a></h3>
@@ -7017,6 +6972,14 @@ see KVM_XEN_HVM_SET_ATTR above.</p>
       union {
               __u64 gpa;
               __u64 pad[4];
+              struct {
+                      __u64 state;
+                      __u64 state_entry_time;
+                      __u64 time_running;
+                      __u64 time_runnable;
+                      __u64 time_blocked;
+                      __u64 time_offline;
+              } runstate;
       } u;
 };
 </pre></div>
@@ -7027,6 +6990,27 @@ see KVM_XEN_HVM_SET_ATTR above.</p>
 </dd>
 <dt>KVM_XEN_VCPU_ATTR_TYPE_VCPU_TIME_INFO</dt><dd><p>Sets the guest physical address of an additional pvclock structure
 for a given vCPU. This is typically used for guest vsyscall support.</p>
+</dd>
+<dt>KVM_XEN_VCPU_ATTR_TYPE_RUNSTATE_ADDR</dt><dd><p>Sets the guest physical address of the vcpu_runstate_info for a given
+vCPU. This is how a Xen guest tracks CPU state such as steal time.</p>
+</dd>
+<dt>KVM_XEN_VCPU_ATTR_TYPE_RUNSTATE_CURRENT</dt><dd><p>Sets the runstate (RUNSTATE_running/_runnable/_blocked/_offline) of
+the given vCPU from the .u.runstate.state member of the structure.
+KVM automatically accounts running and runnable time but blocked
+and offline states are only entered explicitly.</p>
+</dd>
+<dt>KVM_XEN_VCPU_ATTR_TYPE_RUNSTATE_DATA</dt><dd><p>Sets all fields of the vCPU runstate data from the .u.runstate member
+of the structure, including the current runstate. The state_entry_time
+must equal the sum of the other four times.</p>
+</dd>
+<dt>KVM_XEN_VCPU_ATTR_TYPE_RUNSTATE_ADJUST</dt><dd><p>This <em>adds</em> the contents of the .u.runstate members of the structure
+to the corresponding members of the given vCPU’s runstate data, thus
+permitting atomic adjustments to the runstate times. The adjustment
+to the state_entry_time must equal the sum of the adjustments to the
+other four times. The state field must be set to -1, or to a valid
+runstate value (RUNSTATE_running, RUNSTATE_runnable, RUNSTATE_blocked
+or RUNSTATE_offline) to set the current accounted state as of the
+adjusted state_entry_time.</p>
 </dd>
 </dl>
 </div>
@@ -7051,6 +7035,8 @@ for a given vCPU. This is typically used for guest vsyscall support.</p>
 </dl>
 <p>Allows Xen vCPU attributes to be read. For the structure and types,
 see KVM_XEN_VCPU_SET_ATTR above.</p>
+<p>The KVM_XEN_VCPU_ATTR_TYPE_RUNSTATE_ADJUST type may not be used
+with the KVM_XEN_VCPU_GET_ATTR ioctl.</p>
 </div>
 </div>
 <div class="section" id="the-kvm-run-structure">
@@ -7101,12 +7087,12 @@ local APIC is not used.</p>
 </div>
 <p>More architecture-specific flags detailing state of the VCPU that may
 affect the device’s behavior. Current defined flags:</p>
-<blockquote>
-<div><p>/* x86, set if the VCPU is in system management mode <em>/
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/* x86, set if the VCPU is in system management mode */
 #define KVM_RUN_X86_SMM     (1 &lt;&lt; 0)
-/</em> x86, set if bus lock detected in VM <a href="#id12"><span class="problematic" id="id13">*</span></a>/
-#define KVM_RUN_BUS_LOCK    (1 &lt;&lt; 1)</p>
-</div></blockquote>
+/* x86, set if bus lock detected in VM */
+#define KVM_RUN_BUS_LOCK    (1 &lt;&lt; 1)
+</pre></div>
+</div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/* in (pre_kvm_run), out (post_kvm_run) */
 __u64 cr8;
 </pre></div>
@@ -8249,12 +8235,12 @@ faulting address (or the new DR6 bits*) will be reported in the
 exception_payload field. Similarly, when userspace injects a #PF (or
 #DB) into L2 using KVM_SET_VCPU_EVENTS, it is expected to set
 exception.has_payload and to put the faulting address - or the new DR6
-bits<a class="footnote-reference brackets" href="#id15" id="id14">3</a> - in the exception_payload field.</p>
+bits<a class="footnote-reference brackets" href="#id12" id="id11">3</a> - in the exception_payload field.</p>
 <p>This capability also enables exception.pending in struct
 kvm_vcpu_events, which allows userspace to distinguish between pending
 and injected exceptions.</p>
 <dl class="footnote brackets">
-<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id14">3</a></span></dt>
+<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id11">3</a></span></dt>
 <dd><p>For the new DR6 bits, note that bit 16 is set iff the #DB exception
 will clear DR6.RTM.</p>
 </dd>
@@ -8413,7 +8399,7 @@ notifications to userspace can be KVM_EXIT_BUS_LOCK or other reasons.
 KVM_RUN_BUS_LOCK flag is used to distinguish between them.</p>
 </div>
 <div class="section" id="kvm-cap-ppc-dawr1">
-<h3>7.22 KVM_CAP_PPC_DAWR1<a class="headerlink" href="#kvm-cap-ppc-dawr1" title="Permalink to this headline">¶</a></h3>
+<h3>7.23 KVM_CAP_PPC_DAWR1<a class="headerlink" href="#kvm-cap-ppc-dawr1" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Architectures</dt>
 <dd class="field-odd"><p>ppc</p>
@@ -8824,8 +8810,8 @@ distribution…)</p>
 <p>If this capability is available, then the CPNC and CPVC can be synchronized
 between KVM and userspace via the sync regs mechanism (KVM_SYNC_DIAG318).</p>
 </div>
-<div class="section" id="id16">
-<h3>8.26 KVM_CAP_X86_USER_SPACE_MSR<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3>8.26 KVM_CAP_X86_USER_SPACE_MSR<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Architectures</dt>
 <dd class="field-odd"><p>x86</p>
@@ -8837,8 +8823,8 @@ accesses that would usually trigger a #GP by KVM into the guest will
 instead get bounced to user space through the KVM_EXIT_X86_RDMSR and
 KVM_EXIT_X86_WRMSR exit notifications.</p>
 </div>
-<div class="section" id="id17">
-<h3>8.27 KVM_X86_SET_MSR_FILTER<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>8.27 KVM_X86_SET_MSR_FILTER<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Architectures</dt>
 <dd class="field-odd"><p>x86</p>
@@ -8955,6 +8941,7 @@ PVHVM guests. Valid flags are:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#define KVM_XEN_HVM_CONFIG_HYPERCALL_MSR      (1 &lt;&lt; 0)
 #define KVM_XEN_HVM_CONFIG_INTERCEPT_HCALL    (1 &lt;&lt; 1)
 #define KVM_XEN_HVM_CONFIG_SHARED_INFO        (1 &lt;&lt; 2)
+#define KVM_XEN_HVM_CONFIG_RUNSTATE           (1 &lt;&lt; 2)
 </pre></div>
 </div>
 <p>The KVM_XEN_HVM_CONFIG_HYPERCALL_MSR flag indicates that the KVM_XEN_HVM_CONFIG
@@ -8968,6 +8955,9 @@ KVM_XEN_HVM_SET_ATTR, KVM_XEN_HVM_GET_ATTR, KVM_XEN_VCPU_SET_ATTR and
 KVM_XEN_VCPU_GET_ATTR ioctls, as well as the delivery of exception vectors
 for event channel upcalls when the evtchn_upcall_pending field of a vcpu’s
 vcpu_info is set.</p>
+<p>The KVM_XEN_HVM_CONFIG_RUNSTATE flag indicates that the runstate-related
+features KVM_XEN_VCPU_ATTR_TYPE_RUNSTATE_ADDR/_CURRENT/_DATA/_ADJUST are
+supported by the KVM_XEN_VCPU_SET_ATTR/KVM_XEN_VCPU_GET_ATTR ioctls.</p>
 </div>
 </div>
 </div>

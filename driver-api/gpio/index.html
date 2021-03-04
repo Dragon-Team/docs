@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.9-dragon
+                5.12.10-dragon
               </div>
             
           
@@ -1953,14 +1953,16 @@ the ACPI event methods for those pins.</p>
 <p>Free interrupts associated with GPIO ACPI event method for the given
 GPIO chip.</p>
 <dl class="c function">
-<dt id="c.acpi_dev_gpio_irq_get">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">acpi_dev_gpio_irq_get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">acpi_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <span class="pre">int</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.acpi_dev_gpio_irq_get" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="c.acpi_dev_gpio_irq_get_by">
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">acpi_dev_gpio_irq_get_by</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">acpi_device</span> <span class="pre">*</span><em><span class="pre">adev</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">name</span></em>, <span class="pre">int</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.acpi_dev_gpio_irq_get_by" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Find GpioInt and translate it to Linux IRQ number</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">acpi_device</span> <span class="pre">*adev</span></code></dt><dd><p>pointer to a ACPI device to get IRQ from</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*name</span></code></dt><dd><p>optional name of GpioInt resource</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">index</span></code></dt><dd><p>index of GpioInt resource (starting from <code class="docutils literal notranslate"><span class="pre">0</span></code>)</p>
 </dd>
@@ -1971,6 +1973,8 @@ used to translate from the GPIO offset in the resource to the Linux IRQ
 number.</p>
 <p>The function is idempotent, though each time it runs it will configure GPIO
 pin direction according to the flags in GpioInt resource.</p>
+<p>The function takes optional <strong>name</strong> parameter. If the resource has a property
+name, then only those will be taken into account.</p>
 <p><strong>Return</strong></p>
 <p>Linux IRQ number (&gt; <code class="docutils literal notranslate"><span class="pre">0</span></code>) on success, negative errno on failure.</p>
 </div>
