@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.10-dragon
+                5.12.11-dragon
               </div>
             
           
@@ -3729,6 +3729,28 @@ them by calling <a class="reference internal" href="#c.usb_put_intf" title="usb_
 <p>Must be called when a user of an interface is finished with it.  When the
 last user of the interface calls this function, the memory of the interface
 is freed.</p>
+<dl class="c function">
+<dt id="c.usb_intf_get_dma_device">
+<em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_intf_get_dma_device</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">intf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_intf_get_dma_device" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>acquire a reference on the usb interface’s DMA endpoint</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">usb_interface</span> <span class="pre">*intf</span></code></dt><dd><p>the usb interface</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>While a USB device cannot perform DMA operations by itself, many USB
+controllers can. A call to <a class="reference internal" href="#c.usb_intf_get_dma_device" title="usb_intf_get_dma_device"><code class="xref c c-func docutils literal notranslate"><span class="pre">usb_intf_get_dma_device()</span></code></a> returns the DMA endpoint
+for the given USB interface, if any. The returned device structure must be
+released with <a class="reference internal" href="../infrastructure.html#c.put_device" title="put_device"><code class="xref c c-func docutils literal notranslate"><span class="pre">put_device()</span></code></a>.</p>
+<p>See also usb_get_dma_device().</p>
+<p><strong>Return</strong></p>
+<dl class="simple">
+<dt>A reference to the usb interface’s DMA endpoint; or NULL if none</dt><dd><p>exists.</p>
+</dd>
+</dl>
 <dl class="c function">
 <dt id="c.usb_lock_device_for_reset">
 <span class="pre">int</span> <code class="sig-name descname"><span class="pre">usb_lock_device_for_reset</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_device" title="usb_device"><span class="pre">usb_device</span></a> <span class="pre">*</span><em><span class="pre">udev</span></em>, <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.usb_interface" title="usb_interface"><span class="pre">usb_interface</span></a> <span class="pre">*</span><em><span class="pre">iface</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_lock_device_for_reset" title="Permalink to this definition">¶</a><br /></dt>

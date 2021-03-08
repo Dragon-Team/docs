@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.10-dragon
+                5.12.11-dragon
               </div>
             
           
@@ -12104,6 +12104,25 @@ again only if the system has more than one CPU).</p>
 or <a class="reference internal" href="#c.poll_state_synchronize_rcu" title="poll_state_synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">poll_state_synchronize_rcu()</span></code></a> to determine whether or not a full
 grace period has elapsed in the meantime.</p>
 <dl class="c function">
+<dt id="c.start_poll_synchronize_rcu">
+<span class="pre">unsigned</span> <span class="pre">long</span> <code class="sig-name descname"><span class="pre">start_poll_synchronize_rcu</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#c.start_poll_synchronize_rcu" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Snapshot and start RCU grace period</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">void</span></code></dt><dd><p>no arguments</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Returns a cookie that is used by a later call to <a class="reference internal" href="#c.cond_synchronize_rcu" title="cond_synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">cond_synchronize_rcu()</span></code></a>
+or <a class="reference internal" href="#c.poll_state_synchronize_rcu" title="poll_state_synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">poll_state_synchronize_rcu()</span></code></a> to determine whether or not a full
+grace period has elapsed in the meantime.  If the needed grace period
+is not already slated to start, notifies RCU core of the need for that
+grace period.</p>
+<p>Interrupts must be enabled for the case where it is necessary to awaken
+the grace-period kthread.</p>
+<dl class="c function">
 <dt id="c.poll_state_synchronize_rcu">
 <span class="pre">bool</span> <code class="sig-name descname"><span class="pre">poll_state_synchronize_rcu</span></code><span class="sig-paren">(</span><span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">oldstate</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.poll_state_synchronize_rcu" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Conditionally wait for an RCU grace period</p>
@@ -12111,7 +12130,7 @@ grace period has elapsed in the meantime.</p>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">oldstate</span></code></dt><dd><p>return from call to <a class="reference internal" href="#c.get_state_synchronize_rcu" title="get_state_synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">get_state_synchronize_rcu()</span></code></a> or start_poll_synchronize_rcu()</p>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">oldstate</span></code></dt><dd><p>return from call to <a class="reference internal" href="#c.get_state_synchronize_rcu" title="get_state_synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">get_state_synchronize_rcu()</span></code></a> or <a class="reference internal" href="#c.start_poll_synchronize_rcu" title="start_poll_synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">start_poll_synchronize_rcu()</span></code></a></p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
@@ -12138,7 +12157,7 @@ has completed.</p>
 </dl>
 <p><strong>Description</strong></p>
 <p>If a full RCU grace period has elapsed since the earlier call to
-<a class="reference internal" href="#c.get_state_synchronize_rcu" title="get_state_synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">get_state_synchronize_rcu()</span></code></a> or start_poll_synchronize_rcu(), just return.
+<a class="reference internal" href="#c.get_state_synchronize_rcu" title="get_state_synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">get_state_synchronize_rcu()</span></code></a> or <a class="reference internal" href="#c.start_poll_synchronize_rcu" title="start_poll_synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">start_poll_synchronize_rcu()</span></code></a>, just return.
 Otherwise, invoke <a class="reference internal" href="#c.synchronize_rcu" title="synchronize_rcu"><code class="xref c c-func docutils literal notranslate"><span class="pre">synchronize_rcu()</span></code></a> to wait for a full grace period.</p>
 <p>Yes, this function does not take counter wrap into account.  But
 counter wrap is harmless.  If the counter wraps, we have waited for

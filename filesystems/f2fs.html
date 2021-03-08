@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.10-dragon
+                5.12.11-dragon
               </div>
             
           
@@ -754,7 +754,12 @@ choosing the target file and the timing. The user can do manual
 compression/decompression on the compression enabled files using
 ioctls.</p></td>
 </tr>
-<tr class="row-even"><td><p>inlinecrypt</p></td>
+<tr class="row-even"><td><p>compress_cache</p></td>
+<td><p>Support to use address space of a filesystem managed inode to
+cache compressed block, in order to improve cache hit ratio of
+random read.</p></td>
+</tr>
+<tr class="row-odd"><td><p>inlinecrypt</p></td>
 <td><p>When possible, encrypt/decrypt the contents of encrypted
 files using the blk-crypto framework rather than
 filesystem-layer encryption. This allows the use of
@@ -762,7 +767,7 @@ inline encryption hardware. The on-disk format is
 unaffected. For more details, see
 <a class="reference internal" href="../block/inline-encryption.html"><span class="doc">Inline Encryption</span></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>atgc</p></td>
+<tr class="row-even"><td><p>atgc</p></td>
 <td><p>Enable age-threshold garbage collection, it provides high
 effectiveness and efficiency on background GC.</p></td>
 </tr>

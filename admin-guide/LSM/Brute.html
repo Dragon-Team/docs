@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.10-dragon
+                5.12.11-dragon
               </div>
             
           
@@ -426,6 +426,37 @@ real crash period.</p>
 <p>To detect a brute force attack it is necessary that the statistics shared by all
 the fork hierarchy processes be updated in every fatal crash and the most
 important data to update is the application crash period.</p>
+<p>These statistics are hold by the brute_stats struct.</p>
+<dl class="simple">
+<dt>struct brute_cred {</dt><dd><p>kuid_t uid;
+kgid_t gid;
+kuid_t suid;
+kgid_t sgid;
+kuid_t euid;
+kgid_t egid;
+kuid_t fsuid;
+kgid_t fsgid;</p>
+</dd>
+</dl>
+<p>};</p>
+<dl class="simple">
+<dt>struct brute_stats {</dt><dd><p>spinlock_t lock;
+refcount_t refc;
+unsigned char faults;
+u64 jiffies;
+u64 period;
+struct brute_cred saved_cred;
+unsigned char network : 1;
+unsigned char bounds_crossed : 1;</p>
+</dd>
+</dl>
+<p>};</p>
+<p>This is a fixed sized struct, so the memory usage will be based on the current
+number of processes exec()ing. The previous sentence is true since in every fork
+system call the parent’s statistics are shared with the child process and in
+every execve system call a new brute_stats struct is allocated. So, only one
+brute_stats struct is used for every fork hierarchy (hierarchy of processes from
+the execve system call).</p>
 <p>There are two types of brute force attacks that need to be detected. The first
 one is an attack that happens through the fork system call and the second one is
 an attack that happens through the execve system call. The first type uses the
@@ -438,6 +469,24 @@ process that forks before the execve system call).</p>
 that is detected if a maximum number of faults per fork hierarchy is reached and
 a fast brute force attack that is detected if the application crash period falls
 below a certain threshold.</p>
+<p>Once an attack has been detected, this is mitigated killing all the offending
+tasks involved. Or in other words, once an attack has been detected, this is
+mitigated killing all the processes that share the same statistics (the stats
+that show an slow or fast brute force attack).</p>
+<div class="section" id="fine-tuning-the-attack-detection">
+<h3>Fine tuning the attack detection<a class="headerlink" href="#fine-tuning-the-attack-detection" title="Permalink to this headline">¶</a></h3>
+<p>To avoid false positives during the attack detection it is necessary to narrow
+the possible cases. To do so, and based on the threat scenarios that we want to
+detect, this implementation also focuses on the crossing of privilege bounds.</p>
+<p>To be precise, only the following privilege bounds are taken into account:</p>
+<p>1.- setuid/setgid process
+2.- network to local
+3.- privilege changes</p>
+<p>Moreover, only the fatal signals delivered by the kernel are taken into account
+avoiding the fatal signals sent by userspace applications (with the exception of
+the SIGABRT user signal since this is used by glibc for stack canary, malloc,
+etc. failures, which may indicate that a mitigation has been triggered).</p>
+</div>
 <div class="section" id="exponential-moving-average-ema">
 <h3>Exponential moving average (EMA)<a class="headerlink" href="#exponential-moving-average-ema" title="Permalink to this headline">¶</a></h3>
 <p>This kind of average defines a weight (between 0 and 1) for the new value to add

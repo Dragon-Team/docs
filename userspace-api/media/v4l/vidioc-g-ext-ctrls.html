@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.10-dragon
+                5.12.11-dragon
               </div>
             
           
@@ -333,7 +333,7 @@
 <h2><span class="section-number">7.29.4. </span>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>These ioctls allow the caller to get or set multiple controls
 atomically. Control IDs are grouped into control classes (see
-<span class="xref std std-ref">ctrl-class</span>) and all controls in the control array must belong
+<a class="reference internal" href="#ctrl-class"><span class="std std-ref">Control classes</span></a>) and all controls in the control array must belong
 to the same control class.</p>
 <p>Applications must always fill in the <code class="docutils literal notranslate"><span class="pre">count</span></code>, <code class="docutils literal notranslate"><span class="pre">which</span></code>, <code class="docutils literal notranslate"><span class="pre">controls</span></code>
 and <code class="docutils literal notranslate"><span class="pre">reserved</span></code> fields of struct
@@ -544,7 +544,7 @@ and/or a compound type (the control’s type is &gt;=
 <tr class="row-even"><td><p>__u32</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ctrl_class</span></code></p></td>
 <td><p>The control class to which all controls belong, see
-<span class="xref std std-ref">ctrl-class</span>. Drivers that use a kernel framework for
+<a class="reference internal" href="#ctrl-class"><span class="std std-ref">Control classes</span></a>. Drivers that use a kernel framework for
 handling controls will also accept a value of 0 here, meaning that
 the controls can belong to any control class. Whether drivers
 support this can be tested by setting <code class="docutils literal notranslate"><span class="pre">ctrl_class</span></code> to 0 and
@@ -567,7 +567,7 @@ does not support requests, then <code class="docutils literal notranslate"><span
 get the default value of the control, you cannot set or try it.</p>
 </div>
 <p>For backwards compatibility you can also use a control class here
-(see <span class="xref std std-ref">ctrl-class</span>). In that case all controls have to
+(see <a class="reference internal" href="#ctrl-class"><span class="std std-ref">Control classes</span></a>). In that case all controls have to
 belong to that control class. This usage is deprecated, instead
 just use <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_WHICH_CUR_VAL</span></code>. There are some very old
 drivers that do not yet support <code class="docutils literal notranslate"><span class="pre">V4L2_CTRL_WHICH_CUR_VAL</span></code> and
@@ -647,7 +647,7 @@ given, then <code class="docutils literal notranslate"><span class="pre">EINVAL<
 </tr>
 </tbody>
 </table>
-<table class="longtable docutils align-default" id="id3">
+<span id="ctrl-class"></span><table class="longtable docutils align-default" id="id3">
 <caption><span class="caption-text">Control classes</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 38%" />

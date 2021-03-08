@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.10-dragon
+                5.12.11-dragon
               </div>
             
           
@@ -381,6 +381,24 @@ pointer it must call <a class="reference internal" href="#c.parport_get_port" ti
 but the new device model can fail and will return the error code.</p>
 </dd>
 </dl>
+<dl class="c macro">
+<dt id="c.module_parport_driver">
+<code class="sig-name descname"><span class="pre">module_parport_driver</span></code><a class="headerlink" href="#c.module_parport_driver" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<p><code class="docutils literal notranslate"><span class="pre">module_parport_driver</span> <span class="pre">(__parport_driver)</span></code></p>
+<blockquote>
+<div><p>Helper macro for registering a modular parport driver</p>
+</div></blockquote>
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">__parport_driver</span></code></dt><dd><p>struct parport_driver to be used</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Helper macro for parport drivers which do not do anything special in module
+init and exit. This eliminates a lot of boilerplate. Each module may only
+use this macro once, and calling it replaces <a class="reference internal" href="basics.html#c.module_init" title="module_init"><code class="xref c c-func docutils literal notranslate"><span class="pre">module_init()</span></code></a> and <a class="reference internal" href="basics.html#c.module_exit" title="module_exit"><code class="xref c c-func docutils literal notranslate"><span class="pre">module_exit()</span></code></a>.</p>
 <dl class="c function">
 <dt id="c.parport_yield">
 <span class="pre">int</span> <code class="sig-name descname"><span class="pre">parport_yield</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">pardevice</span> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.parport_yield" title="Permalink to this definition">¶</a><br /></dt>
