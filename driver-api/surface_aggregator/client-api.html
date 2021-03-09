@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.11-dragon
+                5.12.12-dragon
               </div>
             
           
@@ -1396,10 +1396,10 @@ generated function takes care of setting up the request struct and buffer
 allocation, as well as execution of the request itself, returning once the
 request has been fully completed. The required transport buffer will be
 allocated on the stack.</p>
-<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">name(struct</span> <span class="pre">ssam_controller</span>
-<span class="pre">*ctrl)</span></code>, returning the status of the request, which is zero on success and
-negative on failure. The <code class="docutils literal notranslate"><span class="pre">ctrl</span></code> parameter is the controller via which the
-request is being sent.</p>
+<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">int</span> <span class="pre">name(struct</span>
+<span class="pre">ssam_controller</span> <span class="pre">*ctrl)</span></code>, returning the status of the request, which is
+zero on success and negative on failure. The <code class="docutils literal notranslate"><span class="pre">ctrl</span></code> parameter is the
+controller via which the request is being sent.</p>
 <p>Refer to <a class="reference internal" href="#c.ssam_request_sync_onstack" title="ssam_request_sync_onstack"><code class="xref c c-func docutils literal notranslate"><span class="pre">ssam_request_sync_onstack()</span></code></a> for more details on the behavior of
 the generated function.</p>
 <dl class="c macro">
@@ -1427,11 +1427,11 @@ return value. The generated function takes care of setting up the request
 struct, buffer allocation, as well as execution of the request itself,
 returning once the request has been fully completed. The required transport
 buffer will be allocated on the stack.</p>
-<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">name(struct</span> <span class="pre">ssam_controller</span>
-<span class="pre">*ctrl,</span> <span class="pre">const</span> <span class="pre">atype</span> <span class="pre">*arg)</span></code>, returning the status of the request, which is
-zero on success and negative on failure. The <code class="docutils literal notranslate"><span class="pre">ctrl</span></code> parameter is the
-controller via which the request is sent. The request argument is specified
-via the <code class="docutils literal notranslate"><span class="pre">arg</span></code> pointer.</p>
+<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">int</span> <span class="pre">name(struct</span>
+<span class="pre">ssam_controller</span> <span class="pre">*ctrl,</span> <span class="pre">const</span> <span class="pre">atype</span> <span class="pre">*arg)</span></code>, returning the status of the
+request, which is zero on success and negative on failure. The <code class="docutils literal notranslate"><span class="pre">ctrl</span></code>
+parameter is the controller via which the request is sent. The request
+argument is specified via the <code class="docutils literal notranslate"><span class="pre">arg</span></code> pointer.</p>
 <p>Refer to <a class="reference internal" href="#c.ssam_request_sync_onstack" title="ssam_request_sync_onstack"><code class="xref c c-func docutils literal notranslate"><span class="pre">ssam_request_sync_onstack()</span></code></a> for more details on the behavior of
 the generated function.</p>
 <dl class="c macro">
@@ -1459,11 +1459,11 @@ type <strong>rtype</strong>. The generated function takes care of setting up the
 and response structs, buffer allocation, as well as execution of the
 request itself, returning once the request has been fully completed. The
 required transport buffer will be allocated on the stack.</p>
-<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">name(struct</span> <span class="pre">ssam_controller</span>
-<span class="pre">*ctrl,</span> <span class="pre">rtype</span> <span class="pre">*ret)</span></code>, returning the status of the request, which is zero on
-success and negative on failure. The <code class="docutils literal notranslate"><span class="pre">ctrl</span></code> parameter is the controller
-via which the request is sent. The request’s return value is written to the
-memory pointed to by the <code class="docutils literal notranslate"><span class="pre">ret</span></code> parameter.</p>
+<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">int</span> <span class="pre">name(struct</span>
+<span class="pre">ssam_controller</span> <span class="pre">*ctrl,</span> <span class="pre">rtype</span> <span class="pre">*ret)</span></code>, returning the status of the request,
+which is zero on success and negative on failure. The <code class="docutils literal notranslate"><span class="pre">ctrl</span></code> parameter is
+the controller via which the request is sent. The request’s return value is
+written to the memory pointed to by the <code class="docutils literal notranslate"><span class="pre">ret</span></code> parameter.</p>
 <p>Refer to <a class="reference internal" href="#c.ssam_request_sync_onstack" title="ssam_request_sync_onstack"><code class="xref c c-func docutils literal notranslate"><span class="pre">ssam_request_sync_onstack()</span></code></a> for more details on the behavior of
 the generated function.</p>
 <dl class="c macro">
@@ -1490,11 +1490,11 @@ the function. The generated function takes care of setting up the request
 struct, buffer allocation, as well as execution of the request itself,
 returning once the request has been fully completed. The required transport
 buffer will be allocated on the stack.</p>
-<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">name(struct</span> <span class="pre">ssam_controller</span>
-<span class="pre">*ctrl,</span> <span class="pre">u8</span> <span class="pre">tid,</span> <span class="pre">u8</span> <span class="pre">iid)</span></code>, returning the status of the request, which is
-zero on success and negative on failure. The <code class="docutils literal notranslate"><span class="pre">ctrl</span></code> parameter is the
-controller via which the request is sent, <code class="docutils literal notranslate"><span class="pre">tid</span></code> the target ID for the
-request, and <code class="docutils literal notranslate"><span class="pre">iid</span></code> the instance ID.</p>
+<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">int</span> <span class="pre">name(struct</span>
+<span class="pre">ssam_controller</span> <span class="pre">*ctrl,</span> <span class="pre">u8</span> <span class="pre">tid,</span> <span class="pre">u8</span> <span class="pre">iid)</span></code>, returning the status of the
+request, which is zero on success and negative on failure. The <code class="docutils literal notranslate"><span class="pre">ctrl</span></code>
+parameter is the controller via which the request is sent, <code class="docutils literal notranslate"><span class="pre">tid</span></code> the
+target ID for the request, and <code class="docutils literal notranslate"><span class="pre">iid</span></code> the instance ID.</p>
 <p>Refer to <a class="reference internal" href="#c.ssam_request_sync_onstack" title="ssam_request_sync_onstack"><code class="xref c c-func docutils literal notranslate"><span class="pre">ssam_request_sync_onstack()</span></code></a> for more details on the behavior of
 the generated function.</p>
 <dl class="c macro">
@@ -1523,12 +1523,12 @@ must be provided to the function. The generated function takes care of
 setting up the request struct, buffer allocation, as well as execution of
 the request itself, returning once the request has been fully completed.
 The required transport buffer will be allocated on the stack.</p>
-<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">name(struct</span> <span class="pre">ssam_controller</span>
-<span class="pre">*ctrl,</span> <span class="pre">u8</span> <span class="pre">tid,</span> <span class="pre">u8</span> <span class="pre">iid,</span> <span class="pre">const</span> <span class="pre">atype</span> <span class="pre">*arg)</span></code>, returning the status of the
-request, which is zero on success and negative on failure. The <code class="docutils literal notranslate"><span class="pre">ctrl</span></code>
-parameter is the controller via which the request is sent, <code class="docutils literal notranslate"><span class="pre">tid</span></code> the
-target ID for the request, and <code class="docutils literal notranslate"><span class="pre">iid</span></code> the instance ID. The request argument
-is specified via the <code class="docutils literal notranslate"><span class="pre">arg</span></code> pointer.</p>
+<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">int</span> <span class="pre">name(struct</span>
+<span class="pre">ssam_controller</span> <span class="pre">*ctrl,</span> <span class="pre">u8</span> <span class="pre">tid,</span> <span class="pre">u8</span> <span class="pre">iid,</span> <span class="pre">const</span> <span class="pre">atype</span> <span class="pre">*arg)</span></code>, returning the
+status of the request, which is zero on success and negative on failure.
+The <code class="docutils literal notranslate"><span class="pre">ctrl</span></code> parameter is the controller via which the request is sent,
+<code class="docutils literal notranslate"><span class="pre">tid</span></code> the target ID for the request, and <code class="docutils literal notranslate"><span class="pre">iid</span></code> the instance ID. The
+request argument is specified via the <code class="docutils literal notranslate"><span class="pre">arg</span></code> pointer.</p>
 <p>Refer to <a class="reference internal" href="#c.ssam_request_sync_onstack" title="ssam_request_sync_onstack"><code class="xref c c-func docutils literal notranslate"><span class="pre">ssam_request_sync_onstack()</span></code></a> for more details on the behavior of
 the generated function.</p>
 <dl class="c macro">
@@ -1557,12 +1557,12 @@ must be provided to the function. The generated function takes care of
 setting up the request and response structs, buffer allocation, as well as
 execution of the request itself, returning once the request has been fully
 completed. The required transport buffer will be allocated on the stack.</p>
-<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">name(struct</span> <span class="pre">ssam_controller</span>
-<span class="pre">*ctrl,</span> <span class="pre">u8</span> <span class="pre">tid,</span> <span class="pre">u8</span> <span class="pre">iid,</span> <span class="pre">rtype</span> <span class="pre">*ret)</span></code>, returning the status of the request,
-which is zero on success and negative on failure. The <code class="docutils literal notranslate"><span class="pre">ctrl</span></code> parameter is
-the controller via which the request is sent, <code class="docutils literal notranslate"><span class="pre">tid</span></code> the target ID for the
-request, and <code class="docutils literal notranslate"><span class="pre">iid</span></code> the instance ID. The request’s return value is written
-to the memory pointed to by the <code class="docutils literal notranslate"><span class="pre">ret</span></code> parameter.</p>
+<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">int</span> <span class="pre">name(struct</span>
+<span class="pre">ssam_controller</span> <span class="pre">*ctrl,</span> <span class="pre">u8</span> <span class="pre">tid,</span> <span class="pre">u8</span> <span class="pre">iid,</span> <span class="pre">rtype</span> <span class="pre">*ret)</span></code>, returning the status
+of the request, which is zero on success and negative on failure. The
+<code class="docutils literal notranslate"><span class="pre">ctrl</span></code> parameter is the controller via which the request is sent, <code class="docutils literal notranslate"><span class="pre">tid</span></code>
+the target ID for the request, and <code class="docutils literal notranslate"><span class="pre">iid</span></code> the instance ID. The request’s
+return value is written to the memory pointed to by the <code class="docutils literal notranslate"><span class="pre">ret</span></code> parameter.</p>
 <p>Refer to <a class="reference internal" href="#c.ssam_request_sync_onstack" title="ssam_request_sync_onstack"><code class="xref c c-func docutils literal notranslate"><span class="pre">ssam_request_sync_onstack()</span></code></a> for more details on the behavior of
 the generated function.</p>
 <dl class="c enum">
@@ -2530,10 +2530,11 @@ The generated function takes care of setting up the request struct, buffer
 allocation, as well as execution of the request itself, returning once the
 request has been fully completed. The required transport buffer will be
 allocated on the stack.</p>
-<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">name(struct</span> <span class="pre">ssam_device</span> <span class="pre">*sdev)</span></code>,
-returning the status of the request, which is zero on success and negative
-on failure. The <code class="docutils literal notranslate"><span class="pre">sdev</span></code> parameter specifies both the target device of the
-request and by association the controller via which the request is sent.</p>
+<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">int</span> <span class="pre">name(struct</span> <span class="pre">ssam_device</span>
+<span class="pre">*sdev)</span></code>, returning the status of the request, which is zero on success and
+negative on failure. The <code class="docutils literal notranslate"><span class="pre">sdev</span></code> parameter specifies both the target
+device of the request and by association the controller via which the
+request is sent.</p>
 <p>Refer to <a class="reference internal" href="#c.ssam_request_sync_onstack" title="ssam_request_sync_onstack"><code class="xref c c-func docutils literal notranslate"><span class="pre">ssam_request_sync_onstack()</span></code></a> for more details on the behavior of
 the generated function.</p>
 <dl class="c macro">
@@ -2563,12 +2564,12 @@ calling this function. The generated function takes care of setting up the
 request struct, buffer allocation, as well as execution of the request
 itself, returning once the request has been fully completed. The required
 transport buffer will be allocated on the stack.</p>
-<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">name(struct</span> <span class="pre">ssam_device</span> <span class="pre">*sdev,</span>
-<span class="pre">const</span> <span class="pre">atype</span> <span class="pre">*arg)</span></code>, returning the status of the request, which is zero on
-success and negative on failure. The <code class="docutils literal notranslate"><span class="pre">sdev</span></code> parameter specifies both the
-target device of the request and by association the controller via which
-the request is sent. The request’s argument is specified via the <code class="docutils literal notranslate"><span class="pre">arg</span></code>
-pointer.</p>
+<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">int</span> <span class="pre">name(struct</span> <span class="pre">ssam_device</span>
+<span class="pre">*sdev,</span> <span class="pre">const</span> <span class="pre">atype</span> <span class="pre">*arg)</span></code>, returning the status of the request, which is
+zero on success and negative on failure. The <code class="docutils literal notranslate"><span class="pre">sdev</span></code> parameter specifies
+both the target device of the request and by association the controller via
+which the request is sent. The request’s argument is specified via the
+<code class="docutils literal notranslate"><span class="pre">arg</span></code> pointer.</p>
 <p>Refer to <a class="reference internal" href="#c.ssam_request_sync_onstack" title="ssam_request_sync_onstack"><code class="xref c c-func docutils literal notranslate"><span class="pre">ssam_request_sync_onstack()</span></code></a> for more details on the behavior of
 the generated function.</p>
 <dl class="c macro">
@@ -2598,8 +2599,8 @@ calling this function. The generated function takes care of setting up the
 request struct, buffer allocation, as well as execution of the request
 itself, returning once the request has been fully completed. The required
 transport buffer will be allocated on the stack.</p>
-<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">name(struct</span> <span class="pre">ssam_device</span> <span class="pre">*sdev,</span>
-<span class="pre">rtype</span> <span class="pre">*ret)</span></code>, returning the status of the request, which is zero on
+<p>The generated function is defined as <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">int</span> <span class="pre">name(struct</span> <span class="pre">ssam_device</span>
+<span class="pre">*sdev,</span> <span class="pre">rtype</span> <span class="pre">*ret)</span></code>, returning the status of the request, which is zero on
 success and negative on failure. The <code class="docutils literal notranslate"><span class="pre">sdev</span></code> parameter specifies both the
 target device of the request and by association the controller via which
 the request is sent. The request’s return value is written to the memory

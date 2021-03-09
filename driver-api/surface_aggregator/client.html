@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.11-dragon
+                5.12.12-dragon
               </div>
             
           
@@ -568,7 +568,7 @@ one of the generator macros, for example via:</p>
 </pre></div>
 </div>
 <p>This example defines a function</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">__ssam_tmp_perf_mode_set</span><span class="p">(</span><span class="k">struct</span> <span class="nc">ssam_controller</span> <span class="o">*</span><span class="n">ctrl</span><span class="p">,</span> <span class="k">const</span> <span class="n">__le32</span> <span class="o">*</span><span class="n">arg</span><span class="p">);</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span> <span class="n">__ssam_tmp_perf_mode_set</span><span class="p">(</span><span class="k">struct</span> <span class="nc">ssam_controller</span> <span class="o">*</span><span class="n">ctrl</span><span class="p">,</span> <span class="k">const</span> <span class="n">__le32</span> <span class="o">*</span><span class="n">arg</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>executing the specified request, with the controller passed in when calling
@@ -610,7 +610,7 @@ follows:</p>
 </pre></div>
 </div>
 <p>This invocation of the macro defines a function</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">ssam_bat_get_sta</span><span class="p">(</span><span class="k">struct</span> <span class="nc">ssam_device</span> <span class="o">*</span><span class="n">sdev</span><span class="p">,</span> <span class="n">__le32</span> <span class="o">*</span><span class="n">ret</span><span class="p">);</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span> <span class="n">ssam_bat_get_sta</span><span class="p">(</span><span class="k">struct</span> <span class="nc">ssam_device</span> <span class="o">*</span><span class="n">sdev</span><span class="p">,</span> <span class="n">__le32</span> <span class="o">*</span><span class="n">ret</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>executing the specified request, using the device IDs and controller given

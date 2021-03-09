@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.11-dragon
+                5.12.12-dragon
               </div>
             
           
@@ -3092,14 +3092,14 @@ DPLL selected will be based on the current mode of the encoder’s port.</p>
 
 <p><strong>Definition</strong></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct intel_shared_dpll_state {
-  unsigned crtc_mask;
+  u8 pipe_mask;
   struct intel_dpll_hw_state hw_state;
 };
 </pre></div>
 </div>
 <p><strong>Members</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">crtc_mask</span></code></dt><dd><p>mask of CRTC using this DPLL, active or not</p>
+<dt><code class="docutils literal notranslate"><span class="pre">pipe_mask</span></code></dt><dd><p>mask of pipes using this DPLL, active or not</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">hw_state</span></code></dt><dd><p>hardware configuration for the DPLL stored in
 struct <code class="xref c c-type docutils literal notranslate"><span class="pre">intel_dpll_hw_state</span></code>.</p>
@@ -3189,7 +3189,7 @@ not in use by any CRTC.</p>
 <p><strong>Definition</strong></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct intel_shared_dpll {
   struct intel_shared_dpll_state state;
-  unsigned active_mask;
+  u8 active_mask;
   bool on;
   const struct dpll_info *info;
   intel_wakeref_t wakeref;
@@ -3201,7 +3201,7 @@ not in use by any CRTC.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">state</span></code></dt><dd><p>Store the state for the pll, including its hw state
 and CRTCs using it.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">active_mask</span></code></dt><dd><p>mask of active CRTCs (i.e. DPMS on) using this DPLL</p>
+<dt><code class="docutils literal notranslate"><span class="pre">active_mask</span></code></dt><dd><p>mask of active pipes (i.e. DPMS on) using this DPLL</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">on</span></code></dt><dd><p>is the PLL actually active? Disabled during modeset</p>
 </dd>

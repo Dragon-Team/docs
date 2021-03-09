@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.11-dragon
+                5.12.12-dragon
               </div>
             
           
@@ -380,9 +380,9 @@ deprecated integer-based GPIO interface please refer to gpio-legacy.txt.</p>
 <p>Drivers that can’t work without standard GPIO calls should have Kconfig entries
 that depend on GPIOLIB or select GPIOLIB. The functions that allow a driver to
 obtain and use GPIOs are available by including the following file:</p>
-<blockquote>
-<div><p>#include &lt;linux/gpio/consumer.h&gt;</p>
-</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#include &lt;linux/gpio/consumer.h&gt;
+</pre></div>
+</div>
 <p>There are static inline stubs for all functions in the header file in the case
 where GPIOLIB is disabled. When these stubs are called they will emit
 warnings. These stubs are used for two use cases:</p>

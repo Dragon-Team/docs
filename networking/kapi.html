@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.11-dragon
+                5.12.12-dragon
               </div>
             
           
@@ -6114,6 +6114,20 @@ already read too far into it.</p>
 <code class="docutils literal notranslate"><span class="pre">-ENOMEM</span></code> on memory allocation failure</p>
 </dd>
 </dl>
+<dl class="c function">
+<dt id="c.svc_xprt_deferred_close">
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">svc_xprt_deferred_close</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">svc_xprt</span> <span class="pre">*</span><em><span class="pre">xprt</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.svc_xprt_deferred_close" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Close a transport</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">svc_xprt</span> <span class="pre">*xprt</span></code></dt><dd><p>transport instance</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Used in contexts that need to defer the work of shutting down
+the transport to an nfsd thread.</p>
 <dl class="c function">
 <dt id="c.svc_print_addr">
 <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">svc_print_addr</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">svc_rqst</span> <span class="pre">*</span><em><span class="pre">rqstp</span></em>, <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">buf</span></em>, <span class="pre">size_t</span> <em><span class="pre">len</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.svc_print_addr" title="Permalink to this definition">¶</a><br /></dt>

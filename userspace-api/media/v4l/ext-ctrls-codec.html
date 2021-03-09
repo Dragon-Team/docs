@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.11-dragon
+                5.12.12-dragon
               </div>
             
           
@@ -4106,7 +4106,9 @@ it is expected to change.</p>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">V4L2_MPEG_VIDEO_HEVC_START_CODE_NONE</span></code></p></td>
 <td><p>0</p></td>
 <td><p>Selecting this value specifies that HEVC slices are passed
-to the driver without any start code.</p></td>
+to the driver without any start code. The bitstream data should be
+according to <a class="reference internal" href="biblio.html#hevc"><span class="std std-ref">ITU H.265/HEVC</span></a> 7.3.1.1 General NAL unit syntax, hence
+contains emulation prevention bytes when required.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">V4L2_MPEG_VIDEO_HEVC_START_CODE_ANNEX_B</span></code></p></td>
 <td><p>1</p></td>

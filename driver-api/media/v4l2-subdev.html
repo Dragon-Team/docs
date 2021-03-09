@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.11-dragon
+                5.12.12-dragon
               </div>
             
           
@@ -600,7 +600,7 @@ does not contain any knowledge about the underlying hardware. So a driver might
 contain several subdevs that use an I2C bus, but also a subdev that is
 controlled through GPIO pins. This distinction is only relevant when setting
 up the device, but once the subdev is registered it is completely transparent.</p>
-<p>Once te subdev has been registered you can call an ops function either
+<p>Once the subdev has been registered you can call an ops function either
 directly:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">err</span> <span class="o">=</span> <span class="n">sd</span><span class="o">-&gt;</span><span class="n">ops</span><span class="o">-&gt;</span><span class="n">core</span><span class="o">-&gt;</span><span class="n">g_std</span><span class="p">(</span><span class="n">sd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">norm</span><span class="p">);</span>
 </pre></div>

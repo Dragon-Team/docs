@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.11-dragon
+                5.12.12-dragon
               </div>
             
           
@@ -454,7 +454,7 @@ media entity associated with the video device.</p>
 <p>returns zero on success or a negative error code.</p>
 <dl class="c function">
 <dt id="c.v4l2_create_fwnode_links_to_pad">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">v4l2_create_fwnode_links_to_pad</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="v4l2-subdev.html#c.v4l2_subdev" title="v4l2_subdev"><span class="pre">v4l2_subdev</span></a> <span class="pre">*</span><em><span class="pre">src_sd</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="mc-core.html#c.media_pad" title="media_pad"><span class="pre">media_pad</span></a> <span class="pre">*</span><em><span class="pre">sink</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_create_fwnode_links_to_pad" title="Permalink to this definition">¶</a><br /></dt>
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">v4l2_create_fwnode_links_to_pad</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="v4l2-subdev.html#c.v4l2_subdev" title="v4l2_subdev"><span class="pre">v4l2_subdev</span></a> <span class="pre">*</span><em><span class="pre">src_sd</span></em>, <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="mc-core.html#c.media_pad" title="media_pad"><span class="pre">media_pad</span></a> <span class="pre">*</span><em><span class="pre">sink</span></em>, <span class="pre">u32</span> <em><span class="pre">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.v4l2_create_fwnode_links_to_pad" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create fwnode-based links from a source subdev to a sink subdev pad.</p>
 </dd></dl>
 
@@ -464,6 +464,8 @@ media entity associated with the video device.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">media_pad</span> <span class="pre">*sink</span></code></dt><dd><p>pointer to a subdev sink pad</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">u32</span> <span class="pre">flags</span></code></dt><dd><p>the link flags</p>
+</dd>
 </dl>
 <p><strong>Description</strong></p>
 <p>This function searches for fwnode endpoint connections from a source
@@ -471,6 +473,10 @@ subdevice to a single sink pad, and if suitable connections are found,
 translates them into media links to that pad. The function can be
 called by the sink subdevice, in its v4l2-async notifier subdev bound
 callback, to create links from a bound source subdevice.</p>
+<p>The <strong>flags</strong> argument specifies the link flags. The caller shall ensure that
+the flags are valid regardless of the number of links that may be created.
+For instance, setting the MEDIA_LNK_FL_ENABLED flag will cause all created
+links to be enabled, which isn’t valid if more than one link is created.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Any sink subdevice that calls this function must implement the

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.11-dragon
+                5.12.12-dragon
               </div>
             
           
@@ -580,7 +580,7 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         CONFIG_ACPI_DEBUG must be enabled to produce any ACPI
                         debug output.  Bits in debug_layer correspond to a
                         _COMPONENT in an ACPI source file, e.g.,
-                            #define _COMPONENT ACPI_PCI_COMPONENT
+                            #define _COMPONENT ACPI_EVENTS
                         Bits in debug_level correspond to a level in
                         ACPI_DEBUG_PRINT statements, e.g.,
                             ACPI_DEBUG_PRINT((ACPI_DB_INFO, ...
@@ -590,8 +590,6 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
 
                         Enable processor driver info messages:
                             acpi.debug_layer=0x20000000
-                        Enable PCI/PCI interrupt routing info messages:
-                            acpi.debug_layer=0x400000
                         Enable AML &quot;Debug&quot; output, i.e., stores to the Debug
                         object while interpreting AML:
                             acpi.debug_layer=0xffffffff acpi.debug_level=0x2

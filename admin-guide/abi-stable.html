@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.11-dragon
+                5.12.12-dragon
               </div>
             
           
@@ -121,7 +121,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-stable-sysfs-bus-xen-backend">File /stable/sysfs-bus-xen-backend</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-stable-sysfs-class-backlight">File /stable/sysfs-class-backlight</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-stable-sysfs-class-infiniband">File /stable/sysfs-class-infiniband</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-stable-sysfs-class-platform-integrity">File /stable/sysfs-class-platform-integrity</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-stable-sysfs-class-rfkill">File /stable/sysfs-class-rfkill</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-stable-sysfs-class-tpm">File /stable/sysfs-class-tpm</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-home--zfs-data-doc-stable-sysfs-class-ubi">File /stable/sysfs-class-ubi</a></li>
@@ -4050,48 +4049,6 @@ interfaces.</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default" id="abi-sys-class-platform-integrity-intel-spi-biosle">
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>/sys/class/platform-integrity/intel-spi/biosle</strong></p></td>
-</tr>
-</tbody>
-</table>
-<p>Defined on file <a class="reference internal" href="#abi-file-stable-sysfs-class-platform-integrity"><span class="std std-ref">sysfs-class-platform-integrity</span></a></p>
-<p>If the system firmware set BIOS Lock Enable.
-0: SMM lock disabled, 1: SMM lock enabled.</p>
-<p>Users:
-	<a class="reference external" href="https://github.com/fwupd/fwupd">https://github.com/fwupd/fwupd</a></p>
-<table class="docutils align-default" id="abi-sys-class-platform-integrity-intel-spi-bioswe">
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>/sys/class/platform-integrity/intel-spi/bioswe</strong></p></td>
-</tr>
-</tbody>
-</table>
-<p>Defined on file <a class="reference internal" href="#abi-file-stable-sysfs-class-platform-integrity"><span class="std std-ref">sysfs-class-platform-integrity</span></a></p>
-<p>If the system firmware set BIOS Write Enable.
-0: writes disabled, 1: writes enabled.</p>
-<p>Users:
-	<a class="reference external" href="https://github.com/fwupd/fwupd">https://github.com/fwupd/fwupd</a></p>
-<table class="docutils align-default" id="abi-sys-class-platform-integrity-intel-spi-smm-bioswp">
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>/sys/class/platform-integrity/intel-spi/smm_bioswp</strong></p></td>
-</tr>
-</tbody>
-</table>
-<p>Defined on file <a class="reference internal" href="#abi-file-stable-sysfs-class-platform-integrity"><span class="std std-ref">sysfs-class-platform-integrity</span></a></p>
-<p>If the system firmware set SMM BIOS Write Protect.
-0: writes disabled unless in SMM, 1: writes enabled.</p>
-<p>Users:
-	<a class="reference external" href="https://github.com/fwupd/fwupd">https://github.com/fwupd/fwupd</a></p>
 <table class="docutils align-default" id="abi-sys-class-rfkill">
 <colgroup>
 <col style="width: 100%" />
@@ -7322,15 +7279,6 @@ that it is correct for their architecture.</p>
 <li><p><a class="reference internal" href="#abi-sys-class-infiniband-vmw-pvrdmax-hw-rev"><span class="std std-ref">/sys/class/infiniband/vmw_pvrdmaX/board_id</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-infiniband-bnxt-rex-hw-rev"><span class="std std-ref">/sys/class/infiniband/bnxt_reX/hw_rev</span></a></p></li>
 <li><p><a class="reference internal" href="#abi-sys-class-infiniband-bnxt-rex-hw-rev"><span class="std std-ref">/sys/class/infiniband/bnxt_reX/hca_type</span></a></p></li>
-</ul>
-</div>
-<div class="section" id="file-home--zfs-data-doc-stable-sysfs-class-platform-integrity">
-<span id="abi-file-stable-sysfs-class-platform-integrity"></span><h2>File /stable/sysfs-class-platform-integrity<a class="headerlink" href="#file-home--zfs-data-doc-stable-sysfs-class-platform-integrity" title="Permalink to this headline">¶</a></h2>
-<p>Has the following ABI:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#abi-sys-class-platform-integrity-intel-spi-bioswe"><span class="std std-ref">/sys/class/platform-integrity/intel-spi/bioswe</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-class-platform-integrity-intel-spi-biosle"><span class="std std-ref">/sys/class/platform-integrity/intel-spi/biosle</span></a></p></li>
-<li><p><a class="reference internal" href="#abi-sys-class-platform-integrity-intel-spi-smm-bioswp"><span class="std std-ref">/sys/class/platform-integrity/intel-spi/smm_bioswp</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="file-home--zfs-data-doc-stable-sysfs-class-rfkill">

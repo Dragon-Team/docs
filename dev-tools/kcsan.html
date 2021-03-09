@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.11-dragon
+                5.12.12-dragon
               </div>
             
           
@@ -380,7 +380,9 @@ the below options are available:</p>
 <ul>
 <li><p>KCSAN understands the <code class="docutils literal notranslate"><span class="pre">data_race(expr)</span></code> annotation, which tells KCSAN that
 any data races due to accesses in <code class="docutils literal notranslate"><span class="pre">expr</span></code> should be ignored and resulting
-behaviour when encountering a data race is deemed safe.</p></li>
+behaviour when encountering a data race is deemed safe.  Please see
+<code class="docutils literal notranslate"><span class="pre">tools/memory-model/Documentation/access-marking.txt</span></code> in the kernel source
+tree for more information.</p></li>
 <li><p>Disabling data race detection for entire functions can be accomplished by
 using the function attribute <code class="docutils literal notranslate"><span class="pre">__no_kcsan</span></code>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>__no_kcsan

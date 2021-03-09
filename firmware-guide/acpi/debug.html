@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>ACPI Debug Output &mdash; The Linux-Next Dragon Kernel  documentation</title>
+  <title>ACPI CA Debug Output &mdash; The Linux-Next Dragon Kernel  documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.11-dragon
+                5.12.12-dragon
               </div>
             
           
@@ -102,7 +102,7 @@
 <li class="toctree-l3"><a class="reference internal" href="method-customizing.html">Linux ACPI Custom Control Method How To</a></li>
 <li class="toctree-l3"><a class="reference internal" href="method-tracing.html">ACPICA Trace Facility</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DSD-properties-rules.html">_DSD Device Properties Usage Rules</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">ACPI Debug Output</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ACPI CA Debug Output</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#compile-time-configuration">Compile-time configuration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#boot-and-run-time-configuration">Boot- and run-time configuration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#debug-layer-component">debug_layer (component)</a></li>
@@ -263,7 +263,7 @@
         
           <li><a href="index.html">ACPI Support</a> &raquo;</li>
         
-      <li>ACPI Debug Output</li>
+      <li>ACPI CA Debug Output</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -282,15 +282,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="acpi-debug-output">
-<h1>ACPI Debug Output<a class="headerlink" href="#acpi-debug-output" title="Permalink to this headline">¶</a></h1>
-<p>The ACPI CA, the Linux ACPI core, and some ACPI drivers can generate debug
-output.  This document describes how to use this facility.</p>
+  <div class="section" id="acpi-ca-debug-output">
+<h1>ACPI CA Debug Output<a class="headerlink" href="#acpi-ca-debug-output" title="Permalink to this headline">¶</a></h1>
+<p>The ACPI CA can generate debug output.  This document describes how to use this
+facility.</p>
 <div class="section" id="compile-time-configuration">
 <h2>Compile-time configuration<a class="headerlink" href="#compile-time-configuration" title="Permalink to this headline">¶</a></h2>
-<p>ACPI debug output is globally enabled by CONFIG_ACPI_DEBUG.  If this config
-option is turned off, the debug messages are not even built into the
-kernel.</p>
+<p>The ACPI CA debug output is globally enabled by CONFIG_ACPI_DEBUG.  If this
+config option is not set, the debug messages are not even built into the kernel.</p>
 </div>
 <div class="section" id="boot-and-run-time-configuration">
 <h2>Boot- and run-time configuration<a class="headerlink" href="#boot-and-run-time-configuration" title="Permalink to this headline">¶</a></h2>
@@ -303,14 +302,13 @@ the debug messages.</p>
 <div class="section" id="debug-layer-component">
 <h2>debug_layer (component)<a class="headerlink" href="#debug-layer-component" title="Permalink to this headline">¶</a></h2>
 <p>The “debug_layer” is a mask that selects components of interest, e.g., a
-specific driver or part of the ACPI interpreter.  To build the debug_layer
-bitmask, look for the “#define _COMPONENT” in an ACPI source file.</p>
+specific part of the ACPI interpreter.  To build the debug_layer bitmask, look
+for the “#define _COMPONENT” in an ACPI source file.</p>
 <p>You can set the debug_layer mask at boot-time using the acpi.debug_layer
 command line argument, and you can change it after boot by writing values
 to /sys/module/acpi/parameters/debug_layer.</p>
-<p>The possible components are defined in include/acpi/acoutput.h and
-include/acpi/acpi_drivers.h.  Reading /sys/module/acpi/parameters/debug_layer
-shows the supported mask values, currently these:</p>
+<p>The possible components are defined in include/acpi/acoutput.h.</p>
+<p>Reading /sys/module/acpi/parameters/debug_layer shows the supported mask values:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ACPI_UTILITIES                  0x00000001
 ACPI_HARDWARE                   0x00000002
 ACPI_EVENTS                     0x00000004
@@ -325,13 +323,6 @@ ACPI_OS_SERVICES                0x00000400
 ACPI_CA_DISASSEMBLER            0x00000800
 ACPI_COMPILER                   0x00001000
 ACPI_TOOLS                      0x00002000
-ACPI_SBS_COMPONENT              0x00100000
-ACPI_FAN_COMPONENT              0x00200000
-ACPI_PCI_COMPONENT              0x00400000
-ACPI_CONTAINER_COMPONENT        0x01000000
-ACPI_SYSTEM_COMPONENT           0x02000000
-ACPI_MEMORY_DEVICE_COMPONENT    0x08000000
-ACPI_PROCESSOR_COMPONENT        0x20000000
 </pre></div>
 </div>
 </div>
@@ -395,10 +386,6 @@ definition.)</p>
 <p>Enable all AML “Debug” output (stores to the Debug object while interpreting
 AML) during boot:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>acpi.debug_layer=0xffffffff acpi.debug_level=0x2
-</pre></div>
-</div>
-<p>Enable PCI and PCI interrupt routing debug messages:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>acpi.debug_layer=0x400000 acpi.debug_level=0x4
 </pre></div>
 </div>
 <p>Enable all ACPI hardware-related messages:</p>

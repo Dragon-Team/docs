@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.11-dragon
+                5.12.12-dragon
               </div>
             
           
@@ -429,6 +429,7 @@ in nits.</p>
   struct list_head irq_handler_list_high_tab[DAL_IRQ_SOURCES_NUMBER];
   struct common_irq_params pflip_params[DC_IRQ_SOURCE_PFLIP_LAST - DC_IRQ_SOURCE_PFLIP_FIRST + 1];
   struct common_irq_params vblank_params[DC_IRQ_SOURCE_VBLANK6 - DC_IRQ_SOURCE_VBLANK1 + 1];
+  struct common_irq_params vline0_params[DC_IRQ_SOURCE_DC6_VLINE0 - DC_IRQ_SOURCE_DC1_VLINE0 + 1];
   struct common_irq_params vupdate_params[DC_IRQ_SOURCE_VUPDATE6 - DC_IRQ_SOURCE_VUPDATE1 + 1];
   spinlock_t irq_handler_list_table_lock;
   struct backlight_device *backlight_dev;
@@ -448,6 +449,9 @@ in nits.</p>
   uint32_t dmcu_fw_version;
   const struct gpu_info_soc_bounding_box_v1_0 *soc_bounding_box;
   uint32_t active_vblank_irq_count;
+#if defined(CONFIG_DRM_AMD_SECURE_DISPLAY);
+  struct crc_rd_work *crc_rd_wrk;
+#endif;
   struct amdgpu_encoder mst_encoders[AMDGPU_DM_MAX_CRTC];
   bool force_timing_sync;
 };
@@ -512,6 +516,9 @@ triggered.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">vblank_params</span></code></dt><dd><p>Vertical blanking IRQ parameters, passed to registered handlers when
 triggered.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">vline0_params</span></code></dt><dd><p>OTG vertical interrupt0 IRQ parameters, passed to registered
+handlers when triggered.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">vupdate_params</span></code></dt><dd><p>Vertical update IRQ parameters, passed to registered handlers when
 triggered.</p>
