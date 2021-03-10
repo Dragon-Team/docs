@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.12-dragon
+                5.12.13-dragon
               </div>
             
           
@@ -1418,33 +1418,6 @@ mapped to userspace without leaking data.</p>
 <p><strong>Return</strong></p>
 <p>pointer to the allocated memory or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> on error</p>
 <dl class="c function">
-<dt id="c.remap_vmalloc_range_partial">
-<span class="pre">int</span> <code class="sig-name descname"><span class="pre">remap_vmalloc_range_partial</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vm_area_struct</span> <span class="pre">*</span><em><span class="pre">vma</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">uaddr</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">kaddr</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">pgoff</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.remap_vmalloc_range_partial" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>map vmalloc pages to userspace</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">vm_area_struct</span> <span class="pre">*vma</span></code></dt><dd><p>vma to cover</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">uaddr</span></code></dt><dd><p>target user address to start at</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*kaddr</span></code></dt><dd><p>virtual address of vmalloc kernel memory</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">pgoff</span></code></dt><dd><p>offset from <strong>kaddr</strong> to start at</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">size</span></code></dt><dd><p>size of map area</p>
-</dd>
-</dl>
-<p><strong>Return</strong></p>
-<p>0 for success, -Exxx on failure</p>
-<p><strong>Description</strong></p>
-<p>This function checks that <strong>kaddr</strong> is a valid vmalloc’ed area,
-and that it is big enough to cover the range starting at
-<strong>uaddr</strong> in <strong>vma</strong>. Will return failure if that criteria isn’t
-met.</p>
-<p>Similar to <a class="reference internal" href="#c.remap_pfn_range" title="remap_pfn_range"><code class="xref c c-func docutils literal notranslate"><span class="pre">remap_pfn_range()</span></code></a> (see mm/memory.c)</p>
-<dl class="c function">
 <dt id="c.remap_vmalloc_range">
 <span class="pre">int</span> <code class="sig-name descname"><span class="pre">remap_vmalloc_range</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">vm_area_struct</span> <span class="pre">*</span><em><span class="pre">vma</span></em>, <span class="pre">void</span> <span class="pre">*</span><em><span class="pre">addr</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">pgoff</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.remap_vmalloc_range" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>map vmalloc pages to userspace</p>
@@ -1681,6 +1654,29 @@ call sites are system-wide / filesystem-wide data flushers: e.g. sync(2),
 fsfreeze(8)</p>
 <p><strong>Return</strong></p>
 <p>error status of the address space.</p>
+<dl class="c function">
+<dt id="c.filemap_range_needs_writeback">
+<span class="pre">bool</span> <code class="sig-name descname"><span class="pre">filemap_range_needs_writeback</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../filesystems/api-summary.html#c.address_space" title="address_space"><span class="pre">address_space</span></a> <span class="pre">*</span><em><span class="pre">mapping</span></em>, <span class="pre">loff_t</span> <em><span class="pre">start_byte</span></em>, <span class="pre">loff_t</span> <em><span class="pre">end_byte</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.filemap_range_needs_writeback" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>check if range potentially needs writeback</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">address_space</span> <span class="pre">*mapping</span></code></dt><dd><p>address space within which to check</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">loff_t</span> <span class="pre">start_byte</span></code></dt><dd><p>offset in bytes where the range starts</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">loff_t</span> <span class="pre">end_byte</span></code></dt><dd><p>offset in bytes where the range ends (inclusive)</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Find at least one page in the range supplied, usually used to check if
+direct writing in this range will trigger a writeback. Used by O_DIRECT
+read/write with IOCB_NOWAIT, to see if the caller needs to do
+<a class="reference internal" href="#c.filemap_write_and_wait_range" title="filemap_write_and_wait_range"><code class="xref c c-func docutils literal notranslate"><span class="pre">filemap_write_and_wait_range()</span></code></a> before proceeding.</p>
+<p><strong>Return</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the caller should do <a class="reference internal" href="#c.filemap_write_and_wait_range" title="filemap_write_and_wait_range"><code class="xref c c-func docutils literal notranslate"><span class="pre">filemap_write_and_wait_range()</span></code></a> before
+doing O_DIRECT to a page in this range, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
 <dl class="c function">
 <dt id="c.filemap_write_and_wait_range">
 <span class="pre">int</span> <code class="sig-name descname"><span class="pre">filemap_write_and_wait_range</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../filesystems/api-summary.html#c.address_space" title="address_space"><span class="pre">address_space</span></a> <span class="pre">*</span><em><span class="pre">mapping</span></em>, <span class="pre">loff_t</span> <em><span class="pre">lstart</span></em>, <span class="pre">loff_t</span> <em><span class="pre">lend</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.filemap_write_and_wait_range" title="Permalink to this definition">¶</a><br /></dt>
@@ -3637,12 +3633,12 @@ __isolate_free_page back to the free lists they were pulled from.</p>
 <dl class="c function">
 <dt id="c.__free_pages">
 <span class="pre">void</span> <code class="sig-name descname"><span class="pre">__free_pages</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.__free_pages" title="page"><span class="pre">page</span></a> <span class="pre">*</span><em><span class="pre">page</span></em>, <span class="pre">unsigned</span> <span class="pre">int</span> <em><span class="pre">order</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.__free_pages" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Free pages allocated with alloc_pages().</p>
+<dd><p>Free pages allocated with <a class="reference internal" href="#c.alloc_pages" title="alloc_pages"><code class="xref c c-func docutils literal notranslate"><span class="pre">alloc_pages()</span></code></a>.</p>
 </dd></dl>
 
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">page</span> <span class="pre">*page</span></code></dt><dd><p>The page pointer returned from alloc_pages().</p>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">page</span> <span class="pre">*page</span></code></dt><dd><p>The page pointer returned from <a class="reference internal" href="#c.alloc_pages" title="alloc_pages"><code class="xref c c-func docutils literal notranslate"><span class="pre">alloc_pages()</span></code></a>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">order</span></code></dt><dd><p>The order of the allocation.</p>
 </dd>
@@ -3675,8 +3671,8 @@ spinlock, but not in NMI context or while holding a raw spinlock.</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>
-<p>This function is similar to alloc_pages(), except that it allocates the
-minimum number of pages to satisfy the request.  alloc_pages() can only
+<p>This function is similar to <a class="reference internal" href="#c.alloc_pages" title="alloc_pages"><code class="xref c c-func docutils literal notranslate"><span class="pre">alloc_pages()</span></code></a>, except that it allocates the
+minimum number of pages to satisfy the request.  <a class="reference internal" href="#c.alloc_pages" title="alloc_pages"><code class="xref c c-func docutils literal notranslate"><span class="pre">alloc_pages()</span></code></a> can only
 allocate memory in power-of-two pages.</p>
 <p>This function is also limited by MAX_ORDER.</p>
 <p>Memory allocated by this function must be released by <a class="reference internal" href="#c.free_pages_exact" title="free_pages_exact"><code class="xref c c-func docutils literal notranslate"><span class="pre">free_pages_exact()</span></code></a>.</p>
@@ -3966,6 +3962,148 @@ power of two then the alignment is guaranteed to be to the given nr_pages
 __free_page() on each allocated page.</p>
 <p><strong>Return</strong></p>
 <p>pointer to contiguous pages on success, or NULL if not successful.</p>
+<dl class="c function">
+<dt id="c.numa_map_to_online_node">
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">numa_map_to_online_node</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.numa_map_to_online_node" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Find closest online node</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">node</span></code></dt><dd><p>Node id to start the search</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Lookup the next closest node by distance if <strong>nid</strong> is not online.</p>
+<dl class="c function">
+<dt id="c.alloc_pages_vma">
+<em class="property"><span class="pre">struct</span></em> <span class="pre">page</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">alloc_pages_vma</span></code><span class="sig-paren">(</span><a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em>, <span class="pre">int</span> <em><span class="pre">order</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">vm_area_struct</span> <span class="pre">*</span><em><span class="pre">vma</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">addr</span></em>, <span class="pre">int</span> <em><span class="pre">node</span></em>, <span class="pre">bool</span> <em><span class="pre">hugepage</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_pages_vma" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Allocate a page for a VMA.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">gfp_t</span> <span class="pre">gfp</span></code></dt><dd><p>GFP flags.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">order</span></code></dt><dd><p>Order of the GFP allocation.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">vm_area_struct</span> <span class="pre">*vma</span></code></dt><dd><p>Pointer to VMA or NULL if not available.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">addr</span></code></dt><dd><p>Virtual address of the allocation.  Must be inside <strong>vma</strong>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">node</span></code></dt><dd><p>Which node to prefer for allocation (modulo policy).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">hugepage</span></code></dt><dd><p>For hugepages try only the preferred node if possible.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Allocate a page for a specific address in <strong>vma</strong>, using the appropriate
+NUMA policy.  When <strong>vma</strong> is not NULL the caller must hold the mmap_lock
+of the mm_struct of the VMA to prevent it from going away.  Should be
+used for all allocations for pages that will be mapped into user space.</p>
+<p><strong>Return</strong></p>
+<p>The page on success or NULL if allocation fails.</p>
+<dl class="c function">
+<dt id="c.alloc_pages">
+<em class="property"><span class="pre">struct</span></em> <span class="pre">page</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">alloc_pages</span></code><span class="sig-paren">(</span><a class="reference internal" href="#c.gfp_t" title="gfp_t"><span class="pre">gfp_t</span></a> <em><span class="pre">gfp</span></em>, <span class="pre">unsigned</span> <em><span class="pre">order</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.alloc_pages" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Allocate pages.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">gfp_t</span> <span class="pre">gfp</span></code></dt><dd><p>GFP flags.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">order</span></code></dt><dd><p>Power of two of number of pages to allocate.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Allocate 1 &lt;&lt; <strong>order</strong> contiguous pages.  The physical address of the
+first page is naturally aligned (eg an order-3 allocation will be aligned
+to a multiple of 8 * PAGE_SIZE bytes).  The NUMA policy of the current
+process is honoured when in process context.</p>
+<p><strong>Context</strong></p>
+<p>Can be called from any context, providing the appropriate GFP
+flags are used.</p>
+<p><strong>Return</strong></p>
+<p>The page on success or NULL if allocation fails.</p>
+<dl class="c function">
+<dt id="c.mpol_misplaced">
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpol_misplaced</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#c.mpol_misplaced" title="page"><span class="pre">page</span></a> <span class="pre">*</span><em><span class="pre">page</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">vm_area_struct</span> <span class="pre">*</span><em><span class="pre">vma</span></em>, <span class="pre">unsigned</span> <span class="pre">long</span> <em><span class="pre">addr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpol_misplaced" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>check whether current page node is valid in policy</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">page</span> <span class="pre">*page</span></code></dt><dd><p>page to be checked</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">vm_area_struct</span> <span class="pre">*vma</span></code></dt><dd><p>vm area where page mapped</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">addr</span></code></dt><dd><p>virtual address where page mapped</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Lookup current policy node id for vma,addr and “compare to” page’s
+node id.  Policy determination “mimics” alloc_page_vma().
+Called from fault path where we know the vma and faulting address.</p>
+<p><strong>Return</strong></p>
+<p>-1 if the page is in a node that is valid for this policy, or a
+suitable node ID to allocate a replacement page from.</p>
+<dl class="c function">
+<dt id="c.mpol_shared_policy_init">
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">mpol_shared_policy_init</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">shared_policy</span> <span class="pre">*</span><em><span class="pre">sp</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">mempolicy</span> <span class="pre">*</span><em><span class="pre">mpol</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpol_shared_policy_init" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>initialize shared policy for inode</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">shared_policy</span> <span class="pre">*sp</span></code></dt><dd><p>pointer to inode shared policy</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">mempolicy</span> <span class="pre">*mpol</span></code></dt><dd><p>struct mempolicy to install</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Install non-NULL <strong>mpol</strong> in inode’s shared policy rb-tree.
+On entry, the current task has a reference on a non-NULL <strong>mpol</strong>.
+This must be released on exit.
+This is called at get_inode() calls and we can use GFP_KERNEL.</p>
+<dl class="c function">
+<dt id="c.mpol_parse_str">
+<span class="pre">int</span> <code class="sig-name descname"><span class="pre">mpol_parse_str</span></code><span class="sig-paren">(</span><span class="pre">char</span> <span class="pre">*</span><em><span class="pre">str</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">mempolicy</span> <span class="pre">*</span><span class="pre">*</span><em><span class="pre">mpol</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpol_parse_str" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>parse string to mempolicy, for tmpfs mpol mount option.</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*str</span></code></dt><dd><p>string containing mempolicy to parse</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">mempolicy</span> <span class="pre">**mpol</span></code></dt><dd><p>pointer to struct mempolicy pointer, returned on success.</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<dl class="simple">
+<dt>Format of input:</dt><dd><p>&lt;mode&gt;[=&lt;flags&gt;][:&lt;nodelist&gt;]</p>
+</dd>
+</dl>
+<p>On success, returns 0, else 1</p>
+<dl class="c function">
+<dt id="c.mpol_to_str">
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">mpol_to_str</span></code><span class="sig-paren">(</span><span class="pre">char</span> <span class="pre">*</span><em><span class="pre">buffer</span></em>, <span class="pre">int</span> <em><span class="pre">maxlen</span></em>, <em class="property"><span class="pre">struct</span></em> <span class="pre">mempolicy</span> <span class="pre">*</span><em><span class="pre">pol</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.mpol_to_str" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>format a mempolicy structure for printing</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*buffer</span></code></dt><dd><p>to contain formatted mempolicy string</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">maxlen</span></code></dt><dd><p>length of <strong>buffer</strong></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">mempolicy</span> <span class="pre">*pol</span></code></dt><dd><p>pointer to mempolicy to be formatted</p>
+</dd>
+</dl>
+<p><strong>Description</strong></p>
+<p>Convert <strong>pol</strong> into a string.  If <strong>buffer</strong> is too short, truncate the string.
+Recommend a <strong>maxlen</strong> of at least 32 for the longest mode, “interleave”, the
+longest flag, “relative”, and to display at least a few node ids.</p>
 </div>
 </div>
 

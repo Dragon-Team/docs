@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.12-dragon
+                5.12.13-dragon
               </div>
             
           
@@ -264,11 +264,12 @@
 <h1><span class="section-number">3. </span>Keyboard notifier<a class="headerlink" href="#keyboard-notifier" title="Permalink to this headline">¶</a></h1>
 <p>One can use register_keyboard_notifier to get called back on keyboard
 events (see kbd_keycode() function for details).  The passed structure is
-keyboard_notifier_param:</p>
+keyboard_notifier_param (see &lt;linux/keyboard.h&gt;):</p>
 <ul class="simple">
 <li><p>‘vc’ always provide the VC for which the keyboard event applies;</p></li>
 <li><p>‘down’ is 1 for a key press event, 0 for a key release;</p></li>
 <li><p>‘shift’ is the current modifier state, mask bit indexes are KG_*;</p></li>
+<li><p>‘ledstate’ is the current LED state;</p></li>
 <li><p>‘value’ depends on the type of event.</p></li>
 <li><p>KBD_KEYCODE events are always sent before other events, value is the keycode.</p></li>
 <li><p>KBD_UNBOUND_KEYCODE events are sent if the keycode is not bound to a keysym.

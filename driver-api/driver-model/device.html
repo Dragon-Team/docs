@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.12-dragon
+                5.12.13-dragon
               </div>
             
           
@@ -419,8 +419,14 @@ that is by defining an attribute group.</p>
 </pre></div>
 </div>
 <p>Example::</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>static DEVICE_ATTR(type, 0444, show_type, NULL);
-static DEVICE_ATTR(power, 0644, show_power, store_power);
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>static DEVICE_ATTR(type, 0444, type_show, NULL);
+static DEVICE_ATTR(power, 0644, power_show, power_store);
+</pre></div>
+</div>
+<p>Helper macros are available for common values of mode, so the above examples
+can be simplified to::</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>static DEVICE_ATTR_RO(type);
+static DEVICE_ATTR_RW(power);
 </pre></div>
 </div>
 <p>This declares two structures of type struct device_attribute with respective
@@ -432,19 +438,24 @@ organized as follows into a group:</p>
       NULL,
 };
 
-static struct attribute_group dev_attr_group = {
+static struct attribute_group dev_group = {
       .attrs = dev_attrs,
 };
 
-static const struct attribute_group *dev_attr_groups[] = {
-      &amp;dev_attr_group,
+static const struct attribute_group *dev_groups[] = {
+      &amp;dev_group,
       NULL,
 };
 </pre></div>
 </div>
+<p>A helper macro is available for the common case of a single group, so the
+above two structures can be declared using::</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ATTRIBUTE_GROUPS(dev);
+</pre></div>
+</div>
 <p>This array of groups can then be associated with a device by setting the
 group pointer in <a class="reference internal" href="../infrastructure.html#c.device" title="device"><code class="xref c c-struct docutils literal notranslate"><span class="pre">struct</span> <span class="pre">device</span></code></a> before <a class="reference internal" href="../infrastructure.html#c.device_register" title="device_register"><code class="xref c c-func docutils literal notranslate"><span class="pre">device_register()</span></code></a> is invoked:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dev-&gt;groups = dev_attr_groups;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dev-&gt;groups = dev_groups;
 device_register(dev);
 </pre></div>
 </div>

@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                5.12.12-dragon
+                5.12.13-dragon
               </div>
             
           
@@ -874,9 +874,13 @@
 </li>
       <li><a href="core-api/workqueue.html#c.alloc_ordered_workqueue">alloc_ordered_workqueue (C macro)</a>
 </li>
+      <li><a href="core-api/mm-api.html#c.alloc_pages">alloc_pages (C function)</a>
+</li>
       <li><a href="core-api/mm-api.html#c.alloc_pages_exact">alloc_pages_exact (C function)</a>
 </li>
       <li><a href="core-api/mm-api.html#c.alloc_pages_exact_nid">alloc_pages_exact_nid (C function)</a>
+</li>
+      <li><a href="core-api/mm-api.html#c.alloc_pages_vma">alloc_pages_vma (C function)</a>
 </li>
       <li><a href="networking/kapi.html#c.alloc_skb">alloc_skb (C function)</a>
 </li>
@@ -1262,10 +1266,10 @@
 </li>
       <li><a href="driver-api/basics.html#c.arch_atomic_dec_and_test">arch_atomic_dec_and_test (C function)</a>
 </li>
-      <li><a href="driver-api/basics.html#c.arch_atomic_inc">arch_atomic_inc (C function)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="driver-api/basics.html#c.arch_atomic_inc">arch_atomic_inc (C function)</a>
+</li>
       <li><a href="driver-api/basics.html#c.arch_atomic_inc_and_test">arch_atomic_inc_and_test (C function)</a>
 </li>
       <li><a href="driver-api/basics.html#c.arch_atomic_read">arch_atomic_read (C function)</a>
@@ -7208,6 +7212,8 @@
 </li>
       <li><a href="core-api/mm-api.html#c.filemap_range_has_page">filemap_range_has_page (C function)</a>
 </li>
+      <li><a href="core-api/mm-api.html#c.filemap_range_needs_writeback">filemap_range_needs_writeback (C function)</a>
+</li>
       <li><a href="core-api/mm-api.html#c.filemap_read">filemap_read (C function)</a>
 </li>
       <li><a href="filesystems/api-summary.html#c.filemap_sample_wb_err">filemap_sample_wb_err (C function)</a>
@@ -11652,12 +11658,12 @@
 </li>
       <li><a href="core-api/boot-time-mm.html#c.memblock_alloc_exact_nid_raw">memblock_alloc_exact_nid_raw (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core-api/boot-time-mm.html#c.memblock_alloc_internal">memblock_alloc_internal (C function)</a>
 </li>
       <li><a href="core-api/boot-time-mm.html#c.memblock_alloc_range_nid">memblock_alloc_range_nid (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core-api/boot-time-mm.html#c.memblock_alloc_try_nid">memblock_alloc_try_nid (C function)</a>
 </li>
       <li><a href="core-api/boot-time-mm.html#c.memblock_alloc_try_nid_raw">memblock_alloc_try_nid_raw (C function)</a>
@@ -11953,6 +11959,14 @@
       <li><a href="driver-api/80211/cfg80211.html#c.mpath_info">mpath_info (C struct)</a>
 </li>
       <li><a href="driver-api/80211/cfg80211.html#c.mpath_info_flags">mpath_info_flags (C enum)</a>
+</li>
+      <li><a href="core-api/mm-api.html#c.mpol_misplaced">mpol_misplaced (C function)</a>
+</li>
+      <li><a href="core-api/mm-api.html#c.mpol_parse_str">mpol_parse_str (C function)</a>
+</li>
+      <li><a href="core-api/mm-api.html#c.mpol_shared_policy_init">mpol_shared_policy_init (C function)</a>
+</li>
+      <li><a href="core-api/mm-api.html#c.mpol_to_str">mpol_to_str (C function)</a>
 </li>
       <li><a href="driver-api/message-based.html#c.mpt_alloc_fw_memory">mpt_alloc_fw_memory (C function)</a>
 </li>
@@ -12577,6 +12591,8 @@
       <li><a href="core-api/mm-api.html#c.nr_free_zone_pages">nr_free_zone_pages (C function)</a>
 </li>
       <li><a href="driver-api/media/drivers/vidtv.html#c.null_packet_write_args">null_packet_write_args (C struct)</a>
+</li>
+      <li><a href="core-api/mm-api.html#c.numa_map_to_online_node">numa_map_to_online_node (C function)</a>
 </li>
       <li><a href="networking/kapi.html#c.nvmem_get_mac_address">nvmem_get_mac_address (C function)</a>
 </li>
@@ -14371,8 +14387,6 @@
       <li><a href="core-api/mm-api.html#c.remap_pfn_range">remap_pfn_range (C function)</a>
 </li>
       <li><a href="core-api/mm-api.html#c.remap_vmalloc_range">remap_vmalloc_range (C function)</a>
-</li>
-      <li><a href="core-api/mm-api.html#c.remap_vmalloc_range_partial">remap_vmalloc_range_partial (C function)</a>
 </li>
       <li><a href="driver-api/frame-buffer.html#c.remove_conflicting_framebuffers">remove_conflicting_framebuffers (C function)</a>
 </li>
@@ -18444,8 +18458,6 @@
 </li>
       <li><a href="driver-api/usb/usb.html#c.usb_create_shared_hcd">usb_create_shared_hcd (C function)</a>
 </li>
-      <li><a href="driver-api/usb/usb.html#c.usb_decode_ctrl">usb_decode_ctrl (C function)</a>
-</li>
       <li><a href="driver-api/usb/usb.html#c.usb_deregister">usb_deregister (C function)</a>
 </li>
       <li><a href="driver-api/usb/usb.html#c.usb_deregister_dev">usb_deregister_dev (C function)</a>
@@ -18482,12 +18494,12 @@
 </li>
       <li><a href="driver-api/usb/usb.html#c.usb_driver_release_interface">usb_driver_release_interface (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="driver-api/usb/usb.html#c.usb_driver_set_configuration">usb_driver_set_configuration (C function)</a>
 </li>
       <li><a href="driver-api/usb/usb.html#c.usb_enable_autosuspend">usb_enable_autosuspend (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="driver-api/usb/gadget.html#c.usb_ep">usb_ep (C struct)</a>
 </li>
       <li><a href="driver-api/usb/gadget.html#c.usb_ep_align">usb_ep_align (C function)</a>
@@ -18495,8 +18507,6 @@
       <li><a href="driver-api/usb/gadget.html#c.usb_ep_align_maybe">usb_ep_align_maybe (C function)</a>
 </li>
       <li><a href="driver-api/usb/gadget.html#c.usb_ep_caps">usb_ep_caps (C struct)</a>
-</li>
-      <li><a href="driver-api/usb/usb.html#c.usb_ep_type_string">usb_ep_type_string (C function)</a>
 </li>
       <li><a href="driver-api/usb/usb.html#c.usb_fill_bulk_urb">usb_fill_bulk_urb (C function)</a>
 </li>
@@ -18551,10 +18561,6 @@
       <li><a href="driver-api/usb/usb.html#c.usb_get_from_anchor">usb_get_from_anchor (C function)</a>
 </li>
       <li><a href="driver-api/usb/usb.html#c.usb_get_intf">usb_get_intf (C function)</a>
-</li>
-      <li><a href="driver-api/usb/usb.html#c.usb_get_maximum_speed">usb_get_maximum_speed (C function)</a>
-</li>
-      <li><a href="driver-api/usb/usb.html#c.usb_get_maximum_ssp_rate">usb_get_maximum_ssp_rate (C function)</a>
 </li>
       <li><a href="driver-api/usb/usb.html#c.usb_get_status">usb_get_status (C function)</a>
 </li>
@@ -18669,10 +18675,6 @@
       <li><a href="driver-api/usb/usb.html#c.usb_sg_request">usb_sg_request (C struct)</a>
 </li>
       <li><a href="driver-api/usb/usb.html#c.usb_sg_wait">usb_sg_wait (C function)</a>
-</li>
-      <li><a href="driver-api/usb/usb.html#c.usb_speed_string">usb_speed_string (C function)</a>
-</li>
-      <li><a href="driver-api/usb/usb.html#c.usb_state_string">usb_state_string (C function)</a>
 </li>
       <li><a href="driver-api/usb/usb.html#c.usb_string">usb_string (C function)</a>
 

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.12-dragon
+                5.12.13-dragon
               </div>
             
           
@@ -991,8 +991,8 @@ into their global totals, for more accurate reports when testing
 e.g. cat /proc/sys/vm/stat_refresh /proc/meminfo</p>
 <p>As a side-effect, it also checks for negative totals (elsewhere reported
 as 0) and “fails” with EINVAL if any are found, with a warning in dmesg.
-(On a SMP machine some stats can temporarily become negative, with no ill
-effects: errors and warnings on these stats are suppressed.)</p>
+(At time of writing, a few stats are known sometimes to be found negative,
+with no ill effects: errors and warnings on these stats are suppressed.)</p>
 </div>
 <div class="section" id="numa-stat">
 <h2>numa_stat<a class="headerlink" href="#numa-stat" title="Permalink to this headline">¶</a></h2>

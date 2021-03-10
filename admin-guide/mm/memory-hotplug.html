@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.12-dragon
+                5.12.13-dragon
               </div>
             
           
@@ -749,6 +749,16 @@ Size of memory for movable pages (for offline) is ZZZZ.</p></li>
 <p class="admonition-title">Note</p>
 <p>Unfortunately, there is no information to show which memory block belongs
 to ZONE_MOVABLE. This is TBD.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Techniques that rely on long-term pinnings of memory (especially, RDMA and
+vfio) are fundamentally problematic with ZONE_MOVABLE and, therefore, memory
+hot remove. Pinned pages cannot reside on ZONE_MOVABLE, to guarantee that
+memory can still get hot removed - be aware that pinning can fail even if
+there is plenty of free memory in ZONE_MOVABLE. In addition, using
+ZONE_MOVABLE might make page pinning more expensive, because pages have to be
+migrated off that zone first.</p>
 </div>
 </div>
 <div class="section" id="how-to-offline-memory">

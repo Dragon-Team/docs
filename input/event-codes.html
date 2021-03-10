@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.12-dragon
+                5.12.13-dragon
               </div>
             
           
@@ -530,9 +530,9 @@ for other devices, for example digitizers and touchpads with a true
 pressure sensor (“pressure pads”).</p>
 <p>A device should set the resolution of the axis to indicate whether the
 pressure is in measurable units. If the resolution is zero, the
-pressure data is in arbitrary units. If the resolution is nonzero, the
+pressure data is in arbitrary units. If the resolution is non-zero, the
 pressure data is in units/gram. For example, a value of 10 with a
-resolution of 1 represents 10 gram, a value of 10 with a resolution on
+resolution of 1 represents 10 gram, a value of 10 with a resolution of
 1000 represents 10 microgram.</p>
 </li>
 </ul>
@@ -621,7 +621,7 @@ traditional way, using emitted event types.</p>
 <h3><span class="section-number">2.3.2. </span>INPUT_PROP_BUTTONPAD<a class="headerlink" href="#input-prop-buttonpad" title="Permalink to this headline">¶</a></h3>
 <p>For touchpads where the button is placed beneath the surface, such that
 pressing down on the pad causes a button click, this property should be
-set. Common in clickpad notebooks and macbooks from 2009 and onwards.</p>
+set. Common in Clickpad notebooks and Macbooks from 2009 and onwards.</p>
 <p>Originally, the buttonpad property was coded into the bcm5974 driver
 version field under the name integrated button. For backwards
 compatibility, both methods need to be checked in userspace.</p>
@@ -631,7 +631,7 @@ compatibility, both methods need to be checked in userspace.</p>
 <p>Some touchpads, most common between 2008 and 2011, can detect the presence
 of multiple contacts without resolving the individual positions; only the
 number of contacts and a rectangular shape is known. For such
-touchpads, the semi-mt property should be set.</p>
+touchpads, the SEMI_MT property should be set.</p>
 <p>Depending on the device, the rectangle may enclose all touches, like a
 bounding box, or just some of them, for instance the two most recent
 touches. The diversity makes the rectangle of limited use, but some

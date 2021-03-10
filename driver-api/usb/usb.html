@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.12-dragon
+                5.12.13-dragon
               </div>
             
           
@@ -472,106 +472,6 @@ well as to make sure they aren’t relying on some HCD-specific behavior.</p>
 chapter 9 of the USB specification. These data types are used throughout
 USB, and in APIs including this host side API, gadget APIs, usb character
 devices and debugfs interfaces.</p>
-<dl class="c function">
-<dt id="c.usb_ep_type_string">
-<em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_ep_type_string</span></code><span class="sig-paren">(</span><span class="pre">int</span> <em><span class="pre">ep_type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_ep_type_string" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns human readable-name of the endpoint type.</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">ep_type</span></code></dt><dd><p>The endpoint type to return human-readable name for.  If it’s not
-any of the types: USB_ENDPOINT_XFER_{CONTROL, ISOC, BULK, INT},
-usually got by usb_endpoint_type(), the string ‘unknown’ will be returned.</p>
-</dd>
-</dl>
-<dl class="c function">
-<dt id="c.usb_speed_string">
-<em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_speed_string</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <span class="pre">usb_device_speed</span> <em><span class="pre">speed</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_speed_string" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns human readable-name of the speed.</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">usb_device_speed</span> <span class="pre">speed</span></code></dt><dd><p>The speed to return human-readable name for.  If it’s not
-any of the speeds defined in usb_device_speed enum, string for
-USB_SPEED_UNKNOWN will be returned.</p>
-</dd>
-</dl>
-<dl class="c function">
-<dt id="c.usb_get_maximum_speed">
-<em class="property"><span class="pre">enum</span></em> <span class="pre">usb_device_speed</span> <code class="sig-name descname"><span class="pre">usb_get_maximum_speed</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_maximum_speed" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get maximum requested speed for a given USB controller.</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">device</span> <span class="pre">*dev</span></code></dt><dd><p>Pointer to the given USB controller device</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>The function gets the maximum speed string from property “maximum-speed”,
-and returns the corresponding enum usb_device_speed.</p>
-<dl class="c function">
-<dt id="c.usb_get_maximum_ssp_rate">
-<em class="property"><span class="pre">enum</span></em> <span class="pre">usb_ssp_rate</span> <code class="sig-name descname"><span class="pre">usb_get_maximum_ssp_rate</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="../infrastructure.html#c.device" title="device"><span class="pre">device</span></a> <span class="pre">*</span><em><span class="pre">dev</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_get_maximum_ssp_rate" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get the signaling rate generation and lane count of a SuperSpeed Plus capable device.</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">device</span> <span class="pre">*dev</span></code></dt><dd><p>Pointer to the given USB controller device</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>If the string from “maximum-speed” property is super-speed-plus-genXxY where
-‘X’ is the generation number and ‘Y’ is the number of lanes, then this
-function returns the corresponding enum usb_ssp_rate.</p>
-<dl class="c function">
-<dt id="c.usb_state_string">
-<em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_state_string</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">enum</span></em> <span class="pre">usb_device_state</span> <em><span class="pre">state</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_state_string" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns human readable name for the state.</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">usb_device_state</span> <span class="pre">state</span></code></dt><dd><p>The state to return a human-readable name for. If it’s not
-any of the states devices in usb_device_state_string enum,
-the string UNKNOWN will be returned.</p>
-</dd>
-</dl>
-<dl class="c function">
-<dt id="c.usb_decode_ctrl">
-<em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">usb_decode_ctrl</span></code><span class="sig-paren">(</span><span class="pre">char</span> <span class="pre">*</span><em><span class="pre">str</span></em>, <span class="pre">size_t</span> <em><span class="pre">size</span></em>, <span class="pre">__u8</span> <em><span class="pre">bRequestType</span></em>, <span class="pre">__u8</span> <em><span class="pre">bRequest</span></em>, <span class="pre">__u16</span> <em><span class="pre">wValue</span></em>, <span class="pre">__u16</span> <em><span class="pre">wIndex</span></em>, <span class="pre">__u16</span> <em><span class="pre">wLength</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.usb_decode_ctrl" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns human readable representation of control request.</p>
-</dd></dl>
-
-<p><strong>Parameters</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*str</span></code></dt><dd><p>buffer to return a human-readable representation of control request.
-This buffer should have about 200 bytes.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">size</span></code></dt><dd><p>size of str buffer.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">__u8</span> <span class="pre">bRequestType</span></code></dt><dd><p>matches the USB bmRequestType field</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">__u8</span> <span class="pre">bRequest</span></code></dt><dd><p>matches the USB bRequest field</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">__u16</span> <span class="pre">wValue</span></code></dt><dd><p>matches the USB wValue field (CPU byte order)</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">__u16</span> <span class="pre">wIndex</span></code></dt><dd><p>matches the USB wIndex field (CPU byte order)</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">__u16</span> <span class="pre">wLength</span></code></dt><dd><p>matches the USB wLength field (CPU byte order)</p>
-</dd>
-</dl>
-<p><strong>Description</strong></p>
-<p>Function returns decoded, formatted and human-readable description of
-control request packet.</p>
-<p>The usage scenario for this is for tracepoints, so function as a return
-use the same value as in parameters. This approach allows to use this
-function in TP_printk</p>
-<p>Important: wValue, wIndex, wLength parameters before invoking this function
-should be processed by le16_to_cpu macro.</p>
 </div>
 <div class="section" id="host-side-data-types-and-macros">
 <span id="usb-header"></span><h2>Host-Side Data Types and Macros<a class="headerlink" href="#host-side-data-types-and-macros" title="Permalink to this headline">¶</a></h2>

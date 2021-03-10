@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.12-dragon
+                5.12.13-dragon
               </div>
             
           
@@ -205,6 +205,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../filesystems/index.html">Linux Kernel中的文件系统</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../arm64/index.html">ARM64 架构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sound/index.html">Linux 声音子系统文档</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../index.html#id2">目录和表格</a></li>
 </ul>
 </li>
@@ -304,21 +305,25 @@
 <dd class="field-odd"><p><a class="reference internal" href="../../../process/8.Conclusion.html#development-conclusion"><span class="std std-ref">Documentation/process/8.Conclusion.rst</span></a></p>
 </dd>
 <dt class="field-even">Translator</dt>
-<dd class="field-even"><p>Alex Shi &lt;<a class="reference external" href="mailto:alex&#46;shi&#37;&#52;&#48;linux&#46;alibaba&#46;com">alex<span>&#46;</span>shi<span>&#64;</span>linux<span>&#46;</span>alibaba<span>&#46;</span>com</a>&gt;</p>
+<dd class="field-even"><p>时奎亮 Alex Shi &lt;<a class="reference external" href="mailto:alex&#46;shi&#37;&#52;&#48;linux&#46;alibaba&#46;com">alex<span>&#46;</span>shi<span>&#64;</span>linux<span>&#46;</span>alibaba<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-odd">校译</dt>
+<dd class="field-odd"><p>吴想成 Wu XiangCheng &lt;<a class="reference external" href="mailto:bobwxc&#37;&#52;&#48;email&#46;cn">bobwxc<span>&#64;</span>email<span>&#46;</span>cn</a>&gt;</p>
 </dd>
 </dl>
 <div class="section" id="cn-development-conclusion">
 <span id="id1"></span><h1><span class="section-number">8. </span>更多信息<a class="headerlink" href="#cn-development-conclusion" title="Permalink to this headline">¶</a></h1>
 <p>关于Linux内核开发和相关主题的信息来源很多。首先是在内核源代码分发中找到的
-文档目录。顶级 <a class="reference internal" href="howto.html#cn-process-howto"><span class="std std-ref"><a class="reference internal" href="howto.html"><span class="doc">如何参与Linux内核开发</span></a></span></a>
-文件是一个重要的起点
+文档目录。顶级
+<a class="reference internal" href="howto.html#cn-process-howto"><span class="std std-ref"><a class="reference internal" href="howto.html"><span class="doc">如何参与Linux内核开发</span></a></span></a>
+文件是一个重要的起点；
 <a class="reference internal" href="submitting-patches.html#cn-submittingpatches"><span class="std std-ref"><a class="reference internal" href="submitting-patches.html"><span class="doc">如何让你的改动进入内核</span></a></span></a>
-和 <a class="reference internal" href="../../../process/submitting-drivers.html#submittingdrivers"><span class="std std-ref">process/submitting-drivers.rst</span></a>
+和 <a class="reference internal" href="submitting-drivers.html#cn-submittingdrivers"><span class="std std-ref">Documentation/transaltions/zh_CN/process/submitting-drivers.rst</span></a>
 也是所有内核开发人员都应该阅读的内容。许多内部内核API都是使用kerneldoc机制
-记录的；“make htmldocs”或“make pdfdocs”可用于以HTML或PDF格式生成这些文档（
-尽管某些发行版提供的tex版本会遇到内部限制，无法正确处理文档）。</p>
-<p>不同的网站在各个细节层次上讨论内核开发。您的作者想谦虚地建议用 <a class="reference external" href="https://lwn.net/">https://lwn.net/</a>
-作为来源；有关许多特定内核主题的信息可以通过以下网址的lwn内核索引找到：</p>
+记录的；“make htmldocs”或“make pdfdocs”可用于以HTML或PDF格式生成这些文档
+（尽管某些发行版提供的tex版本会遇到内部限制，无法正确处理文档）。</p>
+<p>不同的网站在各个细节层次上讨论内核开发。本文作者想谦虚地建议用 <a class="reference external" href="https://lwn.net/">https://lwn.net/</a>
+作为来源；有关许多特定内核主题的信息可以通过以下网址的 LWN 内核索引找到：</p>
 <blockquote>
 <div><p><a class="reference external" href="http://lwn.net/kernel/index/">http://lwn.net/kernel/index/</a></p>
 </div></blockquote>
@@ -326,16 +331,16 @@
 <blockquote>
 <div><p><a class="reference external" href="https://kernelnewbies.org/">https://kernelnewbies.org/</a></p>
 </div></blockquote>
-<p>当然，我们不应该忘记 <a class="reference external" href="https://kernel.org/">https://kernel.org/</a> 这是内核发布信息的最终位置。</p>
+<p>当然，也不应该忘记 <a class="reference external" href="https://kernel.org/">https://kernel.org/</a> ，这是内核发布信息的最终位置。</p>
 <p>关于内核开发有很多书：</p>
 <blockquote>
-<div><p>Linux设备驱动程序，第三版（Jonathan Corbet、Alessandro Rubini和Greg Kroah Hartman）。
-在线：<a class="reference external" href="http://lwn.net/kernel/ldd3/">http://lwn.net/kernel/ldd3/</a></p>
-<p>Linux内核开发（Robert Love）。</p>
-<p>了解Linux内核（Daniel Bovet和Marco Cesati）。</p>
+<div><p>《Linux设备驱动程序》第三版（Jonathan Corbet、Alessandro Rubini和Greg Kroah Hartman）
+线上版本在 <a class="reference external" href="http://lwn.net/kernel/ldd3/">http://lwn.net/kernel/ldd3/</a></p>
+<p>《Linux内核设计与实现》（Robert Love）</p>
+<p>《深入理解Linux内核》(Daniel Bovet和Marco Cesati）</p>
 </div></blockquote>
-<p>然而，所有这些书都有一个共同的缺点：当它们上架时，它们往往有些过时，而且它们
-已经上架一段时间了。不过，在那里还可以找到相当多的好信息。</p>
+<p>然而，所有这些书都有一个共同的缺点：它们上架时就往往有些过时，而且已经上架
+一段时间了。不过，在那里还是可以找到相当多的好信息。</p>
 <p>有关git的文档，请访问：</p>
 <blockquote>
 <div><p><a class="reference external" href="https://www.kernel.org/pub/software/scm/git/docs/">https://www.kernel.org/pub/software/scm/git/docs/</a></p>
@@ -344,17 +349,16 @@
 </div>
 <div class="section" id="id2">
 <h1><span class="section-number">9. </span>结论<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
-<p>祝贺所有通过这篇冗长的文件的人。希望它能够帮助您理解Linux内核是如何开发的，
+<p>祝贺所有通过这篇冗长的文档的人。希望它能够帮助您理解Linux内核是如何开发的，
 以及您如何参与这个过程。</p>
-<p>最后，重要的是参与。任何开源软件项目都不超过其贡献者投入其中的总和。Linux内核
-的发展速度和以前一样快，因为它得到了大量开发人员的帮助，他们都在努力使它变得
-更好。内核是一个主要的例子，说明当成千上万的人为了一个共同的目标一起工作时，
-可以做些什么。</p>
-<p>不过，内核总是可以从更大的开发人员基础中获益。总有更多的工作要做。但是，同样
+<p>最后，重要的是参与。任何开源软件项目都不会超过其贡献者投入其中的总和。Linux
+内核的发展速度和以前一样快，因为它得到了大量开发人员的帮助，他们都在努力使它
+变得更好。内核是一个最成功的例子，说明了当成千上万的人为了一个共同的目标一起
+工作时，可以做出什么。</p>
+<p>不过，内核总是可以从更大的开发人员基础中获益。总有更多的工作要做。但是同样
 重要的是，Linux生态系统中的大多数其他参与者可以通过为内核做出贡献而受益。使
 代码进入主线是提高代码质量、降低维护和分发成本、提高对内核开发方向的影响程度
-等的关键。这是一种人人都赢的局面。踢开你的编辑，来加入我们吧，你会非常受
-欢迎的。</p>
+等的关键。这是一种共赢的局面。启动你的编辑器，来加入我们吧；你会非常受欢迎的。</p>
 </div>
 
 

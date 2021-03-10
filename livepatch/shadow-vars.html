@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.12-dragon
+                5.12.13-dragon
               </div>
             
           
@@ -440,8 +440,8 @@ variable:</p>
 <h3>In-flight parent objects<a class="headerlink" href="#in-flight-parent-objects" title="Permalink to this headline">¶</a></h3>
 <p>Sometimes it may not be convenient or possible to allocate shadow
 variables alongside their parent objects.  Or a livepatch fix may
-require shadow varibles to only a subset of parent object instances.  In
-these cases, the klp_shadow_get_or_alloc() call can be used to attach
+require shadow variables for only a subset of parent object instances.
+In these cases, the klp_shadow_get_or_alloc() call can be used to attach
 shadow variables to parents already in-flight.</p>
 <p>For commit 1d147bfa6429, a good spot to allocate a shadow spinlock is
 inside ieee80211_sta_ps_deliver_wakeup():</p>

@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.12-dragon
+                5.12.13-dragon
               </div>
             
           
@@ -670,7 +670,7 @@ nullarbor:~ # echo -n &#39;format &quot;nfsd: READ&quot; +p&#39; &gt;
                               &lt;debugfs&gt;/dynamic_debug/control
 
 // enable messages in files of which the paths include string &quot;usb&quot;
-nullarbor:~ # echo -n &#39;*usb* +p&#39; &gt; &lt;debugfs&gt;/dynamic_debug/control
+nullarbor:~ # echo -n &#39;file *usb* +p&#39; &gt; &lt;debugfs&gt;/dynamic_debug/control
 
 // enable all messages
 nullarbor:~ # echo -n &#39;+p&#39; &gt; &lt;debugfs&gt;/dynamic_debug/control

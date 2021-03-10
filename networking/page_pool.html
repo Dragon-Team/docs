@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.12-dragon
+                5.12.13-dragon
               </div>
             
           
@@ -386,7 +386,7 @@
 <h1>Page Pool API<a class="headerlink" href="#page-pool-api" title="Permalink to this headline">¶</a></h1>
 <p>The page_pool allocator is optimized for the XDP mode that uses one frame
 per-page, but it can fallback on the regular page allocator APIs.</p>
-<p>Basic use involves replacing alloc_pages() calls with the
+<p>Basic use involves replacing <a class="reference internal" href="../core-api/mm-api.html#c.alloc_pages" title="alloc_pages"><code class="xref c c-func docutils literal notranslate"><span class="pre">alloc_pages()</span></code></a> calls with the
 page_pool_alloc_pages() call.  Drivers should use page_pool_dev_alloc_pages()
 replacing dev_alloc_pages().</p>
 <p>API keeps track of inflight pages, in order to let API user know

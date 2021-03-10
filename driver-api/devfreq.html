@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.12-dragon
+                5.12.13-dragon
               </div>
             
           
@@ -408,6 +408,7 @@ will be only compatible with devices aware of it.</p>
   unsigned long initial_freq;
   unsigned int polling_ms;
   enum devfreq_timer timer;
+  bool is_cooling_device;
   int (*target)(struct device *dev, unsigned long *freq, u32 flags);
   int (*get_dev_status)(struct device *dev, struct devfreq_dev_status *stat);
   int (*get_cur_freq)(struct device *dev, unsigned long *freq);
@@ -425,6 +426,9 @@ called.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">polling_ms</span></code></dt><dd><p>The polling interval in ms. 0 disables polling.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">timer</span></code></dt><dd><p>Timer type is either deferrable or delayed timer.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">is_cooling_device</span></code></dt><dd><p>A self-explanatory boolean giving the device a
+cooling effect property.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">target</span></code></dt><dd><p>The device should set its operating frequency at
 freq or lowest-upper-than-freq value. If freq is
@@ -510,6 +514,7 @@ and freq_table must be generated in ascending order.</p>
   atomic_t suspend_count;
   struct devfreq_stats stats;
   struct srcu_notifier_head transition_notifier_list;
+  struct thermal_cooling_device *cdev;
   struct notifier_block nb_min;
   struct notifier_block nb_max;
 };
@@ -563,6 +568,8 @@ touch this.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">stats</span></code></dt><dd><p>Statistics of devfreq device behavior</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">transition_notifier_list</span></code></dt><dd><p>list head of DEVFREQ_TRANSITION_NOTIFIER notifier</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">cdev</span></code></dt><dd><p>Cooling device pointer if the devfreq has cooling property</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">nb_min</span></code></dt><dd><p>Notifier block for DEV_PM_QOS_MIN_FREQUENCY</p>
 </dd>

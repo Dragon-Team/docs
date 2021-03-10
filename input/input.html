@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.12-dragon
+                5.12.13-dragon
               </div>
             
           
@@ -281,7 +281,7 @@
 </dl>
 <div class="section" id="architecture">
 <h2><span class="section-number">1.1. </span>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
-<p>Input subsystem  a collection of drivers that is designed to support
+<p>Input subsystem is a collection of drivers that is designed to support
 all input devices under Linux. Most of the drivers reside in
 drivers/input, although quite a few live in drivers/hid and
 drivers/platform.</p>
@@ -318,7 +318,7 @@ will be available as a character device on major 13, minor 63:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>crw-r--r--   1 root     root      13,  63 Mar 28 22:45 mice
 </pre></div>
 </div>
-<p>This device usually created automatically by the system. The commands
+<p>This device is usually created automatically by the system. The commands
 to create it by hand are:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /dev
 mkdir input
@@ -431,7 +431,7 @@ above 256 if there are more joystick devices.</p>
 whole suite. It handles all HID devices, and because there is a very
 wide variety of them, and because the USB HID specification isn’t
 simple, it needs to be this big.</p>
-<p>Currently, it handles USB mice, joysticks, gamepads, steering wheels
+<p>Currently, it handles USB mice, joysticks, gamepads, steering wheels,
 keyboards, trackballs and digitizers.</p>
 <p>However, USB uses HID also for monitor controls, speaker controls, UPSs,
 LCDs and many other purposes.</p>
@@ -505,7 +505,7 @@ events on a read. Their layout is:</p>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">time</span></code> is the timestamp, it returns the time at which the event happened.
-Type is for example EV_REL for relative moment, EV_KEY for a keypress or
+Type is for example EV_REL for relative movement, EV_KEY for a keypress or
 release. More types are defined in include/uapi/linux/input-event-codes.h.</p>
 <p><code class="docutils literal notranslate"><span class="pre">code</span></code> is event code, for example REL_X or KEY_BACKSPACE, again a complete
 list is in include/uapi/linux/input-event-codes.h.</p>

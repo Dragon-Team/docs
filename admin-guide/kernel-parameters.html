@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.12-dragon
+                5.12.13-dragon
               </div>
             
           
@@ -467,6 +467,7 @@ PPC     PowerPC architecture is enabled.
 PPT     Parallel port support is enabled.
 PS2     Appropriate PS/2 support is enabled.
 RAM     RAM disk support is enabled.
+RISCV   RISCV architecture is enabled.
 RDT     Intel Resource Director Technology.
 S390    S390 architecture is enabled.
 SCSI    Appropriate SCSI support is enabled.
@@ -2100,6 +2101,20 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         architecture dependent.  See also
                         Documentation/admin-guide/mm/hugetlbpage.rst.
                         Format: size[KMG]
+
+        hugetlb_free_vmemmap=
+                        [KNL] When CONFIG_HUGETLB_PAGE_FREE_VMEMMAP is set,
+                        this controls freeing unused vmemmap pages associated
+                        with each HugeTLB page. When this option is enabled,
+                        we disable PMD/huge page mapping of vmemmap pages which
+                        increase page table pages. So if a user/sysadmin only
+                        uses a small number of HugeTLB pages (as a percentage
+                        of system memory), they could end up using more memory
+                        with hugetlb_free_vmemmap on as opposed to off.
+                        Format: { on | off (default) }
+
+                        on:  enable the feature
+                        off: disable the feature
 
         hung_task_panic=
                         [KNL] Should the hung task detector generate panics.
@@ -4039,7 +4054,8 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
 
         nr_uarts=       [SERIAL] maximum number of UARTs to be registered.
 
-        numa_balancing= [KNL,X86] Enable or disable automatic NUMA balancing.
+        numa_balancing= [KNL,ARM64,PPC,RISCV,S390,X86] Enable or disable automatic
+                        NUMA balancing.
                         Allowed values are enable and disable
 
         numa_zonelist_order= [KNL, BOOT] Select zonelist order for NUMA.
@@ -4622,6 +4638,30 @@ bytes respectively. Such letter suffixes can also be entirely omitted:</p>
                         See Documentation/admin-guide/blockdev/ramdisk.rst.
 
         ramdisk_start=  [RAM] RAM disk image start address
+
+        randomize_vmalloc= [KNL] Boolean option to randomize vmalloc()
+                        allocations. When enabled, the entire
+                        vmalloc() area is used randomly to make the
+                        allocations less predictable and harder to
+                        guess for attackers. Also module and BPF code
+                        locations get randomized (within their
+                        dedicated and rather small area though) and if
+                        CONFIG_VMAP_STACK is enabled, also kernel
+                        thread stack locations.
+
+                        On 32 bit systems this may cause problems due
+                        to increased VM fragmentation if the address
+                        space gets crowded.
+
+                        On all systems, it will reduce performance and
+                        increase memory and cache usage due to less
+                        efficient use of page tables and inability to
+                        merge adjacent VMAs with compatible
+                        attributes. On x86_64 with 5 level page
+                        tables, in the worst case, additional page
+                        table entries of up to 4 pages are created for
+                        each mapping, so with small mappings there's
+                        considerable penalty.
 
         random.trust_cpu={on,off}
                         [KNL] Enable or disable trusting the use of the
