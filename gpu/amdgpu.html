@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.13-dragon
+                5.12.14-dragon
               </div>
             
           
@@ -418,6 +418,10 @@ device at 26:00.0. The default is NULL.</p>
 <p id="ras-mask-uint"><strong>ras_mask (uint)</strong></p>
 <p>Mask of RAS features to enable (default 0xffffffff), only valid when ras_enable == 1
 See the flags in drivers/gpu/drm/amd/amdgpu/amdgpu_ras.h</p>
+<p id="timeout-fatal-disable-bool"><strong>timeout_fatal_disable (bool)</strong></p>
+<p>Disable Watchdog timeout fatal error event</p>
+<p id="timeout-period-uint"><strong>timeout_period (uint)</strong></p>
+<p>Modify the watchdog timeout max_cycles as (1 &lt;&lt; period)</p>
 <p id="si-support-int"><strong>si_support (int)</strong></p>
 <p>Set SI support driver. This parameter works after set config CONFIG_DRM_AMDGPU_SI. For SI asic, when radeon driver is enabled,
 set value 0 to use radeon driver, while set value 1 to use amdgpu driver. The default is using radeon driver when it available,
@@ -484,6 +488,8 @@ check says. Default value: false (rely on MEC2 firmware version check).</p>
 <p>Enable extra debug messages to help determine the cause of evictions</p>
 <p id="no-system-mem-limit-bool"><strong>no_system_mem_limit(bool)</strong></p>
 <p>Disable system memory limit, to support multiple process shared memory</p>
+<p id="no-queue-eviction-on-vm-fault-int"><strong>no_queue_eviction_on_vm_fault (int)</strong></p>
+<p>If set, process queues will not be evicted on gpuvm fault. This is to keep the wavefront context for debugging (0 = queue eviction, 1 = no queue eviction). The default is 0 (queue eviction).</p>
 <p id="dcfeaturemask-uint"><strong>dcfeaturemask (uint)</strong></p>
 <p>Override display features enabled. See enum DC_FEATURE_MASK in drivers/gpu/drm/amd/include/amd_shared.h.
 The default is the current set of stable display features.</p>
@@ -502,10 +508,6 @@ after boot.</p>
 <p>Trusted Memory Zone (TMZ) is a method to protect data being written
 to or read from memory.</p>
 <p>The default value: 0 (off).  TODO: change to auto till it is completed.</p>
-<p id="freesync-video-uint"><strong>freesync_video (uint)</strong></p>
-<p>Enabled the optimization to adjust front porch timing to achieve seamless mode change experience
-when setting a freesync supported mode for which full modeset is not needed.
-The default value: 0 (off).</p>
 <p id="reset-method-int"><strong>reset_method (int)</strong></p>
 <p>GPU reset method (-1 = auto (default), 0 = legacy, 1 = mode0, 2 = mode1, 3 = mode2, 4 = baco, 5 = pci)</p>
 <p id="bad-page-threshold-int"><strong>bad_page_threshold (int)</strong></p>
@@ -513,6 +515,20 @@ The default value: 0 (off).</p>
 detected by RAS ECC, that may result in GPU entering bad status if total
 faulty pages by ECC exceed threshold value and leave it for user’s further
 check.</p>
+<p id="smu-pptable-id-int"><strong>smu_pptable_id (int)</strong></p>
+<p>Used to override pptable id. id = 0 use VBIOS pptable.
+id &gt; 0 use the soft pptable with specicfied id.</p>
+<dl class="c function">
+<dt id="c.amdgpu_drv_delayed_reset_work_handler">
+<span class="pre">void</span> <code class="sig-name descname"><span class="pre">amdgpu_drv_delayed_reset_work_handler</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">struct</span></em> <span class="pre">work_struct</span> <span class="pre">*</span><em><span class="pre">work</span></em><span class="sig-paren">)</span><a class="headerlink" href="#c.amdgpu_drv_delayed_reset_work_handler" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>work handler for reset</p>
+</dd></dl>
+
+<p><strong>Parameters</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">work_struct</span> <span class="pre">*work</span></code></dt><dd><p>work_struct.</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="core-driver-infrastructure">
 <h2>Core Driver Infrastructure<a class="headerlink" href="#core-driver-infrastructure" title="Permalink to this headline">¶</a></h2>

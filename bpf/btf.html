@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.13-dragon
+                5.12.14-dragon
               </div>
             
           
@@ -157,6 +157,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#frequently-asked-questions-faq">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#syscall-api">Syscall API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#helper-functions">Helper functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#program-types">Program types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#map-types">Map types</a></li>
@@ -344,6 +345,7 @@ sequentially and type id is assigned to each recognized type starting from id
 #define BTF_KIND_FUNC_PROTO     13      /* Function Proto       */
 #define BTF_KIND_VAR            14      /* Variable     */
 #define BTF_KIND_DATASEC        15      /* Section      */
+#define BTF_KIND_FLOAT          16      /* Floating point       */
 </pre></div>
 </div>
 <p>Note that the type section encodes debug info, not just pure types.
@@ -354,8 +356,8 @@ sequentially and type id is assigned to each recognized type starting from id
     /* &quot;info&quot; bits arrangement
      * bits  0-15: vlen (e.g. # of struct&#39;s members)
      * bits 16-23: unused
-     * bits 24-27: kind (e.g. int, ptr, array...etc)
-     * bits 28-30: unused
+     * bits 24-28: kind (e.g. int, ptr, array...etc)
+     * bits 29-30: unused
      * bit     31: kind_flag, currently used by
      *             struct, union and fwd
      */
@@ -769,6 +771,20 @@ map definition.</p>
 </ul>
 </dd>
 </dl>
+</div>
+<div class="section" id="btf-kind-float">
+<h4>2.2.16 BTF_KIND_FLOAT<a class="headerlink" href="#btf-kind-float" title="Permalink to this headline">¶</a></h4>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">btf_type</span></code> encoding requirement:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name_off</span></code>: any valid offset</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">info.kind_flag</span></code>: 0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">info.kind</span></code>: BTF_KIND_FLOAT</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">info.vlen</span></code>: 0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: the size of the float type in bytes: 2, 4, 8, 12 or 16.</p></li>
+</ul>
+</dd>
+</dl>
+<p>No additional type data follow <code class="docutils literal notranslate"><span class="pre">btf_type</span></code>.</p>
 </div>
 </div>
 </div>

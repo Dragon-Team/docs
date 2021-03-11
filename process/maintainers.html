@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.13-dragon
+                5.12.14-dragon
               </div>
             
           
@@ -431,6 +431,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#asynchronous-transfers-transforms-ioat-api">ASYNCHRONOUS TRANSFERS/TRANSFORMS (IOAT) API</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#at24-eeprom-driver">AT24 EEPROM DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ata-over-ethernet-aoe-driver">ATA OVER ETHERNET (AOE) DRIVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#atc260x-pmic-mfd-driver">ATC260X PMIC MFD DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#atheros-71xx-9xxx-gpio-driver">ATHEROS 71XX/9XXX GPIO DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#atheros-71xx-9xxx-usb-phy-driver">ATHEROS 71XX/9XXX USB PHY DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#atheros-ath-generic-utilities">ATHEROS ATH GENERIC UTILITIES</a></li>
@@ -1166,6 +1167,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#intel-keem-bay-ocs-aes-sm4-crypto-driver">INTEL KEEM BAY OCS AES/SM4 CRYPTO DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#intel-keem-bay-ocs-hcu-crypto-driver">INTEL KEEM BAY OCS HCU CRYPTO DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#intel-management-engine-mei">INTEL MANAGEMENT ENGINE (mei)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#intel-max-10-bmc-mfd-driver">INTEL MAX 10 BMC MFD DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#intel-menlow-thermal-driver">INTEL MENLOW THERMAL DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#intel-p-unit-ipc-driver">INTEL P-Unit IPC DRIVER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#intel-pmc-core-driver">INTEL PMC CORE DRIVER</a></li>
@@ -9036,6 +9038,29 @@ Will Deacon &lt;<a class="reference external" href="mailto:will&#37;&#52;&#48;ke
 </dd>
 </dl>
 </div>
+<div class="section" id="atc260x-pmic-mfd-driver">
+<h3>ATC260X PMIC MFD DRIVER<a class="headerlink" href="#atc260x-pmic-mfd-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Manivannan Sadhasivam &lt;<a class="reference external" href="mailto:manivannan&#46;sadhasivam&#37;&#52;&#48;linaro&#46;org">manivannan<span>&#46;</span>sadhasivam<span>&#64;</span>linaro<span>&#46;</span>org</a>&gt;,
+Cristian Ciocaltea &lt;<a class="reference external" href="mailto:cristian&#46;ciocaltea&#37;&#52;&#48;gmail&#46;com">cristian<span>&#46;</span>ciocaltea<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Mailing list</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:linux-actions&#37;&#52;&#48;lists&#46;infradead&#46;org">linux-actions<span>&#64;</span>lists<span>&#46;</span>infradead<span>&#46;</span>org</a></p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Maintained</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/mfd/actions,atc260x.yaml</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/input/misc/atc260x-onkey.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/mfd/atc260*</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/power/reset/atc260x-poweroff.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/regulator/atc260x-regulator.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/linux/mfd/atc260x/*</span></code></p>
+</dd>
+</dl>
+</div>
 <div class="section" id="atheros-71xx-9xxx-gpio-driver">
 <h3>ATHEROS 71XX/9XXX GPIO DRIVER<a class="headerlink" href="#atheros-71xx-9xxx-gpio-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
@@ -9988,6 +10013,7 @@ git git://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git</p>
 <dt class="field-even">Files</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/bpf/</span></code>
 <a class="reference internal" href="../networking/filter.html"><span class="doc">networking/filter</span></a>
+<code class="docutils literal notranslate"><span class="pre">Documentation/userspace-api/ebpf/</span></code>
 <code class="docutils literal notranslate"><span class="pre">arch/*/net/*</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/bpf*</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/filter.h</span></code>
@@ -10002,6 +10028,7 @@ git git://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git</p>
 <code class="docutils literal notranslate"><span class="pre">net/sched/act_bpf.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">net/sched/cls_bpf.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">samples/bpf/</span></code>
+<code class="docutils literal notranslate"><span class="pre">scripts/bpf_doc.py</span></code>
 <code class="docutils literal notranslate"><span class="pre">tools/bpf/</span></code>
 <code class="docutils literal notranslate"><span class="pre">tools/lib/bpf/</span></code>
 <code class="docutils literal notranslate"><span class="pre">tools/testing/selftests/bpf/</span></code></p>
@@ -15240,17 +15267,17 @@ Ioana Radulescu &lt;<a class="reference external" href="mailto:ruxandra&#46;radu
 <h3>DPAA2 ETHERNET SWITCH DRIVER<a class="headerlink" href="#dpaa2-ethernet-switch-driver" title="Permalink to this headline">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Mail</dt>
-<dd class="field-odd"><p>Ioana Radulescu &lt;<a class="reference external" href="mailto:ruxandra&#46;radulescu&#37;&#52;&#48;nxp&#46;com">ruxandra<span>&#46;</span>radulescu<span>&#64;</span>nxp<span>&#46;</span>com</a>&gt;,
-Ioana Ciornei &lt;<a class="reference external" href="mailto:ioana&#46;ciornei&#37;&#52;&#48;nxp&#46;com">ioana<span>&#46;</span>ciornei<span>&#64;</span>nxp<span>&#46;</span>com</a>&gt;</p>
+<dd class="field-odd"><p>Ioana Ciornei &lt;<a class="reference external" href="mailto:ioana&#46;ciornei&#37;&#52;&#48;nxp&#46;com">ioana<span>&#46;</span>ciornei<span>&#64;</span>nxp<span>&#46;</span>com</a>&gt;</p>
 </dd>
 <dt class="field-even">Mailing list</dt>
-<dd class="field-even"><p><a class="reference external" href="mailto:linux-kernel&#37;&#52;&#48;vger&#46;kernel&#46;org">linux-kernel<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
+<dd class="field-even"><p><a class="reference external" href="mailto:netdev&#37;&#52;&#48;vger&#46;kernel&#46;org">netdev<span>&#64;</span>vger<span>&#46;</span>kernel<span>&#46;</span>org</a></p>
 </dd>
 <dt class="field-odd">Status</dt>
 <dd class="field-odd"><p>Maintained</p>
 </dd>
 <dt class="field-even">Files</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/staging/fsl-dpaa2/ethsw</span></code></p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">drivers/net/ethernet/freescale/dpaa2/dpaa2-switch*</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/net/ethernet/freescale/dpaa2/dpsw*</span></code></p>
 </dd>
 </dl>
 </div>
@@ -23994,6 +24021,27 @@ Declan Murphy &lt;<a class="reference external" href="mailto:declan&#46;murphy&#
 <code class="docutils literal notranslate"><span class="pre">include/linux/mei_cl_bus.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/uapi/linux/mei.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">samples/mei/*</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="intel-max-10-bmc-mfd-driver">
+<h3>INTEL MAX 10 BMC MFD DRIVER<a class="headerlink" href="#intel-max-10-bmc-mfd-driver" title="Permalink to this headline">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Mail</dt>
+<dd class="field-odd"><p>Xu Yilun &lt;<a class="reference external" href="mailto:yilun&#46;xu&#37;&#52;&#48;intel&#46;com">yilun<span>&#46;</span>xu<span>&#64;</span>intel<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-even">Reviewer</dt>
+<dd class="field-even"><p>Tom Rix &lt;<a class="reference external" href="mailto:trix&#37;&#52;&#48;redhat&#46;com">trix<span>&#64;</span>redhat<span>&#46;</span>com</a>&gt;</p>
+</dd>
+<dt class="field-odd">Status</dt>
+<dd class="field-odd"><p>Maintained</p>
+</dd>
+<dt class="field-even">Files</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Documentation/ABI/testing/sysfs-driver-intel-m10-bmc</span></code>
+<a class="reference internal" href="../hwmon/intel-m10-bmc-hwmon.html"><span class="doc">hwmon/intel-m10-bmc-hwmon</span></a>
+<code class="docutils literal notranslate"><span class="pre">drivers/hwmon/intel-m10-bmc-hwmon.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/mfd/intel-m10-bmc.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/linux/mfd/intel-m10-bmc.h</span></code></p>
 </dd>
 </dl>
 </div>
@@ -35751,7 +35799,7 @@ Leo Yan &lt;<a class="reference external" href="mailto:leo&#46;yan&#37;&#52;&#48
 </dd>
 <dt class="field-odd">Files</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Documentation/devicetree/bindings/pinctrl/</span></code>
-<a class="reference internal" href="../driver-api/pinctl.html"><span class="doc">driver-api/pinctl</span></a>
+<a class="reference internal" href="../driver-api/pin-control.html"><span class="doc">driver-api/pin-control</span></a>
 <code class="docutils literal notranslate"><span class="pre">drivers/pinctrl/</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/pinctrl/</span></code></p>
 </dd>
@@ -38918,16 +38966,20 @@ Ezequiel Garcia &lt;<a class="reference external" href="mailto:ezequiel&#37;&#52
 <code class="docutils literal notranslate"><span class="pre">drivers/mfd/rohm-bd70528.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/mfd/rohm-bd71828.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/mfd/rohm-bd718x7.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/mfd/rohm-bd9576.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/power/supply/bd70528-charger.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/regulator/bd70528-regulator.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/regulator/bd71828-regulator.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/regulator/bd718x7-regulator.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/regulator/bd9576-regulator.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/regulator/rohm-regulator.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/rtc/rtc-bd70528.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">drivers/watchdog/bd70528_wdt.c</span></code>
+<code class="docutils literal notranslate"><span class="pre">drivers/watchdog/bd9576_wdt.c</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/mfd/rohm-bd70528.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/mfd/rohm-bd71828.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/mfd/rohm-bd718x7.h</span></code>
+<code class="docutils literal notranslate"><span class="pre">include/linux/mfd/rohm-bd957x.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/mfd/rohm-generic.h</span></code>
 <code class="docutils literal notranslate"><span class="pre">include/linux/mfd/rohm-shared.h</span></code></p>
 </dd>

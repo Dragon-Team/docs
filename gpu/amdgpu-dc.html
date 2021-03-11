@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.13-dragon
+                5.12.14-dragon
               </div>
             
           
@@ -398,6 +398,22 @@ in nits.</p>
 <p><strong>Description</strong></p>
 <p>Describe the backlight support for ACPI or eDP AUX.</p>
 <dl class="c struct">
+<dt id="c.dal_allocation">
+<em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">dal_allocation</span></code><a class="headerlink" href="#c.dal_allocation" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tracks mapped FB memory for SMU communication</p>
+</dd></dl>
+
+<p><strong>Definition</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>struct dal_allocation {
+  struct list_head list;
+  struct amdgpu_bo *bo;
+  void *cpu_ptr;
+  u64 gpu_addr;
+};
+</pre></div>
+</div>
+<p><strong>Members</strong></p>
+<dl class="c struct">
 <dt id="c.amdgpu_display_manager">
 <em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">amdgpu_display_manager</span></code><a class="headerlink" href="#c.amdgpu_display_manager" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Central amdgpu display manager device</p>
@@ -448,12 +464,15 @@ in nits.</p>
   const struct firmware *fw_dmcu;
   uint32_t dmcu_fw_version;
   const struct gpu_info_soc_bounding_box_v1_0 *soc_bounding_box;
+#if defined(CONFIG_DRM_AMD_DC_DCN);
   uint32_t active_vblank_irq_count;
+#endif;
 #if defined(CONFIG_DRM_AMD_SECURE_DISPLAY);
   struct crc_rd_work *crc_rd_wrk;
 #endif;
   struct amdgpu_encoder mst_encoders[AMDGPU_DM_MAX_CRTC];
   bool force_timing_sync;
+  struct list_head da_list;
 };
 </pre></div>
 </div>
@@ -495,6 +514,8 @@ sequences.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">audio_lock</span></code></dt><dd><p>Guards access to audio instance changes.</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">vblank_lock</span></code></dt><dd><p>Guards access to deferred vblank work state.</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">audio_component</span></code></dt><dd><p>Used to notify ELD changes to sound driver.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">audio_registered</span></code></dt><dd><p>True if the audio component has been registered
@@ -535,6 +556,8 @@ triggered.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">hdcp_workqueue</span></code></dt><dd><p>AMDGPU content protection queue</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">vblank_workqueue</span></code></dt><dd><p>amdgpu workqueue during vblank</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">cached_state</span></code></dt><dd><p>Caches device atomic state for suspend/resume</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">cached_dc_state</span></code></dt><dd><p>Cached state of content streams</p>
@@ -554,6 +577,8 @@ available in FW</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">force_timing_sync</span></code></dt><dd><p>set via debugfs. When set, indicates that all connected
 displays will be forced to synchronize.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">da_list</span></code></dt><dd><p>DAL fb memory allocation list, for communication with SMU.</p>
 </dd>
 </dl>
 <div class="section" id="lifecycle">

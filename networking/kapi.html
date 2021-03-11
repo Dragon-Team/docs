@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.13-dragon
+                5.12.14-dragon
               </div>
             
           
@@ -628,6 +628,9 @@ the same device.</p>
       void (*destructor)(struct sk_buff *skb);
     };
     struct list_head        tcp_tsorted_anchor;
+#ifdef CONFIG_NET_SOCK_MSG;
+    unsigned long           _sk_redir;
+#endif;
   };
 #if defined(CONFIG_NF_CONNTRACK) || defined(CONFIG_NF_CONNTRACK_MODULE);
   unsigned long            _nfct;
@@ -794,6 +797,8 @@ for retransmit timer</p>
 <dt><code class="docutils literal notranslate"><span class="pre">destructor</span></code></dt><dd><p>Destruct function</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">tcp_tsorted_anchor</span></code></dt><dd><p>list structure for TCP (tp-&gt;tsorted_sent_queue)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">_sk_redir</span></code></dt><dd><p>socket redirection information for skmsg</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">_nfct</span></code></dt><dd><p>Associated connection, if any (with nfctinfo bits)</p>
 </dd>
@@ -9645,6 +9650,9 @@ entity (i.e. the master device for bridged veth)</p>
 <dt><code class="docutils literal notranslate"><span class="pre">IFF_L3MDEV_RX_HANDLER</span></code></dt><dd><p>only invoke the rx handler of L3 master device</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">IFF_LIVE_RENAME_OK</span></code></dt><dd><p>rename is allowed while device is up and running</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IFF_TX_SKB_NO_LINEAR</span></code></dt><dd><p>device/driver is capable of xmitting frames with
+skb_headlen(skb) == 0 (data starts from frag0)</p>
 </dd>
 </dl>
 <p><strong>Description</strong></p>

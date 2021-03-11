@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                5.12.13-dragon
+                5.12.14-dragon
               </div>
             
           
@@ -179,6 +179,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#drivers-needing-both-pin-control-and-gpios">Drivers needing both pin control and GPIOs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#system-pin-control-hogging">System pin control hogging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#runtime-pinmuxing">Runtime pinmuxing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugfs-files">Debugfs files</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="gpio/index.html">General Purpose Input/Output (GPIO)</a></li>
@@ -354,7 +355,7 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/driver-api/pinctl.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/driver-api/pin-control.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -1688,6 +1689,36 @@ foo_switch()
 <p>The above has to be done from process context. The reservation of the pins
 will be done when the state is activated, so in effect one specific pin
 can be used by different functions at different times on a running system.</p>
+</div>
+<div class="section" id="debugfs-files">
+<h2>Debugfs files<a class="headerlink" href="#debugfs-files" title="Permalink to this headline">¶</a></h2>
+<p>These files are created in <code class="docutils literal notranslate"><span class="pre">/sys/kernel/debug/pinctrl</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pinctrl-devices</span></code>: prints each pin controller device along with columns to
+indicate support for pinmux and pinconf</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pinctrl-handles</span></code>: prints each configured pin controller handle and the
+corresponding pinmux maps</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pinctrl-maps</span></code>: print all pinctrl maps</p></li>
+</ul>
+<p>A sub-directory is created inside of <code class="docutils literal notranslate"><span class="pre">/sys/kernel/debug/pinctrl</span></code> for each pin
+controller device containing these files:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pins</span></code>: prints a line for each pin registered on the pin controller. The
+pinctrl driver may add additional information such as register contents.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpio-ranges</span></code>: print ranges that map gpio lines to pins on the controller</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pingroups</span></code>: print all pin groups registered on the pin controller</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pinconf-pins</span></code>: print pin config settings for each pin</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pinconf-groups</span></code>: print pin config settings per pin group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pinmux-functions</span></code>: print each pin function along with the pin groups that
+map to the pin function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pinmux-pins</span></code>: iterate through all pins and print mux owner, gpio owner
+and if the pin is a hog</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pinmux-select</span></code>: write to this file to activate a pin function for a group:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>echo &quot;&lt;group-name function-name&gt;&quot; &gt; pinmux-select
+</pre></div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 
